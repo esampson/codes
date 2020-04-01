@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ advantage.longname }}</h1>
+
+    <p><b>Category: </b> {{ advantage.category }}</p>
+    <p><b>Reference: </b>{{ advantage.reference }}</p>
+    <p><b>Info: </b>{{ advantage.info|linebreaks }}</p>
+    <p><b>Simple Gauge: </b>{{ advantage.simple_gauge }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/advantages/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

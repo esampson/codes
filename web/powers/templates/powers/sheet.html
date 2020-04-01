@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ power.longname }}</h1>
+
+    <p><b>Category: </b> {{ power.category }}</p>
+    <p><b>Reference: </b>{{ power.reference }}</p>
+    <p><b>Info: </b>{{ power.info|linebreaks }}</p>
+    <p><b>Restricted: </b>{{ power.restricted }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/powers/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

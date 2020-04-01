@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Merit List</h1>
+
+    {% for groups in merits %}
+        {% for merit in groups %}
+            {% if forloop.counter == 1 %}
+                <h2> {{ merit }} </h2>
+            {% else %}
+		        <li> <a href="../view/{{ merit }}">{{ merit }}</a> </li>
+		    {% endif %}
+		{% endfor %}
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/merits/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}

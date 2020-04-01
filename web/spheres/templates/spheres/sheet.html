@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ sphere.longname }}</h1>
+
+    <p><b>Category: </b> {{ sphere.category }}</p>
+    <p><b>Reference: </b>{{ sphere.reference }}</p>
+    <p><b>Info: </b>{{ sphere.info|linebreaks }}</p>
+    <p><b>Restricted: </b>{{ sphere.restricted }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/spheres/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

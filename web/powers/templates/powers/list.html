@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Power List</h1>
+
+    {% for groups in powers %}
+        {% for power in groups %}
+            {% if forloop.counter == 1 %}
+                <h2> {{ power }} </h2>
+            {% else %}
+		        <li> <a href="../view/{{ power }}">{{ power }}</a> </li>
+		    {% endif %}
+		{% endfor %}
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/powers/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}
