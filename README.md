@@ -27,12 +27,12 @@ At present there are 8 different typeclasses of stat scripts:
 
 All scripts have the following methods:
 
-* get(<target>, <entry>[, <subentry>]): Returns the current value of the stat on the target.
-* meets_prereqs(<target>[, <value>][, <subentry>]): Determines if someone meets the prerequisites to make a purchase.
-* cost(<target>, <value>[, <subentry>]): Returns the cost for the target to purchase the stat to a given level.
-* set(<target>, <value>[, <subentry>]): Sets the attribute to a given value on the target. In some cases specific values may clear the attribute.
+* `get(<target>, <entry>[, <subentry>])`: Returns the current value of the stat on the target.
+* `meets_prereqs(<target>[, <value>][, <subentry>])`: Determines if someone meets the prerequisites to make a purchase.
+* `cost(<target>, <value>[, <subentry>])`: Returns the cost for the target to purchase the stat to a given level.
+* `set(<target>, <value>[, <subentry>])`: Sets the attribute to a given value on the target. In some cases specific values may clear the attribute.
 
-Accessing a particular stat is done by first making a call to the **find()** method in world.data with the format of find(<entry>[,<statclass>]). Because this function may be indirectely called by players in various situations such as rolling dice, proving a stat, or requesting info <entry> works via partial matching. The is why find('str') will return the scrripts for Strength, Streetwise, Street Fighting, and Striking Looks. To help narrow the list and to deal with naming conflicts <statclass> may be used to narrow the search. find('str','skill') would only return the script object for Streetwise.
+Accessing a particular stat is done by first making a call to the **find()** method in world.data with the format of `find(<entry>[,<statclass>])`. Because this function may be indirectely called by players in various situations such as rolling dice, proving a stat, or requesting info <entry> works via partial matching. The is why find('str') will return the scrripts for Strength, Streetwise, Street Fighting, and Striking Looks. To help narrow the list and to deal with naming conflicts <statclass> may be used to narrow the search. find('str','skill') would only return the script object for Streetwise.
 
 **find()** works by querying a small script of typeclasses.scripts.dictionaryScript that contains a look up table of all partial name matches. This look up table is rebuilt every time the server is reloaded.
 
@@ -40,8 +40,8 @@ Accessing a particular stat is done by first making a call to the **find()** met
 
 Relatively simply modifications need to be made to typeclasses.scripts. 
 
-Additionally, to ease programming and reduce load it is suggested that modifications to typeclass.characters be made so that the 34 most commonly queried stats (attributes, skills, and character template ) can be queried directly from the character object via commands such as <target>.strength(), <target>.animal_ken() or <target>.template(). These methods do not support any other functionality such as telling programs how much it will cost to raise the stat in question. Additionally character objects possess **get()** and **meets_prereqs()** methods. These function largely as a combination of the **find()** and **get()** method under world.data or the **find()** and **meets_prereqs()** methods under world.data and the located script. The exception is that they must find only a single stat script or they will abort.
+Additionally, to ease programming and reduce load it is suggested that modifications to typeclass.characters be made so that the 34 most commonly queried stats (attributes, skills, and character template ) can be queried directly from the character object via commands such as `<target>.strength()`, `<target>.animal_ken()` or `<target>.template()`. These methods do not support any other functionality such as telling programs how much it will cost to raise the stat in question. Additionally character objects possess **get()** and **meets_prereqs()** methods. These function largely as a combination of the **find()** and **get()** method under world.data or the **find()** and **meets_prereqs()** methods under world.data and the located script. The exception is that they must find only a single stat script or they will abort.
 
-A persistent dictionary script will need to be created (@py evennia.create_script(key='Dictionary','typeclass.scripts.dictionaryScript',persistent=True)
+A persistent dictionary script will need to be created (`@py evennia.create_script(key='Dictionary','typeclass.scripts.dictionaryScript',persistent=True`)
 
-Finally _@py from world.statInit import initStats_ will generate a bunch of initial scripts
+Finally `@py from world.statInit import initStats` will generate a bunch of initial scripts
