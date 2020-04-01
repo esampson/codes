@@ -16,21 +16,21 @@ This means that rather than having a long piece of hardcode examining stats to d
 
 At present there are 8 different typeclasses of stat scripts:
 
-*advantageScripts: Handle advantages such as Initiative, Speed, and Health
-*attributeScripts: Handle attributes such as Strength or Presence
-*skillScripts: Handle skills such as Brawl or Streetwise
-*meritScripts: Handle merits such as Resources or Contacts
-*powerStatScripts: Handle stats such as Wyrd or Blood Potency
-*sphereScripts: Handle miscellaneous sphere specific stats such as kith or tribe
-*contractScripts: Handle changeling contracts
-*basicStatScripts: Handle miscellaneous stats such as character concept.
+* advantageScripts: Handle advantages such as Initiative, Speed, and Health
+* attributeScripts: Handle attributes such as Strength or Presence
+* skillScripts: Handle skills such as Brawl or Streetwise
+* meritScripts: Handle merits such as Resources or Contacts
+* powerStatScripts: Handle stats such as Wyrd or Blood Potency
+* sphereScripts: Handle miscellaneous sphere specific stats such as kith or tribe
+* contractScripts: Handle changeling contracts
+* basicStatScripts: Handle miscellaneous stats such as character concept.
 
 All scripts have the following methods:
 
-*get(<target>, <entry>[, <subentry>]): Returns the current value of the stat on the target.
-*meets_prereqs(<target>[, <value>][, <subentry>]): Determines if someone meets the prerequisites to make a purchase.
-*cost(<target>, <value>[, <subentry>]): Returns the cost for the target to purchase the stat to a given level.
-*set(<target>, <value>[, <subentry>]): Sets the attribute to a given value on the target. In some cases specific values may clear the attribute.
+* get(<target>, <entry>[, <subentry>]): Returns the current value of the stat on the target.
+* meets_prereqs(<target>[, <value>][, <subentry>]): Determines if someone meets the prerequisites to make a purchase.
+* cost(<target>, <value>[, <subentry>]): Returns the cost for the target to purchase the stat to a given level.
+* set(<target>, <value>[, <subentry>]): Sets the attribute to a given value on the target. In some cases specific values may clear the attribute.
 
 Accessing a particular stat is done by first making a call to the **find()** method in world.data with the format of find(<entry>[,<statclass>]). Because this function may be indirectely called by players in various situations such as rolling dice, proving a stat, or requesting info <entry> works via partial matching. The is why find('str') will return the scrripts for Strength, Streetwise, Street Fighting, and Striking Looks. To help narrow the list and to deal with naming conflicts <statclass> may be used to narrow the search. find('str','skill') would only return the script object for Streetwise.
 
