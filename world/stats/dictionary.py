@@ -25,7 +25,6 @@ class dictionaryScript(Script):
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('dictionary_data')
-            self.name('Stat Dictionary')
             
     def at_start(self):
         data = self.generate_data() 

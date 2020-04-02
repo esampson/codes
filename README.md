@@ -42,6 +42,6 @@ Relatively simply modifications need to be made to typeclasses.scripts.
 
 Additionally, to ease programming and reduce load it is suggested that modifications to typeclass.characters be made so that the 34 most commonly queried stats (attributes, skills, and character template ) can be queried directly from the character object via commands such as `<target>.strength()`, `<target>.animal_ken()` or `<target>.template()`. These methods do not support any other functionality such as telling programs how much it will cost to raise the stat in question. Additionally character objects possess **get()** and **meets_prereqs()** methods. These function largely as a combination of the **find()** and **get()** method under world.data or the **find()** and **meets_prereqs()** methods under world.data and the located script. The exception is that they must find only a single stat script or they will abort.
 
-A persistent dictionary script will need to be created (`@py evennia.create_script(key='Dictionary','typeclass.scripts.dictionaryScript',persistent=True`)
+A persistent dictionary script will need to be created (`@py evennia.create_script('typeclasses.scripts.dictionaryScript',key='Dictionary',persistent=True)`
 
 Finally `@py from world.statInit import initStats` will generate a bunch of initial scripts
