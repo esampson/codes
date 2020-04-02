@@ -17,7 +17,6 @@ own cmdsets by inheriting from them or directly from `evennia.CmdSet`.
 from evennia import default_cmds
 from commands.stat_commands import CmdInfo
 from commands.stat_commands import CmdSheet
-from commands.stat_commands import CmdXPSet
 from commands.stat_commands import CmdHurt
 from commands.stat_commands import CmdHeal
 from commands.character_menus import CmdCG

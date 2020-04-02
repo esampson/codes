@@ -1,11 +1,8 @@
 from world.data import get
 from world.data import set
 from world.data import find
-from commands.stat_commands import CmdSheet
 
 import time
-
-from evennia.utils.evmenu import EvMenu
   
 stats = { 'attribute' : {'physical' : ['Strength', 'Dexterity', 'Stamina'],
               'mental' : ['Intelligence', 'Wits', 'Resolve'],
