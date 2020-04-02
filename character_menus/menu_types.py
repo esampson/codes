@@ -136,7 +136,7 @@ class XPMenu(EvMenu):
         separator3 = "\n" 
         separator4 = "\n" + sep * total_width + "\n" if total_width else ""
         if len(nodetext) < 20:
-            result = separator3 + "|n" + nodetext + "|n" + optionstext
+            result = separator3 + "|n" + nodetext + "|n\n" + optionstext
         else:
             result = separator1 + "|n" + nodetext + "|n" + separator2 + "|n" + optionstext
         return result
