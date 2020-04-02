@@ -2,6 +2,7 @@ from evennia import default_cmds
 from evennia import Command
 from evennia import InterruptCommand
 from evennia.utils import evtable
+from operator import itemgetter
 
 from world.scroll import scroll
 
@@ -283,45 +284,57 @@ def produce_sheet(target):
         block_t = mortal_template_block(target)          
         
     #Build the bottom block
-    temp = target.specialties_list()
-    c1 = ['Specialties:']
-    for item in temp:
-        for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
-            c1.append(' ' + line)
+    block = []
     if target.template().lower() == 'changeling':
-        c2 = ['Contracts:']
-        temp = target.contracts_list()
+        sub_block = ['Merits:']
+        temp = merits_list(target)
+        for item in temp:
+            for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                sub_block.append(' ' + line)
+        block.append(sub_block)
+        sub_block = ['Contracts:']
+        temp = contracts_list(target)
+        for item in temp:
+            for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                sub_block.append(' ' + line)
+        block.append(sub_block)
+        frailties = target.get('Frailties', 'Sphere')
+        if not(frailties == False):
+            sub_block = ['Frailties:']
+            for item in frailties:
+                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
     elif target.template().lower() == 'mortal':
-        c2 = []
-        temp = []
+        sub_block = ['Merits:']
+        temp = merits_list(target)
+        for item in temp:
+            for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                sub_block.append(' ' + line)
+        half = int(len(sub_block) / 2) + 1
+        sub_block.append(' ')
+        adjust = 0
+        if (len(sub_block) % 2) == 1:                        #Adding extra line if total
+            sub_block.append(' ')                             #number of lines is odd
+            adjust = 0
+        counter = 0
+        merit_blocks = [ [], [' '] ]
+        for item in range(half):
+            merit_blocks[0].append(sub_block[counter])
+            merit_blocks[1].append(sub_block[counter + half + adjust])
+            counter = counter + 1
+        block.append(merit_blocks[1][:-1])
+        block.append(merit_blocks[0])
+        #target.msg(block)
+    temp = specialties_list(target)
+    sub_block = ['Specialties:']
     for item in temp:
         for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
-            c2.append(' ' + line)
-    temp = target.merits_list()
-    c3 = ['Merits:']
-    for item in temp:
-        for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
-            c3.append(' ' + line)
-    final = []
-    counter = 0
-    while counter<len(c1) or counter<len(c2) or counter<len(c3):
-        out = ''
-        if counter<len(c1):
-            out = out + c1[counter].ljust(25)
-        else:
-            out = out + ''.ljust(25)
-        if counter<len(c2):
-            out = out + ' ' + c2[counter].ljust(25)
-        else:
-            out = out + ''.ljust(26)
-        if counter<len(c3):
-            out = out + ' ' + c3[counter].ljust(25)
-        else:
-            out = out + ''.ljust(26)
-        final.append(out)
-        counter = counter + 1
+            sub_block.append(' ' + line)
+    block.append(sub_block)
+    final_block = build_bottom_block(block)
     block4 = ''
-    for item in final:
+    for item in final_block:
         block4 = block4 + '| ' + item + '|||/|'
 
     #Assemble blocks        
@@ -351,6 +364,95 @@ def produce_sheet(target):
     
     return result
                 
+def merits_list(target):
+    try:
+        sorted_list = sorted(target.db.merits, key=lambda merit: merit[0])
+    except:
+        return []
+    else:
+        results = list()
+        for merit in sorted_list:
+            if merit[2] == '':
+                results.append(merit[0]+': '+str(merit[1]))
+            else:
+                results.append(merit[0]+' ('+merit[2]+'): '+ str(merit[1]))
+        return results
         
+def specialties_list(target):
+    results = sorted(target.db.specialties)
+    return results
         
-                
+def contracts_list(target):
+    contracts = target.db.contracts
+    try:
+        contract_list = sorted(list(contracts.keys()))
+    except:
+        return []
+    else:
+        results = []
+        for contract in contract_list:
+            if contracts[contract] == '':
+                result = results.append(contract)
+            else:
+                result = results.append(contract+' ('+contracts[contract]+')')
+        return results
+    
+def build_bottom_block(sub_blocks):
+    columns = [ [], [], [] ]
+    column_lengths = [ 0, 0, 0 ]
+    blocks_with_lengths = []
+    for item in sub_blocks:
+        blocks_with_lengths.append( [ len(item), item ] )
+    blocks_with_lengths = sorted(blocks_with_lengths, key=itemgetter(0), reverse=True)
+    for block in blocks_with_lengths:
+        if column_lengths[2] <= column_lengths[1] and column_lengths[2] <= column_lengths[0]:
+            if column_lengths[2] == 0:
+                for item in block[1]:
+                    columns[2].append(item)
+                    column_lengths[2] = column_lengths[2] + block[0]
+            else:
+                columns[2].append(' ')
+                for item in block[1]:
+                    columns[2].append(item)
+                    column_lengths[2] = column_lengths[2] + block[0] + 1
+        elif column_lengths[1] <= column_lengths[2] and column_lengths[1] <= column_lengths[0]:
+            if column_lengths[1] == 0:
+                for item in block[1]:
+                    columns[1].append(item)
+                    column_lengths[1] = column_lengths[1] + block[0]
+            else:
+                columns[1].append(' ')
+                for item in block[1]:
+                    columns[1].append(item)
+                    column_lengths[1] = column_lengths[1] + block[0] + 1
+        elif column_lengths[0] <= column_lengths[1] and column_lengths[0] <= column_lengths[2]:
+            if column_lengths[0] == 0:
+                for item in block[1]:
+                    columns[0].append(item)
+                    column_lengths[0] = column_lengths[0] + block[0]
+            else:
+                columns[0].append(' ')
+                for item in block[1]:
+                    columns[0].append(item)
+                    column_lengths[0] = column_lengths[0] + block[0] + 1
+    result = []
+    counter = 0
+    while counter<len(columns[0]) or counter<len(columns[1]) or counter<len(columns[2]):
+        out = ''
+        if counter<len(columns[0]):
+            out = out + columns[0][counter].ljust(25)
+        else:
+            out = out + ''.ljust(25)
+        if counter<len(columns[1]):
+            out = out + ' ' + columns[1][counter].ljust(25)
+        else:
+            out = out + ''.ljust(26)
+        if counter<len(columns[2]):
+            out = out + ' ' + columns[2][counter].ljust(25)
+        else:
+            out = out + ''.ljust(26)
+        result.append(out)
+        counter = counter + 1
+    return result
+    
+    

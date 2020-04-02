@@ -192,38 +192,9 @@ class Character(DefaultCharacter):
         else:
             return result
     
-    def specialties_list(self):
-        results = sorted(self.db.specialties)
-        return results
-        
-    def contracts_list(self):
-        contracts = self.db.contracts
-        try:
-            contract_list = sorted(list(contracts.keys()))
-        except:
-            return []
-        else:
-            results = []
-            for contract in contract_list:
-                if contracts[contract] == '':
-                    result = results.append(contract)
-                else:
-                    result = results.append(contract+' ('+contracts[contract]+')')
-            return results
+
     
-    def merits_list(self):
-        try:
-            sorted_list = sorted(self.db.merits, key=lambda merit: merit[0])
-        except:
-            return []
-        else:
-            results = list()
-            for merit in sorted_list:
-                if merit[2] == '':
-                    results.append(merit[0]+': '+str(merit[1]))
-                else:
-                    results.append(merit[0]+' ('+merit[2]+'): '+ str(merit[1]))
-            return results
+
         
         
                 

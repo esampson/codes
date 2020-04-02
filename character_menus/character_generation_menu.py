@@ -837,7 +837,6 @@ def changeling_finish_cg(caller, raw_string, **kwargs):
     set(caller,'Clarity',statclass='Advantage', value=0)
     set(caller,'Glamour',statclass='Advantage', value=0)
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
-    caller.db.xp = 75
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,
                      'log' : {} }

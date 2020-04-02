@@ -2,6 +2,7 @@ from evennia.utils.evmenu import EvMenu
 from world.data import find
 
 import time
+import stat
 
 seemings = ['Beast', 'Darkling', 'Elemental', 'Fairest', 'Ogre', 'Wizened']
 
@@ -162,18 +163,31 @@ def _xp_buy_power(caller, raw_string, **kwargs):
         stats = find(kwargs['power'], statclass='Power')
         stat = stats[0]
         value = stat.get(caller,subentry='') + 1
-        return 'xp_increase', { 'type' : 'power',
-                                'stat' : stat,
-                                'name' : kwargs['power'],
-                                'value' : value,
-                                'subentry' : '',
-                                'cost' : 5 }
-        
+        send_kwargs={ 'type' : 'power',
+                                    'stat' : stat,
+                                    'name' : kwargs['power'],
+                                    'value' : value,
+                                    'subentry' : '',
+                                    'cost' : 5 }
+        if stat.db.longname == 'Wyrd' and value in [2, 4, 8]:
+            send_kwargs['message'] = 'You must add a minor frailty'
+            return 'xp_add_frailty', send_kwargs
+        elif stat.db.longname == 'Wyrd' and value in [6, 10]:
+            send_kwargs['message'] = 'You must add a major frailty'
+            return 'xp_add_frailty', send_kwargs
+        else:
+            return 'xp_increase', send_kwargs
+
+def xp_add_frailty(caller, raw_string, **kwargs):
+    send_kwargs=kwargs
+    send_kwargs['special']='frailty'
+    text = kwargs['message']
+    options = ( {'key' : '_default',
+                 'goto' : ( _xp_check_known_stat, kwargs) } )
+    return text,options
+    
 def xp_buy_flat_stat(caller, raw_string, **kwargs):
-    if kwargs['type'] == 'Skill':
-        text = 'Skills:'
-    else:
-        text = kwargs['type'] + ':'
+    text = kwargs['type'] + ':'
     options = ( {'key' : '_default',
                  'goto' :  ( _xp_check_order,
                              { 'type' : kwargs['type'],
@@ -201,31 +215,56 @@ def _xp_check_order(caller, raw_string, **kwargs):
                 name = stat.db.longname
                 if kwargs['subentry'] != '':
                     name = name + ' ('+kwargs['subentry']+ ')'
-                return 'xp_increase', { 'type' : kwargs['type'],
-                                        'stat' : stat,
-                                        'name' : name,
-                                        'value' : value,
-                                        'subentry' : kwargs['subentry'],
-                                        'cost' : cost }
+                send_kwargs = kwargs
+                send_kwargs['stat'] = stat
+                send_kwargs['name'] = name
+                send_kwargs['value'] = value
+                send_kwargs['cost'] = cost
+                return 'xp_increase', send_kwargs
             else:
                 caller.msg('You do not meet the prerequisites to purchase that.|/')
                 return 'xp_spend'
 
+def _xp_check_known_stat(caller, raw_string, **kwargs):
+    stat = kwargs['stat']
+    value = stat.get(caller, subentry=kwargs['subentry']) + 1
+    cost = stat.cost(caller, subentry=kwargs['subentry'], value=value)
+    current = caller.db.xp['earned'] - caller.db.xp['spent']
+    if cost > current:
+        caller.msg('You do not have enough XP')
+        return 'xp_spend'
+    else:
+        if stat.meets_prereqs(caller, subentry=kwargs['subentry'], value=value):
+            name = stat.db.longname
+            if kwargs['subentry'] != '':
+                name = name + ' ('+kwargs['subentry']+ ')'
+            send_kwargs = kwargs
+            send_kwargs['stat'] = stat
+            send_kwargs['name'] = name
+            send_kwargs['value'] = value
+            send_kwargs['cost'] = cost
+            if kwargs['special'] == 'frailty':
+                kwargs['frailty'] = raw_string
+            return 'xp_increase', send_kwargs
+        else:
+            caller.msg('You do not meet the prerequisites to purchase that.|/')
+            return 'xp_spend'
+            
 def xp_increase(caller, raw_string, **kwargs):
     text = 'Buy ' + kwargs['name']
     if kwargs['type'] not in ['specialty', 'contract']:
         text = text + ': ' + str(kwargs['value'])
-    text = text + ' for ' + str(kwargs['cost']) + ' XP|/|/Confirm:'
+    text = text + ' for ' + str(kwargs['cost']) + ' XP'
+    if 'special' in kwargs:
+        if kwargs['message'] == 'You must add a minor frailty':
+            text = text + '|/( You will gain the minor frailty of ' + kwargs['frailty'] +')'
+        elif kwargs['message'] == 'You must add a major frailty':
+            text = text + '|/( You will gain the major frailty of ' + kwargs['frailty'] +')'
+    '|/|/Confirm:'
     options = ( 
         { 'key' : 'Y',
           'desc' : 'Yes',
-          'goto' : ( _xp_purchase,
-                     { 'type' : kwargs['type'],
-                       'stat' : kwargs['stat'],
-                       'name' : kwargs['name'],
-                       'value' : kwargs ['value'],
-                       'subentry' : kwargs['subentry'],
-                       'cost' : kwargs ['cost'] } ) },
+          'goto' : ( _xp_purchase, kwargs ) },
         { 'key' : 'N',
           'desc' : 'No',
           'goto' : 'xp_spend' },
@@ -333,6 +372,15 @@ def _xp_purchase(caller, raw_string, **kwargs):
         caller.db.specialties.append(kwargs['name'])
     else:
         kwargs['stat'].set(caller,subentry=kwargs['subentry'],value=kwargs['value'])
+        
+    if 'frailty' in kwargs:
+        f = find('Frailties',statclass='Sphere')[0]
+        current_frailties = f.get(caller,subentry='')
+        if current_frailties == False:
+            current_frailties = []
+        current_frailties.append(kwargs['frailty'])
+        f.set(caller,current_frailties)
+        
     return 'start'
 
 def xp_buy_specialty(caller, raw_string, **kwargs):

@@ -33,11 +33,15 @@ class CmdRoll(Command):
         for item in temp:
             insert = [ len(item.strip()), count, item.strip() ]
             num_parts.append(insert)
-            count = count + 1
-        num_parts = sorted(num_parts, key=itemgetter(0), reverse=True)
+            count = count + 1 
         signs = roll_cmd
+        
+        #strip out non-math signs.
+        #we have to strip the longest words first so that skills
+        #don't remove part of specialties.
         for item in sorted(num_parts, key=itemgetter(0), reverse=True):
            signs = signs.replace(item[2],'@')
+           
         temp = signs.split('@')
         sign_parts = []
         for item in temp:
