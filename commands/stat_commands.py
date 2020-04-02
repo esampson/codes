@@ -199,7 +199,7 @@ class CmdSheet(default_cmds.MuxCommand):
     
     
     def func(self):
-        result = produe_sheet(self.caller)
+        result = produce_sheet(self.caller)
         self.caller.msg(result)
                 
 def produce_sheet(target):
