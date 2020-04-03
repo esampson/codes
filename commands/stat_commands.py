@@ -354,11 +354,12 @@ def produce_sheet(target):
         block.append(sub_block)
         frailties = target.get('Frailties', 'Sphere')
         if not(frailties == False):
-            sub_block = ['Frailties:']
-            for item in frailties:
-                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
-                    sub_block.append(' ' + line)
-            block.append(sub_block)
+            if len(frailties) != 0:
+                sub_block = ['Frailties:']
+                for item in frailties:
+                    for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                        sub_block.append(' ' + line)
+                block.append(sub_block)
     elif target.template().lower() == 'mortal':
         sub_block = ['Merits:']
         temp = merits_list(target)
