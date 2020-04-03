@@ -416,6 +416,7 @@ def _xp_check_specialties(caller, raw_string, **kwargs):
         return "xp_spend"
     elif current < 1:
         caller.msg('You don\'t have enough XP')
+        return "xp_spend"
     else:
         return 'xp_increase', { 'type' : 'specialty',
                                 'stat' : kwargs['stat'],
