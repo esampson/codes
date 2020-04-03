@@ -83,7 +83,7 @@ def _xp_check_contract(caller, raw_string, **kwargs):
         if cost < 1:
             return 'xp_spend'
         elif cost > current:
-            caller.msg('You don\'t have enough points')
+            caller.msg('You don\'t have enough XP')
             return 'xp_spend'
         elif contract.meets_prereqs(caller,value=True,subentry=''):
                 return 'xp_increase', { 'type' : 'contract',
@@ -136,7 +136,7 @@ def _xp_check_contract_value(caller, raw_string, **kwargs):
     if cost < 1:
         return 'xp_spend'
     elif cost > current:
-        caller.msg('You don\'t have enough points')
+        caller.msg('You don\'t have enough XP')
         return 'xp_spend'
     elif kwargs['stat'].meets_prereqs(caller,value=True,subentry=kwargs['subentry']):
             return 'xp_increase', { 'type' : 'contract',
@@ -344,7 +344,7 @@ def _xp_check_merit_value(caller, raw_string, **kwargs):
             caller.msg('Invalid value')
             return 'xp_spend'
         elif cost > current:
-            caller.msg('You don\'t have enough points')
+            caller.msg('You don\'t have enough XP')
             return 'xp_spend'
         elif kwargs['stat'].meets_prereqs(caller,value=value,subentry=kwargs['subentry']):
             return 'xp_increase', { 'type' : 'Merit',
@@ -410,9 +410,12 @@ def xp_check_skill(caller, raw_string, **kwargs):
     
 def _xp_check_specialties(caller, raw_string, **kwargs):
     name = kwargs['stat'].db.longname + ': ' + raw_string
+    current = caller.db.xp['earned'] - caller.db.xp['spent']
     if name in caller.db.specialties:
         caller.msg('You already possess that specialty')
         return "xp_spend"
+    elif current < 1:
+        caller.msg('You don\'t have enough XP')
     else:
         return 'xp_increase', { 'type' : 'specialty',
                                 'stat' : kwargs['stat'],
