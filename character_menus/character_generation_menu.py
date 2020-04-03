@@ -1,6 +1,7 @@
 from world.data import get
 from world.data import set
 from world.data import find
+from evennia.utils.utils import strip_control_sequences
 
 import time
   
@@ -66,29 +67,34 @@ def get_stats(caller,type=''):
     text = ( text + 'Unspent:' + str(mental_left).rjust(8) + 
             str(physical_left).rjust(16) +  
             str(social_left).rjust(16) )
-    reply = { 'text' : text, 'mental' : mental_left, 'physical' : physical_left, 'social' : social_left }
+    reply = { 'text' : text, 'mental' : mental_left, 'physical' : physical_left, 
+             'social' : social_left }
     return reply
 
 def _set_stat(caller, raw_string, **kwargs):
 
-    inp = raw_string.strip()
+    inp = strip_control_sequences(raw_string).strip()
     group = kwargs['group']
     
     return 'decide_stat', {'group': group }
 
 def _set_attribute_priorities(caller, raw_string, **kwargs):
-    stats = [[],[8, 7, 6], [8, 6, 7], [7, 8, 6], [6, 8, 7], [7, 6, 8], [6, 7, 8]]
-    caller.ndb._menutree.att_points = stats[int(raw_string)]
+    stats = [[],[8, 7, 6], [8, 6, 7], [7, 8, 6], [6, 8, 7], [7, 6, 8], 
+                                                                     [6, 7, 8]]
+    caller.ndb._menutree.att_points = stats[int(
+                                          strip_control_sequences(raw_string))]
     return 'decide_attribute'
 
 def _set_skill_priorities(caller, raw_string, **kwargs):
-    stats = [[],[11, 7, 4], [11, 4, 7], [7, 11, 4], [4, 11, 7], [7, 4, 11], [4, 7, 11]]
-    caller.ndb._menutree.att_points = stats[int(raw_string)]
+    stats = [[],[11, 7, 4], [11, 4, 7], [7, 11, 4], [4, 11, 7], [7, 4, 11], 
+             [4, 7, 11]]
+    caller.ndb._menutree.att_points = stats[int(
+                                          strip_control_sequences(raw_string))]
     return 'decide_skill'
     
 def _set_stat(caller, raw_string, **kwargs):
 
-    inp = raw_string.strip()
+    inp = strip_control_sequences(raw_string).strip()
     group = kwargs['group']
     att = kwargs['att']
     type = kwargs['type']
@@ -132,16 +138,16 @@ def _set_stat(caller, raw_string, **kwargs):
                                'points_left' : points_left }
         
 def _enter_specialty(caller, raw_string, **kwargs):
-    if len(raw_string.split(':')) != 2:
+    if len(strip_control_sequences(raw_string).split(':')) != 2:
         caller.msg('Invalid entry')
         return None
     else:
-        skill = raw_string.split(':')[0]
+        skill = strip_control_sequences(raw_string).split(':')[0]
         if get(caller,skill,statclass='skill') < 1:
             caller.msg('You need at least 1 point in ' + skill)
             return None
         else:
-            caller.db.specialties.append(raw_string)
+            caller.db.specialties.append(strip_control_sequences(raw_string))
             return 'assign_specialties'
         
 def _remove_specialty(caller, raw_string, **kwargs):
@@ -149,7 +155,7 @@ def _remove_specialty(caller, raw_string, **kwargs):
     return 'assign_specialties'
 
 def _set_template(caller, raw_string, **kwargs):
-    if raw_string == '1':
+    if strip_control_sequences(raw_string) == '1':
         caller.db.basics['Sphere'] = 'Mortal'
         return 'mortal_template'
 
@@ -174,17 +180,17 @@ def start(caller):
     else:
         text = "You are starting CG. Decide how to allocate your attributes."
         options = ( 
-            { 'desc' : 'Mental, Physical, Social                                        ',
+            { 'desc' : 'Mental, Physical, Social                             ',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Mental, Social, Physical                                        ',
+            { 'desc' : 'Mental, Social, Physical                             ',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Physical, Mental, Social                                        ',
+            { 'desc' : 'Physical, Mental, Social                             ',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Physical, Social, Mental                                        ',
+            { 'desc' : 'Physical, Social, Mental                             ',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Social, Mental, Physical                                        ',
+            { 'desc' : 'Social, Mental, Physical                             ',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Social, Physical, Mental                                        ',
+            { 'desc' : 'Social, Physical, Mental                             ',
              'goto' : _set_attribute_priorities } )
         
         return text, options
@@ -194,11 +200,14 @@ def decide_attribute(caller, raw_string, **kwargs):
     text = '|_' + data['text'] + "|/|/Chose what to work on:"
     option_list = [
         { 'desc' : 'Mental',
-         'goto' : ('decide_stat', {'group' : 'mental', 'type' : 'attribute'} ) },
+         'goto' : ('decide_stat', {'group' : 'mental', 
+                                   'type' : 'attribute'} ) },
         { 'desc' : 'Physical',
-         'goto' : ('decide_stat', {'group' : 'physical', 'type' : 'attribute'} ) },
+         'goto' : ('decide_stat', {'group' : 'physical', 
+                                   'type' : 'attribute'} ) },
         { 'desc' : 'Social',
-         'goto' : ('decide_stat', {'group' : 'social', 'type' : 'attribute' } ) } ]
+         'goto' : ('decide_stat', {'group' : 'social', 
+                                   'type' : 'attribute' } ) } ]
     if data['mental'] == 0 and data['physical'] == 0 and data['social'] == 0:
         option_list.append( {'key' : 'P',
                              'desc' : 'Proceed',
@@ -213,9 +222,10 @@ def decide_stat(caller, raw_string, **kwargs):
     for item in stats[kwargs['type']][kwargs['group']]:
             options_list.append({ 'desc' : item,
                                  'goto' : ('enter_value' , {'att' : item.lower(),
-                                                        'group' : kwargs['group'],
-                                                        'type' : kwargs['type'],
-                                                        'points_left' : data[kwargs['group']] } ) } )
+                                            'group' : kwargs['group'],
+                                            'type' : kwargs['type'], 
+                                            'points_left' :
+                                            data[kwargs['group']] } ) } )
     if kwargs['type'] == 'attribute':
         options_list.append( { 'desc' : 'Back',
                               'key' : 'B',
@@ -242,17 +252,17 @@ def start_skills(caller, raw_string, **kwargs):
     
     text = "Decide how to allocate your skills."
     options = ( 
-        { 'desc' : 'Mental, Physical, Social                                        ',
+        { 'desc' : 'Mental, Physical, Social                                 ',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Mental, Social, Physical                                        ',
+        { 'desc' : 'Mental, Social, Physical                                 ',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Physical, Mental, Social                                        ',
+        { 'desc' : 'Physical, Mental, Social                                 ',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Physical, Social, Mental                                        ',
+        { 'desc' : 'Physical, Social, Mental                                 ',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Social, Mental, Physical                                        ',
+        { 'desc' : 'Social, Mental, Physical                                 ',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Social, Physical, Mental                                        ',
+        { 'desc' : 'Social, Physical, Mental                                 ',
          'goto' : _set_skill_priorities } )
     
     return text, options
@@ -351,9 +361,9 @@ def choose_anchor(caller, raw_string, **kwargs):
     for item in anchors[kwargs['template']][kwargs['type']]:
         option_list.append( {'desc' : item ,
                              'goto' : ( _set_anchor,
-                                        {'type' : kwargs['type'],
-                                         'value' : item,
-                                         'template' : kwargs['template'] } ) } )
+                                    {'type' : kwargs['type'],
+                                     'value' : item,
+                                     'template' : kwargs['template'] } ) } )
     text = 'Set ' + kwargs['type'].capitalize() + ':'
     options = tuple(option_list)
     return text, options
@@ -401,9 +411,9 @@ def add_merit(caller, raw_string, **kwargs):
     return text,options
     
 def _check_merit(caller, raw_string, **kwargs):
-    merits = find(raw_string, statclass='Merit')
+    merits = find(strip_control_sequences(raw_string), statclass='Merit')
     if len(merits) < 1:
-        caller.msg('I can\'t find ' + raw_string)
+        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
         return merit_return(kwargs['template'])
     elif len(merits) > 1:
         caller.msg('Too many matches found')
@@ -423,7 +433,8 @@ def _check_merit(caller, raw_string, **kwargs):
                                   'max' : kwargs['max']}
         
 def get_merit_note(caller, raw_string, **kwargs):
-    text = 'This merit requires some form of note such as who the contacts are or what the area of expertise is in:'
+    text = 'This merit requires some form of note such as who the contacts '
+    text = text + 'are or what the area of expertise is in:'
     options = ( {'key' : '_default',
                  'goto' : ( _check_merit_note, 
                             { 'template' : kwargs['template'],
@@ -436,16 +447,16 @@ def _check_merit_note(caller, raw_string, **kwargs):
     merit = kwargs['merit']
     if merit.db.noteRestrictions[0] == '*':
         return 'get_merit_value', { 'template' : kwargs['template'],
-                                   'total' : kwargs['total'],
-                                   'note' : raw_string,
-                                   'merit' : merit,
-                                   'max' : kwargs['max']}
-    elif raw_string in merit.db.noteRestrictions:
+                                'total' : kwargs['total'],
+                                'note' : strip_control_sequences(raw_string),
+                                'merit' : merit,
+                                'max' : kwargs['max']}
+    elif strip_control_sequences(raw_string) in merit.db.noteRestrictions:
         return 'get_merit_value', { 'template' : kwargs['template'],
-                                   'total' : kwargs['total'],
-                                   'note' : raw_string,
-                                   'merit' : merit,
-                                   'max' : kwargs['max']}
+                                'total' : kwargs['total'],
+                                'note' : strip_control_sequences(raw_string),
+                                'merit' : merit,
+                                'max' : kwargs['max']}
     else:
         caller.msg('Invalid note for that merit')
         return merit_return(kwargs['template'])
@@ -462,18 +473,20 @@ def get_merit_value(caller, raw_string, **kwargs):
     return text,options
 
 def _check_merit_value(caller, raw_string, **kwargs):
-    if not raw_string.isnumeric():
+    if not strip_control_sequences(raw_string).isnumeric():
         caller.msg('Invalid value')
         return merit_return(kwargs['template'])
     else:
-        value=int(raw_string) 
+        value=int(strip_control_sequences(raw_string)) 
         if value < 1:
             caller.msg('Invalid value')
             return merit_return(kwargs['template'])
-        elif value + kwargs['total'] - kwargs['merit'].get(caller,subentry=kwargs['note']) >  kwargs['max']:
+        elif value + kwargs['total'] - kwargs['merit'].get(caller,
+                                    subentry=kwargs['note']) >  kwargs['max']:
             caller.msg('You don\'t have enough points')
             return merit_return(kwargs['template'])
-        elif kwargs['merit'].meets_prereqs(caller,value=value,subentry=kwargs['note']):
+        elif kwargs['merit'].meets_prereqs(caller,value=value,
+                                           subentry=kwargs['note']):
             kwargs['merit'].set(caller,value=value,subentry=kwargs['note'])
             return merit_return(kwargs['template'])
         else:
@@ -490,9 +503,9 @@ def remove_merit(caller, raw_string, **kwargs):
         merit = merit + ': ' + str(item[1])
         option_list.append( {'desc' : merit ,
                              'goto' : ( _delete_merit,
-                                        { 'entry' : item[0],
-                                          'subentry' : item[2],
-                                         'template' : kwargs['template'] } ) } )
+                                    { 'entry' : item[0],
+                                      'subentry' : item[2],
+                                      'template' : kwargs['template'] } ) } )
     options = tuple(option_list)
     return text,options
 
@@ -505,7 +518,8 @@ def _delete_merit(caller, raw_string, **kwargs):
     return merit_return(kwargs['template'])
 
 def mortal_finish_cg(caller, raw_string, **kwargs):
-    caller.cmdset.add('commands.character_commands.finished_character', permanent=True)
+    caller.cmdset.add('commands.character_commands.finished_character', 
+                      permanent=True)
     set(caller,'Integrity',statclass='Advantage', value=7)
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,
@@ -760,7 +774,7 @@ def _changeling_new_frailty(caller, raw_string, **kwargs):
     current_frailties = f.get(caller,subentry='')
     if current_frailties == False:
         current_frailties = []
-    current_frailties.append(raw_string)
+    current_frailties.append(strip_control_sequences(raw_string))
     f.set(caller,current_frailties)
     return merit_return(kwargs['template'])
 
@@ -784,10 +798,13 @@ def changeling_contracts(caller, raw_string, **kwargs):
     for item in contracts:
         result = find(item,statclass='Contract')
         entry = '|_|_|_|_' + result[0].db.longname
-        if result[0].db.category in caller.db.sphere['Regalia'] and result[0].db.subgroup == 'Common':
+        if (result[0].db.category in caller.db.sphere['Regalia'] and 
+            result[0].db.subgroup == 'Common'):
             entry = entry + ' (f)'
             favored_common = favored_common + 1
-        elif (result[0].db.category in caller.db.sphere['Regalia'] or result[0].db.category == caller.db.sphere['Court']) and result[0].db.subgroup == 'Royal':
+        elif ( (result[0].db.category in caller.db.sphere['Regalia'] or 
+                result[0].db.category == caller.db.sphere['Court']) and 
+                result[0].db.subgroup) == 'Royal':
             entry = entry + ' (f)'
             favored_royal = favored_royal + 1
         if result[0].db.subgroup == 'Common':
@@ -796,7 +813,8 @@ def changeling_contracts(caller, raw_string, **kwargs):
             royal_list.append(entry)
         elif result[0].db.subgroup == 'Goblin':
             goblin_list.append(entry)
-    text = 'Contracts (Four Common or goblin; two must be favored Regalia. Two Royal; both must be favored Regalia or Court'
+    text = 'Contracts (Four Common or goblin; two must be favored Regalia. '
+    text = text + 'Two Royal; both must be favored Regalia or Court'
     for item in common_list:
         text = text + '|/|_|_|_|_' + item
     for item in royal_list:
@@ -815,7 +833,8 @@ def changeling_contracts(caller, raw_string, **kwargs):
                               'desc' : 'Remove a contract',
                               'goto' : ( 'changeling_remove_contract',
                                         { 'template' : 'changeling' } ) } )
-    if len(common_list) + len(goblin_list) == 6 and len(royal_list) == 3 and favored_common >= 2 and favored_royal ==2:
+    if (len(common_list) + len(goblin_list) == 6 and len(royal_list) == 3 and 
+                                  favored_common >= 2 and favored_royal == 2):
         option_list.append( { 'key' : 'F',
                               'desc' : 'Finish character generation',
                                'goto' : 'changeling_finish_cg' } )
@@ -845,9 +864,9 @@ def changeling_add_contract(caller, raw_string, **kwargs):
     return text,options
 
 def _check_contract(caller, raw_string, **kwargs):
-    contracts = find(raw_string, statclass='Contract')
+    contracts = find(strip_control_sequences(raw_string), statclass='Contract')
     if len(contracts) < 1:
-        caller.msg('I can\'t find ' + raw_string)
+        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
         return 'changeling_contracts'
     elif len(contracts) > 1:
         caller.msg('Too many matches found')
@@ -862,7 +881,8 @@ def _check_contract(caller, raw_string, **kwargs):
             return 'changeling_contracts'
         
 def changeling_finish_cg(caller, raw_string, **kwargs):
-    caller.cmdset.add('commands.character_commands.finished_character', permanent=True)
+    caller.cmdset.add('commands.character_commands.finished_character',
+                                                        permanent=True)
     set(caller,'Clarity',statclass='Advantage', value=0)
     set(caller,'Glamour',statclass='Advantage', value=0)
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))

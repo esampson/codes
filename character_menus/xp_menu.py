@@ -1,4 +1,5 @@
 from evennia.utils.evmenu import EvMenu
+from evennia.utils.utils import strip_control_sequences
 from world.data import find
 
 import time
@@ -8,7 +9,8 @@ seemings = ['Beast', 'Darkling', 'Elemental', 'Fairest', 'Ogre', 'Wizened']
 
 def start(caller):
     if caller.db.finished_cg:    
-        text = "You currently have " + str(caller.db.xp['earned'] - caller.db.xp['spent']) + ' available'
+        text = ("You currently have " + str(caller.db.xp['earned'] - 
+                                caller.db.xp['spent']) + ' available')
         options = ( 
             { 'desc' : 'XP Log                                        ',
              'goto' : _xp_log },
@@ -26,10 +28,12 @@ def start(caller):
 def _xp_log(caller, raw_string, **kwargs):
     xp_list=list(caller.db.xp['log'].keys())
     xp_list.sort()
-    reply = '-------------------------|/     XP Log|/-------------------------|/'
+    reply = '-------------------------|/'
+    reply = reply + '     XP Log|/-------------------------|/'
     for item in xp_list:
         data = caller.db.xp['log'][item]
-        reply = reply + time.asctime(time.localtime(item)) + ': '+data[1] + ' for ' +str(data[0]) + ' XP.|/'
+        reply = (reply + time.asctime(time.localtime(item)) + ': '+data[1] + 
+                 ' for ' + str(data[0]) + ' XP.|/')
     caller.msg(reply)
     return 'start'
         
@@ -65,9 +69,9 @@ def xp_buy_contract(caller, raw_string, **kwargs):
     return text,options
 
 def _xp_check_contract(caller, raw_string, **kwargs):
-    contracts = find(raw_string, statclass='Contract')
+    contracts = find(strip_control_sequences(raw_string), statclass='Contract')
     if len(contracts) < 1:
-        caller.msg('I can\'t find ' + raw_string)
+        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
         return 'xp_spend'
     elif len(contracts) > 1:
         caller.msg('Too many matches found')
@@ -138,7 +142,8 @@ def _xp_check_contract_value(caller, raw_string, **kwargs):
     elif cost > current:
         caller.msg('You don\'t have enough XP')
         return 'xp_spend'
-    elif kwargs['stat'].meets_prereqs(caller,value=True,subentry=kwargs['subentry']):
+    elif kwargs['stat'].meets_prereqs(caller,value=True,
+                                      subentry=kwargs['subentry']):
             return 'xp_increase', { 'type' : 'contract',
                                    'stat' : kwargs['stat'],
                                    'name' : name,
@@ -152,8 +157,9 @@ def _xp_check_contract_value(caller, raw_string, **kwargs):
 def _xp_check_merit_note(caller, raw_string, **kwargs):
     merit = kwargs['stat']
     if merit.db.noteRestrictions[0] == '*':
-        return 'xp_get_merit_value', { 'subentry' : raw_string,
-                                   'stat' : merit }
+        return 'xp_get_merit_value', { 'subentry' : 
+                                          strip_control_sequences(raw_string),
+                                       'stat' : merit }
     
 def _xp_buy_power(caller, raw_string, **kwargs):
     if caller.db.xp['earned'] - caller.db.xp['spent'] < 5:
@@ -195,9 +201,9 @@ def xp_buy_flat_stat(caller, raw_string, **kwargs):
     return text,options
     
 def _xp_check_order(caller, raw_string, **kwargs):
-    stats = find(raw_string, statclass=kwargs['type'])
+    stats = find(strip_control_sequences(raw_string), statclass=kwargs['type'])
     if len(stats) < 1:
-        caller.msg('I can\'t find ' + raw_string)
+        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
         return 'xp_spend'
     elif len(stats) > 1:
         caller.msg('Too many matches found')
@@ -211,7 +217,8 @@ def _xp_check_order(caller, raw_string, **kwargs):
             caller.msg('You do not have enough XP')
             return 'xp_spend'
         else:
-            if stat.meets_prereqs(caller, subentry=kwargs['subentry'], value=value):
+            if stat.meets_prereqs(caller, 
+                                  subentry=kwargs['subentry'], value=value):
                 name = stat.db.longname
                 if kwargs['subentry'] != '':
                     name = name + ' ('+kwargs['subentry']+ ')'
@@ -222,7 +229,9 @@ def _xp_check_order(caller, raw_string, **kwargs):
                 send_kwargs['cost'] = cost
                 return 'xp_increase', send_kwargs
             else:
-                caller.msg('You do not meet the prerequisites to purchase that.|/')
+                message = 'You do not meet the '
+                message = message + 'prerequisites to purchase that.|/'
+                caller.msg(message)
                 return 'xp_spend'
 
 def _xp_check_known_stat(caller, raw_string, **kwargs):
@@ -234,7 +243,8 @@ def _xp_check_known_stat(caller, raw_string, **kwargs):
         caller.msg('You do not have enough XP')
         return 'xp_spend'
     else:
-        if stat.meets_prereqs(caller, subentry=kwargs['subentry'], value=value):
+        if stat.meets_prereqs(caller, 
+                              subentry=kwargs['subentry'], value=value):
             name = stat.db.longname
             if kwargs['subentry'] != '':
                 name = name + ' ('+kwargs['subentry']+ ')'
@@ -244,10 +254,12 @@ def _xp_check_known_stat(caller, raw_string, **kwargs):
             send_kwargs['value'] = value
             send_kwargs['cost'] = cost
             if kwargs['special'] == 'frailty':
-                kwargs['frailty'] = raw_string
+                kwargs['frailty'] = strip_control_sequences(raw_string)
             return 'xp_increase', send_kwargs
         else:
-            caller.msg('You do not meet the prerequisites to purchase that.|/')
+            message = 'You do not meet the '
+            message = message + 'prerequisites to purchase that.|/'
+            caller.msg(message)
             return 'xp_spend'
             
 def xp_increase(caller, raw_string, **kwargs):
@@ -257,9 +269,11 @@ def xp_increase(caller, raw_string, **kwargs):
     text = text + ' for ' + str(kwargs['cost']) + ' XP?'
     if 'special' in kwargs:
         if kwargs['message'] == 'You must add a minor frailty':
-            text = text + '|/( You will gain the minor frailty of ' + kwargs['frailty'] +')'
+            text = (text + '|/( You will gain the minor frailty of ' + 
+                    kwargs['frailty'] +')')
         elif kwargs['message'] == 'You must add a major frailty':
-            text = text + '|/( You will gain the major frailty of ' + kwargs['frailty'] +')'
+            text = (text + '|/( You will gain the major frailty of ' + 
+                    kwargs['frailty'] +')')
     '|/|/Confirm:'
     options = ( 
         { 'key' : 'Y',
@@ -280,9 +294,9 @@ def xp_buy_merit(caller, raw_string, **kwargs):
     return text,options
     
 def _xp_check_merit(caller, raw_string, **kwargs):
-    merits = find(raw_string, statclass='Merit')
+    merits = find(strip_control_sequences(raw_string), statclass='Merit')
     if len(merits) < 1:
-        caller.msg('I can\'t find ' + raw_string)
+        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
         return 'xp_spend'
     elif len(merits) > 1:
         caller.msg('Too many matches found')
@@ -303,7 +317,8 @@ def _xp_check_merit(caller, raw_string, **kwargs):
                 return 'xp_get_merit_note', { 'stat' : merit }
         
 def xp_get_merit_note(caller, raw_string, **kwargs):
-    text = 'This merit requires some form of note such as who the contacts are or what the area of expertise is in:'
+    text = 'This merit requires some form of note such as who the contacts '
+    text = text + 'are or what the area of expertise is in:'
     options = ( {'key' : '_default',
                  'goto' : ( _xp_check_merit_note, 
                             { 'stat' : kwargs['stat'] } ) } )
@@ -312,11 +327,13 @@ def xp_get_merit_note(caller, raw_string, **kwargs):
 def _xp_check_merit_note(caller, raw_string, **kwargs):
     merit = kwargs['stat']
     if merit.db.noteRestrictions[0] == '*':
-        return 'xp_get_merit_value', { 'subentry' : raw_string,
-                                   'stat' : merit }
-    elif raw_string in merit.db.noteRestrictions:
-        return 'xp_get_merit_value', { 'subentry' : raw_string,
-                                   'stat' : merit }
+        return 'xp_get_merit_value', { 'subentry' : 
+                                       strip_control_sequences(raw_string),
+                                       'stat' : merit }
+    elif strip_control_sequences(raw_string) in merit.db.noteRestrictions:
+        return 'xp_get_merit_value', { 'subentry' : 
+                                       strip_control_sequences(raw_string),
+                                       'stat' : merit }
     else:
         caller.msg('Invalid note for that merit')
         return 'xp_spend'
@@ -330,13 +347,14 @@ def xp_get_merit_value(caller, raw_string, **kwargs):
     return text,options
 
 def _xp_check_merit_value(caller, raw_string, **kwargs):
-    if not raw_string.isnumeric():
+    if not strip_control_sequences(raw_string).isnumeric():
         caller.msg('Invalid value')
         return 'xp_spend'
     else:
         current = caller.db.xp['earned'] - caller.db.xp['spent']
-        value=int(raw_string)
-        cost = kwargs['stat'].cost(caller, subentry=kwargs['subentry'], value=value)
+        value=int(strip_control_sequences(raw_string))
+        cost = kwargs['stat'].cost(caller, 
+                                   subentry=kwargs['subentry'], value=value)
         name = kwargs['stat'].db.longname
         if kwargs['subentry'] != '':
             name = name + ' (' + kwargs['subentry'] + ')'
@@ -346,7 +364,8 @@ def _xp_check_merit_value(caller, raw_string, **kwargs):
         elif cost > current:
             caller.msg('You don\'t have enough XP')
             return 'xp_spend'
-        elif kwargs['stat'].meets_prereqs(caller,value=value,subentry=kwargs['subentry']):
+        elif kwargs['stat'].meets_prereqs(caller,value=value,
+                                          subentry=kwargs['subentry']):
             return 'xp_increase', { 'type' : 'Merit',
                                    'stat' : kwargs['stat'],
                                    'name' : name,
@@ -359,7 +378,7 @@ def _xp_check_merit_value(caller, raw_string, **kwargs):
         
 def _xp_purchase(caller, raw_string, **kwargs):
     message = 'Purchasing ' + kwargs['name']
-    if kwargs['type'] != 'specialty':
+    if kwargs['type'] not in ['specialty', 'contract']:
         message = message + ': ' + str(kwargs['value']) 
     message = message + ' for ' +str(kwargs['cost']) + ' XP.'
     caller.msg(message)
@@ -371,7 +390,8 @@ def _xp_purchase(caller, raw_string, **kwargs):
     if kwargs['type'] == 'specialty':
         caller.db.specialties.append(kwargs['name'])
     else:
-        kwargs['stat'].set(caller,subentry=kwargs['subentry'],value=kwargs['value'])
+        kwargs['stat'].set(caller,subentry=kwargs['subentry'],
+                           value=kwargs['value'])
         
     if 'frailty' in kwargs:
         f = find('Frailties',statclass='Sphere')[0]
@@ -390,9 +410,9 @@ def xp_buy_specialty(caller, raw_string, **kwargs):
     return text, options
 
 def xp_check_skill(caller, raw_string, **kwargs):
-    skills = find(raw_string, statclass='Skill')
+    skills = find(strip_control_sequences(raw_string), statclass='Skill')
     if len(skills) < 1:
-        caller.msg('I can\'t find ' + raw_string)
+        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
         return 'xp_spend'
     elif len(skills) > 1:
         caller.msg('Too many matches found')
@@ -409,7 +429,8 @@ def xp_check_skill(caller, raw_string, **kwargs):
         return text,options
     
 def _xp_check_specialties(caller, raw_string, **kwargs):
-    name = kwargs['stat'].db.longname + ': ' + raw_string
+    name = (kwargs['stat'].db.longname + ': ' + 
+            strip_control_sequences(raw_string))
     current = caller.db.xp['earned'] - caller.db.xp['spent']
     if name in caller.db.specialties:
         caller.msg('You already possess that specialty')
