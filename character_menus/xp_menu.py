@@ -254,7 +254,7 @@ def xp_increase(caller, raw_string, **kwargs):
     text = 'Buy ' + kwargs['name']
     if kwargs['type'] not in ['specialty', 'contract']:
         text = text + ': ' + str(kwargs['value'])
-    text = text + ' for ' + str(kwargs['cost']) + ' XP'
+    text = text + ' for ' + str(kwargs['cost']) + ' XP?'
     if 'special' in kwargs:
         if kwargs['message'] == 'You must add a minor frailty':
             text = text + '|/( You will gain the minor frailty of ' + kwargs['frailty'] +')'
@@ -364,7 +364,7 @@ def _xp_purchase(caller, raw_string, **kwargs):
     message = message + ' for ' +str(kwargs['cost']) + ' XP.'
     caller.msg(message)
     log = kwargs['name']
-    if kwargs['type'] != 'specialty':
+    if not(kwargs['type'] in ['specialty','contract']):
         log = log + ': ' +str(kwargs['value'] ) 
     caller.db.xp['log'][time.time()] = [kwargs['cost'],log ]
     caller.db.xp['spent'] = caller.db.xp['spent'] + kwargs['cost']
@@ -384,7 +384,7 @@ def _xp_purchase(caller, raw_string, **kwargs):
     return 'start'
 
 def xp_buy_specialty(caller, raw_string, **kwargs):
-    text = 'Enter skill:'
+    text = 'Enter the skill the specialty will be in:'
     options = ( {'key' : '_default',
                  'goto' : 'xp_check_skill' } )
     return text, options
@@ -402,7 +402,7 @@ def xp_check_skill(caller, raw_string, **kwargs):
         return 'xp_spend'
     else:
         skill = skills[0]
-        text = 'Enter specialty'
+        text = 'Enter specialty:'
         options = ( {'key' : '_default',
                  'goto' : ( _xp_check_specialties, 
                             { 'stat' : skill } ) } )

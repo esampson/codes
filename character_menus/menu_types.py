@@ -29,10 +29,13 @@ class XPMenu(EvMenu):
  
         # column separation distance
         colsep = 4
+        
+        # parse out options for Quit, Back, Proceed, None, and Finish
         option_list_1 = []
         option_list_2 = []
         for item in optionlist:
-            if item[0].lower() in ['q','b','p']:
+            if (item[0].lower() in ['q', 'b', 'p', 'f'] or 
+                                    item[1].lower() in ['none']):
                 option_list_2.append(item)
             else:
                 option_list_1.append(item)
