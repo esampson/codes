@@ -516,6 +516,7 @@ def mortal_finish_cg(caller, raw_string, **kwargs):
     
 def changeling_template(caller, raw_string, **kwargs):
     caller.db.basics['Sphere'] = 'Changeling'
+    caller.db.sphere['Frailties']=[]
     caller.db.power['Wyrd'] = 1
     text = 'Select Seeming:'
     option_list = []
@@ -735,13 +736,41 @@ def changeling_merits(caller, raw_string, **kwargs):
     return text, options
 
 def _increase_power(caller, raw_string, **kwargs):
-    if kwargs['template'] == 'changeling':
+    if kwargs['template'] == 'changeling' and caller.db.power['Wyrd'] < 10:
         caller.db.power['Wyrd'] = caller.db.power['Wyrd'] + 1
+        send_kwargs = kwargs
+        if caller.db.power['Wyrd'] in [2, 4, 8]:
+            send_kwargs['message'] = 'You must add a minor frailty'
+            return 'changeling_add_frailty', send_kwargs
+        elif caller.db.power['Wyrd'] in [6, 10]:
+            send_kwargs['message'] = 'You must add a major frailty'
+            return 'changeling_add_frailty', send_kwargs
+    return merit_return(kwargs['template'])
+
+def changeling_add_frailty(caller, raw_string, **kwargs):
+    send_kwargs=kwargs
+    send_kwargs['special']='frailty'
+    text = kwargs['message']
+    options = ( {'key' : '_default',
+                 'goto' : ( _changeling_new_frailty, kwargs) } )
+    return text,options 
+
+def _changeling_new_frailty(caller, raw_string, **kwargs):
+    f = find('Frailties',statclass='Sphere')[0]
+    current_frailties = f.get(caller,subentry='')
+    if current_frailties == False:
+        current_frailties = []
+    current_frailties.append(raw_string)
+    f.set(caller,current_frailties)
     return merit_return(kwargs['template'])
 
 def _decrease_power(caller, raw_string, **kwargs):
-    if kwargs['template'] == 'changeling':
+    if kwargs['template'] == 'changeling' and caller.db.power['Wyrd'] > 1:
         caller.db.power['Wyrd'] = caller.db.power['Wyrd'] - 1
+        if caller.db.power['Wyrd'] in [1, 3, 5, 7, 9]:
+            f = find('Frailties',statclass='Sphere')[0]
+            current_frailties = f.get(caller,subentry='')[:-1]
+            f.set(caller,current_frailties)
     return merit_return(kwargs['template'])
     
 def changeling_contracts(caller, raw_string, **kwargs):

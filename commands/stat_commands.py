@@ -61,6 +61,20 @@ def short_list(stats):
     return message
 
 class CmdHurt(Command):
+    """
+    Usage:
+        +hurt/<type>=<amount>
+        
+    Basic command for recording damage.
+    
+        <type>: Bashing, Lethal, or Aggravated
+        <amount>: Amount of damage taken. Damage will spill over appropriately 
+            (Bashing turning into Lethal, Lethal turning into Aggravated)
+            
+    Example:
+        +hurt/lethal=3
+            
+    """
     
     key = '+hurt'
     arg_regex = '^/(([:a-zA-Z0-9%\s\'-])+)\=?(([0-9])+)$'
@@ -115,6 +129,20 @@ class CmdHurt(Command):
         
                 
 class CmdHeal(Command):
+    """
+    Usage:
+        +heal/<type>=<amount>
+        
+    Basic command for recovering damage.
+    
+        <type>: Bashing, Lethal, or Aggravated
+        <amount>: Amount of damage healed. Unlike +hurt there is no spillover
+            mechanism for recovered health.
+            
+    Examples:
+        +heal/bashing=2
+            
+    """
     
     key = '+heal'
     arg_regex = '^/(([:a-zA-Z0-9%\s\'-])+)\=?(([0-9])+)$'
@@ -157,6 +185,22 @@ class CmdHeal(Command):
     
     
 class CmdInfo(default_cmds.MuxCommand):
+    """
+    Usage:
+        +info <stat>[/<class>]
+        
+    Command to get information about a stat. Partial matching of names is
+    supported. To help deal with name collisions the class may be specified to
+    narrow the search. Class also suppports partial name matching.
+    
+        <stat>: The stat being searched for.
+        <class>: Advantage, Attribute, Contract, Merit, or Skill
+        
+    Examples:
+        +info Dexterity
+        +info Str/Skill
+            
+    """
     
     key = '+info'
     arg_regex = '^\s(([a-zA-Z0-9%\s\'-/])+)$'
@@ -195,6 +239,16 @@ class CmdInfo(default_cmds.MuxCommand):
             self.caller.msg('Too many found')
                 
 class CmdSheet(default_cmds.MuxCommand):
+    """
+    Usage:
+        +sheet
+        
+    Command to retrieve current character sheet
+        
+    Examples:
+        +sheet
+            
+    """
     
     key = '+sheet'
     

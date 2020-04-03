@@ -6,6 +6,30 @@ from evennia.utils import evtable
 from world.scroll import scroll
 
 class CmdRoll(Command):
+    """
+    Usage:
+        +roll[/<arguments>] <roll>
+        
+    Command to roll dice. The roll will recognize numbers, do partial name matches
+    with optional class specification, and will recognize specializations
+    (specializations require precise matching).
+    
+        <arguments>: Multiple arguments can be separated by slashes. Partial name 
+            matching is not supported on arguments.
+            Valid arguments:
+                /8-again: Rolls with the 8-again rule.
+                /9-again: Rolls with the 9-again rule.
+                /No-10-Again: Rolls without the 10-again rule.
+                /rote: Rolls using the rote action rules.
+                
+        <roll>: Combination of stats and modifiers
+        
+    Examples:
+        +roll Dexterity + Larceny
+        +roll/9-Again  Str/Attribute + Weaponry
+        +roll/rote/9-Again Strength + Crafts + Crafts: Gunsmithing + 3
+            
+    """
     
     key = '+roll'
     arg_regex = '^[\s/][0-9a-zA-Z/\-\s+:]+$'
