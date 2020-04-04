@@ -45,6 +45,9 @@ class Character(DefaultCharacter):
         Character and is usually set during some character
         generation step instead.
         """
+        #set temporary command set
+        self.cmdset.add('commands.character_commands.unfinished_character',
+                                                        permanent=True)
         #set persistent attributes
         
         self.db.basics = {}

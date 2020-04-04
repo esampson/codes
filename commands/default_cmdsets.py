@@ -16,11 +16,6 @@ own cmdsets by inheriting from them or directly from `evennia.CmdSet`.
 
 from evennia import default_cmds
 from commands.stat_commands import CmdInfo
-from commands.stat_commands import CmdSheet
-from commands.stat_commands import CmdHurt
-from commands.stat_commands import CmdHeal
-from commands.character_menus import CmdCG
-from commands.character_menus import CmdXP
 
 
 class CharacterCmdSet(default_cmds.CharacterCmdSet):
@@ -41,10 +36,6 @@ class CharacterCmdSet(default_cmds.CharacterCmdSet):
         # any commands you add below will overload the default ones.
         #
         self.add(CmdInfo())
-        self.add(CmdHurt())
-        self.add(CmdHeal())
-        self.add(CmdCG())
-        self.add(CmdXP())
 
 class AccountCmdSet(default_cmds.AccountCmdSet):
     """

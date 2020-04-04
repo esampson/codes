@@ -11,6 +11,16 @@ class XPMenu(EvMenu):
     
     pass
     
+    def nodetext_formatter(self, nodetext):
+        """
+        Format the node text itself.
+        Args:
+            nodetext (str): The full node text (the text describing the node).
+        Returns:
+            nodetext (str): The formatted node text.
+        """
+        return nodetext.strip("\n").rstrip()
+    
     def options_formatter(self, optionlist):
         """
         Formats the option block.

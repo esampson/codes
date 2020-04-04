@@ -41,12 +41,15 @@ courts = ['Spring', 'Summer', 'Autumn', 'Winter', 'None']
 regalia = ['Crown', 'Jewels', 'Mirror', 'Shield', 'Steed', 'Sword']
 
 def get_stats(caller,type=''):
-    
+    ' Intelligence: 2     Strength: 5     Presence: 2'
     count = 0
     mental_total = 0
     physical_total = 0
     social_total = 0
-    text = ''
+    if type == 'attribute':
+        text = '   ' + 'Attributes:'.center(48,' ') + '|/'
+    elif type == 'skill':
+        text = '   ' + 'Skills:'.center(48) + '|/'
     for item in stats[type]['mental']:
         mental = stats[type]['mental'][count]
         mental_value = caller.get(mental,statclass=type)
@@ -77,13 +80,6 @@ def _set_stat(caller, raw_string, **kwargs):
     group = kwargs['group']
     
     return 'decide_stat', {'group': group }
-
-def _set_attribute_priorities(caller, raw_string, **kwargs):
-    stats = [[],[8, 7, 6], [8, 6, 7], [7, 8, 6], [6, 8, 7], [7, 6, 8], 
-                                                                     [6, 7, 8]]
-    caller.ndb._menutree.att_points = stats[int(
-                                          strip_control_sequences(raw_string))]
-    return 'decide_attribute'
 
 def _set_skill_priorities(caller, raw_string, **kwargs):
     stats = [[],[11, 7, 4], [11, 4, 7], [7, 11, 4], [4, 11, 7], [7, 4, 11], 
@@ -194,10 +190,17 @@ def start(caller):
              'goto' : _set_attribute_priorities } )
         
         return text, options
+    
+def _set_attribute_priorities(caller, raw_string, **kwargs):
+    stats = [[],[8, 7, 6], [8, 6, 7], [7, 8, 6], [6, 8, 7], [7, 6, 8], 
+                                                                     [6, 7, 8]]
+    caller.ndb._menutree.att_points = stats[int(
+                                          strip_control_sequences(raw_string))]
+    return 'decide_attribute'
 
 def decide_attribute(caller, raw_string, **kwargs):
     data = get_stats(caller, type='attribute')
-    text = '|_' + data['text'] + "|/|/Chose what to work on:"
+    text = data['text'] + "|/|/Chose what to work on:"
     option_list = [
         { 'desc' : 'Mental',
          'goto' : ('decide_stat', {'group' : 'mental', 
@@ -286,7 +289,7 @@ def decide_skill(caller, raw_string, **kwargs):
 
 def assign_specialties(caller, raw_string, **kwargs):
     data = caller.db.specialties
-    text = '|_'
+    text = ''
     for item in data:
         text = text + item + '|/'
     option_list = []
@@ -520,6 +523,7 @@ def _delete_merit(caller, raw_string, **kwargs):
 def mortal_finish_cg(caller, raw_string, **kwargs):
     caller.cmdset.add('commands.character_commands.finished_character', 
                       permanent=True)
+    caller.cmdset.delete('commands.character_commands.unfinished_character')
     set(caller,'Integrity',statclass='Advantage', value=7)
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,
@@ -883,6 +887,7 @@ def _check_contract(caller, raw_string, **kwargs):
 def changeling_finish_cg(caller, raw_string, **kwargs):
     caller.cmdset.add('commands.character_commands.finished_character',
                                                         permanent=True)
+    caller.cmdset.delete('commands.character_commands.unfinished_character')
     set(caller,'Clarity',statclass='Advantage', value=0)
     set(caller,'Glamour',statclass='Advantage', value=0)
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
