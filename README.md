@@ -8,7 +8,7 @@ https://github.com/thenomain/nWoDCG
 
 At its heart the idea is to use a bunch of small 'scriptlet' objects to represent the various stats. 'Strength' is one, 'Brawl' is another, and 'Pipes of the Beastcaller' is a third.
 
-The various types of stats (e.g. Merits, Contracts, Attributes, Skills) are represented by different typeclasses. This means that whenever something about a stat needs to be determined the basic idea is to identify the script object that corresponds to the stat in question and then access its methods and attributes. To determine if someone meets the prerequisites for a given stat a call is made to the stat's **meets_prereqs()** method with the character in question and what they want to purchase being passed. The script itself then returns an answer as to whether the character can make the purchase.
+The various types of stats (e.g. Merits, Contracts, Attributes, Skills) are represented by different typeclasses. This means that whenever something about a stat needs to be determined the basic idea is to identify the script object that corresponds to the stat in question and then access its methods and attributes. To determine if someone meets the prerequisites for a given stat a call is made to the stat's `meets_prereqs()` method with the character in question and what they want to purchase being passed. The script itself then returns an answer as to whether the character can make the purchase.
 
 This means that rather than having a long piece of hardcode examining stats to determine various details and handling methods each individual attribute type has more compact scripts dedicated to their particular requirements. When a new type of stat needs to be introduced a new typeclass is created for it with its particular methods requiring no modifications to the base code and preventing the breaking of operational systems.
 
@@ -32,16 +32,14 @@ All scripts have the following methods:
 * `cost(<target>, <value>[, <subentry>])`: Returns the cost for the target to purchase the stat to a given level.
 * `set(<target>, <value>[, <subentry>])`: Sets the attribute to a given value on the target. In some cases specific values may clear the attribute.
 
-Accessing a particular stat is done by first making a call to the **find()** method in world.data with the format of `find(<entry>[,<statclass>])`. Because this function may be indirectely called by players in various situations such as rolling dice, proving a stat, or requesting info `<entry>` works via partial matching. The is why `find('str')` will return the scrripts for Strength, Streetwise, Street Fighting, and Striking Looks. To help narrow the list and to deal with naming conflicts `<statclass>` may be used to narrow the search. `find('str','skill')` would only return the script object for Streetwise.
+Accessing a particular stat is done by first making a call to the `find()` method in codes.data with the format of `find(<entry>[,<statclass>])`. Because this function may be indirectely called by players in various situations such as rolling dice, proving a stat, or requesting info `<entry>` works via partial matching. The is why `find('str')` will return the scrripts for Strength, Streetwise, Street Fighting, and Striking Looks. To help narrow the list and to deal with naming conflicts `<statclass>` may be used to narrow the search. `find('str','skill')` would only return the script object for Streetwise.
 
-**find()** works by querying a small script of typeclasses.scripts.dictionaryScript that contains a look up table of all partial name matches. This look up table is rebuilt every time the server is reloaded.
+`find()` works by querying a small script of `typeclasses.scripts.dictionaryScript` that contains a look up table of all partial name matches. This look up table is rebuilt every time the server is reloaded.
 
 ## Installation ##
 
 Relatively simply modifications need to be made to typeclasses.scripts. 
 
-Additionally, to ease programming and reduce load it is suggested that modifications to typeclass.characters be made so that the 34 most commonly queried stats (attributes, skills, and character template ) can be queried directly from the character object via commands such as `<target>.strength()`, `<target>.animal_ken()` or `<target>.template()`. These methods do not support any other functionality such as telling programs how much it will cost to raise the stat in question. Additionally character objects possess **get()** and **meets_prereqs()** methods. These function largely as a combination of the **find()** and **get()** method under world.data or the **find()** and **meets_prereqs()** methods under world.data and the located script. The exception is that they must find only a single stat script or they will abort.
+Additionally, to ease programming and reduce load it is suggested that modifications to typeclass.characters be made so that the 34 most commonly queried stats (attributes, skills, and character template ) can be queried directly from the character object via commands such as `<target>.strength()`, `<target>.animal_ken()` or `<target>.template()`. These methods do not support any other functionality such as telling programs how much it will cost to raise the stat in question. Additionally character objects possess `get()` and `meets_prereqs()` methods. These function largely as a combination of the `find()` and `get()` method under codes.data or the `find()` and `meets_prereqs()` methods under codes.data and the located script. The exception is that they must find only a single stat script or they will abort.
 
-A persistent dictionary script will need to be created (`@py evennia.create_script('typeclasses.scripts.dictionaryScript',key='Dictionary',persistent=True)`
-
-Finally `@py from world.statInit import initStats` will generate a bunch of initial scripts
+Finally `@py from codes.statInit import initStats` will generate a bunch of initial scripts

@@ -9,9 +9,9 @@ creation commands.
 """
 from evennia import DefaultCharacter
 from _testcapi import call_in_temporary_c_thread
-from world.data import find
-from world.data import get
-from world.data import meets_prereqs
+from codes.data import find
+from codes.data import get
+from codes.data import meets_prereqs
 
 
 class Character(DefaultCharacter):
@@ -46,7 +46,7 @@ class Character(DefaultCharacter):
         generation step instead.
         """
         #set temporary command set
-        self.cmdset.add('commands.character_commands.unfinished_character',
+        self.cmdset.add('codes.character_commands.unfinished_character',
                                                         permanent=True)
         #set persistent attributes
         

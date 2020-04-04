@@ -15,7 +15,7 @@ own cmdsets by inheriting from them or directly from `evennia.CmdSet`.
 """
 
 from evennia import default_cmds
-from commands.stat_commands import CmdInfo
+from codes.stat_commands import CmdInfo
 
 
 class CharacterCmdSet(default_cmds.CharacterCmdSet):
