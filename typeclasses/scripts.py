@@ -99,8 +99,10 @@ from codes.stats.advantageScripts import advantageScript
 from codes.stats.attributeScripts import attributeScript
 from codes.stats.basicStatScripts import basicStatScript
 from codes.stats.contractScripts import contractScript
+from codes.stats.kithScripts import kithScript
 from codes.stats.meritScripts import meritScript
 from codes.stats.powerStatScripts import powerStatScript
+from codes.stats.seemingScripts import seemingScript
 from codes.stats.sphereStatScripts import sphereStatScript
 from codes.stats.dictionary import dictionaryScript
             

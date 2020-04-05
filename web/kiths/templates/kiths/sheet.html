@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ kith.longname }}</h1>
+
+    <p><b>Reference: </b>{{ kith.reference }}</p>
+    <p><b>Info: </b>{{ kith.info|linebreaks }}</p>
+    <p><b>Restricted: </b>{{ kith.restricted }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/kiths/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

@@ -16,7 +16,7 @@ _HELP_NO_OPTIONS = _("Commands: help, quit")
 _HELP_NO_OPTIONS_NO_QUIT = _("Commands: help")
 _HELP_NO_OPTION_MATCH = _("Choose an option or try 'help'.")
 
-class XPMenu(EvMenu):
+class ExMenu(EvMenu):
     
     pass
     
@@ -59,7 +59,7 @@ class XPMenu(EvMenu):
         option_list_2 = []
         for item in optionlist:
             if (item[0].lower() in ['q', 'b', 'p', 'f'] or 
-                                    item[1].lower() in ['none']):
+                    (item[1].lower() in ['none'] and item[0].lower() == 'n')):
                 option_list_2.append(item)
             else:
                 option_list_1.append(item)

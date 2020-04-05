@@ -39,23 +39,19 @@ class merit_class:
     range = [] 
     noteRestrictions = []
     prereq = ''
-    cost = ''
     reference = ''
     info = ''
-    recalc = False
     cg_only = False
     restricted = False
     
-    def update(self,longname,category,range,noteRestrictions,prereq,cost,reference,info,recalc,cg_only,restricted):
+    def update(self,longname,category,range,noteRestrictions,prereq,reference,info,cg_only,restricted):
         self.longname = longname
         self.category = category
         self.range = range
         self.noteRestrictions = noteRestrictions
         self.prereq = prereq
-        self.cost = cost
         self.reference = reference
         self.info = info
-        self.recalc = recalc
         self.cg_only = cg_only
         self.restricted = restricted
     
@@ -82,13 +78,11 @@ def sheet(request, object_id):
     range = stats[0].db.range 
     noteRestrictions = stats[0].db.noteRestrictions
     prereq = stats[0].db.prereq
-    cost = stats[0].db.cost
     reference = stats[0].db.reference
     info = stats[0].db.info.replace('|/','\n')
-    recalc = stats[0].db.recalc
     cg_only = stats[0].db.cg_only
     restricted = stats[0].db.restricted
-    merit.update(longname,category,range,noteRestrictions,prereq,cost,reference,info,recalc,cg_only,restricted)
+    merit.update(longname,category,range,noteRestrictions,prereq,reference,info,cg_only,restricted)
     if request.method == 'POST':
          return render(request, 'merits/error.html', {'message': 'POST'})
     return render(request, 'merits/sheet.html', {'merit': merit, 'request':request, 'id':quote(object_id)})
@@ -111,15 +105,17 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'merits/error.html', {'message': 'Too many matching merits'})
     merit = stats[0]
+    if len(merit.db.noteRestrictions) == 0:
+        noteRestrictions='[]'
+    else:
+        noteRestrictions = merit.db.noteRestrictions
     starting_data = {'longname':merit.db.longname, 
                      'category':merit.db.category, 
                      'range':merit.db.range,
-                     'noteRestrictions':merit.db.noteRestrictions,
+                     'noteRestrictions':noteRestrictions,
                      'prereq':merit.db.prereq,
-                     'cost':merit.db.cost,
                      'reference':merit.db.reference,
                      'info':merit.db.info,
-                     'recalc':merit.db.recalc,
                      'cg_only':merit.db.cg_only,
                      'restricted':merit.db.restricted,
                      'link':object_id}
@@ -158,7 +154,6 @@ def editted(request):
                                    range=range,
                                    noteRestrictions=noteRestrictions,
                                    prereq=form.cleaned_data['prereq'],
-                                   cost=form.cleaned_data['cost'],
                                    reference=form.cleaned_data['reference'],
                                    info=form.cleaned_data['info'],
                                    cg_only=form.cleaned_data['cg_only'],
@@ -178,10 +173,8 @@ def create(request):
                      'range':'',
                      'noteRestrictions':'',
                      'prereq':'',
-                     'cost':'',
                      'reference':'',
                      'info':'',
-                     'recalc':False,
                      'cg_only':False,
                      'restricted':False,
                      'link':''}
@@ -202,10 +195,8 @@ def created(request):
                 s.db.range=form.cleaned_data['range']
                 s.db.noteRestrictions=form.cleaned_data['noteRestrictions']
                 s.db.prereq=form.cleaned_data['prereq']
-                s.db.cost=form.cleaned_data['cost']
                 s.db.reference=form.cleaned_data['reference']
                 s.db.info=form.cleaned_data['info']
-                s.db.recalc=form.cleaned_data['recalc']
                 s.db.cg_only=form.cleaned_data['cg_only']
                 s.db.restricted=form.cleaned_data['restricted']
                 return HttpResponseRedirect('/merits/view/'+quote(s.db.longname))

@@ -14,7 +14,6 @@ for merit in merits:
     file.write('merit.db.range = '+str(merit.db.range)+'\n')
     file.write('merit.db.prereq = \''+merit.db.prereq.replace('\'','\\\'')+'\'\n')
     file.write('merit.db.noteRestrictions = '+str(merit.db.noteRestrictions)+'\n')
-    file.write('merit.db.cost = \''+merit.db.cost+'\'\n')
     file.write('merit.db.reference = \''+merit.db.reference+'\'\n')
     file.write('merit.db.info = \''+merit.db.info.replace('\r\n','|/').replace('\'','\\\'')+'\'\n')
     file.write('merit.db.cg_only = '+str(merit.db.cg_only)+'\n')

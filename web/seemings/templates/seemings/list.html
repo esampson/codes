@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Seemings List</h1>
+
+    {% for item in seemings %}
+        <li> <a href="../view/{{ item }}">{{ item }}</a> </li>
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/seemings/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}

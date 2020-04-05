@@ -13,8 +13,6 @@ from codes.sidebars import mortal_template_block
 import textwrap
 import re
 
-from codes.stats.dictionary import typeclass_to_type
-
 class parsed:
     def __init__(self,entry,subentry,statclass,value):
         self.entry = entry
@@ -53,7 +51,7 @@ def parser(message):
 def short_list(stats):
     message = 'Did you mean '
     for stat in stats:
-        last_message = ('the ' + typeclass_to_type[stat.typeclass_path] + ' \'' + 
+        last_message = ('the ' + stat.type() + ' \'' + 
                         stat.db.longname + '\', ')
         message = message + last_message
     message = message.replace(', ' + last_message,'')
@@ -211,13 +209,13 @@ class CmdInfo(default_cmds.MuxCommand):
         temp_stats = data.find(parsed.entry,statclass=parsed.statclass)
         stats = []
         for entry in temp_stats:
-            if typeclass_to_type[entry.typeclass_path] not in ['sphere', 'basic']:
+            if entry.type() not in ['sphere', 'basic']:
                 stats.append(entry)
         if len(stats) == 0:
             self.caller.msg('Nothing found')
         elif len(stats) == 1:
             message = stats[0].db.longname + '\\n\\n'
-            message = message + typeclass_to_type[stats[0].typeclass_path].capitalize()
+            message = message + stats[0].type().capitalize()
             if stats[0].db.info:
                 if len(stats[0].db.info) > 0:
                     message = (message + '\\n\\n' +

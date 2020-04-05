@@ -1,6 +1,6 @@
-from typeclasses.scripts import Script
+from codes.stats.codesScript import codesScript
 
-class meritScript(Script):
+class meritScript(codesScript):
     
     def at_script_creation(self):
             self.persistent = True  # will survive reload
@@ -8,7 +8,7 @@ class meritScript(Script):
             self.tags.add('merit_stat')
                 
     def update(self,longname='', category='',range=[], noteRestrictions='',
-               prereq='',restricted=False,cost='',cg_only=False,reference='',
+               prereq='', restricted=False, cg_only=False, reference='',
                info=''):
         self.db.longname = longname
         self.db.category = category
@@ -16,7 +16,6 @@ class meritScript(Script):
         self.db.noteRestrictions = noteRestrictions
         self.db.prereq = prereq
         self.db.restricted = restricted
-        self.db.cost = cost
         self.db.cg_only = cg_only
         self.db.reference = reference
         self.db.info = info

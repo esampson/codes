@@ -17,9 +17,11 @@ custom_patterns = [
 
 custom_patterns.append( url(r'^advantages/', include('web.advantages.urls')))
 custom_patterns.append( url(r'^contracts/', include('web.contracts.urls')))
+custom_patterns.append( url(r'^kiths/', include('web.kiths.urls')))
 custom_patterns.append( url(r'^merits/', include('web.merits.urls')))
 custom_patterns.append( url(r'^powers/', include('web.powers.urls')))
 custom_patterns.append( url(r'^spheres/', include('web.spheres.urls')))
+custom_patterns.append( url(r'^seemings/', include('web.seemings.urls')))
 
 
 # this is required by Django.

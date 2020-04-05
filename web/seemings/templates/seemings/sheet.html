@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ seeming.longname }}</h1>
+
+    <p><b>Bonus Attributes: </b> {{ seeming.bonus_attributes }}</p>
+    <p><b>Regalia: </b> {{ seeming.regalia }}</p>
+    <p><b>Reference: </b>{{ seeming.reference }}</p>
+    <p><b>Info: </b>{{ seeming.info|linebreaks }}</p>
+    <p><b>Restricted: </b>{{ seeming.restricted }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/seemings/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

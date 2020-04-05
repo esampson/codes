@@ -2,6 +2,7 @@ from codes.data import get
 from codes.data import set
 from codes.data import find
 from evennia.utils.utils import strip_control_sequences
+from evennia.utils.search import search_script_tag
 
 import time
   
@@ -33,10 +34,6 @@ anchors = { 'mortal' :
                             'Hate', 'Honor', 'Joy', 'Love', 'Memory',
                             'Revenge'] } }
 
-seemings = ['Beast', 'Darkling', 'Elemental', 'Fairest', 'Ogre', 'Wizened']
-kiths = ['Artist', 'Bright One', 'Chatelaine', 'Gristlegrinder', 'Helldiver',
-        'Hunterheart', 'Leechfinger', 'Mirrorskin', 'Nightsinger', 'Notary',
-        'Playmate', 'Snowskin']
 courts = ['Spring', 'Summer', 'Autumn', 'Winter', 'None']
 regalia = ['Crown', 'Jewels', 'Mirror', 'Shield', 'Steed', 'Sword']
 
@@ -538,8 +535,9 @@ def changeling_template(caller, raw_string, **kwargs):
     caller.db.power['Wyrd'] = 1
     text = 'Select Seeming:'
     option_list = []
+    seemings = search_script_tag('seeming_stat')
     for item in seemings:
-        option_list.append( {'desc' : item,
+        option_list.append( {'desc' : item.db.longname,
                              'goto' : ( 'changeling_stat',
                                         { 'template' : 'changeling',
                                          'seeming' : item } ) } )
@@ -549,75 +547,14 @@ def changeling_template(caller, raw_string, **kwargs):
 def changeling_stat(caller, raw_string, **kwargs):
     seeming = kwargs['seeming']
     option_list=[]
-    caller.db.sphere['Seeming'] = seeming
-    if seeming == 'Beast':
-        caller.db.sphere['Regalia'] = ['Steed']
-        option_list.append( { 'desc' : 'Resolve',
+    caller.db.sphere['Seeming'] = seeming.db.longname
+    caller.db.sphere['Regalia'] = [seeming.db.regalia]
+    for attribute in seeming.db.bonus_attributes:
+        option_list.append( { 'desc' : attribute.capitalize(),
                               'goto' : (_raise_stat,
-                                        {'stat' : 'resolve' } ) } )
-        option_list.append( { 'desc' : 'Stamina',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'stamina' } ) } )
-        option_list.append( { 'desc' : 'Composure',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'composure' } ) } )
-    elif seeming == 'Darkling':
-        caller.db.sphere['Regalia'] = ['Mirror']
-        option_list.append( { 'desc' : 'Wits',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'wits' } ) } )
-        option_list.append( { 'desc' : 'Dexterity',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'dexterity' } ) } )
-        option_list.append( { 'desc' : 'Manipulation',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'manipulation' } ) } )
-    elif seeming == 'Elemental':
-        caller.db.sphere['Regalia'] = ['Sword']
-        option_list.append( { 'desc' : 'Resolve',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'resolve' } ) } )
-        option_list.append( { 'desc' : 'Stamina',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'stamina' } ) } )
-        option_list.append( { 'desc' : 'Composure',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'composure' } ) } )
-    elif seeming == 'Fairest':
-        caller.db.sphere['Regalia'] = ['Crown']
-        option_list.append( { 'desc' : 'Intelligence',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'intelligence' } ) } )
-        option_list.append( { 'desc' : 'Strength',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'strength' } ) } )
-        option_list.append( { 'desc' : 'Presence',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'presence' } ) } )
-    elif seeming == 'Ogre':
-        caller.db.sphere['Regalia'] = ['Shield']
-        option_list.append( { 'desc' : 'Intelligence',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'intelligence' } ) } )
-        option_list.append( { 'desc' : 'Strength',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'strength' } ) } )
-        option_list.append( { 'desc' : 'Presence',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'presence' } ) } )
-    elif seeming == 'Wizened':
-        caller.db.sphere['Regalia'] = ['Jewels']
-        option_list.append( { 'desc' : 'Wits',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'wits' } ) } )
-        option_list.append( { 'desc' : 'Dexterity',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'dexterity' } ) } )
-        option_list.append( { 'desc' : 'Manipulation',
-                              'goto' : (_raise_stat,
-                                        {'stat' : 'manipulation' } ) } )
+                                        {'stat' : attribute.lower() } ) } )
     options = tuple(option_list)
-    text = 'Select one stat to boost:'
+    text = 'Select one attribute to boost:'
     return text,options
 
 def _raise_stat(caller, raw_string, **kwargs):
@@ -630,14 +567,15 @@ def _raise_stat(caller, raw_string, **kwargs):
         return "changeling_kith"
     
 def changeling_kith(caller, raw_string, **kwargs):
-    
+
     text = 'Select Kith:'
+    kiths = search_script_tag('kith_stat')
     option_list = []
     for item in kiths:
-        option_list.append( {'desc' : item,
+        option_list.append( {'desc' : item.db.longname.capitalize(),
                              'goto' : ( 'changeling_court',
                                         { 'template' : 'changeling',
-                                         'kith' : item } ) } )
+                                         'kith' : item.db.longname.lower() } ) } )
     options = tuple(option_list)
     return text, options
 

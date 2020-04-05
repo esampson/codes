@@ -1,6 +1,6 @@
-from typeclasses.scripts import Script
+from codes.stats.codesScript import codesScript
 
-class advantageScript(Script):
+class advantageScript(codesScript):
     
     def at_script_creation(self):
             self.persistent = True  # will survive reload

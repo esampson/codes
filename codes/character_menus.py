@@ -1,6 +1,6 @@
 from evennia.utils.evmenu import EvMenu
 from evennia import Command
-from codes.menus.menu_types import XPMenu
+from codes.menus.menu_types import ExMenu
 
 
 class CmdCG(Command):
@@ -19,7 +19,7 @@ class CmdCG(Command):
     key = '+cg'
     
     def func(self):
-        XPMenu(self.caller, 'codes.menus.character_generation_menu', startnode = 'start')
+        ExMenu(self.caller, 'codes.menus.character_generation_menu', startnode = 'start')
         
 class CmdXP(Command):
     """
@@ -38,5 +38,5 @@ class CmdXP(Command):
     key = '+xp'
     
     def func(self):
-        XPMenu(self.caller, 'codes.menus.xp_menu', startnode = 'start')
+        ExMenu(self.caller, 'codes.menus.xp_menu', startnode = 'start')
         

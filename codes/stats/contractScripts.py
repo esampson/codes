@@ -1,8 +1,7 @@
-from typeclasses.scripts import Script
-
+from codes.stats.codesScript import codesScript
 from codes.data import find
 
-class contractScript(Script):
+class contractScript(codesScript):
     
     def at_script_creation(self):
             self.persistent = True  # will survive reload
@@ -107,18 +106,22 @@ class contractScript(Script):
 
         """
         name = self.db.longname
+        bonus = 0
         if self.db.group.lower() == 'regalia':
             if target.get(name, statclass='contract'):
                 current_temp = (target.db.contracts[name].split(',') + 
                                 [target.get('Seeming', statclass='Sphere')])
-                new_temp = subentry.split(',')
-                current = set()
-                for entry in current_temp:
-                    current.add(entry.strip())
-                new = set()
-                for entry in new_temp:
-                    new.add(entry.strip())
-                result = len(new.difference(current))
+                if subentry == '':
+                    result = 0
+                else:
+                    new_temp = subentry.split(',')
+                    current = set()
+                    for entry in current_temp:
+                        current.add(entry.strip())
+                    new = set()
+                    for entry in new_temp:
+                        new.add(entry.strip())
+                    result = len(new.difference(current))
             else:
                 if self.db.subgroup.lower() == 'common':
                     result = 3
@@ -136,7 +139,8 @@ class contractScript(Script):
                 new = set()
                 for entry in new_temp:
                     new.add(entry.strip())
-                result = result + len(new.difference(current))
+                if subentry != '':
+                    result = result + len(new.difference(current))
         elif self.db.group.lower() == 'court':
             if target.get(name, statclass='contract'):
                 result = 0

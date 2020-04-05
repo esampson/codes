@@ -14,7 +14,6 @@ class editForm(forms.Form):
     reference = forms.CharField(label='Reference', required = False)
     info = forms.CharField(label='Info',
                            widget=forms.Textarea(attrs={'rows': 4, 'cols': 80}),required = False)
-    recalc = forms.BooleanField(required = False)
     cg_only = forms.BooleanField(required = False)
     restricted = forms.BooleanField(required = False)
     link = forms.CharField(label='link',widget=forms.HiddenInput(),required = False)
