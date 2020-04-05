@@ -3,6 +3,7 @@ from codes.data import set
 from codes.data import find
 from evennia.utils.utils import strip_control_sequences
 from evennia.utils.search import search_script_tag
+from operator import itemgetter
 
 import time
   
@@ -535,12 +536,16 @@ def changeling_template(caller, raw_string, **kwargs):
     caller.db.power['Wyrd'] = 1
     text = 'Select Seeming:'
     option_list = []
-    seemings = search_script_tag('seeming_stat')
+    seemings_list = search_script_tag('seeming_stat')
+    seemings=[]
+    for item in seemings_list:
+        seemings.append([item.db.longname,item])
+    seemings = sorted(seemings,key=itemgetter(0))
     for item in seemings:
-        option_list.append( {'desc' : item.db.longname,
+        option_list.append( {'desc' : item[0],
                              'goto' : ( 'changeling_stat',
                                         { 'template' : 'changeling',
-                                         'seeming' : item } ) } )
+                                         'seeming' : item[1] } ) } )
     options = tuple(option_list)
     return text, options
 
@@ -569,19 +574,23 @@ def _raise_stat(caller, raw_string, **kwargs):
 def changeling_kith(caller, raw_string, **kwargs):
 
     text = 'Select Kith:'
-    kiths = search_script_tag('kith_stat')
+    kiths_list = search_script_tag('kith_stat')
+    kiths = []
+    for item in kiths_list:
+        kiths.append([item.db.longname, item])
+    kiths = sorted(kiths, key=itemgetter(0))
     option_list = []
     for item in kiths:
-        option_list.append( {'desc' : item.db.longname.capitalize(),
+        option_list.append( {'desc' : item[0],
                              'goto' : ( 'changeling_court',
                                         { 'template' : 'changeling',
-                                         'kith' : item.db.longname.lower() } ) } )
+                                         'kith' : item[1] } ) } )
     options = tuple(option_list)
     return text, options
 
 def changeling_court(caller, raw_string, **kwargs):
     kith = kwargs['kith']
-    caller.db.sphere['Kith'] = kith
+    caller.db.sphere['Kith'] = kith.db.longname
     text = 'Select Court:'
     option_list = []
     for item in courts:

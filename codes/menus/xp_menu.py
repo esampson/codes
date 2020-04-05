@@ -1,6 +1,7 @@
 from evennia.utils.utils import strip_control_sequences
 from evennia.utils.search import search_script_tag
 from codes.data import find
+from operator import itemgetter
 
 import time
 import stat
@@ -113,13 +114,17 @@ def xp_get_contract_note(caller, raw_string, **kwargs):
         append = ''
     option_list = []
     character_seeming = caller.get('Seeming',statclass='Sphere')
-    seemings = search_script_tag('seeming_stat')
+    seemings_list = search_script_tag('seeming_stat')
+    seemings=[]
+    for item in seemings_list:
+        seemings.append([item.db.longname,item])
+    seemings = sorted(seemings,key=itemgetter(0))
     for item in seemings:
-        if item.db.longname != character_seeming and item.db.longname not in blessings_list:
-            option_list.append( { 'desc' : item.db.longname,
+        if item[1].db.longname != character_seeming and item[1].db.longname not in blessings_list:
+            option_list.append( { 'desc' : item[1].db.longname,
                                   'goto' : (_xp_check_contract_value,
                                             {'stat' : kwargs['stat'],
-                                             'subentry' : append + item.db.longname,
+                                             'subentry' : append + item[1].db.longname,
                                              'type' : 'contract' } ) } )
     option_list.append( { 'key' : 'N',
                           'desc' : 'None',
