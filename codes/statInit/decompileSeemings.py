@@ -10,7 +10,7 @@ for seeming in seemings:
     name = seeming.db.longname.replace('\'','').replace(' ','_')
     file.write('seeming = create_script(\'typeclasses.scripts.seemingScript\',key = \'' + name + '\')\n')
     file.write('seeming.db.longname = \''+seeming.db.longname.replace('\'','\\\'')+'\'\n')
-    file.write('seeming.db.bonus_attributes = \''+str(seeming.db.bonus_attributes)+'\'\n')
+    file.write('seeming.db.bonus_attributes = '+str(seeming.db.bonus_attributes)+'\n')
     file.write('seeming.db.regalia = \''+seeming.db.regalia+'\'\n')
     file.write('seeming.db.reference = \''+seeming.db.reference+'\'\n')
     file.write('seeming.db.info = \''+seeming.db.info.replace('\r\n','|/').replace('\'','\\\'')+'\'\n')

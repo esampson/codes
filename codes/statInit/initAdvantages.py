@@ -1,19 +1,5 @@
 from evennia import create_script
 
-advantage = create_script('typeclasses.scripts.advantageScript',key = 'Speed')
-advantage.db.longname = 'Speed'
-advantage.db.category = 'Standard'
-advantage.db.reference = ''
-advantage.db.info = ''
-advantage.db.simple_gauge = False
-
-advantage = create_script('typeclasses.scripts.advantageScript',key = 'Defense')
-advantage.db.longname = 'Defense'
-advantage.db.category = 'Standard'
-advantage.db.reference = ''
-advantage.db.info = ''
-advantage.db.simple_gauge = False
-
 advantage = create_script('typeclasses.scripts.advantageScript',key = 'Health')
 advantage.db.longname = 'Health'
 advantage.db.category = 'Standard'
@@ -58,6 +44,20 @@ advantage.db.simple_gauge = False
 
 advantage = create_script('typeclasses.scripts.advantageScript',key = 'Size')
 advantage.db.longname = 'Size'
+advantage.db.category = 'Standard'
+advantage.db.reference = ''
+advantage.db.info = ''
+advantage.db.simple_gauge = False
+
+advantage = create_script('typeclasses.scripts.advantageScript',key = 'Speed')
+advantage.db.longname = 'Speed'
+advantage.db.category = 'Standard'
+advantage.db.reference = ''
+advantage.db.info = ''
+advantage.db.simple_gauge = False
+
+advantage = create_script('typeclasses.scripts.advantageScript',key = 'Defense')
+advantage.db.longname = 'Defense'
 advantage.db.category = 'Standard'
 advantage.db.reference = ''
 advantage.db.info = ''
