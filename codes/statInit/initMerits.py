@@ -1523,7 +1523,7 @@ merit.db.longname = 'Defender'
 merit.db.category = 'General'
 merit.db.range = [1, 2, 3]
 merit.db.prereq = ''
-merit.db.noteRestrictions = 
+merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42'
 merit.db.info = 'Your character is filled with a burning fury when her friends or family are threatened. For each dot of this Merit, the character gains a Willpower point to spend on actions related to defending or protecting these loved ones. This also applies to actions taken preemptively to prevent clear threats to her charges, and to acts of retribution against an offender if her loved ones are hurt. These bonus Willpower points do not count towards the character’s normal Willpower dots, and replenish each chapter.'
 merit.db.cg_only = False
@@ -1534,7 +1534,7 @@ merit.db.longname = 'Peacemaker'
 merit.db.category = 'General'
 merit.db.range = [2, 3]
 merit.db.prereq = 'target.wits() >= 3 and target.empathy() >= 3'
-merit.db.noteRestrictions = 
+merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42-43'
 merit.db.info = 'Your character is keenly attuned to indications of imminent violence, and knows techniques to soothe hot tempers and calm emotions. At two dots, the character may act first in a violent scene to attempt to deescalate the behavior. He spends a point of Willpower and forces his opponent into a social maneuver. The opponent’s base number of Doors is equal to the higher of her Resolve or Composure for this maneuver.'
 merit.db.cg_only = False
@@ -1545,7 +1545,7 @@ merit.db.longname = 'Empath'
 merit.db.category = 'General'
 merit.db.range = [2]
 merit.db.prereq = 'target.empathy() >= 2'
-merit.db.noteRestrictions = 
+merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42'
 merit.db.info = 'Your character has seen pain, and can identify it instantly. With a single Wits + Empathy roll, you can identify any mental Conditions from which a character suffers, and his Integrity. A character trying to hide this can contest with Manipulation + Subterfuge, but may roll no more dice than his Integrity or other relevant trait. If he does not have Integrity, you get an idea of his general, abstract state and internal conflicts. For example, a vampire has Humanity instead of Integrity. Your character might know that the'
 merit.db.cg_only = False
@@ -1633,7 +1633,7 @@ merit.db.longname = 'Scarred'
 merit.db.category = 'General'
 merit.db.range = [1]
 merit.db.prereq = 'target.get(\'Integrity\',subentry=\'Permanent\',statclass=\'Advantage\') <= 5 and target.get(\'Integrity\',subentry=\'Permanent\',statclass=\'Advantage\') > 0'
-merit.db.noteRestrictions = 
+merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 43'
 merit.db.info = 'When your character fails the breaking point and loses Integrity, write down this Merit along with whatever event caused the breaking point. Your character no longer suffers breaking points from that influence or action.'
 merit.db.cg_only = False
@@ -1655,7 +1655,7 @@ merit.db.longname = 'Survivalist'
 merit.db.category = 'General'
 merit.db.range = [1]
 merit.db.prereq = 'target.survival() >= 3 and target.get(\'Iron Stamina\',statclass=\'Merit\') >= 3'
-merit.db.noteRestrictions = 
+merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 43'
 merit.db.info = 'Your character has been trained to fight even through the most dangerous environmental extremes. When inflicted with the Extreme Cold Tilt or Extreme Heat Tilt (Chronicles of Darkness Rulebook, p. 282) she doesn’t begin taking the normal –1 to her rolls until a number of hours equal to her Stamina.'
 merit.db.cg_only = False
