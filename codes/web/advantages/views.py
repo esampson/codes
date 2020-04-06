@@ -9,7 +9,7 @@ from evennia.utils.search import search_script_tag
 from evennia.utils.utils import inherits_from
 from evennia import create_script
 
-from web.advantages.forms import editForm
+from codes.web.advantages.forms import editForm
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from evennia.objects.models import ObjectDB
@@ -17,7 +17,6 @@ from django.conf import settings
 from evennia.utils import create
 from urllib.parse import unquote
 from urllib.parse import quote
-import stat
 
 class advantage_class:
     longname = ''

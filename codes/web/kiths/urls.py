@@ -1,12 +1,12 @@
 # URL patterns for the character app
 
 from django.conf.urls import url
-from web.kiths.views import sheet 
-from web.kiths.views import editor
-from web.kiths.views import editted
-from web.kiths.views import create
-from web.kiths.views import created
-from web.kiths.views import list
+from codes.web.kiths.views import sheet 
+from codes.web.kiths.views import editor
+from codes.web.kiths.views import editted
+from codes.web.kiths.views import create
+from codes.web.kiths.views import created
+from codes.web.kiths.views import list
 
 
 urlpatterns = [

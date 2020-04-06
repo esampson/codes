@@ -46,7 +46,7 @@ class Character(DefaultCharacter):
         generation step instead.
         """
         #set temporary command set
-        self.cmdset.add('codes.character_commands.unfinished_character',
+        self.cmdset.add('codes.commands.character_commands.unfinished_character',
                                                         permanent=True)
         #set persistent attributes
         

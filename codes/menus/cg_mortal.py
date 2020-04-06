@@ -199,9 +199,9 @@ def quit(caller, raw_string, **kwargs):
     return text,None
 
 def mortal_finish_cg(caller, raw_string, **kwargs):
-    caller.cmdset.add('codes.character_commands.finished_character', 
+    caller.cmdset.add('codes.commands.character_commands.finished_character', 
                       permanent=True)
-    caller.cmdset.delete('codes.character_commands.unfinished_character')
+    caller.cmdset.delete('codes.commands.character_commands.unfinished_character')
     set(caller,'Integrity',statclass='Advantage', value=7)
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,

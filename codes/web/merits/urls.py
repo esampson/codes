@@ -1,12 +1,12 @@
 # URL patterns for the character app
 
 from django.conf.urls import url
-from web.seemings.views import sheet 
-from web.seemings.views import editor
-from web.seemings.views import editted
-from web.seemings.views import create
-from web.seemings.views import created
-from web.seemings.views import list
+from codes.web.merits.views import sheet 
+from codes.web.merits.views import editor
+from codes.web.merits.views import editted
+from codes.web.merits.views import create
+from codes.web.merits.views import created
+from codes.web.merits.views import list
 
 
 urlpatterns = [

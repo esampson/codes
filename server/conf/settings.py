@@ -814,13 +814,13 @@ INSTALLED_APPS = [
     "evennia.scripts",
     "evennia.web.website",
     "evennia.web.webclient",
-    "web.advantages",
-    "web.contracts",
-    "web.kiths",
-    "web.merits",
-    "web.powers",
-    "web.seemings",
-    "web.spheres",
+    "codes.web.advantages",
+    "codes.web.contracts",
+    "codes.web.kiths",
+    "codes.web.merits",
+    "codes.web.powers",
+    "codes.web.seemings",
+    "codes.web.spheres",
 ]
 # The user profile extends the User object with more functionality;
 # This should usually not be changed.

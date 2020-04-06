@@ -15,13 +15,13 @@ custom_patterns = [
 
 ]
 
-custom_patterns.append( url(r'^advantages/', include('web.advantages.urls')))
-custom_patterns.append( url(r'^contracts/', include('web.contracts.urls')))
-custom_patterns.append( url(r'^kiths/', include('web.kiths.urls')))
-custom_patterns.append( url(r'^merits/', include('web.merits.urls')))
-custom_patterns.append( url(r'^powers/', include('web.powers.urls')))
-custom_patterns.append( url(r'^spheres/', include('web.spheres.urls')))
-custom_patterns.append( url(r'^seemings/', include('web.seemings.urls')))
+custom_patterns.append( url(r'^advantages/', include('codes.web.advantages.urls')))
+custom_patterns.append( url(r'^contracts/', include('codes.web.contracts.urls')))
+custom_patterns.append( url(r'^kiths/', include('codes.web.kiths.urls')))
+custom_patterns.append( url(r'^merits/', include('codes.web.merits.urls')))
+custom_patterns.append( url(r'^powers/', include('codes.web.powers.urls')))
+custom_patterns.append( url(r'^spheres/', include('codes.web.spheres.urls')))
+custom_patterns.append( url(r'^seemings/', include('codes.web.seemings.urls')))
 
 
 # this is required by Django.
