@@ -1,104 +1,5 @@
 from evennia import create_script
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Inspiring')
-merit.db.longname = 'Inspiring'
-merit.db.category = 'Social'
-merit.db.range = [3]
-merit.db.prereq = 'target.presence() >= 3'
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 51'
-merit.db.info = 'Your character’s passion inspires those around her to greatness. With a few words, she can redouble a group’s confidence or move them to action.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Heavy_Weapons')
-merit.db.longname = 'Heavy Weapons'
-merit.db.category = 'Fighting'
-merit.db.range = [1, 2, 3, 4, 5]
-merit.db.prereq = 'target.stamina() >= 3 and target.strength() >= 3 and target.athletics() >=2 and target.weaponry() >= 2'
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 62'
-merit.db.info = 'Your character is trained with heavy weapons which require strength, wide range, and follow through more than direct speed and accuracy. This Style may be used with a two-handed weapon such as a claymore, chainsaw, pike, or an uprooted street sign.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Professional_Training')
-merit.db.longname = 'Professional Training'
-merit.db.category = 'Mental'
-merit.db.range = [1, 2, 3, 4, 5]
-merit.db.prereq = ''
-merit.db.noteRestrictions = ['*']
-merit.db.reference = 'CoD p. 46'
-merit.db.info = 'Your character has extensive training in a particular profession, which offers distinct advantages in a handful of fields. When choosing this Merit, choose or create a Profession for your character (see the sidebar). Mark the two Asset Skills on your character sheet. The advantages of Professional Training relate directly to those Asset Skills.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Takes_One_to_Know_One')
-merit.db.longname = 'Takes One to Know One'
-merit.db.category = 'Social'
-merit.db.range = [1]
-merit.db.prereq = 'target.template().lower() != \'changeling\''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 55'
-merit.db.info = 'Normally, when Uncovering a Clue (see p. 79), your character suffers a -2 penalty if the crime aligns with his Vice. However, it takes a criminal to know a criminal, and your character has a deep-seated understanding of his particular weakness. Instead, take a +2 and the 9-again quality on any investigation rolls when the crime aligns with your character’s particular Vice. The successful investigation is considered fulfilling his Vice.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Language')
-merit.db.longname = 'Language'
-merit.db.category = 'Mental'
-merit.db.range = [1]
-merit.db.prereq = ''
-merit.db.noteRestrictions = ['*']
-merit.db.reference = 'CoD p. 45'
-merit.db.info = 'Your character is skilled with an additional language, beyond her native tongue. Choose a language each time you buy this Merit. Your character can speak, read, and write in that language.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Clairvoyance')
-merit.db.longname = 'Clairvoyance'
-merit.db.category = 'Supernatural'
-merit.db.range = [3]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 57'
-merit.db.info = 'Your character can project her senses to another location. She sees, hears, smells, and otherwise experiences the other place as if she were there. This ability requires a point of Willpower to activate, successful meditation, and a Wits + Occult roll.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Contacts')
-merit.db.longname = 'Contacts'
-merit.db.category = 'Social'
-merit.db.range = [1, 2, 3, 4, 5]
-merit.db.prereq = ''
-merit.db.noteRestrictions = ['*']
-merit.db.reference = 'CoD p. 50'
-merit.db.info = 'Contacts provide your character with information. Each dot in this Merit represents a sphere or organization with which the character can garner information. For example, a character with Contacts *** might have Bloggers, Drug Dealers, and Financial Speculators for connections. Contacts do not provide services, only information. This may be face-to-face, via email, by telephone, or even by seance in some strange instances.|/|/Garnering information via Contacts requires a Manipulation + Social Skill roll, depending on the method the character uses, and the relationship between the characters. The Storyteller should give a bonus or penalty, dependent on how relevant the information is to that particular Contact, whether accessing the information is dangerous, and if the character has maintained good relations or done favors for the Contact. These modifiers should range from -3 to +3 in most cases. If successful, the Contact provides the information.|/|/One use of a Contact is to dig dirt on another character. A Contact can find another character’s Social Merits, and any relevant Conditions (Embarrassing Secret is a prime example.)|/|/A character can have more than five Contacts, but the Merit’s rating is limited to five, for the purposes of Allies blocking.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Sympathetic')
-merit.db.longname = 'Sympathetic'
-merit.db.category = 'Social'
-merit.db.range = [2]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 55'
-merit.db.info = 'Your character is very good at letting others get close. This gives him an edge in getting what he wants. At the beginning of a Social maneuvering attempt, you may choose to accept a Condition such as Leveraged, or Swooned in order to immediately eliminate two of the subject’s Doors.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Mantle')
-merit.db.longname = 'Mantle'
-merit.db.category = 'Changeling'
-merit.db.range = [1, 2, 3, 4, 5]
-merit.db.prereq = ''
-merit.db.noteRestrictions = ['Spring', 'Summer', 'Autumn', 'Winter']
-merit.db.reference = 'CtL p. 117'
-merit.db.info = 'When a changeling joins a court, she accepts all its blessings and embodies it, the same way she does her own seeming and kith. Mantle represents the mystical connection a changeling has to the elements and emotions of her chosen court. As her Mantle rises, she becomes a better representation of what it is to be a courtier. A changeling with a high Mantle embodies the ideals of the court, and others who belong to the court recognize her dedication and give her respect, even if it’s grudging.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
 merit = create_script('typeclasses.scripts.meritScript',key = 'Good_Time_Management')
 merit.db.longname = 'Good Time Management'
 merit.db.category = 'Mental'
@@ -107,28 +8,6 @@ merit.db.prereq = 'target.academics() >= 2 or target.science() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 44'
 merit.db.info = 'Your character has vast experience managing complex tasks, keeping schedules, and meeting deadlines. When taking an extended action, halve the time required between rolls.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Aura_Reading')
-merit.db.longname = 'Aura Reading'
-merit.db.category = 'Supernatural'
-merit.db.range = [3]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 56'
-merit.db.info = 'Your character has the psychic ability to perceive auras, the ephemeral halos of energy that surround all living things. This allows her to perceive a subject’s emotional state, and potentially any supernatural nature. The colors of an aura show a person’s general disposition, and the ebbs, flows, tone, and other oddities reveal other influences. Note that your character may not know what she’s looking at when seeing something odd in an aura. For example, she may not know that a pale aura means she’s seeing a vampire, unless she’s confirmed other vampiric auras in the past.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Eidetic_Memory')
-merit.db.longname = 'Eidetic Memory'
-merit.db.category = 'Mental'
-merit.db.range = [2]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 44'
-merit.db.info = 'Your character recalls events and details with pinpoint accuracy. You do not have to make rolls for your character to remember past experiences. When making Intelligence + Composure (or relevant Skill) rolls to recall minute facts from swaths of information, take a +2 bonus.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -220,17 +99,6 @@ merit.db.info = 'Your character tempts and bribes as second nature. Any time a m
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Lethal_Mien')
-merit.db.longname = 'Lethal Mien'
-merit.db.category = 'Changeling'
-merit.db.range = [2]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CtL p. 117'
-merit.db.info = 'The Hedge warped some element of your character’s fae mien, and left him with wicked nails, sharp teeth, or some other offensive trait. The changeling can inflict lethal damage while unarmed. If another power already gives him the capacity for lethal blows, such as the Beast seeming blessing, add one to his unarmed weapon modifier instead.|/|/The character may choose whether to use the benefit of these claws, fangs, spurs, or other dangerous element at will.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
 merit = create_script('typeclasses.scripts.meritScript',key = 'Hedge_Sense')
 merit.db.longname = 'Hedge Sense'
 merit.db.category = 'Changeling'
@@ -253,6 +121,94 @@ merit.db.info = 'Your character has a True Friend. While that friend may have sp
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Mystery_Cult_Initiation')
+merit.db.longname = 'Mystery Cult Initiation'
+merit.db.category = 'Social'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CoD p. 51-53'
+merit.db.info = 'Cults are far more common than people would like to admit. “Mystery cult” is the catch-all term for a phenomenon ranging from secret societies couched in fraternity houses, to scholarly cabals studying the magic of classical symbolism, to mystical suicide cults to the God-Machine.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Patient')
+merit.db.longname = 'Patient'
+merit.db.category = 'Mental'
+merit.db.range = [1]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 46'
+merit.db.info = 'Your character knows how to pace herself and take the time to do the job right the first time. When taking an extended action, you may make two additional rolls, above what your Attribute + Skill allows.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Inspiring')
+merit.db.longname = 'Inspiring'
+merit.db.category = 'Social'
+merit.db.range = [3]
+merit.db.prereq = 'target.presence() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 51'
+merit.db.info = 'Your character’s passion inspires those around her to greatness. With a few words, she can redouble a group’s confidence or move them to action.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Takes_One_to_Know_One')
+merit.db.longname = 'Takes One to Know One'
+merit.db.category = 'Social'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower() != \'changeling\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 55'
+merit.db.info = 'Normally, when Uncovering a Clue (see p. 79), your character suffers a -2 penalty if the crime aligns with his Vice. However, it takes a criminal to know a criminal, and your character has a deep-seated understanding of his particular weakness. Instead, take a +2 and the 9-again quality on any investigation rolls when the crime aligns with your character’s particular Vice. The successful investigation is considered fulfilling his Vice.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Language')
+merit.db.longname = 'Language'
+merit.db.category = 'Mental'
+merit.db.range = [1]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CoD p. 45'
+merit.db.info = 'Your character is skilled with an additional language, beyond her native tongue. Choose a language each time you buy this Merit. Your character can speak, read, and write in that language.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Clairvoyance')
+merit.db.longname = 'Clairvoyance'
+merit.db.category = 'Supernatural'
+merit.db.range = [3]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 57'
+merit.db.info = 'Your character can project her senses to another location. She sees, hears, smells, and otherwise experiences the other place as if she were there. This ability requires a point of Willpower to activate, successful meditation, and a Wits + Occult roll.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Direction_Sense')
+merit.db.longname = 'Direction Sense'
+merit.db.category = 'Mental'
+merit.db.range = [1]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 44'
+merit.db.info = 'Your character has an innate sense of direction, and is always aware of her location in space. She always knows which direction she faces, and never suffers penalties to navigate or find her way.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Lethal_Mien')
+merit.db.longname = 'Lethal Mien'
+merit.db.category = 'Changeling'
+merit.db.range = [2]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'CtL p. 117'
+merit.db.info = 'The Hedge warped some element of your character’s fae mien, and left him with wicked nails, sharp teeth, or some other offensive trait. The changeling can inflict lethal damage while unarmed. If another power already gives him the capacity for lethal blows, such as the Beast seeming blessing, add one to his unarmed weapon modifier instead.|/|/The character may choose whether to use the benefit of these claws, fangs, spurs, or other dangerous element at will.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Area_of_Expertise')
 merit.db.longname = 'Area of Expertise'
 merit.db.category = 'Mental'
@@ -261,6 +217,28 @@ merit.db.prereq = 'target.resolve() >= 2 and subentry in target.db.specialties'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 44'
 merit.db.info = 'Your character is uncommonly specialized in one area. Choose a Specialty to assign to this Merit. Forgo the +1 bonus afforded by a Specialty, in exchange for a +2.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Common_Sense')
+merit.db.longname = 'Common Sense'
+merit.db.category = 'Mental'
+merit.db.range = [3]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 44'
+merit.db.info = 'Your character has an exceptionally sound and rational mind. With a moment’s thought, she can weigh potential courses of action and outcomes.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Aura_Reading')
+merit.db.longname = 'Aura Reading'
+merit.db.category = 'Supernatural'
+merit.db.range = [3]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 56'
+merit.db.info = 'Your character has the psychic ability to perceive auras, the ephemeral halos of energy that surround all living things. This allows her to perceive a subject’s emotional state, and potentially any supernatural nature. The colors of an aura show a person’s general disposition, and the ebbs, flows, tone, and other oddities reveal other influences. Note that your character may not know what she’s looking at when seeing something odd in an aura. For example, she may not know that a pale aura means she’s seeing a vampire, unless she’s confirmed other vampiric auras in the past.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -297,50 +275,6 @@ merit.db.info = 'The changeling’s senses are especially acute, even by the sta
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Mystery_Cult_Initiation')
-merit.db.longname = 'Mystery Cult Initiation'
-merit.db.category = 'Social'
-merit.db.range = [1, 2, 3, 4, 5]
-merit.db.prereq = ''
-merit.db.noteRestrictions = ['*']
-merit.db.reference = 'CoD p. 51-53'
-merit.db.info = 'Cults are far more common than people would like to admit. “Mystery cult” is the catch-all term for a phenomenon ranging from secret societies couched in fraternity houses, to scholarly cabals studying the magic of classical symbolism, to mystical suicide cults to the God-Machine.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Patient')
-merit.db.longname = 'Patient'
-merit.db.category = 'Mental'
-merit.db.range = [1]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 46'
-merit.db.info = 'Your character knows how to pace herself and take the time to do the job right the first time. When taking an extended action, you may make two additional rolls, above what your Attribute + Skill allows.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Direction_Sense')
-merit.db.longname = 'Direction Sense'
-merit.db.category = 'Mental'
-merit.db.range = [1]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 44'
-merit.db.info = 'Your character has an innate sense of direction, and is always aware of her location in space. She always knows which direction she faces, and never suffers penalties to navigate or find her way.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Common_Sense')
-merit.db.longname = 'Common Sense'
-merit.db.category = 'Mental'
-merit.db.range = [3]
-merit.db.prereq = ''
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 44'
-merit.db.info = 'Your character has an exceptionally sound and rational mind. With a moment’s thought, she can weigh potential courses of action and outcomes.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
 merit = create_script('typeclasses.scripts.meritScript',key = 'Encyclopedic_Knowledge')
 merit.db.longname = 'Encyclopedic Knowledge'
 merit.db.category = 'Mental'
@@ -352,36 +286,69 @@ merit.db.info = 'Choose a Skill. Due to an immersion in academia, pop culture, o
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Firebrand')
-merit.db.longname = 'Firebrand'
-merit.db.category = 'Changeling'
+merit = create_script('typeclasses.scripts.meritScript',key = 'Eidetic_Memory')
+merit.db.longname = 'Eidetic Memory'
+merit.db.category = 'Mental'
 merit.db.range = [2]
-merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'mantle\',\'summer\') >= 3'
+merit.db.prereq = ''
 merit.db.noteRestrictions = []
-merit.db.reference = 'CtL p. 115'
-merit.db.info = 'Your character has the spirit of Summer within him, and channels that wrath into others. Once per scene, when your character goads someone into a fight, he regains a single Willpower point.'
+merit.db.reference = 'CoD p. 44'
+merit.db.info = 'Your character recalls events and details with pinpoint accuracy. You do not have to make rolls for your character to remember past experiences. When making Intelligence + Composure (or relevant Skill) rolls to recall minute facts from swaths of information, take a +2 bonus.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Fixer')
-merit.db.longname = 'Fixer'
+merit = create_script('typeclasses.scripts.meritScript',key = 'Heavy_Weapons')
+merit.db.longname = 'Heavy Weapons'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.stamina() >= 3 and target.strength() >= 3 and target.athletics() >=2 and target.weaponry() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 62'
+merit.db.info = 'Your character is trained with heavy weapons which require strength, wide range, and follow through more than direct speed and accuracy. This Style may be used with a two-handed weapon such as a claymore, chainsaw, pike, or an uprooted street sign.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Professional_Training')
+merit.db.longname = 'Professional Training'
+merit.db.category = 'Mental'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CoD p. 46'
+merit.db.info = 'Your character has extensive training in a particular profession, which offers distinct advantages in a handful of fields. When choosing this Merit, choose or create a Profession for your character (see the sidebar). Mark the two Asset Skills on your character sheet. The advantages of Professional Training relate directly to those Asset Skills.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Contacts')
+merit.db.longname = 'Contacts'
+merit.db.category = 'Social'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CoD p. 50'
+merit.db.info = 'Contacts provide your character with information. Each dot in this Merit represents a sphere or organization with which the character can garner information. For example, a character with Contacts *** might have Bloggers, Drug Dealers, and Financial Speculators for connections. Contacts do not provide services, only information. This may be face-to-face, via email, by telephone, or even by seance in some strange instances.|/|/Garnering information via Contacts requires a Manipulation + Social Skill roll, depending on the method the character uses, and the relationship between the characters. The Storyteller should give a bonus or penalty, dependent on how relevant the information is to that particular Contact, whether accessing the information is dangerous, and if the character has maintained good relations or done favors for the Contact. These modifiers should range from -3 to +3 in most cases. If successful, the Contact provides the information.|/|/One use of a Contact is to dig dirt on another character. A Contact can find another character’s Social Merits, and any relevant Conditions (Embarrassing Secret is a prime example.)|/|/A character can have more than five Contacts, but the Merit’s rating is limited to five, for the purposes of Allies blocking.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Sympathetic')
+merit.db.longname = 'Sympathetic'
 merit.db.category = 'Social'
 merit.db.range = [2]
-merit.db.prereq = 'target.get(entry = \'contacts\') >= 2 and target.wits() >= 3'
+merit.db.prereq = ''
 merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 51'
-merit.db.info = 'Your character is people that knows people. She can not only get in touch with the right people to do a job, but she can get them at the best possible prices. When hiring a service (see p. 100), reduce the Availability score of the service by one dot.'
+merit.db.reference = 'CoD p. 55'
+merit.db.info = 'Your character is very good at letting others get close. This gives him an edge in getting what he wants. At the beginning of a Social maneuvering attempt, you may choose to accept a Condition such as Leveraged, or Swooned in order to immediately eliminate two of the subject’s Doors.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Fleet_of_Foot')
-merit.db.longname = 'Fleet of Foot'
-merit.db.category = 'Physical'
-merit.db.range = [1, 2, 3]
-merit.db.prereq = 'target.athletics() >= 2'
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 47'
-merit.db.info = 'Your character is remarkably quick, and runs far faster than his frame suggests. He gains +1 Speed per dot, and anyone pursuing him suffers a -1 per dot to any foot chase rolls.'
+merit = create_script('typeclasses.scripts.meritScript',key = 'Mantle')
+merit.db.longname = 'Mantle'
+merit.db.category = 'Changeling'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['Spring', 'Summer', 'Autumn', 'Winter']
+merit.db.reference = 'CtL p. 117'
+merit.db.info = 'When a changeling joins a court, she accepts all its blessings and embodies it, the same way she does her own seeming and kith. Mantle represents the mystical connection a changeling has to the elements and emotions of her chosen court. As her Mantle rises, she becomes a better representation of what it is to be a courtier. A changeling with a high Mantle embodies the ideals of the court, and others who belong to the court recognize her dedication and give her respect, even if it’s grudging.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1001,17 +968,6 @@ merit.db.info = 'Most people turn away at the sight of blood, other bodily fluid
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Trained_Observer')
-merit.db.longname = 'Trained Observer'
-merit.db.category = 'Mental'
-merit.db.range = [1, 3]
-merit.db.prereq = 'target.wits() >= 3 or target.composure >= 3'
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 46'
-merit.db.info = 'Your character has spent years in the field, catching tiny details and digging for secrets. She might not have a better chance of finding things, but she has a better chance of finding important things. Any time you make a Perception roll (usually Wits + Composure), you benefit from the 9-again quality. With the three-dot version, you get 8-again.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
 merit = create_script('typeclasses.scripts.meritScript',key = 'Greyhound')
 merit.db.longname = 'Greyhound'
 merit.db.category = 'Physical'
@@ -1023,6 +979,17 @@ merit.db.info = 'Your character works best when chasing or being chased; the hun
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Firebrand')
+merit.db.longname = 'Firebrand'
+merit.db.category = 'Changeling'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'mantle\',\'summer\') >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'CtL p. 115'
+merit.db.info = 'Your character has the spirit of Summer within him, and channels that wrath into others. Once per scene, when your character goads someone into a fight, he regains a single Willpower point.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Relentless')
 merit.db.longname = 'Relentless'
 merit.db.category = 'Physical'
@@ -1031,6 +998,39 @@ merit.db.prereq = 'target.athletics() >= 2 and target.stamina() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 49'
 merit.db.info = 'Your character will not stop running, whether away from a pursuer or toward prey. In any chase (see p. 84) your opponents must achieve two additional successes against yours to catch her or elude her.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Trained_Observer')
+merit.db.longname = 'Trained Observer'
+merit.db.category = 'Mental'
+merit.db.range = [1, 3]
+merit.db.prereq = 'target.wits() >= 3 or target.composure >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 46'
+merit.db.info = 'Your character has spent years in the field, catching tiny details and digging for secrets. She might not have a better chance of finding things, but she has a better chance of finding important things. Any time you make a Perception roll (usually Wits + Composure), you benefit from the 9-again quality. With the three-dot version, you get 8-again.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Fleet_of_Foot')
+merit.db.longname = 'Fleet of Foot'
+merit.db.category = 'Physical'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.athletics() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 47'
+merit.db.info = 'Your character is remarkably quick, and runs far faster than his frame suggests. He gains +1 Speed per dot, and anyone pursuing him suffers a -1 per dot to any foot chase rolls.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Fixer')
+merit.db.longname = 'Fixer'
+merit.db.category = 'Social'
+merit.db.range = [2]
+merit.db.prereq = 'target.get(entry = \'contacts\') >= 2 and target.wits() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 51'
+merit.db.info = 'Your character is people that knows people. She can not only get in touch with the right people to do a job, but she can get them at the best possible prices. When hiring a service (see p. 100), reduce the Availability score of the service by one dot.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1262,17 +1262,6 @@ merit.db.prereq = 'target.stamina() >= 3 and target.composure() >= 3 and target.
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 65'
 merit.db.info = 'Your character learned to fight on the mean streets. She may have had some degree of formal training, but the methodology came from the real world, in dangerous circumstances. Street Fighting isn\'t about form and grace, it\'s about staying alive. These maneuvers may only be used unarmed, or with weapons capable of using the Brawl Skill, such as punch daggers, or weapons concealed with the Shiv Merit.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Fast_Reflexes')
-merit.db.longname = 'Fast Reflexes'
-merit.db.category = 'Mental'
-merit.db.range = [1, 2, 3]
-merit.db.prereq = 'target.wits() >= 3 or target.dexterity() >= 3'
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 44'
-merit.db.info = '+1 Initiative per dot'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1529,17 +1518,6 @@ merit.db.info = 'Your character is a natural leader who brings out the best from
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Object_Fetishism')
-merit.db.longname = 'Object Fetishism'
-merit.db.category = 'General'
-merit.db.range = [1, 2, 3, 4, 5]
-merit.db.prereq = ''
-merit.db.noteRestrictions = 
-merit.db.reference = 'HL p. 42'
-merit.db.info = 'Your character places immense trust and confidence in an object, often assuming it has mystical or otherworldly significance. He believes he’s tied inexorably to the object. Choose a Skill Specialty when taking this Merit; that Specialty must be tied to your character’s relationship to the object.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
 merit = create_script('typeclasses.scripts.meritScript',key = 'Defender')
 merit.db.longname = 'Defender'
 merit.db.category = 'General'
@@ -1548,6 +1526,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = 
 merit.db.reference = 'HL p. 42'
 merit.db.info = 'Your character is filled with a burning fury when her friends or family are threatened. For each dot of this Merit, the character gains a Willpower point to spend on actions related to defending or protecting these loved ones. This also applies to actions taken preemptively to prevent clear threats to her charges, and to acts of retribution against an offender if her loved ones are hurt. These bonus Willpower points do not count towards the character’s normal Willpower dots, and replenish each chapter.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Peacemaker')
+merit.db.longname = 'Peacemaker'
+merit.db.category = 'General'
+merit.db.range = [2, 3]
+merit.db.prereq = 'target.wits() >= 3 and target.empathy() >= 3'
+merit.db.noteRestrictions = 
+merit.db.reference = 'HL p. 42-43'
+merit.db.info = 'Your character is keenly attuned to indications of imminent violence, and knows techniques to soothe hot tempers and calm emotions. At two dots, the character may act first in a violent scene to attempt to deescalate the behavior. He spends a point of Willpower and forces his opponent into a social maneuver. The opponent’s base number of Doors is equal to the higher of her Resolve or Composure for this maneuver.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1562,25 +1551,14 @@ merit.db.info = 'Your character has seen pain, and can identify it instantly. Wi
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Warded_Dreams')
-merit.db.longname = 'Warded Dreams'
-merit.db.category = 'Changeling'
-merit.db.range = [1, 2, 3]
-merit.db.prereq = 'target.template().lower() == \'changeling\' and target.resolve() >= value'
-merit.db.noteRestrictions = ['*']
-merit.db.reference = 'CtL p. 120'
-merit.db.info = 'Whether through active mental discipline or natural stubbornness, your character’s dream Bastion is particularly well fortified against intrusion. Each dot in Warded Dreams increases the Bastion’s Fortification rating by one.'
-merit.db.cg_only = False
-merit.db.restricted = False
-
-merit = create_script('typeclasses.scripts.meritScript',key = 'Token')
-merit.db.longname = 'Token'
-merit.db.category = 'Changeling'
+merit = create_script('typeclasses.scripts.meritScript',key = 'Object_Fetishism')
+merit.db.longname = 'Object Fetishism'
+merit.db.category = 'General'
 merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
-merit.db.noteRestrictions = ['*']
-merit.db.reference = 'CtL p. 119-120'
-merit.db.info = 'Your character or motley has one or more tokens (p. 222) — mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper’s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she’s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 42'
+merit.db.info = 'Your character places immense trust and confidence in an object, often assuming it has mystical or otherworldly significance. He believes he’s tied inexorably to the object. Choose a Skill Specialty when taking this Merit; that Specialty must be tied to your character’s relationship to the object.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1606,6 +1584,17 @@ merit.db.info = 'Understanding the value of a product is hard enough in the mort
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Warded_Dreams')
+merit.db.longname = 'Warded Dreams'
+merit.db.category = 'Changeling'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.template().lower() == \'changeling\' and target.resolve() >= value'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CtL p. 120'
+merit.db.info = 'Whether through active mental discipline or natural stubbornness, your character’s dream Bastion is particularly well fortified against intrusion. Each dot in Warded Dreams increases the Bastion’s Fortification rating by one.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Automatic_Writing')
 merit.db.longname = 'Automatic Writing'
 merit.db.category = 'Supernatural'
@@ -1628,14 +1617,14 @@ merit.db.info = 'While your character does not necessarily possess a breadth of 
 merit.db.cg_only = False
 merit.db.restricted = False
 
-merit = create_script('typeclasses.scripts.meritScript',key = 'Peacemaker')
-merit.db.longname = 'Peacemaker'
-merit.db.category = 'General'
-merit.db.range = [2, 3]
-merit.db.prereq = 'target.wits() >= 3 and target.empathy() >= 3'
-merit.db.noteRestrictions = 
-merit.db.reference = 'HL p. 42-43'
-merit.db.info = 'Your character is keenly attuned to indications of imminent violence, and knows techniques to soothe hot tempers and calm emotions. At two dots, the character may act first in a violent scene to attempt to deescalate the behavior. He spends a point of Willpower and forces his opponent into a social maneuver. The opponent’s base number of Doors is equal to the higher of her Resolve or Composure for this maneuver.'
+merit = create_script('typeclasses.scripts.meritScript',key = 'Fast_Reflexes')
+merit.db.longname = 'Fast Reflexes'
+merit.db.category = 'Mental'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.wits() >= 3 or target.dexterity() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'CoD p. 44'
+merit.db.info = '+1 Initiative per dot'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1669,6 +1658,17 @@ merit.db.prereq = 'target.survival() >= 3 and target.get(\'Iron Stamina\',statcl
 merit.db.noteRestrictions = 
 merit.db.reference = 'HL p. 43'
 merit.db.info = 'Your character has been trained to fight even through the most dangerous environmental extremes. When inflicted with the Extreme Cold Tilt or Extreme Heat Tilt (Chronicles of Darkness Rulebook, p. 282) she doesn’t begin taking the normal –1 to her rolls until a number of hours equal to her Stamina.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Token')
+merit.db.longname = 'Token'
+merit.db.category = 'Changeling'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CtL p. 119-120'
+merit.db.info = 'Your character or motley has one or more tokens (p. 222) — mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper’s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she’s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
