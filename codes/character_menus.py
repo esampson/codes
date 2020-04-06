@@ -19,7 +19,7 @@ class CmdCG(Command):
     key = '+cg'
     
     def func(self):
-        ExMenu(self.caller, 'codes.menus.character_generation_menu', startnode = 'start')
+        ExMenu(self.caller, 'codes.menus.cg', startnode = 'start', cmd_on_exit=None)
         
 class CmdXP(Command):
     """
