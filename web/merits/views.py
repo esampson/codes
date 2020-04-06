@@ -187,12 +187,15 @@ def created(request):
         if request.method == 'POST':
             form = editForm(request.POST)
             if form.is_valid():
-                name = form.cleaned_data['longname'].longname.replace('\'','').replace(' ','_')
+                name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
+                range = []
+                for item in form.cleaned_data['range'][1:-1].split(','):
+                        range.append(int(item))
                 s = create_script('typeclasses.scripts.meritScript', 
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.category=form.cleaned_data['category']
-                s.db.range=form.cleaned_data['range']
+                s.db.range=range
                 s.db.noteRestrictions=form.cleaned_data['noteRestrictions']
                 s.db.prereq=form.cleaned_data['prereq']
                 s.db.reference=form.cleaned_data['reference']
