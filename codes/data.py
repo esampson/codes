@@ -1,5 +1,6 @@
 from evennia.utils.search import search_script_tag
 from evennia import search_script
+
 import textwrap
 
 
@@ -139,13 +140,23 @@ def set(target, entry, value, subentry='', statclass=''):
     
 
         """
-    stat_list = find(entry, statclass)
-    if len(stat_list) == 0:
-        raise Exception('StatError: ' + entry + 'NOT FOUND')
-    elif len(stat_list) > 1:
-        raise Exception('StatError: ' + 'TOO MANY FOUND FOR '+ entry)
+    if len(entry.split(':')) == 2:     #routing to handle specialties
+        if value == False:
+            target.db.specialties.remove(entry)
+            result = True
+        elif value == True:
+            target.db.specialties.append(entry)
+            result = True
+        else:
+            result = False
     else:
-        stat = stat_list[0]
-        result = stat.set(target, value=value, subentry=subentry)
-        return result
+        stat_list = find(entry, statclass)
+        if len(stat_list) == 0:
+            raise Exception('StatError: ' + entry + 'NOT FOUND')
+        elif len(stat_list) > 1:
+            raise Exception('StatError: ' + 'TOO MANY FOUND FOR '+ entry)
+        else:
+            stat = stat_list[0]
+            result = stat.set(target, value=value, subentry=subentry)
+    return result
     

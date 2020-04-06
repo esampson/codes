@@ -1,5 +1,23 @@
 from evennia import create_script
 
+kith = create_script('typeclasses.scripts.kithScript',key = 'Artist')
+kith.db.longname = 'Artist'
+kith.db.reference = 'CtL p. 51-52'
+kith.db.info = 'Kith Blessing: Choose either Crafts or Expression. When the Artist uses a Specialty for art with that Skill, achieving three successes counts as an exceptional success.|/|/Tools of the Trade: A good Artist is never without her tools. She can spend a point of Glamour for her player to gain bonus dice equal to her Wyrd, to a maximum of +5, on a Crafts or Expression roll with one of her Specialties pertaining to creating art. All the necessary implements of her craft manifest around her for a scene.'
+kith.db.restricted = False
+
+kith = create_script('typeclasses.scripts.kithScript',key = 'Bright_One')
+kith.db.longname = 'Bright One'
+kith.db.reference = 'CtL p. 52'
+kith.db.info = 'Kith Blessing: When the Bright One uses Socialize to be the center of attention, achieving three successes counts as an exceptional success.|/|/Flare: A Bright One always has a visible glow, even in the darkest of rooms, though the Mask normally prevents mortals from seeing it. She can spend a point of Glamour to turn this glow up to a dazzling brilliance that blinds her enemies for one turn; the Mask does not obscure this light. Each turn the Bright One uses this blessing, each enemy that can see her takes a point of bashing damage and rolls at a −2 on all Physical and Mental actions that turn.'
+kith.db.restricted = False
+
+kith = create_script('typeclasses.scripts.kithScript',key = 'Chatelaine')
+kith.db.longname = 'Chatelaine'
+kith.db.reference = 'CtL p. 52-53'
+kith.db.info = 'Kith Blessing; When the Chatelaine uses Empathy to determine a target’s immediate desires, achieving three successes counts as an exceptional success.|/|/Will That Be All?: Spend a point of Glamour to activate this blessing for the scene. With a successful Manipulation + Socialize roll, a Chatelaine may use the Social Merits of one other character in the scene as though they were her own. When the effect ends, characters act as though the target had used the Merits himself.'
+kith.db.restricted = False
+
 kith = create_script('typeclasses.scripts.kithScript',key = 'Gristlegrinder')
 kith.db.longname = 'Gristlegrinder'
 kith.db.reference = 'CtL p. 53'
@@ -52,24 +70,6 @@ kith = create_script('typeclasses.scripts.kithScript',key = 'Snowskin')
 kith.db.longname = 'Snowskin'
 kith.db.reference = 'CtL p. 58-59'
 kith.db.info = 'Kith Blessing: When the Snowskin attempts to use Subterfuge to hide her feelings from others, achieving three successes counts as an exceptional success.|/|/Heart of Ice: A Snowskin’s derision is more vicious than a howling blizzard. When she attempts to shut someone down in front of an audience, spend a point of Glamour and roll Presence + Intimidation + Wyrd, contested by the target’s Composure + Supernatural Tolerance. If the Snowskin succeeds, her target gains the Shaken Condition (p. 344) and suffers a −2 on all Social rolls involving other changelings until the Condition resolves, as her contempt freezes him out of society.'
-kith.db.restricted = False
-
-kith = create_script('typeclasses.scripts.kithScript',key = 'Artist')
-kith.db.longname = 'Artist'
-kith.db.reference = 'CtL p. 51-52'
-kith.db.info = 'Kith Blessing: Choose either Crafts or Expression. When the Artist uses a Specialty for art with that Skill, achieving three successes counts as an exceptional success.|/|/Tools of the Trade: A good Artist is never without her tools. She can spend a point of Glamour for her player to gain bonus dice equal to her Wyrd, to a maximum of +5, on a Crafts or Expression roll with one of her Specialties pertaining to creating art. All the necessary implements of her craft manifest around her for a scene.'
-kith.db.restricted = False
-
-kith = create_script('typeclasses.scripts.kithScript',key = 'Bright_One')
-kith.db.longname = 'Bright One'
-kith.db.reference = 'CtL p. 52'
-kith.db.info = 'Kith Blessing: When the Bright One uses Socialize to be the center of attention, achieving three successes counts as an exceptional success.|/|/Flare: A Bright One always has a visible glow, even in the darkest of rooms, though the Mask normally prevents mortals from seeing it. She can spend a point of Glamour to turn this glow up to a dazzling brilliance that blinds her enemies for one turn; the Mask does not obscure this light. Each turn the Bright One uses this blessing, each enemy that can see her takes a point of bashing damage and rolls at a −2 on all Physical and Mental actions that turn.'
-kith.db.restricted = False
-
-kith = create_script('typeclasses.scripts.kithScript',key = 'Chatelaine')
-kith.db.longname = 'Chatelaine'
-kith.db.reference = 'CtL p. 52-53'
-kith.db.info = 'Kith Blessing; When the Chatelaine uses Empathy to determine a target’s immediate desires, achieving three successes counts as an exceptional success.|/|/Will That Be All?: Spend a point of Glamour to activate this blessing for the scene. With a successful Manipulation + Socialize roll, a Chatelaine may use the Social Merits of one other character in the scene as though they were her own. When the effect ends, characters act as though the target had used the Merits himself.'
 kith.db.restricted = False
 
 pass

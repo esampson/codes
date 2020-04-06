@@ -2,7 +2,6 @@ from codes.data import get
 from codes.data import set
 from codes.data import find
 from evennia.utils.utils import strip_control_sequences
-from evennia.utils.search import search_script_tag
 from operator import itemgetter
 import time
 

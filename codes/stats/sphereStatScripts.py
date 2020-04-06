@@ -1,5 +1,7 @@
 from codes.stats.codesScript import codesScript
 
+import re
+
 class sphereStatScript(codesScript):
     
     def at_script_creation(self):
@@ -70,12 +72,18 @@ class sphereStatScript(codesScript):
         False.
 
 
-        target: The character the statis being set for
+        target: The character the stat is being set for
         value: The value the stat is being set to
         subentry: Does nothing. Placeholder for overloading
 
 
         """
+        if self.db.longname.lower() in ['regalia', 'frailties']:
+            temp_list = re.findall('[\'"].*?[\'"]', value)
+            new_list = []
+            for item in temp_list:
+                new_list.append(item.strip()[1:-1])
+            value = new_list
         name = self.db.longname
         if  name not in target.db.sphere and value != False:
             target.db.sphere[name] = value

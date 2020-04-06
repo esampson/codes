@@ -164,13 +164,13 @@ class advantageScript(codesScript):
             if subentry.lower() in ['permanent', 'perm']:
                 result = False
             elif subentry.lower() in ['temporary', 'temp'] or subentry == '':
-                target.db.advantages['Willpower'] = value
+                target.db.advantages['Willpower'] = target.resolve() + target.composure() - value
                 result = True
         elif name == 'Clarity':
             if subentry.lower() in ['permanent', 'perm']:
                 result = False
             elif subentry.lower() in ['temporary', 'temp'] or subentry == '':
-                target.db.advantages['Clarity'] = value
+                target.db.advantages['Clarity'] = target.wits() + target.composure() - value
                 result = True
         elif name == 'Integrity':
             target.db.advantages['Integrity'] = value
@@ -179,7 +179,9 @@ class advantageScript(codesScript):
             if subentry.lower() in ['permanent', 'perm']:
                 result = False
             elif subentry.lower() in ['temporary', 'temp'] or subentry == '':
-                target.db.advantages['Glamour'] = value
+                pools = [10,11,12,13,15,20,25,30,50,75]
+                pool = pools[target.get('Wyrd',statclass='Power')-1]
+                target.db.advantages['Glamour'] = pool - value
                 result = True
         elif name == 'Health':
             if subentry.lower() in ['permanent', 'perm'] or subentry == '':

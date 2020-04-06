@@ -15,10 +15,7 @@ import re
 
 class parsed:
     def __init__(self,entry,subentry,statclass,value):
-        self.entry = entry
-        self.subentry = subentry
-        self.statclass = statclass
-        self.value = value
+        { 'entry': entry, 'subentry' : subentry, 'statclass' : statclass, 'value' : value}
         
 def parser(message):
     regex_string ='^(([:a-zA-Z0-9%\s\'-])+)(\((([a-z,A-Z0-9%\s\'-])+)\))?'
@@ -249,6 +246,7 @@ class CmdSheet(default_cmds.MuxCommand):
     """
     
     key = '+sheet'
+    arg_regex='^$'
     
     
     def func(self):
