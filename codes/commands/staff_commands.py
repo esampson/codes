@@ -1,4 +1,4 @@
-from codes.stat_commands import produce_sheet
+from codes.commands.stat_commands import produce_sheet
 from codes.data import set
 
 from evennia import Command
