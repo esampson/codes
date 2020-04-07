@@ -5,7 +5,7 @@ class seemingScript(codesScript):
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.db.longname = ''
-            self.db.bonus_attributes = []
+            self.db.favored_attributes = []
             self.db.regalia = ''
             self.db.reference = ''
             self.db.info = ''
@@ -13,10 +13,10 @@ class seemingScript(codesScript):
             self.tags.add('stat_data')
             self.tags.add('seeming_stat')
     
-    def update(self,longname='', bonus_attributes=[], regalia = '', restricted=False, reference='',
+    def update(self,longname='', favored_attributes=[], regalia = '', restricted=False, reference='',
                info=''):
         self.db.longname = longname
-        self.db.bonus_attributes = bonus_attributes
+        self.db.favored_attributes = favored_attributes
         self.db.regalia = regalia
         self.db.restricted = restricted
         self.db.reference = reference

@@ -4,15 +4,12 @@ tags = { 'advantage_stat' : 'advantage',
          'attribute_stat' : 'attribute',
          'basic_stat' : 'basic',
          'contract_stat' : 'contract',
+         'kith_stat' : 'kith',
          'merit_stat' : 'merit',
          'power_stat' : 'power',
          'seeming_stat' : 'seeming',
          'skill_stat' : 'skill',
          'sphere_stat' : 'sphere' }
-
-tag_list = [ 'advantage_stat', 'attribute_stat', 'basic_stat', 'contract_stat',
-             'merit_stat', 'power_stat', 'seeming_stat', 'skill_stat',
-             'sphere_stat' ]
 
 class codesScript(Script):
     
@@ -22,6 +19,7 @@ class codesScript(Script):
     def type(self):
         
         result = 'unidentified'
+        tag_list = list(tags.keys())
         script_tags = self.tags.all()
         for item in script_tags:
             if item in tag_list:

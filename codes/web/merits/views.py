@@ -79,7 +79,10 @@ def sheet(request, object_id):
     noteRestrictions = stats[0].db.noteRestrictions
     prereq = stats[0].db.prereq
     reference = stats[0].db.reference
-    info = stats[0].db.info.replace('|/','\n')
+    if stats[0].db.info:
+        info = stats[0].db.info.replace('|/','\n')
+    else:
+        info = chr(160)
     cg_only = stats[0].db.cg_only
     restricted = stats[0].db.restricted
     merit.update(longname,category,range,noteRestrictions,prereq,reference,info,cg_only,restricted)

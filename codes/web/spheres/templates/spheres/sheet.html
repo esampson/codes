@@ -5,8 +5,11 @@
 
     <p><b>Category: </b> {{ sphere.category }}</p>
     <p><b>Reference: </b>{{ sphere.reference }}</p>
-    <p><b>Info: </b>{{ sphere.info|linebreaks }}</p>
-    <p><b>Restricted: </b>{{ sphere.restricted }}</p>
+    <div style="float:left;padding-bottom:0;">
+        <b>Info:&nbsp;</b>
+    </div>
+    <p>{{ sphere.info|linebreaks }}</p>
+    <p style="float:end;"><b>Restricted: </b>{{ sphere.restricted }}</p>
     
     {% if user.is_staff %}
         <form action="/spheres/edit/{{ id }}/" method="post">

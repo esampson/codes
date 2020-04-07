@@ -16,7 +16,7 @@ for seeming in seemings:
     name = seeming[1].db.longname.replace('\'','').replace(' ','_')
     file.write('seeming = create_script(\'typeclasses.scripts.seemingScript\',key = \'' + name + '\')\n')
     file.write('seeming.db.longname = \''+seeming[1].db.longname.replace('\'','\\\'')+'\'\n')
-    file.write('seeming.db.bonus_attributes = '+str(seeming[1].db.bonus_attributes)+'\n')
+    file.write('seeming.db.favored_attributes = '+str(seeming[1].db.favored_attributes)+'\n')
     file.write('seeming.db.regalia = \''+seeming[1].db.regalia+'\'\n')
     file.write('seeming.db.reference = \''+seeming[1].db.reference+'\'\n')
     file.write('seeming.db.info = \''+seeming[1].db.info.replace('\r\n','|/').replace('\'','\\\'')+'\'\n')

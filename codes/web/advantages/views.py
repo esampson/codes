@@ -56,7 +56,7 @@ def sheet(request, object_id):
     if stats[0].db.info:
         info = stats[0].db.info.replace('|/','\n')
     else:
-        info = ''
+        info = chr(160)
     simple_gauge = stats[0].db.simple_gauge
     advantage.update(longname,category,reference,info,simple_gauge)
     return render(request, 'advantages/sheet.html', {'advantage': advantage, 'request':request, 'id':quote(object_id)})

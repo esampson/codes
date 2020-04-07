@@ -3,8 +3,8 @@
 from django import forms
 
 class editForm(forms.Form):
-    longname = forms.CharField(label='Sphere Name', max_length=80)
-    bonus_attributes = forms.CharField(label='Seeming Bonus Attributes',required = False)
+    longname = forms.CharField(label='Seeming Name', max_length=80)
+    favored_attributes = forms.CharField(label='Seeming Favored Attributes',required = False)
     regalia = forms.CharField(label='Seeming Regalia',required = False)
     reference = forms.CharField(label='Reference', required = False)
     info = forms.CharField(label='Info',

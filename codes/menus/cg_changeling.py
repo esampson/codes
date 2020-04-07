@@ -41,7 +41,7 @@ def changeling_stat(caller, raw_string, **kwargs):
     option_list=[]
     caller.db.sphere['Seeming'] = seeming.db.longname
     caller.db.sphere['Regalia'] = [seeming.db.regalia]
-    for attribute in seeming.db.bonus_attributes:
+    for attribute in seeming.db.favored_attributes:
         option_list.append( { 'desc' : attribute.capitalize(),
                               'goto' : (_raise_stat,
                                         {'stat' : attribute.lower() } ) } )

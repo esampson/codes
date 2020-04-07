@@ -5,8 +5,11 @@
 
     <p><b>Category: </b> {{ advantage.category }}</p>
     <p><b>Reference: </b>{{ advantage.reference }}</p>
-    <p><b>Info: </b>{{ advantage.info|linebreaks }}</p>
-    <p><b>Simple Gauge: </b>{{ advantage.simple_gauge }}</p>
+    <div style="float:left;padding-bottom:0;">
+        <b>Info:&nbsp;</b>
+    </div>
+    <p>{{ advantage.info|linebreaks }}</p>
+    <p style="float:end;"><b>Simple Gauge: </b>{{ advantage.simple_gauge }}</p>
     
     {% if user.is_staff %}
         <form action="/advantages/edit/{{ id }}/" method="post">

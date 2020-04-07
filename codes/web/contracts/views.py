@@ -62,7 +62,7 @@ def sheet(request, object_id):
     if stats[0].db.info:
         info = stats[0].db.info.replace('|/','\n')
     else:
-        info = ''
+        info = chr(160)
     restricted = stats[0].db.restricted
     contract.update(longname,group,category,subgroup,reference,info,restricted)
     return render(request, 'contracts/sheet.html', {'contract': contract, 'request':request, 'id':quote(object_id)})

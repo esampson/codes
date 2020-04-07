@@ -20,15 +20,15 @@ from urllib.parse import quote
 
 class seeming_class:
     longname = ''
-    bonus_attributes = []
+    favored_attributes = []
     regalia = ''
     reference = ''
     info = ''
     restricted = False
     
-    def update(self,longname,bonus_attributes,regalia,reference,info,restricted):
+    def update(self,longname,favored_attributes,regalia,reference,info,restricted):
         self.longname = longname
-        self.bonus_attributes = bonus_attributes
+        self.favored_attributes = favored_attributes
         self.regalia = regalia
         self.reference = reference
         self.info = info
@@ -53,12 +53,15 @@ def sheet(request, object_id):
         return render(request, 'seemings/error.html', {'message': 'Too many matching seemings'})
     seeming = seeming_class()
     longname = stats[0].db.longname
-    bonus_attributes = stats[0].db.bonus_attributes
+    favored_attributes = stats[0].db.favored_attributes
     regalia = stats[0].db.regalia
     reference = stats[0].db.reference
-    info = stats[0].db.info.replace('|/','\n')
+    if stats[0].db.info:
+        info = stats[0].db.info.replace('|/','\n')
+    else:
+        info = chr(160)
     restricted = stats[0].db.restricted
-    seeming.update(longname,bonus_attributes,regalia,reference,info,restricted)
+    seeming.update(longname,favored_attributes,regalia,reference,info,restricted)
     return render(request, 'seemings/sheet.html', {'seeming': seeming, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
@@ -80,7 +83,7 @@ def editor(request, object_id):
         return render(request, 'seemings/error.html', {'message': 'Too many matching seemings'})
     stat = stats[0]
     starting_data = {'longname':stat.db.longname, 
-                     'bonus_attributes':stat.db.bonus_attributes,
+                     'favored_attributes':stat.db.favored_attributes,
                      'regalia': stat.db.regalia,
                      'reference':stat.db.reference,
                      'info':stat.db.info,
@@ -109,12 +112,12 @@ def editted(request):
                 if len(stats) > 1:
                     return render(request, 'seemings/error.html', {'message': 'Too many matching seemings'})
                 seeming = stats[0]
-                bonus_attributes = []
-                if form.cleaned_data['bonus_attributes'] != '[]':
-                    for item in form.cleaned_data['bonus_attributes'][1:-1].split(','):
-                        bonus_attributes.append(item.strip()[1:-1])
+                favored_attributes = []
+                if form.cleaned_data['favored_attributes'] != '[]':
+                    for item in form.cleaned_data['favored_attributes'][1:-1].split(','):
+                        favored_attributes.append(item.strip()[1:-1])
                 app = seeming.update(longname=form.cleaned_data['longname'],
-                                   bonus_attributes=bonus_attributes,
+                                   favored_attributes=favored_attributes,
                                    regalia = form.cleaned_data['regalia'],
                                    reference=form.cleaned_data['reference'],
                                    info=form.cleaned_data['info'],
@@ -130,7 +133,7 @@ def editted(request):
 def create(request):
     
     starting_data = {'longname':'', 
-                     'bonus_attributes':[], 
+                     'favored_attributes':[], 
                      'reference':'',
                      'regalia' : '',
                      'info':'',
@@ -146,14 +149,14 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
-                bonus_attributes = []
-                if form.cleaned_data['bonus_attributes'] != '[]':
-                    for item in form.cleaned_data['bonus_attributes'][1:-1].split(','):
-                        bonus_attributes.append(item.strip()[1:-1])
+                favored_attributes = []
+                if form.cleaned_data['favored_attributes'] != '[]':
+                    for item in form.cleaned_data['favored_attributes'][1:-1].split(','):
+                        favored_attributes.append(item.strip()[1:-1])
                 s = create_script('typeclasses.scripts.seemingScript', 
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
-                s.db.bonus_attributes=bonus_attributes
+                s.db.favored_attributes=favored_attributes
                 s.db.regalia = form.cleaned_data['regalia']
                 s.db.reference=form.cleaned_data['reference']
                 s.db.info=form.cleaned_data['info']

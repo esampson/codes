@@ -53,7 +53,10 @@ def sheet(request, object_id):
     longname = stats[0].db.longname
     category = stats[0].db.category
     reference = stats[0].db.reference
-    info = stats[0].db.info.replace('|/','\n')
+    if stats[0].db.info:
+        info = stats[0].db.info.replace('|/','\n')
+    else:
+        info = chr(160)
     restricted = stats[0].db.restricted
     sphere.update(longname,category,reference,info,restricted)
     return render(request, 'spheres/sheet.html', {'sphere': sphere, 'request':request, 'id':quote(object_id)})

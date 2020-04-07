@@ -20,7 +20,6 @@ from urllib.parse import quote
 
 class kith_class:
     longname = ''
-    bonus_attributes = []
     reference = ''
     info = ''
     restricted = False
@@ -50,9 +49,11 @@ def sheet(request, object_id):
         return render(request, 'kiths/error.html', {'message': 'Too many matching kiths'})
     kith = kith_class()
     longname = stats[0].db.longname
-    bonus_attributes = stats[0].db.bonus_attributes
     reference = stats[0].db.reference
-    info = stats[0].db.info.replace('|/','\n')
+    if stats[0].db.info:
+        info = stats[0].db.info.replace('|/','\n')
+    else:
+        info=chr(160)
     restricted = stats[0].db.restricted
     kith.update(longname,reference=reference,info=info,restricted=restricted)
     return render(request, 'kiths/sheet.html', {'kith': kith, 'request':request, 'id':quote(object_id)})
@@ -118,7 +119,6 @@ def editted(request):
 def create(request):
     
     starting_data = {'longname':'', 
-                     'bonus_attributes':[], 
                      'reference':'',
                      'info':'',
                      'restricted':False,
