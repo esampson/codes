@@ -1,8 +1,43 @@
 from evennia import create_script
 
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Banes')
+sphere.db.longname = 'Banes'
+sphere.db.category = 'Vampire'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Clan')
+sphere.db.longname = 'Clan'
+sphere.db.category = 'Vampire'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Coterie')
+sphere.db.longname = 'Coterie'
+sphere.db.category = 'Vampire'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
 sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Court')
 sphere.db.longname = 'Court'
 sphere.db.category = 'Changeling'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Covenant')
+sphere.db.longname = 'Covenant'
+sphere.db.category = 'Vampire'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Dirge')
+sphere.db.longname = 'Dirge'
+sphere.db.category = 'Vampire'
 sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False
@@ -35,9 +70,23 @@ sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False
 
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Mask')
+sphere.db.longname = 'Mask'
+sphere.db.category = 'Vampire'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
 sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Motley')
 sphere.db.longname = 'Motley'
 sphere.db.category = 'Changeling'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Mystery_Coil')
+sphere.db.longname = 'Mystery Coil'
+sphere.db.category = 'Vampire'
 sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False

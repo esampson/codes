@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ discipline.longname }}</h1>
+    
+    {% if user.is_staff %}
+        <p><b>Prerequisites: </b>{{ discipline.prereq }}</p>
+    {% endif %}
+    <div style="float:left;padding-bottom:0;">
+        <b>Info:&nbsp;</b>
+    </div>
+    <p>{{ discipline.info|linebreaks }}</p>
+    <p><b>Reference: </b>{{ discipline.reference }}</p>
+    <p style="float:end;"><b>Restricted: </b>{{ discipline.restricted }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/disciplines/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

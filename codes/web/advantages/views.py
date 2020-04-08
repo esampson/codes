@@ -23,14 +23,16 @@ class advantage_class:
     category = ''
     reference = ''
     info = ''
-    simple_gauge = False
+    pool = False
+    energy = False
     
-    def update(self,longname,category,reference,info,simple_gauge):
+    def update(self,longname,category,reference,info,pool,energy):
         self.longname = longname
         self.category = category
         self.reference = reference
         self.info = info
-        self.simple_gauge = simple_gauge
+        self.pool = pool
+        self.energy = energy
     
 def sheet(request, object_id):
     
@@ -53,12 +55,13 @@ def sheet(request, object_id):
     longname = stats[0].db.longname
     category = stats[0].db.category
     reference = stats[0].db.reference
-    if stats[0].db.info:
+    if stats[0].db.info != '':
         info = stats[0].db.info.replace('|/','\n')
     else:
         info = chr(160)
-    simple_gauge = stats[0].db.simple_gauge
-    advantage.update(longname,category,reference,info,simple_gauge)
+    pool = stats[0].db.pool
+    energy = stats[0].db.energy
+    advantage.update(longname,category,reference,info,pool,energy)
     return render(request, 'advantages/sheet.html', {'advantage': advantage, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
@@ -83,7 +86,8 @@ def editor(request, object_id):
                      'category':advantage.db.category, 
                      'reference':advantage.db.reference,
                      'info':advantage.db.info,
-                     'simple_gauge':advantage.db.simple_gauge,
+                     'pool':advantage.db.pool,
+                     'energy':advantage.db.energy,
                      'link':object_id}
     form = editForm(initial = starting_data)
     return render(request, 'advantages/editor.html', {'form': form, 'advantage_id':object_id })
@@ -112,7 +116,8 @@ def editted(request):
                                    category=form.cleaned_data['category'],
                                    reference=form.cleaned_data['reference'],
                                    info=form.cleaned_data['info'],
-                                   simple_gauge=form.cleaned_data['simple_gauge'])
+                                   pool=form.cleaned_data['pool'],
+                                   energy=form.cleaned_data['energy'])
                 return HttpResponseRedirect('/advantages/view/'+quote(n))
             else:
                 return render(request, 'advantages/error.html', {'message': 'Invalid form'})
@@ -127,7 +132,8 @@ def create(request):
                      'category':'', 
                      'reference':'',
                      'info':'',
-                     'simple_gauge':False,
+                     'pool':False,
+                     'energy':False,
                      'link':''}
     form = editForm(initial = starting_data)
     return render(request, 'advantages/create.html', {'form': form})
@@ -138,14 +144,15 @@ def created(request):
         if request.method == 'POST':
             form = editForm(request.POST)
             if form.is_valid():
-                name = form.cleaned_data['longname'].longname.replace('\'','').replace(' ','_')
+                name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 s = create_script('typeclasses.scripts.advantageScript', 
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.category=form.cleaned_data['category']
                 s.db.reference=form.cleaned_data['reference']
                 s.db.info=form.cleaned_data['info']
-                s.db.simple_gauge=form.cleaned_data['simple_gauge']
+                s.db.pool=form.cleaned_data['pool']
+                s.db.energy=form.cleaned_data['energy']
                 return HttpResponseRedirect('/advantages/view/'+quote(s.db.longname))
             else:
                 M = str(form)

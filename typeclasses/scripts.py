@@ -98,7 +98,11 @@ from codes.stats.skillScripts import skillScript
 from codes.stats.advantageScripts import advantageScript
 from codes.stats.attributeScripts import attributeScript
 from codes.stats.basicStatScripts import basicStatScript
+from codes.stats.clanScripts import clanScript
 from codes.stats.contractScripts import contractScript
+from codes.stats.covenantScripts import covenantScript
+from codes.stats.devotionScripts import devotionScript
+from codes.stats.disciplineScripts import disciplineScript
 from codes.stats.kithScripts import kithScript
 from codes.stats.meritScripts import meritScript
 from codes.stats.powerStatScripts import powerStatScript

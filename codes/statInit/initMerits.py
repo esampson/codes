@@ -2,11 +2,11 @@ from evennia import create_script
 
 merit = create_script('typeclasses.scripts.meritScript',key = 'Acute_Senses')
 merit.db.longname = 'Acute Senses'
-merit.db.category = 'Changeling'
+merit.db.category = 'Changeling and Vampire'
 merit.db.range = [1]
-merit.db.prereq = 'target.template().lower() == \'changeling\' and (target.wits() >= 3 or target.composure() >= 3)'
+merit.db.prereq = '(target.template().lower() == \'changeling\' and (target.wits() >= 3 or target.composure() >= 3)) or target.template.lower() == \'vampire\''
 merit.db.noteRestrictions = []
-merit.db.reference = 'CtL p. 111'
+merit.db.reference = 'CtL p. 111, VtR p. 109'
 merit.db.info = 'The changeling’s senses are especially acute, even by the standards of high Clarity. Her sight, hearing, and sense of smell operate at twice the distance and accuracy of mortal senses. She can’t see in pitch darkness (for that, she needs Contract magic), but she can see much more clearly than humans can.|/|/Add the character’s Wyrd rating as dice to any perception-based rolls. This bonus supersedes the one normally granted by maximum Clarity. Also, add the bonus to any rolls made to remember or identify details.'
 merit.db.cg_only = False
 merit.db.restricted = False
@@ -33,6 +33,17 @@ merit.db.info = 'Allies help your character. They might be friends, employees, a
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Altar')
+merit.db.longname = 'Altar'
+merit.db.category = 'Vampire'
+merit.db.range = [3]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Circle of the Crone\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 109'
+merit.db.info = 'Your character is attuned to a mystical, bloody altar. She may have crafted it herself, or a covenmate may have designed it. In the presence of the altar, Acolytes may use the teamwork rules (see p. 173) when using Crúac rituals. However, double the time necessary to make the roll, and determine the time per roll by the lowest Crúac dots of the collective group. This allows vampires uninitiated in the secrets of Crúac to participate in rituals. Characters do not need dots in Crúac to act as supporting performers with the Altar Merit, but double the time between rolls if any participants have no Crúac dots whatsoever.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Alternate_Identity')
 merit.db.longname = 'Alternate Identity'
 merit.db.category = 'Social'
@@ -53,6 +64,17 @@ merit.db.noteRestrictions = []
 merit.db.reference = ''
 merit.db.info = 'Your character does not suffer the -2 penalty for using his off hand in combat or to perform other actions.'
 merit.db.cg_only = True
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Anointed')
+merit.db.longname = 'Anointed'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Lancea et Sanctum\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 109-110'
+merit.db.info = 'Not all Sanctified are members of the clergy. Most are lay members. Those anointed under the damnation of Longinus wield his word like a firebrand. Once per chapter, roll Presence + Expression when preaching to a crowd. A small clique of listeners levies a –1 die penalty, a small crowd a –2, and a large crowd a –3. Listeners gain the Raptured Condition (see p. 305).'
+merit.db.cg_only = False
 merit.db.restricted = False
 
 merit = create_script('typeclasses.scripts.meritScript',key = 'Anonymity')
@@ -96,6 +118,28 @@ merit.db.prereq = 'target.dexterity >= 3 and target.weaponry >= 2 and target.get
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 60-61'
 merit.db.info = 'You’re able to use a weapon to stop people who are trying to kill you. Often deployed by police officers using riot shields or telescoping batons, it’s just as effective while using a chair leg.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Atrocious')
+merit.db.longname = 'Atrocious'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and not (target.get(\'Cutthroat\',statclass=\'Merit\') >= 1) and not (target.get(\'Enticing\',statclass=\'Merit\') >= 1)'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 110'
+merit.db.info = 'Your character’s monstrous Beast dominates her personality. Her threats always ring true. Her very gaze inspires anger and fear. Any rolls to invoke the monstrous Beast gain the 8-again quality.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Attache')
+merit.db.longname = 'Attache'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 110'
+merit.db.info = 'Normally, Retainers (see p. 123) serve a couple of functions, represented by dice pools. They don’t normally allow a character to access other things represented by Social Merits. However, Invictus vampires with this Merit have Retainers of a more thoroughly loyal breed. Each Retainer gains any combination of the following Merit dots equal to the vampire’s Invictus Status: Contacts, Resources, or Safe Place.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -154,6 +198,17 @@ merit.db.info = 'Your character has the ability to psychically alter his biologi
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Bloodhound')
+merit.db.longname = 'Bloodhound'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.wits() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 110'
+merit.db.info = 'Your character can discern the intricacies of blood by smelling it, as if he had tasted it. When using his Kindred senses to detect blood, to track by blood, or to pick out the details of blood, he only needs to smell a blood source.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Body_as_Weapon')
 merit.db.longname = 'Body as Weapon'
 merit.db.category = 'General'
@@ -173,6 +228,28 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 111'
 merit.db.info = 'Like the shoemaker’s elves, your character completes tasks with a casual disregard for time. Reduce the interval for any mundane extended action roll she makes while no one watches her by half. The character may spend a Glamour to halve the interval again, working at four times her normal speed for that roll. Exceptional success on an individual roll can decrease the time it takes to complete that roll to an eighth of the usual interval, if the player chooses the time reduction benefit.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Cacophony_Savvy')
+merit.db.longname = 'Cacophony Savvy'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'City\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 110'
+merit.db.info = 'You have your finger on the pulse of the Kindred underground. You’re adept with the codes and cants that allow Kindred culture to flourish despite the Masquerade. Each level of Cacophony Savvy builds on the previous. This Merit assumes the character can read and deliver Cacophony messages.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Carthian_Pull')
+merit.db.longname = 'Carthian Pull'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Carthian\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 110'
+merit.db.info = 'Carthians know people. Being the covenant arguably most in touch with humanity, they tend to have the most numerous connections. Membership in the Movement can mean leveraging those connections. Each month, you can access a number of dots of the Allies, Contacts, Haven, and Herd Merits equal to your Carthian Status.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -209,6 +286,17 @@ merit.db.info = 'Your character can project her senses to another location. She 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Claws_of_the_Unholy')
+merit.db.longname = 'Claws of the Unholy'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Protean\',statclass=\'Discipline\') >= 4'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 110-111'
+merit.db.info = 'A Gangrel’s claws are deadly and bestial; yours are downright unnatural. The vampire allows the Beast out of its cage and lets it punish all those around her. When wielding claws borne of Unnatural Aspect while in frenzy, this Merit takes effect. The weapon modifier for the claws becomes +0 aggravated. These claws ignore all armor not generated by Resilience.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Cloak_of_Leaves')
 merit.db.longname = 'Cloak of Leaves'
 merit.db.category = 'Changeling'
@@ -217,6 +305,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 111'
 merit.db.info = 'Your character has learned to embrace his worries and fears, and use them as a shield against the supernatural. Anyone using a supernatural ability to cause damage or inflict physical Tilts upon the character suffers a penalty equal to his dots in this Merit. Supernatural abilities include Contracts, kith blessings, vampire Disciplines, mage spells, and any other innate ability used by a supernatural creature.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Close_Family')
+merit.db.longname = 'Close Family'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 111'
+merit.db.info = 'Your character feels blood sympathy more keenly than most of her kind. Add +1 to all blood sympathy bonuses, and apply the 8-again quality to all blood sympathy rolls. As well, treat all relations as one step closer for the purposes of sympathy distances.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -319,6 +418,17 @@ merit.db.info = 'Your character has run afoul of fate. Somewhere, somehow, he’
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Cutthroat')
+merit.db.longname = 'Cutthroat'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and not (target.get(\'Atrocious\',statclass=\'Merit\') >= 1) and not (target.get(\'Enticing\',statclass=\'Merit\') >= 1)'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 111'
+merit.db.info = 'Your character’s competitive Beast flows in her every action. Her smug bearing forces a desire to dominate or submit. Any rolls to invoke the competitive Beast gain the 8-again quality.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Danger_Sense')
 merit.db.longname = 'Danger Sense'
 merit.db.category = 'Mental'
@@ -385,6 +495,17 @@ merit.db.info = 'Your character has an innate sense of direction, and is always 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Distinguished_Palate')
+merit.db.longname = 'Distinguished Palate'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 111'
+merit.db.info = 'Your character can discern the subtle nuances in blood and Vitae. Consider any Taste of Blood roll (see p. 91) an exceptional success with only a single success.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Diviner')
 merit.db.longname = 'Diviner'
 merit.db.category = 'Changeling'
@@ -404,6 +525,17 @@ merit.db.prereq = 'target.dexterity() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 47'
 merit.db.info = 'Your character might have been a contortionist, or spent time practicing yoga. She can dislodge joints when need be. She automatically escapes from any mundane bonds without a roll. When grappled, subtract her Dexterity from any rolls to overpower her, as long as she’s not taking any aggressive actions.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Dream_Visions')
+merit.db.longname = 'Dream Visions'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\',statclass=\'Sphere\').lower() == \'mekhet\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 111'
+merit.db.info = 'Your character’s Mekhet blood touches on a level of universal interconnectedness that her mind cannot truly grasp. However, sometimes it gives her fleeting glimpses of insight and intuition. During the day, she dreams of what’s to come in vague symbols. Once per night, when she meets someone new or visits a new place, make a Blood Potency roll. If successful, ask one question to the Storyteller or the character’s player. The question must fit with a yes/no/maybe answer. The answer reflects the last day’s dreams.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -437,6 +569,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 113'
 merit.db.info = 'Your character’s Mask is far less obtrusive when she drops it. Reduce her Wyrd by her Dull Beacon dots when determining the distance at which she alerts fae creatures and opens Hedge gateways when dropping her Mask (p. 83). If this would effectively reduce her to Wyrd 0, she no longer opens gates or alerts fae creatures at all until her Wyrd increases.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Dynasty_Membership')
+merit.db.longname = 'Dynasty Membership'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.template().lower == \'vampire\' and (target.get(\'Status\',subentry=target.get(\'Clan\',statclass=\'Sphere\'),statclass=\'Merit\') >= 1 or target.get(\'Status\',subentry=\'Clan\',statclass=\'Merit\') >= 1)'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'Your character claims membership to a long-standing dynasty of Kindred. Her clan and city know her family’s exploits, and they often precede her. Each level of this Merit builds on the earlier abilities.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -492,6 +635,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 44'
 merit.db.info = 'Choose a Skill. Due to an immersion in academia, pop culture, or a hobby obsession, your character has collected limitless factoids about the topic, even if she has no dots in the Skill.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Enticing')
+merit.db.longname = 'Enticing'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and not (target.get(\'Atrocious\',statclass=\'Merit\') >= 1) and not (target.get(\'Cutthroat\',statclass=\'Merit\') >= 1)'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'Your character’s seductive Beast oozes with ease and confidence. Her smoky looks tantalize the imagination. Every movement of her hands makes promises. Any rolls to invoke the seductive Beast gain the 8-again quality.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -572,6 +726,17 @@ merit.db.info = 'Your character talks circles around listeners. He speaks a mile
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Feeding_Grounds')
+merit.db.longname = 'Feeding Grounds'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'Your character has fertile feeding grounds, whether officially granted or not. Dots in this Merit represent the ease of hunting in that territory. Add the dot rating to any hunting rolls, and to starting Vitae rolls (see p. 95). In addition, add the dot rating to any predatory aura conflicts on her territory.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Fighting_Finesse')
 merit.db.longname = 'Fighting Finesse'
 merit.db.category = 'Fighting'
@@ -627,6 +792,17 @@ merit.db.info = 'Your character is remarkably quick, and runs far faster than hi
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Friends_in_High_Places')
+merit.db.longname = 'Friends in High Places'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'The Invictus have their fingers in a lot of pies...but any one vampire only has so many fingers. So the vampires of the First Estate do not just leverage their personal connections — they leverage each other’s. An Invictus member can always do a little horse trading.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Gentrified_Bearing')
 merit.db.longname = 'Gentrified Bearing'
 merit.db.category = 'Changeling'
@@ -663,7 +839,7 @@ merit.db.restricted = False
 merit = create_script('typeclasses.scripts.meritScript',key = 'Goblin_Bounty')
 merit.db.longname = 'Goblin Bounty'
 merit.db.category = 'Changeling'
-merit.db.range = [1,2,3,4,5]
+merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 115'
@@ -726,6 +902,17 @@ merit.db.info = 'Your character’s body goes further than it rightfully should.
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Haven')
+merit.db.longname = 'Haven'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Safe Place\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'A good haven is not only safe from the sun, but also familiar and comforting. The dot rating reflects your character’s affinity for his home and its defenses against the sun’s intrusion. A low rating might mean an unreliable apartment with boarded windows. A high rating may mean an ancestral home with no windows and an extensive system of vaults.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Heavy_Weapons')
 merit.db.longname = 'Heavy Weapons'
 merit.db.category = 'Fighting'
@@ -767,6 +954,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 115'
 merit.db.info = 'The character is especially skilled at finding her way in the Hedge. Gain a two-die bonus to all rolls to navigate the Hedge, and to find Icons, food, shelter, or goblin fruit there.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Herd')
+merit.db.longname = 'Herd'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'Your character cultivates cliques of mortals willing and eager for the Kiss. Each week, you can draw on a number of Vitae equal to twice the Merit’s dot rating. This requires no roll, only a quick interlude. Taking more than that amount requires normal hunting rolls.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -814,6 +1012,28 @@ merit.db.info = 'While Safe Place (p. 125) represents a mundane-but-secure lair 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Honey_Trap')
+merit.db.longname = 'Honey Trap'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'Your character’s blood not only bonds, but it invigorates. When a vampire tastes your character’s Vitae, she regains a point of Willpower. If this results in a new bond, or steps up an existing bond, she also takes a Beat.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'I_Know_a_Guy')
+merit.db.longname = 'I Know a Guy'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Carthian\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 115'
+merit.db.info = 'When Carthians make Allies (see p. 118), their covenant acts as a sort of support network that bolsters the efficiency of those allies. Once per story, a Carthian may access temporary Retainer dots equal to their Allies. These Retainers act in the Carthian’s interest, just like any other Retainers. (Since Allies gained with Carthian Pull don’t really belong to the character as a Merit, they don’t count for purposes of I Know A Guy.)'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Improvised_Weaponry')
 merit.db.longname = 'Improvised Weaponry'
 merit.db.category = 'Fighting'
@@ -855,6 +1075,17 @@ merit.db.prereq = 'target.get(subentry.split(\':\')[0], search_type = \'Skill\')
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 45'
 merit.db.info = 'Choose a Specialty that your character possesses when you purchase this Merit. You can apply the +1 from that Specialty on any Skill with at least one dot, provided it’s justifiable within the scope of the fiction. For example, a doctor with a Medicine Specialty in Anatomy may be able to use it when targeting a specific body part with Weaponry, but could not with a general strike.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Invested')
+merit.db.longname = 'Invested'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 112'
+merit.db.info = 'In the Invictus, you get out what you put in. Through doing favors and making herself noticed, your character has gotten back plenty. Divide dots equal to your Invictus status in the Herd, Mentor, Resources, and Retainers Merits. You may distribute them as you like. These dots can be added to existing Merit dots, or added upon later. If she loses dots of Status, the dots granted by this Merit go away as well.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -913,6 +1144,28 @@ merit.db.info = 'Your character’s resolve is unwavering. When spending Willpow
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Kindred_Dueling')
+merit.db.longname = 'Kindred Dueling'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.template().lower() == \'vampire\' and target.composure() >= 3 and target.weaponry() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 117-118'
+merit.db.info = 'Your character is not only a competent fighter, but also one trained specifically to take advantage of Kindred variables in a fight. Use of Kindred dueling requires an edged weapon. While humans could theoretically learn some of these tricks, the practical experience required could prove deadly. Note that Kindred Dueling abilities may not be used together. If you’re using Hamstring, you cannot benefit from Carving as well.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Kiss_of_the_Succubus')
+merit.db.longname = 'Kiss of the Succubus'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\',statclass=\'Sphere\').lower() == \'daeva\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 113'
+merit.db.info = 'All Kindred can evoke lustful, passionate reactions with a bite. The Daeva’s bite is downright addicting. Her Kiss causes the Addicted Condition in mortals as well as the Swooning Condition (for Addicted, see p. 301; for Swooning, see p. 306).'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Language')
 merit.db.longname = 'Language'
 merit.db.category = 'Mental'
@@ -946,6 +1199,17 @@ merit.db.info = 'The Hedge warped some element of your character’s fae mien, a
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Lex_Terrae')
+merit.db.longname = 'Lex Terrae'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 2 and target.get(\'Feeding Ground\', statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 116'
+merit.db.info = 'Territory is bond. Feeding ground is sacrosanct. Any blood poached from your character’s Feeding Ground is tainted for Kindred she has not specifically allowed. When next a poacher sleeps, the blood dissolves in his gullet. When he wakes, he violently retches, taking one bashing damage per Vitae lost. As well, his lips and mouth stain with black streaks that paint him as a poacher. These marks last for one week.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Library')
 merit.db.longname = 'Library'
 merit.db.category = 'Mental'
@@ -965,6 +1229,39 @@ merit.db.prereq = '(target.get(\'Fighting Finesse\',\'Weaponry\') == 2 or target
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 63'
 merit.db.info = 'Your character is trained with small hand-to-hand weapons which favor finesse over raw power. These maneuvers may only be used with one-handed weapons with a damage rating of two or less.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Lineage')
+merit.db.longname = 'Lineage'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and (target.get(\'Status\', subentry=target.get(\'Clan\',statclass=\'Sphere\'), statclass=\'Merit\') >= 1 or target.get(\'Status\',subentry=\'Clan\',statclass=\'Merit\') >= 1)'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 113'
+merit.db.info = 'You come from strong stock. Your sire’s well known, and his influence bleeds onto your interactions. Once per chapter, this Merit can represent a single dot of one of the following Merits: Allies, Contacts, Mentor, Resources, or Status. The Merit must be one your sire may have possessed.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Lorekeeper')
+merit.db.longname = 'Lorekeeper'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Lancea et Sanctum\', statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 113'
+merit.db.info = 'The Spear is tasked with the acquisition and maintenance of history and mystical secrets. Most devoted members of the covenant establish and maintain libraries. Since most of this knowledge has to pass through mortal hands, the Sanctum also tends to attract those, likeminded, who wish to surround themselves with ancient secrets. When a member of the Lancea et Sanctum with this Merit buys the Library Merit (see p. 121), she also receives dots in the Retainers and Herd Merits, divided however she chooses.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Mandate_from_the_Masses')
+merit.db.longname = 'Mandate from the Masses'
+merit.db.category = 'Vampire'
+merit.db.range = [5]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 5'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 116'
+merit.db.info = 'Carthians wield consensus the way a cop wields a baton. With the power of the Movement behind her, a ranking Carthian can call on the will of her people to strike weakness into the Movement’s opposition. With her words and the mandate, she strips a Kindred enemy’s blood down to nothingness. To enact this law, your character must make a clear and direct admonishment against one of the Movement’s enemies. Cross a dot of Willpower off the Carthian’s sheet. She must also garner the support of others of the Movement for a vote — from both Storyteller characters and players’ characters. If the vote favors the admonishment, add the total dots of Carthian Status in support (including the user’s five). For every five dots, reduce the victim’s Blood Potency by one dot. If this reduces him to zero dots, he effectively becomes a revenant (see p. 94 for rules on revenants).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1089,6 +1386,17 @@ merit.db.info = 'Cults are far more common than people would like to admit. “M
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Night_Doctor_Surgery')
+merit.db.longname = 'Night Doctor Surgery'
+merit.db.category = 'Vampire'
+merit.db.range = [3]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 113-114'
+merit.db.info = 'Carthians have adapted a bit of real-world surgery and a little body horror into a series of morbid reconstruction techniques to help injured Kindred heal. Night Doctor Surgery helps bones reset, and speeds the knitting of flesh. With an hour of treatment, roll Intelligence + Medicine. Each success converts one point of lethal damage to bashing. Alternatively, three successes can convert one point of aggravated damage to lethal damage. Failure means the wounds remain; dramatic failure upgrades three points of bashing to lethal, or two lethal to aggravated. With Storyteller discretion, this Merit and Willpower expenditure may be used over time to make changes to facial appearance.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Noblesse_Oblige')
 merit.db.longname = 'Noblesse Oblige'
 merit.db.category = 'Changeling'
@@ -1097,6 +1405,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'
 merit.db.noteRestrictions = ['Spring', 'Summer', 'Autumn', 'Winter']
 merit.db.reference = 'CtL p. 119'
 merit.db.info = 'Your character knows how to harness the power of his Mantle to inspire others. Any time your character is in charge of a group of people who share his court, either through Mantle or Court Goodwill, he can grant benefits to the group (but not to himself) for a scene by spending a Willpower point. The benefit conferred depends on the court.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Notary')
+merit.db.longname = 'Notary'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 116-117'
+merit.db.info = 'The Invictus appointed your character a Notary, a scholar of Oaths. She presides over Oath agreements. Because of your standing as an arbiter of the status quo, Invictus may not use their Invictus Status in rolls against you. As well, each month, you may request access to a single dot of Allies, Contacts, Herd, Mentor, or Resources, granted by the covenant at large.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1110,6 +1429,50 @@ merit.db.reference = 'CoD p. 58'
 merit.db.info = 'With Numbing Touch, your character’s psychic gifts allow her to numb a person, rendering them sluggish and incompetent. With intense concentration, she can cause neurons to shut down.'
 merit.db.cg_only = False
 merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Action')
+merit.db.longname = 'Oath of Action'
+merit.db.category = 'Vampire'
+merit.db.range = [4]
+merit.db.prereq = 'True'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'VtR p. 117'
+merit.db.info = 'With this Oath, a vassal swears to perform a service to his liege. The service must be a difficult task with definite criteria for accomplishment or failure. At the time of the swearing, both parties agree upon one of the liege’s Disciplines. The vassal gains access to that Discipline. The liege’s Blood Potency increases by one. This Oath stands as a rare exception to bloodline Disciplines: a vassal may temporarily access a liege’s bloodline gift.'
+merit.db.cg_only = False
+merit.db.restricted = True
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Fealty')
+merit.db.longname = 'Oath of Fealty'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Invictus\', statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'VtR p. 117'
+merit.db.info = 'This most basic Oath establishes a foundation of trust within the Invictus. The vassal may draw a number of Vitae from his liege equal to his Invictus Status in a given week. This Vitae transfers mystically over any distance, and replenishes the vassal’s pool without risk of Vitae addiction or blood bond. The liege always knows if the vassal lies to her, in voice or in writing.'
+merit.db.cg_only = False
+merit.db.restricted = True
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Penance')
+merit.db.longname = 'Oath of Penance'
+merit.db.category = 'Vampire'
+merit.db.range = [3]
+merit.db.prereq = 'True'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'VtR p. 117'
+merit.db.info = 'This Oath is a form of apology from a vassal to an aggrieved liege. For the agreed-upon term, the liege receives every tenth Vitae the vassal ingests. This Vitae comes over any distance, without risk of blood bond or addiction, and counts as Kindred Vitae. Some ancient Invictus use this Oath to skirt their need for Kindred blood, by establishing massive networks of “punished” vassals. During the same period, the vassal becomes immune to the liege’s Discipline effects.'
+merit.db.cg_only = False
+merit.db.restricted = True
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Serfdom')
+merit.db.longname = 'Oath of Serfdom'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = 'True'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'VtR p. 117'
+merit.db.info = 'This Oath is a contract between a landlord and a tenant. In Invictus domains, Princes often use this Oath as the go-to for granting territory. Young Invictus refer to this practice as “castling.” Oath of Serfdom agreements typically involve “red rent,” a certain blood tithe given to the landlord regularly.'
+merit.db.cg_only = False
+merit.db.restricted = True
 
 merit = create_script('typeclasses.scripts.meritScript',key = 'Object_Fetishism')
 merit.db.longname = 'Object Fetishism'
@@ -1130,6 +1493,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 58'
 merit.db.info = 'Your character sees signs and patterns in everything. From the way the leaves fall, to the spray of antifreeze when his radiator pops, to the ratios of circumference on the shell he picked up on the sidewalk, everything has meaning. With some consideration, he can interpret these meanings. This would be far better if he could turn it off. Everything is important. Everything could mean the end of the world, the deaths of his friends, or other tragedies. If he misses an omen, it might be the wrong one.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Pack_Alpha')
+merit.db.longname = 'Pack Alpha'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\', statclass=\'Sphere\').lower() == \'gangrel\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 114'
+merit.db.info = 'You’re pack-minded. Your blood draws to blood. You may designate a coterie of Kindred and ghouls as your pack. Every Gangrel has a different method for the designation. Some anoint with blood. Some have hazing rituals. When the pack takes teamwork actions, the supporting characters gain the 8-again quality on their rolls. The anchor character does not, but still adds dice equal to the others’ successes.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1185,6 +1559,17 @@ merit.db.prereq = 'target.wits() >= 3 and target.empathy() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42-43'
 merit.db.info = 'Your character is keenly attuned to indications of imminent violence, and knows techniques to soothe hot tempers and calm emotions. At two dots, the character may act first in a violent scene to attempt to deescalate the behavior. He spends a point of Willpower and forces his opponent into a social maneuver. The opponent’s base number of Doors is equal to the higher of her Resolve or Composure for this maneuver.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Plausible_Deniability')
+merit.db.longname = 'Plausible Deniability'
+merit.db.category = 'Vampire'
+merit.db.range = [4]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 116'
+merit.db.info = 'Carthians don’t break laws; they defy laws. Influential Carthians can throw law to the wind, then laugh it off with an argument about the definition of the word “is.” Any attempt to use a Discipline or other supernatural power to prove your character’s guilt in breach of city law or Tradition automatically fails. She cannot be forced to confess by any means, and attempts to detect her honesty through mundane means suffer her Carthian Status as a penalty. She exhibits no stains on her aura from diablerie.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1287,6 +1672,28 @@ merit.db.info = 'Your character has an assistant, sycophant, servant, or followe
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Riding_the_Wave')
+merit.db.longname = 'Riding the Wave'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.template().lower() == \'vampire\' and target.composure() >= 3 and target.resolve() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 117-118'
+merit.db.info = 'Your character runs with her Beast, and knows how to use it to her advantage. She’s turned riding the wave into a raw, primal art. These maneuvers may only be used while riding the wave. They cannot be used in a normal frenzy, or outside of frenzy.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Right_of_Return')
+merit.db.longname = 'Right of Return'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 2 and target.get(\'Status\', subentry=\'City\', statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 116'
+merit.db.info = 'This somewhat rare Merit allows a Carthian to work within another covenant without fear of her covenant’s ostracism. After all, Carthians aim for human solutions, and nothing is more human than the ability to adapt and socialize.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Rigid_Mask')
 merit.db.longname = 'Rigid Mask'
 merit.db.category = 'Changeling'
@@ -1317,6 +1724,17 @@ merit.db.prereq = 'target.get(\'Integrity\',subentry=\'Permanent\',statclass=\'A
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 43'
 merit.db.info = 'When your character fails the breaking point and loses Integrity, write down this Merit along with whatever event caused the breaking point. Your character no longer suffers breaking points from that influence or action.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Secret_Society_Junkie')
+merit.db.longname = 'Secret Society Junkie'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Ordo Dracul\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 114'
+merit.db.info = 'The Ordo Dracul exist within one of the most secret of secret societies. But many of its members participate in other such organizations in mortal (or other) spheres. Members of such secret societies tend to draw toward the Dragon, like a moths to a flame. When the vampire takes Status or Mystery Cult Initiation (see p. 121) reflecting non-Kindred organizations, she also gains Herd dots equal to the Merit.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1375,6 +1793,17 @@ merit.db.info = 'Your character is diminutive. He’s not five feet, and it’s 
 merit.db.cg_only = True
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Speaker_for_the_Silent')
+merit.db.longname = 'Speaker for the Silent'
+merit.db.category = 'Vampire'
+merit.db.range = [3]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Invictus\', statclass=\'Merit\') >= 1 and target.get(\'Dynasty Membership\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 114'
+merit.db.info = 'Any Kindred may be part of a dynastic house, but the Invictus take dynasty membership very seriously. Some members receive training to channel the minds of torpid dynasty members. With this Merit, the character can choose to act as a medium for a torpid elder’s consciousness. While possessed, the Speaker is aware of what occurs around him, but the torpid Kindred has control of his body, and can speak through him. The torpid Kindred retains no access to her Disciplines while possessing a Speaker. At any time, the Speaker can spend a point of Willpower to eject the torpid mind. The torpid Kindred can relinquish her control at will.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Spin_Doctor')
 merit.db.longname = 'Spin Doctor'
 merit.db.category = 'Social'
@@ -1430,6 +1859,17 @@ merit.db.info = 'Your character learned to fight on the mean streets. She may ha
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Strength_of_Resolution')
+merit.db.longname = 'Strength of Resolution'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 116'
+merit.db.info = 'A Carthian stands resolute in the face of that which would force her to violate the law. Add her Carthian Status to any dice pool to contest a Discipline or other supernatural power which would coax her to violate acknowledged city law.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Striking_Looks')
 merit.db.longname = 'Striking Looks'
 merit.db.category = 'Social'
@@ -1471,6 +1911,28 @@ merit.db.prereq = 'target.survival() >= 3 and target.get(\'Iron Stamina\',statcl
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 43'
 merit.db.info = 'Your character has been trained to fight even through the most dangerous environmental extremes. When inflicted with the Extreme Cold Tilt or Extreme Heat Tilt (Chronicles of Darkness Rulebook, p. 282) she doesn’t begin taking the normal –1 to her rolls until a number of hours equal to her Stamina.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Swarm_Form')
+merit.db.longname = 'Swarm Form'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Protean\',statclass=\'Discipline\') >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 114'
+merit.db.info = 'When taking the Beast’s Skin, some Gangrel can instead become a swarm of small creatures: Size 0 or Size 1 animals. The character may perceive through any of the senses of any individual creature in the swarm, but the swarm acts as a single entity.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Sworn')
+merit.db.longname = 'Sworn'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Ordo Dracul\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 114-115'
+merit.db.info = 'Your character is not only a member of the Ordo Dracul, she’s sworn to serve one of its branches. When taking this Merit, choose to which faction she belongs (the Axe, the Dying Light, or Mysteries typically). She gains dots equal to her Covenant Status to split between the Mentor and Retainer Merits. These reflect teachers and wards within the faction. She can swap these Merits out between chapters, as she receives new assignments.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1529,6 +1991,17 @@ merit.db.info = 'Your character can hear surface thoughts and read minds. With t
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'The_Mother-Daughter_Bond')
+merit.db.longname = 'The Mother-Daughter Bond'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Circle of the Crone\', statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 113'
+merit.db.info = 'The Circle exists through tribulation and mentorship. Without tight-knit bonds, the Circle would never have survived its tumultuous early years. When a member of the Circle with this Merit purchases the Mentor Merit, that Mentor is protected by the True Friend Merit (see p. 124). The vampire does not have to purchase True Friend to take this advantage.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Thief_of_Fate')
 merit.db.longname = 'Thief of Fate'
 merit.db.category = 'Supernatural'
@@ -1564,11 +2037,11 @@ merit.db.restricted = False
 
 merit = create_script('typeclasses.scripts.meritScript',key = 'Touchstone')
 merit.db.longname = 'Touchstone'
-merit.db.category = 'Changeling'
+merit.db.category = 'Changeling and Vampire'
 merit.db.range = [1, 2, 3, 4, 5]
-merit.db.prereq = ''
+merit.db.prereq = 'target.template().lower() == \'changeling\' or target.template().lower() == \'vampire\''
 merit.db.noteRestrictions = ['*']
-merit.db.reference = 'CtL p. 120'
+merit.db.reference = 'CtL p. 120, VtR p. 115'
 merit.db.info = 'Your character has multiple Touchstones. Each dot in the Touchstone Merit allows for an additional Touchstone. Write each one beside the next available box to the right of the rightmost box with an associated Touchstone. If the last Clarity box already has a Touchstone, you cannot purchase this Merit again. For more on Touchstones, see p. 98.'
 merit.db.cg_only = False
 merit.db.restricted = False
@@ -1606,6 +2079,28 @@ merit.db.info = 'Your character is better at stopping people from hurting them t
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Undead_Menses')
+merit.db.longname = 'Undead Menses'
+merit.db.category = 'Vampire'
+merit.db.range = [2]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 115'
+merit.db.info = 'Throughout history, various cultures attributed mystical significance to the menstrual cycle. Many of these myths carried stigmas against menses, due to the unhealthy fears of men in power.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Unnatural_Affinity')
+merit.db.longname = 'Unnatural Affinity'
+merit.db.category = 'Vampire'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'VtR p. 114'
+merit.db.info = 'Your character can take nourishment from the blood of some of the stranger creatures of the World of Darkness. Each dot of this Merit allows your character to gain sustenance from one type of supernatural creature. This may mean werewolves, ghosts, mummies, zombies, or stranger things still. This blood counts as Kindred Vitae for the purposes of feeding restrictions.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Unseen_Sense')
 merit.db.longname = 'Unseen Sense'
 merit.db.category = 'Supernatural'
@@ -1614,6 +2109,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 60'
 merit.db.info = 'Your character has a “sixth sense” for a type of supernatural creature, chosen when you buy the Merit. For example, you may choose Unseen Sense: Vampires, or Unseen Sense: Fairies. The sense manifests differently for everyone. Her hair stands on end, she becomes physically ill, or perhaps she has a cold chill. Regardless, she knows that something isn’t right when she is in the immediate proximity of the appropriate supernatural being. Once per chapter, the player can accept the Spooked Condition (p. 290), in exchange for which the character can pinpoint where the feeling is coming from. If the target is using a power that specifically cloaks its supernatural nature, however, this does not work (though the Condition remains until resolved as usual).'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Unsettling_Gaze')
+merit.db.longname = 'Unsettling Gaze'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\',statclass=\'Sphere\').lower() == \'nosferatu\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 115'
+merit.db.info = 'All Haunts have an unsettling effect. Your character’s Beast oozes with terror. When she evokes the monstrous Beast (see p. 91), she unsettles her target deeply and makes him question himself. Any time she infects a victim with the Bestial Condition and scores an exceptional success, she also forces a breaking point if the victim has a higher Humanity (or Integrity) than hers.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1658,6 +2164,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.resolv
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 120'
 merit.db.info = 'Whether through active mental discipline or natural stubbornness, your character’s dream Bastion is particularly well fortified against intrusion. Each dot in Warded Dreams increases the Bastion’s Fortification rating by one.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Where_the_Bodies_Are_Buried')
+merit.db.longname = 'Where the Bodies Are Buried'
+merit.db.category = 'Vampire'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\').lower() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'VtR p. 115'
+merit.db.info = 'The Conspiracy of Silence covers up a lot of secrets... and your character’s been quietly keeping track. A number of times equal to your Invictus Status per story, you can ask one of the following questions about another vampire whose name and covenant affiliation you know:'
 merit.db.cg_only = False
 merit.db.restricted = False
 

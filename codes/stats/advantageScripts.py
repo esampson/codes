@@ -7,12 +7,13 @@ class advantageScript(codesScript):
             self.tags.add('stat_data')
             self.tags.add('advantage_stat')
                 
-    def update(self,longname='', category='',info='',reference='',simple_gauge=False):
+    def update(self,longname='', category='',info='',reference='',pool=False, energy=False):
         self.db.longname = longname
         self.db.category = category
         self.db.reference = reference
         self.db.info = info
-        self.db.simple_gauge = simple_gauge
+        self.db.pool = pool
+        self.db.energy = energy
     
     def get(self, target, subentry=''):
         """
@@ -28,7 +29,7 @@ class advantageScript(codesScript):
         """
         advantages = target.db.advantages
         name = self.db.longname
-        if self.db.simple_gauge and (subentry.lower() not in ['permanent', 'perm'] and subentry != ''):
+        if self.db.pool and (subentry.lower() not in ['permanent', 'perm'] and subentry != ''):
             if subentry.lower() in ['temporary', 'temp']:
                 if name in target.db.advantages:
                     result = target.db.advantages[name]

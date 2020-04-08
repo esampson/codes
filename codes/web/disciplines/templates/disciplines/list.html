@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Discipline List</h1>
+
+    {% for discipline in disciplines %}
+		<li> <a href="../view/{{ discipline }}">{{ discipline }}</a> </li>
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/disciplines/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}

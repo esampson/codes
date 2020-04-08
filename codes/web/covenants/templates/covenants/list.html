@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Covenants List</h1>
+
+    {% for item in covenants %}
+        <li> <a href="../view/{{ item }}">{{ item }}</a> </li>
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/covenants/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}

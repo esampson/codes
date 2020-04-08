@@ -8,5 +8,6 @@ class editForm(forms.Form):
     reference = forms.CharField(label='Reference', required = False)
     info = forms.CharField(label='Info',
                            widget=forms.Textarea(attrs={'rows': 4, 'cols': 80}),required = False)
-    simple_gauge = forms.BooleanField(required = False)
+    pool = forms.BooleanField(required = False)
+    energy = forms.BooleanField(required = False)
     link = forms.CharField(label='link',widget=forms.HiddenInput(),required = False)

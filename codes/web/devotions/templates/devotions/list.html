@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Devotion List</h1>
+
+    {% for devotion in devotions %}
+		<li> <a href="../view/{{ devotion }}">{{ devotion }}</a> </li>
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/devotions/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}

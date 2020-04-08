@@ -98,10 +98,7 @@ class meritScript(codesScript):
 
 
         """
-        if len(self.db.cost) == 0:
-            result = value - self.get(target, subentry)
-        else:
-            result = exec(self.db.cost)
+        result = value - self.get(target, subentry)
         return result
     
     def set(self, target, value, subentry=''):
