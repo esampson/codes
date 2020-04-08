@@ -6,6 +6,7 @@ from codes.statInit import initBasicStats
 from codes.statInit import initClans
 from codes.statInit import initContracts
 from codes.statInit import initCovenants
+from codes.statInit import initCruac
 from codes.statInit import initDevotions
 from codes.statInit import initDisciplines
 from codes.statInit import initKiths

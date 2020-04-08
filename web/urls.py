@@ -19,6 +19,7 @@ custom_patterns.append( url(r'^advantages/', include('codes.web.advantages.urls'
 custom_patterns.append( url(r'^clans/', include('codes.web.clans.urls')))
 custom_patterns.append( url(r'^contracts/', include('codes.web.contracts.urls')))
 custom_patterns.append( url(r'^covenants/', include('codes.web.covenants.urls')))
+custom_patterns.append( url(r'^cruac/', include('codes.web.cruac.urls')))
 custom_patterns.append( url(r'^devotions/', include('codes.web.devotions.urls')))
 custom_patterns.append( url(r'^disciplines/', include('codes.web.disciplines.urls')))
 custom_patterns.append( url(r'^kiths/', include('codes.web.kiths.urls')))

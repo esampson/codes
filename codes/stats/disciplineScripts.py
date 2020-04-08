@@ -27,17 +27,18 @@ class disciplineScript(codesScript):
         get
 
 
-        Determines if a character possesses a discipline
+        Returns the value of a discipline on a character.
 
 
         target: The character being checked
         subentry: Dummy for overloading
 
         """
-        if self.db.longname in target.db.disciplines:
-            result = target.disciplines[self.db.longname]
+        if target.db.disciplines:
+            if self.db.longname in target.db.disciplines:
+                result = target.disciplines[self.db.longname]
         else:
-            result = False
+            result = 0
         return result
         
     def meets_prereqs(self, target, value=0, subentry=''):
@@ -90,12 +91,15 @@ class disciplineScript(codesScript):
         else:
             current = 0
         amount = value - current
+        clan = False
         clans = search_script_tag('clan_stat')
-        for item in clan:
-            if item == target.db.sphere['Clan']:
-                clan = item
-        if self.db.longname in clan.favored_disciplines:
-            result = amount * 3
+        for item in clans:
+            if 'Clan' in target.db.sphere:
+                if item == target.db.sphere['Clan']:
+                    clan = item
+        if clan:
+            if self.db.longname in clan.favored_disciplines:
+                result = amount * 3
         else:
             result = amount * 4        
         return result
@@ -117,17 +121,24 @@ class disciplineScript(codesScript):
 
         """
         name = self.db.longname
-        if  name not in target.db.disciplines and value != 0:
-            target.db.disciplines[name] = value
-            result = True
-        elif name in target.db.disciplines and value == 0:
-            del target.db.disciplines[name]
-            result = True
-        elif name in target.db.disciplines and value > 0:
-            target.db.disciplines[name] = value
-            result = True
+        if target.db.disciplines:
+            if  name not in target.db.disciplines and value != 0:
+                target.db.disciplines[name] = value
+                result = True
+            elif name in target.db.disciplines and value == 0:
+                del target.db.disciplines[name]
+                result = True
+            elif name in target.db.disciplines and value > 0:
+                target.db.disciplines[name] = value
+                result = True
+            else:
+                result = False
         else:
-            result = False
+            if value != 0:
+                target.db.disciplines = {name : value}
+                result = True
+            else:
+                result = False
         return result
                 
                 

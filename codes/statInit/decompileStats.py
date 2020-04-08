@@ -4,6 +4,7 @@ from codes.statInit import decompileBasicStats
 from codes.statInit import decompileClans
 from codes.statInit import decompileContracts
 from codes.statInit import decompileCovenants
+from codes.statInit import decompileCruac
 from codes.statInit import decompileDevotions
 from codes.statInit import decompileDisciplines
 from codes.statInit import decompileKiths

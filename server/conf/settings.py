@@ -818,6 +818,7 @@ INSTALLED_APPS = [
     "codes.web.clans",
     "codes.web.contracts",
     "codes.web.covenants",
+    "codes.web.cruac",
     "codes.web.devotions",
     "codes.web.disciplines",
     "codes.web.kiths",

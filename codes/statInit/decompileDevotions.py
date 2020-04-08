@@ -16,7 +16,7 @@ for devotion in devotions:
     name = devotion[1].db.longname.replace('\'','').replace(' ','_')
     file.write('devotion = create_script(\'typeclasses.scripts.devotionScript\',key = \'' + name + '\')\n')
     file.write('devotion.db.longname = \''+devotion[1].db.longname.replace('\'','\\\'') +'\'\n')
-    file.write('devotion.db.longname = \''+devotion[1].db.cost +'\'\n')
+    file.write('devotion.db.cost = '+str(devotion[1].db.cost) +'\n')
     file.write('devotion.db.prereq = \''+devotion[1].db.prereq.replace('\'','\\\'')+'\'\n')
     file.write('devotion.db.reference = \''+devotion[1].db.reference+'\'\n')
     file.write('devotion.db.info = \''+devotion[1].db.info.replace('\r\n','|/').replace('\'','\\\'') +'\'\n')

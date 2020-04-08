@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ cruac.longname }}</h1>
+
+    <p><b>Rank: </b>{{ cruac.rank }}</p>
+    {% if user.is_staff %}
+        <p><b>Prerequisites: </b>{{ cruac.prereq }}</p>
+    {% endif %}
+    <div style="float:left;padding-bottom:0;">
+        <b>Info:&nbsp;</b>
+    </div>
+    <p>{{ cruac.info|linebreaks }}</p>
+    <p style="float:end;"><b>Reference: </b>{{ cruac.reference }}</p>
+    <p><b>Restricted: </b>{{ cruac.restricted }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/cruac/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

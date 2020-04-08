@@ -21,6 +21,13 @@ discipline.db.reference = 'VtR p. 130-131'
 discipline.db.info = 'Unleashing her Beast, a vampire can cross vast distances in the blink of an eye, catch a thrown punch before her attacker has even moved a muscle, or snatch a gun barrel away from a man’s temple before he can pull the trigger. Celerity makes a vampire so fast that it’s as if she never has to move at all.'
 discipline.db.restricted = False
 
+discipline = create_script('typeclasses.scripts.disciplineScript',key = 'Cruac')
+discipline.db.longname = 'Cruac'
+discipline.db.prereq = 'target.get(\'Status\',subentry=\'Circle of the Crone\',statclass=\'Merit\') >= 1 or target.get(\'Cruac\',statclass=\'Discipline\') >= 1'
+discipline.db.reference = 'VtR p. 150-153'
+discipline.db.info = 'The Ritual Discipline taught by the Circle of the Crone, Crúac is an ancient, malevolent art — described by some opponents of the covenant as a literal infection of Vitae, a thing living within its practitioners. The power summoned by Crúac rites is the power of the Beast itself, paid in blood and forced to taint the world by invoking the primal gods of the Crone. Casting a rite is a fervent, consuming, ecstatic experience, and Acolytes often push the edge of frenzy when they perform their sorcery. Crúac is corrupting, wild, and pagan, degrading everything it touches with the corrosive aura of the Beast. It works its sorcery on flesh, wood, and stone, and is not concerned with the lofty thoughts and intellect of the Man.'
+discipline.db.restricted = False
+
 discipline = create_script('typeclasses.scripts.disciplineScript',key = 'Dominate')
 discipline.db.longname = 'Dominate'
 discipline.db.prereq = ''
@@ -61,6 +68,13 @@ discipline.db.longname = 'Resilience'
 discipline.db.prereq = ''
 discipline.db.reference = 'VtR p. 141'
 discipline.db.info = 'The Kindred are walking corpses, free of the frailties of a mortal form. Their bodies are capable of great endurance, but Resilience harnesses the Beast to take that endurance beyond “great” and into “impossible.” With Resilience a vampire could continue to act even when his body has been reduced to little more than bone and tendon.'
+discipline.db.restricted = False
+
+discipline = create_script('typeclasses.scripts.disciplineScript',key = 'Theban_Sorcery')
+discipline.db.longname = 'Theban Sorcery'
+discipline.db.prereq = 'target.get(\'Status\',subentry=\'Lancea et Sanctum\',statclass=\'Merit\') >= 1'
+discipline.db.reference = 'VtR p. 150-153'
+discipline.db.info = 'The Ritual Discipline of the Lancea et Sanctum, Theban Sorcery was discovered early in the covenant’s history. According to the writings of St. Daniel, one of the earliest members of the covenant, he was led by an angel naming itself “Amoniel” to a cavern deep beneath Thebes in Egypt. The cavern walls were covered in inscribed incantations and diagrams. These formed the basis of Theban Sorcery, which Daniel faithfully recorded and passed on to his fellow Kindred. Theban Sorcery is stern, deliberate, and judgmental — the product of a harsh, uncompromising faith — and the power it calls down feels the same way. Some ritualists characterize the power of miracles as transmitting the touch of God’s Curse (as opposed to the Beast) onto the subject. Sanctified miracles provide divinations, reveal wrong-doers and punish those who trespass against the church’s laws. Performing a Theban miracle is an act of concentrated faith, mentally exhausting and not done in haste. Every miracle requires a physical sacrament, a symbolic item that crumbles to dust as though it were a slain elder when the ritual reaches a crescendo.'
 discipline.db.restricted = False
 
 discipline = create_script('typeclasses.scripts.disciplineScript',key = 'Vigor')
