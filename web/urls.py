@@ -27,6 +27,7 @@ custom_patterns.append( url(r'^merits/', include('codes.web.merits.urls')))
 custom_patterns.append( url(r'^powers/', include('codes.web.powers.urls')))
 custom_patterns.append( url(r'^spheres/', include('codes.web.spheres.urls')))
 custom_patterns.append( url(r'^seemings/', include('codes.web.seemings.urls')))
+custom_patterns.append( url(r'^theban/', include('codes.web.theban.urls')))
 
 
 # this is required by Django.

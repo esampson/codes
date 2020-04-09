@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Theban Rites List</h1>
+
+    {% for item in theban %}
+		<li> <a href="../view/{{ item }}">{{ item }}</a> </li>
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/theban/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}

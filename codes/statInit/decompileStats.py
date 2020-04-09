@@ -13,3 +13,4 @@ from codes.statInit import decompilePowerStats
 from codes.statInit import decompileSeemings
 from codes.statInit import decompileSkills
 from codes.statInit import decompileSphereStats
+from codes.statInit import decompileTheban

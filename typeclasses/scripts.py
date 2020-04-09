@@ -109,6 +109,7 @@ from codes.stats.meritScripts import meritScript
 from codes.stats.powerStatScripts import powerStatScript
 from codes.stats.seemingScripts import seemingScript
 from codes.stats.sphereStatScripts import sphereStatScript
+from codes.stats.thebanRitesScripts import thebanRiteScript
 from codes.stats.dictionary import dictionaryScript
             
                              
