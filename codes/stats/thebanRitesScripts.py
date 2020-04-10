@@ -104,7 +104,7 @@ class thebanRiteScript(codesScript):
             target.db.thebanRites[name] = True
             result = True
         elif name in target.db.thebanRites and value == False:
-            del target.db.thebanRites
+            del target.db.thebanRites[name]
             result = True
         elif name not in target.db.thebanRites and value == False:
             result = True

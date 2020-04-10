@@ -825,6 +825,7 @@ INSTALLED_APPS = [
     "codes.web.kiths",
     "codes.web.merits",
     "codes.web.powers",
+    "codes.web.scales",
     "codes.web.seemings",
     "codes.web.spheres",
     "codes.web.theban"

@@ -26,8 +26,9 @@ custom_patterns.append( url(r'^disciplines/', include('codes.web.disciplines.url
 custom_patterns.append( url(r'^kiths/', include('codes.web.kiths.urls')))
 custom_patterns.append( url(r'^merits/', include('codes.web.merits.urls')))
 custom_patterns.append( url(r'^powers/', include('codes.web.powers.urls')))
-custom_patterns.append( url(r'^spheres/', include('codes.web.spheres.urls')))
+custom_patterns.append( url(r'^scales/', include('codes.web.scales.urls')))
 custom_patterns.append( url(r'^seemings/', include('codes.web.seemings.urls')))
+custom_patterns.append( url(r'^spheres/', include('codes.web.spheres.urls')))
 custom_patterns.append( url(r'^theban/', include('codes.web.theban.urls')))
 
 

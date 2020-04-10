@@ -11,6 +11,7 @@ from codes.statInit import decompileDisciplines
 from codes.statInit import decompileKiths
 from codes.statInit import decompileMerits
 from codes.statInit import decompilePowerStats
+from codes.statInit import decompileScales
 from codes.statInit import decompileSeemings
 from codes.statInit import decompileSkills
 from codes.statInit import decompileSphereStats

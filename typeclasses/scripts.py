@@ -108,6 +108,7 @@ from codes.stats.disciplineScripts import disciplineScript
 from codes.stats.kithScripts import kithScript
 from codes.stats.meritScripts import meritScript
 from codes.stats.powerStatScripts import powerStatScript
+from codes.stats.scalesScripts import scaleScript
 from codes.stats.seemingScripts import seemingScript
 from codes.stats.sphereStatScripts import sphereStatScript
 from codes.stats.thebanRitesScripts import thebanRiteScript

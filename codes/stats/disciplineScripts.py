@@ -37,6 +37,8 @@ class disciplineScript(codesScript):
         if target.db.disciplines:
             if self.db.longname in target.db.disciplines:
                 result = target.db.disciplines[self.db.longname]
+            else:
+                result = 0
         else:
             result = 0
         return result

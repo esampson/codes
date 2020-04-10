@@ -1,17 +1,18 @@
 from codes.stats.codesScript import codesScript
 
-class devotionScript(codesScript):
+class scaleScript(codesScript):
     
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
-            self.tags.add('devotion_stat')
+            self.tags.add('scale_stat')
                 
-    def update(self,longname='', cost=0, 
+    def update(self,longname='', mystery='', rank=1, 
                prereq='', restricted=False, reference='',
                info=''):
         self.db.longname = longname
-        self.db.cost = cost
+        self.db.mystery = mystery
+        self.db.rank = rank
         self.db.prereq = prereq
         self.db.restricted = restricted
         self.db.reference = reference
@@ -22,7 +23,7 @@ class devotionScript(codesScript):
         get
 
 
-        Determines if a character has a given devotion. Should only return True or
+        Determines if a character has a given scale. Should only return True or
         False
 
 
@@ -30,11 +31,9 @@ class devotionScript(codesScript):
         subentry: Dummy for overloading
 
         """
-        if target.db.devotions:
-            if self.db.longname in target.db.devotions:
+        if target.db.scales:
+            if self.db.longname in target.db.scales:
                 result = True
-            else:
-                result = False
         else:
             result = False
         return result
@@ -44,7 +43,7 @@ class devotionScript(codesScript):
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a devotion. Should
+        Determines if a character meets the prerequisites to purchase a scale. Should
         only return True or False.
 
 
@@ -54,10 +53,16 @@ class devotionScript(codesScript):
 
 
         """
-        if eval(self.db.prereq):
-            result = True
+        if self.db.prereq:
+            if eval(self.db.prereq):
+                result = True
+            else:
+                result = False
         else:
-            result = False
+            if target.get(self.db.mystery,statclass='Coil') > 0:
+                result = True
+            else:
+                result = False
         return result
     
     def cost(self, target, value, subentry=''):
@@ -65,7 +70,7 @@ class devotionScript(codesScript):
         cost
 
 
-        Determines the cost for a character to purchase a devotion.
+        Determines the cost for a character to purchase a scale.
 
 
         target: The character being checked
@@ -74,7 +79,11 @@ class devotionScript(codesScript):
 
 
         """
-        result = self.db.cost
+        if (target.get(self.db.mystery,statclass='Coil') >= 
+            self.db.rank):
+            result = 1
+        else:
+            result = 2
         return result
     
     def set(self, target, value, subentry=''):
@@ -82,28 +91,28 @@ class devotionScript(codesScript):
         set
 
 
-        Sets the value of a devotion on a character sheet if value is True. Removes
-        the devotion if the value is False.
+        Sets the value of a scale on a character sheet if value is True. Removes
+        the scale if the value is False.
 
 
-        target: The character the devotion is being set for
-        value: The value the devotion is being set to
+        target: The character the scale is being set for
+        value: The value the scale is being set to
         subentry: Dummy for overloading
 
 
         """
-        if not target.db.devotions:
-            target.db.devotions = {}
+        if not target.db.scales:
+            target.db.scales = {}
         name = self.db.longname
-        if  name not in target.db.devotions and value == True:
-            target.db.devotions[name] = True
+        if  name not in target.db.scales and value == True:
+            target.db.scales[name] = True
             result = True
-        elif name in target.db.devotions and value == False:
-            del target.db.devotions[name]
+        elif name in target.db.scales and value == False:
+            del target.db.scales[name]
             result = True
-        elif name not in target.db.devotions and value == False:
+        elif name not in target.db.scales and value == False:
             result = True
-        elif name in target.db.devotions and value == True:
+        elif name in target.db.scales and value == True:
             result = True
         else:
             result = False

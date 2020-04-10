@@ -128,7 +128,7 @@ class coilScript(codesScript):
             current = 0
         amount = value - current
         if (target.db.sphere and 'Mystery Coil' in target.db.sphere and 
-            name != target.sd.sphere['Mystery Coil']):
+            name != target.db.sphere['Mystery Coil']):
             result = amount * 4
         else:
             result = amount * 3      
@@ -163,7 +163,7 @@ class coilScript(codesScript):
                     target.db.sphere['Mystery Coil'] = name
             else:
                 target.db.sphere = { 'Mystery Coil' : name }
-        if value == 0:
+        elif value == 0:
             if target.db.coils and name in target.db.coils:
                 del target.db.coils[name]
             result = True

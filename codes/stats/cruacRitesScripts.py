@@ -104,7 +104,7 @@ class cruacRiteScript(codesScript):
             target.db.cruacRites[name] = True
             result = True
         elif name in target.db.cruacRites and value == False:
-            del target.db.cruacRites
+            del target.db.cruacRites[name]
             result = True
         elif name not in target.db.cruacRites and value == False:
             result = True

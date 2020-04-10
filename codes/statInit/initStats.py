@@ -13,6 +13,7 @@ from codes.statInit import initDisciplines
 from codes.statInit import initKiths
 from codes.statInit import initMerits
 from codes.statInit import initPowerStats
+from codes.statInit import initScales
 from codes.statInit import initSeemings
 from codes.statInit import initSkills
 from codes.statInit import initSphereStats
