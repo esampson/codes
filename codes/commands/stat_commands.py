@@ -215,7 +215,7 @@ class CmdInfo(default_cmds.MuxCommand):
             self.caller.msg('Nothing found')
         elif len(stats) == 1:
             message = stats[0].db.longname + '\\n\\n'
-            message = message + stats[0].type().capitalize()
+            message = message + proper_caps(stats[0].type())
             if stats[0].db.info:
                 if len(stats[0].db.info) > 0:
                     message = (message + '\\n\\n' +
@@ -235,7 +235,7 @@ class CmdInfo(default_cmds.MuxCommand):
             self.caller.msg(message)
         else:
             self.caller.msg('Too many found')
-                
+    
 class CmdSheet(default_cmds.MuxCommand):
     """
     Usage:
@@ -509,4 +509,13 @@ def build_bottom_block(sub_blocks):
         counter = counter + 1
     return result
     
+def proper_caps(string):
+    result = ''
+    for item in string.split(' '):
+        if item not in ('of', 'the', 'or') or forloop.counter == 1:
+            result = result + item.capitalize() + ' '
+        else:
+            result = result + item.lower() + ' '
+    result = result[:-1]
+    return result
     

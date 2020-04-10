@@ -99,6 +99,7 @@ from codes.stats.advantageScripts import advantageScript
 from codes.stats.attributeScripts import attributeScript
 from codes.stats.basicStatScripts import basicStatScript
 from codes.stats.clanScripts import clanScript
+from codes.stats.coilScripts import coilScript
 from codes.stats.contractScripts import contractScript
 from codes.stats.covenantScripts import covenantScript
 from codes.stats.cruacRitesScripts import cruacRiteScript

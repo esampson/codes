@@ -5,6 +5,7 @@ tags = { 'advantage_stat' : 'advantage',
          'basic_stat' : 'basic',
          'clan_stat' : 'clan',
          'contract_stat' : 'contract',
+         'coil_stat' : 'coil',
          'covenant_stat' : 'covenant',
          'cruac_rite_stat' : 'cruac rite',
          'devotion_stat' : 'devotion',
@@ -15,7 +16,7 @@ tags = { 'advantage_stat' : 'advantage',
          'seeming_stat' : 'seeming',
          'skill_stat' : 'skill',
          'sphere_stat' : 'sphere',
-         'theban_rite_stat' : 'theban rite' }
+         'theban_rite_stat' : 'theban miracle' }
 
 class codesScript(Script):
     

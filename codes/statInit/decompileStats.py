@@ -2,6 +2,7 @@ from codes.statInit import decompileAdvantages
 from codes.statInit import decompileAttributes
 from codes.statInit import decompileBasicStats
 from codes.statInit import decompileClans
+from codes.statInit import decompileCoils
 from codes.statInit import decompileContracts
 from codes.statInit import decompileCovenants
 from codes.statInit import decompileCruac
