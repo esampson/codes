@@ -112,9 +112,9 @@ class CmdSetStaff(Command):
             self.caller.msg('Something went wrong with the search')
         else:
             if len(character) == 0:
-                self.caller.msg('I can\'t find character ' + request)
+                self.caller.msg('I can\'t find character ' + parsed['args'])
             elif len(character) > 1:
-                self.caller.msg('Too many possible matches for ' + request)
+                self.caller.msg('Too many possible matches for ' + parsed['args'])
             else:
                 try:
                     set(character[0],parsed['entry'],subentry=parsed['subentry'],statclass=parsed['statclass'],value=parsed['value'])

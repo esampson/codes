@@ -1,5 +1,7 @@
 from codes.stats.codesScript import codesScript
 
+power_source = {'Glamour' : 'Wyrd',
+                 'Vitae' : 'Blood Potency'}
 class advantageScript(codesScript):
     
     def at_script_creation(self):
@@ -29,25 +31,21 @@ class advantageScript(codesScript):
         """
         advantages = target.db.advantages
         name = self.db.longname
-        if self.db.pool and (subentry.lower() not in ['permanent', 'perm'] and subentry != ''):
+        if self.db.energy and (subentry.lower() in ['permanent', 'perm'] or subentry == ''):
+            if target.db.power and power_source[name] in target.db.power:
+                pools = [10,11,12,13,15,20,25,30,50,75]
+                result = pools[target.get(power_source[name],statclass='Power')-1]
+            else:
+                result = 0
+        elif self.db.pool and (subentry.lower() not in ['permanent', 'perm'] and subentry != ''):
             if subentry.lower() in ['temporary', 'temp']:
                 if name in target.db.advantages:
-                    result = target.db.advantages[name]
-            elif subentry.lower() == 'bar':
-                result_1 = ''
-                max = self.get(target, subentry='Permanent')
-                current = target.db.advantages[name]
-                for box in range(max):
-                    result_1 = result_1 +'['
-                    if box <= max - current - 1:
-                        result_1 = result_1 + 'X'
-                    else:
-                        result_1 = result_1 + ' '
-                    result_1 = result_1 + ']'
-                result = result_1
+                    result = self.get(target,subentry='permanent') - target.db.advantages[name]
+                else:
+                    result = self.get(target,subentry='permanent')
             else:
                 result = False
-        if name == 'Size':
+        elif name == 'Size':
             result = 5
             if target.get('Giant',statclass='Merit') == 3:
                 result = result + 1
@@ -107,17 +105,11 @@ class advantageScript(codesScript):
                 result = result + ']'
             else:
                 result = False
-        elif name == 'Glamour':
-            if subentry.lower() in ['permanent', 'perm'] or subentry == '':
-                pools = [10,11,12,13,15,20,25,30,50,75]
-                result = pools[target.get('Wyrd',statclass='Power')-1]
-            elif subentry.lower() in ['temporary', 'temp']:
-                if 'Clarity' in target.db.advantages:
-                    result = target.db.advantages['Glamour']
-            else:
-                result = False
         else:
-            result = False
+            try:
+                result = target.db.advantages[name]
+            except:
+                result = False
         return result
         
     def meets_prereqs(self, target, value=0, subentry=''):
@@ -161,29 +153,15 @@ class advantageScript(codesScript):
 
         """
         name = self.db.longname
-        if name == 'Willpower':
-            if subentry.lower() in ['permanent', 'perm']:
-                result = False
-            elif subentry.lower() in ['temporary', 'temp'] or subentry == '':
-                target.db.advantages['Willpower'] = target.resolve() + target.composure() - value
-                result = True
-        elif name == 'Clarity':
-            if subentry.lower() in ['permanent', 'perm']:
-                result = False
-            elif subentry.lower() in ['temporary', 'temp'] or subentry == '':
-                target.db.advantages['Clarity'] = target.wits() + target.composure() - value
-                result = True
+        if self.db.pool:
+            target.db.advantages[name] = self.get(target,subentry='permanent') - value
+            result = True
         elif name == 'Integrity':
             target.db.advantages['Integrity'] = value
             result = True
-        elif name == 'Glamour':
-            if subentry.lower() in ['permanent', 'perm']:
-                result = False
-            elif subentry.lower() in ['temporary', 'temp'] or subentry == '':
-                pools = [10,11,12,13,15,20,25,30,50,75]
-                pool = pools[target.get('Wyrd',statclass='Power')-1]
-                target.db.advantages['Glamour'] = pool - value
-                result = True
+        elif name == 'Humanity':
+            target.db.advantages['Humanity'] = value
+            result = True
         elif name == 'Health':
             if subentry.lower() in ['permanent', 'perm'] or subentry == '':
                 result = False

@@ -78,7 +78,10 @@ class Character(DefaultCharacter):
         self.db.merits = []
         
     def template(self):
-        return self.db.basics['Sphere']
+        if self.db.basics and 'Sphere' in self.db.basics:
+            return self.db.basics['Sphere']
+        else:
+            return 'None'
     
     def intelligence(self):
         return self.db.attributes['Intelligence']

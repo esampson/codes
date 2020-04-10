@@ -2,6 +2,13 @@ import textwrap
 
 blank = ' ' * 28
 
+def blank_template_block():
+    block = []
+    blank = ' ' * 28
+    for count in range(15):
+        block.append(blank)
+    return block
+
 def changeling_template_block(target):
     block = []
     try:
@@ -60,15 +67,11 @@ def changeling_template_block(target):
         block.append(' Wyrd:' + str(target.get('Wyrd',
                         statclass='Power')).rjust(21) + ' ')
         glamour = (str(target.get('Glamour',statclass='Advantage',
-                                  subentry='perm') -
-                       target.get('Glamour',statclass='Advantage',
                                   subentry='temp')) +'/' +
                    str(target.get('Glamour',statclass='Advantage',
                                   subentry='perm')))
         block.append(' Glamour:' + glamour.rjust(18) + ' ')
         clarity = (str(target.get('Clarity',statclass='Advantage',
-                                  subentry='perm') -
-                       target.get('Clarity',statclass='Advantage',
                                   subentry='temp')) +'/' +
                    str(target.get('Clarity',statclass='Advantage',
                                   subentry='perm')))
@@ -91,5 +94,39 @@ def mortal_template_block(target):
     except:
         for line in range(15):
             block.append(blank)    
+    return block
+
+def vampire_template_block(target):
+    block = []
+    try:
+        temp=[]
+        entries = ['Clan', 'Covenant', 'Mask', 'Dirge']
+        for entry in entries:
+            temp.append(' ' + (entry + ":").ljust(14) + 
+                         target.get(entry,statclass='Sphere'))
+        coterie = target.get('Coterie',statclass='Sphere')
+        if coterie and len(coterie) > 0:
+            temp.append(' ' + 'Coterie:'.ljust(14) + coterie)
+        mystery = target.get('Mystery Coil', statclass='Sphere')
+        if mystery and len(mystery) > 0:
+            temp.append(' ' + 'Mystery Coil:'.ljust(14) + mystery)
+        for line in temp:
+            for subline in textwrap.wrap(line,27,subsequent_indent='  '):
+                block.append(subline.ljust(28))
+        if len(block) < 15:
+            for extra in range(len(block),15):
+                block.append(blank)
+        block[12]=(' Blood Potency:' + str(target.get('Blood Potency',
+                        statclass='Power')).rjust(12) + ' ')
+        vitae = (str(target.get('Vitae',statclass='Advantage',
+                                  subentry='temp')) +'/' +
+                   str(target.get('Vitae',statclass='Advantage',
+                                  subentry='perm')))
+        block[13]=(' Vitae:' + vitae.rjust(20) + ' ')
+        humanity = str(target.get('Humanity',statclass='Advantage'))
+        block[14]=(' Humanity:' + humanity.rjust(17) + ' ')
+    except:
+        for line in range(15):
+            block.append(blank)
     return block
     

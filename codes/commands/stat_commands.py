@@ -9,6 +9,8 @@ from codes.scroll import scroll
 from codes import data
 from codes.sidebars import changeling_template_block
 from codes.sidebars import mortal_template_block
+from codes.sidebars import vampire_template_block
+from codes.sidebars import blank_template_block
 
 import textwrap
 import re
@@ -322,8 +324,7 @@ def produce_sheet(target):
         (' ' * gap2) + 'Init:' 
         + str(target.get('Init',statclass='Advantage')).rjust(4) + ' ')
     block3.append('   ' + health_bar + (' ' * gap1) + 'Will:' +
-        (str(target.get('Willpower',statclass='Advantage',subentry='perm')
-        - target.get('Willpower',statclass='Advantage',subentry='temp')) 
+        str(str(target.get('Willpower',statclass='Advantage',subentry='temp'))
         + '/' + 
         str(target.get('Willpower',statclass='Advantage',
                        subentry='perm'))).rjust(7) +
@@ -334,7 +335,11 @@ def produce_sheet(target):
     if target.template().lower() == 'changeling':
         block_t = changeling_template_block(target)
     elif target.template().lower() == 'mortal':
-        block_t = mortal_template_block(target)          
+        block_t = mortal_template_block(target)
+    elif target.template().lower() == 'vampire':
+        block_t = vampire_template_block(target)
+    else:
+        block_t = blank_template_block()        
         
     #Build the bottom block
     block = []
@@ -379,7 +384,76 @@ def produce_sheet(target):
             counter = counter + 1
         block.append(merit_blocks[1][:-1])
         block.append(merit_blocks[0])
-        #target.msg(block)
+    if target.template().lower() == 'vampire':
+        sub_block = ['Merits:']
+        temp = merits_list(target)
+        for item in temp:
+            for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                sub_block.append(' ' + line)
+        block.append(sub_block)
+        
+        #disciplines
+        if target.db.disciplines:
+            sub_block = ['Disciplines:']
+            temp = simple_list(target.db.disciplines)
+            for item in temp:
+                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+        
+        #devotions
+        if target.db.devotions:
+            sub_block = ['Devotions:']
+            temp = simple_list(target.db.devotions)
+            for item in temp:
+                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+            
+        #coils
+        if target.db.coils:
+            sub_block = ['Coils:']
+            temp = simple_list(target.db.coils)
+            for item in temp:
+                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+            
+        #Cruac Rites
+        if target.db.cruacRites:
+            sub_block = ['Rites:']
+            temp = simple_list(target.db.cruacRites)
+            for item in temp:
+                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+            
+        #Theban Miracles
+        if target.db.thebanRites:
+            sub_block = ['Miracles:']
+            temp = simple_list(target.db.thebanRites)
+            for item in temp:
+                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+        
+        #Scales
+        if target.db.scales:
+            sub_block = ['Scales:']
+            temp = simple_list(target.db.scales)
+            for item in temp:
+                for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+        
+        banes = target.get('Banes', 'Sphere')
+        if not(banes == False):
+            if len(banes) != 0:
+                sub_block = ['Banes:']
+                for item in banes:
+                    for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                        sub_block.append(' ' + line)
+                block.append(sub_block)
     temp = specialties_list(target)
     sub_block = ['Specialties:']
     for item in temp:
@@ -446,10 +520,21 @@ def contracts_list(target):
         results = []
         for contract in contract_list:
             if contracts[contract] == '':
-                result = results.append(contract)
+                results.append(contract)
             else:
-                result = results.append(contract+' ('+contracts[contract]+')')
+                results.append(contract+' ('+contracts[contract]+')')
         return results
+    
+def simple_list(attribute):
+    results = []
+    item_list = sorted(list(attribute.keys()))
+    for item in item_list:
+        if attribute[item] == True:
+            new_line = item
+        else:
+            new_line = item + ': ' + str(attribute[item])
+        results.append(new_line)
+    return results
     
 def build_bottom_block(sub_blocks):
     columns = [ [], [], [] ]
