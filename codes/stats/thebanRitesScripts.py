@@ -33,6 +33,8 @@ class thebanRiteScript(codesScript):
         if target.db.thebanRites:
             if self.db.longname in target.db.thebanRites:
                 result = True
+            else:
+                result = False
         else:
             result = False
         return result

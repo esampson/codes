@@ -55,6 +55,31 @@ def xp_spend(caller, raw_string, **kwargs):
                                           { 'power' : 'Wyrd' } ) } )
         option_list.append ( { 'desc' : 'Buy Contract or Seeming Blessing',
                                'goto' : 'xp_buy_contract' } )
+    if caller.template().lower() == 'vampire':
+        option_list.append ( { 'desc' : 'Increase Blood Potency', 
+                               'goto' : ( _xp_buy_power, 
+                                          { 'power' : 'Blood Potency' } ) } )
+        option_list.append ( { 'desc' : 'Buy Discipline',
+                                'goto' : ('xp_buy_flat_stat',
+                                    {'type' : 'Discipline' } ) } )
+        option_list.append ( { 'desc' : 'Buy Devotion',
+                               'goto' :  ('xp_buy_flat_stat',
+                                    {'type' : 'Devotion' } ) } )
+        if caller.get('Covenant',statclass='Sphere').lower() == 'ordo dracul':
+            option_list.append ( { 'desc' : 'Buy Coil',
+                               'goto' :  ('xp_buy_flat_stat',
+                                    {'type' : 'Coil' } ) } )
+            option_list.append ( { 'desc' : 'Buy Scale',
+                                'goto' : ('xp_buy_flat_stat',
+                                    {'type' : 'Scale' } ) } )
+        if caller.get('Covenant',statclass='Sphere').lower() == 'circle of the crone':
+            option_list.append ( { 'desc' : 'Buy Cruac Rite',
+                               'goto' :  ('xp_buy_flat_stat',
+                                    {'type' : 'Cruac Rite' } ) } )
+        if caller.get('Covenant',statclass='Sphere').lower() == 'lancea et sanctum':
+            option_list.append ( { 'desc' : 'Buy Theban Miracle',
+                               'goto' : ('xp_buy_flat_stat',
+                                    {'type' : 'Theban Miracle' } ) } )
     option_list.append ( { 'key' : 'Q',
                            'desc' : 'Quit',
                            'goto' : 'xp_exit' } )
@@ -214,7 +239,10 @@ def _xp_check_order(caller, raw_string, **kwargs):
         return 'xp_spend'
     else:
         stat = stats[0]
-        value = stat.get(caller, subentry=kwargs['subentry']) + 1
+        if kwargs['type'].lower() in ['devotion']:
+            value = True
+        else:
+            value = stat.get(caller, subentry=kwargs['subentry']) + 1
         cost = stat.cost(caller, subentry=kwargs['subentry'], value=value)
         current = caller.db.xp['earned'] - caller.db.xp['spent']
         if cost > current:
@@ -268,7 +296,7 @@ def _xp_check_known_stat(caller, raw_string, **kwargs):
             
 def xp_increase(caller, raw_string, **kwargs):
     text = 'Buy ' + kwargs['name']
-    if kwargs['type'] not in ['specialty', 'contract']:
+    if kwargs['type'] not in ['specialty', 'contract'] and str(kwargs['value']) != 'True':
         text = text + ': ' + str(kwargs['value'])
     text = text + ' for ' + str(kwargs['cost']) + ' XP?'
     if 'special' in kwargs:
@@ -403,7 +431,7 @@ def _xp_purchase(caller, raw_string, **kwargs):
         if current_frailties == False:
             current_frailties = []
         current_frailties.append(kwargs['frailty'])
-        f.set(caller,current_frailties)
+        f.set(caller,str(current_frailties))
         
     return 'start'
 
@@ -449,7 +477,7 @@ def _xp_check_specialties(caller, raw_string, **kwargs):
                                 'value' : True,
                                 'subentry' : '',
                                 'cost' : 1 }
-    
+        
 def xp_exit(caller, raw_string, **kwargs):
     caller.msg('Exitting')
     return None

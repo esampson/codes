@@ -4,7 +4,7 @@ merit = create_script('typeclasses.scripts.meritScript',key = 'Acute_Senses')
 merit.db.longname = 'Acute Senses'
 merit.db.category = 'Changeling and Vampire'
 merit.db.range = [1]
-merit.db.prereq = '(target.template().lower() == \'changeling\' and (target.wits() >= 3 or target.composure() >= 3)) or target.template.lower() == \'vampire\''
+merit.db.prereq = '(target.template().lower() == \'changeling\' and (target.wits() >= 3 or target.composure() >= 3)) or target.template().lower() == \'vampire\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 111, VtR p. 109'
 merit.db.info = 'The changeling’s senses are especially acute, even by the standards of high Clarity. Her sight, hearing, and sense of smell operate at twice the distance and accuracy of mortal senses. She can’t see in pitch darkness (for that, she needs Contract magic), but she can see much more clearly than humans can.|/|/Add the character’s Wyrd rating as dice to any perception-based rolls. This bonus supersedes the one normally granted by maximum Clarity. Also, add the bonus to any rolls made to remember or identify details.'

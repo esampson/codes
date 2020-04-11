@@ -6,7 +6,7 @@ import textwrap
 
 def find(iString, statclass = ''):
     """
-    findE
+    find
 
 
     Returns a list of data scripts which begin with iString. If statclass is

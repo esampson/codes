@@ -529,7 +529,7 @@ def simple_list(attribute):
     results = []
     item_list = sorted(list(attribute.keys()))
     for item in item_list:
-        if attribute[item] == True:
+        if str(attribute[item]) == 'True':
             new_line = item
         else:
             new_line = item + ': ' + str(attribute[item])
@@ -548,32 +548,29 @@ def build_bottom_block(sub_blocks):
             if column_lengths[2] == 0:
                 for item in block[1]:
                     columns[2].append(item)
-                    column_lengths[2] = column_lengths[2] + block[0]
             else:
                 columns[2].append(' ')
                 for item in block[1]:
                     columns[2].append(item)
-                    column_lengths[2] = column_lengths[2] + block[0] + 1
+            column_lengths[2] = len(columns[2])
         elif column_lengths[1] <= column_lengths[2] and column_lengths[1] <= column_lengths[0]:
             if column_lengths[1] == 0:
                 for item in block[1]:
                     columns[1].append(item)
-                    column_lengths[1] = column_lengths[1] + block[0]
             else:
                 columns[1].append(' ')
                 for item in block[1]:
                     columns[1].append(item)
-                    column_lengths[1] = column_lengths[1] + block[0] + 1
+            column_lengths[1] = len(columns[1])
         elif column_lengths[0] <= column_lengths[1] and column_lengths[0] <= column_lengths[2]:
             if column_lengths[0] == 0:
                 for item in block[1]:
                     columns[0].append(item)
-                    column_lengths[0] = column_lengths[0] + block[0]
             else:
                 columns[0].append(' ')
                 for item in block[1]:
                     columns[0].append(item)
-                    column_lengths[0] = column_lengths[0] + block[0] + 1
+            column_lengths[0] = len(columns[0])
     result = []
     counter = 0
     while counter<len(columns[0]) or counter<len(columns[1]) or counter<len(columns[2]):

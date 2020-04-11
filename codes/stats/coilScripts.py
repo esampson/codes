@@ -36,7 +36,7 @@ class coilScript(codesScript):
         """
         if target.db.coils:
             if self.db.longname in target.db.coils:
-                result = target.coils[self.db.longname]
+                result = target.db.coils[self.db.longname]
         else:
             result = 0
         return result
@@ -62,8 +62,9 @@ class coilScript(codesScript):
             target.db.sphere['Covenant'] == 'Ordo Dracul'):
             
             #Coil is mystery coil
-            if ('Mystery Coil' in target.db.sphere and 
-                target.db.sphere['Mystery Coil'] == name):
+            if (('Mystery Coil' in target.db.sphere and 
+                target.db.sphere['Mystery Coil'] == name) or
+                'Mystery Coil' not in target.db.sphere):
                 if self.db.prereq:
                     if eval(self.db.prereq) and value <= 5:
                         result = True
@@ -81,27 +82,27 @@ class coilScript(codesScript):
                         mystery = target.db.sphere['Mystery Coil']
                     else:
                         mystery = ''
-                    non_mystery = 0
-                    if target.db.coils:
-                        for item in list(target.db.coils.keys()):
-                            if item != name and item != mystery:
-                                non_mystery = (non_mystery + 
-                                    target.db.sphere['Mystery Coil'])
-                    non_mystery = non_mystery + value
-                    if non_mystery > target.get('Status', 
-                                                subentry='Ordo Dracul', 
-                                                statclass='Merit'):
-                        result = False
-                    else:
-                        if self.db.prereq:
-                            if eval(self.db.prereq) and value <= 5:
-                                result = True
-                            else:
-                                result = False
-                        if value <= 5:
+                non_mystery = 0
+                if target.db.coils:
+                    for item in list(target.db.coils.keys()):
+                        if item != name and item != mystery:
+                            non_mystery = (non_mystery + 
+                                target.db.coils[item])
+                non_mystery = non_mystery + value
+                if non_mystery > target.get('Status', 
+                                            subentry='Ordo Dracul', 
+                                            statclass='Merit'):
+                    result = False
+                else:
+                    if self.db.prereq:
+                        if eval(self.db.prereq) and value <= 5:
                             result = True
                         else:
                             result = False
+                    elif value <= 5:
+                        result = True
+                    else:
+                        result = False
         else:
             result = False
 

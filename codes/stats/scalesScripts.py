@@ -34,6 +34,8 @@ class scaleScript(codesScript):
         if target.db.scales:
             if self.db.longname in target.db.scales:
                 result = True
+            else:
+                result = False
         else:
             result = False
         return result

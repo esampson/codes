@@ -13,7 +13,8 @@ anchors = { 'virtue' : ['Charity', 'Competitive', 'Faith', 'Fortitude',
                           'Wrath'] }
 
 def mortal_template(caller, raw_string, **kwargs):
-    caller.db.basics['Sphere'] = 'Mortal'
+    caller.db.basics = { 'Sphere' : 'Mortals' }
+    caller.db.power = {}
     virtue = get(caller,'Virtue',statclass='Sphere')
     vice = get(caller,'Vice',statclass='Sphere')
     text = 'Virtue: ' 
@@ -96,10 +97,10 @@ def add_merit(caller, raw_string, **kwargs):
 def _check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
     if len(merits) < 1:
-        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
+        caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
         return 'mortal_merits'
     elif len(merits) > 1:
-        caller.msg('Too many matches found')
+        caller.msg('|/Too many matches found')
         return 'mortal_merits'
     else:
         merit = merits[0]
@@ -136,7 +137,7 @@ def _check_merit_note(caller, raw_string, **kwargs):
                                 'merit' : merit,
                                 'max' : kwargs['max']}
     else:
-        caller.msg('Invalid note for that merit')
+        caller.msg('|/Invalid note for that merit')
         return 'mortal_merits'
     
 def get_merit_value(caller, raw_string, **kwargs):
@@ -151,23 +152,23 @@ def get_merit_value(caller, raw_string, **kwargs):
 
 def _check_merit_value(caller, raw_string, **kwargs):
     if not strip_control_sequences(raw_string).isnumeric():
-        caller.msg('Invalid value')
+        caller.msg('|/Invalid value')
         return 'mortal_merits'
     else:
         value=int(strip_control_sequences(raw_string)) 
         if value < 1:
-            caller.msg('Invalid value')
+            caller.msg('|/Invalid value')
             return 'mortal_merits'
         elif value + kwargs['total'] - kwargs['merit'].get(caller,
                                     subentry=kwargs['note']) >  kwargs['max']:
-            caller.msg('You don\'t have enough points')
+            caller.msg('|/You don\'t have enough points')
             return 'mortal_merits'
         elif kwargs['merit'].meets_prereqs(caller,value=value,
                                            subentry=kwargs['note']):
             kwargs['merit'].set(caller,value=value,subentry=kwargs['note'])
             return 'mortal_merits'
         else:
-            caller.msg('You don\'t meet the prerequisites for that merit')
+            caller.msg('|/You don\'t meet the prerequisites for that merit')
             return 'mortal_merits'
 
 def remove_merit(caller, raw_string, **kwargs):
@@ -186,11 +187,7 @@ def remove_merit(caller, raw_string, **kwargs):
     return text,options
 
 def _delete_merit(caller, raw_string, **kwargs):
-    if ( kwargs['entry'] == 'Mantle' and 
-         kwargs['subentry'] == caller.db.sphere['Court'] ):
-        caller.msg('You can\'t remove your court mantle')
-    else:
-        set(caller, kwargs['entry'], subentry=kwargs['subentry'], value=0)
+    set(caller, kwargs['entry'], subentry=kwargs['subentry'], value=0)
     return 'mortal_merits'
     
 def quit(caller, raw_string, **kwargs):
@@ -203,6 +200,7 @@ def mortal_finish_cg(caller, raw_string, **kwargs):
                       permanent=True)
     caller.cmdset.delete('codes.commands.character_commands.unfinished_character')
     set(caller,'Integrity',statclass='Advantage', value=7)
+    set(caller,'Willpower',statclass='Advantage', value=caller.get('Willpower',subentry='Permanent',statclass='Advantage'))
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,

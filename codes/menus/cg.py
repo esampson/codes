@@ -2,8 +2,6 @@ from codes.data import get
 from codes.data import set
 from evennia.utils.utils import strip_control_sequences
 from codes.menus.menu_types import ExMenu
-
-import time
   
 stats = { 'attribute' : {'physical' : ['Strength', 'Dexterity', 'Stamina'],
               'mental' : ['Intelligence', 'Wits', 'Resolve'],
@@ -16,25 +14,6 @@ stats = { 'attribute' : {'physical' : ['Strength', 'Dexterity', 'Stamina'],
              'social' : ['Animal Ken', 'Empathy', 'Expression', 'Intimidation',
                          'Persuasion', 'Socialize', 'Streetwise',
                          'Subterfuge'] } }
-
-anchors = { 'mortal' : 
-              { 'virtue' : ['Charity', 'Competitive', 'Faith', 'Fortitude', 
-                            'Generous', 'Hope', 'Justice', 'Loyal', 'Prudence',
-                            'Temperance'],
-                'vice' : ['Ambitious', 'Arrogant', 'Competitive', 'Envy',
-                          'Gluttony', 'Greed', 'Lust', 'Pride', 'Sloth',
-                          'Wrath'] },
-            'changeling' :
-              { 'needle' : ['Bon Vivant', 'Chess Master', 'Commander',
-                            'Composer', 'Counselor', 'Daredevil', 'Dynamo',
-                            'Protector', 'Provider', 'Scholar', 'Storyteller',
-                            'Teacher', 'Traditionalist', 'Visionary'],
-                'thread' : ['Acceptance', 'Anger', 'Family', 'Friendship',
-                            'Hate', 'Honor', 'Joy', 'Love', 'Memory',
-                            'Revenge'] } }
-
-courts = ['Spring', 'Summer', 'Autumn', 'Winter', 'None']
-regalia = ['Crown', 'Jewels', 'Mirror', 'Shield', 'Steed', 'Sword']
 
 def start(caller):
     
@@ -297,16 +276,24 @@ def assign_template(caller, raw_string, **kwargs):
         { 'desc' : 'Mortal',
           'goto' : 'mortal_template' },
         { 'desc' : 'Changeling',
-          'goto' : 'changeling_template' } )
+          'goto' : 'changeling_template' },
+        { 'desc' : 'Vampire',
+          'goto' : 'vampire_template' } )
     return text, options
 
 def mortal_template(caller, raw_string, **kwargs):
+    caller.db.sphere={}
     ExMenu(caller, 'codes.menus.cg_mortal', startnode = 'mortal_template')
     text = {'format' : 'suppress'}
     return text,None
     
 def changeling_template(caller, raw_string, **kwargs):
     ExMenu(caller, 'codes.menus.cg_changeling', startnode = 'changeling_template')
+    text = {'format' : 'suppress'}
+    return text,None
+
+def vampire_template(caller, raw_string, **kwargs):
+    ExMenu(caller, 'codes.menus.cg_vampire', startnode = 'vampire_template')
     text = {'format' : 'suppress'}
     return text,None
     

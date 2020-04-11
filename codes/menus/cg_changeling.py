@@ -19,9 +19,9 @@ courts = ['Spring', 'Summer', 'Autumn', 'Winter', 'None']
 regalia = ['Crown', 'Jewels', 'Mirror', 'Shield', 'Steed', 'Sword']
 
 def changeling_template(caller, raw_string, **kwargs):
-    caller.db.basics['Sphere'] = 'Changeling'
-    caller.db.sphere['Frailties']=[]
-    caller.db.power['Wyrd'] = 1
+    caller.db.basics = { 'Sphere' : 'Changeling' }
+    caller.db.sphere = { 'Frailties' : [] }
+    caller.db.power = { 'Wyrd' : 1 }
     text = 'Select Seeming:'
     option_list = []
     seemings_list = search_script_tag('seeming_stat')
@@ -52,7 +52,7 @@ def changeling_stat(caller, raw_string, **kwargs):
 def _raise_stat(caller, raw_string, **kwargs):
     start_value = caller.get(kwargs['stat'],statclass='Attribute')
     if start_value == 5:
-        caller.msg('Can\'t boost a stat to over 5')
+        caller.msg('|/Can\'t boost a stat to over 5')
         return "changeling_stats"
     else:
         set(caller, kwargs['stat'], statclass='Attribute', value=start_value+1)
@@ -203,10 +203,10 @@ def add_merit(caller, raw_string, **kwargs):
 def _check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
     if len(merits) < 1:
-        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
+        caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
         return 'changeling_merits'
     elif len(merits) > 1:
-        caller.msg('Too many matches found')
+        caller.msg('|/Too many matches found')
         return 'changeling_merits'
     else:
         merit = merits[0]
@@ -243,7 +243,7 @@ def _check_merit_note(caller, raw_string, **kwargs):
                                 'merit' : merit,
                                 'max' : kwargs['max']}
     else:
-        caller.msg('Invalid note for that merit')
+        caller.msg('|/Invalid note for that merit')
         return 'changeling_merits'
     
 def get_merit_value(caller, raw_string, **kwargs):
@@ -258,23 +258,23 @@ def get_merit_value(caller, raw_string, **kwargs):
 
 def _check_merit_value(caller, raw_string, **kwargs):
     if not strip_control_sequences(raw_string).isnumeric():
-        caller.msg('Invalid value')
+        caller.msg('|/Invalid value')
         return 'changeling_merits'
     else:
         value=int(strip_control_sequences(raw_string)) 
         if value < 1:
-            caller.msg('Invalid value')
+            caller.msg('|/Invalid value')
             return 'changeling_merits'
         elif value + kwargs['total'] - kwargs['merit'].get(caller,
                                     subentry=kwargs['note']) >  kwargs['max']:
-            caller.msg('You don\'t have enough points')
+            caller.msg('|/You don\'t have enough points')
             return 'changeling_merits'
         elif kwargs['merit'].meets_prereqs(caller,value=value,
                                            subentry=kwargs['note']):
             kwargs['merit'].set(caller,value=value,subentry=kwargs['note'])
             return 'changeling_merits'
         else:
-            caller.msg('You don\'t meet the prerequisites for that merit')
+            caller.msg('|/You don\'t meet the prerequisites for that merit')
             return 'changeling_merits'
 
 def remove_merit(caller, raw_string, **kwargs):
@@ -295,7 +295,7 @@ def remove_merit(caller, raw_string, **kwargs):
 def _delete_merit(caller, raw_string, **kwargs):
     if ( kwargs['entry'] == 'Mantle' and 
          kwargs['subentry'] == caller.db.sphere['Court'] ):
-        caller.msg('You can\'t remove your court mantle')
+        caller.msg('|/You can\'t remove your court mantle')
     else:
         set(caller, kwargs['entry'], subentry=kwargs['subentry'], value=0)
     return 'changeling_merits'
@@ -322,11 +322,12 @@ def changeling_add_frailty(caller, raw_string, **kwargs):
 
 def _changeling_new_frailty(caller, raw_string, **kwargs):
     f = find('Frailties',statclass='Sphere')[0]
-    current_frailties = f.get(caller,subentry='')
+    current_frailties = f.get(caller)
     if current_frailties == False:
         current_frailties = []
     current_frailties.append(strip_control_sequences(raw_string))
-    f.set(caller,current_frailties)
+    caller.msg(current_frailties)
+    f.set(caller,str(current_frailties))
     return 'changeling_merits'
 
 def _decrease_power(caller, raw_string, **kwargs):
@@ -415,10 +416,10 @@ def changeling_add_contract(caller, raw_string, **kwargs):
 def _check_contract(caller, raw_string, **kwargs):
     contracts = find(strip_control_sequences(raw_string), statclass='Contract')
     if len(contracts) < 1:
-        caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
+        caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
         return 'changeling_contracts'
     elif len(contracts) > 1:
-        caller.msg('Too many matches found')
+        caller.msg('|/Too many matches found')
         return 'changeling_contracts'
     else:
         contract = contracts[0]
@@ -426,7 +427,7 @@ def _check_contract(caller, raw_string, **kwargs):
             contract.set(caller,value=True)
             return 'changeling_contracts'
         else:
-            caller.msg('You don\'t meet the prerequisites for that contract')
+            caller.msg('|/You don\'t meet the prerequisites for that contract')
             return 'changeling_contracts'
         
 def quit(caller, raw_string, **kwargs):
@@ -437,8 +438,9 @@ def quit(caller, raw_string, **kwargs):
 def changeling_finish_cg(caller, raw_string, **kwargs):
     caller.cmdset.add('codes.character_commands.finished_character',permanent=True)
     caller.cmdset.delete('codes.character_commands.unfinished_character')
-    set(caller,'Clarity',statclass='Advantage', value=0)
-    set(caller,'Glamour',statclass='Advantage', value=0)
+    set(caller,'Clarity',statclass='Advantage', value=caller.get('Clarity',subentry='Permanent',statclass='Advantage'))
+    set(caller,'Glamour',statclass='Advantage', value=caller.get('Glamour',subentry='Permanent',statclass='Advantage'))
+    set(caller,'Willpower',statclass='Advantage', value=caller.get('Willpower',subentry='Permanent',statclass='Advantage'))
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,
