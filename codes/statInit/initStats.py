@@ -1,4 +1,4 @@
-create_script('typeclasses.scripts.dictionaryScript',key='Dictionary',persistent=True)
+evennia.create_script('typeclasses.scripts.dictionaryScript',key='Dictionary',persistent=True)
 from evennia import create_script
 from codes.statInit import initAdvantages
 from codes.statInit import initAttributes
