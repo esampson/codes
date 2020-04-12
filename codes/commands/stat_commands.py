@@ -230,7 +230,7 @@ class CmdHurt(Command):
                        'statclass' : '',
                        'value' : 0 }
         type = parsed['entry']
-        amount = parsed['value'].lower()
+        amount = parsed['value']
         health = self.caller.db.advantages['Health']
         max_health = self.caller.get('Health',statclass='Advantage',
                                      subentry='Permanent')

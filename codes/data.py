@@ -16,7 +16,7 @@ def find(iString, statclass = ''):
     
     d = search_script_tag('dictionary_data')[0]
     if not hasattr(d, 'dictionary'):
-        d.at_server_reload()
+        d.at_start()
     matches = []
     if iString.lower() in d.dictionary:
         stats = d.dictionary[iString.lower()]
@@ -141,14 +141,12 @@ def set(target, entry, value, subentry='', statclass=''):
 
         """
     if len(entry.split(':')) == 2:     #routing to handle specialties
-        if value == False:
-            target.db.specialties.remove(entry)
-            result = True
-        elif value == True:
+        if value == True:
             target.db.specialties.append(entry)
             result = True
         else:
-            result = False
+            target.db.specialties.remove(entry)
+            result = True
     else:
         stat_list = find(entry, statclass)
         if len(stat_list) == 0:

@@ -54,3 +54,11 @@ nosetests.xml
 codes/web/coils/migrations/__init__.py
 
 codes/web/coils/__init__.py
+
+test.py
+
+htmlcov/
+
+tests/
+
+coverage_test.sh

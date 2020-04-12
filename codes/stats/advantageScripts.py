@@ -71,8 +71,6 @@ class advantageScript(codesScript):
             if subentry.lower() in ['permanent', 'perm'] or subentry == '':
                 result = target.wits() + target.composure()
                 result = result + target.get('Icons',statclass='Sphere')
-        elif name == 'Integrity':
-            result = target.db.advantages['Integrity']
         elif name == 'Willpower':
             if subentry.lower() in ['permanent', 'perm'] or subentry == '':
                 result = target.resolve() + target.composure()
@@ -124,7 +122,7 @@ class advantageScript(codesScript):
         result = False
         return result
     
-    def cost(self, target, value, subentry=''):
+    def cost(self, target, value=0, subentry=''):
         """
         cost
 
