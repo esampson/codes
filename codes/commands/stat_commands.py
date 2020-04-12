@@ -180,7 +180,7 @@ class CmdList(Command):
                 results = results + proper_caps(item) + ', '
             results = results[:-2]
             if len(results) > 999:
-                results = scroll(results,width=74,padding=0)
+                results = scroll(results,width=73,padding=0)
             elif len(results) >499:
                 results = scroll(results,width=64,padding=5)
             else:
@@ -191,7 +191,7 @@ class CmdList(Command):
                 results = results + proper_caps(item) + ', '
             results = results[:-2]
             if len(results) > 999:
-                results = scroll(results,width=74,padding=0)
+                results = scroll(results,width=73,padding=0)
             elif len(results) >499:
                 results = scroll(results,width=64,padding=5)
             else:
