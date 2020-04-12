@@ -175,7 +175,7 @@ class CmdList(Command):
             d.at_server_reload()
         if parsed['entry'] == '':
             temp = sorted(list(d.lists.keys()))
-            results = 'Lists:\\n\\n'
+            results = 'Lists:\n\n'
             for item in temp:
                 results = results + proper_caps(item) + ', '
             results = results[:-2]
@@ -186,7 +186,7 @@ class CmdList(Command):
             else:
                 results = scroll(results,width=54, padding=10, top=0, bottom=0)
         elif parsed['entry'].lower() in d.lists:
-            results = proper_caps(parsed['entry'])  + ' List\\n\\n' 
+            results = proper_caps(parsed['entry'])  + ' List\n\n' 
             for item in sorted(d.lists[parsed['entry'].lower()]):
                 results = results + proper_caps(item) + ', '
             results = results[:-2]
