@@ -5,7 +5,8 @@ from evennia.utils import evtable
 from operator import itemgetter
 from evennia.utils.search import search_script_tag
 
-from codes.scroll import scroll
+from codes.frames import scroll
+from codes.frames import top_bottom
 
 from codes import data
 from codes.sidebars import changeling_template_block
@@ -61,9 +62,10 @@ def short_list(stats):
 def send_message(target,message):
     input = '<OOC>: ' + message
     width = len(input) + 10
-    if width > 79:
-        width = 79
-    text = '_' * width + '|/|/' + ' ' * 5 + input + '|/' + '_' * width
+    if width > 60:
+        width = 60
+    padding = int((80-width)/2)
+    text = top_bottom(input, width=width, padding=padding, replacements=[['<OOC>:','|b<|gOOC|b>|w:|n']])
     target.location.msg_contents(text)
     
 class CmdProve(Command):
@@ -367,15 +369,15 @@ class CmdInfo(Command):
         if len(stats) == 0:
             self.caller.msg('Nothing found')
         elif len(stats) == 1:
-            message = stats[0].db.longname + '\\n\\n'
+            message = stats[0].db.longname + '\n\n'
             message = message + proper_caps(stats[0].type())
             if stats[0].db.info:
                 if len(stats[0].db.info) > 0:
-                    message = (message + '\\n\\n' +
-                      stats[0].db.info.replace('\r\n','\\n').replace('’','\'').replace('|/','\\n'))
+                    message = (message + '\n\n' +
+                      stats[0].db.info.replace('\r\n','\n').replace('’','\'').replace('|/','\n'))
             if stats[0].db.reference:
                     if len(stats[0].db.reference) > 0:
-                        message = message + '\\n\\n' +stats[0].db.reference
+                        message = message + '\n\n' +stats[0].db.reference
             if len(message) > 999:
                 table = scroll(message,width=74,padding=0)
             elif len(message) >499:

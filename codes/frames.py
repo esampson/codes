@@ -1,10 +1,47 @@
 import textwrap
 
+def top_bottom(original, width=80, margins=5, top=1, bottom=0, padding=0, replacements=[]):
+    
+    temp = []
+    for line in original.split('\n'):
+        if line == '':
+            temp.append(' ')
+        else:
+            temp.append(line)
+    for x in range(bottom):
+        temp.append(' ')
+    message = []
+    for line in temp:
+        if line != ' ':
+            for item in textwrap.wrap(line,(width - (margins * 2))):
+                message.append(item)
+        else:
+            message.append(' ')
+
+    shape = []
+    iwidth = width - (margins * 2)
+    m = ' ' * margins
+    shape.append('_' * width)
+    for line in range(top):
+        shape.append(' ')
+    for line in message:
+        shape.append( m + line)
+    for line in range(bottom):
+        shape.append(' ')
+    shape.append('_' * width)
+    final = ''
+    for line in shape:
+        data = line
+        for item in replacements:
+            data = data.replace(item[0],item[1])
+        final = final + ' ' * padding + data + '|/'
+    return final
+
 def scroll(original, width=80, margins=5,top=1, bottom=1, padding=0, replacements=[]):
     temp = []
     for x in range(top):
         temp.append(' ')
-    for line in original.split('\\n'):
+    for line in original.split('\n'):
         if line == '':
             temp.append(' ')
         else:

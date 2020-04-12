@@ -3,7 +3,7 @@ from evennia import InterruptCommand
 from operator import itemgetter
 import random
 from evennia.utils import evtable
-from codes.scroll import scroll
+from codes.frames import top_bottom
 
 class CmdRoll(Command):
     """
@@ -132,13 +132,13 @@ class CmdRoll(Command):
                 message = message + ' with 9-Again'
             if reroll_target == 11:
                 message = message + ' without 10-Again'
-            message = message + ' for ' + str(total_successes) + ' successes:\\n\\n'
+            message = message + ' for ' + str(total_successes) + ' successes:\n\n'
             message = message + roll_breakdown(base_roll)
             if rote:
                 message = message[:-1] + '; ' + roll_breakdown(rote_roll)
-            table = scroll(message,width=54, padding=10, replacements=[['8,','|R8|n,'],['8.','|R8|n '],['8;','|R8|n;'],
-                                                                       ['9,','|R9|n,'],['9.','|R9|n '],['9;','|R9|n;'],
-                                                                       ['10,','|R10|n,'],['10.','|R10|n '],['10;','|R10|n;'],
+            table = top_bottom(message,width=60, padding=10, replacements=[['8,','|w8|n,'],['8.','|w8|n '],['8;','|w8|n;'],
+                                                                       ['9,','|w9|n,'],['9.','|w9|n '],['9;','|w9|n;'],
+                                                                       ['10,','|w10|n,'],['10.','|w10|n '],['10;','|w10|n;'],
                                                                        ['1.','1 '],['2.','2 '],['3.','3 '],['4.','4 '],['5.','5 '],
                                                                        ['6.','6 '],['7.','7 ']])
             self.caller.location.msg_contents(table)
@@ -185,5 +185,4 @@ def roll_breakdown(roll):
         breakdown = breakdown + component
     breakdown = breakdown[:-2]+'.'
     return breakdown
-        
-        
+
