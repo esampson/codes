@@ -48,6 +48,8 @@ class Character(DefaultCharacter):
         #set temporary command set
         self.cmdset.add('codes.commands.character_commands.unfinished_character',
                                                         permanent=True)
+        self.cmdset.add('codes.commands.character_commands.all_characters',
+                                                        permanent=True)
         #set persistent attributes
         
         self.db.basics = {}

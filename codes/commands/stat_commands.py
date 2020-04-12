@@ -3,6 +3,7 @@ from evennia import Command
 from evennia import InterruptCommand
 from evennia.utils import evtable
 from operator import itemgetter
+from evennia.utils.search import search_script_tag
 
 from codes.scroll import scroll
 
@@ -14,31 +15,28 @@ from codes.sidebars import blank_template_block
 
 import textwrap
 import re
+from click.decorators import command
 
-class parsed:
-    def __init__(self,entry,subentry,statclass,value):
-        self.entry = entry
-        self.subentry = subentry
-        self.statclass = statclass
-        self.value = value
-        
 def parser(message):
-    regex_string ='^(([:a-zA-Z0-9%\s\'-])+)(\((([a-z,A-Z0-9%\s\'-])+)\))?'
-    regex_string = regex_string + '(\/(([a-zA-Z0-9%\s\'-])+))?\=?'
-    regex_string = regex_string +'(([a-zA-Z0-9%\s\'-])+)?$'
+    regex_string ='^(\/\S+)?\s?([^(^=^\/]+)(\((([^)])+)\))?\/?(([^=])+)?\=?(.+)$'
     regex = re.compile(regex_string)
-    reply = regex.findall(message)
-    entry = reply[0][0].strip()
+    reply = regex.findall(message+' ')
+    if len(reply[0]) > 0:
+        args = reply[0][0][1:].strip()
+    if len(reply[0]) > 1:
+        entry = reply[0][1].strip()
+    else:
+        entry = ''
     if len(reply[0]) > 3:
         subentry = reply[0][3].strip()
     else:
         subentry = ''
-    if len(reply[0]) > 6:
-        statclass = reply[0][6].strip()
+    if len(reply[0]) > 5:
+        statclass = reply[0][5].strip()
     else:
         statclass = ''
-    if len(reply[0]) > 8:
-        value = reply[0][8].strip()
+    if len(reply[0]) > 7:
+        value = reply[0][7].strip()
         if value.isnumeric():
             value = int(value)
         elif value.lower() == 'true':
@@ -47,7 +45,7 @@ def parser(message):
             value = False
     else:
         value = 0
-    result = parsed(entry,subentry,statclass,value)
+    result = { 'args' : args, 'entry': entry, 'subentry' : subentry, 'statclass' : statclass, 'value' : value}
     return result
 
 def short_list(stats):
@@ -60,10 +58,150 @@ def short_list(stats):
     message = message + ' or ' +last_message[:-2] +'?'
     return message
 
+def send_message(target,message):
+    input = '<OOC>: ' + message
+    width = len(input) + 10
+    if width > 79:
+        width = 79
+    text = '_' * width + '|/|/' + ' ' * 5 + input + '|/' + '_' * width
+    target.location.msg_contents(text)
+    
+class CmdProve(Command):
+    """
+    Usage:
+        +prove <stat>[(<subentry>)][/<statclass>][=<value>]
+        
+    Command to prove a character's abilities to other people.
+    
+        <stat>: Stat being proven
+        <subentry>: Subentry for the stat if needed
+        <statclass>: Optional. Helps in case of naming conflicts
+        <value>: Optional. Proves the character possesses at least that value but
+            does not prove entire value
+            
+    Examples:
+        +prove Strength
+        +prove Willpower=6
+        +prove Crafts: Blacksmithing
+        +prove Str/Skill
+        +prove Status(Ordo Dracul)
+    """
+    
+    key = '+prove'
+    arg_regex = '^(\/\S+)?\s.+$'
+    help_category = 'IC Commands'
+    
+    def func(self):
+        if self.args:
+            parsed = parser(self.args)
+        else:
+            parsed = { 'args' : '',
+                       'entry' : '',
+                       'subentry' : '',
+                       'statclass' : '',
+                       'value' : 0 }
+        if len(parsed['entry'].split(':')) == 2:
+            value = data.get(self.caller,parsed['entry'])
+            if value == 1:
+                message = self.caller.name + ' possesses the specialty ' + parsed['entry']
+                send_message(self.caller,message)
+            else:
+                self.caller.msg('I can\'t do that')
+        elif parsed['entry'] != '':
+            stats = data.find(parsed['entry'],statclass=parsed['statclass'])
+            if len(stats) == 0:
+                self.caller.msg('Nothing found')
+            elif len(stats) < 5 and len(stats) > 1:
+                message = short_list(stats)              
+                self.caller.msg(message)
+            elif len(stats) > 4:
+                self.caller.msg('Too many found')
+            else:
+                stat = stats[0]
+                value = stat.get(self.caller,subentry=parsed['subentry'])
+                name = stat.db.longname
+                if parsed['subentry'] != '':
+                    name = name + '(' + parsed['subentry'] + ')'
+                if str(value) == 'True':
+                    message = self.caller.name + ' possesses the ' + stat.type() + ' of ' + name
+                    send_message(self.caller,message)
+                elif parsed['value'] != '' and value >= parsed['value'] and value != 0:
+                    message = self.caller.name + ' possesses at least ' + name + ': ' + str(parsed['value'])
+                    send_message(self.caller,message)
+                elif value != 0:
+                    message = self.caller.name + ' possesses '
+                    if type(value) != type(1) :
+                        message = message + 'the ' + name + ' of ' + str(value)
+                    else:
+                        message = message + name + ': ' + str(value)
+                    send_message(self.caller,message)
+                else:
+                    self.caller.msg('I can\'t do that.')
+        else:
+            self.caller.msg('No entry')
+            
+class CmdList(Command):
+    """
+    Usage:
+        +list [<category>]
+        
+    Command to get a list of stats of a given category. When no category is entered
+    it will return a list of all categories.
+    
+        <category>: Category being listed
+        
+    Examples:
+        +list
+        +list Skills
+    """
+    
+    key = '+list'
+    help_category = 'OOC Commands'
+    
+    def func(self):
+        if self.args:
+            parsed = parser(self.args)
+        else:
+            parsed = { 'args' : '',
+                       'entry' : '',
+                       'subentry' : '',
+                       'statclass' : '',
+                       'value' : 0 }
+        
+        d = search_script_tag('dictionary_data')[0]
+        if not hasattr(d, 'lists'):
+            d.at_server_reload()
+        if parsed['entry'] == '':
+            temp = sorted(list(d.lists.keys()))
+            results = 'Lists:\\n\\n'
+            for item in temp:
+                results = results + proper_caps(item) + ', '
+            results = results[:-2]
+            if len(results) > 999:
+                results = scroll(results,width=74,padding=0)
+            elif len(results) >499:
+                results = scroll(results,width=64,padding=5)
+            else:
+                results = scroll(results,width=54, padding=10, top=0, bottom=0)
+        elif parsed['entry'].lower() in d.lists:
+            results = proper_caps(parsed['entry'])  + ' List\\n\\n' 
+            for item in sorted(d.lists[parsed['entry'].lower()]):
+                results = results + proper_caps(item) + ', '
+            results = results[:-2]
+            if len(results) > 999:
+                results = scroll(results,width=74,padding=0)
+            elif len(results) >499:
+                results = scroll(results,width=64,padding=5)
+            else:
+                results = scroll(results,width=54, padding=10, top=0, bottom=0)
+        else:
+            results = 'Could not find ' + parsed['entry']
+        self.caller.msg(results)
+    
 class CmdHurt(Command):
     """
     Usage:
-        +hurt/<type>=<amount>
+        +hurt <type>=<amount>
         
     Basic command for recording damage.
     
@@ -72,19 +210,25 @@ class CmdHurt(Command):
             (Bashing turning into Lethal, Lethal turning into Aggravated)
             
     Example:
-        +hurt/lethal=3
+        +hurt lethal=3
             
     """
     
     key = '+hurt'
-    arg_regex = '^/(([:a-zA-Z0-9%\s\'-])+)\=?(([0-9])+)$'
+    help_category = 'IC Commands'
+    arg_regex = '^(\/\S+)?\s.+$'
     
     def func(self):
-        regex = re.compile('^/(([:a-zA-Z0-9%\s\'-])+)\=?(([0-9])+)$')
-        #self.caller.msg(self.args)
-        result = regex.findall(self.args)
-        type = result[0][0].strip()
-        amount = int(result[0][2].strip())
+        if self.args:
+            parsed = parser(self.args)
+        else:
+            parsed = { 'args' : '',
+                       'entry' : '',
+                       'subentry' : '',
+                       'statclass' : '',
+                       'value' : 0 }
+        type = parsed['entry']
+        amount = parsed['value'].lower()
         health = self.caller.db.advantages['Health']
         max_health = self.caller.get('Health',statclass='Advantage',
                                      subentry='Permanent')
@@ -124,14 +268,14 @@ class CmdHurt(Command):
         self.caller.db.advantages['Health'] = health
         message = (self.caller.name + ' takes ' + str(amount) + ' points of ' + damage_type +
                        ' damage.')
-        self.caller.location.msg_contents(message)
+        send_message(self.caller,message)
         
         
                 
 class CmdHeal(Command):
     """
     Usage:
-        +heal/<type>=<amount>
+        +heal <type>=<amount>
         
     Basic command for recovering damage.
     
@@ -145,14 +289,20 @@ class CmdHeal(Command):
     """
     
     key = '+heal'
-    arg_regex = '^/(([:a-zA-Z0-9%\s\'-])+)\=?(([0-9])+)$'
+    help_category = 'IC Commands'
+    arg_regex = '^(\/\S+)?\s.+$'
     
     def func(self):
-        regex = re.compile('^/(([:a-zA-Z0-9%\s\'-])+)\=?(([0-9])+)$')
-        #self.caller.msg(self.args)
-        result = regex.findall(self.args)
-        type = result[0][0].strip()
-        amount = int(result[0][2].strip())
+        if self.args:
+            parsed = parser(self.args)
+        else:
+            parsed = { 'args' : '',
+                       'entry' : '',
+                       'subentry' : '',
+                       'statclass' : '',
+                       'value' : 0 }
+        type = parsed['entry'].lower()
+        amount = parsed['value']
         health = self.caller.db.advantages['Health']
         max_health = self.caller.get('Health',statclass='Advantage',
                                      subentry='Permanent')
@@ -181,10 +331,10 @@ class CmdHeal(Command):
         self.caller.db.advantages['Health'] = health
         message = (self.caller.name + ' heals ' + str(amount) + ' points of ' + damage_type +
                        ' damage.')
-        self.caller.location.msg_contents(message)
+        send_message(self.caller,message)
     
     
-class CmdInfo(default_cmds.MuxCommand):
+class CmdInfo(Command):
     """
     Usage:
         +info <stat>[/<class>]
@@ -203,12 +353,13 @@ class CmdInfo(default_cmds.MuxCommand):
     """
     
     key = '+info'
-    arg_regex = '^\s(([a-zA-Z0-9%\s\'-/])+)$'
+    help_category = 'OOC Commands'
+    
     
     def func(self):
         
         parsed = parser(self.args)
-        temp_stats = data.find(parsed.entry,statclass=parsed.statclass)
+        temp_stats = data.find(parsed['entry'],statclass=parsed['statclass'])
         stats = []
         for entry in temp_stats:
             if entry.type() not in ['sphere', 'basic']:
@@ -252,6 +403,7 @@ class CmdSheet(default_cmds.MuxCommand):
     
     key = '+sheet'
     arg_regex='^$'
+    help_category = 'OOC Commands'
     
     
     def func(self):
@@ -593,11 +745,13 @@ def build_bottom_block(sub_blocks):
     
 def proper_caps(string):
     result = ''
+    counter = 0
     for item in string.split(' '):
-        if item not in ('of', 'the', 'or') or forloop.counter == 1:
+        if item not in ('of', 'the', 'or') or counter == 0:
             result = result + item.capitalize() + ' '
         else:
             result = result + item.lower() + ' '
+        counter = counter + 1
     result = result[:-1]
     return result
     

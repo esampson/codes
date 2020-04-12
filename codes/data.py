@@ -46,7 +46,7 @@ def get(target, entry, subentry='', statclass=''):
 
     """
     if len(entry.split(':'))  == 2:
-        if entry.split(':')[1] == '*':
+        if entry.split(':')[1].strip() == '*':
             result = 0
             for specialty in target.db.specialties:
                 if specialty.split(':')[0].lower() == entry.split(':')[0].lower():

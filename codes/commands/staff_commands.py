@@ -34,7 +34,7 @@ def parser(message):
             value = False
     else:
         value = 0
-    result = result = { 'args' : args, 'entry': entry, 'subentry' : subentry, 'statclass' : statclass, 'value' : value}
+    result = { 'args' : args, 'entry': entry, 'subentry' : subentry, 'statclass' : statclass, 'value' : value}
     return result
 
 class staff_commands(CmdSet):

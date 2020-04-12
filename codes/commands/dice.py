@@ -33,6 +33,7 @@ class CmdRoll(Command):
     
     key = '+roll'
     arg_regex = '^[\s/][0-9a-zA-Z/\-\s+:]+$'
+    help_category = 'IC Commands'
     
     
     def func(self):

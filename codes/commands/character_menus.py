@@ -17,6 +17,7 @@ class CmdCG(Command):
     """
     
     key = '+cg'
+    help_category = 'OOC Commands'
     
     def func(self):
         ExMenu(self.caller, 'codes.menus.cg', startnode = 'start', cmd_on_exit=None)
@@ -36,6 +37,7 @@ class CmdXP(Command):
     """
     
     key = '+xp'
+    help_category = 'OOC Commands'
     
     def func(self):
         ExMenu(self.caller, 'codes.menus.xp_menu', startnode = 'start')

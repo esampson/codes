@@ -34,10 +34,13 @@ class contractScript(codesScript):
 
 
         target: The character being checked
-        subentry: Dummy for overloading
+        subentry: To check for Seeming Blessings
 
         """
-        if self.db.longname in target.db.contracts:
+        if self.db.longname in target.db.contracts and subentry == '':
+            result = True
+        elif (self.db.longname in target.db.contracts and 
+              subentry.lower() in target.db.contracts[self.db.longname].lower()):
             result = True
         else:
             result = False
