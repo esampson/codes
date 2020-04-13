@@ -4,6 +4,7 @@ from codes.commands.stat_commands import CmdSheet
 from codes.commands.stat_commands import CmdList
 from codes.commands.stat_commands import CmdInfo
 from codes.commands.stat_commands import CmdProve
+from codes.commands.stat_commands import CmdPool
 
 from codes.commands.character_menus import CmdCG
 from codes.commands.character_menus import CmdXP
@@ -31,6 +32,7 @@ class finished_character(CmdSet):
         self.add(CmdHurt())
         self.add(CmdHeal())
         self.add(CmdProve())
+        self.add(CmdPool())
         
 class unfinished_character(CmdSet):
     
@@ -38,3 +40,4 @@ class unfinished_character(CmdSet):
     
     def at_cmdset_creation(self):
         self.add(CmdCG())
+        

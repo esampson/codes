@@ -68,6 +68,84 @@ def send_message(target,message):
     text = top_bottom(input, width=width, padding=padding, replacements=[['<OOC>:','|b<|gOOC|b>|w:|n']])
     target.location.msg_contents(text)
     
+class CmdPool(Command):
+    """
+    Usage:
+        +pool/<action> <pool>[/<amount>][=<reason>]
+        
+    Command to spend or regain points from a pool (e.g. Willpower, Vitae, Glamour,
+    etc.) This command is |wnot|n used for altering health pools. Use +hurt or 
+    +heal for that.
+    
+        <action>: Spend, Gain, or Check
+        <pool>: Specific pool being affected
+        <amount>: Amount of change. Required for spend or gain
+        <reason>: The reason for the change. Optional
+        
+    Examples:
+        +pool/spend Vitae/2=Physical Intensity
+        +pool/spend Willpower/1=+3 Bonus
+        +pool/gain Glamor/3
+        +pool/check Willpower
+    """
+    
+    key = '+pool'
+    arg_regex = '^(\/\S+)\s.+$'
+    help_category = 'IC Commands'
+    
+    def func(self):
+        if self.args:
+            parsed = parser(self.args)
+        else:
+            parsed = { 'args' : '',
+                       'entry' : '',
+                       'subentry' : '',
+                       'statclass' : '',
+                       'value' : 0 }
+        temp_pool = data.find(parsed['entry'] )
+        pool = []
+        for item in temp_pool:
+            if item.db.pool:
+                pool.append(item)
+        action = parsed['args'].lower()
+        amount = parsed['statclass']
+        reason = parsed['value']
+        if len(pool) == 1:
+            current = pool[0].get(self.caller,subentry='temporary')
+            max = pool[0].get(self.caller,subentry='permanent')
+        if (action in ['spend', 'expend', 'lose', 'gain', 'regain', 'recover']
+                    and len(pool) == 1 and amount.isnumeric() ):
+            if action in ['spend', 'expend', 'lose'] and int(amount) > current:
+                self.caller.msg('You don\'t have that many points')
+            else:
+                if action in ['spend', 'expend', 'lose']:
+                    result = (self.caller.name + ' spends ' + amount + 
+                              ' point')
+                    if int(amount) != 1:
+                        result=result+'s'
+                    result = result + ' of ' + pool[0].db.longname
+                    if reason != '':
+                        result = result + ' for ' + reason
+                    pool[0].set(self.caller,current - int(amount))
+                elif action in ['gain', 'regain', 'recover']:
+                    if current + int(amount) > max:
+                        amount = max - current
+                    result = (self.caller.name + ' gains ' + str(amount) + 
+                              ' point')
+                    if int(amount) != 1:
+                        result = result + 's'
+                    result = result + ' of ' + pool[0].db.longname
+                    if reason != '':
+                        result = result + ' for ' + reason
+                    pool[0].set(self.caller,current + int(amount))
+                send_message(self.caller, result)
+        elif action in ['check'] and len(pool) == 1:
+              result = (pool[0].db.longname + ' Pool: '+ str(current) + '/' + 
+                        str(max))
+              self.caller.msg(result)
+        else:
+            self.caller.msg('I can\'t tell what you want to do')
+    
 class CmdProve(Command):
     """
     Usage:

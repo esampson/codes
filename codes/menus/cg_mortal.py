@@ -196,9 +196,9 @@ def quit(caller, raw_string, **kwargs):
     return text,None
 
 def mortal_finish_cg(caller, raw_string, **kwargs):
-    caller.cmdset.add('codes.commands.character_commands.finished_character', 
+    caller.cmdset.add('codes.commands.commands.character_commands.finished_character', 
                       permanent=True)
-    caller.cmdset.delete('codes.commands.character_commands.unfinished_character')
+    caller.cmdset.delete('unfinished_character')
     set(caller,'Integrity',statclass='Advantage', value=7)
     set(caller,'Willpower',statclass='Advantage', value=caller.get('Willpower',subentry='Permanent',statclass='Advantage'))
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))

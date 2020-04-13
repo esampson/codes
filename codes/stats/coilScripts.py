@@ -37,6 +37,8 @@ class coilScript(codesScript):
         if target.db.coils:
             if self.db.longname in target.db.coils:
                 result = target.db.coils[self.db.longname]
+            else:
+                result = 0
         else:
             result = 0
         return result
@@ -70,18 +72,14 @@ class coilScript(codesScript):
                         result = True
                     else:
                         result = False
-                if value <= 5:
+                elif value <= 5:
                     result = True
                 else:
                     result = False
             
             #coil is not Mystery Coil
             else:
-                if target.db.coils:
-                    if 'Mystery Coil' in target.db.sphere:
-                        mystery = target.db.sphere['Mystery Coil']
-                    else:
-                        mystery = ''
+                mystery = target.db.sphere['Mystery Coil']
                 non_mystery = 0
                 if target.db.coils:
                     for item in list(target.db.coils.keys()):

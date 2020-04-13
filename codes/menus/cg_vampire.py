@@ -81,12 +81,18 @@ def vampire_covenant(caller, raw_string, **kwargs):
         option_list.append( {'desc' : item[0],
                              'goto' : ( _set_covenant,
                                         { 'covenant' : item[1] } ) } )
+    option_list.append( {'desc' : 'Unaligned',
+                             'goto' : _no_covenant } )
     options = tuple(option_list)
     return text, options
 
 def _set_covenant(caller, raw_string, **kwargs):
     covenant = kwargs['covenant']
     caller.db.sphere['Covenant'] = covenant.db.longname
+    return "vampire_anchors"
+
+def _no_covenant(caller, raw_string, **kwargs):
+    caller.db.sphere['Covenant'] = 'Unaligned'
     return "vampire_anchors"
 
 def vampire_anchors(caller, raw_string, **kwargs):
@@ -430,9 +436,9 @@ def quit(caller, raw_string, **kwargs):
     text = {'format' : 'suppress'}
     return text,None
 
-def vampire_finish_cg(caller, raw_string, **kwargs):
-    caller.cmdset.add('codes.character_commands.finished_character',permanent=True)
-    caller.cmdset.delete('codes.character_commands.unfinished_character')
+def _vampire_finish_cg(caller, raw_string, **kwargs):
+    caller.cmdset.delete('unfinished_character')
+    caller.cmdset.add('codes.commands.character_commands.finished_character',permanent=True)
     set(caller,'Humanity',statclass='Advantage', value=7)
     set(caller,'Vitae',statclass='Advantage', value=caller.get('Vitae',subentry='Permanent',statclass='Advantage'))
     set(caller,'Willpower',statclass='Advantage', value=caller.get('Willpower',subentry='Permanent',statclass='Advantage'))
