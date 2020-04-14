@@ -16,6 +16,7 @@ for item in rites:
     name = item[1].db.longname.replace('\'','').replace(' ','_')
     file.write('scale = create_script(\'typeclasses.scripts.scaleScript\',key = \'' + name + '\')\n')
     file.write('scale.db.longname = \''+item[1].db.longname.replace('\'','\\\'') +'\'\n')
+    file.write('scale.db.mystery = \''+item[1].db.mystery.replace('\'','\\\'') +'\'\n')
     file.write('scale.db.rank = '+str(item[1].db.rank) +'\n')
     file.write('scale.db.prereq = \''+item[1].db.prereq.replace('\'','\\\'')+'\'\n')
     file.write('scale.db.reference = \''+item[1].db.reference+'\'\n')

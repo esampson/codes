@@ -97,13 +97,15 @@ class disciplineScript(codesScript):
         clans = search_script_tag('clan_stat')
         for item in clans:
             if 'Clan' in target.db.sphere:
-                if item == target.db.sphere['Clan']:
+                if item.db.longname == target.db.sphere['Clan']:
                     clan = item
         if clan:
-            if self.db.longname in clan.favored_disciplines:
+            if self.db.longname in clan.db.favored_disciplines:
                 result = amount * 3
+            else:
+                result = amount * 4  
         else:
-            result = amount * 4        
+            raise Exception('Character has no clan')      
         return result
                 
     def set(self, target, value, subentry=''):
