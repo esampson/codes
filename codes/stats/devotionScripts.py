@@ -103,10 +103,8 @@ class devotionScript(codesScript):
             result = True
         elif name not in target.db.devotions and value == False:
             result = True
-        elif name in target.db.devotions and value == True:
-            result = True
         else:
-            result = False
+            result = True
         return result
                 
     

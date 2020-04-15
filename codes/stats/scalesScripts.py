@@ -114,10 +114,8 @@ class scaleScript(codesScript):
             result = True
         elif name not in target.db.scales and value == False:
             result = True
-        elif name in target.db.scales and value == True:
-            result = True
         else:
-            result = False
+            result = True
         return result
                 
     

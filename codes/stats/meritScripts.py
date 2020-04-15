@@ -46,7 +46,7 @@ class meritScript(codesScript):
         if len(r) == 0:
             return 0
         elif len(r) > 1:
-            return TOO_MANY_FOUND
+            return 'TOO_MANY_FOUND'
         else:
             return r[0][1]
         
@@ -70,8 +70,11 @@ class meritScript(codesScript):
                 if (self.db.category.lower() == 'changeling' and 
                     target.template().lower() != 'changeling'):
                     result = False
+                elif (self.db.category.lower() == 'vampire' and 
+                    target.template().lower() != 'vampire'):
+                    result = False
                 elif (self.db.category.lower() == 'supernatural' and 
-                    target.template().lower() == 'changeling'):
+                    target.template().lower() in ['changeling', 'vampire']):
                     result = False 
                 else:   
                     result = True

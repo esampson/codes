@@ -110,10 +110,8 @@ class thebanRiteScript(codesScript):
             result = True
         elif name not in target.db.thebanRites and value == False:
             result = True
-        elif name in target.db.thebanRites and value == True:
-            result = True
         else:
-            result = False
+            result = True
         return result
                 
     

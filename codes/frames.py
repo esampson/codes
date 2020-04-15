@@ -26,8 +26,6 @@ def top_bottom(original, width=80, margins=5, top=1, bottom=0, padding=0, replac
         shape.append(' ')
     for line in message:
         shape.append( m + line)
-    for line in range(bottom):
-        shape.append(' ')
     shape.append('_' * width)
     final = ''
     for line in shape:

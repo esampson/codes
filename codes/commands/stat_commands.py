@@ -93,58 +93,61 @@ class CmdPool(Command):
     arg_regex = '^(\/\S+)\s.+$'
     help_category = 'IC Commands'
     
-    def func(self):
-        if self.args:
-            parsed = parser(self.args)
+    def func(self):                      #pragma: no cover
+        pool_func(self.caller,self.args) #pragma: no cover
+
+def pool_func(target,input):
+    if input:
+        parsed = parser(input)
+    else:
+        parsed = { 'args' : '',
+                   'entry' : '',
+                   'subentry' : '',
+                   'statclass' : '',
+                   'value' : 0 }
+    temp_pool = data.find(parsed['entry'] )
+    pool = []
+    for item in temp_pool:
+        if item.db.pool:
+            pool.append(item)
+    action = parsed['args'].lower()
+    amount = parsed['statclass']
+    reason = parsed['value']
+    if len(pool) == 1:
+        current = pool[0].get(target,subentry='temporary')
+        max = pool[0].get(target,subentry='permanent')
+    if (action in ['spend', 'expend', 'lose', 'gain', 'regain', 'recover']
+                and len(pool) == 1 and amount.isnumeric() ):
+        if action in ['spend', 'expend', 'lose'] and int(amount) > current:
+            target.msg('You don\'t have that many points')
         else:
-            parsed = { 'args' : '',
-                       'entry' : '',
-                       'subentry' : '',
-                       'statclass' : '',
-                       'value' : 0 }
-        temp_pool = data.find(parsed['entry'] )
-        pool = []
-        for item in temp_pool:
-            if item.db.pool:
-                pool.append(item)
-        action = parsed['args'].lower()
-        amount = parsed['statclass']
-        reason = parsed['value']
-        if len(pool) == 1:
-            current = pool[0].get(self.caller,subentry='temporary')
-            max = pool[0].get(self.caller,subentry='permanent')
-        if (action in ['spend', 'expend', 'lose', 'gain', 'regain', 'recover']
-                    and len(pool) == 1 and amount.isnumeric() ):
-            if action in ['spend', 'expend', 'lose'] and int(amount) > current:
-                self.caller.msg('You don\'t have that many points')
-            else:
-                if action in ['spend', 'expend', 'lose']:
-                    result = (self.caller.name + ' spends ' + amount + 
-                              ' point')
-                    if int(amount) != 1:
-                        result=result+'s'
-                    result = result + ' of ' + pool[0].db.longname
-                    if reason != '':
-                        result = result + ' for ' + reason
-                    pool[0].set(self.caller,current - int(amount))
-                elif action in ['gain', 'regain', 'recover']:
-                    if current + int(amount) > max:
-                        amount = max - current
-                    result = (self.caller.name + ' gains ' + str(amount) + 
-                              ' point')
-                    if int(amount) != 1:
-                        result = result + 's'
-                    result = result + ' of ' + pool[0].db.longname
-                    if reason != '':
-                        result = result + ' for ' + reason
-                    pool[0].set(self.caller,current + int(amount))
-                send_message(self.caller, result)
-        elif action in ['check'] and len(pool) == 1:
-              result = (pool[0].db.longname + ' Pool: '+ str(current) + '/' + 
-                        str(max))
-              self.caller.msg(result)
-        else:
-            self.caller.msg('I can\'t tell what you want to do')
+            if action in ['spend', 'expend', 'lose']:
+                result = (target.name + ' spends ' + amount + 
+                          ' point')
+                if int(amount) != 1:
+                    result=result+'s'
+                result = result + ' of ' + pool[0].db.longname
+                if reason != '':
+                    result = result + ' for ' + reason
+                pool[0].set(target,current - int(amount))
+            elif action in ['gain', 'regain', 'recover']:
+                if current + int(amount) > max:
+                    amount = max - current
+                result = (target.name + ' gains ' + str(amount) + 
+                          ' point')
+                if int(amount) != 1:
+                    result = result + 's'
+                result = result + ' of ' + pool[0].db.longname
+                if reason != '':
+                    result = result + ' for ' + reason
+                pool[0].set(target,current + int(amount))
+            send_message(target, result)
+    elif action in ['check'] and len(pool) == 1:
+          result = (pool[0].db.longname + ' Pool: '+ str(current) + '/' + 
+                    str(max))
+          target.msg(result)
+    else:
+        target.msg('I can\'t tell what you want to do')
     
 class CmdProve(Command):
     """
@@ -167,58 +170,61 @@ class CmdProve(Command):
         +prove Status(Ordo Dracul)
     """
     
-    key = '+prove'
-    arg_regex = '^(\/\S+)?\s.+$'
-    help_category = 'IC Commands'
+    key = '+prove'                          
+    arg_regex = '^(\/\S+)?\s.+$'            
+    help_category = 'IC Commands'           
     
-    def func(self):
-        if self.args:
-            parsed = parser(self.args)
+    def func(self):                         #pragma: no cover
+        prove_func(self.caller,self.args)   #pragma: no cover
+        
+def prove_func(target,input):
+    if input:
+        parsed = parser(input)
+    else:
+        parsed = { 'args' : '',
+                   'entry' : '',
+                   'subentry' : '',
+                   'statclass' : '',
+                   'value' : 0 }
+    if len(parsed['entry'].split(':')) == 2:
+        value = data.get(target,parsed['entry'])
+        if value == 1:
+            message = target.name + ' possesses the specialty ' + parsed['entry']
+            send_message(target,message)
         else:
-            parsed = { 'args' : '',
-                       'entry' : '',
-                       'subentry' : '',
-                       'statclass' : '',
-                       'value' : 0 }
-        if len(parsed['entry'].split(':')) == 2:
-            value = data.get(self.caller,parsed['entry'])
-            if value == 1:
-                message = self.caller.name + ' possesses the specialty ' + parsed['entry']
-                send_message(self.caller,message)
-            else:
-                self.caller.msg('I can\'t do that')
-        elif parsed['entry'] != '':
-            stats = data.find(parsed['entry'],statclass=parsed['statclass'])
-            if len(stats) == 0:
-                self.caller.msg('Nothing found')
-            elif len(stats) < 5 and len(stats) > 1:
-                message = short_list(stats)              
-                self.caller.msg(message)
-            elif len(stats) > 4:
-                self.caller.msg('Too many found')
-            else:
-                stat = stats[0]
-                value = stat.get(self.caller,subentry=parsed['subentry'])
-                name = stat.db.longname
-                if parsed['subentry'] != '':
-                    name = name + '(' + parsed['subentry'] + ')'
-                if str(value) == 'True':
-                    message = self.caller.name + ' possesses the ' + stat.type() + ' of ' + name
-                    send_message(self.caller,message)
-                elif parsed['value'] != '' and value >= parsed['value'] and value != 0:
-                    message = self.caller.name + ' possesses at least ' + name + ': ' + str(parsed['value'])
-                    send_message(self.caller,message)
-                elif value != 0:
-                    message = self.caller.name + ' possesses '
-                    if type(value) != type(1) :
-                        message = message + 'the ' + name + ' of ' + str(value)
-                    else:
-                        message = message + name + ': ' + str(value)
-                    send_message(self.caller,message)
+            target.msg('I can\'t do that')
+    elif parsed['entry'] != '':
+        stats = data.find(parsed['entry'],statclass=parsed['statclass'])
+        if len(stats) == 0:
+            target.msg('Nothing found')
+        elif len(stats) < 5 and len(stats) > 1:
+            message = short_list(stats)              
+            target.msg(message)
+        elif len(stats) > 4:
+            target.msg('Too many found')
+        else:
+            stat = stats[0]
+            value = stat.get(target,subentry=parsed['subentry'])
+            name = stat.db.longname
+            if parsed['subentry'] != '':
+                name = name + '(' + parsed['subentry'] + ')'
+            if str(value) == 'True':
+                message = target.name + ' possesses the ' + stat.type() + ' of ' + name
+                send_message(target,message)
+            elif parsed['value'] != '' and value >= parsed['value'] and value != 0:
+                message = target.name + ' possesses at least ' + name + ': ' + str(parsed['value'])
+                send_message(target,message)
+            elif value != 0:
+                message = target.name + ' possesses '
+                if type(value) != type(1) :
+                    message = message + 'the ' + name + ' of ' + str(value)
                 else:
-                    self.caller.msg('I can\'t do that.')
-        else:
-            self.caller.msg('No entry')
+                    message = message + name + ': ' + str(value)
+                send_message(target,message)
+            else:
+                target.msg('I can\'t do that.')
+    else:
+        target.msg('No entry')
             
 class CmdList(Command):
     """
@@ -238,45 +244,48 @@ class CmdList(Command):
     key = '+list'
     help_category = 'OOC Commands'
     
-    def func(self):
-        if self.args:
-            parsed = parser(self.args)
-        else:
-            parsed = { 'args' : '',
-                       'entry' : '',
-                       'subentry' : '',
-                       'statclass' : '',
-                       'value' : 0 }
+    def func(self):                             #pragma: no cover
+        list_func(self.caller,self.args)        #pragma: no cover
         
-        d = search_script_tag('dictionary_data')[0]
-        if not hasattr(d, 'lists'):
-            d.at_server_reload()
-        if parsed['entry'] == '':
-            temp = sorted(list(d.lists.keys()))
-            results = 'Lists:\n\n'
-            for item in temp:
-                results = results + proper_caps(item) + ', '
-            results = results[:-2]
-            if len(results) > 999:
-                results = scroll(results,width=73,padding=0)
-            elif len(results) >499:
-                results = scroll(results,width=64,padding=5)
-            else:
-                results = scroll(results,width=54, padding=10, top=0, bottom=0)
-        elif parsed['entry'].lower() in d.lists:
-            results = proper_caps(parsed['entry'])  + ' List\n\n' 
-            for item in sorted(d.lists[parsed['entry'].lower()]):
-                results = results + proper_caps(item) + ', '
-            results = results[:-2]
-            if len(results) > 999:
-                results = scroll(results,width=73,padding=0)
-            elif len(results) >499:
-                results = scroll(results,width=64,padding=5)
-            else:
-                results = scroll(results,width=54, padding=10, top=0, bottom=0)
+def list_func(target,input):
+    if input:
+        parsed = parser(input)
+    else:
+        parsed = { 'args' : '',
+                   'entry' : '',
+                   'subentry' : '',
+                   'statclass' : '',
+                   'value' : 0 }
+    
+    d = search_script_tag('dictionary_data')[0]
+    if not hasattr(d, 'lists'):
+        d.at_server_reload()                                #pragma: no cover
+    if parsed['entry'] == '':
+        temp = sorted(list(d.lists.keys()))
+        results = 'Lists:\n\n'
+        for item in temp:
+            results = results + proper_caps(item) + ', '
+        results = results[:-2]
+        if len(results) > 999:
+            results = scroll(results,width=73,padding=0)    #pragma: no cover
+        elif len(results) >499:
+            results = scroll(results,width=64,padding=5)    #pragma: no cover
         else:
-            results = 'Could not find ' + parsed['entry']
-        self.caller.msg(results)
+            results = scroll(results,width=54, padding=10, top=0, bottom=0)
+    elif parsed['entry'].lower() in d.lists:
+        results = proper_caps(parsed['entry'])  + ' List\n\n' 
+        for item in sorted(d.lists[parsed['entry'].lower()]):
+            results = results + proper_caps(item) + ', '
+        results = results[:-2]
+        if len(results) > 999:
+            results = scroll(results,width=73,padding=0)
+        elif len(results) >499:
+            results = scroll(results,width=64,padding=5)
+        else:
+            results = scroll(results,width=54, padding=10, top=0, bottom=0)
+    else:
+        results = 'Could not find ' + parsed['entry']
+    target.msg(results)
     
 class CmdHurt(Command):
     """

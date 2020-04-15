@@ -33,6 +33,8 @@ class cruacRiteScript(codesScript):
         if target.db.cruacRites:
             if self.db.longname in target.db.cruacRites:
                 result = True
+            else:
+                result = False
         else:
             result = False
         return result
@@ -108,10 +110,8 @@ class cruacRiteScript(codesScript):
             result = True
         elif name not in target.db.cruacRites and value == False:
             result = True
-        elif name in target.db.cruacRites and value == True:
-            result = True
         else:
-            result = False
+            result = True
         return result
                 
     
