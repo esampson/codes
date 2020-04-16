@@ -1,7 +1,6 @@
 from evennia import default_cmds
 from evennia import Command
 from evennia import InterruptCommand
-from evennia.utils import evtable
 from operator import itemgetter
 from evennia.utils.search import search_script_tag
 
@@ -16,43 +15,33 @@ from codes.sidebars import blank_template_block
 
 import textwrap
 import re
-from click.decorators import command
 
 def parser(message):
-    regex_string ='^(\/\S+)?\s?([^(^=^\/]+)(\((([^)])+)\))?\/?(([^=])+)?\=?(.+)$'
+    regex_string ='^(\/\S+)?\s?([^(^=^\/]+)?(\((([^)]?)+)\))?\/?'
+    regex_string = regex_string + '(([^=]?)+)?\=?(.+)?$'
     regex = re.compile(regex_string)
-    reply = regex.findall(message+' ')
-    if len(reply[0]) > 0:
-        args = reply[0][0][1:].strip()
-    if len(reply[0]) > 1:
-        entry = reply[0][1].strip()
+    reply = regex.findall(message.strip())
+    args = reply[0][0][1:].strip()
+    entry = reply[0][1].strip()
+    subentry = reply[0][3].strip()
+    statclass = reply[0][5].strip()
+    value = reply[0][7].strip()
+    if value.isnumeric():
+        value = int(value)
+    elif value.lower() == 'true':
+        value = True
+    elif value.lower() == 'false':
+        value = False
     else:
-        entry = ''
-    if len(reply[0]) > 3:
-        subentry = reply[0][3].strip()
-    else:
-        subentry = ''
-    if len(reply[0]) > 5:
-        statclass = reply[0][5].strip()
-    else:
-        statclass = ''
-    if len(reply[0]) > 7:
-        value = reply[0][7].strip()
-        if value.isnumeric():
-            value = int(value)
-        elif value.lower() == 'true':
-            value = True
-        elif value.lower() == 'false':
-            value = False
-    else:
-        value = 0
-    result = { 'args' : args, 'entry': entry, 'subentry' : subentry, 'statclass' : statclass, 'value' : value}
+        value = value
+    result = { 'args' : args, 'entry': entry, 'subentry' : subentry,
+               'statclass' : statclass, 'value' : value}
     return result
 
 def short_list(stats):
     message = 'Did you mean '
     for stat in stats:
-        last_message = ('the ' + stat.type() + ' \'' + 
+        last_message = ('the ' + stat.type() + ' \'' +
                         stat.db.longname + '\', ')
         message = message + last_message
     message = message.replace(', ' + last_message,'')
@@ -65,9 +54,10 @@ def send_message(target,message):
     if width > 60:
         width = 60
     padding = int((80-width)/2)
-    text = top_bottom(input, width=width, padding=padding, replacements=[['<OOC>:','|b<|gOOC|b>|w:|n']])
+    text = top_bottom(input, width=width, padding=padding,
+                      replacements=[['<OOC>:','|b<|gOOC|b>|w:|n']])
     target.location.msg_contents(text)
-    
+
 class CmdPool(Command):
     """
     Usage:
@@ -88,11 +78,11 @@ class CmdPool(Command):
         +pool/gain Glamor/3
         +pool/check Willpower
     """
-    
+
     key = '+pool'
     arg_regex = '^(\/\S+)\s.+$'
     help_category = 'IC Commands'
-    
+
     def func(self):                      #pragma: no cover
         pool_func(self.caller,self.args) #pragma: no cover
 
@@ -122,7 +112,7 @@ def pool_func(target,input):
             target.msg('You don\'t have that many points')
         else:
             if action in ['spend', 'expend', 'lose']:
-                result = (target.name + ' spends ' + amount + 
+                result = (target.name + ' spends ' + amount +
                           ' point')
                 if int(amount) != 1:
                     result=result+'s'
@@ -133,7 +123,7 @@ def pool_func(target,input):
             elif action in ['gain', 'regain', 'recover']:
                 if current + int(amount) > max:
                     amount = max - current
-                result = (target.name + ' gains ' + str(amount) + 
+                result = (target.name + ' gains ' + str(amount) +
                           ' point')
                 if int(amount) != 1:
                     result = result + 's'
@@ -143,12 +133,12 @@ def pool_func(target,input):
                 pool[0].set(target,current + int(amount))
             send_message(target, result)
     elif action in ['check'] and len(pool) == 1:
-          result = (pool[0].db.longname + ' Pool: '+ str(current) + '/' + 
+          result = (pool[0].db.longname + ' Pool: '+ str(current) + '/' +
                     str(max))
           target.msg(result)
     else:
         target.msg('I can\'t tell what you want to do')
-    
+
 class CmdProve(Command):
     """
     Usage:
@@ -169,14 +159,14 @@ class CmdProve(Command):
         +prove Str/Skill
         +prove Status(Ordo Dracul)
     """
-    
-    key = '+prove'                          
-    arg_regex = '^(\/\S+)?\s.+$'            
-    help_category = 'IC Commands'           
-    
+
+    key = '+prove'
+    arg_regex = '^(\/\S+)?\s.+$'
+    help_category = 'IC Commands'
+
     def func(self):                         #pragma: no cover
         prove_func(self.caller,self.args)   #pragma: no cover
-        
+
 def prove_func(target,input):
     if input:
         parsed = parser(input)
@@ -189,7 +179,8 @@ def prove_func(target,input):
     if len(parsed['entry'].split(':')) == 2:
         value = data.get(target,parsed['entry'])
         if value == 1:
-            message = target.name + ' possesses the specialty ' + parsed['entry']
+            message = (target.name + ' possesses the specialty ' +
+                       parsed['entry'])
             send_message(target,message)
         else:
             target.msg('I can\'t do that')
@@ -198,7 +189,7 @@ def prove_func(target,input):
         if len(stats) == 0:
             target.msg('Nothing found')
         elif len(stats) < 5 and len(stats) > 1:
-            message = short_list(stats)              
+            message = short_list(stats)
             target.msg(message)
         elif len(stats) > 4:
             target.msg('Too many found')
@@ -209,10 +200,13 @@ def prove_func(target,input):
             if parsed['subentry'] != '':
                 name = name + '(' + parsed['subentry'] + ')'
             if str(value) == 'True':
-                message = target.name + ' possesses the ' + stat.type() + ' of ' + name
+                message = (target.name + ' possesses the ' + stat.type() +
+                           ' of ' + name)
                 send_message(target,message)
-            elif parsed['value'] != '' and value >= parsed['value'] and value != 0:
-                message = target.name + ' possesses at least ' + name + ': ' + str(parsed['value'])
+            elif (parsed['value'] != '' and value >= parsed['value'] and
+                  value != 0):
+                message = (target.name + ' possesses at least ' + name + ': ' +
+                           str(parsed['value']) )
                 send_message(target,message)
             elif value != 0:
                 message = target.name + ' possesses '
@@ -225,7 +219,7 @@ def prove_func(target,input):
                 target.msg('I can\'t do that.')
     else:
         target.msg('No entry')
-            
+
 class CmdList(Command):
     """
     Usage:
@@ -240,13 +234,13 @@ class CmdList(Command):
         +list
         +list Skills
     """
-    
+
     key = '+list'
     help_category = 'OOC Commands'
-    
-    def func(self):                             #pragma: no cover
-        list_func(self.caller,self.args)        #pragma: no cover
-        
+
+    def func(self):                                         #pragma: no cover
+        list_func(self.caller,self.args)                    #pragma: no cover
+
 def list_func(target,input):
     if input:
         parsed = parser(input)
@@ -256,7 +250,7 @@ def list_func(target,input):
                    'subentry' : '',
                    'statclass' : '',
                    'value' : 0 }
-    
+
     d = search_script_tag('dictionary_data')[0]
     if not hasattr(d, 'lists'):
         d.at_server_reload()                                #pragma: no cover
@@ -273,7 +267,7 @@ def list_func(target,input):
         else:
             results = scroll(results,width=54, padding=10, top=0, bottom=0)
     elif parsed['entry'].lower() in d.lists:
-        results = proper_caps(parsed['entry'])  + ' List\n\n' 
+        results = proper_caps(parsed['entry'])  + ' List\n\n'
         for item in sorted(d.lists[parsed['entry'].lower()]):
             results = results + proper_caps(item) + ', '
         results = results[:-2]
@@ -286,7 +280,7 @@ def list_func(target,input):
     else:
         results = 'Could not find ' + parsed['entry']
     target.msg(results)
-    
+
 class CmdHurt(Command):
     """
     Usage:
@@ -302,15 +296,15 @@ class CmdHurt(Command):
         +hurt lethal=3
             
     """
-    
+
     key = '+hurt'
     help_category = 'IC Commands'
     arg_regex = '^(\/\S+)?\s.+$'
-    
-    def func(self):                                             #pragma: no cover
-        hurt_func(self.caller, self.args)                       #pragma: no cover
-        
-def hurt_func(target,input):     
+
+    def func(self):                                         #pragma: no cover
+        hurt_func(self.caller, self.args)                   #pragma: no cover
+
+def hurt_func(target,input):
     if input:
         parsed = parser(input)
     else:
@@ -326,7 +320,7 @@ def hurt_func(target,input):
     damage = [0,0,0]
     max_health = target.get('Health',statclass='Advantage',
                                  subentry='Permanent')
-    
+
     if type in ['bashing','bash','b']:
         damage[0] = amount
     elif type in ['lethal','l']:
@@ -338,7 +332,8 @@ def hurt_func(target,input):
         raise InterruptCommand()
 
     if health[0] + health[1] + health [2] + damage[0] > max_health:
-        upgrade = damage[0] - (max_health - (health[0] + health[1] + health [2]))
+        upgrade = damage[0] - (max_health - (health[0] + health[1] +
+                                             health [2]))
         damage[1] = damage[1] + upgrade
         damage[0] = damage[0] - upgrade
     if health[1] + health [2] + damage[1] > max_health:
@@ -389,9 +384,9 @@ def hurt_func(target,input):
             message = message + 's'
         message = message + ' of bashing damage.'
     send_message(target,message)
-        
-        
-                
+
+
+
 class CmdHeal(Command):
     """
     Usage:
@@ -407,15 +402,15 @@ class CmdHeal(Command):
         +heal/bashing=2
             
     """
-    
+
     key = '+heal'
     help_category = 'IC Commands'
     arg_regex = '^(\/\S+)?\s.+$'
-    
-    def func(self):                                                 #pragma: no cover
-        heal_func(self.caller, self.args)                           #pragma: no cover
-        
-def heal_func(target,input):       
+
+    def func(self):                                         #pragma: no cover
+        heal_func(self.caller, self.args)                   #pragma: no cover
+
+def heal_func(target,input):
     if input:
         parsed = parser(input)
     else:
@@ -429,7 +424,7 @@ def heal_func(target,input):
     health = target.db.advantages['Health']
     max_health = target.get('Health',statclass='Advantage',
                                  subentry='Permanent')
-    
+
     if type in ['bashing','bash','b']:
         if amount > health[0]:
             health[0] = 0
@@ -452,11 +447,11 @@ def heal_func(target,input):
         target.msg('Incorrect damage type')
         raise InterruptCommand()
     target.db.advantages['Health'] = health
-    message = (target.name + ' heals ' + str(amount) + ' points of ' + damage_type +
-                   ' damage.')
+    message = (target.name + ' heals ' + str(amount) + ' points of ' +
+               damage_type + ' damage.')
     send_message(target,message)
-    
-    
+
+
 class CmdInfo(Command):
     """
     Usage:
@@ -474,44 +469,47 @@ class CmdInfo(Command):
         +info Str/Skill
             
     """
-    
+
     key = '+info'
     help_category = 'OOC Commands'
-    
-    
-    def func(self):
-        
-        parsed = parser(self.args)
-        temp_stats = data.find(parsed['entry'],statclass=parsed['statclass'])
-        stats = []
-        for entry in temp_stats:
-            if entry.type() not in ['sphere', 'basic']:
-                stats.append(entry)
-        if len(stats) == 0:
-            self.caller.msg('Nothing found')
-        elif len(stats) == 1:
-            message = stats[0].db.longname + '\n\n'
-            message = message + proper_caps(stats[0].type())
-            if stats[0].db.info:
-                if len(stats[0].db.info) > 0:
-                    message = (message + '\n\n' +
-                      stats[0].db.info.replace('\r\n','\n').replace('’','\'').replace('|/','\n'))
-            if stats[0].db.reference:
-                    if len(stats[0].db.reference) > 0:
-                        message = message + '\n\n' +stats[0].db.reference
-            if len(message) > 999:
-                table = scroll(message,width=74,padding=0)
-            elif len(message) >499:
-                table = scroll(message,width=64,padding=5)
-            else:
-                table = scroll(message,width=54, padding=10, top=0, bottom=0)
-            self.caller.msg(table)
-        elif len(stats) < 5:
-            message = short_list(stats)              
-            self.caller.msg(message)
+
+
+    def func(self):                                         #pragma: no cover
+        info_func(self.caller, self.args)                   #pragma: no cover
+
+def info_func(target,input):
+    parsed = parser(input)
+    temp_stats = data.find(parsed['entry'],statclass=parsed['statclass'])
+    stats = []
+    for entry in temp_stats:
+        if entry.type() not in ['sphere', 'basic']:
+            stats.append(entry)
+    if len(stats) == 0:
+        target.msg('Nothing found')
+    elif len(stats) == 1:
+        message = stats[0].db.longname + '\n\n'
+        message = message + proper_caps(stats[0].type())
+        if stats[0].db.info:
+            if len(stats[0].db.info) > 0:
+                info_string = stats[0].db.info.replace('\r\n','\n')
+                info_string = info_string.replace('’','\'').replace('|/','\n')
+                message = message + '\n\n' + info_string
+        if stats[0].db.reference:
+            if len(stats[0].db.reference) > 0:
+                message = message + '\n\n' +stats[0].db.reference
+        if len(message) > 999:
+            table = scroll(message,width=74,padding=0)
+        elif len(message) >499:
+            table = scroll(message,width=64,padding=5)
         else:
-            self.caller.msg('Too many found')
-    
+            table = scroll(message,width=54, padding=10, top=0, bottom=0)
+        target.msg(table)
+    elif len(stats) < 5:
+        message = short_list(stats)
+        target.msg(message)
+    else:
+        target.msg('Too many found')
+
 class CmdSheet(default_cmds.MuxCommand):
     """
     Usage:
@@ -523,56 +521,56 @@ class CmdSheet(default_cmds.MuxCommand):
         +sheet
             
     """
-    
+
     key = '+sheet'
     arg_regex='^$'
     help_category = 'OOC Commands'
-    
-    
+
+
     def func(self):
-        result = produce_sheet(self.caller)
-        self.caller.msg(result)
-                
+        result = produce_sheet(self.caller)                 #pragma: no cover
+        self.caller.msg(result)                             #pragma: no cover
+
 def produce_sheet(target):
 
     # Build the Attribute block
     block1=[]
-    block1.append('  Intelligence:' 
+    block1.append('  Intelligence:'
                   + str(target.intelligence()).rjust(2) +
                   '   Strength:' + str(target.strength()).rjust(2) +
-                  '      Presence:' 
+                  '      Presence:'
                   + str(target.presence()).rjust(2) + ' ')
     block1.append('          Wits:' + str(target.wits()).rjust(2) +
                   '  Dexterity:' + str(target.dexterity()).rjust(2) +
-                  '  Manipulation:' 
+                  '  Manipulation:'
                   + str(target.manipulation()).rjust(2) + ' ')
     block1.append('       Resolve:' + str(target.resolve()).rjust(2) +
                   '    Stamina:' + str(target.stamina()).rjust(2) +
-                  '     Composure:' 
+                  '     Composure:'
                   + str(target.composure()).rjust(2) + ' ')
-        
+
     #build the Skill block
     block2=[]
     block2.append('     Academics:' + str(target.academics()).rjust(2) +
                   '  Athletics:' + str(target.athletics()).rjust(2) +
-                  '    Animal Ken:' 
+                  '    Animal Ken:'
                   + str(target.animal_ken()).rjust(2) + ' ')
     block2.append('      Computer:' + str(target.computer()).rjust(2) +
                   '      Brawl:' + str(target.brawl()).rjust(2) +
-                  '       Empathy:' 
+                  '       Empathy:'
                   + str(target.empathy()).rjust(2) + ' ')
     block2.append('        Crafts:' + str(target.crafts()).rjust(2) +
                   '      Drive:' + str(target.drive()).rjust(2) +
-                  '    Expression:' 
+                  '    Expression:'
                   + str(target.expression()).rjust(2) + ' ')
-    block2.append(' Investigation:' 
+    block2.append(' Investigation:'
                   + str(target.investigation()).rjust(2) +
                   '   Firearms:' + str(target.firearms()).rjust(2) +
-                  '  Intimidation:' 
+                  '  Intimidation:'
                   + str(target.intimidation()).rjust(2) + ' ')
-    block2.append('      Medicine:' + str(target.medicine()).rjust(2) + 
+    block2.append('      Medicine:' + str(target.medicine()).rjust(2) +
                   '    Larceny:' + str(target.larceny()).rjust(2) +
-                  '    Persuasion:' 
+                  '    Persuasion:'
                   + str(target.persuasion()).rjust(2) + ' ')
     block2.append('        Occult:' + str(target.occult()).rjust(2) +
                   '    Stealth:' + str(target.stealth()).rjust(2) +
@@ -580,32 +578,32 @@ def produce_sheet(target):
                   + str(target.socialize()).rjust(2) + ' ')
     block2.append('      Politics:' + str(target.politics()).rjust(2) +
                   '   Survival:' + str(target.survival()).rjust(2) +
-                  '    Streetwise:' 
+                  '    Streetwise:'
                   + str(target.streetwise()).rjust(2) + ' ')
     block2.append('       Science:' + str(target.science()).rjust(2) +
                   '   Weaponry:' + str(target.weaponry()).rjust(2) +
-                  '    Subterfuge:' 
+                  '    Subterfuge:'
                   + str(target.subterfuge()).rjust(2) + ' ')
-    
+
     #build the Advantages block
     block3 = []
     health_bar = target.get('Health',subentry='bar')
     gap = 22-len(health_bar)
     gap1 = int(round(gap/2,0))+1
     gap2 = gap - gap1 + 2
-    block3.append(' Health:' + (' ' * (len(health_bar) + gap1 - 5)) + 
-        'Defense:' + 
+    block3.append(' Health:' + (' ' * (len(health_bar) + gap1 - 5)) +
+        'Defense:' +
         str(target.get('Defense',statclass='Advantage')).rjust(4) +
-        (' ' * gap2) + 'Init:' 
+        (' ' * gap2) + 'Init:'
         + str(target.get('Init',statclass='Advantage')).rjust(4) + ' ')
     block3.append('   ' + health_bar + (' ' * gap1) + 'Will:' +
         str(str(target.get('Willpower',statclass='Advantage',subentry='temp'))
-        + '/' + 
+        + '/' +
         str(target.get('Willpower',statclass='Advantage',
                        subentry='perm'))).rjust(7) +
         (' ' * gap2) + 'Speed:' + str(target.get('Speed',
                         statclass='Advantage')).rjust(3) + ' ')
-    
+
     #Get the template block
     if target.template().lower() == 'changeling':
         block_t = changeling_template_block(target)
@@ -614,8 +612,8 @@ def produce_sheet(target):
     elif target.template().lower() == 'vampire':
         block_t = vampire_template_block(target)
     else:
-        block_t = blank_template_block()        
-        
+        block_t = blank_template_block()
+
     #Build the bottom block
     block = []
     if target.template().lower() == 'changeling':
@@ -636,7 +634,8 @@ def produce_sheet(target):
             if len(frailties) != 0:
                 sub_block = ['Frailties:']
                 for item in frailties:
-                    for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    for line in textwrap.wrap(item,width=24,
+                                              subsequent_indent=' '):
                         sub_block.append(' ' + line)
                 block.append(sub_block)
     elif target.template().lower() == 'mortal':
@@ -648,8 +647,8 @@ def produce_sheet(target):
         half = int(len(sub_block) / 2) + 1
         sub_block.append(' ')
         adjust = 0
-        if (len(sub_block) % 2) == 1:                        #Adding extra line if total
-            sub_block.append(' ')                             #number of lines is odd
+        if (len(sub_block) % 2) == 1:               #Adding extra line if total
+            sub_block.append(' ')                   #number of lines is odd
             adjust = 0
         counter = 0
         merit_blocks = [ [], [' '] ]
@@ -666,7 +665,7 @@ def produce_sheet(target):
             for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
                 sub_block.append(' ' + line)
         block.append(sub_block)
-        
+
         #disciplines
         if target.db.disciplines:
             sub_block = ['Disciplines:']
@@ -675,7 +674,7 @@ def produce_sheet(target):
                 for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
                     sub_block.append(' ' + line)
             block.append(sub_block)
-        
+
         #devotions
         if target.db.devotions:
             sub_block = ['Devotions:']
@@ -684,7 +683,7 @@ def produce_sheet(target):
                 for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
                     sub_block.append(' ' + line)
             block.append(sub_block)
-            
+
         #coils
         if target.db.coils:
             sub_block = ['Coils:']
@@ -693,7 +692,7 @@ def produce_sheet(target):
                 for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
                     sub_block.append(' ' + line)
             block.append(sub_block)
-            
+
         #Cruac Rites
         if target.db.cruacRites:
             sub_block = ['Rites:']
@@ -702,7 +701,7 @@ def produce_sheet(target):
                 for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
                     sub_block.append(' ' + line)
             block.append(sub_block)
-            
+
         #Theban Miracles
         if target.db.thebanRites:
             sub_block = ['Miracles:']
@@ -711,7 +710,7 @@ def produce_sheet(target):
                 for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
                     sub_block.append(' ' + line)
             block.append(sub_block)
-        
+
         #Scales
         if target.db.scales:
             sub_block = ['Scales:']
@@ -720,13 +719,14 @@ def produce_sheet(target):
                 for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
                     sub_block.append(' ' + line)
             block.append(sub_block)
-        
+
         banes = target.get('Banes', 'Sphere')
         if not(banes == False):
             if len(banes) != 0:
                 sub_block = ['Banes:']
                 for item in banes:
-                    for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                    for line in textwrap.wrap(item,width=24,
+                                              subsequent_indent=' '):
                         sub_block.append(' ' + line)
                 block.append(sub_block)
     temp = specialties_list(target)
@@ -740,33 +740,33 @@ def produce_sheet(target):
     for item in final_block:
         block4 = block4 + '| ' + item + '|||/|'
 
-    #Assemble blocks        
+    #Assemble blocks
     result = ('+-------------------------------------------------+--' +
-              '--------------------------+|/' + 
+              '--------------------------+|/' +
               '|' + block1[0] + '||' + block_t[0] + '|||/|' +
               block1[1] + '||' + block_t[1] + '|||/|' +
               block1[2] + '||' + block_t[2] + '|||/' +
-              '+-------------------------------------------------+' + 
+              '+-------------------------------------------------+' +
               block_t[3] + '|||/|' +
-              block2[0] + '||' + block_t[4] + '|||/|' + 
-              block2[1] + '||' + block_t[5] + '|||/|' + 
+              block2[0] + '||' + block_t[4] + '|||/|' +
+              block2[1] + '||' + block_t[5] + '|||/|' +
               block2[2] + '||' + block_t[6] + '|||/|' +
-              block2[3] + '||' + block_t[7] + '|||/|' + 
-              block2[4] + '||' + block_t[8] + '|||/|' + 
+              block2[3] + '||' + block_t[7] + '|||/|' +
+              block2[4] + '||' + block_t[8] + '|||/|' +
               block2[5] + '||' + block_t[9] + '|||/|' +
-              block2[6] + '||' + block_t[10] + '|||/|' + 
-              block2[7] + '||' + block_t[11] + '|||/' + 
-              '+-------------------------------------------------+' + 
+              block2[6] + '||' + block_t[10] + '|||/|' +
+              block2[7] + '||' + block_t[11] + '|||/' +
+              '+-------------------------------------------------+' +
               block_t[12] + '|||/|' +
-              block3[0] + '||' + block_t[13] + '|||/|' + 
+              block3[0] + '||' + block_t[13] + '|||/|' +
               block3[1] + '||' + block_t[14] + '|||/' +
               '+-------------------------------------------------+--' +
               '--------------------------+|/' +
               block4[:-1] + '+---------------------------------' +
               '---------------------------------------------+')
-    
+
     return result
-                
+
 def merits_list(target):
     try:
         sorted_list = sorted(target.db.merits, key=lambda merit: merit[0])
@@ -780,11 +780,11 @@ def merits_list(target):
             else:
                 results.append(merit[0]+' ('+merit[2]+'): '+ str(merit[1]))
         return results
-        
+
 def specialties_list(target):
     results = sorted(target.db.specialties)
     return results
-        
+
 def contracts_list(target):
     contracts = target.db.contracts
     try:
@@ -799,7 +799,7 @@ def contracts_list(target):
             else:
                 results.append(contract+' ('+contracts[contract]+')')
         return results
-    
+
 def simple_list(attribute):
     results = []
     item_list = sorted(list(attribute.keys()))
@@ -810,16 +810,18 @@ def simple_list(attribute):
             new_line = item + ': ' + str(attribute[item])
         results.append(new_line)
     return results
-    
+
 def build_bottom_block(sub_blocks):
     columns = [ [], [], [] ]
     column_lengths = [ 0, 0, 0 ]
     blocks_with_lengths = []
     for item in sub_blocks:
         blocks_with_lengths.append( [ len(item), item ] )
-    blocks_with_lengths = sorted(blocks_with_lengths, key=itemgetter(0), reverse=True)
+    blocks_with_lengths = sorted(blocks_with_lengths, key=itemgetter(0),
+                                 reverse=True)
     for block in blocks_with_lengths:
-        if column_lengths[2] <= column_lengths[1] and column_lengths[2] <= column_lengths[0]:
+        if (column_lengths[2] <= column_lengths[1] and
+                column_lengths[2] <= column_lengths[0]):
             if column_lengths[2] == 0:
                 for item in block[1]:
                     columns[2].append(item)
@@ -828,7 +830,8 @@ def build_bottom_block(sub_blocks):
                 for item in block[1]:
                     columns[2].append(item)
             column_lengths[2] = len(columns[2])
-        elif column_lengths[1] <= column_lengths[2] and column_lengths[1] <= column_lengths[0]:
+        elif (column_lengths[1] <= column_lengths[2] and
+              column_lengths[1] <= column_lengths[0]):
             if column_lengths[1] == 0:
                 for item in block[1]:
                     columns[1].append(item)
@@ -837,7 +840,8 @@ def build_bottom_block(sub_blocks):
                 for item in block[1]:
                     columns[1].append(item)
             column_lengths[1] = len(columns[1])
-        elif column_lengths[0] <= column_lengths[1] and column_lengths[0] <= column_lengths[2]:
+        elif (column_lengths[0] <= column_lengths[1] and
+              column_lengths[0] <= column_lengths[2]):
             if column_lengths[0] == 0:
                 for item in block[1]:
                     columns[0].append(item)
@@ -848,7 +852,8 @@ def build_bottom_block(sub_blocks):
             column_lengths[0] = len(columns[0])
     result = []
     counter = 0
-    while counter<len(columns[0]) or counter<len(columns[1]) or counter<len(columns[2]):
+    while (counter<len(columns[0]) or counter<len(columns[1]) or
+           counter<len(columns[2]) ):
         out = ''
         if counter<len(columns[0]):
             out = out + columns[0][counter].ljust(25)
@@ -865,7 +870,7 @@ def build_bottom_block(sub_blocks):
         result.append(out)
         counter = counter + 1
     return result
-    
+
 def proper_caps(string):
     result = ''
     counter = 0
@@ -877,4 +882,3 @@ def proper_caps(string):
         counter = counter + 1
     result = result[:-1]
     return result
-    
