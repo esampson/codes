@@ -307,57 +307,88 @@ class CmdHurt(Command):
     help_category = 'IC Commands'
     arg_regex = '^(\/\S+)?\s.+$'
     
-    def func(self):
-        if self.args:
-            parsed = parser(self.args)
-        else:
-            parsed = { 'args' : '',
-                       'entry' : '',
-                       'subentry' : '',
-                       'statclass' : '',
-                       'value' : 0 }
-        type = parsed['entry']
-        amount = parsed['value']
-        health = self.caller.db.advantages['Health']
-        max_health = self.caller.get('Health',statclass='Advantage',
-                                     subentry='Permanent')
+    def func(self):                                             #pragma: no cover
+        hurt_func(self.caller, self.args)                       #pragma: no cover
         
-        if type in ['bashing','bash','b']:
-            health[0] = health[0] + amount
-            damage_type = 'bashing'
-        elif type in ['lethal','l']:
-            health[1] = health[1] + amount
-            damage_type = 'lethal'
-        elif type in ['aggravated','agg','a']:
-            health[2] = health[2] + amount
-            damage_type = 'aggravated'
-        else:
-            self.caller.msg('Incorrect damage type')
-            raise InterruptCommand()
-        
-        while (health[0] + health[1] + health[2]) > max_health:
-            adjust = (health[0] + health[1] + health[2]) - max_health
-            if adjust > health[0]:
-                health[1] = health[1] + health[0]
-                health[0] = 0
-            else: 
-                health[1] = health[1] + adjust
-                health[0] = health[0] - adjust * 2
-            adjust = (health[1] + health[2]) - max_health
-            if adjust > 0:
-                if adjust > health[1]:
-                    health[2] = health[2] + health[1]
-                    health[1] = 0
-                else:
-                    health[2] = health[2] + adjust
-                    health[1] = health[1] - adjust * 2
-            adjust = health[2] - max_health
-            if adjust > 0:
-                health[2] = health[2] - adjust
-        self.caller.db.advantages['Health'] = health
-        message = (self.caller.name + ' takes ' + str(amount) + ' points of ' + damage_type +
-                       ' damage.')
-        send_message(self.caller,message)
+def hurt_func(target,input):     
+    if input:
+        parsed = parser(input)
+    else:
+        parsed = { 'args' : '',
+                   'entry' : '',
+                   'subentry' : '',
+                   'statclass' : '',
+                   'value' : 0 }
+    type = parsed['entry'].lower()
+    amount = parsed['value']
+    health = target.db.advantages['Health']
+    starting_health = list(health).copy()
+    damage = [0,0,0]
+    max_health = target.get('Health',statclass='Advantage',
+                                 subentry='Permanent')
+    
+    if type in ['bashing','bash','b']:
+        damage[0] = amount
+    elif type in ['lethal','l']:
+        damage[1] = amount
+    elif type in ['aggravated','agg','a']:
+        damage[2] = amount
+    else:
+        target.msg('Incorrect damage type')
+        raise InterruptCommand()
+
+    if health[0] + health[1] + health [2] + damage[0] > max_health:
+        upgrade = damage[0] - (max_health - (health[0] + health[1] + health [2]))
+        damage[1] = damage[1] + upgrade
+        damage[0] = damage[0] - upgrade
+    if health[1] + health [2] + damage[1] > max_health:
+        upgrade = damage[1] - (max_health - (health[1] + health [2]))
+        damage[2] = damage[2] + upgrade
+        damage[1] = damage[1] - upgrade
+    if health [2] + damage[2] > max_health:
+        upgrade = damage[2] - (max_health - health[2])
+        damage[2] = damage[2] - upgrade
+    health[2] = health[2] + damage[2]
+    health[1] = health[1] + damage[1]
+
+    health[0] = health[0] + damage[0]
+    if health[2] + health[1] > max_health:
+        health[1] = max_health - health[2]
+    if health[2] + health[1] + health[0] > max_health:
+        health[0] = max_health - (health[2] + health[1])
+    damage[2] = health[2] - starting_health[2]
+    damage[1] = health[1] - starting_health[1]
+    damage[0] = health[0] - starting_health[0]
+    target.db.advantages['Health'] = health
+    message = target.name + ' takes '
+    if damage[2] > 0:
+        message = message + str(damage[2]) + ' point'
+        if damage[2] > 1:
+            message = message + 's'
+        message = message + ' of aggravated'
+        if damage[1] > 0:
+            message = message + ' and ' + str(damage[1]) + ' point'
+            if damage[1] > 1:
+                message = message + 's'
+            message = message + ' of lethal'
+        message = message + ' damage.'
+    elif damage[1] > 0:
+        message = message + str(damage[1]) + ' point'
+        if damage[1] > 1:
+            message = message + 's'
+        message = message + ' of lethal'
+        if damage[0] > 0:
+            message = message + ' and ' + str(damage[0]) + ' point'
+            if damage[0] > 1:
+                message = message + 's'
+            message = message + ' of bashing'
+        message = message + ' damage.'
+    else:
+        message = message + str(damage[0]) + ' point'
+        if damage[0] > 1:
+            message = message + 's'
+        message = message + ' of bashing damage.'
+    send_message(target,message)
         
         
                 
@@ -381,46 +412,49 @@ class CmdHeal(Command):
     help_category = 'IC Commands'
     arg_regex = '^(\/\S+)?\s.+$'
     
-    def func(self):
-        if self.args:
-            parsed = parser(self.args)
-        else:
-            parsed = { 'args' : '',
-                       'entry' : '',
-                       'subentry' : '',
-                       'statclass' : '',
-                       'value' : 0 }
-        type = parsed['entry'].lower()
-        amount = parsed['value']
-        health = self.caller.db.advantages['Health']
-        max_health = self.caller.get('Health',statclass='Advantage',
-                                     subentry='Permanent')
+    def func(self):                                                 #pragma: no cover
+        heal_func(self.caller, self.args)                           #pragma: no cover
         
-        if type in ['bashing','bash','b']:
-            if amount > health[0]:
-                health[0] = 0
-            else:
-                health[0] = health[0] - amount
-            damage_type = 'bashing'
-        elif type in ['lethal','l']:
-            if amount > health[1]:
-                health[1] = 0
-            else:
-                health[1] = health[1] - amount
-            damage_type = 'lethal'
-        elif type in ['aggravated','agg','a']:
-            if amount > health[2]:
-                health[2] = 0
-            else:
-                health[2] = health[2] - amount
-            damage_type = 'aggravated'
+def heal_func(target,input):       
+    if input:
+        parsed = parser(input)
+    else:
+        parsed = { 'args' : '',
+                   'entry' : '',
+                   'subentry' : '',
+                   'statclass' : '',
+                   'value' : 0 }
+    type = parsed['entry'].lower()
+    amount = parsed['value']
+    health = target.db.advantages['Health']
+    max_health = target.get('Health',statclass='Advantage',
+                                 subentry='Permanent')
+    
+    if type in ['bashing','bash','b']:
+        if amount > health[0]:
+            health[0] = 0
         else:
-            self.caller.msg('Incorrect damage type')
-            raise InterruptCommand()
-        self.caller.db.advantages['Health'] = health
-        message = (self.caller.name + ' heals ' + str(amount) + ' points of ' + damage_type +
-                       ' damage.')
-        send_message(self.caller,message)
+            health[0] = health[0] - amount
+        damage_type = 'bashing'
+    elif type in ['lethal','l']:
+        if amount > health[1]:
+            health[1] = 0
+        else:
+            health[1] = health[1] - amount
+        damage_type = 'lethal'
+    elif type in ['aggravated','agg','a']:
+        if amount > health[2]:
+            health[2] = 0
+        else:
+            health[2] = health[2] - amount
+        damage_type = 'aggravated'
+    else:
+        target.msg('Incorrect damage type')
+        raise InterruptCommand()
+    target.db.advantages['Health'] = health
+    message = (target.name + ' heals ' + str(amount) + ' points of ' + damage_type +
+                   ' damage.')
+    send_message(target,message)
     
     
 class CmdInfo(Command):

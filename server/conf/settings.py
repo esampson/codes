@@ -147,7 +147,7 @@ AMP_INTERFACE = "127.0.0.1"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "evennia.db3",
+        "NAME": "rainbow_database",
         "USER": "unicorn_user",
         "PASSWORD": "magical_password",
         "HOST": "db",
