@@ -176,6 +176,17 @@ merit.db.info = 'Your character knows how to fine-tune a vehicle to utter extrem
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Avoidance')
+merit.db.longname = 'Avoidance'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.manipulation() >= 3 and target.athletics() >= 2 and target.stealth() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 46'
+merit.db.info = 'Your character’s only goal in a fight is not to get hurt. She tries to create situations where opponents hurt themselves or target her big mean friends instead. There is no formal training for this Style; it’s a mixture of ingenuity and a person’s innate desire to avoid pain.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Barfly')
 merit.db.longname = 'Barfly'
 merit.db.category = 'Social'
@@ -184,6 +195,17 @@ merit.db.prereq = 'target.socialize() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 50'
 merit.db.info = 'Your character is a natural in the bar environment, and can procure an open invitation wherever he wishes. Whereas most characters would require rolls to blend into social functions they don’t belong in, he doesn’t; he belongs. Rolls to identify him as an outsider suffer his Socialize as a penalty.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Berserker')
+merit.db.longname = 'Berserker'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.strength() >= 3 and target.get(\'Iron Stamina\',statclass=\'Merit\') >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 46-47'
+merit.db.info = 'Your character enters a controlled madness in combat. Whether a believer in the throes of ecstatic fervor or a warrior emulating the Norse berserks, this Style is not about technique but about achieving the right state of mind.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -220,6 +242,28 @@ merit.db.info = 'Your character has honed her body to be a hardened weapon. She 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Bowmanship')
+merit.db.longname = 'Bowmanship'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.dexterity() >= 3 and target.firearms() >=2 and target.get(\'Trained Observer\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 47'
+merit.db.info = 'Your character is a patient hunter with a bow. She fires precision shots across long distances to take out targets that had no idea she was even there. This Style focuses on a character’s ability to aim by judging distance and trajectory. It uses a dice pool of Dexterity + Firearms for its attacks.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Boxing')
+merit.db.longname = 'Boxing'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.strength() >= 2 and target.dexterity() >= 2 and target.stamina() >= 2 and target.brawl() >= 2 and target.athletics() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 47-48'
+merit.db.info = 'Trading blows with the hands dates back to Classical times, and probably earlier — some biologists believe our hands have been optimized to deliver blows. There are hundreds of folk styles of boxing, from West Africa’s Dambe to the Filipino method known as Suntukan or Panantukan. This style concentrates on the modern combat sport, which combines European methods with innovations developed by trainers or borrowed from other cultures. Your character is trained in modern boxing, or a similar traditional style.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Brownies_Boon')
 merit.db.longname = 'Brownie\'s Boon'
 merit.db.category = 'Changeling'
@@ -250,6 +294,17 @@ merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Statu
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 110'
 merit.db.info = 'Carthians know people. Being the covenant arguably most in touch with humanity, they tend to have the most numerous connections. Membership in the Movement can mean leveraging those connections. Each month, you can access a number of dots of the Allies, Contacts, Haven, and Herd Merits equal to your Carthian Status.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Chain_Weapons')
+merit.db.longname = 'Chain Weapons'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2]
+merit.db.prereq = 'target.strength() >= 3 and target.dexterity() >= 3 and target.athletics() >= 2 and target.weaponry() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 48'
+merit.db.info = 'Your character knows how to use a length of chain as a weapon. These maneuvers require at least a yard’s (or meter’s) worth of chain and can be any design from a martial artist’s chain whip to one ripped off the sprocket of a motorcycle. The Style is taught among traditional Chinese weapon styles but is also favored among everyday street gangs.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -360,6 +415,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 111-112'
 merit.db.info = 'Your character has taken her pain, and the pain of others, and crafted them into a barrier against further suffering. She may spend a Willpower to ignore the effects of a single Clarity Condition once per scene. She still has the Condition and doesn’t heal any Clarity damage, but she does not suffer the ill effects of the Condition. If her actions during the scene would resolve the Condition, it resolves normally.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Combat_Archery')
+merit.db.longname = 'Combat Archery'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.strength() >= 3 and target.athletics() >= 2 and target.get(\'Quick Draw\', subentry=\'Bow\', statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 48'
+merit.db.info = 'Your character uses a bow for rapid draws that riddle opponents with arrows. She knows how to move across the battlefield while firing from any angle. This Style is about trick shots and using archery in the thick of a fight. It uses a dice pool of Dexterity + Athletics for its attacks.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -693,6 +759,17 @@ merit.db.info = 'Your character favors a particular flavor of Glamour. Choose a 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Falconry')
+merit.db.longname = 'Falconry'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.wits() >= 3 and  target.animal_ken() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 48-49'
+merit.db.info = 'Your bird performs incredible feats at your command. You purchase this Merit for your character, who may apply it to any bird she shares the Bonded Condition with after a reasonable amount of time training together. Used for both hunting and sport, this practice has roots going back into antiquity and among numerous cultures. While not as widespread now as in the past, finding a trainer for this style is still relatively easy. Unless otherwise noted, these Merits constitute actions the bird takes independently, with only a simple, one-word or gesture command. Thus, your character does not have to dedicate an action to make them happen. Additionally, possession of this Merit allows your character to spend Willpower to benefit the bird’s actions in her presence.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Fame')
 merit.db.longname = 'Fame'
 merit.db.category = 'Social'
@@ -861,10 +938,10 @@ merit.db.restricted = False
 merit = create_script('typeclasses.scripts.meritScript',key = 'Grappling')
 merit.db.longname = 'Grappling'
 merit.db.category = 'Fighting'
-merit.db.range = [1, 2, 3]
+merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.stamina() >= 3 and target.strength() >= 2 and target.athletics() >= 2 and target.brawl() >= 2'
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 62'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CoD p. 62 and HL p. 49'
 merit.db.info = 'Your character has trained in wrestling, or one of many grappling martial arts.'
 merit.db.cg_only = False
 merit.db.restricted = False
@@ -1144,6 +1221,17 @@ merit.db.info = 'Your character’s resolve is unwavering. When spending Willpow
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'K-9')
+merit.db.longname = 'K-9'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.wits() >= 3 and target.animal_ken() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 49-50'
+merit.db.info = 'Under your supervision a dog may perform exceptional actions. You purchase this Merit for your character, who may apply it to any dog she shares the Bonded Condition with after a reasonable amount of training time together. Police and military forces are the place to go to learn to work with an animal in combat, but independent trainers might know this style as well.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Kindred_Dueling')
 merit.db.longname = 'Kindred Dueling'
 merit.db.category = 'Vampire'
@@ -1152,6 +1240,17 @@ merit.db.prereq = 'target.template().lower() == \'vampire\' and target.composure
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 117-118'
 merit.db.info = 'Your character is not only a competent fighter, but also one trained specifically to take advantage of Kindred variables in a fight. Use of Kindred dueling requires an edged weapon. While humans could theoretically learn some of these tricks, the practical experience required could prove deadly. Note that Kindred Dueling abilities may not be used together. If you’re using Hamstring, you cannot benefit from Carving as well.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Kino_Mutai')
+merit.db.longname = 'Kino Mutai'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.dexterity() >= 2 and target.resolve() >= 3 and target.brawl() > = 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 50'
+merit.db.info = 'Your character learns to bite opponents, tear at soft tissues and gouge eyes with special skills. This is sometimes called “Kino Mutai” in Filipino martial arts, but it can be learned by anyone uninhibited enough to use these unconventional methods to the greatest extent possible for humans. Thus, this Fighting Style only works for beings with a human body plan and a decent set of teeth.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1314,8 +1413,8 @@ merit.db.longname = 'Martial Arts'
 merit.db.category = 'Fighting'
 merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.resolve() >= 3 and target.dexterity() >= 3 and target.athletics() >= 2 and target.brawl() >= 2'
-merit.db.noteRestrictions = []
-merit.db.reference = 'CoD p. 63-64'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'CoD p. 63-64 and HL p. 50'
 merit.db.info = 'Your character is trained in one or more formal martial arts styles. This may have come from a personal mentor, a dojo, or a self-defense class. It may have been for exercise, protection, show, or tradition. These maneuvers may only be used unarmed, or with weapons capable of using the Brawl Skill, such as a punch dagger, or a weapon using the Shiv Merit.'
 merit.db.cg_only = False
 merit.db.restricted = False
@@ -1361,6 +1460,17 @@ merit.db.prereq = 'target.empathy() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 57'
 merit.db.info = 'Your character gets deep under the skin of problems. If she’s investigating a crime or other phenomenon, she can put herself in the mind of the culprit. This often helps with the case, however, it takes her to a dark place internally.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Mounted_Combat')
+merit.db.longname = 'Mounted Combat'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 2 and target.animal_ken() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 51'
+merit.db.info = 'Your character fights from horseback using the animal’s size and maneuverability to make her attacks more effective. While trained cavalry regiments are largely a thing of the past, many police departments around the world still have officers who use techniques like these in the modern day.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1584,6 +1694,17 @@ merit.db.info = 'Your character is trained in restraint techniques, often used b
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Powered_Projectile')
+merit.db.longname = 'Powered Projectile'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 2 and target.firearms() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 51'
+merit.db.info = 'Your character is comfortable using premodern ranged weapons like crossbows, slingshots, and blowguns. Though long ago replaced by firearms, these weapons remain popular for hunting and are widely available in some countries.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Professional_Training')
 merit.db.longname = 'Professional Training'
 merit.db.category = 'Mental'
@@ -1804,6 +1925,17 @@ merit.db.info = 'Any Kindred may be part of a dynastic house, but the Invictus t
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Spear_and_Bayonet')
+merit.db.longname = 'Spear and Bayonet'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.strength() >= 3 and target.dexterity() >= 2 and target.weaponry() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 51'
+merit.db.info = 'Your character is trained with long weapons that end in a point. This could be anything from a traditional spear to a fixed bayonet on a modern rifle. This Style has countless variations around the world but is historically incorporated as part of military training.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Spin_Doctor')
 merit.db.longname = 'Spin Doctor'
 merit.db.category = 'Social'
@@ -1837,6 +1969,17 @@ merit.db.info = 'Your character has a crew of workers or assistants at his dispo
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Staff_Fighting')
+merit.db.longname = 'Staff Fighting'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.strength() >= 2 and target.dexterity() >= 3 and target.weaponry() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 51-52'
+merit.db.info = 'Your character uses a staff as her weapon of choice. These maneuvers are usually performed with a quarterstaff or bo staff, but anything of a suitable length and shape like a walking stick or a heavy curtain rod will work as well.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Status')
 merit.db.longname = 'Status'
 merit.db.category = 'Social'
@@ -1856,6 +1999,17 @@ merit.db.prereq = 'target.stamina() >= 3 and target.composure() >= 3 and target.
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 65'
 merit.db.info = 'Your character learned to fight on the mean streets. She may have had some degree of formal training, but the methodology came from the real world, in dangerous circumstances. Street Fighting isn\'t about form and grace, it\'s about staying alive. These maneuvers may only be used unarmed, or with weapons capable of using the Brawl Skill, such as punch daggers, or weapons concealed with the Shiv Merit.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Strength_Performance')
+merit.db.longname = 'Strength Performance'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.strength() >= 3 and target.stamina() >= 2 and target.athletics() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 52'
+merit.db.info = 'While the Strength Attribute covers all forms of issuing bodily force, your character has specifically trained in lifting, pushing, and pulling enormous weights. He learned this as an Olympic-style weightlifter, strongman competitor, or performer. This doesn’t help your character hit things, but if he does, anything at the other end is going to break and hurt.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1947,6 +2101,17 @@ merit.db.info = 'Your character is very good at letting others get close. This g
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Systema')
+merit.db.longname = 'Systema'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 3 and target.wits() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 52'
+merit.db.info = 'Your character learns to move with exceptional suppleness, rolling with blows and obstacles. She redirects incoming force not as a technique, but an instinct. These abilities are often taught within Systema, a Russian martial art developed for intelligence services and special operations. It can also reflect the advanced body skills taught by “soft” martial arts such as Tai Chi or Aikido.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Takes_One_to_Know_One')
 merit.db.longname = 'Takes One to Know One'
 merit.db.category = 'Social'
@@ -2013,6 +2178,17 @@ merit.db.info = 'Your character is a magnet for fortune and fate. When she’s c
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Thrown_Weapons')
+merit.db.longname = 'Thrown Weapons'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2]
+merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 2 and target.get(\'Quick Draw\',subentry=subentry,statclass=\'Merit\') >= 1 and target.get(subentry + \': *\')'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'HL p. 52'
+merit.db.info = 'Knives, darts, throwing stars, and tomahawks are all weapons your character can send flying in her enemy’s direction. Many warrior cultures have used thrown projectiles in wartime or for hunting purposes and may teach this Style. Also, similar techniques are found among circus and sideshow acts. These maneuvers may only be performed with edged weapons Size 1 or smaller.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Token')
 merit.db.longname = 'Token'
 merit.db.category = 'Changeling'
@@ -2065,6 +2241,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 56'
 merit.db.info = 'Your character has a True Friend. While that friend may have specific functions covered by other Merits (Allies, Contacts, Retainer, Mentor, et cetera), True Friend represents a deeper, truly trusting relationship that cannot be breached. Unless your character does something egregious to cause it, her True Friend will not betray her. Additionally, the Storyteller cannot kill her True Friend as part of a plot without your express permission. Any rolls to influence a True Friend against your character suffer a five-die penalty. In addition, once per story, your character can regain one spent Willpower by having a meaningful interaction with her True Friend.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Two_Weapon_Fighting')
+merit.db.longname = 'Two Weapon Fighting'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.wits() >= 3 and target.get(\'Fighting Finesse\', statclass=\'Merit\') >= 2 and target.weaponry() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 53'
+merit.db.info = 'Your character fights with a weapon in each hand. She can amplify her attacks by using them together or balance between attack and defense by using one weapon for each. Different martial arts focus on different sets of weapons. Some employ a rapier and dagger, or a katana and wakizashi, while others use sticks or two light swords. This Style can be used to replicate any of them. Unless your character possesses the Ambidextrous Merit she takes the usual –2 penalty for using a weapon in her off-hand. Neither weapon can be above Size 2 for performing these maneuvers.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2164,6 +2351,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.resolv
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 120'
 merit.db.info = 'Whether through active mental discipline or natural stubbornness, your character’s dream Bastion is particularly well fortified against intrusion. Each dot in Warded Dreams increases the Bastion’s Fortification rating by one.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Weapon_and_Shield')
+merit.db.longname = 'Weapon and Shield'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.strength() >= 3 and target.stamina() >= 3 and target.weaponry() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 53'
+merit.db.info = 'Your character knows how to fight from behind a shield with a one-handed weapon. These maneuvers strike a balance between protection and offense and are used in tandem with others, such as in a Viking shield wall or riot police formation.'
 merit.db.cg_only = False
 merit.db.restricted = False
 

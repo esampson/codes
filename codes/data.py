@@ -1,9 +1,6 @@
 from evennia.utils.search import search_script_tag
 from evennia import search_script
 
-import textwrap
-
-
 def find(iString, statclass = ''):
     """
     find
