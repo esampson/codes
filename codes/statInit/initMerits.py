@@ -121,6 +121,17 @@ merit.db.info = 'You’re able to use a weapon to stop people who are trying to 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Armed_Restraint')
+merit.db.longname = 'Armed Restraint'
+merit.db.category = 'Fighting'
+merit.db.range = [2]
+merit.db.prereq = 'target.get(\'Staff Fighting\',statclass=\'Merit\') >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 53'
+merit.db.info = 'Your character knows how to use a pole with a hook or noose on the end of it to restrain animal and human targets. Using a suitable weapon, such as a catch pole or shepherd’s crook, your character can grapple and immediately apply the Hold maneuver on success. During subsequent turns her opponent’s grapple rolls are penalized by the weapon’s damage rating.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Atrocious')
 merit.db.longname = 'Atrocious'
 merit.db.category = 'Vampire'
@@ -242,6 +253,17 @@ merit.db.info = 'Your character has honed her body to be a hardened weapon. She 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Boot_Party')
+merit.db.longname = 'Boot Party'
+merit.db.category = 'Fighting'
+merit.db.range = [2]
+merit.db.prereq = 'target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 53'
+merit.db.info = 'Your character understands the effectiveness of grinding her heel into a delicate part of a downed opponent’s anatomy. When attacking an opponent in the prone position, she may make an unarmed attack at a –3 penalty in addition to normal modifiers. Any damage inflicted is lethal.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Bowmanship')
 merit.db.longname = 'Bowmanship'
 merit.db.category = 'Fighting'
@@ -352,6 +374,17 @@ merit.db.info = 'A Gangrel’s claws are deadly and bestial; yours are downright
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Clinch_Strike')
+merit.db.longname = 'Clinch Strike'
+merit.db.category = 'Fighting'
+merit.db.range = [1]
+merit.db.prereq = 'target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 53'
+merit.db.info = 'Most people will instinctively grab anyone they want to hit, but your character has trained to hit hard and accurately from a clinch position, using short punches, elbows, and knees. She inflicts standard Brawl damage when initiating a grapple instead of sacrificing the opportunity to damage someone in order to grab.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Cloak_of_Leaves')
 merit.db.longname = 'Cloak of Leaves'
 merit.db.category = 'Changeling'
@@ -459,6 +492,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = ['Spring', 'Summer', 'Autumn', 'Winter']
 merit.db.reference = 'CtL p. 112'
 merit.db.info = 'Court Goodwill represents a changeling’s influence and respect in a court that isn’t his own. It allows him to have serious ties to as many courts as he likes, in addition to the one he has sworn magical allegiance to. This isn’t to say Court Goodwill is a purely social construct. This Merit covers both the mundane networking required of being part of a large social group and the fickle favor of whatever plays patron to a court. In this way, a changeling of the White Rose Court can use the benefits of the Red Rose Court’s Mantle, the Red Rose Courtier can be privy to the Blue Rose Court’s magic, and so on.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Covert_Operative')
+merit.db.longname = 'Covert Operative'
+merit.db.category = 'Fighting'
+merit.db.range = [1]
+merit.db.prereq = 'target.wits() >= 3 and target.dexterity() >= 3 and target.stealth() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 53-54'
+merit.db.info = 'Your character is trained in getting the jump on her opponents. She creeps up on unsuspecting enemies from the shadows and neutralizes them before anyone realizes anything’s happening. When your character ambushes an opponent, the victim loses the 10-again quality on his roll to notice the attack. Even if he successfully notices your character, your character acts at +3 Initiative in the first turn.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -957,6 +1001,28 @@ merit.db.info = 'Your character works best when chasing or being chased; the hun
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Ground_Fighter')
+merit.db.longname = 'Ground Fighter'
+merit.db.category = 'Fighting'
+merit.db.range = [3]
+merit.db.prereq = 'target.wits() >= 3 and target.dexterity() >= 3 and target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'Your character knows how to fight from her back. Many mixed martial arts styles emphasize being able to fight from the ground. Brawl and weaponry attacks do not gain the +2 bonus to attack your character when prone. She can perform the Stand Up maneuver.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Ground_and_Pound')
+merit.db.longname = 'Ground and Pound'
+merit.db.category = 'Fighting'
+merit.db.range = [2]
+merit.db.prereq = 'target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'Your character skillfully uses gravity to drop a fist, elbow, knee, or other strike on a prone opponent. When using Brawl to strike or inflict the Damage grappling maneuver on a prone opponent, you may declare your character uses this maneuver. You gain the rote benefit (re-roll failed dice) to your attack, but automatically fall prone; and if grappled, your opponent automatically breaks free.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Grounded')
 merit.db.longname = 'Grounded'
 merit.db.category = 'Changeling'
@@ -987,6 +1053,17 @@ merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Safe 
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'VtR p. 112'
 merit.db.info = 'A good haven is not only safe from the sun, but also familiar and comforting. The dot rating reflects your character’s affinity for his home and its defenses against the sun’s intrusion. A low rating might mean an unreliable apartment with boarded windows. A high rating may mean an ancestral home with no windows and an extensive system of vaults.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Headbutt')
+merit.db.longname = 'Headbutt'
+merit.db.category = 'Fighting'
+merit.db.range = [1]
+merit.db.prereq = 'target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'Your character has found few arguments she can’t end by ramming her skull into a softer part of the human anatomy. This Merit allows for a new grappling maneuver.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1185,6 +1262,17 @@ merit.db.prereq = 'target.wits() >= 3 and target.investigation >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 45'
 merit.db.info = 'Your character investigates instinctively, and can intuit details and connections in a scene without much time. He’s a veritable Sherlock Holmes. Instead of simply uncovering Clues or not uncovering Clues when investigating (see p. 79), your character discovers multiple Clues in a single action. Your character can uncover Clues equal to his successes or his Merit dots as an instant action, whichever is lower.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Chin')
+merit.db.longname = 'Iron Chin'
+merit.db.category = 'Fighting'
+merit.db.range = [2, 4]
+merit.db.prereq = 'target.resolve() >= 3 and target.stamina() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'Your character’s taken her share of beatings and can’t be scared by pain or the sight of her own blood. This Merit comes in two levels. At ** dots, she no longer suffers the Beaten Down Tilt from any amount of bashing damage. At **** dots, she never suffers Beaten Down, period. This is probably more foolhardy than brave. If your chronicle doesn’t feature conflicts where Beaten Down features prominently, don’t use this Merit.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1669,6 +1757,17 @@ merit.db.prereq = 'target.wits() >= 3 and target.empathy() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42-43'
 merit.db.info = 'Your character is keenly attuned to indications of imminent violence, and knows techniques to soothe hot tempers and calm emotions. At two dots, the character may act first in a violent scene to attempt to deescalate the behavior. He spends a point of Willpower and forces his opponent into a social maneuver. The opponent’s base number of Doors is equal to the higher of her Resolve or Composure for this maneuver.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Phalanx_Fighter')
+merit.db.longname = 'Phalanx Fighter'
+merit.db.category = 'Fighting'
+merit.db.range = [2]
+merit.db.prereq = 'target.get(\'Weapon and Shield\',statclass=\'Merit\') >= 2 and target.get(\'Spear and Bayonet\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'Your character is trained to wield a spear alongside a shield. She does not increase her spear’s Strength requirement for using it one-handed as long as she’s also using a shield. She can use a spear for any Weapon and Shield maneuvers.'
 merit.db.cg_only = False
 merit.db.restricted = False
 

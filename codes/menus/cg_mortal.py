@@ -205,5 +205,6 @@ def mortal_finish_cg(caller, raw_string, **kwargs):
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,
                      'log' : {} }
-    return None
+    text = {'format': 'suppress'}
+    return text, None
 
