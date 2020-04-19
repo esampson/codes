@@ -293,7 +293,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.strength() >= 2 and target.dexterity() >= 2 and target.stamina() >= 2 and target.brawl() >= 2 and target.athletics() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 47-48'
-merit.db.info = 'Trading blows with the hands dates back to Classical times, and probably earlier — some biologists believe our hands have been optimized to deliver blows. There are hundreds of folk styles of boxing, from West Africa’s Dambe to the Filipino method known as Suntukan or Panantukan. This style concentrates on the modern combat sport, which combines European methods with innovations developed by trainers or borrowed from other cultures. Your character is trained in modern boxing, or a similar traditional style.'
+merit.db.info = 'Trading blows with the hands dates back to Classical times, and probably earlier - some biologists believe our hands have been optimized to deliver blows. There are hundreds of folk styles of boxing, from West Africa’s Dambe to the Filipino method known as Suntukan or Panantukan. This style concentrates on the modern combat sport, which combines European methods with innovations developed by trainers or borrowed from other cultures. Your character is trained in modern boxing, or a similar traditional style.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -535,7 +535,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 57'
-merit.db.info = 'Your character has run afoul of fate. Somewhere, somehow, he’s been cursed. Most importantly, he’s aware of the curse. When taking this Merit, define the limitations of the curse. Usually, it’s expressed in the form of a single statement, such as, “On the eve of your twenty-seventh birthday, you will feast upon your doom.” It’s important to work out the details with the Storyteller. The curse must take effect within the scope of the planned chronicle.'
+merit.db.info = 'Your character has run afoul of fate. Somewhere, somehow, he’s been cursed. Most importantly, he’s aware of the curse. When taking this Merit, define the limitations of the curse. Usually, it’s expressed in the form of a single statement, such as, "On the eve of your twenty-seventh birthday, you will feast upon your doom." It’s important to work out the details with the Storyteller. The curse must take effect within the scope of the planned chronicle.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -634,7 +634,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.composure() >= 3 and target.wits() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 112'
-merit.db.info = 'Your character can dig within his dreams for prophetic answers to primordial truths, as all humanity is and has always been connected through its dreams via the Dreaming Roads. He must enter a dream state, through either the Gate of Ivory or Horn, into his own Bastion. Then, he may ask the Storyteller a yes or no question about something he wishes to divine from his dreams. She must answer accurately, but can use “maybe” if the answer is truly neither yes nor no. Depending on the answer, you may ask additional, related questions, up to your Merit dots. You can ask that many total questions per chapter.'
+merit.db.info = 'Your character can dig within his dreams for prophetic answers to primordial truths, as all humanity is and has always been connected through its dreams via the Dreaming Roads. He must enter a dream state, through either the Gate of Ivory or Horn, into his own Bastion. Then, he may ask the Storyteller a yes or no question about something he wishes to divine from his dreams. She must answer accurately, but can use "maybe" if the answer is truly neither yes nor no. Depending on the answer, you may ask additional, related questions, up to your Merit dots. You can ask that many total questions per chapter.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -942,7 +942,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'The Invictus have their fingers in a lot of pies...but any one vampire only has so many fingers. So the vampires of the First Estate do not just leverage their personal connections — they leverage each other’s. An Invictus member can always do a little horse trading.'
+merit.db.info = 'The Invictus have their fingers in a lot of pies...but any one vampire only has so many fingers. So the vampires of the First Estate do not just leverage their personal connections - they leverage each other’s. An Invictus member can always do a little horse trading.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1217,7 +1217,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.wits() >= 3 and target.weaponry >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 62-63'
-merit.db.info = 'Most people don’t walk around armed. While someone pulling a knife or a gun can cool a hostile situation down, it can also cause things to boil over — an argument that wouldn’t be more than harsh words suddenly ends up with three people in the morgue. If your character is on the receiving end of someone pulling a knife, it helps to have something in his hand as well.'
+merit.db.info = 'Most people don’t walk around armed. While someone pulling a knife or a gun can cool a hostile situation down, it can also cause things to boil over - an argument that wouldn’t be more than harsh words suddenly ends up with three people in the morgue. If your character is on the receiving end of someone pulling a knife, it helps to have something in his hand as well.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1360,7 +1360,7 @@ merit.db.range = [1, 2, 3, 4]
 merit.db.prereq = 'target.dexterity() >= 2 and target.resolve() >= 3 and target.brawl() > = 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 50'
-merit.db.info = 'Your character learns to bite opponents, tear at soft tissues and gouge eyes with special skills. This is sometimes called “Kino Mutai” in Filipino martial arts, but it can be learned by anyone uninhibited enough to use these unconventional methods to the greatest extent possible for humans. Thus, this Fighting Style only works for beings with a human body plan and a decent set of teeth.'
+merit.db.info = 'Your character learns to bite opponents, tear at soft tissues and gouge eyes with special skills. This is sometimes called "Kino Mutai" in Filipino martial arts, but it can be learned by anyone uninhibited enough to use these unconventional methods to the greatest extent possible for humans. Thus, this Fighting Style only works for beings with a human body plan and a decent set of teeth.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1470,7 +1470,7 @@ merit.db.range = [5]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 5'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116'
-merit.db.info = 'Carthians wield consensus the way a cop wields a baton. With the power of the Movement behind her, a ranking Carthian can call on the will of her people to strike weakness into the Movement’s opposition. With her words and the mandate, she strips a Kindred enemy’s blood down to nothingness. To enact this law, your character must make a clear and direct admonishment against one of the Movement’s enemies. Cross a dot of Willpower off the Carthian’s sheet. She must also garner the support of others of the Movement for a vote — from both Storyteller characters and players’ characters. If the vote favors the admonishment, add the total dots of Carthian Status in support (including the user’s five). For every five dots, reduce the victim’s Blood Potency by one dot. If this reduces him to zero dots, he effectively becomes a revenant (see p. 94 for rules on revenants).'
+merit.db.info = 'Carthians wield consensus the way a cop wields a baton. With the power of the Movement behind her, a ranking Carthian can call on the will of her people to strike weakness into the Movement’s opposition. With her words and the mandate, she strips a Kindred enemy’s blood down to nothingness. To enact this law, your character must make a clear and direct admonishment against one of the Movement’s enemies. Cross a dot of Willpower off the Carthian’s sheet. She must also garner the support of others of the Movement for a vote - from both Storyteller characters and players’ characters. If the vote favors the admonishment, add the total dots of Carthian Status in support (including the user’s five). For every five dots, reduce the victim’s Blood Potency by one dot. If this reduces him to zero dots, he effectively becomes a revenant (see p. 94 for rules on revenants).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1602,7 +1602,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 51-53'
-merit.db.info = 'Cults are far more common than people would like to admit. “Mystery cult” is the catch-all term for a phenomenon ranging from secret societies couched in fraternity houses, to scholarly cabals studying the magic of classical symbolism, to mystical suicide cults to the God-Machine.'
+merit.db.info = 'Cults are far more common than people would like to admit. "Mystery cult" is the catch-all term for a phenomenon ranging from secret societies couched in fraternity houses, to scholarly cabals studying the magic of classical symbolism, to mystical suicide cults to the God-Machine.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1679,7 +1679,7 @@ merit.db.range = [3]
 merit.db.prereq = 'True'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'VtR p. 117'
-merit.db.info = 'This Oath is a form of apology from a vassal to an aggrieved liege. For the agreed-upon term, the liege receives every tenth Vitae the vassal ingests. This Vitae comes over any distance, without risk of blood bond or addiction, and counts as Kindred Vitae. Some ancient Invictus use this Oath to skirt their need for Kindred blood, by establishing massive networks of “punished” vassals. During the same period, the vassal becomes immune to the liege’s Discipline effects.'
+merit.db.info = 'This Oath is a form of apology from a vassal to an aggrieved liege. For the agreed-upon term, the liege receives every tenth Vitae the vassal ingests. This Vitae comes over any distance, without risk of blood bond or addiction, and counts as Kindred Vitae. Some ancient Invictus use this Oath to skirt their need for Kindred blood, by establishing massive networks of "punished" vassals. During the same period, the vassal becomes immune to the liege’s Discipline effects.'
 merit.db.cg_only = False
 merit.db.restricted = True
 
@@ -1690,7 +1690,7 @@ merit.db.range = [2]
 merit.db.prereq = 'True'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'VtR p. 117'
-merit.db.info = 'This Oath is a contract between a landlord and a tenant. In Invictus domains, Princes often use this Oath as the go-to for granting territory. Young Invictus refer to this practice as “castling.” Oath of Serfdom agreements typically involve “red rent,” a certain blood tithe given to the landlord regularly.'
+merit.db.info = 'This Oath is a contract between a landlord and a tenant. In Invictus domains, Princes often use this Oath as the go-to for granting territory. Young Invictus refer to this practice as "castling." Oath of Serfdom agreements typically involve "red rent," a certain blood tithe given to the landlord regularly.'
 merit.db.cg_only = False
 merit.db.restricted = True
 
@@ -1800,7 +1800,7 @@ merit.db.range = [4]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116'
-merit.db.info = 'Carthians don’t break laws; they defy laws. Influential Carthians can throw law to the wind, then laugh it off with an argument about the definition of the word “is.” Any attempt to use a Discipline or other supernatural power to prove your character’s guilt in breach of city law or Tradition automatically fails. She cannot be forced to confess by any means, and attempts to detect her honesty through mundane means suffer her Carthian Status as a penalty. She exhibits no stains on her aura from diablerie.'
+merit.db.info = 'Carthians don’t break laws; they defy laws. Influential Carthians can throw law to the wind, then laugh it off with an argument about the definition of the word "is." Any attempt to use a Discipline or other supernatural power to prove your character’s guilt in breach of city law or Tradition automatically fails. She cannot be forced to confess by any means, and attempts to detect her honesty through mundane means suffer her Carthian Status as a penalty. She exhibits no stains on her aura from diablerie.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2251,7 +2251,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 3 and target.wits() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 52'
-merit.db.info = 'Your character learns to move with exceptional suppleness, rolling with blows and obstacles. She redirects incoming force not as a technique, but an instinct. These abilities are often taught within Systema, a Russian martial art developed for intelligence services and special operations. It can also reflect the advanced body skills taught by “soft” martial arts such as Tai Chi or Aikido.'
+merit.db.info = 'Your character learns to move with exceptional suppleness, rolling with blows and obstacles. She redirects incoming force not as a technique, but an instinct. These abilities are often taught within Systema, a Russian martial art developed for intelligence services and special operations. It can also reflect the advanced body skills taught by "soft" martial arts such as Tai Chi or Aikido.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2339,7 +2339,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 119-120'
-merit.db.info = 'Your character or motley has one or more tokens (p. 222) — mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper’s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she’s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
+merit.db.info = 'Your character or motley has one or more tokens (p. 222) - mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper’s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she’s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2383,7 +2383,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.intelligence() >= 2 and target.wits() >= 3 and target.get(subentry.split(\'/\')[0],statclass=\'Merit\') >= 3 and target.get(subentry.split(\'/\')[1],statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'Many styles teach unarmed methods as a prerequisite for armed methods, and vice versa. This maneuver allows your character to transfer a maneuver from a Brawl-based Fighting Style to a Weaponry-based Style, or vice versa. The maneuver must not depend on the physical presence of a weapon, in that it can be applied with empty hands. The Storyteller decides which maneuvers are appropriate, though this can only be used on maneuvers worth no more than *** dots — after that, they’re too specific to the original fighting method. Your character must know the maneuver in its original form, and you must purchase it again, at the same cost in dots and Experience.|/|/Entry for this merit should be in the form of <original group>/<target group>'
+merit.db.info = 'Many styles teach unarmed methods as a prerequisite for armed methods, and vice versa. This maneuver allows your character to transfer a maneuver from a Brawl-based Fighting Style to a Weaponry-based Style, or vice versa. The maneuver must not depend on the physical presence of a weapon, in that it can be applied with empty hands. The Storyteller decides which maneuvers are appropriate, though this can only be used on maneuvers worth no more than *** dots - after that, they’re too specific to the original fighting method. Your character must know the maneuver in its original form, and you must purchase it again, at the same cost in dots and Experience.|/|/Entry for this merit should be in the form of <original group>/<target group>'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2460,7 +2460,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 60'
-merit.db.info = 'Your character has a “sixth sense” for a type of supernatural creature, chosen when you buy the Merit. For example, you may choose Unseen Sense: Vampires, or Unseen Sense: Fairies. The sense manifests differently for everyone. Her hair stands on end, she becomes physically ill, or perhaps she has a cold chill. Regardless, she knows that something isn’t right when she is in the immediate proximity of the appropriate supernatural being. Once per chapter, the player can accept the Spooked Condition (p. 290), in exchange for which the character can pinpoint where the feeling is coming from. If the target is using a power that specifically cloaks its supernatural nature, however, this does not work (though the Condition remains until resolved as usual).'
+merit.db.info = 'Your character has a "sixth sense" for a type of supernatural creature, chosen when you buy the Merit. For example, you may choose Unseen Sense: Vampires, or Unseen Sense: Fairies. The sense manifests differently for everyone. Her hair stands on end, she becomes physically ill, or perhaps she has a cold chill. Regardless, she knows that something isn’t right when she is in the immediate proximity of the appropriate supernatural being. Once per chapter, the player can accept the Spooked Condition (p. 290), in exchange for which the character can pinpoint where the feeling is coming from. If the target is using a power that specifically cloaks its supernatural nature, however, this does not work (though the Condition remains until resolved as usual).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
