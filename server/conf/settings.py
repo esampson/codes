@@ -829,7 +829,8 @@ INSTALLED_APPS = [
     "codes.web.scales",
     "codes.web.seemings",
     "codes.web.spheres",
-    "codes.web.theban"
+    "codes.web.theban",
+    "codes.web.tribes"
 ]
 # The user profile extends the User object with more functionality;
 # This should usually not be changed.

@@ -113,6 +113,7 @@ from codes.stats.scalesScripts import scaleScript
 from codes.stats.seemingScripts import seemingScript
 from codes.stats.sphereStatScripts import sphereStatScript
 from codes.stats.thebanRitesScripts import thebanRiteScript
+from codes.stats.tribesScripts import tribeScript
 from codes.stats.dictionary import dictionaryScript
             
                              

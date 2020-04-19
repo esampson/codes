@@ -31,6 +31,7 @@ custom_patterns.append( url(r'^scales/', include('codes.web.scales.urls')))
 custom_patterns.append( url(r'^seemings/', include('codes.web.seemings.urls')))
 custom_patterns.append( url(r'^spheres/', include('codes.web.spheres.urls')))
 custom_patterns.append( url(r'^theban/', include('codes.web.theban.urls')))
+custom_patterns.append( url(r'^tribes/', include('codes.web.tribes.urls')))
 
 
 # this is required by Django.

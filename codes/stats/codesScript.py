@@ -18,7 +18,8 @@ tags = { 'advantage_stat' : 'advantage',
          'seeming_stat' : 'seeming',
          'skill_stat' : 'skill',
          'sphere_stat' : 'sphere',
-         'theban_rite_stat' : 'theban miracle' }
+         'theban_rite_stat' : 'theban miracle',
+         'tribe_stat' : 'tribe'}
 
 class codesScript(Script):
     
