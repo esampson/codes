@@ -11,6 +11,17 @@ merit.db.info = 'The changeling’s senses are especially acute, even by the sta
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Aggressive_Driving')
+merit.db.longname = 'Aggressive Driving'
+merit.db.category = 'Physical'
+merit.db.range = [1, 2, 3, 4]
+merit.db.prereq = 'target.resolve() >= 3 and target.get(\'Fast Reflexes\',statclass=\'Merit\') >= 3 and target.drive() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 55'
+merit.db.info = 'Any vehicle can become a weapon when your character is behind the wheel. From the earliest days of bootleggers these maneuvers have passed between police and criminals as a means to evade or stop other vehicles, even at high speeds.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Air_of_Menace')
 merit.db.longname = 'Air of Menace'
 merit.db.category = 'General'
@@ -668,6 +679,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 112'
 merit.db.info = 'Your character’s extensive training in oneiromancy allows her to benefit from the flexibility of the dream. By blending dreamscaping and martial techniques, strikes land faster as the dream bends to aid her blows. Whenever you allocate any successes generated with a Brawl or Weaponry attack (depending on which Specialty you have) to a subtle oneiromantic shift, gain one bonus success to spend on that shift as long as you spend it to impact the fight in some direct way. If you have a Specialty in both Skills, you gain these benefits on both types of attack.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Drone_Control')
+merit.db.longname = 'Drone Control'
+merit.db.category = 'Mental'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.intelligence() >= 3 and target.computer() >= 3 and target.drive() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 55-56'
+merit.db.info = 'Your character knows how to operate weapon systems via remote. Though more impersonal than a knife or a gun, armed drones are quickly becoming a mainstay of the modern battlefield and increasingly sophisticated in the consumer market. These maneuvers work independently of the sophistication of the actual device. An RC car with a mounted pistol and a Wi-Fi receiver works just as well as a state-of-the-art military drone for the purposes of using this Style.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1881,6 +1903,17 @@ merit.db.info = 'This Merit reflects your character’s disposable income. She m
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Retain_Weapon')
+merit.db.longname = 'Retain Weapon'
+merit.db.category = 'Fighting'
+merit.db.range = [2]
+merit.db.prereq = 'target.wits() >= 2 and target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'Your character has trained to resist being disarmed. Police and military forces often teach this, but your character might learn this as part of a traditional martial art, as part of a shooting course, or as a member of a private security service. When an attacker attempts to use the Control Weapon or Disarm grappling maneuvers to take his weapon, or otherwise take it away in combat, reduce successes by your character’s Brawl dots.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Retainer')
 merit.db.longname = 'Retainer'
 merit.db.category = 'Social'
@@ -1922,6 +1955,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.subter
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 119'
 merit.db.info = 'For your character, the protection of the Mask extends far beyond the usual mortal camouflage. Perhaps she can sense the subtle magic that turns her smile into her Mask’s smile, or her true face is strongly connected to the one that lets her interact with humanity. No one fooled by the Mask knows when she’s lying or what she’s feeling unless she allows it. Mortals automatically fail rolls to notice these things, as do polygraphs and other mundane lie-detecting devices. Supernatural creatures must engage in a Clash of Wills to notice her lies.|/|/Drawback: Intentionally dropping your character’s Mask deals her a point of lethal damage in addition to the normal rules (p. 83).'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Roadkill')
+merit.db.longname = 'Roadkill'
+merit.db.category = 'Fighting'
+merit.db.range = [3]
+merit.db.prereq = 'target.get(\'Aggressive Driving\',statclass=\'Merit\') >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 55'
+merit.db.info = 'Your character has a knack for running down living creatures with her vehicle. When using with a vehicle to hit a human-sized target she adds two additional successes per 20 miles per hour (32 kilometers per hour) her vehicle is moving instead of one. She also inflicts the Knocked Down Tilt on her target even if she misses.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2332,6 +2376,17 @@ merit.db.info = 'Your character has spent years in the field, catching tiny deta
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Transfer_Manuever')
+merit.db.longname = 'Transfer Manuever'
+merit.db.category = 'Fighting'
+merit.db.range = [1, 2, 3]
+merit.db.prereq = 'target.intelligence() >= 2 and target.wits() >= 3 and target.get(subentry.split(\'/\')[0],statclass=\'Merit\') >= 3 and target.get(subentry.split(\'/\')[1],statclass=\'Merit\') >= 3'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'Many styles teach unarmed methods as a prerequisite for armed methods, and vice versa. This maneuver allows your character to transfer a maneuver from a Brawl-based Fighting Style to a Weaponry-based Style, or vice versa. The maneuver must not depend on the physical presence of a weapon, in that it can be applied with empty hands. The Storyteller decides which maneuvers are appropriate, though this can only be used on maneuvers worth no more than *** dots — after that, they’re too specific to the original fighting method. Your character must know the maneuver in its original form, and you must purchase it again, at the same cost in dots and Experience.|/|/Entry for this merit should be in the form of <original group>/<target group>'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'True_Friend')
 merit.db.longname = 'True Friend'
 merit.db.category = 'Social'
@@ -2340,6 +2395,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 56'
 merit.db.info = 'Your character has a True Friend. While that friend may have specific functions covered by other Merits (Allies, Contacts, Retainer, Mentor, et cetera), True Friend represents a deeper, truly trusting relationship that cannot be breached. Unless your character does something egregious to cause it, her True Friend will not betray her. Additionally, the Storyteller cannot kill her True Friend as part of a plot without your express permission. Any rolls to influence a True Friend against your character suffer a five-die penalty. In addition, once per story, your character can regain one spent Willpower by having a meaningful interaction with her True Friend.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Trunk_Squeeze')
+merit.db.longname = 'Trunk Squeeze'
+merit.db.category = 'Fighting'
+merit.db.range = [2]
+merit.db.prereq = 'target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'HL p. 54'
+merit.db.info = 'By wrapping arms or legs around an opponent’s torso, your character can practically crush the life out of him. While grappling, your character can use the Trunk Squeeze maneuver.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
