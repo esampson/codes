@@ -2,6 +2,7 @@ from typeclasses.scripts import Script
 
 tags = { 'advantage_stat' : 'advantage',
          'attribute_stat' : 'attribute',
+         'auspice_stat' : 'auspice',
          'basic_stat' : 'basic',
          'clan_stat' : 'clan',
          'contract_stat' : 'contract',
