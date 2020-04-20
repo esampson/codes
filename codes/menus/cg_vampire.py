@@ -140,7 +140,8 @@ def _set_anchor(caller, raw_string, **kwargs):
 def vampire_merits(caller, raw_string, **kwargs):
     max = 10
     total = 0
-    text = 'Blood Potency: ' + str(caller.db.power['Blood Potency']) + '|/Merits:|/|/'
+    text = 'Blood Potency: ' + str(caller.db.power['Blood Potency']) + \
+           '|/Merits:|/|/'
     for item in caller.db.merits:
         out = item[0]
         total = total +  item[1]
@@ -428,7 +429,8 @@ def _check_stat_value(caller, raw_string, **kwargs):
             kwargs['stat'].set(caller,value=value)
             return 'vampire_disciplines'
         else:
-            caller.msg('|/You don\'t meet the prerequisites for that '+ kwargs['stat'].type())
+            caller.msg('|/You don\'t meet the prerequisites for that '+
+                       kwargs['stat'].type())
             return 'vampire_disciplines'
         
 def quit(caller, raw_string, **kwargs):
@@ -438,10 +440,16 @@ def quit(caller, raw_string, **kwargs):
 
 def _vampire_finish_cg(caller, raw_string, **kwargs):
     caller.cmdset.delete('unfinished_character')
-    caller.cmdset.add('codes.commands.character_commands.finished_character',permanent=True)
+    caller.cmdset.add(
+        'codes.commands.character_commands.finished_character',permanent=True)
     set(caller,'Humanity',statclass='Advantage', value=7)
-    set(caller,'Vitae',statclass='Advantage', value=caller.get('Vitae',subentry='Permanent',statclass='Advantage'))
-    set(caller,'Willpower',statclass='Advantage', value=caller.get('Willpower',subentry='Permanent',statclass='Advantage'))
+    set(
+        caller,'Vitae',statclass='Advantage',
+        value=caller.get('Vitae',subentry='Permanent',statclass='Advantage'))
+    set(
+        caller,'Willpower',statclass='Advantage',
+        value=caller.get('Willpower',
+                         subentry='Permanent',statclass='Advantage'))
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,

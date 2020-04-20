@@ -4,7 +4,6 @@ from codes.data import find
 from operator import itemgetter
 
 import time
-import stat
 
 def start(caller):
     if caller.db.finished_cg:    
@@ -72,11 +71,13 @@ def xp_spend(caller, raw_string, **kwargs):
             option_list.append ( { 'desc' : 'Buy Scale',
                                 'goto' : ('xp_buy_flat_stat',
                                     {'type' : 'Scale' } ) } )
-        if caller.get('Covenant',statclass='Sphere').lower() == 'circle of the crone':
+        if caller.get('Covenant',statclass='Sphere').lower() == \
+                'circle of the crone':
             option_list.append ( { 'desc' : 'Buy Cruac Rite',
                                'goto' :  ('xp_buy_flat_stat',
                                     {'type' : 'Cruac Rite' } ) } )
-        if caller.get('Covenant',statclass='Sphere').lower() == 'lancea et sanctum':
+        if caller.get('Covenant',statclass='Sphere').lower() == \
+                'lancea et sanctum':
             option_list.append ( { 'desc' : 'Buy Theban Miracle',
                                'goto' : ('xp_buy_flat_stat',
                                     {'type' : 'Theban Miracle' } ) } )
@@ -145,12 +146,14 @@ def xp_get_contract_note(caller, raw_string, **kwargs):
         seemings.append([item.db.longname,item])
     seemings = sorted(seemings,key=itemgetter(0))
     for item in seemings:
-        if item[1].db.longname != character_seeming and item[1].db.longname not in blessings_list:
-            option_list.append( { 'desc' : item[1].db.longname,
-                                  'goto' : (_xp_check_contract_value,
-                                            {'stat' : kwargs['stat'],
-                                             'subentry' : append + item[1].db.longname,
-                                             'type' : 'contract' } ) } )
+        if item[1].db.longname != character_seeming and \
+                item[1].db.longname not in blessings_list:
+            option_list.append(
+                { 'desc' : item[1].db.longname,
+                  'goto' : (_xp_check_contract_value,
+                            {'stat' : kwargs['stat'],
+                             'subentry' : append + item[1].db.longname,
+                             'type' : 'contract' } ) } )
     option_list.append( { 'key' : 'N',
                           'desc' : 'None',
                           'goto' : (_xp_check_contract_value,
@@ -296,7 +299,8 @@ def _xp_check_known_stat(caller, raw_string, **kwargs):
             
 def xp_increase(caller, raw_string, **kwargs):
     text = 'Buy ' + kwargs['name']
-    if kwargs['type'] not in ['specialty', 'contract'] and str(kwargs['value']) != 'True':
+    if kwargs['type'] not in ['specialty', 'contract'] and \
+            str(kwargs['value']) != 'True':
         text = text + ': ' + str(kwargs['value'])
     text = text + ' for ' + str(kwargs['cost']) + ' XP?'
     if 'special' in kwargs:

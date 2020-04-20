@@ -34,7 +34,8 @@ def parser(message):
             value = False
     else:
         value = 0
-    result = { 'args' : args, 'entry': entry, 'subentry' : subentry, 'statclass' : statclass, 'value' : value}
+    result = { 'args' : args, 'entry': entry, 'subentry' : subentry,
+               'statclass' : statclass, 'value' : value}
     return result
 
 class staff_commands(CmdSet):
@@ -65,7 +66,8 @@ class CmdSheetStaff(Command):
     def func(self):
         request = self.args.strip()
         try:
-            character = object_search(request, typeclass='typeclasses.characters.Character')
+            character = object_search(
+                request, typeclass='typeclasses.characters.Character' )
         except:
             self.caller.msg('Something went wrong with the search')
         else:
@@ -107,24 +109,31 @@ class CmdSetStaff(Command):
     def func(self):
         parsed = parser(self.args)
         try:
-            character = object_search(parsed['args'], typeclass='typeclasses.characters.Character')
+            character = object_search(
+                parsed['args'], typeclass='typeclasses.characters.Character')
         except:
             self.caller.msg('Something went wrong with the search')
         else:
             if len(character) == 0:
                 self.caller.msg('I can\'t find character ' + parsed['args'])
             elif len(character) > 1:
-                self.caller.msg('Too many possible matches for ' + parsed['args'])
+                self.caller.msg('Too many possible matches for ' +
+                                parsed['args'])
             else:
                 try:
-                    set(character[0],parsed['entry'],subentry=parsed['subentry'],statclass=parsed['statclass'],value=parsed['value'])
+                    set(character[0],parsed['entry'],
+                        subentry=parsed['subentry'],
+                        statclass=parsed['statclass'],
+                        value=parsed['value'])
                 except:
-                    self.caller.msg('Something went wrong setting the value:\n' + str(parsed))
+                    self.caller.msg('Something went wrong setting the value:\n'
+                                    + str(parsed))
                 else:
                     message = parsed['entry']
                     if parsed['subentry'] != '':
                         message = message + '(' + parsed['subentry'] + ')'
-                    message = message + ' set to ' + str(parsed['value']) + ' for ' + parsed['args']
+                    message = message + ' set to ' + str(parsed['value']) + \
+                              ' for ' + parsed['args']
                     self.caller.msg(message)
         
         

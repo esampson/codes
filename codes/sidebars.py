@@ -90,7 +90,9 @@ def mortal_template_block(target):
                          target.get(entry ,statclass='Sphere').ljust(18))
         for line in range(12):
             block.append('                            ')
-        block.append(' Integrity:' + str(target.get('Integrity',statclass='Advantage')).rjust(16) + ' ')
+        block.append(
+            ' Integrity:' + str(
+                target.get('Integrity',statclass='Advantage')).rjust(16) + ' ')
     except:
         for line in range(15):
             block.append(blank)    

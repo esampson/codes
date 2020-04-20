@@ -14,7 +14,7 @@ auspice.db.longname = 'Elodoth'
 auspice.db.auspice_skills = ['Empathy', 'Investigation', 'Politics']
 auspice.db.renown = 'Honor'
 auspice.db.auspice_gifts = ['Half Moon', 'Insight', 'Warding']
-auspice.db.info = 'The half moon keeps as much hidden as it illuminates. Half-moons are not as enigmatic as their Ithaeur compatriots, but then, they wouldn’t be - most of the crescent moon is obscured. An Elodoth can be gregarious, charming, or clever - or he can be taciturn, secretive, and paranoid. The Elodoth is all in equal measure, and that is what terrifies other werewolves.'
+auspice.db.info = 'The half moon keeps as much hidden as it illuminates. Half-moons are not as enigmatic as their Ithaeur compatriots, but then, they wouldn’t be — most of the crescent moon is obscured. An Elodoth can be gregarious, charming, or clever — or he can be taciturn, secretive, and paranoid. The Elodoth is all in equal measure, and that is what terrifies other werewolves.'
 auspice.db.reference = 'W:tF p. 20-23'
 auspice.db.restricted = False
 

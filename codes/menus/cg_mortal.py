@@ -1,8 +1,9 @@
 from codes.data import get
 from codes.data import set
 from codes.data import find
+
 from evennia.utils.utils import strip_control_sequences
-from operator import itemgetter
+
 import time
 
 anchors = { 'virtue' : ['Charity', 'Competitive', 'Faith', 'Fortitude', 
@@ -196,11 +197,14 @@ def quit(caller, raw_string, **kwargs):
     return text,None
 
 def mortal_finish_cg(caller, raw_string, **kwargs):
-    caller.cmdset.add('codes.commands.commands.character_commands.finished_character', 
+    caller.cmdset.add(
+        'codes.commands.commands.character_commands.finished_character',
                       permanent=True)
     caller.cmdset.delete('unfinished_character')
     set(caller,'Integrity',statclass='Advantage', value=7)
-    set(caller,'Willpower',statclass='Advantage', value=caller.get('Willpower',subentry='Permanent',statclass='Advantage'))
+    set(caller,'Willpower',statclass='Advantage',
+        value=caller.get('Willpower',subentry='Permanent',
+                         statclass='Advantage'))
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,

@@ -104,7 +104,8 @@ def decide_stat(caller, raw_string, **kwargs):
     data = get_stats(caller, type=kwargs['type'])
     for item in stats[kwargs['type']][kwargs['group']]:
             options_list.append({ 'desc' : item,
-                                 'goto' : ('enter_value' , {'att' : item.lower(),
+                                 'goto' : ('enter_value' ,
+                                           {'att' : item.lower(),
                                             'group' : kwargs['group'],
                                             'type' : kwargs['type'], 
                                             'points_left' :
@@ -288,7 +289,8 @@ def mortal_template(caller, raw_string, **kwargs):
     return text,None
     
 def changeling_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_changeling', startnode = 'changeling_template')
+    ExMenu(caller, 'codes.menus.cg_changeling',
+           startnode = 'changeling_template')
     text = {'format' : 'suppress'}
     return text,None
 

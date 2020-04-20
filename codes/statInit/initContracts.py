@@ -294,7 +294,7 @@ contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
 contract.db.subgroup = 'Goblin'
 contract.db.reference = 'CtL p. 163'
-contract.db.info = 'Goblins aren’t always content, but they are lucky - and the changeling may use some of this luck.'
+contract.db.info = 'Goblins aren’t always content, but they are lucky — and the changeling may use some of this luck.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Heart_of_Ice')
@@ -366,7 +366,7 @@ contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
 contract.db.subgroup = 'Goblin'
 contract.db.reference = 'CtL p. 163'
-contract.db.info = 'Once upon a time, a Huntsman dragged a Playmate kicking and screaming into the Hedge. He took pity on the young woman once there, though, and his empathy made him lax - she murdered him for his kindness while he slept. But no amount of murder could solve the Playmate’s problem; her Keeper simply sent new hunters to bring her back. Finally, desperate, the Playmate tore off her Self and scattered the remains of who she was to the wind. One of the pieces became this Contract, found and handed down through goblins, as the Playmate’s memories still try to crack the riddle of beating the Wild Hunt.'
+contract.db.info = 'Once upon a time, a Huntsman dragged a Playmate kicking and screaming into the Hedge. He took pity on the young woman once there, though, and his empathy made him lax — she murdered him for his kindness while he slept. But no amount of murder could solve the Playmate’s problem; her Keeper simply sent new hunters to bring her back. Finally, desperate, the Playmate tore off her Self and scattered the remains of who she was to the wind. One of the pieces became this Contract, found and handed down through goblins, as the Playmate’s memories still try to crack the riddle of beating the Wild Hunt.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Ice_Queens_Call')
@@ -465,7 +465,7 @@ contract.db.category = 'Autumn'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 158'
-contract.db.info = 'The changeling appears as his target’s greatest fear. He approaches his target from behind, around the corner, from darkness, or another place she can’t see. Autumn winds carry the sound of his approach - his fingernails screeching along the wall, or his soft, cackling laughter.'
+contract.db.info = 'The changeling appears as his target’s greatest fear. He approaches his target from behind, around the corner, from darkness, or another place she can’t see. Autumn winds carry the sound of his approach — his fingernails screeching along the wall, or his soft, cackling laughter.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Might_of_the_Terrible_Brute')

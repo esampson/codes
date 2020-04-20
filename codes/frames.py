@@ -1,6 +1,7 @@
 import textwrap
 
-def top_bottom(original, width=80, margins=5, top=1, bottom=0, padding=0, replacements=[]):
+def top_bottom(original, width=80, margins=5, top=1, bottom=0, padding=0,
+               replacements=[]):
     
     temp = []
     for line in original.split('\n'):
@@ -35,7 +36,8 @@ def top_bottom(original, width=80, margins=5, top=1, bottom=0, padding=0, replac
         final = final + ' ' * padding + data + '|/'
     return final
 
-def scroll(original, width=80, margins=5,top=1, bottom=1, padding=0, replacements=[]):
+def scroll(original, width=80, margins=5,top=1, bottom=1, padding=0,
+           replacements=[]):
     temp = []
     for x in range(top):
         temp.append(' ')
@@ -74,14 +76,22 @@ def scroll(original, width=80, margins=5,top=1, bottom=1, padding=0, replacement
     shape.append(' \\' + m + reassemble[3].ljust(iwidth) + m + '\\ ')
     count = 0
     for loop in range(reps):
-        shape.append('  \\' + m + reassemble[4 + count * 8].ljust(iwidth) + m + '\\ ')
-        shape.append('   |' + m + reassemble[5 + count * 8].ljust(iwidth) + m + '| ')
-        shape.append('   |' + m + reassemble[6 + count * 8].ljust(iwidth) + m + '| ')
-        shape.append('  /' + m + reassemble[7 + count * 8].ljust(iwidth) + m + '/ ')
-        shape.append(' /' + m + reassemble[8 + count * 8].ljust(iwidth) + m + '/ ')
-        shape.append('|' + m + reassemble[9 + count * 8].ljust(iwidth) + m + '| ')
-        shape.append('|' + m + reassemble[10 + count * 8].ljust(iwidth) + m + '| ')
-        shape.append(' \\' + m + reassemble[11 + count * 8].ljust(iwidth) + m + '\\ ')
+        shape.append('  \\' + m + reassemble[4 + count * 8].ljust(iwidth) +
+                     m + '\\ ')
+        shape.append('   |' + m + reassemble[5 + count * 8].ljust(iwidth) +
+                     m + '| ')
+        shape.append('   |' + m + reassemble[6 + count * 8].ljust(iwidth) +
+                     m + '| ')
+        shape.append('  /' + m + reassemble[7 + count * 8].ljust(iwidth) +
+                     m + '/ ')
+        shape.append(' /' + m + reassemble[8 + count * 8].ljust(iwidth) +
+                     m + '/ ')
+        shape.append('|' + m + reassemble[9 + count * 8].ljust(iwidth) +
+                     m + '| ')
+        shape.append('|' + m + reassemble[10 + count * 8].ljust(iwidth) +
+                     m + '| ')
+        shape.append(' \\' + m + reassemble[11 + count * 8].ljust(iwidth) +
+                     m + '\\ ')
         count = count + 1
     shape.append(' _\\' + '_' * (margins + iwidth + margins) + ' \\ ')
     shape.append('/ ' + ' ' * (margins + iwidth + margins) + '/\\ | ')

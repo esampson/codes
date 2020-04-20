@@ -53,7 +53,7 @@ theban.db.longname = 'Stigmata'
 theban.db.rank = 4
 theban.db.prereq = ''
 theban.db.reference = 'VtR p. 154'
-theban.db.info = 'The ritualist curses his victim - who must be present for the ritual - with the wounds of Christ. The Stigmata last for the ritual’s Potency in turns. Mortal victims suffer one point of lethal damage per turn from blood loss. Vampires and ghouls lose one Vitae per turn. If a vampire runs out of Vitae through this ritual, he begins to take lethal damage instead, provoking a frenzy.'
+theban.db.info = 'The ritualist curses his victim — who must be present for the ritual — with the wounds of Christ. The Stigmata last for the ritual’s Potency in turns. Mortal victims suffer one point of lethal damage per turn from blood loss. Vampires and ghouls lose one Vitae per turn. If a vampire runs out of Vitae through this ritual, he begins to take lethal damage instead, provoking a frenzy.'
 theban.db.restricted = False
 
 theban = create_script('typeclasses.scripts.thebanRiteScript',key = 'Transubstatiation')
@@ -61,7 +61,7 @@ theban.db.longname = 'Transubstatiation'
 theban.db.rank = 5
 theban.db.prereq = ''
 theban.db.reference = 'VtR p. 154'
-theban.db.info = 'The ritualist transforms one substance to another - water into wine, lead into gold, a human into stone, or a wolf into a cat. The object, creature, or person to be transformed must be present for the ritual. The ritual cannot affect anything larger than the ritualist, cannot create intelligence and does not harm the things it transforms, although damage or injury sustained by the transformed subject remains when the ritual wears off. All transformations are undone at the next sunrise.'
+theban.db.info = 'The ritualist transforms one substance to another — water into wine, lead into gold, a human into stone, or a wolf into a cat. The object, creature, or person to be transformed must be present for the ritual. The ritual cannot affect anything larger than the ritualist, cannot create intelligence and does not harm the things it transforms, although damage or injury sustained by the transformed subject remains when the ritual wears off. All transformations are undone at the next sunrise.'
 theban.db.restricted = False
 
 theban = create_script('typeclasses.scripts.thebanRiteScript',key = 'Vitae_Reliquary')

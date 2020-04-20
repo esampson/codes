@@ -13,7 +13,7 @@ seeming.db.longname = 'Darkling'
 seeming.db.favored_attributes = ['Wits', 'Dexterity', 'Manipulation']
 seeming.db.regalia = 'Mirror'
 seeming.db.reference = 'CtL p. 24-25'
-seeming.db.info = 'Nicknames: the Bewitched, Mountebanks, Wisps|/|/Blessing: If you spend a point of Willpower, your character may touch something insubstantial and become part of it for three consecutive turns, transubstantiating into smoke, shadow, a sunbeam - whatever’s handy. This ability costs a point of Glamour if anyone is looking directly at her at the time.|/|/Curse: In addition to your character’s other breaking points, she risks Clarity damage with a dice pool equal to half her Wyrd (rounded up) whenever a secret or important piece of information she knows turns out to be false.'
+seeming.db.info = 'Nicknames: the Bewitched, Mountebanks, Wisps|/|/Blessing: If you spend a point of Willpower, your character may touch something insubstantial and become part of it for three consecutive turns, transubstantiating into smoke, shadow, a sunbeam — whatever’s handy. This ability costs a point of Glamour if anyone is looking directly at her at the time.|/|/Curse: In addition to your character’s other breaking points, she risks Clarity damage with a dice pool equal to half her Wyrd (rounded up) whenever a secret or important piece of information she knows turns out to be false.'
 seeming.db.restricted = False
 
 seeming = create_script('typeclasses.scripts.seemingScript',key = 'Elemental')
@@ -29,7 +29,7 @@ seeming.db.longname = 'Fairest'
 seeming.db.favored_attributes = ['Intelligence', 'Strength', 'Presence']
 seeming.db.regalia = 'Crown'
 seeming.db.reference = 'CtL p. 28-29'
-seeming.db.info = 'Nicknames: Muses, the Sovereign, Unicorns|/|/Blessing: You may spend Willpower points on another character’s behalf for purposes of the usual three-die bonus or +2 Resistance trait increase. You may still only spend one Willpower point per action. This ability costs a point of Glamour if any Condition is in play that would cause contention or mistrust between the characters, such as Leveraged or Notoriety.|/|/Curse: In addition to your character’s other breaking points, she risks Clarity damage with a dice pool equal to half her Wyrd (rounded up) whenever her action - or inaction - leads directly to misfortune for her allies.'
+seeming.db.info = 'Nicknames: Muses, the Sovereign, Unicorns|/|/Blessing: You may spend Willpower points on another character’s behalf for purposes of the usual three-die bonus or +2 Resistance trait increase. You may still only spend one Willpower point per action. This ability costs a point of Glamour if any Condition is in play that would cause contention or mistrust between the characters, such as Leveraged or Notoriety.|/|/Curse: In addition to your character’s other breaking points, she risks Clarity damage with a dice pool equal to half her Wyrd (rounded up) whenever her action — or inaction — leads directly to misfortune for her allies.'
 seeming.db.restricted = False
 
 seeming = create_script('typeclasses.scripts.seemingScript',key = 'Ogre')

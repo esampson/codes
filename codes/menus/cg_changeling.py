@@ -436,11 +436,16 @@ def quit(caller, raw_string, **kwargs):
     return text,None
 
 def changeling_finish_cg(caller, raw_string, **kwargs):
-    caller.cmdset.add('codes.commands.character_commands.finished_character',permanent=True)
+    caller.cmdset.add('codes.commands.character_commands.finished_character',
+                      permanent=True)
     caller.cmdset.delete('unfinished_character')
-    set(caller,'Clarity',statclass='Advantage', value=caller.get('Clarity',subentry='Permanent',statclass='Advantage'))
-    set(caller,'Glamour',statclass='Advantage', value=caller.get('Glamour',subentry='Permanent',statclass='Advantage'))
-    set(caller,'Willpower',statclass='Advantage', value=caller.get('Willpower',subentry='Permanent',statclass='Advantage'))
+    set(caller,'Clarity',statclass='Advantage',
+        value=caller.get('Clarity',subentry='Permanent',statclass='Advantage'))
+    set(caller,'Glamour',statclass='Advantage',
+        value=caller.get('Glamour',subentry='Permanent',statclass='Advantage'))
+    set(caller,'Willpower',statclass='Advantage',
+        value=caller.get('Willpower',
+                         subentry='Permanent',statclass='Advantage'))
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,

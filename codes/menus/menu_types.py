@@ -80,10 +80,12 @@ class ExMenu(EvMenu):
                 raw_key = strip_ansi(key)
                 if raw_key != key:
                     # already decorations in key definition
-                    table.append(" |lc%s|lt%s|le%s" % (raw_key, key, desc_string))
+                    table.append(" |lc%s|lt%s|le%s" % (raw_key, key,
+                                                       desc_string))
                 else:
                     # add a default white color to key
-                    table.append(" |lc%s|lt|w%s|n|le%s" % (raw_key, raw_key, desc_string))
+                    table.append(" |lc%s|lt|w%s|n|le%s" % (raw_key, raw_key,
+                                                           desc_string))
         ncols = _MAX_TEXT_WIDTH // table_width_max  # number of ncols
  
         if ncols < 0:
@@ -105,14 +107,17 @@ class ExMenu(EvMenu):
             table.extend([" " for i in range(nrows - nlastcol)])
  
         # build the actual table grid
-        table = [table[icol * nrows : (icol * nrows) + nrows] for icol in range(0, ncols)]
+        table = [table[icol * nrows : (icol * nrows) + nrows] for
+                 icol in range(0, ncols)]
  
         # adjust the width of each column
         for icol in range(len(table)):
             col_width = (
-                max(max(m_len(p) for p in part.split("\n")) for part in table[icol]) + colsep
+                max(max(m_len(p) for p in part.split("\n")) for
+                    part in table[icol]) + colsep
             )
-            table[icol] = [pad(part, width=col_width + colsep, align="l") for part in table[icol]]
+            table[icol] = [pad(part, width=col_width + colsep, align="l") for
+                           part in table[icol]]
         result = EvTable(table=table, border='none')
         if len(option_list_2) > 0:
             result.add_row(' ')
@@ -128,10 +133,13 @@ class ExMenu(EvMenu):
                     raw_key = strip_ansi(key)
                     if raw_key != key:
                         # already decorations in key definition
-                        result.add_row(" |lc%s|lt%s|le%s" % (raw_key, key, desc_string))
+                        result.add_row(" |lc%s|lt%s|le%s" % (raw_key, key,
+                                                             desc_string))
                     else:
                         # add a default white color to key
-                        result.add_row(" |lc%s|lt|w%s|n|le%s" % (raw_key, raw_key, desc_string))
+                        result.add_row(" |lc%s|lt|w%s|n|le%s" % (raw_key,
+                                                                 raw_key,
+                                                                 desc_string))
  
         # format the table into columns
         return str(result)
@@ -165,13 +173,16 @@ class ExMenu(EvMenu):
             args = ''
 
         if self._session:
-            screen_width = self._session.protocol_flags.get("SCREENWIDTH", {0: _MAX_TEXT_WIDTH})[0]
+            screen_width = self._session.protocol_flags.get("SCREENWIDTH",
+                                                    {0: _MAX_TEXT_WIDTH})[0]
         else:
             screen_width = _MAX_TEXT_WIDTH
 
         nodetext_width_max = max(m_len(line) for line in text.split("\n"))
-        options_width_max = max(m_len(line) for line in optionstext.split("\n"))
-        total_width = min(screen_width, max(options_width_max, nodetext_width_max))
+        options_width_max = max(m_len(line) for
+                                line in optionstext.split("\n"))
+        total_width = min(screen_width, max(options_width_max,
+                                            nodetext_width_max))
         separator1 = '_' * total_width + "\n\n" if nodetext_width_max else ""
         separator2 = "\n" + '_' * total_width + "\n\n" if total_width else ""
         if args == 'suppress':
@@ -179,7 +190,8 @@ class ExMenu(EvMenu):
         elif args == 'no_bars':
             result = text + "|n\n" + optionstext
         else:
-            result = separator1 + "|n" + text + "|n" + separator2 + "|n" + optionstext
+            result = separator1 + "|n" + text + "|n" + separator2 + "|n" + \
+                     optionstext
         return result
     
     def display_nodetext(self):
@@ -208,7 +220,8 @@ class ExMenu(EvMenu):
             if isinstance(nodename, (tuple, list)):
                 if not len(nodename) > 1 or not isinstance(nodename[1], dict):
                     raise EvMenuError(
-                        "{}: goto callable must return str or (str, dict)".format(inp_nodename)
+                        "{}: goto callable must "+
+                        "return str or (str, dict)".format(inp_nodename)
                     )
                 nodename, kwargs = nodename[:2]
             if not nodename:
@@ -216,7 +229,8 @@ class ExMenu(EvMenu):
                 nodename = self.nodename
         try:
             # execute the found node, make use of the returns.
-            nodetext, options = self._execute_node(nodename, raw_string, **kwargs)
+            nodetext, options = self._execute_node(nodename,
+                                                   raw_string, **kwargs)
         except EvMenuError:
             return
 
@@ -245,12 +259,15 @@ class ExMenu(EvMenu):
                 desc = dic.get("desc", dic.get("text", None))
                 if "_default" in keys:
                     keys = [key for key in keys if key != "_default"]
-                    goto, goto_kwargs, execute, exec_kwargs = self.extract_goto_exec(nodename, dic)
+                    goto, goto_kwargs, execute, \
+                    exec_kwargs = self.extract_goto_exec(nodename, dic)
                     self.default = (goto, goto_kwargs, execute, exec_kwargs)
                 else:
                     # use the key (only) if set, otherwise use the running number
-                    keys = list(make_iter(dic.get("key", str(inum + 1).strip())))
-                    goto, goto_kwargs, execute, exec_kwargs = self.extract_goto_exec(nodename, dic)
+                    keys = list(
+                        make_iter(dic.get("key", str(inum + 1).strip())))
+                    goto, goto_kwargs, execute, \
+                    exec_kwargs = self.extract_goto_exec(nodename, dic)
                 if keys:
                     display_options.append((keys[0], desc))
                     for key in keys:
@@ -272,7 +289,8 @@ class ExMenu(EvMenu):
         elif options:
             self.helptext = _HELP_FULL if self.auto_quit else _HELP_NO_QUIT
         else:
-            self.helptext = _HELP_NO_OPTIONS if self.auto_quit else _HELP_NO_OPTIONS_NO_QUIT
+            self.helptext = _HELP_NO_OPTIONS if \
+                self.auto_quit else _HELP_NO_OPTIONS_NO_QUIT
 
         self.display_nodetext()
         if not options:

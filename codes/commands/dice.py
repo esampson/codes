@@ -1,8 +1,9 @@
 from evennia import Command
-from evennia import InterruptCommand
+
 from operator import itemgetter
+
 import random
-from evennia.utils import evtable
+
 from codes.frames import top_bottom
 
 class CmdRoll(Command):
@@ -79,14 +80,15 @@ def roll_func(roller,input):
     for item in temp:
         num_parts.append(item[2])
     numbers = []
-    error = False                        #Lets us know if there is a problem interpreting something
-    pure_numbers = True                   #Lets us know if only numbers were entered
+    error = False     #Lets us know if there is a problem interpreting something
+    pure_numbers = True               #Lets us know if only numbers were entered
     for item in num_parts:
         if item.isnumeric():
             numbers.append(int(item))
         elif '/' in item:
             pure_numbers = False
-            value = roller.get(item.split('/')[0], statclass= item.split('/')[1])     
+            value = roller.get(item.split('/')[0],
+                               statclass= item.split('/')[1])
             if value < 0:
                 error = True   
             numbers.append(value)
@@ -120,7 +122,8 @@ def roll_func(roller,input):
                 for subitem in item:
                     if subitem > 7:
                         total_successes = total_successes + 1
-            message = roller.name + ' rolls ' + roll_string + ' as a rote action'
+            message = roller.name + ' rolls ' + roll_string + \
+                      ' as a rote action'
         else:
             message = roller.name + ' rolls ' + roll_string
         for item in base_roll:
@@ -137,11 +140,15 @@ def roll_func(roller,input):
         message = message + roll_breakdown(base_roll)
         if rote:
             message = message[:-1] + '; ' + roll_breakdown(rote_roll)
-        table = top_bottom(message,width=60, padding=10, replacements=[['8,','|w8|n,'],['8.','|w8|n '],['8;','|w8|n;'],
-                                                                   ['9,','|w9|n,'],['9.','|w9|n '],['9;','|w9|n;'],
-                                                                   ['10,','|w10|n,'],['10.','|w10|n '],['10;','|w10|n;'],
-                                                                   ['1.','1 '],['2.','2 '],['3.','3 '],['4.','4 '],['5.','5 '],
-                                                                   ['6.','6 '],['7.','7 ']])
+        table = top_bottom(
+            message,
+            width=60,
+            padding=10,
+            replacements=[['8,','|w8|n,'],['8.','|w8|n '],['8;','|w8|n;'],
+                          ['9,','|w9|n,'],['9.','|w9|n '],['9;','|w9|n;'],
+                          ['10,','|w10|n,'],['10.','|w10|n '],['10;','|w10|n;'],
+                          ['1.','1 '],['2.','2 '],['3.','3 '],['4.','4 '],
+                          ['5.','5 '],['6.','6 '],['7.','7 '] ] )
         roller.location.msg_contents(table)
     else:
         roller.msg('I couldn\'t figure out what you wanted to roll.')

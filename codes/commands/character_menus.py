@@ -1,4 +1,3 @@
-from evennia.utils.evmenu import EvMenu
 from evennia import Command
 from codes.menus.menu_types import ExMenu
 
@@ -20,7 +19,8 @@ class CmdCG(Command):
     help_category = 'OOC Commands'
     
     def func(self):
-        ExMenu(self.caller, 'codes.menus.cg', startnode = 'start', cmd_on_exit=None)
+        ExMenu(self.caller, 'codes.menus.cg', startnode = 'start',
+               cmd_on_exit=None)
         
 class CmdXP(Command):
     """
