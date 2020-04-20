@@ -1,7 +1,6 @@
 from typeclasses.scripts import Script
 
 from evennia.utils.search import search_script_tag
-from evennia import search_script
 
 class dictionaryScript(Script):
     
