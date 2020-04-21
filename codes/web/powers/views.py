@@ -138,7 +138,7 @@ def created(request):
         if request.method == 'POST':
             form = editForm(request.POST)
             if form.is_valid():
-                name = form.cleaned_data['longname'].longname.replace('\'','').replace(' ','_')
+                name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 s = create_script('typeclasses.scripts.powerStatScript', 
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
