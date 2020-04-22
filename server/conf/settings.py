@@ -516,7 +516,7 @@ GLOBAL_SCRIPTS = {
 #      character (disconnects multiplets)
 #  3 - like mode 2, except multiple sessions can puppet one character, each
 #      session getting the same data.
-MULTISESSION_MODE = 3
+MULTISESSION_MODE = 1
 # The maximum number of characters allowed by the default ooc char-creation command
 MAX_NR_CHARACTERS = 10
 # The access hierarchy, in climbing order. A higher permission in the
@@ -615,18 +615,25 @@ CHANNEL_CONNECTINFO = None
 
 # The Evennia Game Index is a dynamic listing of Evennia games. You can add your game
 # to this list also if it is in closed pre-alpha development.
-GAME_INDEX_ENABLED = False
+GAME_INDEX_ENABLED = True
 # This dict
 GAME_INDEX_LISTING = {
     "game_name": SERVERNAME,
-    "game_status": "pre-alpha",  # pre-alpha, alpha, beta or launched
+    "game_status": "alpha",  # pre-alpha, alpha, beta or launched
     "short_description": GAME_SLOGAN,
-    "long_description": "",
+    "long_description": ("C.O.D.E.S. is an experiment to try and create a " +
+                         "system to support Chronicle of Darkness games. " +
+                         "Because of the constant churn of new material, the " +
+                         "creation of homebrew material, and the fact that " +
+                         "different games may wish to restrict different " +
+                         "stats the system is being created with a web-based " +
+                         "administrative interface to allow the easy " +
+                         "addition of new material."),
     "listing_contact": "",  # email
-    "telnet_hostname": "",  # mygame.com
-    "telnet_port": "",  # 1234
-    "game_website": "",  # http://mygame.com
-    "web_client_url": "",  # http://mygame.com/webclient
+    "telnet_hostname": "13.52.78.93",  # mygame.com
+    "telnet_port": "9999",  # 1234
+    "game_website": "http://13.52.78.93/",  # http://mygame.com
+    "web_client_url": "http://13.52.78.93/webclient/",  # http://mygame.com/webclient
 }
 # Evennia can connect to external IRC channels and
 # echo what is said on the channel to IRC and vice
