@@ -7,8 +7,10 @@ class renownScript(codesScript):
             self.tags.add('stat_data')
             self.tags.add('renown_stat')
                 
-    def update(self,longname='', restricted=False,cost=''):
+    def update(self,longname='', info="", reference="", restricted=False):
         self.db.longname = longname
+        self.db.info = info
+        self.db.reference = reference
         self.db.restricted = restricted
     
     def get(self, target, subentry=''):
