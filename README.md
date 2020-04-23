@@ -1,4 +1,4 @@
-# Chronicles of Darkness Evennia Support ![codes Logo](/esampson/codes/blob/master/web/static_overrides/website/images/evennia_logo.png=100x)
+# Chronicles of Darkness Evennia Support ![codes Logo](http://github.com/esampson/codes/blob/master/web/static_overrides/website/images/evennia_logo.png=100x)
 Character support code for Chronicles of Darkness running under Evennia.
 
 This project is heavily inspired by Thenomain's nWoD character support system:
