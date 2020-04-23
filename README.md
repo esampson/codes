@@ -1,4 +1,4 @@
-# Chronicles of Darkness Evennia Support
+# Chronicles of Darkness Evennia Support ![codes Logo](/github.com/esampson/codes/blob/master/web/static_overrides/website/images/evennia_logo.png=100x)
 Character support code for Chronicles of Darkness running under Evennia.
 
 This project is heavily inspired by Thenomain's nWoD character support system:
@@ -14,17 +14,6 @@ This means that rather than having a long piece of hardcode examining stats to d
 
 ## Implementation
 
-At present there are 8 different typeclasses of stat scripts:
-
-* advantageScripts: Handle advantages such as Initiative, Speed, and Health
-* attributeScripts: Handle attributes such as Strength or Presence
-* skillScripts: Handle skills such as Brawl or Streetwise
-* meritScripts: Handle merits such as Resources or Contacts
-* powerStatScripts: Handle stats such as Wyrd or Blood Potency
-* sphereScripts: Handle miscellaneous sphere specific stats such as kith or tribe
-* contractScripts: Handle changeling contracts
-* basicStatScripts: Handle miscellaneous stats such as character concept.
-
 All scripts have the following methods:
 
 * `get(<target>, <entry>[, <subentry>])`: Returns the current value of the stat on the target.
@@ -35,6 +24,19 @@ All scripts have the following methods:
 Accessing a particular stat is done by first making a call to the `find()` method in codes.data with the format of `find(<entry>[,<statclass>])`. Because this function may be indirectely called by players in various situations such as rolling dice, proving a stat, or requesting info `<entry>` works via partial matching. The is why `find('str')` will return the scrripts for Strength, Streetwise, Street Fighting, and Striking Looks. To help narrow the list and to deal with naming conflicts `<statclass>` may be used to narrow the search. `find('str','skill')` would only return the script object for Streetwise.
 
 `find()` works by querying a small script of `typeclasses.scripts.dictionaryScript` that contains a look up table of all partial name matches. This look up table is rebuilt every time the server is reloaded.
+
+There are 6 different typeclasses of stat scripts used by all or nearly all characters:
+
+* advantageScripts: Handle advantages such as Initiative, Speed, and Health
+* attributeScripts: Handle attributes such as Strength or Presence
+* skillScripts: Handle skills such as Brawl or Streetwise
+* meritScripts: Handle merits such as Resources or Contacts
+* sphereScripts: Handle miscellaneous sphere specific stats such as kith or tribe
+* basicStatScripts: Handle miscellaneous stats such as character concept.
+
+In addition all major templates access a `powerStatScript`.
+
+At present there are 16 other scripts to handle the various characteristics exclusive to each sphere such as contracts, disciplines, gifts, and rites.
 
 ## Installation ##
 
