@@ -110,6 +110,7 @@ from codes.stats.kithScripts import kithScript
 from codes.stats.lodgesScripts import lodgeScript
 from codes.stats.meritScripts import meritScript
 from codes.stats.powerStatScripts import powerStatScript
+from codes.stats.renownScripts import renownScript
 from codes.stats.scalesScripts import scaleScript
 from codes.stats.seemingScripts import seemingScript
 from codes.stats.sphereStatScripts import sphereStatScript
