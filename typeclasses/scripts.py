@@ -106,6 +106,7 @@ from codes.stats.covenantScripts import covenantScript
 from codes.stats.cruacRitesScripts import cruacRiteScript
 from codes.stats.devotionScripts import devotionScript
 from codes.stats.disciplineScripts import disciplineScript
+from codes.stats.giftsScripts import giftScript
 from codes.stats.kithScripts import kithScript
 from codes.stats.lodgesScripts import lodgeScript
 from codes.stats.meritScripts import meritScript

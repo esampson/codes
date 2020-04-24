@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Gift List</h1>
+
+    {% for groups in gifts %}
+        {% for gift in groups %}
+            {% if forloop.counter == 1 %}
+                <h2> {{ gift }} </h2>
+            {% else %}
+		        <li> <a href="../view/{{ gift }}">{{ gift }}</a> </li>
+		    {% endif %}
+		{% endfor %}
+	{% endfor %}
+	{% if user.is_staff %}
+	    <br>
+        <form action="/gifts/create/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="create" value="Create"/>
+        </form>
+    {% endif %}
+{% endblock %}
