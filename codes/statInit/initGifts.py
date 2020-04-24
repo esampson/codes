@@ -10,6 +10,26 @@ gift.db.reference = 'W:tF p. 121'
 gift.db.info = 'Merely being dead is not enough to save prey from the hunt.'
 gift.db.restricted = False
 
+gift = create_script('typeclasses.scripts.giftScript',key = 'Beast_Ride')
+gift.db.longname = 'Beast Ride'
+gift.db.category = 'Shadow'
+gift.db.group = 'Nature'
+gift.db.rank = ''
+gift.db.renown = 'Wisdom'
+gift.db.reference = 'W:tF p. 130'
+gift.db.info = 'This Facet lets the Uratha spin out her spirit to ride the mind of another creature.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Berserkers_Might')
+gift.db.longname = 'Berserker\'s Might'
+gift.db.category = 'Shadow'
+gift.db.group = 'Rage'
+gift.db.rank = ''
+gift.db.renown = 'Glory'
+gift.db.reference = 'W:tF p. 130'
+gift.db.info = 'Girded with this Facet, the werewolf becomes a horrifying juggernaut who simply shrugs off the most grievous of wounds.'
+gift.db.restricted = False
+
 gift = create_script('typeclasses.scripts.giftScript',key = 'Binding_Oath')
 gift.db.longname = 'Binding Oath'
 gift.db.category = 'Moon'
@@ -18,6 +38,16 @@ gift.db.rank = '2'
 gift.db.renown = 'Honor'
 gift.db.reference = 'W:tF p. 119'
 gift.db.info = 'The world is a network of favors, dominance, and submission. With this Facet, the Elodoth can strengthen those ties with Essence.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Black_Earth,_Red_Hunger')
+gift.db.longname = 'Black Earth, Red Hunger'
+gift.db.category = 'Shadow'
+gift.db.group = 'Nature'
+gift.db.rank = ''
+gift.db.renown = 'Glory'
+gift.db.reference = 'W:tF p. 129'
+gift.db.info = 'Feed the hungry earth with blood and Essence, and reap its red harvest.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Bloody-Handed_Hunter')
@@ -150,6 +180,16 @@ gift.db.reference = 'W:tF p. 119'
 gift.db.info = 'The Cahalith knows when it’s time for the story to end and the hunt to come to a gratifying, brutal conclusion. It doesn’t matter whether the prey agrees. He’s doomed already.'
 gift.db.restricted = False
 
+gift = create_script('typeclasses.scripts.giftScript',key = 'Entropys_Toll')
+gift.db.longname = 'Entropy\'s Toll'
+gift.db.category = 'Shadow'
+gift.db.group = 'Shaping'
+gift.db.rank = ''
+gift.db.renown = 'Honor'
+gift.db.reference = 'W:tF p. 131'
+gift.db.info = 'The scouring howl of the Uratha shatters windows, crumbles stone, and leaves metal collapsing into rust.'
+gift.db.restricted = False
+
 gift = create_script('typeclasses.scripts.giftScript',key = 'Eviscerate')
 gift.db.longname = 'Eviscerate'
 gift.db.category = 'Moon'
@@ -250,6 +290,16 @@ gift.db.reference = 'W:tF p. 124'
 gift.db.info = 'An Uratha with this Facet can disengage from battle and leave her prey in fearful confusion.'
 gift.db.restricted = False
 
+gift = create_script('typeclasses.scripts.giftScript',key = 'Incite_Fury')
+gift.db.longname = 'Incite Fury'
+gift.db.category = 'Shadow'
+gift.db.group = 'Rage'
+gift.db.rank = ''
+gift.db.renown = 'Cunning'
+gift.db.reference = 'W:tF p. 130'
+gift.db.info = 'It\'s easy to goad the prey into foolish rage when the tongue has a supernatural sting to it.'
+gift.db.restricted = False
+
 gift = create_script('typeclasses.scripts.giftScript',key = 'Killer_Instinct')
 gift.db.longname = 'Killer Instinct'
 gift.db.category = 'Moon'
@@ -258,6 +308,26 @@ gift.db.rank = '1'
 gift.db.renown = 'Purity'
 gift.db.reference = 'W:tF p. 117'
 gift.db.info = 'The Rahu is a Moon-forged killer. This Facet brings his deadly instincts to the fore.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Knotted_Paths')
+gift.db.longname = 'Knotted Paths'
+gift.db.category = 'Shadow'
+gift.db.group = 'Nature'
+gift.db.rank = ''
+gift.db.renown = 'Honor'
+gift.db.reference = 'W:tF p. 129'
+gift.db.info = 'Once caught in the trap, the prey cannot escape. Every path she flees down just leads her back to the hunter\'s waiting jaws.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Know_thy_Prey')
+gift.db.longname = 'Know thy Prey'
+gift.db.category = 'Shadow'
+gift.db.group = 'Knowledge'
+gift.db.rank = ''
+gift.db.renown = 'Honor'
+gift.db.reference = 'W:tF p. 128'
+gift.db.info = 'This Facet whispers in the ears of the Uratha as he looks upon his prey, revealing what others know of it.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Lay_Low_the_Challenger')
@@ -280,6 +350,16 @@ gift.db.reference = 'W:tF p. 123'
 gift.db.info = 'At times, outsiders must be brought into the fold of the hunt, whether allies of convenience or fellow hunters of terrible prey.'
 gift.db.restricted = False
 
+gift = create_script('typeclasses.scripts.giftScript',key = 'Lore_of_the_Land')
+gift.db.longname = 'Lore of the Land'
+gift.db.category = 'Shadow'
+gift.db.group = 'Knowledge'
+gift.db.rank = ''
+gift.db.renown = 'Purity'
+gift.db.reference = 'W:tF p. 128'
+gift.db.info = 'The bond between Uratha and territory is deep, and this Facet draws upon it in search of answers.'
+gift.db.restricted = False
+
 gift = create_script('typeclasses.scripts.giftScript',key = 'Lunatic_Inspiration')
 gift.db.longname = 'Lunatic Inspiration'
 gift.db.category = 'Shadow'
@@ -300,6 +380,36 @@ gift.db.reference = 'W:tF p. 121'
 gift.db.info = 'Life is fleeting. Hold on tight to what matters right now, the burning ties of life and blood that make up the pack.'
 gift.db.restricted = False
 
+gift = create_script('typeclasses.scripts.giftScript',key = 'Moldywarp')
+gift.db.longname = 'Moldywarp'
+gift.db.category = 'Shadow'
+gift.db.group = 'Shaping'
+gift.db.rank = ''
+gift.db.renown = 'Cunning'
+gift.db.reference = 'W:tF p. 131'
+gift.db.info = 'Turning the power of the Shaping Gift inwards, the Uratha molds herself into a strange burrowing hybrid.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Natures_Lure')
+gift.db.longname = 'Nature\'s Lure'
+gift.db.category = 'Shadow'
+gift.db.group = 'Nature'
+gift.db.rank = ''
+gift.db.renown = 'Cunning'
+gift.db.reference = 'W:tF p. 129'
+gift.db.info = 'The call of the wild can be alluring, drawing the unwary into its clutches.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Needle')
+gift.db.longname = 'Needle'
+gift.db.category = 'Shadow'
+gift.db.group = 'Knowledge'
+gift.db.rank = ''
+gift.db.renown = 'Cunning'
+gift.db.reference = 'W:tF p. 127-128'
+gift.db.info = 'Hunting for deliberately hidden knowledge can be like seeking a needle in a haystack. This Facet ensures that it is so.'
+gift.db.restricted = False
+
 gift = create_script('typeclasses.scripts.giftScript',key = 'One_Step_Ahead')
 gift.db.longname = 'One Step Ahead'
 gift.db.category = 'Shadow'
@@ -308,6 +418,16 @@ gift.db.rank = ''
 gift.db.renown = 'Wisdom'
 gift.db.reference = 'W:tF p. 126-127'
 gift.db.info = 'Wherever the prey runs, wherever they flee, the predator is always one step ahead.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Pack_Kin')
+gift.db.longname = 'Pack Kin'
+gift.db.category = 'Shadow'
+gift.db.group = 'Nature'
+gift.db.rank = ''
+gift.db.renown = 'Purity'
+gift.db.reference = 'W:tF p. 129-130'
+gift.db.info = 'This Facet calls to the hunter\'s instincts in a predatory animal, forging a bond with the Uratha.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Pack_Triumphs_Together')
@@ -330,6 +450,26 @@ gift.db.reference = 'W:tF p. 117'
 gift.db.info = 'The Ithaeur opens the spiritual font of her Essence and reaches out with her consciousness. She leashes the denizens of the Shadow to serve as her eyes and ears.'
 gift.db.restricted = False
 
+gift = create_script('typeclasses.scripts.giftScript',key = 'Perfected_Rage')
+gift.db.longname = 'Perfected Rage'
+gift.db.category = 'Shadow'
+gift.db.group = 'Rage'
+gift.db.rank = ''
+gift.db.renown = 'Honor'
+gift.db.reference = 'W:tF p. 130'
+gift.db.info = 'The raw, overwhelming fury of Gauru is too much for an Uratha to bear for long, unless his very Essence has been carved with new channels of rage.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Perfection_of_Form')
+gift.db.longname = 'Perfection of Form'
+gift.db.category = 'Shadow'
+gift.db.group = 'Shaping'
+gift.db.rank = ''
+gift.db.renown = 'Purity'
+gift.db.reference = 'W:tF p. 131'
+gift.db.info = 'With just a whisper and a caress, the Uratha hones the form of a tool to a state of perfection.'
+gift.db.restricted = False
+
 gift = create_script('typeclasses.scripts.giftScript',key = 'Prey_on_Weakness')
 gift.db.longname = 'Prey on Weakness'
 gift.db.category = 'Shadow'
@@ -348,6 +488,16 @@ gift.db.rank = ''
 gift.db.renown = 'Cunning'
 gift.db.reference = 'W:tF p. 122'
 gift.db.info = 'Even when the prey knows that something is wrong, it\'s hard to resist the raw magnetism of the predator who speaks in such alluring tones.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Raging_Lunacy')
+gift.db.longname = 'Raging Lunacy'
+gift.db.category = 'Shadow'
+gift.db.group = 'Rage'
+gift.db.rank = ''
+gift.db.renown = 'Wisdom'
+gift.db.reference = 'W:tF p. 131'
+gift.db.info = 'Bathed in the maddening vision of Luna, the Uratha is a spark that ignites a blaze of unreasoning fury in the soul.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Read_the_Worlds_Loom')
@@ -390,6 +540,16 @@ gift.db.reference = 'W:tF p. 126'
 gift.db.info = 'The Uratha who possesses this Facet can smell the tainted presence of creatures and powers that defy the natural order of Flesh and Shadow.'
 gift.db.restricted = False
 
+gift = create_script('typeclasses.scripts.giftScript',key = 'Sculpt')
+gift.db.longname = 'Sculpt'
+gift.db.category = 'Shadow'
+gift.db.group = 'Shaping'
+gift.db.rank = ''
+gift.db.renown = 'Wisdom'
+gift.db.reference = 'W:tF p. 131'
+gift.db.info = 'This Facet forces even the hardiest of substances to yield to the Uratha\'s intent.'
+gift.db.restricted = False
+
 gift = create_script('typeclasses.scripts.giftScript',key = 'Shadow_Gaze')
 gift.db.longname = 'Shadow Gaze'
 gift.db.category = 'Moon'
@@ -418,6 +578,36 @@ gift.db.rank = '4'
 gift.db.renown = 'Wisdom'
 gift.db.reference = 'W:tF p. 116-117'
 gift.db.info = 'The Ithaeur dons the Essence of a spirit like a mask. She passes amongst the denizens of the Shadow as one of their own.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Shield-Breaker')
+gift.db.longname = 'Shield-Breaker'
+gift.db.category = 'Shadow'
+gift.db.group = 'Shaping'
+gift.db.rank = ''
+gift.db.renown = 'Glory'
+gift.db.reference = 'W:tF p. 131'
+gift.db.info = 'Under the hammering strike of the Uratha, shields shatter and armor buckles.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Sift_the_Sands')
+gift.db.longname = 'Sift the Sands'
+gift.db.category = 'Shadow'
+gift.db.group = 'Knowledge'
+gift.db.rank = ''
+gift.db.renown = 'Wisdom'
+gift.db.reference = 'W:tF p. 128-129'
+gift.db.info = 'When the wise Uratha calls, knowledge itself heeds his cry. Seated amongst the collated knowledge of others, complex research takes a matter of minutes and hidden lore reveals itself willingly.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'Slaughterer')
+gift.db.longname = 'Slaughterer'
+gift.db.category = 'Shadow'
+gift.db.group = 'Rage'
+gift.db.rank = ''
+gift.db.renown = 'Purity'
+gift.db.reference = 'W:tF p. 130'
+gift.db.info = 'Rage is just another source of strength. Drink deep of its power and let the blood flow free.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Slip_Away')
@@ -468,6 +658,16 @@ gift.db.rank = ''
 gift.db.renown = 'Wisdom'
 gift.db.reference = 'W:tF p. 127'
 gift.db.info = 'Words spoken with this Facet pierce through the raging flames of Kuruth with calm assurance.'
+gift.db.restricted = False
+
+gift = create_script('typeclasses.scripts.giftScript',key = 'This_Story_is_True')
+gift.db.longname = 'This Story is True'
+gift.db.category = 'Shadow'
+gift.db.group = 'Knowledge'
+gift.db.rank = ''
+gift.db.renown = 'Glory'
+gift.db.reference = 'W:tF p. 128'
+gift.db.info = 'Tales of the past can teach important lessons in the present. It doesn\'t matter if the story is factually true, as long as the symbolic meaning is true enough.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Thousand-Throat_Howl')
