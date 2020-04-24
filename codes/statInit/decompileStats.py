@@ -9,6 +9,7 @@ from codes.statInit import decompileCovenants
 from codes.statInit import decompileCruac
 from codes.statInit import decompileDevotions
 from codes.statInit import decompileDisciplines
+from codes.statInit import decompileGifts
 from codes.statInit import decompileKiths
 from codes.statInit import decompileLodges
 from codes.statInit import decompileMerits

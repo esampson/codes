@@ -12,6 +12,7 @@ from codes.statInit import initCovenants
 from codes.statInit import initCruac
 from codes.statInit import initDevotions
 from codes.statInit import initDisciplines
+from codes.statInit import initGifts
 from codes.statInit import initKiths
 from codes.statInit import initLodges
 from codes.statInit import initMerits
