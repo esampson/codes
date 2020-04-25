@@ -90,5 +90,8 @@ class renownScript(codesScript):
 
         """
         name = self.db.longname
-        target.db.renown[name] = value
+        if target.db.renown:
+            target.db.renown[name] = value
+        else:
+            target.db.renown = {name: value}
         return True

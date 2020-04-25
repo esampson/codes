@@ -87,40 +87,26 @@ class giftScript(codesScript):
 
 
         target: The character being checked
-        value: The level being checked.
-        subentry: Seeming benefits
+        value: Dummy for overloading
+        subentry: Dummy for overloading
         
         
         """
-        if target.template().lower() == 'changeling':
-            if self.db.group.lower() == 'court':
-                mantle = target.get('Mantle',subentry=self.db.category,statclass='Merit')
-                goodwill = target.get('Court Goodwill',
-                                      subentry=self.db.category,statclass='Merit')
-                courts = {"spring":0, "summer":0, "autumn":0, "winter":0}
-                gifts = list(target.db.gifts.keys())
-                for gift in gifts:
-                    stat = find(gift,statclass='gift')
-                if len(gifts) > 0:
-                    if stat[0].db.group.lower() == 'court':
-                        courts[stat[0].db.category.lower()] = courts[stat[0].db.category.lower()] + 1
-                current_count = courts[self.db.category.lower()]
-                if self.db.subgroup.lower() == 'common':
-                    if current_count == 0:
-                        result = True 
-                    elif mantle >= 1 or goodwill >= 3:
-                        result = True
-                    else:
-                        result = False
+        if target.template().lower() == 'werewolf':
+            if self.db.category.lower() == 'moon':
+                auspice = find(
+                    target.get('Auspice',statclass='Sphere'),
+                    statclass='Auspice')[0]
+                auspice_gifts = auspice.db.auspice_gifts
+                required_rank = self.db.rank
+                auspice_renown = auspice.db.renown
+                renown = target.get(auspice_renown,statclass='Renown')
+                if self.db.group in auspice_gifts and int(required_rank) <= renown:
+                    result = True
                 else:
-                    if current_count == 0 and (mantle >= 3 or goodwill >= 4):
-                        result = True
-                    elif current_count >= 1 and (mantle >= 3 or goodwill == 5):
-                        result = True
-                    else:
-                        result = False
+                    result = False
             else:
-                result = True
+                result = False
         else:
             result = False
         return result

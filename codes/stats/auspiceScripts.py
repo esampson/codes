@@ -71,7 +71,7 @@ class auspiceScript(codesScript):
         False.
 
 
-        target: The character the statis being set for
+        target: The character the stat is being set for
         value: The value the stat is being set to
         subentry: Does nothing. Placeholder for overloading
 
