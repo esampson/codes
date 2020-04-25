@@ -136,7 +136,7 @@ class giftScript(codesScript):
         name = self.db.longname
 
         # Already have it
-        if target.db.gifts and name in target.db.gift:
+        if target.db.gifts and name in target.db.gifts:
             result = 0
 
         # Moon Gift which are free
@@ -212,43 +212,28 @@ class giftScript(codesScript):
 
         """
         name = self.db.longname
-        if  name not in target.db.gifts and value != False:
-            current_temp = ([target.get('Seeming', statclass='Sphere')] +
-                            [''])
-            new_temp = subentry.split(',')
-            current = set()
-            for entry in current_temp:
-                current.add(entry.strip())
-            new = set()
-            for entry in new_temp:
-                new.add(entry.strip())
-            new_entry = ''
-            for entry in list(new.difference(current)):
-                new_entry = new_entry + entry + ', '
-            new_entry = new_entry[0:len(new_entry)-2]
-            target.db.gifts[name] = new_entry
+
+        # target.db.gifts doesn't exist
+        if not target.db.gifts and value == True:
+            target.db.gifts = {name : True}
             result = True
-        elif name in target.db.gifts and value == False:
-            del target.db.gifts[name]
+        elif not target.db.gifts and value == False:
             result = True
+
+        # Not in target.db.gifts
+        elif name not in target.db.gifts and value == True:
+            target.db.gifts[name] = True
+            result = True
+        elif name not in target.db.gifts and value == False:
+            result = True
+
+        # In target.db.gifts
         elif name in target.db.gifts and value == True:
-            current_temp = ([target.get('Seeming', statclass='Sphere')] +
-                            [''])
-            new_temp = subentry.split(',')
-            current = set()
-            for entry in current_temp:
-                current.add(entry.strip())
-            new = set()
-            for entry in new_temp:
-                new.add(entry.strip())
-            new_entry = ''
-            for entry in list(new.difference(current)):
-                new_entry = new_entry + entry + ', '
-            new_entry = new_entry[0:len(new_entry)-2]
-            target.db.gifts[name] = new_entry
             result = True
         else:
-            result = False
+            del target.db.gifts[name]
+            result = True
+
         return result
                 
                 
