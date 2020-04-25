@@ -65,13 +65,9 @@ class giftScript(codesScript):
 
 
         target: The character being checked
-        subentry: To check for Seeming Blessings
-
+        subentry: Dummy for overloading
         """
-        if self.db.longname in target.db.gifts and subentry == '':
-            result = True
-        elif (self.db.longname in target.db.gifts and
-              subentry.lower() in target.db.gifts[self.db.longname].lower()):
+        if target.db.gifts and self.db.longname in target.db.gifts:
             result = True
         else:
             result = False
@@ -93,6 +89,8 @@ class giftScript(codesScript):
         
         """
         if target.template().lower() == 'werewolf':
+
+            # Check auspice renown for rank of Moon Gift
             if self.db.category.lower() == 'moon':
                 auspice = find(
                     target.get('Auspice',statclass='Sphere'),
@@ -101,12 +99,22 @@ class giftScript(codesScript):
                 required_rank = self.db.rank
                 auspice_renown = auspice.db.renown
                 renown = target.get(auspice_renown,statclass='Renown')
-                if self.db.group in auspice_gifts and int(required_rank) <= renown:
+                if (self.db.group in auspice_gifts and
+                        int(required_rank) <= renown):
                     result = True
                 else:
                     result = False
+
+            # Check to see if target has any renown of the proper type
             else:
-                result = False
+                gift_renown = self.db.renown
+                renown = target.get(gift_renown,statclass='Renown')
+                if renown >= 1:
+                    result = True
+                else:
+                    result = False
+
+        # Not a werewolf, no Gifts for you
         else:
             result = False
         return result
@@ -126,54 +134,65 @@ class giftScript(codesScript):
 
         """
         name = self.db.longname
-        bonus = 0
-        if self.db.group.lower() == 'regalia':
-            if target.get(name, statclass='gift'):
-                current_temp = (target.db.gifts[name].split(',') +
-                                [target.get('Seeming', statclass='Sphere')])
-                if subentry == '':
-                    result = 0
-                else:
-                    new_temp = subentry.split(',')
-                    current = set()
-                    for entry in current_temp:
-                        current.add(entry.strip())
-                    new = set()
-                    for entry in new_temp:
-                        new.add(entry.strip())
-                    result = len(new.difference(current))
-            else:
-                if self.db.subgroup.lower() == 'common':
+
+        # Already have it
+        if target.db.gifts and name in target.db.gift:
+            result = 0
+
+        # Moon Gift which are free
+        elif self.db.category.lower() == 'moon':
+            result = 0
+
+        # Wolf Gift
+        elif self.db.category.lower() == 'wolf':
+            result = 1
+
+        # Shadow Gift and target has gifts to check
+        elif target.db.gifts:
+
+            # Is it unlocked
+            group = self.db.group
+            possess_facet = False
+            for item in list(target.db.gifts.keys()):
+                if find(item,statclass="Gift")[0].db.group == group:
+                    possess_facet = True
+
+            # Not unlocked
+            if possess_facet == False:
+
+                # Is it favored
+                tribe = find(target.get('Tribe',statclass='Sphere'))[0]
+                auspice = find(target.get('Auspice', statclass='Sphere'))[0]
+
+                # Favored
+                if (group in tribe.db.tribe_gifts or
+                        group in auspice.db.auspice_gifts):
                     result = 3
+
+                # Not favored
                 else:
-                    result = 4
-                if self.db.category in target.get('Regalia', 
-                                                  statclass='Sphere'):
-                    result = result -1
-                current_temp = ([target.get('Seeming', statclass='Sphere')] + 
-                                [''])
-                new_temp = subentry.split(',')
-                current = set()
-                for entry in current_temp:
-                    current.add(entry.strip())
-                new = set()
-                for entry in new_temp:
-                    new.add(entry.strip())
-                if subentry != '':
-                    result = result + len(new.difference(current))
-        elif self.db.group.lower() == 'court':
-            if target.get(name, statclass='gift'):
-                result = 0
-            else:
-                if self.db.subgroup.lower() == 'common':
-                    result = 3
-                else:
-                    result = 4
-        else:
-            if target.get(name, statclass='gift'):
-                result = 0
+                    result = 5
+
+            # Unlocked
             else:
                 result = 2
+
+        else:
+            group = self.db.group
+
+            # Is it favored
+            tribe = find(target.get('Tribe', statclass='Sphere'))[0]
+            auspice = find(target.get('Auspice', statclass='Sphere'))[0]
+
+            # Favored
+            if (group in tribe.db.tribe_gifts or
+                    group in auspice.db.auspice_gifts):
+                result = 3
+
+            # Not favored
+            else:
+                result = 5
+
         return result
                 
     def set(self, target, value, subentry=''):
@@ -188,7 +207,7 @@ class giftScript(codesScript):
 
         target: The character the gift is being set for
         value: The value the gift is being set to
-        subentry: Any Seeming Benefits being added to the gift
+        subentry: Dummy for overloading
 
 
         """
