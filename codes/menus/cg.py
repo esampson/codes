@@ -279,7 +279,9 @@ def assign_template(caller, raw_string, **kwargs):
         { 'desc' : 'Changeling',
           'goto' : 'changeling_template' },
         { 'desc' : 'Vampire',
-          'goto' : 'vampire_template' } )
+          'goto' : 'vampire_template' },
+        { 'desc' : 'Werewolf',
+          'goto' : 'werewold_template'} )
     return text, options
 
 def mortal_template(caller, raw_string, **kwargs):
@@ -296,6 +298,11 @@ def changeling_template(caller, raw_string, **kwargs):
 
 def vampire_template(caller, raw_string, **kwargs):
     ExMenu(caller, 'codes.menus.cg_vampire', startnode = 'vampire_template')
+    text = {'format' : 'suppress'}
+    return text,None
+
+def werewolf_template(caller, raw_string, **kwargs):
+    ExMenu(caller, 'codes.menus.cg_werewolf', startnode = 'werewolf_template')
     text = {'format' : 'suppress'}
     return text,None
     

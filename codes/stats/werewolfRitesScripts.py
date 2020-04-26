@@ -55,7 +55,13 @@ class werewolfRiteScript(codesScript):
 
         """
         if target.template().lower() == 'werewolf':
-            result = True
+            if self.db.prereq and self.db.prereq != '':
+                if eval(self.db.prereq):
+                    result = True
+                else:
+                    result = False
+            else:
+                result = True
         else:
             result = False
         return result
