@@ -16,13 +16,14 @@ tags = { 'advantage_stat' : 'advantage',
          'lodge_stat' : 'lodge',
          'merit_stat' : 'merit',
          'power_stat' : 'power',
-        'renown_stat' : 'renown',
+         'renown_stat' : 'renown',
          'scale_stat' : 'scale',
          'seeming_stat' : 'seeming',
          'skill_stat' : 'skill',
          'sphere_stat' : 'sphere',
          'theban_rite_stat' : 'theban miracle',
-         'tribe_stat' : 'tribe'}
+         'tribe_stat' : 'tribe',
+         'werewolf_rite_stat' : 'werewolf rite' }
 
 class codesScript(Script):
     
