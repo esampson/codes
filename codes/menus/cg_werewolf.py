@@ -12,11 +12,19 @@ anchors = { 'blood' : ['Alpha','Challenger','Destroyer','Fox','The Monster',
             'bone' : ['Community Organizer','Cub','Guru','Hedonist',
                       'Lone Wolf','Wallflower'] }
 
+moon_list = { 'crescent moon' : ['Shadow Gaze','Spirit Whispers'],
+               'full moon' : ['Killer Instinct', 'Warrior\'s Hide'],
+               'gibbous moon' : ['War Howl', 'Voice of Glory'],
+               'half moon' : ['Scent Beneath the Surface', 'Binding Oath'],
+               'new moon' : ['Eviscerate', 'Slip Away']}
+
 def werewolf_template(caller, raw_string, **kwargs):
     caller.db.basics = { 'Sphere' : 'Werewolf' }
     caller.db.renown = {'Cunning': 0, 'Glory': 0, 'Honor': 0, 'Purity': 0,
                         'Wisdom': 0}
     caller.db.power = { 'Primal Urge' : 1 }
+    caller.db.gifts = {}
+    caller.db.rites = {}
     text = 'Select Auspice:'
     option_list = []
     auspices_list = search_script_tag('auspice_stat')
@@ -36,7 +44,7 @@ def _werewolf_set_auspice(caller, raw_string, **kwargs):
     auspice = kwargs['auspice']
     caller.db.sphere['Auspice'] = auspice.db.longname
     caller.db.renown[auspice.db.renown] = 1
-    return ("werewolf_stat", { 'auspice' : auspice })
+    return "werewolf_stat", { 'auspice' : auspice }
     
 def werewolf_stat(caller, raw_string, **kwargs):
     auspice = kwargs['auspice']
@@ -54,9 +62,9 @@ def _raise_stat(caller, raw_string, **kwargs):
     start_value = caller.get(kwargs['stat'],statclass='Skill')
     if start_value == 5:
         caller.msg('|/Can\'t boost a stat to over 5')
-        return ("werewolf_stat", kwargs )
+        return "werewolf_stat", kwargs
     else:
-        set(caller, kwargs['stat'], statclass='Attribute', value=start_value+1)
+        set(caller, kwargs['stat'], statclass='Skill', value=start_value+1)
         return "werewolf_tribe"
     
 def werewolf_tribe(caller, raw_string, **kwargs):
@@ -78,12 +86,47 @@ def werewolf_tribe(caller, raw_string, **kwargs):
 
 def _set_tribe(caller, raw_string, **kwargs):
     tribe = kwargs['tribe']
-    caller.db.sphere['tribe'] = tribe.db.longname
+    caller.db.sphere['Tribe'] = tribe.db.longname
     if tribe.db.renown != '':
         renown = tribe.db.renown
         renown_score = caller.get(renown,statclass='Renown') + 1
         caller.db.renown[renown] = renown_score
-    return "werewolf_anchors"
+    return "werewolf_renown"
+
+def werewolf_renown(caller, raw_string, **kwargs):
+    text = ('Select one renown to boost:' +
+            '|/|_|_|_|_Cunning: ' +
+            str(caller.get('Cunning', statclass='Renown')) +
+            '|/|_|_|_|_Glory: ' +
+            str(caller.get('Glory', statclass='Renown')) +
+            '|/|_|_|_|_Honor: ' +
+            str(caller.get('Honor', statclass='Renown')) +
+            '|/|_|_|_|_Purity: ' +
+            str(caller.get('Purity', statclass='Renown')) +
+            '|/|_|_|_|_Wisdom: ' +
+            str(caller.get('Wisdom', statclass='Renown')))
+    renown_list = search_script_tag('renown_stat')
+    renown = []
+    for item in renown_list:
+        renown.append([item.db.longname, item])
+    renown = sorted(renown, key=itemgetter(0))
+    option_list = []
+    for item in renown:
+        option_list.append({'desc': item[0],
+                            'goto': (_raise_renown,
+                                     {'renown': item[1]})})
+    options = tuple(option_list)
+    return text, options
+
+
+def _raise_renown(caller, raw_string, **kwargs):
+    start_value = caller.get(kwargs['renown'].db.longname, statclass='Renown')
+    if start_value >= 2:
+        caller.msg('|/Can\'t boost a starting renown to over 2')
+        return "werewolf_stat", kwargs
+    else:
+        set(caller, kwargs['renown'].db.longname, statclass='Renown', value=start_value + 1)
+        return "werewolf_anchors"
 
 def werewolf_anchors(caller, raw_string, **kwargs):
 
@@ -105,10 +148,10 @@ def werewolf_anchors(caller, raw_string, **kwargs):
           'goto' : ('choose_anchor', { 'type' : 'blood' } ) },
         { 'desc' : 'Bone',
           'goto' : ('choose_anchor', { 'type' : 'bone' } ) } ]
-    if blood and bone:
+    if len(blood) > 0 and len(bone) > 0:
         option_list.append ( { 'key' : 'P',
                               'desc' : 'Proceed',
-                              'goto' : 'werewolf_merits' } )
+                              'goto' : _starting_gifts } )
     options = tuple(option_list)
     return text, options
 
@@ -126,11 +169,120 @@ def choose_anchor(caller, raw_string, **kwargs):
 def _set_anchor(caller, raw_string, **kwargs):
     caller.db.sphere[kwargs['type'].capitalize()] = kwargs['value']
     return 'werewolf_anchors'
-    
-def vampire_merits(caller, raw_string, **kwargs):
+
+def _starting_gifts(caller, raw_string, **kwargs):
+    auspice = find(caller.get('Auspice',statclass='Sphere'),
+                   statclass='Auspice')[0]
+    moon = auspice.db.auspice_gifts[0].lower()
+    set(caller, moon_list[moon][0], statclass='Gift', value=True)
+    if caller.get(auspice.db.renown,statclass='Renown') == 2:
+        set(caller, moon_list[moon][1], statclass='Gift', value=True)
+    return 'werewolf_gifts'
+
+def werewolf_gifts(caller,raw_string,**kwargs):
+    auspice = find(caller.get('Auspice', statclass='Sphere'),
+                   statclass='Auspice')[0]
+    if caller.get(auspice.db.renown,statclass='Renown') == 2:
+        wolf_gifts = 0
+        moon_gifts = 2
+    else:
+        wolf_gifts = 1
+        moon_gifts = 1
+    moon_list = []
+    shadow_list = []
+    wolf_list = []
+    for item in list(caller.db.gifts.keys()):
+        gift = find(item,statclass='Gift')[0]
+        if gift.db.category.lower() == 'moon':
+            moon_list.append(gift.db.longname)
+        elif gift.db.category.lower() == 'shadow':
+            shadow_list.append(gift.db.longname)
+        else:
+            wolf_list.append(gift.db.longname)
+    if moon_gifts == 1:
+        text = 'Gifts:|/|/Required: 1 moon gift, 2 shadow gifts and 1 wolf gift.'
+    else:
+        text = 'Gifts:|/|/Required: 2 moon gifts and 2 shadow gifts.'
+    text = text + '|/|/|_|_|_|_Moon Gifts:|/'
+    for item in moon_list:
+        text = text + '|_|_|_|_|_|_|_|_' + item + '|/'
+    text = text + '|/'
+    if len(shadow_list) > 0:
+        text = text + '|_|_|_|_Shadow Gifts:|/'
+        for item in shadow_list:
+            text = text + '|_|_|_|_|_|_|_|_' + item + '|/'
+        text = text + '|/'
+    if len(wolf_list) > 0:
+        text = text + '|_|_|_|_Wolf Gifts:|/'
+        for item in wolf_list:
+            text = text + '|_|_|_|_|_|_|_|_' + item + '|/'
+        text = text + '|/'
+    option_list = []
+    if len(wolf_list) < wolf_gifts or len(shadow_list) < 2:
+        option_list.append( { 'key' : 'A',
+                              'desc' : 'Add a gift',
+                              'goto' : 'werewolf_add_gift' } )
+    if len(wolf_list) > 0 or len(shadow_list) > 0:
+        option_list.append( { 'key' : 'R',
+                              'desc' : 'Remove a gift',
+                              'goto' : 'werewolf_remove_gift' } )
+    if len(wolf_list) == wolf_gifts and len(shadow_list) == 2:
+        option_list.append( { 'key' : 'P',
+                              'desc' : 'Proceed',
+                              'goto' : 'werewolf_merits' } )
+    options = tuple(option_list)
+    return text,options
+
+def werewolf_add_gift(caller, raw_string, **kwargs):
+    text = 'Gift:'
+    options = ( {'key' : '_default',
+                 'goto' : _check_gift } )
+    return text,options
+
+def _check_gift(caller, raw_string, **kwargs):
+    gifts = find(strip_control_sequences(raw_string), statclass='Gift')
+    if len(gifts) < 1:
+        caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
+    elif len(gifts) > 1:
+        caller.msg('|/Too many matches found')
+    else:
+        gift = gifts[0]
+        auspice_gifts = find(caller.get('Auspice',statclass='Sphere'),
+                            statclass='Auspice')[0].db.auspice_gifts
+        tribe_gifts = find(caller.get('Tribe', statclass='Sphere'),
+                            statclass='Tribe')[0].db.tribe_gifts
+        if gift.meets_prereqs(caller,value=True) and gift.db.type != 'moon':
+            if (gift.db.group in auspice_gifts or
+                gift.db.group in tribe_gifts or
+                gift.db.category.lower() == 'wolf'):
+                gift.set(caller,value=True)
+            else:
+                caller.msg('|/You cannot take that gift in character generation.')
+        else:
+            caller.msg('|/You cannot take that gift in character generation.')
+    return 'werewolf_gifts'
+
+def werewolf_remove_gift(caller, raw_string, **kwargs):
+    text = 'Select contract to remove:'
+    option_list = []
+    gifts = list(caller.db.gifts.keys())
+    gifts.sort()
+    for item in gifts:
+        gift = find(item,statclass='Gift')[0]
+        if gift.db.category.lower() != 'moon':
+            option_list.append( { 'desc' : item,
+                              'goto' : ( _remove_gift, {'gift' : item} ) } )
+    options = tuple(option_list)
+    return text,options
+
+def _remove_gift(caller, raw_string, **kwargs):
+    set(caller,kwargs['gift'],statclass='Gift',value=False)
+    return 'werewolf_gifts'
+
+def werewolf_merits(caller, raw_string, **kwargs):
     max = 10
     total = 0
-    text = 'Blood Potency: ' + str(caller.db.power['Blood Potency']) + \
+    text = 'Primal Urge: ' + str(caller.db.power['Primal Urge']) + \
            '|/Merits:|/|/'
     for item in caller.db.merits:
         out = item[0]
@@ -139,7 +291,7 @@ def vampire_merits(caller, raw_string, **kwargs):
             out = out + ' (' + item[2] + ')'
         out = out + ': ' + str(item[1])
         text = text + out + '|/'
-    total = total + (caller.get('Blood Potency',statclass='Power') - 1) * 5
+    total = total + (caller.get('Primal Urge',statclass='Power') - 1) * 5
     text = text + '|/Points remaining: ' + str(max - total)
     option_list = []
     if total < max:
@@ -150,11 +302,11 @@ def vampire_merits(caller, raw_string, **kwargs):
                                          'max' : max} ) } )
     if max - total > 4:
         option_list.append ( {'key' : 'I',
-                              'desc' : 'Increase Blood Potency',
+                              'desc' : 'Increase Primal Urge',
                               'goto' : _increase_power } )
     if get(caller,'Blood Potency',statclass='Power') > 1:
         option_list.append ( {'key' : 'D',
-                              'desc' : 'Decrease Blood Potency',
+                              'desc' : 'Decrease Primal Urge',
                               'goto' : _decrease_power } )
     if total > 0:
         option_list.append( {'key' : 'R',
@@ -165,7 +317,7 @@ def vampire_merits(caller, raw_string, **kwargs):
     if total == max:
         option_list.append( {'key' : 'P',
                              'desc' : 'Proceed',
-                             'goto' : 'vampire_disciplines'})
+                             'goto' : 'werewolf_gifts'})
     options = tuple(option_list)
     return text, options
 
@@ -277,14 +429,14 @@ def _delete_merit(caller, raw_string, **kwargs):
     return 'vampire_merits'
     
 def _increase_power(caller, raw_string, **kwargs):
-    if caller.db.power['Blood Potency'] < 10:
-        caller.db.power['Blood Potency'] = caller.db.power['Blood Potency'] + 1
+    if caller.db.power['Primal Urge'] < 10:
+        caller.db.power['Primal Urge'] = caller.db.power['Primal Urge'] + 1
         send_kwargs = kwargs
     return 'vampire_merits'
 
 def _decrease_power(caller, raw_string, **kwargs):
-    if caller.db.power['Blood Potency'] > 1:
-        caller.db.power['Blood Potency'] = caller.db.power['Blood Potency'] - 1
+    if caller.db.power['Primal Urge'] > 1:
+        caller.db.power['Primal Urge'] = caller.db.power['Primal Urge'] - 1
     return 'vampire_merits'
     
 def vampire_disciplines(caller, raw_string, **kwargs):

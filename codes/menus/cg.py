@@ -281,7 +281,7 @@ def assign_template(caller, raw_string, **kwargs):
         { 'desc' : 'Vampire',
           'goto' : 'vampire_template' },
         { 'desc' : 'Werewolf',
-          'goto' : 'werewold_template'} )
+          'goto' : 'werewolf_template'} )
     return text, options
 
 def mortal_template(caller, raw_string, **kwargs):
