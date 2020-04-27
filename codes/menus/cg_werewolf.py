@@ -148,7 +148,7 @@ def werewolf_anchors(caller, raw_string, **kwargs):
           'goto' : ('choose_anchor', { 'type' : 'blood' } ) },
         { 'desc' : 'Bone',
           'goto' : ('choose_anchor', { 'type' : 'bone' } ) } ]
-    if len(blood) > 0 and len(bone) > 0:
+    if blood and bone:
         option_list.append ( { 'key' : 'P',
                               'desc' : 'Proceed',
                               'goto' : _starting_gifts } )
@@ -253,8 +253,8 @@ def _check_gift(caller, raw_string, **kwargs):
                             statclass='Tribe')[0].db.tribe_gifts
         if gift.meets_prereqs(caller,value=True) and gift.db.type != 'moon':
             if (gift.db.group in auspice_gifts or
-                gift.db.group in tribe_gifts or
-                gift.db.category.lower() == 'wolf'):
+              gift.db.group in tribe_gifts or
+              gift.db.category.lower() == 'wolf'):
                 gift.set(caller,value=True)
             else:
                 caller.msg('|/You cannot take that gift in character generation.')
@@ -291,17 +291,17 @@ def werewolf_merits(caller, raw_string, **kwargs):
     if len(rites_list) > 0:
         rites_list.sort()
     text = 'Primal Urge: ' + str(caller.db.power['Primal Urge']) + \
-           '|/|/Rites:|/|/'
+           '|/|/|_|_Rites:|/'
     for item in rites_list:
-        text = text + item + '|/'
-    text = text + '|/Merits:|/|/'
+        text = text + '|_|_|_|_' + item + '|/'
+    text = text + '|/|_|_Merits:|/'
     for item in caller.db.merits:
         out = item[0]
         total = total + item[1]
         if len(item[2]) > 0:
             out = out + ' (' + item[2] + ')'
         out = out + ': ' + str(item[1])
-        text = text + out + '|/'
+        text = text + '|_|_|_|_' + out + '|/'
     total = total + (caller.get('Primal Urge',statclass='Power') - 1) * 5
     if rites_points > 2:
         total = total + rites_points - 2
@@ -312,9 +312,11 @@ def werewolf_merits(caller, raw_string, **kwargs):
                              'goto' : ( 'add_merit',
                                         { 'total' : total,
                                          'max' : max} ) } )
+    if total < max and rites_points < 7:
         option_list.append({'desc': 'Add a rite',
                             'goto': ('add_rite',
                                      {'total': total,
+                                      'rites_points': rites_points,
                                       'max': max})})
     if max - total > 4:
         option_list.append ( {'desc' : 'Increase Primal Urge',
@@ -322,7 +324,7 @@ def werewolf_merits(caller, raw_string, **kwargs):
     if get(caller,'Primal Urge',statclass='Power') > 1:
         option_list.append ( {'desc' : 'Decrease Primal Urge',
                               'goto' : _decrease_power } )
-    if total > 0:
+    if len(caller.db.merits) > 0:
         option_list.append( {'desc' : 'Remove a merit',
                              'goto' : ('remove_merit',
                                        {'total' : total,
@@ -333,8 +335,8 @@ def werewolf_merits(caller, raw_string, **kwargs):
                                      {'total': total,
                                       'max': max})})
     if total == max and rites_points >= 2:
-        option_list.append( {'key' : 'P',
-                             'desc' : 'Proceed',
+        option_list.append( {'key' : 'F',
+                             'desc' : 'Finish',
                              'goto' : 'werewolf_finish_cg'})
     options = tuple(option_list)
     return text, options
@@ -431,8 +433,7 @@ def add_rite(caller, raw_string, **kwargs):
     text = 'Rite:'
     options = ( {'key' : '_default',
                  'goto' : ( _check_rite,
-                            { 'total' : kwargs['total'],
-                             'max' : kwargs['max'] } ) } )
+                            kwargs ) } )
     return text,options
 
 def _check_rite(caller, raw_string, **kwargs):
@@ -450,7 +451,8 @@ def _check_rite(caller, raw_string, **kwargs):
             return 'werewolf_merits'
         else:
             value = rite.db.rank
-            if value + kwargs['total']  > kwargs['max']:
+            if (value + kwargs['total'] > kwargs['max'] or
+                    value + kwargs['rites_points'] > 7):
                 caller.msg('|/You don\'t have enough points')
                 return 'werewolf_merits'
             elif rite.meets_prereqs(caller, value=True):
@@ -482,7 +484,9 @@ def _delete_merit(caller, raw_string, **kwargs):
 def remove_rite(caller, raw_string, **kwargs):
     text = 'Remove which rite:'
     option_list = []
-    for item in list(caller.db.werewolfRites.keys()).sort():
+    rites_list = list(caller.db.werewolfRites.keys())
+    rites_list.sort()
+    for item in rites_list:
         rite = item
         option_list.append( {'desc' : rite ,
                              'goto' : ( _delete_rite,
@@ -510,14 +514,14 @@ def quit(caller, raw_string, **kwargs):
     text = {'format' : 'suppress'}
     return text,None
 
-def _werewolf_finish_cg(caller, raw_string, **kwargs):
+def werewolf_finish_cg(caller, raw_string, **kwargs):
     caller.cmdset.delete('unfinished_character')
     caller.cmdset.add(
         'codes.commands.character_commands.finished_character',permanent=True)
-    set(caller,'Humanity',statclass='Advantage', value=7)
+    set(caller,'Harmony',statclass='Advantage', value=7)
     set(
-        caller,'Vitae',statclass='Advantage',
-        value=caller.get('Vitae',subentry='Permanent',statclass='Advantage'))
+        caller,'Essence',statclass='Advantage',
+        value=caller.get('Essence',subentry='Permanent',statclass='Advantage'))
     set(
         caller,'Willpower',statclass='Advantage',
         value=caller.get('Willpower',

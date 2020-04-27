@@ -1,7 +1,9 @@
 from codes.stats.codesScript import codesScript
 
 power_source = {'Glamour' : 'Wyrd',
-                 'Vitae' : 'Blood Potency'}
+                'Vitae' : 'Blood Potency',
+                'Essence' : 'Primal Urge'}
+
 class advantageScript(codesScript):
     
     def at_script_creation(self):
