@@ -55,6 +55,9 @@ class attributeScript(codesScript):
             max = 5
         else:
             max = power_value
+        if target.get('Embodiment of the Firstborn',
+                      subentry=self.db.longname,statclass='Merit') ==5:
+            max = max + 1
         if value > max:
             result = False
         else:

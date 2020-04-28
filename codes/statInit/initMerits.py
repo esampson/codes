@@ -77,6 +77,17 @@ merit.db.info = 'Your character does not suffer the -2 penalty for using his off
 merit.db.cg_only = True
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Anchored')
+merit.db.longname = 'Anchored'
+merit.db.category = 'Werewolf'
+merit.db.range = [1, 2]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'W:tF p. 105'
+merit.db.info = 'Your character has a stronger association with one of her Touchstones than the other. Choose one of her Touchstones when purchasing this Merit. When calling upon that Touchstone to resist a breaking point, take +3 bonus dice. With the two-dot version of the Merit, take +4 dice.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Anointed')
 merit.db.longname = 'Anointed'
 merit.db.category = 'Vampire'
@@ -242,6 +253,28 @@ merit.db.info = 'Your character has the ability to psychically alter his biologi
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Blood_Affinity')
+merit.db.longname = 'Blood Affinity'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Harmony\',statclass=\'Advantage\') >= 3 and target.get(\'Harmony\',statclass=\'Advantage\') <= 8'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 105'
+merit.db.info = 'Choose Blood or Bone when choosing this Merit at the two-dot version. The five-dot version encompasses both Blood and Bone. Once per chapter, when taking an action that would replenish all Willpower from the chosen Blood or Bone trait, you can apply the rote quality to the roll (see p. 162).'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Blood_and_Bone_Affinity')
+merit.db.longname = 'Blood and Bone Affinity'
+merit.db.category = 'Werewolf'
+merit.db.range = [5]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Harmony\',statclass=\'Advantage\') >= 3 and target.get(\'Harmony\',statclass=\'Advantage\') <= 8'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 105'
+merit.db.info = 'Choose Blood or Bone when choosing this Merit at the two-dot version. The five-dot version encompasses both Blood and Bone. Once per chapter, when taking an action that would replenish all Willpower from the chosen Blood or Bone trait, you can apply the rote quality to the roll (see p. 162).'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Bloodhound')
 merit.db.longname = 'Bloodhound'
 merit.db.category = 'Vampire'
@@ -261,6 +294,17 @@ merit.db.prereq = 'target.stamina() >= 3 and target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 41'
 merit.db.info = 'Your character has honed her body to be a hardened weapon. She has trained long, punishing hours to inure herself to the pain of the cracked knuckles, broken hands, and crushed toes that come with hitting others with her body. She can hit harder and more often without flinching. Your character’s unarmed strikes still cause bashing damage normally, but they add one point of bashing damage on a successful hit.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Bone_Affinity')
+merit.db.longname = 'Bone Affinity'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Harmony\',statclass=\'Advantage\') >= 3 and target.get(\'Harmony\',statclass=\'Advantage\') <= 8'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 105'
+merit.db.info = 'Choose Blood or Bone when choosing this Merit at the two-dot version. The five-dot version encompasses both Blood and Bone. Once per chapter, when taking an action that would replenish all Willpower from the chosen Blood or Bone trait, you can apply the rote quality to the roll (see p. 162).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -293,7 +337,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.strength() >= 2 and target.dexterity() >= 2 and target.stamina() >= 2 and target.brawl() >= 2 and target.athletics() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 47-48'
-merit.db.info = 'Trading blows with the hands dates back to Classical times, and probably earlier — some biologists believe our hands have been optimized to deliver blows. There are hundreds of folk styles of boxing, from West Africa’s Dambe to the Filipino method known as Suntukan or Panantukan. This style concentrates on the modern combat sport, which combines European methods with innovations developed by trainers or borrowed from other cultures. Your character is trained in modern boxing, or a similar traditional style.'
+merit.db.info = 'Trading blows with the hands dates back to Classical times, and probably earlier - some biologists believe our hands have been optimized to deliver blows. There are hundreds of folk styles of boxing, from West Africa’s Dambe to the Filipino method known as Suntukan or Panantukan. This style concentrates on the modern combat sport, which combines European methods with innovations developed by trainers or borrowed from other cultures. Your character is trained in modern boxing, or a similar traditional style.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -440,6 +484,17 @@ merit.db.info = 'Your character is particularly tough to crack. When a character
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Code_of_Honor')
+merit.db.longname = 'Code of Honor'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Harmony\',statclass=\'Advantage\') >= 8'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 105'
+merit.db.info = 'Your character has established and held onto a code of human behavior. Maybe she follows a knightly tradition, or maybe she was part of a generational secret society before her Change. When purchasing this Merit, choose a Virtue (p. 158) that reflects her Code of Honor. In addition to the advantages of a Virtue, such as Willpower replenishment, she gets +3 dice to any Stamina, Resolve, or Composure roll to uphold the integrity of her code.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Cohesive_Unit')
 merit.db.longname = 'Cohesive Unit'
 merit.db.category = 'General'
@@ -495,6 +550,17 @@ merit.db.info = 'Contacts provide your character with information. Each dot in t
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Controlled_Burn')
+merit.db.longname = 'Controlled Burn'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.resolve() >= 3 and target.composure() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 105'
+merit.db.info = 'Your character suffers from a dampened form of Wasu-Im, the first stage of Death Rage. When she goes into Wasu-Im, she shifts to Hishu or Urhan form, not Dalu or Urshul. If she succeeds in getting a turn of lucidity (see p. 102), she can spend a point of Willpower to shrug the Rage off entirely.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Court_Goodwill')
 merit.db.longname = 'Court Goodwill'
 merit.db.category = 'Changeling'
@@ -528,6 +594,17 @@ merit.db.info = 'Your character’s an ace at the wheel, and nothing shakes his 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Creative_Tactician')
+merit.db.longname = 'Creative Tactician'
+merit.db.category = 'Werewolf'
+merit.db.range = [3]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Purity\',statclass=\'Renown\') >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 105-106'
+merit.db.info = 'Your character has an intuitive mind for strategy. Any time she acts as the tactician or organizer in a teamwork action (see p. 162), the participants ignore circumstantial penalties up to her Purity dots. As well, once per chapter, the primary actor can gain a Beat if he follows your character’s strategic guidance. Your character does not have to be the primary actor to use this Merit.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Cursed')
 merit.db.longname = 'Cursed'
 merit.db.category = 'Supernatural'
@@ -558,6 +635,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 44'
 merit.db.info = 'You gain a +2 modifier on reflexive Wits + Composure rolls for your character to detect an impending ambush.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Dedicated_Locus')
+merit.db.longname = 'Dedicated Locus'
+merit.db.category = 'Werewolf'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Safe Place\',statclass=\'Merit\') >= 1'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'W:tF p. 106'
+merit.db.info = 'The pack has a locus on its territory that\'s attuned to their totem’s resonance. While most packs protect a locus, a Dedicated Locus represents one they\'ve invested deeply into, which provides significant and highly quickened Essence. The locus\' rating is equal to the dots in this merit. Additionally, the pack can use the filtered, focused Essence faster than other Essence. Collectively, pack members with this Merit can spend a number of points of Essence equal to the Merit cost in a day, above and beyond their normal per-turn limits.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -737,6 +825,17 @@ merit.db.info = 'Choose one physical element when you purchase this Merit, such 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Embodiment_of_the_Firstborn')
+merit.db.longname = 'Embodiment of the Firstborn'
+merit.db.category = 'Werewolf'
+merit.db.range = [5]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() != \'ghost wolf\''
+merit.db.noteRestrictions = ['Intelligence', 'Wits', 'Composure', 'Strength', 'Dexterity', 'Stamina', 'Presence', 'Manipulation', 'Resolve']
+merit.db.reference = 'W:tF p. 106'
+merit.db.info = 'Your character is the perfect likeness of one of Father Wolf\'s brood. She looks the part so very closely that she shakes the souls of her onlookers. Choose an Attribute that reflects her relationship to the Firstborn. She gains a dot in that Attribute, and that Attribute can go one above the normal maximum - normally six dots, unless she has an advanced level of Primal Urge. She can draw on her bearing to cow her opponents. When the player spends a point of Willpower, anyone who tries to attack the character that turn gains the Shaken Condition.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Empath')
 merit.db.longname = 'Empath'
 merit.db.category = 'General'
@@ -869,6 +968,17 @@ merit.db.info = 'Your character talks circles around listeners. He speaks a mile
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Favored_Form')
+merit.db.longname = 'Favored Form'
+merit.db.category = 'Werewolf'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Primal Urge\',statclass=\'Power\') >= (value + 1)'
+merit.db.noteRestrictions = ['Dalu','Gauru','Urshul','Urhan']]
+merit.db.reference = 'W:tF p. 106'
+merit.db.info = 'Your character favors one of her four forms aside from Hishu, and when she takes that form, it\'s larger, stronger, and faster than most Uratha. With each dot in this Merit, he gains a specific, additional advantage in that form. Attribute increases from this Merit apply to derived traits.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Feeding_Grounds')
 merit.db.longname = 'Feeding Grounds'
 merit.db.category = 'Vampire'
@@ -935,6 +1045,17 @@ merit.db.info = 'Your character is remarkably quick, and runs far faster than hi
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Fortified_Form')
+merit.db.longname = 'Fortified Form'
+merit.db.category = 'Werewolf'
+merit.db.range = [3, 4, 5]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.stamina() >= 3 and target.survival() >= 2'
+merit.db.noteRestrictions = ['Dalu','Gauru','Urshul','Urhan']]
+merit.db.reference = 'W:tF p. 106'
+merit.db.info = 'Your character has one form that\'s particularly durable compared to her others. Choose a form other than Hishu when purchasing this Merit. That form has tougher hide, thicker fur, and stronger bones. At the three-dot version, this offers 1/0 armor in that form. The four dot offers 1/1 armor. The five dot offers 2/2 armor.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Friends_in_High_Places')
 merit.db.longname = 'Friends in High Places'
 merit.db.category = 'Vampire'
@@ -942,7 +1063,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'The Invictus have their fingers in a lot of pies...but any one vampire only has so many fingers. So the vampires of the First Estate do not just leverage their personal connections — they leverage each other’s. An Invictus member can always do a little horse trading.'
+merit.db.info = 'The Invictus have their fingers in a lot of pies...but any one vampire only has so many fingers. So the vampires of the First Estate do not just leverage their personal connections - they leverage each other’s. An Invictus member can always do a little horse trading.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1217,7 +1338,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.wits() >= 3 and target.weaponry >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 62-63'
-merit.db.info = 'Most people don’t walk around armed. While someone pulling a knife or a gun can cool a hostile situation down, it can also cause things to boil over — an argument that wouldn’t be more than harsh words suddenly ends up with three people in the morgue. If your character is on the receiving end of someone pulling a knife, it helps to have something in his hand as well.'
+merit.db.info = 'Most people don’t walk around armed. While someone pulling a knife or a gun can cool a hostile situation down, it can also cause things to boil over - an argument that wouldn’t be more than harsh words suddenly ends up with three people in the morgue. If your character is on the receiving end of someone pulling a knife, it helps to have something in his hand as well.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1470,7 +1591,7 @@ merit.db.range = [5]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 5'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116'
-merit.db.info = 'Carthians wield consensus the way a cop wields a baton. With the power of the Movement behind her, a ranking Carthian can call on the will of her people to strike weakness into the Movement’s opposition. With her words and the mandate, she strips a Kindred enemy’s blood down to nothingness. To enact this law, your character must make a clear and direct admonishment against one of the Movement’s enemies. Cross a dot of Willpower off the Carthian’s sheet. She must also garner the support of others of the Movement for a vote — from both Storyteller characters and players’ characters. If the vote favors the admonishment, add the total dots of Carthian Status in support (including the user’s five). For every five dots, reduce the victim’s Blood Potency by one dot. If this reduces him to zero dots, he effectively becomes a revenant (see p. 94 for rules on revenants).'
+merit.db.info = 'Carthians wield consensus the way a cop wields a baton. With the power of the Movement behind her, a ranking Carthian can call on the will of her people to strike weakness into the Movement’s opposition. With her words and the mandate, she strips a Kindred enemy’s blood down to nothingness. To enact this law, your character must make a clear and direct admonishment against one of the Movement’s enemies. Cross a dot of Willpower off the Carthian’s sheet. She must also garner the support of others of the Movement for a vote - from both Storyteller characters and players’ characters. If the vote favors the admonishment, add the total dots of Carthian Status in support (including the user’s five). For every five dots, reduce the victim’s Blood Potency by one dot. If this reduces him to zero dots, he effectively becomes a revenant (see p. 94 for rules on revenants).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2339,7 +2460,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 119-120'
-merit.db.info = 'Your character or motley has one or more tokens (p. 222) — mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper’s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she’s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
+merit.db.info = 'Your character or motley has one or more tokens (p. 222) - mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper’s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she’s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2383,7 +2504,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.intelligence() >= 2 and target.wits() >= 3 and target.get(subentry.split(\'/\')[0],statclass=\'Merit\') >= 3 and target.get(subentry.split(\'/\')[1],statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'Many styles teach unarmed methods as a prerequisite for armed methods, and vice versa. This maneuver allows your character to transfer a maneuver from a Brawl-based Fighting Style to a Weaponry-based Style, or vice versa. The maneuver must not depend on the physical presence of a weapon, in that it can be applied with empty hands. The Storyteller decides which maneuvers are appropriate, though this can only be used on maneuvers worth no more than *** dots — after that, they’re too specific to the original fighting method. Your character must know the maneuver in its original form, and you must purchase it again, at the same cost in dots and Experience.|/|/Entry for this merit should be in the form of <original group>/<target group>'
+merit.db.info = 'Many styles teach unarmed methods as a prerequisite for armed methods, and vice versa. This maneuver allows your character to transfer a maneuver from a Brawl-based Fighting Style to a Weaponry-based Style, or vice versa. The maneuver must not depend on the physical presence of a weapon, in that it can be applied with empty hands. The Storyteller decides which maneuvers are appropriate, though this can only be used on maneuvers worth no more than *** dots - after that, they’re too specific to the original fighting method. Your character must know the maneuver in its original form, and you must purchase it again, at the same cost in dots and Experience.|/|/Entry for this merit should be in the form of <original group>/<target group>'
 merit.db.cg_only = False
 merit.db.restricted = False
 
