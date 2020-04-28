@@ -194,12 +194,16 @@ def created(request):
                 range = []
                 for item in form.cleaned_data['range'][1:-1].split(','):
                         range.append(int(item))
+                noteRestrictions = []
+                if form.cleaned_data['noteRestrictions'] != '[]':
+                    for item in form.cleaned_data['noteRestrictions'][1:-1].split(','):
+                        noteRestrictions.append(item.strip()[1:-1])
                 s = create_script('typeclasses.scripts.meritScript', 
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.category=form.cleaned_data['category']
                 s.db.range=range
-                s.db.noteRestrictions=form.cleaned_data['noteRestrictions']
+                s.db.noteRestrictions= noteRestrictions
                 s.db.prereq=form.cleaned_data['prereq']
                 s.db.reference=form.cleaned_data['reference']
                 s.db.info=form.cleaned_data['info']

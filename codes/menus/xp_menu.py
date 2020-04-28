@@ -198,13 +198,6 @@ def _xp_check_contract_value(caller, raw_string, **kwargs):
     else:
         caller.msg('You don\'t meet the prerequisites for that contract')
         return 'xp_spend'
-
-def _xp_check_merit_note(caller, raw_string, **kwargs):
-    merit = kwargs['stat']
-    if merit.db.noteRestrictions[0] == '*':
-        return 'xp_get_merit_value', { 'subentry' : 
-                                          strip_control_sequences(raw_string),
-                                       'stat' : merit }
     
 def _xp_buy_power(caller, raw_string, **kwargs):
     if caller.db.xp['earned'] - caller.db.xp['spent'] < 5:

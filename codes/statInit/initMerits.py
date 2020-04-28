@@ -829,7 +829,7 @@ merit = create_script('typeclasses.scripts.meritScript',key = 'Embodiment_of_the
 merit.db.longname = 'Embodiment of the Firstborn'
 merit.db.category = 'Werewolf'
 merit.db.range = [5]
-merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() != \'ghost wolf\''
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() != \'ghost wolves\''
 merit.db.noteRestrictions = ['Intelligence', 'Wits', 'Composure', 'Strength', 'Dexterity', 'Stamina', 'Presence', 'Manipulation', 'Resolve']
 merit.db.reference = 'W:tF p. 106'
 merit.db.info = 'Your character is the perfect likeness of one of Father Wolf\'s brood. She looks the part so very closely that she shakes the souls of her onlookers. Choose an Attribute that reflects her relationship to the Firstborn. She gains a dot in that Attribute, and that Attribute can go one above the normal maximum - normally six dots, unless she has an advanced level of Primal Urge. She can draw on her bearing to cow her opponents. When the player spends a point of Willpower, anyone who tries to attack the character that turn gains the Shaken Condition.'
@@ -973,7 +973,7 @@ merit.db.longname = 'Favored Form'
 merit.db.category = 'Werewolf'
 merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Primal Urge\',statclass=\'Power\') >= (value + 1)'
-merit.db.noteRestrictions = ['Dalu','Gauru','Urshul','Urhan']]
+merit.db.noteRestrictions = ['Dalu', 'Gauru', 'Urshul', 'Urhan']
 merit.db.reference = 'W:tF p. 106'
 merit.db.info = 'Your character favors one of her four forms aside from Hishu, and when she takes that form, it\'s larger, stronger, and faster than most Uratha. With each dot in this Merit, he gains a specific, additional advantage in that form. Attribute increases from this Merit apply to derived traits.'
 merit.db.cg_only = False
@@ -1050,7 +1050,7 @@ merit.db.longname = 'Fortified Form'
 merit.db.category = 'Werewolf'
 merit.db.range = [3, 4, 5]
 merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.stamina() >= 3 and target.survival() >= 2'
-merit.db.noteRestrictions = ['Dalu','Gauru','Urshul','Urhan']]
+merit.db.noteRestrictions = ['Dalu', 'Gauru', 'Urshul', 'Urhan']
 merit.db.reference = 'W:tF p. 106'
 merit.db.info = 'Your character has one form that\'s particularly durable compared to her others. Choose a form other than Hishu when purchasing this Merit. That form has tougher hide, thicker fur, and stronger bones. At the three-dot version, this offers 1/0 armor in that form. The four dot offers 1/1 armor. The five dot offers 2/2 armor.'
 merit.db.cg_only = False
@@ -1210,6 +1210,17 @@ merit.db.info = 'Your character has found few arguments she can’t end by rammi
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Hearing_Whispers')
+merit.db.longname = 'Hearing Whispers'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() == \'bone shadows\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 106'
+merit.db.info = 'Your Bone Shadow sees the deep, dark, and embarrassing in people. With a turn of scrutiny, she can identify the subject\'s Persistent Conditions. If your character suspects additional weaknesses, she can identify them with a Wits + Skill roll. Each weakness requires a separate roll, and at least a turn of scrutiny; the Storyteller determines the Skill by the weakness your character suspects. Having no dots in a Skill qualifies as a weakness for this purpose, as well as does anything else the Storyteller deems fit. This can\'t identify a spirit\'s ban.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Heavy_Weapons')
 merit.db.longname = 'Heavy Weapons'
 merit.db.category = 'Fighting'
@@ -1328,6 +1339,17 @@ merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Statu
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 115'
 merit.db.info = 'When Carthians make Allies (see p. 118), their covenant acts as a sort of support network that bolsters the efficiency of those allies. Once per story, a Carthian may access temporary Retainer dots equal to their Allies. These Retainers act in the Carthian’s interest, just like any other Retainers. (Since Allies gained with Carthian Pull don’t really belong to the character as a Merit, they don’t count for purposes of I Know A Guy.)'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Impartial_Mediator')
+merit.db.longname = 'Impartial Mediator'
+merit.db.category = 'Werewolf'
+merit.db.range = [3]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Honor\',statclass=\'Renown\') >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 106-107'
+merit.db.info = 'Your character can cut to the heart of an argument. She can intervene between arguing parties to cut to the truth - or favor one side over another with nobody doubting her impartiality. When she steps into an argument or debate and spends time listening to both sides, roll Presence + Persuasion + Honor versus the highest Resolve + Honor on each side. If you score more successes than one side\'s contested roll, that side accepts your interpretation of the truth.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1573,6 +1595,17 @@ merit.db.info = 'You come from strong stock. Your sire’s well known, and his i
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Living_Weapon')
+merit.db.longname = 'Living Weapon'
+merit.db.category = 'Werewolf'
+merit.db.range = [3, 4, 5]
+merit.db.prereq = 'target.stamina() >= 3 and target.survival() >= 2'
+merit.db.noteRestrictions = ['Dalu', 'Gauru', 'Urshul', 'Urhan']
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your character has enhanced natural weapons in one form. Maybe her jaws are larger, her teeth are sharper, or her claws are hard as stone. Choose a form (Dalu, Gauru, Urshul, or Urhan) when purchasing this Merit, and choose either bite or claws. With three dots, the attack gains two levels of armor piercing (see p. 169). With four dots, increase the attack\'s damage by 1 atop its normal advantages. With five dots, it ignores any non-magical armor.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Lorekeeper')
 merit.db.longname = 'Lorekeeper'
 merit.db.category = 'Vampire'
@@ -1694,6 +1727,17 @@ merit.db.info = 'Your character gets deep under the skin of problems. If she’s
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Moon-Kissed')
+merit.db.longname = 'Moon-Kissed'
+merit.db.category = 'Werewolf'
+merit.db.range = [1]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and subentry in find(target.get(\'Auspice\',statclass=\'Sphere\'),statclass=\'Auspice\')[0].db.auspice_skills and target.get(subentry,statclass=\'Skill\') >= 2'
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your character\'s auspice affects her more than most. When taking this Merit, choose one of her three auspice Skills. That Skill has the 9-again quality. If you already have 9-again available, use 8-again. When her auspice moon is visible, spending Willpower gives +4 dice to rolls using that Skill instead of +3.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Mounted_Combat')
 merit.db.longname = 'Mounted Combat'
 merit.db.category = 'Fighting'
@@ -1757,6 +1801,17 @@ merit.db.prereq = 'target.template().lower() == \'vampire\' and target.get(\'Sta
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116-117'
 merit.db.info = 'The Invictus appointed your character a Notary, a scholar of Oaths. She presides over Oath agreements. Because of your standing as an arbiter of the status quo, Invictus may not use their Invictus Status in rolls against you. As well, each month, you may request access to a single dot of Allies, Contacts, Herd, Mentor, or Resources, granted by the covenant at large.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Nowhere_to_Run')
+merit.db.longname = 'Nowhere to Run'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template.lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() == \'hunters in darkness\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Any Hunter in Darkness can track prey. Your character, however, has an instinctive awareness of his prey, and the places his prey considers "safe." Using subtle clues about his prey - like smells, fibers, and tracks - he can identify where his prey hides and recuperates. With a turn of scrutiny, he immediately knows basic details and a rough location of any Safe Place the prey has. With a Wits + Investigation roll, he can identify other dedicated sites, boltholes, and hiding places. Every success offers one such hangout.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1845,6 +1900,17 @@ merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 114'
 merit.db.info = 'You’re pack-minded. Your blood draws to blood. You may designate a coterie of Kindred and ghouls as your pack. Every Gangrel has a different method for the designation. Some anoint with blood. Some have hazing rituals. When the pack takes teamwork actions, the supporting characters gain the 8-again quality on their rolls. The anchor character does not, but still adds dice equal to the others’ successes.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Pack_Dynamics')
+merit.db.longname = 'Pack Dynamics'
+merit.db.category = 'Werewolf'
+merit.db.range = [3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your character works with her pack the way she works with her own limbs. She intuitively understands their behaviors, and can instinctively compliment their actions with ease. Any time she participates in a teamwork action (see p. 162), add +1, +2, or +3 dice to her rolls at the three-, four-, and five-dot versions of this Merit, respectively. This bonus also adds to rolls using her Resistance Attributes (Resolve, Stamina, and Composure) when defending her pack.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2013,6 +2079,28 @@ merit.db.info = 'Your character will not stop running, whether away from a pursu
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Residential_Area')
+merit.db.longname = 'Residential Area'
+merit.db.category = 'Werewolf'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = ['*']
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your pack\'s territory encompasses a residential area, and your character has secured it well. This area may be an apartment complex, a gated community, or any place where diverse groups of people lay their heads. Once per game session, you can access a number of Merit dots equal to your Residential Area Merit dots. These Merits can be split however you wish between Allies, Contacts, and Retainers. These Merits must make sense within the scope of the territory. A tenement in the slums probably won’t have high-level Medical Allies, for example.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Resonance_Shaper')
+merit.db.longname = 'Resonance Shaper'
+merit.db.category = 'Werewolf'
+merit.db.range = [3]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Wisdom\', statclass=\'Renown\') >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your character is adept at the way Essence flows and reshapes. To her capable hands, Essence is clearly mutable. Roll Manipulation + Occult as an extended action; each roll requires one hour of work on a small wellspring of Essence, or one day\'s work on a locus. She can change a single point of the Essence\'s resonance with five successes. With ten successes per level of the locus, she can change its resonance. How she does this is unique to her relationship with the Hisil. Some Uratha perform shaping through music, some through dance, some through literal molding of their surroundings.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Resources')
 merit.db.longname = 'Resources'
 merit.db.category = 'Social'
@@ -2134,6 +2222,17 @@ merit.db.info = 'Your character is always ready for a chase. Whether to escape a
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Self-Control')
+merit.db.longname = 'Self-Control'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.resolve() >= 4'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your character can stave off her spirit nature. When compelled to shift in a stressful situation due to low Harmony (see p. 96), you may spend a point of Willpower to allow her to remain in her current form for the scene. Doing so is a breaking point toward Flesh.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Shiv')
 merit.db.longname = 'Shiv'
 merit.db.category = 'Fighting'
@@ -2176,6 +2275,28 @@ merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 49'
 merit.db.info = 'Your character is diminutive. He’s not five feet, and it’s easy to walk into him without noticing. He’s Size 4, and thus has one fewer Health box. He gains +2 to any rolls to hide or go unnoticed, and this bonus might apply any time being smaller would be an advantage, such as crawling through smaller spaces.'
 merit.db.cg_only = True
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Song_in_your_Heart')
+merit.db.longname = 'Song in your Heart'
+merit.db.category = 'Werewolf'
+merit.db.range = [3]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Glory\',statclass=\'Renown\') >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your character sings, howls, and tells stories like none other. Her words echo and reverberate through listeners, and inspire them to learn from her tales. This Merit acts as the Inspiring Merit (see p. 111). Your character does not need to meet the prerequisites for that Merit, and it can only be used when singing, howling, or storytelling. Listeners may take the Inspired Condition (see p. 308) as a Persistent Condition, gaining a Beat every time they take a significant action inspired by your character\'s tale.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Sounds_of_the_City')
+merit.db.longname = 'Sounds of the City'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() == \'iron masters\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 107'
+merit.db.info = 'Your Iron Master has his fingers on the pulse of the city, and can see the flow of its currencies. Not just money, but favors, popularity, and standing. With subtle manipulations, he can cut off that flow. The player rolls Wits + Politics; with success and a turn of scrutiny, the character can identify one Social Merit the prey possesses, chosen by the Storyteller.'
+merit.db.cg_only = False
 merit.db.restricted = False
 
 merit = create_script('typeclasses.scripts.meritScript',key = 'Speaker_for_the_Silent')
@@ -2296,6 +2417,17 @@ merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 54'
 merit.db.info = 'Your character is stunning, alarming, commanding, repulsive, threatening, charming, or otherwise worthy of attention. Determine how your character looks and how people react to that. For one dot, your character gets a +1 bonus on any Social rolls that would be influenced by his looks. For two dots, the benefit increases to +2. Depending on the particulars, this might influence Expression, Intimidation, Persuasion, Subterfuge, or other rolls.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Strings_of_the_Heart')
+merit.db.longname = 'Strings of the Heart'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() == \'storm lords\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 108'
+merit.db.info = 'The first trick to making someone do what you want is finding out what they want, and promising it, threatening it, or offering it. Your Storm Lord has a knack for finding that very thing. After a turn scrutinizing her prey, ask his player, "What does your character want most?" Your Storm Lord instinctively knows the answer, even if she doesn\'t understand the context. "I want Davis’s hand in marriage" is more useful if she knows who Davis is, but she doesn’t have to know him to know that answer.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2475,6 +2607,17 @@ merit.db.info = 'Most people turn away at the sight of blood, other bodily fluid
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Totem')
+merit.db.longname = 'Totem'
+merit.db.category = 'Werewolf'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = ''
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 108'
+merit.db.info = 'Your character has a relationship to a totem spirit, either personally or to a pack totem. Each dot invested in this Merit adds a totem point to create the totem (see p. 91). Note that any character can only have five points in this Merit. A pack totem is limited by the number of pack members, but can be massive with enough invested members. The Totem Merit also adds dice equal to its dots to any Social action with the totem spirit in question.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Touchstone')
 merit.db.longname = 'Touchstone'
 merit.db.category = 'Changeling and Vampire'
@@ -2637,6 +2780,17 @@ merit.db.prereq = 'target.template().lower() == \'changeling\' and target.resolv
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 120'
 merit.db.info = 'Whether through active mental discipline or natural stubbornness, your character’s dream Bastion is particularly well fortified against intrusion. Each dot in Warded Dreams increases the Bastion’s Fortification rating by one.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Weakest_Link')
+merit.db.longname = 'Weakest Link'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\', statclass=\'Sphere\').lower() == \'blood talons\''
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 108'
+merit.db.info = 'Your character can immediately work out the weakest points in a social dynamic. With a turn of scrutinizing two or more associated characters, your character identifies the weakest of those characters by whatever criteria the Storyteller feels is most appropriate to the situation. This doesn\'t require a roll.'
 merit.db.cg_only = False
 merit.db.restricted = False
 

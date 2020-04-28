@@ -1,4 +1,5 @@
 from codes.stats.codesScript import codesScript
+from codes.data import find
 
 class meritScript(codesScript):
     
