@@ -21,3 +21,4 @@ from codes.statInit import decompileSkills
 from codes.statInit import decompileSphereStats
 from codes.statInit import decompileTheban
 from codes.statInit import decompileTribes
+from codes.statInit import decompileWerewolfRites

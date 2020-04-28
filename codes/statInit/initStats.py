@@ -24,3 +24,4 @@ from codes.statInit import initSkills
 from codes.statInit import initSphereStats
 from codes.statInit import initTheban
 from codes.statInit import initTribes
+from codes.statInit import initWerewolfRites
