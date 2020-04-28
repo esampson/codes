@@ -363,6 +363,17 @@ merit.db.info = 'You have your finger on the pulse of the Kindred underground. Y
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Call_Out')
+merit.db.longname = 'Call Out'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'werewolf\' and target.get(\'Honor\',statclass=\'Renown\') >=2 and target.intimidation() >= 2 and target.composure() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p.108'
+merit.db.info = 'Your character fights with honor and dignity. When he calls out his opponent, it must abide by his challenge. When he uses an instant action to call out a potential combatant, that opponent suffers your character’s Honor as a penalty to attack anyone else. If the opponent does attack someone else, you can add your character\'s Honor to any attacks against him.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Carthian_Pull')
 merit.db.longname = 'Carthian Pull'
 merit.db.category = 'Vampire'
@@ -803,6 +814,17 @@ merit.db.info = 'Your character claims membership to a long-standing dynasty of 
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Efficient_Killer')
+merit.db.longname = 'Efficient Killer'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'werewolf\' and target.get(\'Purity\',statclass=\'Renown\') >= 2 and target.brawl() >= 3 and target.medicine >= 2 and target.strength() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p.108'
+merit.db.info = 'Your character is a master of immediate, merciful killing. She knows exactly where to clamp down to end a life in one swift blow. When in Gauru form, any time an opponent is completely denied her Defense - for example, if she\'s sacrificed it for an all-out attack, during a successful ambush, or when activating certain Merits - you can use Efficient Killer. Sacrifice your Defense for the turn, and you can deal a Killing Blow (see p. 168).'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Eidetic_Memory')
 merit.db.longname = 'Eidetic Memory'
 merit.db.category = 'Mental'
@@ -1031,6 +1053,17 @@ merit.db.prereq = 'target.get(entry = \'contacts\') >= 2 and target.wits() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 51'
 merit.db.info = 'Your character is people that knows people. She can not only get in touch with the right people to do a job, but she can get them at the best possible prices. When hiring a service (see p. 100), reduce the Availability score of the service by one dot.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Flanking')
+merit.db.longname = 'Flanking'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'werewolf\' and target.get(\'Cunning\',statclass=\'Renown\') >= 2 and target.wits() >= 3 and target.stealth() >= 2 and target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p.108'
+merit.db.info = 'Your character can support another character by poking at an enemy\'s flanks. She grabs, bites, or otherwise restrains an opponent, setting it up for an opportune strike from a packmate. Any time your character makes a successful attack you can choose to apply successes as a penalty to the victim\'s Initiative and Defense for the turn instead of causing damage.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1383,6 +1416,17 @@ merit.db.prereq = 'target.presence() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 51'
 merit.db.info = 'Your character’s passion inspires those around her to greatness. With a few words, she can redouble a group’s confidence or move them to action.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Instinctive_Defense')
+merit.db.longname = 'Instinctive Defense'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower == \'werewolf\' and target.get(\'Primal Urge\',statclass=\'Power\') >= 2 and target.athletics() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p.108'
+merit.db.info = 'Your character\'s instincts protect her when in her canine forms. In Urhan and Urshul, use the higher of your character\'s Wits and Dexterity when figuring her Defense, instead of the lower.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2079,6 +2123,17 @@ merit.db.info = 'Your character will not stop running, whether away from a pursu
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Relentless_Assault')
+merit.db.longname = 'Relentless Assault'
+merit.db.category = 'Werewolf'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.strength() >= 3 and target.stamina() >= 3 and target.brawl() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 109'
+merit.db.info = 'Your character fights with complete abandon. She throws herself at her opponents without thought or hesitation, turning herself into a ruthless killing machine. She\'s the first into the fight, and the last out of a fight. While this Style is more useful in Urshul and Gauru form, an Uratha can use it in any form. It only applies to attacks using the Brawl Skill, but can be used when in Kuruth.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Residential_Area')
 merit.db.longname = 'Residential Area'
 merit.db.category = 'Werewolf'
@@ -2332,6 +2387,17 @@ merit.db.info = 'Your character can fast-talk and sell bullshit stories as if th
 merit.db.cg_only = False
 merit.db.restricted = False
 
+merit = create_script('typeclasses.scripts.meritScript',key = 'Spiritual_Blockage')
+merit.db.longname = 'Spiritual Blockage'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Wisdom\',statclass=\'Renown\') >= 2 and target.brawl() >= 1 and target.occult() >= 3 and target.wits() >= 3'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 109'
+merit.db.info = 'Your character can sense the ebb and flow of Essence in her opponents. With well-placed strikes, she can curb the flow of Essence in the body, denying a victim access to his spiritual fuel. You can choose to use Spiritual Blockage any time your character makes a Brawl or Weaponry attack against a creature that uses Essence. Make an attack with a -2 penalty. If the attack deals damage, the victim loses a point of Essence; on an exceptional success the victim loses two points. This Essence is considered spent, not lost. As such, it limits the amount a victim can spend in a turn.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
 merit = create_script('typeclasses.scripts.meritScript',key = 'Stable_Trod')
 merit.db.longname = 'Stable Trod'
 merit.db.category = 'Changeling'
@@ -2505,6 +2571,17 @@ merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 3 and targe
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 52'
 merit.db.info = 'Your character learns to move with exceptional suppleness, rolling with blows and obstacles. She redirects incoming force not as a technique, but an instinct. These abilities are often taught within Systema, a Russian martial art developed for intelligence services and special operations. It can also reflect the advanced body skills taught by "soft" martial arts such as Tai Chi or Aikido.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Tactical_Shifting')
+merit.db.longname = 'Tactical Shifting'
+merit.db.category = 'Werewolf'
+merit.db.range = [1, 2, 3, 4, 5]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.wits() >= 3 and target.dexterity() >= 3 and target.athletics() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 110'
+merit.db.info = 'Your character knows how to shift her form rapidly to maximize her effectiveness in a fight. She can slink down in form in order to evade an oncoming attack, or she can make a swift change in order to add force to a blow.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2769,6 +2846,17 @@ merit.db.prereq = 'target.template().lower() != \'changeling\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 46'
 merit.db.info = 'Your character is a light of good in the Chronicles of Darkness. She has two Virtues. The limitations of how many times she may refresh Willpower using a Virtue remain the same, but it’s up to you which Virtue she uses each time.'
+merit.db.cg_only = False
+merit.db.restricted = False
+
+merit = create_script('typeclasses.scripts.meritScript',key = 'Warcry')
+merit.db.longname = 'Warcry'
+merit.db.category = 'Werewolf'
+merit.db.range = [2]
+merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Glory\',statclass=\'Renown) >= 2 and target.presence() >= 3 and target.expression() >= 2 and target.intimidation() >= 2'
+merit.db.noteRestrictions = []
+merit.db.reference = 'W:tF p. 110'
+merit.db.info = 'Your character can howl out sharply and shake opponents to the core. Her howls reverberate on both sides of the Gauntlet, quaking spirit-stuff and flesh alike. Roll Presence + Expression as an instant action. The howl affects a number of listeners of your choice equal to the successes rolled. Those affected suffer a -1 penalty to Defense and attack rolls, and -2 to Initiative for the remainder of the scene. A character may only be subject to this effect once in a given scene.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
