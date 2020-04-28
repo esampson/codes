@@ -131,4 +131,45 @@ def vampire_template_block(target):
         for line in range(15):
             block.append(blank)
     return block
+
+def werewolf_template_block(target):
+    block = []
+    try:
+        temp=[]
+        entries = ['Auspice', 'Tribe', 'Blood', 'Bone']
+        for entry in entries:
+            temp.append(' ' + (entry + ":").ljust(9) +
+                         target.get(entry,statclass='Sphere'))
+        pack = target.get('Pack',statclass='Sphere')
+        if pack and len(pack) > 0:
+            temp.append(' ' + 'Pack:'.ljust(14) + pack)
+        for line in temp:
+            for subline in textwrap.wrap(line,27,subsequent_indent='  '):
+                block.append(subline.ljust(28))
+        if len(block) < 15:
+            for extra in range(len(block),15):
+                block.append(blank)
+        block[7] = (' Cunning:' + str(target.get('Cunning',
+                                        statclass='Renown')).rjust(18) + ' ')
+        block[8] = (' Glory:' + str(target.get('Glory',
+                                        statclass='Renown')).rjust(20) + ' ')
+        block[9] = (' Honor:' + str(target.get('Honor',
+                                        statclass='Renown')).rjust(20) + ' ')
+        block[10] = (' Purity:' + str(target.get('Purity',
+                                        statclass='Renown')).rjust(19) + ' ')
+        block[11] = (' Wisdom:' + str(target.get('Wisdom',
+                                        statclass='Renown')).rjust(19) + ' ')
+        block[12]=(' Primal Urge:' + str(target.get('Primal Urge',
+                                        statclass='Power')).rjust(14) + ' ')
+        essence = (str(target.get('Essence',statclass='Advantage',
+                                        subentry='temp')) +'/' +
+                   str(target.get('Essence',statclass='Advantage',
+                                        subentry='perm')))
+        block[13]=(' Essence:' + essence.rjust(18) + ' ')
+        harmony = str(target.get('Harmony',statclass='Advantage'))
+        block[14]=(' Harmony:' +harmony.rjust(18) + ' ')
+    except:
+        for line in range(15):
+            block.append(blank)
+    return block
     

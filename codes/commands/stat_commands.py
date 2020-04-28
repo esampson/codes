@@ -11,6 +11,7 @@ from codes import data
 from codes.sidebars import changeling_template_block
 from codes.sidebars import mortal_template_block
 from codes.sidebars import vampire_template_block
+from codes.sidebars import werewolf_template_block
 from codes.sidebars import blank_template_block
 
 import textwrap
@@ -611,6 +612,8 @@ def produce_sheet(target):
         block_t = mortal_template_block(target)
     elif target.template().lower() == 'vampire':
         block_t = vampire_template_block(target)
+    elif target.template().lower() == 'werewolf':
+        block_t = werewolf_template_block(target)
     else:
         block_t = blank_template_block()
 
@@ -729,12 +732,45 @@ def produce_sheet(target):
                                               subsequent_indent=' '):
                         sub_block.append(' ' + line)
                 block.append(sub_block)
+
+    # Werewolves
+    if target.template().lower() == 'werewolf':
+
+        # Merits
+        sub_block = ['Merits:']
+        temp = merits_list(target)
+        for item in temp:
+            for line in textwrap.wrap(item, width=24, subsequent_indent=' '):
+                sub_block.append(' ' + line)
+        block.append(sub_block)
+
+        # Gifts
+        if target.db.gifts:
+            sub_block = ['Gifts:']
+            temp = list(target.db.gifts.keys())
+            temp.sort()
+            for item in temp:
+                for line in textwrap.wrap(item, width=24, subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+
+        # Rites
+        if target.db.werewolfRites:
+            sub_block = ['Rites:']
+            temp = list(target.db.werewolfRites.keys())
+            temp.sort()
+            for item in temp:
+                for line in textwrap.wrap(item, width=24, subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+
     temp = specialties_list(target)
     sub_block = ['Specialties:']
     for item in temp:
         for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
             sub_block.append(' ' + line)
     block.append(sub_block)
+
     final_block = build_bottom_block(block)
     block4 = ''
     for item in final_block:

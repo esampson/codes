@@ -162,6 +162,9 @@ class advantageScript(codesScript):
         elif name == 'Humanity':
             target.db.advantages['Humanity'] = value
             result = True
+        elif name == 'Harmony':
+            target.db.advantages['Harmony'] = value
+            result = True
         elif name == 'Health':
             if subentry.lower() in ['permanent', 'perm'] or subentry == '':
                 result = False

@@ -48,7 +48,7 @@ class renownScript(codesScript):
 
 
         """
-        if target.sphere().lower() == 'werewolf':
+        if target.template().lower() == 'werewolf':
             if value > 6:
                 result = False
             else:

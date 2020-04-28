@@ -81,6 +81,19 @@ def xp_spend(caller, raw_string, **kwargs):
             option_list.append ( { 'desc' : 'Buy Theban Miracle',
                                'goto' : ('xp_buy_flat_stat',
                                     {'type' : 'Theban Miracle' } ) } )
+    if caller.template().lower() == 'werewolf':
+        option_list.append ( { 'desc' : 'Increase Primal Urge',
+                               'goto' : ( _xp_buy_power,
+                                          { 'power' : 'Primal Urge' } ) } )
+        option_list.append({'desc': 'Buy Renown',
+                            'goto': ('xp_buy_flat_stat',
+                                     {'type': 'Renown'})})
+        option_list.append ( { 'desc' : 'Buy Gift',
+                                'goto' : ('xp_buy_flat_stat',
+                                    {'type' : 'Gift' } ) } )
+        option_list.append ( { 'desc' : 'Buy Rite',
+                               'goto' :  ('xp_buy_flat_stat',
+                                    {'type' : 'Werewolf Rite' } ) } )
     option_list.append ( { 'key' : 'Q',
                            'desc' : 'Quit',
                            'goto' : 'xp_exit' } )
@@ -242,7 +255,7 @@ def _xp_check_order(caller, raw_string, **kwargs):
         return 'xp_spend'
     else:
         stat = stats[0]
-        if kwargs['type'].lower() in ['devotion']:
+        if kwargs['type'].lower() in ['devotion', 'gift', 'rite']:
             value = True
         else:
             value = stat.get(caller, subentry=kwargs['subentry']) + 1
