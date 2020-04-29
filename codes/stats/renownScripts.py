@@ -27,7 +27,7 @@ class renownScript(codesScript):
         """
         renown = target.db.renown
         name = self.db.longname
-        if name in renown:
+        if renown and name in renown:
             result = renown[name]
         else:
             result = 0
@@ -49,7 +49,7 @@ class renownScript(codesScript):
 
         """
         if target.template().lower() == 'werewolf':
-            if value > 6:
+            if value >= 6 or value <= 0:
                 result = False
             else:
                 result = True
