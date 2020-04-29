@@ -12,7 +12,7 @@ class werewolfRiteScript(codesScript):
         self.db.longname = longname
         self.db.type = type
         self.db.rank = rank
-        self.db.preq = prereq
+        self.db.prereq = prereq
         self.db.info = info
         self.db.reference = reference
         self.db.restricted = restricted
@@ -54,14 +54,13 @@ class werewolfRiteScript(codesScript):
 
 
         """
-        if target.template().lower() == 'werewolf':
-            if self.db.prereq and self.db.prereq != '':
-                if eval(self.db.prereq):
-                    result = True
-                else:
-                    result = False
-            else:
+        if self.db.prereq and self.db.prereq != '':
+            if eval(self.db.prereq):
                 result = True
+            else:
+                result = False
+        elif target.template().lower() == 'werewolf':
+            result = True
         else:
             result = False
         return result
