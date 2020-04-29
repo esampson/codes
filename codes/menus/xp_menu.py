@@ -442,7 +442,34 @@ def _xp_purchase(caller, raw_string, **kwargs):
             current_frailties = []
         current_frailties.append(kwargs['frailty'])
         f.set(caller,str(current_frailties))
-        
+
+    if kwargs['type'] == 'Renown':
+        auspice = find(caller.get('Auspice'), statclass='Auspice')[0]
+        if kwargs['stat'].db.longname == auspice.db.renown:
+            moon_list = {'crescent moon': ['Shadow Gaze', 'Spirit Whispers',
+                                           'Shadow Hunter', 'Shadow Masquerade',
+                                           'Panopticon'],
+                         'full moon': ['Killer Instinct', 'Warrior\'s Hide',
+                                       'Bloody-Handed Hunter','Butchery',
+                                       'Crimson Spasm'],
+                         'gibbous moon': ['War Howl', 'Voice of Glory',
+                                          'Dream Hunter','Thousand-Throat Howl',
+                                          'End of Story'],
+                         'half moon': ['Scent Beneath the Surface',
+                                       'Binding Oath','Sly Hunter',
+                                       'Ties of Word and Promise',
+                                       'Ties of Blood and Bone'],
+                         'new moon': ['Eviscerate', 'Slip Away',
+                                      'Relentless Hunter','Divide and Conquer',
+                                      'Breach']}
+            index = kwargs['value'] - 1
+            auspice_moon = auspice.db.auspice_gifts[0].lower()
+            new_gift = moon_list[auspice_moon][index]
+            gift = find(new_gift, statclass='Gift')[0]
+            if gift.get(caller) == False:
+                gift.set(caller,value=True)
+                caller.db.xp['log'][time.time()] = [0, gift.db.longname +
+                                                    ' free with renown gain']
     return 'start'
 
 def xp_buy_specialty(caller, raw_string, **kwargs):

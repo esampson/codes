@@ -90,25 +90,46 @@ class giftScript(codesScript):
         """
         if target.template().lower() == 'werewolf':
 
-            # Check auspice renown for rank of Moon Gift
+            gift_renown = self.db.renown
+            renown = target.get(gift_renown,statclass='Renown')
+
+            # Moon gifts have different requirements
             if self.db.category.lower() == 'moon':
-                auspice = find(
-                    target.get('Auspice',statclass='Sphere'),
-                    statclass='Auspice')[0]
-                auspice_gifts = auspice.db.auspice_gifts
-                required_rank = self.db.rank
-                auspice_renown = auspice.db.renown
-                renown = target.get(auspice_renown,statclass='Renown')
-                if (self.db.group in auspice_gifts and
-                        int(required_rank) <= renown):
+                moon_list = {'crescent moon': ['Shadow Gaze', 'Spirit Whispers',
+                                               'Shadow Hunter',
+                                               'Shadow Masquerade',
+                                               'Panopticon'],
+                             'full moon': ['Killer Instinct', 'Warrior\'s Hide',
+                                           'Bloody-Handed Hunter', 'Butchery',
+                                           'Crimson Spasm'],
+                             'gibbous moon': ['War Howl', 'Voice of Glory',
+                                              'Dream Hunter',
+                                              'Thousand-Throat Howl',
+                                              'End of Story'],
+                             'half moon': ['Scent Beneath the Surface',
+                                           'Binding Oath', 'Sly Hunter',
+                                           'Ties of Word and Promise',
+                                           'Ties of Blood and Bone'],
+                             'new moon': ['Eviscerate', 'Slip Away',
+                                          'Relentless Hunter',
+                                          'Divide and Conquer', 'Breach']}
+
+                # See if the werewolf has all previous gifts of the appropriate
+                # type
+                all_previous = True
+                if int(self.db.rank) > 1:
+                    for item in range(int(self.db.rank)-1):
+                        if (target.get(
+                                moon_list[self.db.group.lower()][item]) ==
+                                False):
+                            all_previous = False
+                if all_previous == True and renown >= int(self.db.rank):
                     result = True
                 else:
                     result = False
 
-            # Check to see if target has any renown of the proper type
+            # Not a moon gift
             else:
-                gift_renown = self.db.renown
-                renown = target.get(gift_renown,statclass='Renown')
                 if renown >= 1:
                     result = True
                 else:
@@ -137,10 +158,6 @@ class giftScript(codesScript):
 
         # Already have it
         if target.db.gifts and name in target.db.gifts:
-            result = 0
-
-        # Moon Gift which are free
-        elif self.db.category.lower() == 'moon':
             result = 0
 
         # Wolf Gift
