@@ -633,7 +633,7 @@ def produce_sheet(target):
                 sub_block.append(' ' + line)
         block.append(sub_block)
         frailties = target.get('Frailties', 'Sphere')
-        if not(frailties == False):
+        if frailties != -1 and frailties != False:
             if len(frailties) != 0:
                 sub_block = ['Frailties:']
                 for item in frailties:
@@ -724,7 +724,7 @@ def produce_sheet(target):
             block.append(sub_block)
 
         banes = target.get('Banes', 'Sphere')
-        if not(banes == False):
+        if banes != -1 and banes != False:
             if len(banes) != 0:
                 sub_block = ['Banes:']
                 for item in banes:

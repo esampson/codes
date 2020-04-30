@@ -42,14 +42,14 @@ def changeling_template_block(target):
         elif list_length >= 6 and len(motley_list) == 0:
             for line in range(6):
                 block.append(entitlement_list[line])
-        elif list_length > 6 and len(entitlement_list) == 1:
+        elif list_length >= 6 and len(entitlement_list) == 2:
             for line in range(4):
                 block.append(motley_list[line])
             block.append(entitlement_list[0])
             block.append(entitlement_list[1])
-        elif list_length > 6 and len(motley_list) == 1:
+        elif list_length >= 6 and len(motley_list) == 2:
             block.append(motley_list[0])
-            block.append(motley_list[1])
+            block.append(motley_list[0])
             for line in range(4):
                 block.append(entitlement_list[line])
         elif list_length > 6:
