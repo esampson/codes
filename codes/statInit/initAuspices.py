@@ -5,7 +5,7 @@ auspice.db.longname = 'Cahalith'
 auspice.db.auspice_skills = ['Crafts', 'Expression', 'Persuasion']
 auspice.db.renown = 'Glory'
 auspice.db.auspice_gifts = ['Gibbous Moon', 'Inspiration', 'Knowledge']
-auspice.db.info = 'The Cahalith is the storyteller, the lore-keeper, and the prophet. She is the living history of her pack and her tribe, and in a larger sense, her People. But the Cahalith is not some lonely wise woman, dispensing wisdom to pilgrims in a hermit’s retreat. She leads the howling charge, she screams her anguish and rage to the fattening moon and entreats her packmates to do likewise.'
+auspice.db.info = 'The Cahalith is the storyteller, the lore-keeper, and the prophet. She is the living history of her pack and her tribe, and in a larger sense, her People. But the Cahalith is not some lonely wise woman, dispensing wisdom to pilgrims in a hermit\'s retreat. She leads the howling charge, she screams her anguish and rage to the fattening moon and entreats her packmates to do likewise.'
 auspice.db.reference = 'W:tF p. 16-19'
 auspice.db.restricted = False
 
@@ -14,7 +14,7 @@ auspice.db.longname = 'Elodoth'
 auspice.db.auspice_skills = ['Empathy', 'Investigation', 'Politics']
 auspice.db.renown = 'Honor'
 auspice.db.auspice_gifts = ['Half Moon', 'Insight', 'Warding']
-auspice.db.info = 'The half moon keeps as much hidden as it illuminates. Half-moons are not as enigmatic as their Ithaeur compatriots, but then, they wouldn’t be — most of the crescent moon is obscured. An Elodoth can be gregarious, charming, or clever — or he can be taciturn, secretive, and paranoid. The Elodoth is all in equal measure, and that is what terrifies other werewolves.'
+auspice.db.info = 'The half moon keeps as much hidden as it illuminates. Half-moons are not as enigmatic as their Ithaeur compatriots, but then, they wouldn\'t be - most of the crescent moon is obscured. An Elodoth can be gregarious, charming, or clever - or he can be taciturn, secretive, and paranoid. The Elodoth is all in equal measure, and that is what terrifies other werewolves.'
 auspice.db.reference = 'W:tF p. 20-23'
 auspice.db.restricted = False
 

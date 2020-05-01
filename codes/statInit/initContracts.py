@@ -24,7 +24,7 @@ contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
 contract.db.subgroup = 'Goblin'
 contract.db.reference = 'CtL p. 162'
-contract.db.info = 'The changeling erases a single event from her target\'s memory, brushing her fingers across her target’s forehead.'
+contract.db.info = 'The changeling erases a single event from her target\'s memory, brushing her fingers across her target\'s forehead.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Blessing_of_Perfection')
@@ -42,7 +42,7 @@ contract.db.category = 'Spring'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 152'
-contract.db.info = 'The changeling takes a day brewing the beginning and end of Spring together into a cordial: dew drops collected in the morning, flowers plucked during the day, and starlight harvested at night, all infused with the changeling’s Glamour. Even the memory of such things suffices. With it, he blesses a living creature or plant with a spring’s worth of growth and healing.'
+contract.db.info = 'The changeling takes a day brewing the beginning and end of Spring together into a cordial: dew drops collected in the morning, flowers plucked during the day, and starlight harvested at night, all infused with the changeling\'s Glamour. Even the memory of such things suffices. With it, he blesses a living creature or plant with a spring\'s worth of growth and healing.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Boon_of_the_Scuttling_Spider')
@@ -105,7 +105,7 @@ contract.db.category = 'Spring'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 151'
-contract.db.info = 'The changeling sees into another’s heart and charts the course of her desire. He touches her skin or hair, pulling her desires away with his caress for him to study and alter.'
+contract.db.info = 'The changeling sees into another\'s heart and charts the course of her desire. He touches her skin or hair, pulling her desires away with his caress for him to study and alter.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Dance_of_the_Toys')
@@ -114,7 +114,7 @@ contract.db.category = 'Jewels'
 contract.db.group = 'Regalia'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 134'
-contract.db.info = 'At the changeling’s touch, cars drive themselves, doors and cabinets open and close, and a gun fires itself.'
+contract.db.info = 'At the changeling\'s touch, cars drive themselves, doors and cabinets open and close, and a gun fires itself.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Discreet_Summons')
@@ -195,7 +195,7 @@ contract.db.category = 'Autumn'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 157-158'
-contract.db.info = 'Autumn prepares for the long Winter ahead by gathering as much knowledge as it can fathom. The changeling looks to the omens in dried leaves and birds’ migration patterns to foretell doom.'
+contract.db.info = 'Autumn prepares for the long Winter ahead by gathering as much knowledge as it can fathom. The changeling looks to the omens in dried leaves and birds\' migration patterns to foretell doom.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Field_of_Regret')
@@ -204,7 +204,7 @@ contract.db.category = 'Winter'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 161'
-contract.db.info = 'The changeling’s eyes take on a white-blue color as she summons the ghosts of people who died lost in the Hedge on a cold winter’s night, to infect living targets with their sorrow.'
+contract.db.info = 'The changeling\'s eyes take on a white-blue color as she summons the ghosts of people who died lost in the Hedge on a cold winter\'s night, to infect living targets with their sorrow.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Fiery_Tongue')
@@ -222,7 +222,7 @@ contract.db.category = 'Summer'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 155'
-contract.db.info = 'The changeling’s anger gives her strength, as she invokes the power of Summer, the relentlessness of fire, and the endurance of heat.'
+contract.db.info = 'The changeling\'s anger gives her strength, as she invokes the power of Summer, the relentlessness of fire, and the endurance of heat.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Flickering_Hours')
@@ -240,7 +240,7 @@ contract.db.category = 'Shield'
 contract.db.group = 'Regalia'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 142'
-contract.db.info = 'The changeling spends meaningful time with her target. She might offer food, drink, or a shoulder to cry on. If he wants to talk, she’ll listen. If he\'s in a fighting mood, she\'s up for a spar or even a duel. Whatever gives him perspective will do. This Contract\'s instant action takes a full scene of interaction to invoke. The target cannot waive the contested roll - even if he trusts the changeling, the little voice in the back of his head always counsels caution.'
+contract.db.info = 'The changeling spends meaningful time with her target. She might offer food, drink, or a shoulder to cry on. If he wants to talk, she\'ll listen. If he\'s in a fighting mood, she\'s up for a spar or even a duel. Whatever gives him perspective will do. This Contract\'s instant action takes a full scene of interaction to invoke. The target cannot waive the contested roll - even if he trusts the changeling, the little voice in the back of his head always counsels caution.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Gift_of_Warm_Blood')
@@ -294,7 +294,7 @@ contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
 contract.db.subgroup = 'Goblin'
 contract.db.reference = 'CtL p. 163'
-contract.db.info = 'Goblins aren’t always content, but they are lucky — and the changeling may use some of this luck.'
+contract.db.info = 'Goblins aren\'t always content, but they are lucky - and the changeling may use some of this luck.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Heart_of_Ice')
@@ -303,7 +303,7 @@ contract.db.category = 'Winter'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 159'
-contract.db.info = 'The changeling’s heart freezes, and cold cannot harm her.'
+contract.db.info = 'The changeling\'s heart freezes, and cold cannot harm her.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Hedgewall')
@@ -348,7 +348,7 @@ contract.db.category = 'Summer'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 155'
-contract.db.info = 'A foe willing to face the changeling on the battlefield should be willing to die on her blade - at least, that’s Summer\'s opinion. She backs it up with a challenge shouted to the sky, for all to hear.'
+contract.db.info = 'A foe willing to face the changeling on the battlefield should be willing to die on her blade - at least, that\'s Summer\'s opinion. She backs it up with a challenge shouted to the sky, for all to hear.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Hostile_Takeover')
@@ -366,7 +366,7 @@ contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
 contract.db.subgroup = 'Goblin'
 contract.db.reference = 'CtL p. 163'
-contract.db.info = 'Once upon a time, a Huntsman dragged a Playmate kicking and screaming into the Hedge. He took pity on the young woman once there, though, and his empathy made him lax — she murdered him for his kindness while he slept. But no amount of murder could solve the Playmate’s problem; her Keeper simply sent new hunters to bring her back. Finally, desperate, the Playmate tore off her Self and scattered the remains of who she was to the wind. One of the pieces became this Contract, found and handed down through goblins, as the Playmate’s memories still try to crack the riddle of beating the Wild Hunt.'
+contract.db.info = 'Once upon a time, a Huntsman dragged a Playmate kicking and screaming into the Hedge. He took pity on the young woman once there, though, and his empathy made him lax - she murdered him for his kindness while he slept. But no amount of murder could solve the Playmate\'s problem; her Keeper simply sent new hunters to bring her back. Finally, desperate, the Playmate tore off her Self and scattered the remains of who she was to the wind. One of the pieces became this Contract, found and handed down through goblins, as the Playmate\'s memories still try to crack the riddle of beating the Wild Hunt.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Ice_Queens_Call')
@@ -420,7 +420,7 @@ contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
 contract.db.subgroup = 'Goblin'
 contract.db.reference = 'CtL p. 163-164'
-contract.db.info = 'Wily and slippery, the changeling even escapes from her enemies’ memories.'
+contract.db.info = 'Wily and slippery, the changeling even escapes from her enemies\' memories.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Mantle_Mask')
@@ -438,7 +438,7 @@ contract.db.category = 'Winter'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 161'
-contract.db.info = 'The changeling wraps herself in Winter’s embrace to strike at her enemies.'
+contract.db.info = 'The changeling wraps herself in Winter\'s embrace to strike at her enemies.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Mask_of_Superiority')
@@ -447,7 +447,7 @@ contract.db.category = 'Crown'
 contract.db.group = 'Regalia'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 128'
-contract.db.info = 'The changeling is always important, even to people who don’t know him. He struts into a locale as if he owns the place when he invokes this Contract.'
+contract.db.info = 'The changeling is always important, even to people who don\'t know him. He struts into a locale as if he owns the place when he invokes this Contract.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Masterminds_Gambit')
@@ -465,7 +465,7 @@ contract.db.category = 'Autumn'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 158'
-contract.db.info = 'The changeling appears as his target’s greatest fear. He approaches his target from behind, around the corner, from darkness, or another place she can’t see. Autumn winds carry the sound of his approach — his fingernails screeching along the wall, or his soft, cackling laughter.'
+contract.db.info = 'The changeling appears as his target\'s greatest fear. He approaches his target from behind, around the corner, from darkness, or another place she can\'t see. Autumn winds carry the sound of his approach - his fingernails screeching along the wall, or his soft, cackling laughter.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Might_of_the_Terrible_Brute')
@@ -492,7 +492,7 @@ contract.db.category = 'Jewels'
 contract.db.group = 'Regalia'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 133'
-contract.db.info = 'The changeling calls upon the myriad distractions of Arcadia to overwhelm another’s vision.'
+contract.db.info = 'The changeling calls upon the myriad distractions of Arcadia to overwhelm another\'s vision.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Nevertread')
@@ -699,7 +699,7 @@ contract.db.category = 'Winter'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 159-160'
-contract.db.info = 'The changeling consumes her target’s regrets, making him feel better but hollowing him out inside. She pushes him to pin his hopes on her instead of on what’s hurt him before. The changeling must speak to a target for a scene to invoke this Contract.'
+contract.db.info = 'The changeling consumes her target\'s regrets, making him feel better but hollowing him out inside. She pushes him to pin his hopes on her instead of on what\'s hurt him before. The changeling must speak to a target for a scene to invoke this Contract.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Solstice_Revelation')
@@ -717,7 +717,7 @@ contract.db.category = 'Autumn'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 158'
-contract.db.info = 'Just as flowers wither and trees shed their leaves, the Autumn sorcerer’s enemies watch their mystical might dry up and scatter like loose soil. The changeling must touch an opponent to use this Contract (p. 184) and speak an incantation calling on Autumn to punish those who would dare oppose its children.'
+contract.db.info = 'Just as flowers wither and trees shed their leaves, the Autumn sorcerer\'s enemies watch their mystical might dry up and scatter like loose soil. The changeling must touch an opponent to use this Contract (p. 184) and speak an incantation calling on Autumn to punish those who would dare oppose its children.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Spinning_Wheel')
@@ -762,7 +762,7 @@ contract.db.category = 'Summer'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Royal'
 contract.db.reference = 'CtL p. 156'
-contract.db.info = 'The changeling sets her target\'s heart aflame inside his chest with taunts and scorn, scorching it raw. Every angry impulse and frustrated urge he’s ever felt rises to overtake him.'
+contract.db.info = 'The changeling sets her target\'s heart aflame inside his chest with taunts and scorn, scorching it raw. Every angry impulse and frustrated urge he\'s ever felt rises to overtake him.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Tale_of_the_Baba_Yaga')
@@ -807,7 +807,7 @@ contract.db.category = 'Winter'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 159'
-contract.db.info = 'The changeling senses her target’s regrets at a glance, manipulating them to her own ends. She picks up an item discarded by the target and puts it briefly to her tongue, or touches the target and then tastes her fingertips.'
+contract.db.info = 'The changeling senses her target\'s regrets at a glance, manipulating them to her own ends. She picks up an item discarded by the target and puts it briefly to her tongue, or touches the target and then tastes her fingertips.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'The_Royal_Court')
@@ -870,7 +870,7 @@ contract.db.category = 'Jewels'
 contract.db.group = 'Regalia'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 133-134'
-contract.db.info = 'Trickery is the birthright of every Lost, allowing her to shape an object’s appearance to her desire.'
+contract.db.info = 'Trickery is the birthright of every Lost, allowing her to shape an object\'s appearance to her desire.'
 contract.db.restricted = False
 
 contract = create_script('typeclasses.scripts.contractScript',key = 'Tumult')
@@ -987,7 +987,7 @@ contract.db.category = 'Spring'
 contract.db.group = 'Court'
 contract.db.subgroup = 'Common'
 contract.db.reference = 'CtL p. 152'
-contract.db.info = 'The changeling cloaks himself in his target’s desires.'
+contract.db.info = 'The changeling cloaks himself in his target\'s desires.'
 contract.db.restricted = False
 
 pass

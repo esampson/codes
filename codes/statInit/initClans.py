@@ -14,7 +14,7 @@ clan.db.longname = 'Gangrel'
 clan.db.favored_attributes = ['Composure', 'Stamina']
 clan.db.favored_disciplines = ['Animalism', 'Protean', 'Resilience']
 clan.db.reference = 'VtR p. 17-19'
-clan.db.info = 'Nickname: Savages|/|/Clan Bane (The Feral Curse): The Beast lethargically coils under the R-Complex of most Kindred. But you and the Beast are as thick as thieves. It rises and rips out of your skin to protect you from the bad, bad world. But it has a price. It’s harder to resist the Beast’s call, harder still to remember why you should even want to.'
+clan.db.info = 'Nickname: Savages|/|/Clan Bane (The Feral Curse): The Beast lethargically coils under the R-Complex of most Kindred. But you and the Beast are as thick as thieves. It rises and rips out of your skin to protect you from the bad, bad world. But it has a price. It\'s harder to resist the Beast\'s call, harder still to remember why you should even want to.'
 clan.db.bloodline = False
 clan.db.restricted = False
 
@@ -32,7 +32,7 @@ clan.db.longname = 'Nosferatu'
 clan.db.favored_attributes = ['Composure', 'Strength']
 clan.db.favored_disciplines = ['Nightmare', 'Obfuscate', 'Vigor']
 clan.db.reference = 'VtR p. 23-25'
-clan.db.info = 'Nickname: Haunts|/|/Clan Bane (The Lonely Curse): You are an avatar of disgust. Dread and discomfort oozes from you, scabbing everything over in the putrid film of your rotting soul’s exhaust. Your body is warped, or the world around you warps. This could manifest in ways grotesque or subtle. Fear and all its gibbering siblings come easy for you. Most other forms of social communion do not. Yours is a lonely Requiem.'
+clan.db.info = 'Nickname: Haunts|/|/Clan Bane (The Lonely Curse): You are an avatar of disgust. Dread and discomfort oozes from you, scabbing everything over in the putrid film of your rotting soul\'s exhaust. Your body is warped, or the world around you warps. This could manifest in ways grotesque or subtle. Fear and all its gibbering siblings come easy for you. Most other forms of social communion do not. Yours is a lonely Requiem.'
 clan.db.bloodline = False
 clan.db.restricted = False
 

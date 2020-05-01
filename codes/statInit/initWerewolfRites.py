@@ -104,7 +104,7 @@ rite.db.longname = 'Messenger'
 rite.db.type = 'Wolf'
 rite.db.rank = 1
 rite.db.prereq = ''
-rite.db.info = 'A gift from Luna to the Moon’s children, this rite is a staple of communication amongst the Tribes of the Moon. The Pure shun its use.'
+rite.db.info = 'A gift from Luna to the Moon's children, this rite is a staple of communication amongst the Tribes of the Moon. The Pure shun its use.'
 rite.db.reference = 'W:tF p. 140'
 rite.db.restricted = False
 

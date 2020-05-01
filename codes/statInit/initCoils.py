@@ -18,7 +18,7 @@ coil = create_script('typeclasses.scripts.coilScript',key = 'Mystery_of_the_Wyrm
 coil.db.longname = 'Mystery of the Wyrm'
 coil.db.prereq = ''
 coil.db.reference = 'VtR p. 157-158'
-coil.db.info = 'The common view of vampirism treats the condition as a curse, a supernatural affliction of body and soul. Initiates of the Wyrm spurn this notion. Within their doctrine the Requiem is a blessing. But for all its power the Beast is savage and easily roused to panic. The Mystery of the Wyrm intends to correct this, to refine the Beast and make it obedient to a Dragon’s desires.'
+coil.db.info = 'The common view of vampirism treats the condition as a curse, a supernatural affliction of body and soul. Initiates of the Wyrm spurn this notion. Within their doctrine the Requiem is a blessing. But for all its power the Beast is savage and easily roused to panic. The Mystery of the Wyrm intends to correct this, to refine the Beast and make it obedient to a Dragon's desires.'
 coil.db.restricted = False
 
 pass

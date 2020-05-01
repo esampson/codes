@@ -21,7 +21,7 @@ devotion.db.longname = 'Cloak the Gathering'
 devotion.db.cost = 2
 devotion.db.prereq = 'target.get(\'Obfuscate\',statclass=\'Discipline\') >= 5'
 devotion.db.reference = 'VtR p. 142'
-devotion.db.info = 'The vampire slips from the mind as easily as easily as blood dripping from an open wound, though rather than picking off his victims, he can make a whole group vanish at once. He might obscure his comrades — or pluck a group of unwilling victims from the minds of onlookers, leaving them scared and isolated.'
+devotion.db.info = 'The vampire slips from the mind as easily as easily as blood dripping from an open wound, though rather than picking off his victims, he can make a whole group vanish at once. He might obscure his comrades - or pluck a group of unwilling victims from the minds of onlookers, leaving them scared and isolated.'
 devotion.db.restricted = False
 
 devotion = create_script('typeclasses.scripts.devotionScript',key = 'Conditioning')
@@ -173,7 +173,7 @@ devotion.db.longname = 'Summoning'
 devotion.db.cost = 2
 devotion.db.prereq = 'target.get(\'Dominate\',statclass=\'Discipline\') >= 4 or target.get(\'Majesty\',statclass=\'Discipline\') >= 4'
 devotion.db.reference = 'VtR p. 147'
-devotion.db.info = 'The vampire reaches out to someone whom he knows, anywhere in the world, and calls her to his side. Somehow, the victim knows that the vampire wants her to be with him, and she will go to be by his side come hell or high water. Summoning isn’t instant — it can’t account for natural disasters — but the victim will happily empty her bank accounts and steal from friends or family to make the trip. She knows who has called her and where to find him, but the urge to meet him is an emotional compulsion rather than a supernatural command, and she won’t put herself in unnecessary danger to make the journey — a vampire is still self-aware enough to seek shelter for the day even though he has been summoned. At the time of summoning, the vampire can impress upon his victim the need to bring something with her — weapons to defend her master from a nemesis, or a sacrifice for some strange Blood Sorcery.'
+devotion.db.info = 'The vampire reaches out to someone whom he knows, anywhere in the world, and calls her to his side. Somehow, the victim knows that the vampire wants her to be with him, and she will go to be by his side come hell or high water. Summoning isn’t instant - it can’t account for natural disasters - but the victim will happily empty her bank accounts and steal from friends or family to make the trip. She knows who has called her and where to find him, but the urge to meet him is an emotional compulsion rather than a supernatural command, and she won’t put herself in unnecessary danger to make the journey - a vampire is still self-aware enough to seek shelter for the day even though he has been summoned. At the time of summoning, the vampire can impress upon his victim the need to bring something with her - weapons to defend her master from a nemesis, or a sacrifice for some strange Blood Sorcery.'
 devotion.db.restricted = False
 
 devotion = create_script('typeclasses.scripts.devotionScript',key = 'Suns_Brutal_Dreamscape')
