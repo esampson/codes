@@ -15,6 +15,7 @@ from codes.statInit import initDisciplines
 from codes.statInit import initGifts
 from codes.statInit import initKiths
 from codes.statInit import initMerits
+from codes.statInit import initOrders
 from codes.statInit import initPaths
 from codes.statInit import initPowerStats
 from codes.statInit import initRenown

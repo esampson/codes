@@ -12,6 +12,7 @@ from codes.statInit import decompileDisciplines
 from codes.statInit import decompileGifts
 from codes.statInit import decompileKiths
 from codes.statInit import decompileMerits
+from codes.statInit import decompileOrders
 from codes.statInit import decompilePaths
 from codes.statInit import decompilePowerStats
 from codes.statInit import decompileRenown
