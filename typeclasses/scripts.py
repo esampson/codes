@@ -109,6 +109,7 @@ from codes.stats.disciplineScripts import disciplineScript
 from codes.stats.giftsScripts import giftScript
 from codes.stats.kithScripts import kithScript
 from codes.stats.meritScripts import meritScript
+from codes.stats.orderScripts import orderScript
 from codes.stats.pathScripts import pathScript
 from codes.stats.powerStatScripts import powerStatScript
 from codes.stats.renownScripts import renownScript
