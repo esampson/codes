@@ -17,6 +17,7 @@ custom_patterns = [
 
 custom_patterns.append( url(r'^advantages/', include('codes.web.advantages.urls')))
 custom_patterns.append( url(r'^auspices/', include('codes.web.auspices.urls')))
+custom_patterns.append( url(r'^arcana/', include('codes.web.arcana.urls')))
 custom_patterns.append( url(r'^clans/', include('codes.web.clans.urls')))
 custom_patterns.append( url(r'^coils/', include('codes.web.coils.urls')))
 custom_patterns.append( url(r'^contracts/', include('codes.web.contracts.urls')))

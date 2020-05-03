@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{ arcanum.longname }}</h1>
+
+    <p style="max-height:1px;padding:0px;margin:0px;margin-bottom:1em;">&nbsp;</p>
+    <p style="float:left;margin:0px;">
+        <b>Info:&nbsp;</b>
+    </p><p>{{ arcanum.info|linebreaks }}</p>
+    <p style="float:end;"><b>Reference: </b>{{ arcanum.reference }}</p>
+    <p><b>Restricted: </b>{{ arcanum.restricted }}</p>
+    
+    {% if user.is_staff %}
+        <form action="/arcana/edit/{{ id }}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="edit" value="Edit"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

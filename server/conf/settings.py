@@ -822,6 +822,7 @@ INSTALLED_APPS = [
     "evennia.web.website",
     "evennia.web.webclient",
     "codes.web.advantages",
+    "codes.web.arcana",
     "codes.web.auspices",
     "codes.web.clans",
     "codes.web.contracts",
