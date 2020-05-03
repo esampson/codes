@@ -20,7 +20,7 @@ tribe = create_script('typeclasses.scripts.tribeScript',key = 'Ghost_Wolves')
 tribe.db.longname = 'Ghost Wolves'
 tribe.db.renown = ''
 tribe.db.tribe_gifts = []
-tribe.db.info = 'Ghost Wolves aren’t a tribe. They’re the werewolves who have rejected the Firstborn and turned their backs on Luna and the spirit courts alike. Many are simply ignorant. The People can’t be everywhere, and sometimes a First Change goes unremarked. Others try to deny their natures and cling to their human lives. Still others simply find no resonance with the Tribes of the Moon or the Pure, and strike out to make their own destinies.'
+tribe.db.info = 'Ghost Wolves aren\'t a tribe. They\'re the werewolves who have rejected the Firstborn and turned their backs on Luna and the spirit courts alike. Many are simply ignorant. The People can\'t be everywhere, and sometimes a First Change goes unremarked. Others try to deny their natures and cling to their human lives. Still others simply find no resonance with the Tribes of the Moon or the Pure, and strike out to make their own destinies.'
 tribe.db.reference = 'W:tF p. 49-50'
 tribe.db.restricted = False
 
@@ -28,7 +28,7 @@ tribe = create_script('typeclasses.scripts.tribeScript',key = 'Hunters_in_Darkne
 tribe.db.longname = 'Hunters in Darkness'
 tribe.db.renown = 'Purity'
 tribe.db.tribe_gifts = ['Nature', 'Stealth', 'Warding']
-tribe.db.info = 'The Hunters in Darkness are the quintessential werewolves, at least as popular culture imagines them. Beasts cleverer than any wolf and more savage than any man, they tolerate no intruders in their territory. They stalk and harry, picking off the weakest and most isolated first, building the rest to a fever pitch of terror and a headlong dash through the night. It’s not enough to simply drive interlopers off. The Meninna’s hunt only ends one way, for long ago they swore an oath: Nu Mus Halhala. "Let No Sacred Place in Your Territory Be Violated."'
+tribe.db.info = 'The Hunters in Darkness are the quintessential werewolves, at least as popular culture imagines them. Beasts cleverer than any wolf and more savage than any man, they tolerate no intruders in their territory. They stalk and harry, picking off the weakest and most isolated first, building the rest to a fever pitch of terror and a headlong dash through the night. It\'s not enough to simply drive interlopers off. The Meninna\'s hunt only ends one way, for long ago they swore an oath: Nu Mus Halhala. "Let No Sacred Place in Your Territory Be Violated."'
 tribe.db.reference = 'W:tF p. 40-42'
 tribe.db.restricted = False
 
@@ -36,7 +36,7 @@ tribe = create_script('typeclasses.scripts.tribeScript',key = 'Iron_Masters')
 tribe.db.longname = 'Iron Masters'
 tribe.db.renown = 'Cunning'
 tribe.db.tribe_gifts = ['Knowledge', 'Shaping', 'Technology']
-tribe.db.info = 'The Iron Masters are adapters, survivors, and innovators. Constantly questioning themselves, they preserve that which deserves to stay and ruthlessly cull what no longer has a place. Traditions, ethoses, institutions, even people - if the Iron Masters say your time is up, no force on Earth can save you. They dwell among humans, because like it or not humans are leading the charge on innovation and adaptation. They aren’t the "modern tribe," because that’s a false categorization. All the tribes live in the modern world, and they all employ its conveniences. What the Iron Masters do is adapt: They judge every change they see to know whether it is good or bad. They attach themselves to specific institutions or areas of their territories and either change them to be better or protect them from change, for long ago they swore an oath: Kul Kisura Udmeda. "Honor Your Territory in All Things."'
+tribe.db.info = 'The Iron Masters are adapters, survivors, and innovators. Constantly questioning themselves, they preserve that which deserves to stay and ruthlessly cull what no longer has a place. Traditions, ethoses, institutions, even people - if the Iron Masters say your time is up, no force on Earth can save you. They dwell among humans, because like it or not humans are leading the charge on innovation and adaptation. They aren\'t the "modern tribe," because that\'s a false categorization. All the tribes live in the modern world, and they all employ its conveniences. What the Iron Masters do is adapt: They judge every change they see to know whether it is good or bad. They attach themselves to specific institutions or areas of their territories and either change them to be better or protect them from change, for long ago they swore an oath: Kul Kisura Udmeda. "Honor Your Territory in All Things."'
 tribe.db.reference = 'W:tF p. 43-45'
 tribe.db.restricted = False
 

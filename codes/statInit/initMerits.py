@@ -7,7 +7,7 @@ merit.db.range = [1]
 merit.db.prereq = '(target.template().lower() == \'changeling\' and (target.wits() >= 3 or target.composure() >= 3)) or target.template().lower() == \'vampire\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 111, VtR p. 109'
-merit.db.info = 'The changeling’s senses are especially acute, even by the standards of high Clarity. Her sight, hearing, and sense of smell operate at twice the distance and accuracy of mortal senses. She can’t see in pitch darkness (for that, she needs Contract magic), but she can see much more clearly than humans can.|/|/Add the character’s Wyrd rating as dice to any perception-based rolls. This bonus supersedes the one normally granted by maximum Clarity. Also, add the bonus to any rolls made to remember or identify details.'
+merit.db.info = 'The changeling\'s senses are especially acute, even by the standards of high Clarity. Her sight, hearing, and sense of smell operate at twice the distance and accuracy of mortal senses. She can\'t see in pitch darkness (for that, she needs Contract magic), but she can see much more clearly than humans can.|/|/Add the character\'s Wyrd rating as dice to any perception-based rolls. This bonus supersedes the one normally granted by maximum Clarity. Also, add the bonus to any rolls made to remember or identify details.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -29,7 +29,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.intimidation() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 41'
-merit.db.info = 'Your character has survived dozens of fights, and each one has taken its toll. He carries scars, features that have healed crookedly, and an attitude that unsettles others. The character gains +2 dice to rolls that use fear and menace to force compliance, such as with Intimidation rolls. Opponents less menacing than the character also think twice before provoking him. Opponents with Intimidation dots fewer than the character’s must spend a point of Willpower to initiate combat against him.|/|/Drawback: Though many people try to overcome their prejudices, appearance still drives many human opinions. In social maneuvers, the character’s first impression is downgraded one step for people who do not know him, and even for those who do, he must overcome an additional Door.'
+merit.db.info = 'Your character has survived dozens of fights, and each one has taken its toll. He carries scars, features that have healed crookedly, and an attitude that unsettles others. The character gains +2 dice to rolls that use fear and menace to force compliance, such as with Intimidation rolls. Opponents less menacing than the character also think twice before provoking him. Opponents with Intimidation dots fewer than the character\'s must spend a point of Willpower to initiate combat against him.|/|/Drawback: Though many people try to overcome their prejudices, appearance still drives many human opinions. In social maneuvers, the character\'s first impression is downgraded one step for people who do not know him, and even for those who do, he must overcome an additional Door.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -62,7 +62,7 @@ merit.db.range = [1, 2, 4]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 50'
-merit.db.info = 'Your character has established an alternate identity. The level of this Merit determines the amount of scrutiny it holds up to. At one dot, the identity is superficial and unofficial. For example, your character uses an alias with a simple costume and adopts an accent. She hasn’t established the necessary paperwork to even approach a bureaucratic background check, let alone pass one. At two dots, she’s supported her identity with paperwork and identification. It’s not liable to stand up to extensive research, but it’ll turn away private investigators and internet hobbyists. At three dots, the identity can pass a thorough inspection. The identity has been deeply entrenched in relevant databases, with subtle flourishes and details to make it seem real, even to trained professionals.'
+merit.db.info = 'Your character has established an alternate identity. The level of this Merit determines the amount of scrutiny it holds up to. At one dot, the identity is superficial and unofficial. For example, your character uses an alias with a simple costume and adopts an accent. She hasn\'t established the necessary paperwork to even approach a bureaucratic background check, let alone pass one. At two dots, she\'s supported her identity with paperwork and identification. It\'s not liable to stand up to extensive research, but it\'ll turn away private investigators and internet hobbyists. At three dots, the identity can pass a thorough inspection. The identity has been deeply entrenched in relevant databases, with subtle flourishes and details to make it seem real, even to trained professionals.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -139,7 +139,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.dexterity >= 3 and target.weaponry >= 2 and target.get(\'Defensive Combat\', \'Weaponry\') == 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 60-61'
-merit.db.info = 'You’re able to use a weapon to stop people who are trying to kill you. Often deployed by police officers using riot shields or telescoping batons, it’s just as effective while using a chair leg.'
+merit.db.info = 'You\'re able to use a weapon to stop people who are trying to kill you. Often deployed by police officers using riot shields or telescoping batons, it\'s just as effective while using a chair leg.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -150,7 +150,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.get(\'Staff Fighting\',statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 53'
-merit.db.info = 'Your character knows how to use a pole with a hook or noose on the end of it to restrain animal and human targets. Using a suitable weapon, such as a catch pole or shepherd’s crook, your character can grapple and immediately apply the Hold maneuver on success. During subsequent turns her opponent’s grapple rolls are penalized by the weapon’s damage rating.'
+merit.db.info = 'Your character knows how to use a pole with a hook or noose on the end of it to restrain animal and human targets. Using a suitable weapon, such as a catch pole or shepherd\'s crook, your character can grapple and immediately apply the Hold maneuver on success. During subsequent turns her opponent\'s grapple rolls are penalized by the weapon\'s damage rating.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -161,7 +161,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and not (target.get(\'Cutthroat\',statclass=\'Merit\') >= 1) and not (target.get(\'Enticing\',statclass=\'Merit\') >= 1)'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 110'
-merit.db.info = 'Your character’s monstrous Beast dominates her personality. Her threats always ring true. Her very gaze inspires anger and fear. Any rolls to invoke the monstrous Beast gain the 8-again quality.'
+merit.db.info = 'Your character\'s monstrous Beast dominates her personality. Her threats always ring true. Her very gaze inspires anger and fear. Any rolls to invoke the monstrous Beast gain the 8-again quality.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -172,7 +172,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 110'
-merit.db.info = 'Normally, Retainers (see p. 123) serve a couple of functions, represented by dice pools. They don’t normally allow a character to access other things represented by Social Merits. However, Invictus vampires with this Merit have Retainers of a more thoroughly loyal breed. Each Retainer gains any combination of the following Merit dots equal to the vampire’s Invictus Status: Contacts, Resources, or Safe Place.'
+merit.db.info = 'Normally, Retainers (see p. 123) serve a couple of functions, represented by dice pools. They don\'t normally allow a character to access other things represented by Social Merits. However, Invictus vampires with this Merit have Retainers of a more thoroughly loyal breed. Each Retainer gains any combination of the following Merit dots equal to the vampire\'s Invictus Status: Contacts, Resources, or Safe Place.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -183,7 +183,7 @@ merit.db.range = [3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 56'
-merit.db.info = 'Your character has the psychic ability to perceive auras, the ephemeral halos of energy that surround all living things. This allows her to perceive a subject’s emotional state, and potentially any supernatural nature. The colors of an aura show a person’s general disposition, and the ebbs, flows, tone, and other oddities reveal other influences. Note that your character may not know what she’s looking at when seeing something odd in an aura. For example, she may not know that a pale aura means she’s seeing a vampire, unless she’s confirmed other vampiric auras in the past.'
+merit.db.info = 'Your character has the psychic ability to perceive auras, the ephemeral halos of energy that surround all living things. This allows her to perceive a subject\'s emotional state, and potentially any supernatural nature. The colors of an aura show a person\'s general disposition, and the ebbs, flows, tone, and other oddities reveal other influences. Note that your character may not know what she\'s looking at when seeing something odd in an aura. For example, she may not know that a pale aura means she\'s seeing a vampire, unless she\'s confirmed other vampiric auras in the past.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -194,7 +194,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 56-57'
-merit.db.info = 'Your character can enter a trance of sorts, in which she’s temporarily overtaken by a spirit or ghost, and compelled to write mysterious things.'
+merit.db.info = 'Your character can enter a trance of sorts, in which she\'s temporarily overtaken by a spirit or ghost, and compelled to write mysterious things.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -216,7 +216,7 @@ merit.db.range = [1, 2, 3, 4]
 merit.db.prereq = 'target.manipulation() >= 3 and target.athletics() >= 2 and target.stealth() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 46'
-merit.db.info = 'Your character’s only goal in a fight is not to get hurt. She tries to create situations where opponents hurt themselves or target her big mean friends instead. There is no formal training for this Style; it’s a mixture of ingenuity and a person’s innate desire to avoid pain.'
+merit.db.info = 'Your character\'s only goal in a fight is not to get hurt. She tries to create situations where opponents hurt themselves or target her big mean friends instead. There is no formal training for this Style; it\'s a mixture of ingenuity and a person\'s innate desire to avoid pain.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -227,7 +227,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.socialize() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 50'
-merit.db.info = 'Your character is a natural in the bar environment, and can procure an open invitation wherever he wishes. Whereas most characters would require rolls to blend into social functions they don’t belong in, he doesn’t; he belongs. Rolls to identify him as an outsider suffer his Socialize as a penalty.'
+merit.db.info = 'Your character is a natural in the bar environment, and can procure an open invitation wherever he wishes. Whereas most characters would require rolls to blend into social functions they don\'t belong in, he doesn\'t; he belongs. Rolls to identify him as an outsider suffer his Socialize as a penalty.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -293,7 +293,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.stamina() >= 3 and target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 41'
-merit.db.info = 'Your character has honed her body to be a hardened weapon. She has trained long, punishing hours to inure herself to the pain of the cracked knuckles, broken hands, and crushed toes that come with hitting others with her body. She can hit harder and more often without flinching. Your character’s unarmed strikes still cause bashing damage normally, but they add one point of bashing damage on a successful hit.'
+merit.db.info = 'Your character has honed her body to be a hardened weapon. She has trained long, punishing hours to inure herself to the pain of the cracked knuckles, broken hands, and crushed toes that come with hitting others with her body. She can hit harder and more often without flinching. Your character\'s unarmed strikes still cause bashing damage normally, but they add one point of bashing damage on a successful hit.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -315,7 +315,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 53'
-merit.db.info = 'Your character understands the effectiveness of grinding her heel into a delicate part of a downed opponent’s anatomy. When attacking an opponent in the prone position, she may make an unarmed attack at a –3 penalty in addition to normal modifiers. Any damage inflicted is lethal.'
+merit.db.info = 'Your character understands the effectiveness of grinding her heel into a delicate part of a downed opponent\'s anatomy. When attacking an opponent in the prone position, she may make an unarmed attack at a –3 penalty in addition to normal modifiers. Any damage inflicted is lethal.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -326,7 +326,7 @@ merit.db.range = [1, 2, 3, 4]
 merit.db.prereq = 'target.dexterity() >= 3 and target.firearms() >=2 and target.get(\'Trained Observer\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 47'
-merit.db.info = 'Your character is a patient hunter with a bow. She fires precision shots across long distances to take out targets that had no idea she was even there. This Style focuses on a character’s ability to aim by judging distance and trajectory. It uses a dice pool of Dexterity + Firearms for its attacks.'
+merit.db.info = 'Your character is a patient hunter with a bow. She fires precision shots across long distances to take out targets that had no idea she was even there. This Style focuses on a character\'s ability to aim by judging distance and trajectory. It uses a dice pool of Dexterity + Firearms for its attacks.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -337,7 +337,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.strength() >= 2 and target.dexterity() >= 2 and target.stamina() >= 2 and target.brawl() >= 2 and target.athletics() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 47-48'
-merit.db.info = 'Trading blows with the hands dates back to Classical times, and probably earlier - some biologists believe our hands have been optimized to deliver blows. There are hundreds of folk styles of boxing, from West Africa’s Dambe to the Filipino method known as Suntukan or Panantukan. This style concentrates on the modern combat sport, which combines European methods with innovations developed by trainers or borrowed from other cultures. Your character is trained in modern boxing, or a similar traditional style.'
+merit.db.info = 'Trading blows with the hands dates back to Classical times, and probably earlier - some biologists believe our hands have been optimized to deliver blows. There are hundreds of folk styles of boxing, from West Africa\'s Dambe to the Filipino method known as Suntukan or Panantukan. This style concentrates on the modern combat sport, which combines European methods with innovations developed by trainers or borrowed from other cultures. Your character is trained in modern boxing, or a similar traditional style.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -348,7 +348,7 @@ merit.db.range = [1]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 111'
-merit.db.info = 'Like the shoemaker’s elves, your character completes tasks with a casual disregard for time. Reduce the interval for any mundane extended action roll she makes while no one watches her by half. The character may spend a Glamour to halve the interval again, working at four times her normal speed for that roll. Exceptional success on an individual roll can decrease the time it takes to complete that roll to an eighth of the usual interval, if the player chooses the time reduction benefit.'
+merit.db.info = 'Like the shoemaker\'s elves, your character completes tasks with a casual disregard for time. Reduce the interval for any mundane extended action roll she makes while no one watches her by half. The character may spend a Glamour to halve the interval again, working at four times her normal speed for that roll. Exceptional success on an individual roll can decrease the time it takes to complete that roll to an eighth of the usual interval, if the player chooses the time reduction benefit.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -359,7 +359,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'City\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 110'
-merit.db.info = 'You have your finger on the pulse of the Kindred underground. You’re adept with the codes and cants that allow Kindred culture to flourish despite the Masquerade. Each level of Cacophony Savvy builds on the previous. This Merit assumes the character can read and deliver Cacophony messages.'
+merit.db.info = 'You have your finger on the pulse of the Kindred underground. You\'re adept with the codes and cants that allow Kindred culture to flourish despite the Masquerade. Each level of Cacophony Savvy builds on the previous. This Merit assumes the character can read and deliver Cacophony messages.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -370,7 +370,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template().lower == \'werewolf\' and target.get(\'Honor\',statclass=\'Renown\') >=2 and target.intimidation() >= 2 and target.composure() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'W:tF p.108'
-merit.db.info = 'Your character fights with honor and dignity. When he calls out his opponent, it must abide by his challenge. When he uses an instant action to call out a potential combatant, that opponent suffers your character’s Honor as a penalty to attack anyone else. If the opponent does attack someone else, you can add your character\'s Honor to any attacks against him.'
+merit.db.info = 'Your character fights with honor and dignity. When he calls out his opponent, it must abide by his challenge. When he uses an instant action to call out a potential combatant, that opponent suffers your character\'s Honor as a penalty to attack anyone else. If the opponent does attack someone else, you can add your character\'s Honor to any attacks against him.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -392,7 +392,7 @@ merit.db.range = [1, 2]
 merit.db.prereq = 'target.strength() >= 3 and target.dexterity() >= 3 and target.athletics() >= 2 and target.weaponry() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 48'
-merit.db.info = 'Your character knows how to use a length of chain as a weapon. These maneuvers require at least a yard’s (or meter’s) worth of chain and can be any design from a martial artist’s chain whip to one ripped off the sprocket of a motorcycle. The Style is taught among traditional Chinese weapon styles but is also favored among everyday street gangs.'
+merit.db.info = 'Your character knows how to use a length of chain as a weapon. These maneuvers require at least a yard\'s (or meter\'s) worth of chain and can be any design from a martial artist\'s chain whip to one ripped off the sprocket of a motorcycle. The Style is taught among traditional Chinese weapon styles but is also favored among everyday street gangs.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -403,7 +403,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.get(\'Street Fighting\') >= 3 and target.subterfuge() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 61'
-merit.db.info = 'Your character is a master at the bait and switch. She can look off in an odd direction and prompt her opponent to do the same, or she might step on his toes to distract him. She fights dirty. Make a Dexterity + Subterfuge roll as a reflexive action. The opponent’s player contests with Wits + Composure. If you score more successes, the opponent loses his Defense for the next turn. Each time a character uses this maneuver in a scene, it levies a cumulative -2 penalty to further uses since the opposition gets used to the tricks.'
+merit.db.info = 'Your character is a master at the bait and switch. She can look off in an odd direction and prompt her opponent to do the same, or she might step on his toes to distract him. She fights dirty. Make a Dexterity + Subterfuge roll as a reflexive action. The opponent\'s player contests with Wits + Composure. If you score more successes, the opponent loses his Defense for the next turn. Each time a character uses this maneuver in a scene, it levies a cumulative -2 penalty to further uses since the opposition gets used to the tricks.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -414,7 +414,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 61'
-merit.db.info = 'If you can get your hands on someone, they’re putty in your hands. When grappling, your character can use the Choke move'
+merit.db.info = 'If you can get your hands on someone, they\'re putty in your hands. When grappling, your character can use the Choke move'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -436,7 +436,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Protean\',statclass=\'Discipline\') >= 4'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 110-111'
-merit.db.info = 'A Gangrel’s claws are deadly and bestial; yours are downright unnatural. The vampire allows the Beast out of its cage and lets it punish all those around her. When wielding claws borne of Unnatural Aspect while in frenzy, this Merit takes effect. The weapon modifier for the claws becomes +0 aggravated. These claws ignore all armor not generated by Resilience.'
+merit.db.info = 'A Gangrel\'s claws are deadly and bestial; yours are downright unnatural. The vampire allows the Beast out of its cage and lets it punish all those around her. When wielding claws borne of Unnatural Aspect while in frenzy, this Merit takes effect. The weapon modifier for the claws becomes +0 aggravated. These claws ignore all armor not generated by Resilience.'
 merit.db.cg_only = False
 merit.db.restricted = False
 

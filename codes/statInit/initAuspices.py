@@ -23,7 +23,7 @@ auspice.db.longname = 'Irraka'
 auspice.db.auspice_skills = ['Larceny', 'Stealth', 'Subterfuge']
 auspice.db.renown = 'Cunning'
 auspice.db.auspice_gifts = ['New Moon', 'Evasion', 'Stealth']
-auspice.db.info = 'The new moon is the moon of secrets, ambushes, and hunting unseen. The werewolf chosen under the new moon, the Irraka, is the wolf that does not howl while hunting. She listens for her packmates, but she trusts them to know that she will not answer. She strikes, tearing out her prey’s throat so it cannot scream, breaking its leg so it cannot run, or pushing it down a bluff so it is far from help. If she can strike the killing blow, she will, but the Stalker is more interested in making sure that the killing blow is inevitable. When hunting with a pack, she often chooses not to claim this honor herself. The Irraka is proud of her role as the one to cripple the prey. The righteous Rahu or the boisterous Cahalith might be the one to take the prey’s throat at the end of the hunt, but it was the Irraka who snapped its femur or disemboweled it so it couldn’t run.'
+auspice.db.info = 'The new moon is the moon of secrets, ambushes, and hunting unseen. The werewolf chosen under the new moon, the Irraka, is the wolf that does not howl while hunting. She listens for her packmates, but she trusts them to know that she will not answer. She strikes, tearing out her prey\'s throat so it cannot scream, breaking its leg so it cannot run, or pushing it down a bluff so it is far from help. If she can strike the killing blow, she will, but the Stalker is more interested in making sure that the killing blow is inevitable. When hunting with a pack, she often chooses not to claim this honor herself. The Irraka is proud of her role as the one to cripple the prey. The righteous Rahu or the boisterous Cahalith might be the one to take the prey\'s throat at the end of the hunt, but it was the Irraka who snapped its femur or disemboweled it so it couldn\'t run.'
 auspice.db.reference = 'W:tF p. 24-26'
 auspice.db.restricted = False
 
@@ -32,7 +32,7 @@ auspice.db.longname = 'Ithaeur'
 auspice.db.auspice_skills = ['Animal Ken', 'Medicine', 'Occult']
 auspice.db.renown = 'Wisdom'
 auspice.db.auspice_gifts = ['Crescent Moon', 'Elemental', 'Shaping']
-auspice.db.info = 'Of all the auspices, the Ithaeur undergoes the most drastic change between human life and his new existence as Uratha. Before, even if he believed in spirits, he didn’t see them on a regular basis. Now they are everywhere. Everything has a spirit, and every spirit is hungry.'
+auspice.db.info = 'Of all the auspices, the Ithaeur undergoes the most drastic change between human life and his new existence as Uratha. Before, even if he believed in spirits, he didn\'t see them on a regular basis. Now they are everywhere. Everything has a spirit, and every spirit is hungry.'
 auspice.db.reference = 'W:tF p. 27-29'
 auspice.db.restricted = False
 

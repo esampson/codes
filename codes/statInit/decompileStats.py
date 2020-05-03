@@ -1,4 +1,5 @@
 from codes.statInit import decompileAdvantages
+from codes.statInit import decompileArcana
 from codes.statInit import decompileAttributes
 from codes.statInit import decompileAuspices
 from codes.statInit import decompileBasicStats

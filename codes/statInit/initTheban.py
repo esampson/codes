@@ -53,7 +53,7 @@ theban.db.longname = 'Stigmata'
 theban.db.rank = 4
 theban.db.prereq = ''
 theban.db.reference = 'VtR p. 154'
-theban.db.info = 'The ritualist curses his victim - who must be present for the ritual - with the wounds of Christ. The Stigmata last for the ritual’s Potency in turns. Mortal victims suffer one point of lethal damage per turn from blood loss. Vampires and ghouls lose one Vitae per turn. If a vampire runs out of Vitae through this ritual, he begins to take lethal damage instead, provoking a frenzy.'
+theban.db.info = 'The ritualist curses his victim - who must be present for the ritual - with the wounds of Christ. The Stigmata last for the ritual\'s Potency in turns. Mortal victims suffer one point of lethal damage per turn from blood loss. Vampires and ghouls lose one Vitae per turn. If a vampire runs out of Vitae through this ritual, he begins to take lethal damage instead, provoking a frenzy.'
 theban.db.restricted = False
 
 theban = create_script('typeclasses.scripts.thebanRiteScript',key = 'Transubstatiation')
@@ -69,7 +69,7 @@ theban.db.longname = 'Vitae Reliquary'
 theban.db.rank = 1
 theban.db.prereq = ''
 theban.db.reference = 'VtR p. 153'
-theban.db.info = 'The ritualist infuses an object with up to the ritual’s Potency in Vitae. The Vitae stored is mystically transferred from the ritualist’s body, and can be retrieved by any vampire, Strix, or ghoul who touches the object. The Vitae still causes Vinculum  and blood addiction in anyone drinking it. After one lunar month, the ritual ends and the object crumbles to dust.'
+theban.db.info = 'The ritualist infuses an object with up to the ritual\'s Potency in Vitae. The Vitae stored is mystically transferred from the ritualist\'s body, and can be retrieved by any vampire, Strix, or ghoul who touches the object. The Vitae still causes Vinculum  and blood addiction in anyone drinking it. After one lunar month, the ritual ends and the object crumbles to dust.'
 theban.db.restricted = False
 
 pass

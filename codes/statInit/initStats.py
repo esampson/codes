@@ -2,6 +2,7 @@ from evennia import create_script
 create_script(
     'typeclasses.scripts.dictionaryScript',key='Dictionary',persistent=True)
 from codes.statInit import initAdvantages
+from codes.statInit import initArcana
 from codes.statInit import initAttributes
 from codes.statInit import initAuspices
 from codes.statInit import initBasicStats
