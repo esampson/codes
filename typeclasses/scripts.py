@@ -116,6 +116,7 @@ from codes.stats.renownScripts import renownScript
 from codes.stats.scalesScripts import scaleScript
 from codes.stats.seemingScripts import seemingScript
 from codes.stats.skillScripts import skillScript
+from codes.stats.spellScripts import spellScript
 from codes.stats.sphereStatScripts import sphereStatScript
 from codes.stats.thebanRitesScripts import thebanRiteScript
 from codes.stats.tribesScripts import tribeScript
