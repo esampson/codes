@@ -20,6 +20,7 @@ from codes.statInit import decompileRenown
 from codes.statInit import decompileScales
 from codes.statInit import decompileSeemings
 from codes.statInit import decompileSkills
+from codes.statInit import decompileSpells
 from codes.statInit import decompileSphereStats
 from codes.statInit import decompileTheban
 from codes.statInit import decompileTribes

@@ -95,7 +95,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Lancea et Sanctum\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 109-110'
-merit.db.info = 'Not all Sanctified are members of the clergy. Most are lay members. Those anointed under the damnation of Longinus wield his word like a firebrand. Once per chapter, roll Presence + Expression when preaching to a crowd. A small clique of listeners levies a –1 die penalty, a small crowd a –2, and a large crowd a –3. Listeners gain the Raptured Condition (see p. 305).'
+merit.db.info = 'Not all Sanctified are members of the clergy. Most are lay members. Those anointed under the damnation of Longinus wield his word like a firebrand. Once per chapter, roll Presence + Expression when preaching to a crowd. A small clique of listeners levies a -1 die penalty, a small crowd a -2, and a large crowd a -3. Listeners gain the Raptured Condition (see p. 305).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -315,7 +315,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 53'
-merit.db.info = 'Your character understands the effectiveness of grinding her heel into a delicate part of a downed opponent\'s anatomy. When attacking an opponent in the prone position, she may make an unarmed attack at a –3 penalty in addition to normal modifiers. Any damage inflicted is lethal.'
+merit.db.info = 'Your character understands the effectiveness of grinding her heel into a delicate part of a downed opponent\'s anatomy. When attacking an opponent in the prone position, she may make an unarmed attack at a -3 penalty in addition to normal modifiers. Any damage inflicted is lethal.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -480,7 +480,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.wits() >= 3 and target.athletics() >= 2 and target.brawl >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 61'
-merit.db.info = 'Your character knows that hitting someone in the face is an easy way to break the little bones in his hand. To that end, he’s perfected the art of using the environment to hurt people.'
+merit.db.info = 'Your character knows that hitting someone in the face is an easy way to break the little bones in his hand. To that end, he\'s perfected the art of using the environment to hurt people.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -513,7 +513,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.presence() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42'
-merit.db.info = 'Your character is a natural leader who brings out the best from those he works with. At one dot, team members add +2 dice to teamwork actions dedicated to helping the team (see Chronicles of Darkness Rulebook, p. 72). At two dots the team gains access to a pool of dice equal to the character’s Presence each scene, which they can draw upon for actions where they work towards their established purpose. At three dots, all team members can reroll a failed result once per scene. In each case, the benefits last until depleted, or until the team reaches or deviates from its agreed goal or disbands. The character with this Merit can’t access any of the benefits he encourages in others.'
+merit.db.info = 'Your character is a natural leader who brings out the best from those he works with. At one dot, team members add +2 dice to teamwork actions dedicated to helping the team (see Chronicles of Darkness Rulebook, p. 72). At two dots the team gains access to a pool of dice equal to the character\'s Presence each scene, which they can draw upon for actions where they work towards their established purpose. At three dots, all team members can reroll a failed result once per scene. In each case, the benefits last until depleted, or until the team reaches or deviates from its agreed goal or disbands. The character with this Merit can\'t access any of the benefits he encourages in others.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -524,7 +524,7 @@ merit.db.range = [3]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'Mantle\',\'Winter\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 111-112'
-merit.db.info = 'Your character has taken her pain, and the pain of others, and crafted them into a barrier against further suffering. She may spend a Willpower to ignore the effects of a single Clarity Condition once per scene. She still has the Condition and doesn’t heal any Clarity damage, but she does not suffer the ill effects of the Condition. If her actions during the scene would resolve the Condition, it resolves normally.'
+merit.db.info = 'Your character has taken her pain, and the pain of others, and crafted them into a barrier against further suffering. She may spend a Willpower to ignore the effects of a single Clarity Condition once per scene. She still has the Condition and doesn\'t heal any Clarity damage, but she does not suffer the ill effects of the Condition. If her actions during the scene would resolve the Condition, it resolves normally.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -546,7 +546,7 @@ merit.db.range = [3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 44'
-merit.db.info = 'Your character has an exceptionally sound and rational mind. With a moment’s thought, she can weigh potential courses of action and outcomes.'
+merit.db.info = 'Your character has an exceptionally sound and rational mind. With a moment\'s thought, she can weigh potential courses of action and outcomes.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -557,7 +557,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 50'
-merit.db.info = 'Contacts provide your character with information. Each dot in this Merit represents a sphere or organization with which the character can garner information. For example, a character with Contacts *** might have Bloggers, Drug Dealers, and Financial Speculators for connections. Contacts do not provide services, only information. This may be face-to-face, via email, by telephone, or even by seance in some strange instances.|/|/Garnering information via Contacts requires a Manipulation + Social Skill roll, depending on the method the character uses, and the relationship between the characters. The Storyteller should give a bonus or penalty, dependent on how relevant the information is to that particular Contact, whether accessing the information is dangerous, and if the character has maintained good relations or done favors for the Contact. These modifiers should range from -3 to +3 in most cases. If successful, the Contact provides the information.|/|/One use of a Contact is to dig dirt on another character. A Contact can find another character’s Social Merits, and any relevant Conditions (Embarrassing Secret is a prime example.)|/|/A character can have more than five Contacts, but the Merit’s rating is limited to five, for the purposes of Allies blocking.'
+merit.db.info = 'Contacts provide your character with information. Each dot in this Merit represents a sphere or organization with which the character can garner information. For example, a character with Contacts *** might have Bloggers, Drug Dealers, and Financial Speculators for connections. Contacts do not provide services, only information. This may be face-to-face, via email, by telephone, or even by seance in some strange instances.|/|/Garnering information via Contacts requires a Manipulation + Social Skill roll, depending on the method the character uses, and the relationship between the characters. The Storyteller should give a bonus or penalty, dependent on how relevant the information is to that particular Contact, whether accessing the information is dangerous, and if the character has maintained good relations or done favors for the Contact. These modifiers should range from -3 to +3 in most cases. If successful, the Contact provides the information.|/|/One use of a Contact is to dig dirt on another character. A Contact can find another character\'s Social Merits, and any relevant Conditions (Embarrassing Secret is a prime example.)|/|/A character can have more than five Contacts, but the Merit\'s rating is limited to five, for the purposes of Allies blocking.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -579,7 +579,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['Spring', 'Summer', 'Autumn', 'Winter']
 merit.db.reference = 'CtL p. 112'
-merit.db.info = 'Court Goodwill represents a changeling’s influence and respect in a court that isn’t his own. It allows him to have serious ties to as many courts as he likes, in addition to the one he has sworn magical allegiance to. This isn’t to say Court Goodwill is a purely social construct. This Merit covers both the mundane networking required of being part of a large social group and the fickle favor of whatever plays patron to a court. In this way, a changeling of the White Rose Court can use the benefits of the Red Rose Court’s Mantle, the Red Rose Courtier can be privy to the Blue Rose Court’s magic, and so on.'
+merit.db.info = 'Court Goodwill represents a changeling\'s influence and respect in a court that isn\'t his own. It allows him to have serious ties to as many courts as he likes, in addition to the one he has sworn magical allegiance to. This isn\'t to say Court Goodwill is a purely social construct. This Merit covers both the mundane networking required of being part of a large social group and the fickle favor of whatever plays patron to a court. In this way, a changeling of the White Rose Court can use the benefits of the Red Rose Court\'s Mantle, the Red Rose Courtier can be privy to the Blue Rose Court\'s magic, and so on.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -590,7 +590,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.wits() >= 3 and target.dexterity() >= 3 and target.stealth() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 53-54'
-merit.db.info = 'Your character is trained in getting the jump on her opponents. She creeps up on unsuspecting enemies from the shadows and neutralizes them before anyone realizes anything’s happening. When your character ambushes an opponent, the victim loses the 10-again quality on his roll to notice the attack. Even if he successfully notices your character, your character acts at +3 Initiative in the first turn.'
+merit.db.info = 'Your character is trained in getting the jump on her opponents. She creeps up on unsuspecting enemies from the shadows and neutralizes them before anyone realizes anything\'s happening. When your character ambushes an opponent, the victim loses the 10-again quality on his roll to notice the attack. Even if he successfully notices your character, your character acts at +3 Initiative in the first turn.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -601,7 +601,7 @@ merit.db.range = [2, 3]
 merit.db.prereq = 'target.drive() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 47'
-merit.db.info = 'Your character’s an ace at the wheel, and nothing shakes his concentration. So long as he’s not taking any actions other than driving (and keeping the car safe), add his Composure to any rolls to Drive. Any rolls to disable his vehicle suffer a penalty equal to his Composure as well. With the three-dot version, once per turn he may take a Drive action reflexively.'
+merit.db.info = 'Your character\'s an ace at the wheel, and nothing shakes his concentration. So long as he\'s not taking any actions other than driving (and keeping the car safe), add his Composure to any rolls to Drive. Any rolls to disable his vehicle suffer a penalty equal to his Composure as well. With the three-dot version, once per turn he may take a Drive action reflexively.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -612,7 +612,7 @@ merit.db.range = [3]
 merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Purity\',statclass=\'Renown\') >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'W:tF p. 105-106'
-merit.db.info = 'Your character has an intuitive mind for strategy. Any time she acts as the tactician or organizer in a teamwork action (see p. 162), the participants ignore circumstantial penalties up to her Purity dots. As well, once per chapter, the primary actor can gain a Beat if he follows your character’s strategic guidance. Your character does not have to be the primary actor to use this Merit.'
+merit.db.info = 'Your character has an intuitive mind for strategy. Any time she acts as the tactician or organizer in a teamwork action (see p. 162), the participants ignore circumstantial penalties up to her Purity dots. As well, once per chapter, the primary actor can gain a Beat if he follows your character\'s strategic guidance. Your character does not have to be the primary actor to use this Merit.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -623,7 +623,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 57'
-merit.db.info = 'Your character has run afoul of fate. Somewhere, somehow, he’s been cursed. Most importantly, he’s aware of the curse. When taking this Merit, define the limitations of the curse. Usually, it’s expressed in the form of a single statement, such as, "On the eve of your twenty-seventh birthday, you will feast upon your doom." It’s important to work out the details with the Storyteller. The curse must take effect within the scope of the planned chronicle.'
+merit.db.info = 'Your character has run afoul of fate. Somewhere, somehow, he\'s been cursed. Most importantly, he\'s aware of the curse. When taking this Merit, define the limitations of the curse. Usually, it\'s expressed in the form of a single statement, such as, "On the eve of your twenty-seventh birthday, you will feast upon your doom." It\'s important to work out the details with the Storyteller. The curse must take effect within the scope of the planned chronicle.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -634,7 +634,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and not (target.get(\'Atrocious\',statclass=\'Merit\') >= 1) and not (target.get(\'Enticing\',statclass=\'Merit\') >= 1)'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 111'
-merit.db.info = 'Your character’s competitive Beast flows in her every action. Her smug bearing forces a desire to dominate or submit. Any rolls to invoke the competitive Beast gain the 8-again quality.'
+merit.db.info = 'Your character\'s competitive Beast flows in her every action. Her smug bearing forces a desire to dominate or submit. Any rolls to invoke the competitive Beast gain the 8-again quality.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -656,7 +656,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Safe Place\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'W:tF p. 106'
-merit.db.info = 'The pack has a locus on its territory that\'s attuned to their totem’s resonance. While most packs protect a locus, a Dedicated Locus represents one they\'ve invested deeply into, which provides significant and highly quickened Essence. The locus\' rating is equal to the dots in this merit. Additionally, the pack can use the filtered, focused Essence faster than other Essence. Collectively, pack members with this Merit can spend a number of points of Essence equal to the Merit cost in a day, above and beyond their normal per-turn limits.'
+merit.db.info = 'The pack has a locus on its territory that\'s attuned to their totem\'s resonance. While most packs protect a locus, a Dedicated Locus represents one they\'ve invested deeply into, which provides significant and highly quickened Essence. The locus\' rating is equal to the dots in this merit. Additionally, the pack can use the filtered, focused Essence faster than other Essence. Collectively, pack members with this Merit can spend a number of points of Essence equal to the Merit cost in a day, above and beyond their normal per-turn limits.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -667,7 +667,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42'
-merit.db.info = 'Your character is filled with a burning fury when her friends or family are threatened. For each dot of this Merit, the character gains a Willpower point to spend on actions related to defending or protecting these loved ones. This also applies to actions taken preemptively to prevent clear threats to her charges, and to acts of retribution against an offender if her loved ones are hurt. These bonus Willpower points do not count towards the character’s normal Willpower dots, and replenish each chapter.'
+merit.db.info = 'Your character is filled with a burning fury when her friends or family are threatened. For each dot of this Merit, the character gains a Willpower point to spend on actions related to defending or protecting these loved ones. This also applies to actions taken preemptively to prevent clear threats to her charges, and to acts of retribution against an offender if her loved ones are hurt. These bonus Willpower points do not count towards the character\'s normal Willpower dots, and replenish each chapter.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -689,7 +689,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 112'
-merit.db.info = 'Your character is adept at manipulating the dream in a hand-to-hand fight. A gust of wind carries her out of the way of an attack, an eidolon leaps in front of a bullet for her, or her opponent’s blade dulls when it strikes. Add half her Wyrd (rounded down) to her Defense in dreams.'
+merit.db.info = 'Your character is adept at manipulating the dream in a hand-to-hand fight. A gust of wind carries her out of the way of an attack, an eidolon leaps in front of a bullet for her, or her opponent\'s blade dulls when it strikes. Add half her Wyrd (rounded down) to her Defense in dreams.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -700,7 +700,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.strength() >= 3 or target.intelligence() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 47'
-merit.db.info = 'Your character has an innate feel for the weak points in objects. When damaging an object, she ignores one point of the object’s Durability per dot with this Merit.'
+merit.db.info = 'Your character has an innate feel for the weak points in objects. When damaging an object, she ignores one point of the object\'s Durability per dot with this Merit.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -744,7 +744,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.dexterity() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 47'
-merit.db.info = 'Your character might have been a contortionist, or spent time practicing yoga. She can dislodge joints when need be. She automatically escapes from any mundane bonds without a roll. When grappled, subtract her Dexterity from any rolls to overpower her, as long as she’s not taking any aggressive actions.'
+merit.db.info = 'Your character might have been a contortionist, or spent time practicing yoga. She can dislodge joints when need be. She automatically escapes from any mundane bonds without a roll. When grappled, subtract her Dexterity from any rolls to overpower her, as long as she\'s not taking any aggressive actions.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -755,7 +755,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\',statclass=\'Sphere\').lower() == \'mekhet\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 111'
-merit.db.info = 'Your character’s Mekhet blood touches on a level of universal interconnectedness that her mind cannot truly grasp. However, sometimes it gives her fleeting glimpses of insight and intuition. During the day, she dreams of what’s to come in vague symbols. Once per night, when she meets someone new or visits a new place, make a Blood Potency roll. If successful, ask one question to the Storyteller or the character’s player. The question must fit with a yes/no/maybe answer. The answer reflects the last day’s dreams.'
+merit.db.info = 'Your character\'s Mekhet blood touches on a level of universal interconnectedness that her mind cannot truly grasp. However, sometimes it gives her fleeting glimpses of insight and intuition. During the day, she dreams of what\'s to come in vague symbols. Once per night, when she meets someone new or visits a new place, make a Blood Potency roll. If successful, ask one question to the Storyteller or the character\'s player. The question must fit with a yes/no/maybe answer. The answer reflects the last day\'s dreams.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -766,7 +766,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'Wyrd\') >= 2 and (target.presence() >= 3 or target.manipulation() >= 3 or target.composure() >= 3) and (target.get(\'Weaponry:*\') or target.get(\'Brawl:*\'))'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 112'
-merit.db.info = 'Your character’s extensive training in oneiromancy allows her to benefit from the flexibility of the dream. By blending dreamscaping and martial techniques, strikes land faster as the dream bends to aid her blows. Whenever you allocate any successes generated with a Brawl or Weaponry attack (depending on which Specialty you have) to a subtle oneiromantic shift, gain one bonus success to spend on that shift as long as you spend it to impact the fight in some direct way. If you have a Specialty in both Skills, you gain these benefits on both types of attack.'
+merit.db.info = 'Your character\'s extensive training in oneiromancy allows her to benefit from the flexibility of the dream. By blending dreamscaping and martial techniques, strikes land faster as the dream bends to aid her blows. Whenever you allocate any successes generated with a Brawl or Weaponry attack (depending on which Specialty you have) to a subtle oneiromantic shift, gain one bonus success to spend on that shift as long as you spend it to impact the fight in some direct way. If you have a Specialty in both Skills, you gain these benefits on both types of attack.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -777,7 +777,7 @@ merit.db.range = [3]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'Wyrd\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 112'
-merit.db.info = 'Your character’s extensive training in oneiromancy allows her to benefit from the flexibility of the dream. By blending dreamscaping and martial techniques, strikes land faster as the dream bends to aid her blows. Whenever you allocate any successes generated with a Brawl or Weaponry attack (depending on which Specialty you have) to a subtle oneiromantic shift, gain one bonus success to spend on that shift as long as you spend it to impact the fight in some direct way. If you have a Specialty in both Skills, you gain these benefits on both types of attack.'
+merit.db.info = 'Your character\'s extensive training in oneiromancy allows her to benefit from the flexibility of the dream. By blending dreamscaping and martial techniques, strikes land faster as the dream bends to aid her blows. Whenever you allocate any successes generated with a Brawl or Weaponry attack (depending on which Specialty you have) to a subtle oneiromantic shift, gain one bonus success to spend on that shift as long as you spend it to impact the fight in some direct way. If you have a Specialty in both Skills, you gain these benefits on both types of attack.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -799,7 +799,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 113'
-merit.db.info = 'Your character’s Mask is far less obtrusive when she drops it. Reduce her Wyrd by her Dull Beacon dots when determining the distance at which she alerts fae creatures and opens Hedge gateways when dropping her Mask (p. 83). If this would effectively reduce her to Wyrd 0, she no longer opens gates or alerts fae creatures at all until her Wyrd increases.'
+merit.db.info = 'Your character\'s Mask is far less obtrusive when she drops it. Reduce her Wyrd by her Dull Beacon dots when determining the distance at which she alerts fae creatures and opens Hedge gateways when dropping her Mask (p. 83). If this would effectively reduce her to Wyrd 0, she no longer opens gates or alerts fae creatures at all until her Wyrd increases.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -810,7 +810,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.template().lower == \'vampire\' and (target.get(\'Status\',subentry=target.get(\'Clan\',statclass=\'Sphere\'),statclass=\'Merit\') >= 1 or target.get(\'Status\',subentry=\'Clan\',statclass=\'Merit\') >= 1)'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'Your character claims membership to a long-standing dynasty of Kindred. Her clan and city know her family’s exploits, and they often precede her. Each level of this Merit builds on the earlier abilities.'
+merit.db.info = 'Your character claims membership to a long-standing dynasty of Kindred. Her clan and city know her family\'s exploits, and they often precede her. Each level of this Merit builds on the earlier abilities.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -898,7 +898,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and not (target.get(\'Atrocious\',statclass=\'Merit\') >= 1) and not (target.get(\'Cutthroat\',statclass=\'Merit\') >= 1)'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'Your character’s seductive Beast oozes with ease and confidence. Her smoky looks tantalize the imagination. Every movement of her hands makes promises. Any rolls to invoke the seductive Beast gain the 8-again quality.'
+merit.db.info = 'Your character\'s seductive Beast oozes with ease and confidence. Her smoky looks tantalize the imagination. Every movement of her hands makes promises. Any rolls to invoke the seductive Beast gain the 8-again quality.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -931,7 +931,7 @@ merit.db.range = [3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 114'
-merit.db.info = 'The Gentry’s promises bind them to a greater degree than those of the Lost do, and your character possesses such a promise. She is entitled to a favor from one of the True Fae. She may have gained this favor through anything from knowing a clever riddle to a dark deed done at the cost of another changeling’s freedom. However she earned it, she has a bauble, song, or phrase that represents the favor, and when she breaks, sings, or utters it, the True Fae appears.'
+merit.db.info = 'The Gentry\'s promises bind them to a greater degree than those of the Lost do, and your character possesses such a promise. She is entitled to a favor from one of the True Fae. She may have gained this favor through anything from knowing a clever riddle to a dark deed done at the cost of another changeling\'s freedom. However she earned it, she has a bauble, song, or phrase that represents the favor, and when she breaks, sings, or utters it, the True Fae appears.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -953,7 +953,7 @@ merit.db.range = [1, 2, 3, 4]
 merit.db.prereq = 'target.wits() >= 3 and  target.animal_ken() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 48-49'
-merit.db.info = 'Your bird performs incredible feats at your command. You purchase this Merit for your character, who may apply it to any bird she shares the Bonded Condition with after a reasonable amount of time training together. Used for both hunting and sport, this practice has roots going back into antiquity and among numerous cultures. While not as widespread now as in the past, finding a trainer for this style is still relatively easy. Unless otherwise noted, these Merits constitute actions the bird takes independently, with only a simple, one-word or gesture command. Thus, your character does not have to dedicate an action to make them happen. Additionally, possession of this Merit allows your character to spend Willpower to benefit the bird’s actions in her presence.'
+merit.db.info = 'Your bird performs incredible feats at your command. You purchase this Merit for your character, who may apply it to any bird she shares the Bonded Condition with after a reasonable amount of time training together. Used for both hunting and sport, this practice has roots going back into antiquity and among numerous cultures. While not as widespread now as in the past, finding a trainer for this style is still relatively easy. Unless otherwise noted, these Merits constitute actions the bird takes independently, with only a simple, one-word or gesture command. Thus, your character does not have to dedicate an action to make them happen. Additionally, possession of this Merit allows your character to spend Willpower to benefit the bird\'s actions in her presence.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -964,7 +964,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.get(entry=\'anonymity\') == 0'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 50'
-merit.db.info = 'Your character is recognized within a certain sphere, for a certain skill, or because of some past action or stroke of luck. This can mean favors and attention, it can also mean negative attention and scrutiny. When choosing the Merit, define what your character is known for. As a rule of thumb, one dot means local recognition, or reputation within a confined subculture. Two dots means regional recognition by a wide swath of people. Three dots means worldwide recognition to anyone that might have been exposed to the source of the fame. Each dot adds a die to any Social rolls among those who are impressed by your character’s celebrity.'
+merit.db.info = 'Your character is recognized within a certain sphere, for a certain skill, or because of some past action or stroke of luck. This can mean favors and attention, it can also mean negative attention and scrutiny. When choosing the Merit, define what your character is known for. As a rule of thumb, one dot means local recognition, or reputation within a confined subculture. Two dots means regional recognition by a wide swath of people. Three dots means worldwide recognition to anyone that might have been exposed to the source of the fame. Each dot adds a die to any Social rolls among those who are impressed by your character\'s celebrity.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1019,7 +1019,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.dexterity() >= 3 and (subentry.split(\':\')[0].lower() == \'brawl\' or note.split(\':\')[0].lower() == \'weaponry\') and subentry in target.db.specialties'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 61'
-merit.db.info = 'Choose a Specialty in Weaponry or Brawl when you purchase this Merit. Your character’s extensive training in that particular weapon or style has allowed them to benefit more from their alacrity and agility than their strength. You may substitute your character’s Dexterity for her Strength when making rolls with that Specialty.'
+merit.db.info = 'Choose a Specialty in Weaponry or Brawl when you purchase this Merit. Your character\'s extensive training in that particular weapon or style has allowed them to benefit more from their alacrity and agility than their strength. You may substitute your character\'s Dexterity for her Strength when making rolls with that Specialty.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1041,7 +1041,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.composure() >= 3 and target.dexterity() >= 3 and target.athletics() >= 2 and target.firearms() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 61-62'
-merit.db.info = 'Your character is comfortable with a gun. She’s been trained in stressful situations, and knows how to keep herself from being shot, while still shooting at her opponents. This Style is about moving, strafing, and taking shots when you get them. It’s not a series of precision techniques; it’s for using a gun practically in a real-world situation.'
+merit.db.info = 'Your character is comfortable with a gun. She\'s been trained in stressful situations, and knows how to keep herself from being shot, while still shooting at her opponents. This Style is about moving, strafing, and taking shots when you get them. It\'s not a series of precision techniques; it\'s for using a gun practically in a real-world situation.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1096,7 +1096,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'The Invictus have their fingers in a lot of pies...but any one vampire only has so many fingers. So the vampires of the First Estate do not just leverage their personal connections - they leverage each other’s. An Invictus member can always do a little horse trading.'
+merit.db.info = 'The Invictus have their fingers in a lot of pies...but any one vampire only has so many fingers. So the vampires of the First Estate do not just leverage their personal connections - they leverage each other\'s. An Invictus member can always do a little horse trading.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1118,7 +1118,7 @@ merit.db.range = [3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 47'
-merit.db.info = 'Your character is massive. She’s well over six feet tall, and crowds part when she approaches. She’s Size 6, and gains +1 Health.'
+merit.db.info = 'Your character is massive. She\'s well over six feet tall, and crowds part when she approaches. She\'s Size 6, and gains +1 Health.'
 merit.db.cg_only = True
 merit.db.restricted = False
 
@@ -1129,7 +1129,7 @@ merit.db.range = [1]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 115'
-merit.db.info = 'Your character can endure without Glamour longer than others. As long as he has Willpower remaining, he doesn’t suffer from deprivation when he drops to Glamour 0 (or below his Wyrd, for high-Wyrd changelings) until one full chapter has passed since he last had any Glamour.'
+merit.db.info = 'Your character can endure without Glamour longer than others. As long as he has Willpower remaining, he doesn\'t suffer from deprivation when he drops to Glamour 0 (or below his Wyrd, for high-Wyrd changelings) until one full chapter has passed since he last had any Glamour.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1206,7 +1206,7 @@ merit.db.range = [3]
 merit.db.prereq = 'target.template().lower == \'changeling\' and target.get(\'Mantle\',subentry=\'Spring\',statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 115'
-merit.db.info = 'Your character’s connection to the Spring Court makes him sure of himself and his perceptions. Even when he is at his weakest and most vulnerable, the verdant life of Spring protects him. He has an armor rating of 1 against all Clarity attacks that deal mild damage.'
+merit.db.info = 'Your character\'s connection to the Spring Court makes him sure of himself and his perceptions. Even when he is at his weakest and most vulnerable, the verdant life of Spring protects him. He has an armor rating of 1 against all Clarity attacks that deal mild damage.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1217,7 +1217,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.stamina() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 47'
-merit.db.info = 'Your character’s body goes further than it rightfully should. Add the dots in this Merit to any rolls to resist disease, poison, deprivation, unconsciousness, or suffocation.'
+merit.db.info = 'Your character\'s body goes further than it rightfully should. Add the dots in this Merit to any rolls to resist disease, poison, deprivation, unconsciousness, or suffocation.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1228,7 +1228,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Safe Place\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'A good haven is not only safe from the sun, but also familiar and comforting. The dot rating reflects your character’s affinity for his home and its defenses against the sun’s intrusion. A low rating might mean an unreliable apartment with boarded windows. A high rating may mean an ancestral home with no windows and an extensive system of vaults.'
+merit.db.info = 'A good haven is not only safe from the sun, but also familiar and comforting. The dot rating reflects your character\'s affinity for his home and its defenses against the sun\'s intrusion. A low rating might mean an unreliable apartment with boarded windows. A high rating may mean an ancestral home with no windows and an extensive system of vaults.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1239,7 +1239,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'Your character has found few arguments she can’t end by ramming her skull into a softer part of the human anatomy. This Merit allows for a new grappling maneuver.'
+merit.db.info = 'Your character has found few arguments she can\'t end by ramming her skull into a softer part of the human anatomy. This Merit allows for a new grappling maneuver.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1272,7 +1272,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template.lower() == \'changeling\' and (target.brawl() >= 2 or target.firearms() >= 2 or target.weaponry() >= 2)'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 115'
-merit.db.info = 'Your character is adept at fighting within the Hedge. You may take a dice penalty on a violent action designated for Hedgespinning between −1 and −3 to gain that number of extra successes if the action is successful. You can only use these successes for shaping Hedge details; this can’t turn a normal success into an exceptional one.'
+merit.db.info = 'Your character is adept at fighting within the Hedge. You may take a dice penalty on a violent action designated for Hedgespinning between −1 and −3 to gain that number of extra successes if the action is successful. You can only use these successes for shaping Hedge details; this can\'t turn a normal success into an exceptional one.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1283,7 +1283,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = '(target.template().lower() == \'changeling\') and (target.presence() >= 2 or target.manipulation() >=  2) and (target.brawl() >=2 or target.weaponry() >= 2) and (target.animal_ken() >= 2 or target.empathy() >= 2 or target.expression() >= 2 or target.intimidation() >= 2 or target.persuasion() >= 2 or target.socialize() >= 2 or target.streetwise() >= 2 or target.subterfuge() >= 2)'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 115'
-merit.db.info = 'Your character is a skilled fae duelist, capable of turning the Hedge into a weapon. Each duelist adopts a different style. A capricious sword dancer might taunt and tease the Hedge into action, while a king of beasts calls Glamour phantoms and Hedge fiends to aid him, and a druidic sorcerer communes with the Hedge, its voice guiding his movements. This Merit’s effects only work in the Hedge proper.'
+merit.db.info = 'Your character is a skilled fae duelist, capable of turning the Hedge into a weapon. Each duelist adopts a different style. A capricious sword dancer might taunt and tease the Hedge into action, while a king of beasts calls Glamour phantoms and Hedge fiends to aid him, and a druidic sorcerer communes with the Hedge, its voice guiding his movements. This Merit\'s effects only work in the Hedge proper.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1305,7 +1305,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'Your character cultivates cliques of mortals willing and eager for the Kiss. Each week, you can draw on a number of Vitae equal to twice the Merit’s dot rating. This requires no roll, only a quick interlude. Taking more than that amount requires normal hunting rolls.'
+merit.db.info = 'Your character cultivates cliques of mortals willing and eager for the Kiss. Each week, you can draw on a number of Vitae equal to twice the Merit\'s dot rating. This requires no roll, only a quick interlude. Taking more than that amount requires normal hunting rolls.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1316,7 +1316,7 @@ merit.db.range = [1]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 115-116'
-merit.db.info = 'Your character has established a kind of kinship with hobgoblins. It may be a matter of resemblance to a True Fae they fear, or something about his kith that encourages this behavior, but they show him a respect generally unheard of by the Lost. It isn’t much like the respect of friends or peers, but they treat him less ruthlessly than'
+merit.db.info = 'Your character has established a kind of kinship with hobgoblins. It may be a matter of resemblance to a True Fae they fear, or something about his kith that encourages this behavior, but they show him a respect generally unheard of by the Lost. It isn\'t much like the respect of friends or peers, but they treat him less ruthlessly than'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1327,7 +1327,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.get(subentry, \'Skill\') >= 2'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 51'
-merit.db.info = 'Your character is part of a group of hobbyists that specialize in one area, represented by a Skill. It may be a book club, a coven, a political party, or any group brought together by a common interest. When the group’s support is available, you benefit from the 9-again quality on rolls involving the group’s chosen Skill. As well, the clique offers two additional dice on any extended actions involving that Skill.'
+merit.db.info = 'Your character is part of a group of hobbyists that specialize in one area, represented by a Skill. It may be a book club, a coven, a political party, or any group brought together by a common interest. When the group\'s support is available, you benefit from the 9-again quality on rolls involving the group\'s chosen Skill. As well, the clique offers two additional dice on any extended actions involving that Skill.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1349,7 +1349,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 116-117'
-merit.db.info = 'While Safe Place (p. 125) represents a mundane-but-secure lair outside the Hedge, Hollow is your character’s secret, private bit of real estate inside the Hedge. It may be something as simple as a closet door that opens into a quiet, hollowed-out tree, or as elaborate as a knock that opens any unlocked door into a lavish, gothic mansion. These locations are as varied as the Hedge itself.'
+merit.db.info = 'While Safe Place (p. 125) represents a mundane-but-secure lair outside the Hedge, Hollow is your character\'s secret, private bit of real estate inside the Hedge. It may be something as simple as a closet door that opens into a quiet, hollowed-out tree, or as elaborate as a knock that opens any unlocked door into a lavish, gothic mansion. These locations are as varied as the Hedge itself.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1360,7 +1360,7 @@ merit.db.range = [1]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 112'
-merit.db.info = 'Your character’s blood not only bonds, but it invigorates. When a vampire tastes your character’s Vitae, she regains a point of Willpower. If this results in a new bond, or steps up an existing bond, she also takes a Beat.'
+merit.db.info = 'Your character\'s blood not only bonds, but it invigorates. When a vampire tastes your character\'s Vitae, she regains a point of Willpower. If this results in a new bond, or steps up an existing bond, she also takes a Beat.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1371,7 +1371,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Carthian\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 115'
-merit.db.info = 'When Carthians make Allies (see p. 118), their covenant acts as a sort of support network that bolsters the efficiency of those allies. Once per story, a Carthian may access temporary Retainer dots equal to their Allies. These Retainers act in the Carthian’s interest, just like any other Retainers. (Since Allies gained with Carthian Pull don’t really belong to the character as a Merit, they don’t count for purposes of I Know A Guy.)'
+merit.db.info = 'When Carthians make Allies (see p. 118), their covenant acts as a sort of support network that bolsters the efficiency of those allies. Once per story, a Carthian may access temporary Retainer dots equal to their Allies. These Retainers act in the Carthian\'s interest, just like any other Retainers. (Since Allies gained with Carthian Pull don\'t really belong to the character as a Merit, they don\'t count for purposes of I Know A Guy.)'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1393,7 +1393,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.wits() >= 3 and target.weaponry >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 62-63'
-merit.db.info = 'Most people don’t walk around armed. While someone pulling a knife or a gun can cool a hostile situation down, it can also cause things to boil over - an argument that wouldn’t be more than harsh words suddenly ends up with three people in the morgue. If your character is on the receiving end of someone pulling a knife, it helps to have something in his hand as well.'
+merit.db.info = 'Most people don\'t walk around armed. While someone pulling a knife or a gun can cool a hostile situation down, it can also cause things to boil over - an argument that wouldn\'t be more than harsh words suddenly ends up with three people in the morgue. If your character is on the receiving end of someone pulling a knife, it helps to have something in his hand as well.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1404,7 +1404,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.resolve() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 45'
-merit.db.info = 'Your character possesses an iron will. The powers of the supernatural have little bearing on her behavior. She can stand up to a vampire’s mind control, a witch’s charms, or a ghost’s gifts of fright. Any time a supernatural creature uses a power to influence your character’s thoughts or emotions, add two dice to the dice pool to contest it. If the roll is resisted, instead subtract two dice from the monster’s dice pool. Note that this only affects mental influence and manipulation from a supernatural origin. A vampire with a remarkable Manipulation + Persuasion score is just as likely to convince your character to do something using mundane tricks.'
+merit.db.info = 'Your character possesses an iron will. The powers of the supernatural have little bearing on her behavior. She can stand up to a vampire\'s mind control, a witch\'s charms, or a ghost\'s gifts of fright. Any time a supernatural creature uses a power to influence your character\'s thoughts or emotions, add two dice to the dice pool to contest it. If the roll is resisted, instead subtract two dice from the monster\'s dice pool. Note that this only affects mental influence and manipulation from a supernatural origin. A vampire with a remarkable Manipulation + Persuasion score is just as likely to convince your character to do something using mundane tricks.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1415,7 +1415,7 @@ merit.db.range = [3]
 merit.db.prereq = 'target.presence() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 51'
-merit.db.info = 'Your character’s passion inspires those around her to greatness. With a few words, she can redouble a group’s confidence or move them to action.'
+merit.db.info = 'Your character\'s passion inspires those around her to greatness. With a few words, she can redouble a group\'s confidence or move them to action.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1437,7 +1437,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.get(subentry.split(\':\')[0], search_type = \'Skill\') >= 3 and subentry in target.db.specialties'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 45'
-merit.db.info = 'Choose a Specialty that your character possesses when you purchase this Merit. You can apply the +1 from that Specialty on any Skill with at least one dot, provided it’s justifiable within the scope of the fiction. For example, a doctor with a Medicine Specialty in Anatomy may be able to use it when targeting a specific body part with Weaponry, but could not with a general strike.'
+merit.db.info = 'Choose a Specialty that your character possesses when you purchase this Merit. You can apply the +1 from that Specialty on any Skill with at least one dot, provided it\'s justifiable within the scope of the fiction. For example, a doctor with a Medicine Specialty in Anatomy may be able to use it when targeting a specific body part with Weaponry, but could not with a general strike.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1470,7 +1470,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.wits() >= 3 and target.investigation >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 45'
-merit.db.info = 'Your character investigates instinctively, and can intuit details and connections in a scene without much time. He’s a veritable Sherlock Holmes. Instead of simply uncovering Clues or not uncovering Clues when investigating (see p. 79), your character discovers multiple Clues in a single action. Your character can uncover Clues equal to his successes or his Merit dots as an instant action, whichever is lower.'
+merit.db.info = 'Your character investigates instinctively, and can intuit details and connections in a scene without much time. He\'s a veritable Sherlock Holmes. Instead of simply uncovering Clues or not uncovering Clues when investigating (see p. 79), your character discovers multiple Clues in a single action. Your character can uncover Clues equal to his successes or his Merit dots as an instant action, whichever is lower.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1481,7 +1481,7 @@ merit.db.range = [2, 4]
 merit.db.prereq = 'target.resolve() >= 3 and target.stamina() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'Your character’s taken her share of beatings and can’t be scared by pain or the sight of her own blood. This Merit comes in two levels. At ** dots, she no longer suffers the Beaten Down Tilt from any amount of bashing damage. At **** dots, she never suffers Beaten Down, period. This is probably more foolhardy than brave. If your chronicle doesn’t feature conflicts where Beaten Down features prominently, don’t use this Merit.'
+merit.db.info = 'Your character\'s taken her share of beatings and can\'t be scared by pain or the sight of her own blood. This Merit comes in two levels. At ** dots, she no longer suffers the Beaten Down Tilt from any amount of bashing damage. At **** dots, she never suffers Beaten Down, period. This is probably more foolhardy than brave. If your chronicle doesn\'t feature conflicts where Beaten Down features prominently, don\'t use this Merit.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1503,7 +1503,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.stamina() >= 3 or target.resolve() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 48'
-merit.db.info = 'Each dot eliminates a negative modifier (on a one-for-one basis) when resisting the effects of fatigue or injury. For example: A character with Iron Stamina ** is able to ignore up to a -2 modifier brought on by fatigue. The Merit also counteracts the effects of wound penalties. So, if all of your character’s Health boxes are filled (which normally imposes a -3 penalty to his actions) and he has Iron Stamina *, those penalties are reduced to -2. This Merit cannot be used to gain positive modifiers for actions, only to cancel out negative ones.'
+merit.db.info = 'Each dot eliminates a negative modifier (on a one-for-one basis) when resisting the effects of fatigue or injury. For example: A character with Iron Stamina ** is able to ignore up to a -2 modifier brought on by fatigue. The Merit also counteracts the effects of wound penalties. So, if all of your character\'s Health boxes are filled (which normally imposes a -3 penalty to his actions) and he has Iron Stamina *, those penalties are reduced to -2. This Merit cannot be used to gain positive modifiers for actions, only to cancel out negative ones.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1514,7 +1514,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.resolve() >= 4'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 51'
-merit.db.info = 'Your character’s resolve is unwavering. When spending Willpower to contest or resist in a Social interaction, you may substitute your character’s Resolve for the usual Willpower bonus. If the roll is contested, roll with 8-again.'
+merit.db.info = 'Your character\'s resolve is unwavering. When spending Willpower to contest or resist in a Social interaction, you may substitute your character\'s Resolve for the usual Willpower bonus. If the roll is contested, roll with 8-again.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1536,7 +1536,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.template().lower() == \'vampire\' and target.composure() >= 3 and target.weaponry() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 117-118'
-merit.db.info = 'Your character is not only a competent fighter, but also one trained specifically to take advantage of Kindred variables in a fight. Use of Kindred dueling requires an edged weapon. While humans could theoretically learn some of these tricks, the practical experience required could prove deadly. Note that Kindred Dueling abilities may not be used together. If you’re using Hamstring, you cannot benefit from Carving as well.'
+merit.db.info = 'Your character is not only a competent fighter, but also one trained specifically to take advantage of Kindred variables in a fight. Use of Kindred dueling requires an edged weapon. While humans could theoretically learn some of these tricks, the practical experience required could prove deadly. Note that Kindred Dueling abilities may not be used together. If you\'re using Hamstring, you cannot benefit from Carving as well.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1558,7 +1558,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\',statclass=\'Sphere\').lower() == \'daeva\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 113'
-merit.db.info = 'All Kindred can evoke lustful, passionate reactions with a bite. The Daeva’s bite is downright addicting. Her Kiss causes the Addicted Condition in mortals as well as the Swooning Condition (for Addicted, see p. 301; for Swooning, see p. 306).'
+merit.db.info = 'All Kindred can evoke lustful, passionate reactions with a bite. The Daeva\'s bite is downright addicting. Her Kiss causes the Addicted Condition in mortals as well as the Swooning Condition (for Addicted, see p. 301; for Swooning, see p. 306).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1580,7 +1580,7 @@ merit.db.range = [3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 57'
-merit.db.info = 'Your character’s faith or force of devotion becomes a wholesome force that heals the sick and mends injuries. However, she takes some of those injuries upon herself by proxy.'
+merit.db.info = 'Your character\'s faith or force of devotion becomes a wholesome force that heals the sick and mends injuries. However, she takes some of those injuries upon herself by proxy.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1591,7 +1591,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 117'
-merit.db.info = 'The Hedge warped some element of your character’s fae mien, and left him with wicked nails, sharp teeth, or some other offensive trait. The changeling can inflict lethal damage while unarmed. If another power already gives him the capacity for lethal blows, such as the Beast seeming blessing, add one to his unarmed weapon modifier instead.|/|/The character may choose whether to use the benefit of these claws, fangs, spurs, or other dangerous element at will.'
+merit.db.info = 'The Hedge warped some element of your character\'s fae mien, and left him with wicked nails, sharp teeth, or some other offensive trait. The changeling can inflict lethal damage while unarmed. If another power already gives him the capacity for lethal blows, such as the Beast seeming blessing, add one to his unarmed weapon modifier instead.|/|/The character may choose whether to use the benefit of these claws, fangs, spurs, or other dangerous element at will.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1602,7 +1602,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 2 and target.get(\'Feeding Ground\', statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116'
-merit.db.info = 'Territory is bond. Feeding ground is sacrosanct. Any blood poached from your character’s Feeding Ground is tainted for Kindred she has not specifically allowed. When next a poacher sleeps, the blood dissolves in his gullet. When he wakes, he violently retches, taking one bashing damage per Vitae lost. As well, his lips and mouth stain with black streaks that paint him as a poacher. These marks last for one week.'
+merit.db.info = 'Territory is bond. Feeding ground is sacrosanct. Any blood poached from your character\'s Feeding Ground is tainted for Kindred she has not specifically allowed. When next a poacher sleeps, the blood dissolves in his gullet. When he wakes, he violently retches, taking one bashing damage per Vitae lost. As well, his lips and mouth stain with black streaks that paint him as a poacher. These marks last for one week.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1635,7 +1635,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and (target.get(\'Status\', subentry=target.get(\'Clan\',statclass=\'Sphere\'), statclass=\'Merit\') >= 1 or target.get(\'Status\',subentry=\'Clan\',statclass=\'Merit\') >= 1)'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 113'
-merit.db.info = 'You come from strong stock. Your sire’s well known, and his influence bleeds onto your interactions. Once per chapter, this Merit can represent a single dot of one of the following Merits: Allies, Contacts, Mentor, Resources, or Status. The Merit must be one your sire may have possessed.'
+merit.db.info = 'You come from strong stock. Your sire\'s well known, and his influence bleeds onto your interactions. Once per chapter, this Merit can represent a single dot of one of the following Merits: Allies, Contacts, Mentor, Resources, or Status. The Merit must be one your sire may have possessed.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1668,7 +1668,7 @@ merit.db.range = [5]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 5'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116'
-merit.db.info = 'Carthians wield consensus the way a cop wields a baton. With the power of the Movement behind her, a ranking Carthian can call on the will of her people to strike weakness into the Movement’s opposition. With her words and the mandate, she strips a Kindred enemy’s blood down to nothingness. To enact this law, your character must make a clear and direct admonishment against one of the Movement’s enemies. Cross a dot of Willpower off the Carthian’s sheet. She must also garner the support of others of the Movement for a vote - from both Storyteller characters and players’ characters. If the vote favors the admonishment, add the total dots of Carthian Status in support (including the user’s five). For every five dots, reduce the victim’s Blood Potency by one dot. If this reduces him to zero dots, he effectively becomes a revenant (see p. 94 for rules on revenants).'
+merit.db.info = 'Carthians wield consensus the way a cop wields a baton. With the power of the Movement behind her, a ranking Carthian can call on the will of her people to strike weakness into the Movement\'s opposition. With her words and the mandate, she strips a Kindred enemy\'s blood down to nothingness. To enact this law, your character must make a clear and direct admonishment against one of the Movement\'s enemies. Cross a dot of Willpower off the Carthian\'s sheet. She must also garner the support of others of the Movement for a vote - from both Storyteller characters and players\' characters. If the vote favors the admonishment, add the total dots of Carthian Status in support (including the user\'s five). For every five dots, reduce the victim\'s Blood Potency by one dot. If this reduces him to zero dots, he effectively becomes a revenant (see p. 94 for rules on revenants).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1679,7 +1679,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['Spring', 'Summer', 'Autumn', 'Winter']
 merit.db.reference = 'CtL p. 117'
-merit.db.info = 'When a changeling joins a court, she accepts all its blessings and embodies it, the same way she does her own seeming and kith. Mantle represents the mystical connection a changeling has to the elements and emotions of her chosen court. As her Mantle rises, she becomes a better representation of what it is to be a courtier. A changeling with a high Mantle embodies the ideals of the court, and others who belong to the court recognize her dedication and give her respect, even if it’s grudging.'
+merit.db.info = 'When a changeling joins a court, she accepts all its blessings and embodies it, the same way she does her own seeming and kith. Mantle represents the mystical connection a changeling has to the elements and emotions of her chosen court. As her Mantle rises, she becomes a better representation of what it is to be a courtier. A changeling with a high Mantle embodies the ideals of the court, and others who belong to the court recognize her dedication and give her respect, even if it\'s grudging.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1734,7 +1734,7 @@ merit.db.range = [1, 2, 4]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 46'
-merit.db.info = 'Your character’s meditation is far more fulfilling than for other characters. With the one-dot version of this Merit, the character does not suffer environmental penalties to meditation (see p. 75), even from wound penalties.|/|/With the two-dot version, when the character has successfully meditated, she gains a +3 bonus on any Resolve + Composure rolls during the same day, as she’s steeled herself against the things in the world that would shake her foundation.|/|/At the four-dot level, she only needs a single success to gain the benefits of meditation for the day, instead of the normal four.'
+merit.db.info = 'Your character\'s meditation is far more fulfilling than for other characters. With the one-dot version of this Merit, the character does not suffer environmental penalties to meditation (see p. 75), even from wound penalties.|/|/With the two-dot version, when the character has successfully meditated, she gains a +3 bonus on any Resolve + Composure rolls during the same day, as she\'s steeled herself against the things in the world that would shake her foundation.|/|/At the four-dot level, she only needs a single success to gain the benefits of meditation for the day, instead of the normal four.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1756,7 +1756,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 51'
-merit.db.info = 'This Merit gives your character a teacher that provides advice and guidance. He acts on your character’s behalf, often in the background, and sometimes without your character’s knowledge. While Mentors can be highly competent, they almost always want something in return for their services. The dot rating determines the Mentor’s capabilities, and to what extent he’ll aid your character.'
+merit.db.info = 'This Merit gives your character a teacher that provides advice and guidance. He acts on your character\'s behalf, often in the background, and sometimes without your character\'s knowledge. While Mentors can be highly competent, they almost always want something in return for their services. The dot rating determines the Mentor\'s capabilities, and to what extent he\'ll aid your character.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1767,7 +1767,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.empathy() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 57'
-merit.db.info = 'Your character gets deep under the skin of problems. If she’s investigating a crime or other phenomenon, she can put herself in the mind of the culprit. This often helps with the case, however, it takes her to a dark place internally.'
+merit.db.info = 'Your character gets deep under the skin of problems. If she\'s investigating a crime or other phenomenon, she can put herself in the mind of the culprit. This often helps with the case, however, it takes her to a dark place internally.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1789,7 +1789,7 @@ merit.db.range = [1, 2, 3, 4]
 merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 2 and target.animal_ken() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 51'
-merit.db.info = 'Your character fights from horseback using the animal’s size and maneuverability to make her attacks more effective. While trained cavalry regiments are largely a thing of the past, many police departments around the world still have officers who use techniques like these in the modern day.'
+merit.db.info = 'Your character fights from horseback using the animal\'s size and maneuverability to make her attacks more effective. While trained cavalry regiments are largely a thing of the past, many police departments around the world still have officers who use techniques like these in the modern day.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1866,7 +1866,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 58'
-merit.db.info = 'With Numbing Touch, your character’s psychic gifts allow her to numb a person, rendering them sluggish and incompetent. With intense concentration, she can cause neurons to shut down.'
+merit.db.info = 'With Numbing Touch, your character\'s psychic gifts allow her to numb a person, rendering them sluggish and incompetent. With intense concentration, she can cause neurons to shut down.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1877,7 +1877,7 @@ merit.db.range = [4]
 merit.db.prereq = 'True'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'VtR p. 117'
-merit.db.info = 'With this Oath, a vassal swears to perform a service to his liege. The service must be a difficult task with definite criteria for accomplishment or failure. At the time of the swearing, both parties agree upon one of the liege’s Disciplines. The vassal gains access to that Discipline. The liege’s Blood Potency increases by one. This Oath stands as a rare exception to bloodline Disciplines: a vassal may temporarily access a liege’s bloodline gift.'
+merit.db.info = 'With this Oath, a vassal swears to perform a service to his liege. The service must be a difficult task with definite criteria for accomplishment or failure. At the time of the swearing, both parties agree upon one of the liege\'s Disciplines. The vassal gains access to that Discipline. The liege\'s Blood Potency increases by one. This Oath stands as a rare exception to bloodline Disciplines: a vassal may temporarily access a liege\'s bloodline gift.'
 merit.db.cg_only = False
 merit.db.restricted = True
 
@@ -1888,7 +1888,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Invictus\', statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'VtR p. 117'
-merit.db.info = 'This most basic Oath establishes a foundation of trust within the Invictus. The vassal may draw a number of Vitae from his liege equal to his Invictus Status in a given week. This Vitae transfers mystically over any distance, and replenishes the vassal’s pool without risk of Vitae addiction or blood bond. The liege always knows if the vassal lies to her, in voice or in writing.'
+merit.db.info = 'This most basic Oath establishes a foundation of trust within the Invictus. The vassal may draw a number of Vitae from his liege equal to his Invictus Status in a given week. This Vitae transfers mystically over any distance, and replenishes the vassal\'s pool without risk of Vitae addiction or blood bond. The liege always knows if the vassal lies to her, in voice or in writing.'
 merit.db.cg_only = False
 merit.db.restricted = True
 
@@ -1899,7 +1899,7 @@ merit.db.range = [3]
 merit.db.prereq = 'True'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'VtR p. 117'
-merit.db.info = 'This Oath is a form of apology from a vassal to an aggrieved liege. For the agreed-upon term, the liege receives every tenth Vitae the vassal ingests. This Vitae comes over any distance, without risk of blood bond or addiction, and counts as Kindred Vitae. Some ancient Invictus use this Oath to skirt their need for Kindred blood, by establishing massive networks of "punished" vassals. During the same period, the vassal becomes immune to the liege’s Discipline effects.'
+merit.db.info = 'This Oath is a form of apology from a vassal to an aggrieved liege. For the agreed-upon term, the liege receives every tenth Vitae the vassal ingests. This Vitae comes over any distance, without risk of blood bond or addiction, and counts as Kindred Vitae. Some ancient Invictus use this Oath to skirt their need for Kindred blood, by establishing massive networks of "punished" vassals. During the same period, the vassal becomes immune to the liege\'s Discipline effects.'
 merit.db.cg_only = False
 merit.db.restricted = True
 
@@ -1921,7 +1921,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42'
-merit.db.info = 'Your character places immense trust and confidence in an object, often assuming it has mystical or otherworldly significance. He believes he’s tied inexorably to the object. Choose a Skill Specialty when taking this Merit; that Specialty must be tied to your character’s relationship to the object.'
+merit.db.info = 'Your character places immense trust and confidence in an object, often assuming it has mystical or otherworldly significance. He believes he\'s tied inexorably to the object. Choose a Skill Specialty when taking this Merit; that Specialty must be tied to your character\'s relationship to the object.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1943,7 +1943,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\', statclass=\'Sphere\').lower() == \'gangrel\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 114'
-merit.db.info = 'You’re pack-minded. Your blood draws to blood. You may designate a coterie of Kindred and ghouls as your pack. Every Gangrel has a different method for the designation. Some anoint with blood. Some have hazing rituals. When the pack takes teamwork actions, the supporting characters gain the 8-again quality on their rolls. The anchor character does not, but still adds dice equal to the others’ successes.'
+merit.db.info = 'You\'re pack-minded. Your blood draws to blood. You may designate a coterie of Kindred and ghouls as your pack. Every Gangrel has a different method for the designation. Some anoint with blood. Some have hazing rituals. When the pack takes teamwork actions, the supporting characters gain the 8-again quality on their rolls. The anchor character does not, but still adds dice equal to the others\' successes.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1965,7 +1965,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'Mantle\',subentry=subentry,statclass=\'Merit\') >= 6'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 119'
-merit.db.info = 'The changeling is more adept at inciting Bedlam than her fellows. Add the Merit’s rating as a dice bonus to any rolls she makes to incite Bedlam (see p. 110).'
+merit.db.info = 'The changeling is more adept at inciting Bedlam than her fellows. Add the Merit\'s rating as a dice bonus to any rolls she makes to incite Bedlam (see p. 110).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -1976,7 +1976,7 @@ merit.db.range = [3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 119'
-merit.db.info = 'The changeling is deeply connected to his fetch. Each experiences occasional flashes of the other’s emotional state when something affects one of them strongly, and gains two bonus dice to use Empathy or magic to read the other’s intentions, or to enter his Bastion. By spending a point of Willpower, either can ride along with the other’s senses for a number of minutes equal to his Wyrd rating, losing his Defense and the ability to perceive the world around him as he does. Either of them can also spend a Willpower point to send a vague message via thought to the other; it comes across not in words, but fleeting impressions and snippets of images, and can only encompass fairly simple ideas. A fetch could warn his changeling of a Huntsman’s impending arrival, but without any detail about when or how. Likewise, the changeling could threaten his fetch’s life, but couldn’t make any specific demands. Whenever the fetch uses this connection to make the changeling’s life more dangerous or inconvenient, gain a Beat.'
+merit.db.info = 'The changeling is deeply connected to his fetch. Each experiences occasional flashes of the other\'s emotional state when something affects one of them strongly, and gains two bonus dice to use Empathy or magic to read the other\'s intentions, or to enter his Bastion. By spending a point of Willpower, either can ride along with the other\'s senses for a number of minutes equal to his Wyrd rating, losing his Defense and the ability to perceive the world around him as he does. Either of them can also spend a Willpower point to send a vague message via thought to the other; it comes across not in words, but fleeting impressions and snippets of images, and can only encompass fairly simple ideas. A fetch could warn his changeling of a Huntsman\'s impending arrival, but without any detail about when or how. Likewise, the changeling could threaten his fetch\'s life, but couldn\'t make any specific demands. Whenever the fetch uses this connection to make the changeling\'s life more dangerous or inconvenient, gain a Beat.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2009,7 +2009,7 @@ merit.db.range = [2, 3]
 merit.db.prereq = 'target.wits() >= 3 and target.empathy() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 42-43'
-merit.db.info = 'Your character is keenly attuned to indications of imminent violence, and knows techniques to soothe hot tempers and calm emotions. At two dots, the character may act first in a violent scene to attempt to deescalate the behavior. He spends a point of Willpower and forces his opponent into a social maneuver. The opponent’s base number of Doors is equal to the higher of her Resolve or Composure for this maneuver.'
+merit.db.info = 'Your character is keenly attuned to indications of imminent violence, and knows techniques to soothe hot tempers and calm emotions. At two dots, the character may act first in a violent scene to attempt to deescalate the behavior. He spends a point of Willpower and forces his opponent into a social maneuver. The opponent\'s base number of Doors is equal to the higher of her Resolve or Composure for this maneuver.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2020,7 +2020,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.get(\'Weapon and Shield\',statclass=\'Merit\') >= 2 and target.get(\'Spear and Bayonet\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'Your character is trained to wield a spear alongside a shield. She does not increase her spear’s Strength requirement for using it one-handed as long as she’s also using a shield. She can use a spear for any Weapon and Shield maneuvers.'
+merit.db.info = 'Your character is trained to wield a spear alongside a shield. She does not increase her spear\'s Strength requirement for using it one-handed as long as she\'s also using a shield. She can use a spear for any Weapon and Shield maneuvers.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2031,7 +2031,7 @@ merit.db.range = [4]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116'
-merit.db.info = 'Carthians don’t break laws; they defy laws. Influential Carthians can throw law to the wind, then laugh it off with an argument about the definition of the word "is." Any attempt to use a Discipline or other supernatural power to prove your character’s guilt in breach of city law or Tradition automatically fails. She cannot be forced to confess by any means, and attempts to detect her honesty through mundane means suffer her Carthian Status as a penalty. She exhibits no stains on her aura from diablerie.'
+merit.db.info = 'Carthians don\'t break laws; they defy laws. Influential Carthians can throw law to the wind, then laugh it off with an argument about the definition of the word "is." Any attempt to use a Discipline or other supernatural power to prove your character\'s guilt in breach of city law or Tradition automatically fails. She cannot be forced to confess by any means, and attempts to detect her honesty through mundane means suffer her Carthian Status as a penalty. She exhibits no stains on her aura from diablerie.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2097,7 +2097,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.persuasion() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 53'
-merit.db.info = 'Your character tempts and bribes as second nature. Any time a mark in a Social interaction accepts his soft leverage (see p. 82), improve your Impression as if you’d satisfied his Vice as well as moving the impression up on the chart.'
+merit.db.info = 'Your character tempts and bribes as second nature. Any time a mark in a Social interaction accepts his soft leverage (see p. 82), improve your Impression as if you\'d satisfied his Vice as well as moving the impression up on the chart.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2141,7 +2141,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'W:tF p. 107'
-merit.db.info = 'Your pack\'s territory encompasses a residential area, and your character has secured it well. This area may be an apartment complex, a gated community, or any place where diverse groups of people lay their heads. Once per game session, you can access a number of Merit dots equal to your Residential Area Merit dots. These Merits can be split however you wish between Allies, Contacts, and Retainers. These Merits must make sense within the scope of the territory. A tenement in the slums probably won’t have high-level Medical Allies, for example.'
+merit.db.info = 'Your pack\'s territory encompasses a residential area, and your character has secured it well. This area may be an apartment complex, a gated community, or any place where diverse groups of people lay their heads. Once per game session, you can access a number of Merit dots equal to your Residential Area Merit dots. These Merits can be split however you wish between Allies, Contacts, and Retainers. These Merits must make sense within the scope of the territory. A tenement in the slums probably won\'t have high-level Medical Allies, for example.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2163,7 +2163,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 53'
-merit.db.info = 'This Merit reflects your character’s disposable income. She might live in an upscale condo, but if her income is tied up in the mortgage and child support payments, she might have little money to throw around. Characters are assumed to have basic necessities without Resources.'
+merit.db.info = 'This Merit reflects your character\'s disposable income. She might live in an upscale condo, but if her income is tied up in the mortgage and child support payments, she might have little money to throw around. Characters are assumed to have basic necessities without Resources.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2174,7 +2174,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.wits() >= 2 and target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'Your character has trained to resist being disarmed. Police and military forces often teach this, but your character might learn this as part of a traditional martial art, as part of a shooting course, or as a member of a private security service. When an attacker attempts to use the Control Weapon or Disarm grappling maneuvers to take his weapon, or otherwise take it away in combat, reduce successes by your character’s Brawl dots.'
+merit.db.info = 'Your character has trained to resist being disarmed. Police and military forces often teach this, but your character might learn this as part of a traditional martial art, as part of a shooting course, or as a member of a private security service. When an attacker attempts to use the Control Weapon or Disarm grappling maneuvers to take his weapon, or otherwise take it away in combat, reduce successes by your character\'s Brawl dots.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2196,7 +2196,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.template().lower() == \'vampire\' and target.composure() >= 3 and target.resolve() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 117-118'
-merit.db.info = 'Your character runs with her Beast, and knows how to use it to her advantage. She’s turned riding the wave into a raw, primal art. These maneuvers may only be used while riding the wave. They cannot be used in a normal frenzy, or outside of frenzy.'
+merit.db.info = 'Your character runs with her Beast, and knows how to use it to her advantage. She\'s turned riding the wave into a raw, primal art. These maneuvers may only be used while riding the wave. They cannot be used in a normal frenzy, or outside of frenzy.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2207,7 +2207,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Carthian\', statclass=\'Merit\') >= 2 and target.get(\'Status\', subentry=\'City\', statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 116'
-merit.db.info = 'This somewhat rare Merit allows a Carthian to work within another covenant without fear of her covenant’s ostracism. After all, Carthians aim for human solutions, and nothing is more human than the ability to adapt and socialize.'
+merit.db.info = 'This somewhat rare Merit allows a Carthian to work within another covenant without fear of her covenant\'s ostracism. After all, Carthians aim for human solutions, and nothing is more human than the ability to adapt and socialize.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2218,7 +2218,7 @@ merit.db.range = [3]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.subterfuge() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CtL p. 119'
-merit.db.info = 'For your character, the protection of the Mask extends far beyond the usual mortal camouflage. Perhaps she can sense the subtle magic that turns her smile into her Mask’s smile, or her true face is strongly connected to the one that lets her interact with humanity. No one fooled by the Mask knows when she’s lying or what she’s feeling unless she allows it. Mortals automatically fail rolls to notice these things, as do polygraphs and other mundane lie-detecting devices. Supernatural creatures must engage in a Clash of Wills to notice her lies.|/|/Drawback: Intentionally dropping your character’s Mask deals her a point of lethal damage in addition to the normal rules (p. 83).'
+merit.db.info = 'For your character, the protection of the Mask extends far beyond the usual mortal camouflage. Perhaps she can sense the subtle magic that turns her smile into her Mask\'s smile, or her true face is strongly connected to the one that lets her interact with humanity. No one fooled by the Mask knows when she\'s lying or what she\'s feeling unless she allows it. Mortals automatically fail rolls to notice these things, as do polygraphs and other mundane lie-detecting devices. Supernatural creatures must engage in a Clash of Wills to notice her lies.|/|/Drawback: Intentionally dropping your character\'s Mask deals her a point of lethal damage in addition to the normal rules (p. 83).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2240,7 +2240,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 54'
-merit.db.info = 'Your character has somewhere she can go where she can feel secure. While she may have enemies that could attack her there, she’s prepared and has the upper hand. The dot rating reflects the security of the place. The actual location, the luxury, and the size are represented by equipment. A one-dot Safe Place might be equipped with basic security systems or a booby trap at the windows and door. A five-dot could have a security crew, infrared scanners at every entrance, or trained dogs. Each place can be an apartment, a mansion, or a hidey-hole.'
+merit.db.info = 'Your character has somewhere she can go where she can feel secure. While she may have enemies that could attack her there, she\'s prepared and has the upper hand. The dot rating reflects the security of the place. The actual location, the luxury, and the size are represented by equipment. A one-dot Safe Place might be equipped with basic security systems or a booby trap at the windows and door. A five-dot could have a security crew, infrared scanners at every entrance, or trained dogs. Each place can be an apartment, a mansion, or a hidey-hole.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2273,7 +2273,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.wits() >= 3 and target.composure() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 49'
-merit.db.info = 'Your character is always ready for a chase. Whether to escape a threat or hunt down a rival, she’s always geared and ready to go. She always has the Edge in the first turn of a chase scene (see p. 84). Additionally, the opponent must make a successful Wits + Composure roll, as if being ambushed, or your character does not have to account for her Speed or Initiative when calculating needed successes in the first turn.'
+merit.db.info = 'Your character is always ready for a chase. Whether to escape a threat or hunt down a rival, she\'s always geared and ready to go. She always has the Edge in the first turn of a chase scene (see p. 84). Additionally, the opponent must make a successful Wits + Composure roll, as if being ambushed, or your character does not have to account for her Speed or Initiative when calculating needed successes in the first turn.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2295,7 +2295,7 @@ merit.db.range = [1, 2]
 merit.db.prereq = 'target.get(\'Street Fighting\') >= 2 and target.weaponry() >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 64'
-merit.db.info = 'Your character carries small, concealable weapons for use in a tussle. Rolls to detect the concealed weapon suffer your character’s Weaponry score as a penalty. With the one-dot version, he can conceal a weapon with a zero damage rating. The two-dot version can conceal a one damage rating weapon. Your character may use the Brawl Skill to use this weapon.'
+merit.db.info = 'Your character carries small, concealable weapons for use in a tussle. Rolls to detect the concealed weapon suffer your character\'s Weaponry score as a penalty. With the one-dot version, he can conceal a weapon with a zero damage rating. The two-dot version can conceal a one damage rating weapon. Your character may use the Brawl Skill to use this weapon.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2317,7 +2317,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.presence() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 54'
-merit.db.info = 'Your character is a proficient leader in the field. She can organize efforts and bark orders to remarkable effect. Once per scene, when making a coordinated action that was planned in advance, spend a point of Willpower and an instant action. A number of characters equal to your character’s Presence can benefit from the +3 bonus gained from the Willpower expenditure.'
+merit.db.info = 'Your character is a proficient leader in the field. She can organize efforts and bark orders to remarkable effect. Once per scene, when making a coordinated action that was planned in advance, spend a point of Willpower and an instant action. A number of characters equal to your character\'s Presence can benefit from the +3 bonus gained from the Willpower expenditure.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2328,7 +2328,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 49'
-merit.db.info = 'Your character is diminutive. He’s not five feet, and it’s easy to walk into him without noticing. He’s Size 4, and thus has one fewer Health box. He gains +2 to any rolls to hide or go unnoticed, and this bonus might apply any time being smaller would be an advantage, such as crawling through smaller spaces.'
+merit.db.info = 'Your character is diminutive. He\'s not five feet, and it\'s easy to walk into him without noticing. He\'s Size 4, and thus has one fewer Health box. He gains +2 to any rolls to hide or go unnoticed, and this bonus might apply any time being smaller would be an advantage, such as crawling through smaller spaces.'
 merit.db.cg_only = True
 merit.db.restricted = False
 
@@ -2361,7 +2361,7 @@ merit.db.range = [3]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\', subentry=\'Invictus\', statclass=\'Merit\') >= 1 and target.get(\'Dynasty Membership\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 114'
-merit.db.info = 'Any Kindred may be part of a dynastic house, but the Invictus take dynasty membership very seriously. Some members receive training to channel the minds of torpid dynasty members. With this Merit, the character can choose to act as a medium for a torpid elder’s consciousness. While possessed, the Speaker is aware of what occurs around him, but the torpid Kindred has control of his body, and can speak through him. The torpid Kindred retains no access to her Disciplines while possessing a Speaker. At any time, the Speaker can spend a point of Willpower to eject the torpid mind. The torpid Kindred can relinquish her control at will.'
+merit.db.info = 'Any Kindred may be part of a dynastic house, but the Invictus take dynasty membership very seriously. Some members receive training to channel the minds of torpid dynasty members. With this Merit, the character can choose to act as a medium for a torpid elder\'s consciousness. While possessed, the Speaker is aware of what occurs around him, but the torpid Kindred has control of his body, and can speak through him. The torpid Kindred retains no access to her Disciplines while possessing a Speaker. At any time, the Speaker can spend a point of Willpower to eject the torpid mind. The torpid Kindred can relinquish her control at will.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2405,7 +2405,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 119'
-merit.db.info = 'Your character’s freehold has secured and maintained a trod (p. 201) with a rating equal to his Merit dots in Stable Trod. The trod bestows two additional advantages to those who have Hollows along it or travel it frequently:|/|/Hollows along the trod gain an extra one-dot Hollow enhancement (p. 116). The enhancement is the same for all such Hollows. This can benefit a number of Hollows equal to the Stable Trod Merit rating. This enhancement can bring the number of Hollow enhancements above the normal maximum a Hollow’s rating allows.|/Goblin fruit trees cultivated along the trod produce additional fruit. You may roll your character’s dots in Stable Trod as a dice pool once per story. Each success produces one additional generic fruit, which contains a point of Glamour.'
+merit.db.info = 'Your character\'s freehold has secured and maintained a trod (p. 201) with a rating equal to his Merit dots in Stable Trod. The trod bestows two additional advantages to those who have Hollows along it or travel it frequently:|/|/Hollows along the trod gain an extra one-dot Hollow enhancement (p. 116). The enhancement is the same for all such Hollows. This can benefit a number of Hollows equal to the Stable Trod Merit rating. This enhancement can bring the number of Hollow enhancements above the normal maximum a Hollow\'s rating allows.|/Goblin fruit trees cultivated along the trod produce additional fruit. You may roll your character\'s dots in Stable Trod as a dice pool once per story. Each success produces one additional generic fruit, which contains a point of Glamour.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2460,7 +2460,7 @@ merit.db.range = [1, 2, 3, 4]
 merit.db.prereq = 'target.strength() >= 3 and target.stamina() >= 2 and target.athletics() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 52'
-merit.db.info = 'While the Strength Attribute covers all forms of issuing bodily force, your character has specifically trained in lifting, pushing, and pulling enormous weights. He learned this as an Olympic-style weightlifter, strongman competitor, or performer. This doesn’t help your character hit things, but if he does, anything at the other end is going to break and hurt.'
+merit.db.info = 'While the Strength Attribute covers all forms of issuing bodily force, your character has specifically trained in lifting, pushing, and pulling enormous weights. He learned this as an Olympic-style weightlifter, strongman competitor, or performer. This doesn\'t help your character hit things, but if he does, anything at the other end is going to break and hurt.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2493,7 +2493,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template().lower() == \'werewolf\' and target.get(\'Tribe\',statclass=\'Sphere\').lower() == \'storm lords\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'W:tF p. 108'
-merit.db.info = 'The first trick to making someone do what you want is finding out what they want, and promising it, threatening it, or offering it. Your Storm Lord has a knack for finding that very thing. After a turn scrutinizing her prey, ask his player, "What does your character want most?" Your Storm Lord instinctively knows the answer, even if she doesn\'t understand the context. "I want Davis’s hand in marriage" is more useful if she knows who Davis is, but she doesn’t have to know him to know that answer.'
+merit.db.info = 'The first trick to making someone do what you want is finding out what they want, and promising it, threatening it, or offering it. Your Storm Lord has a knack for finding that very thing. After a turn scrutinizing her prey, ask his player, "What does your character want most?" Your Storm Lord instinctively knows the answer, even if she doesn\'t understand the context. "I want Davis\'s hand in marriage" is more useful if she knows who Davis is, but she doesn\'t have to know him to know that answer.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2526,7 +2526,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.survival() >= 3 and target.get(\'Iron Stamina\',statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 43'
-merit.db.info = 'Your character has been trained to fight even through the most dangerous environmental extremes. When inflicted with the Extreme Cold Tilt or Extreme Heat Tilt (Chronicles of Darkness Rulebook, p. 282) she doesn’t begin taking the normal –1 to her rolls until a number of hours equal to her Stamina.'
+merit.db.info = 'Your character has been trained to fight even through the most dangerous environmental extremes. When inflicted with the Extreme Cold Tilt or Extreme Heat Tilt (Chronicles of Darkness Rulebook, p. 282) she doesn\'t begin taking the normal -1 to her rolls until a number of hours equal to her Stamina.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2537,7 +2537,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Protean\',statclass=\'Discipline\') >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 114'
-merit.db.info = 'When taking the Beast’s Skin, some Gangrel can instead become a swarm of small creatures: Size 0 or Size 1 animals. The character may perceive through any of the senses of any individual creature in the swarm, but the swarm acts as a single entity.'
+merit.db.info = 'When taking the Beast\'s Skin, some Gangrel can instead become a swarm of small creatures: Size 0 or Size 1 animals. The character may perceive through any of the senses of any individual creature in the swarm, but the swarm acts as a single entity.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2548,7 +2548,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Ordo Dracul\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 114-115'
-merit.db.info = 'Your character is not only a member of the Ordo Dracul, she’s sworn to serve one of its branches. When taking this Merit, choose to which faction she belongs (the Axe, the Dying Light, or Mysteries typically). She gains dots equal to her Covenant Status to split between the Mentor and Retainer Merits. These reflect teachers and wards within the faction. She can swap these Merits out between chapters, as she receives new assignments.'
+merit.db.info = 'Your character is not only a member of the Ordo Dracul, she\'s sworn to serve one of its branches. When taking this Merit, choose to which faction she belongs (the Axe, the Dying Light, or Mysteries typically). She gains dots equal to her Covenant Status to split between the Mentor and Retainer Merits. These reflect teachers and wards within the faction. She can swap these Merits out between chapters, as she receives new assignments.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2559,7 +2559,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 55'
-merit.db.info = 'Your character is very good at letting others get close. This gives him an edge in getting what he wants. At the beginning of a Social maneuvering attempt, you may choose to accept a Condition such as Leveraged, or Swooned in order to immediately eliminate two of the subject’s Doors.'
+merit.db.info = 'Your character is very good at letting others get close. This gives him an edge in getting what he wants. At the beginning of a Social maneuvering attempt, you may choose to accept a Condition such as Leveraged, or Swooned in order to immediately eliminate two of the subject\'s Doors.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2592,7 +2592,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower() != \'changeling\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 55'
-merit.db.info = 'Normally, when Uncovering a Clue (see p. 79), your character suffers a -2 penalty if the crime aligns with his Vice. However, it takes a criminal to know a criminal, and your character has a deep-seated understanding of his particular weakness. Instead, take a +2 and the 9-again quality on any investigation rolls when the crime aligns with your character’s particular Vice. The successful investigation is considered fulfilling his Vice.'
+merit.db.info = 'Normally, when Uncovering a Clue (see p. 79), your character suffers a -2 penalty if the crime aligns with his Vice. However, it takes a criminal to know a criminal, and your character has a deep-seated understanding of his particular weakness. Instead, take a +2 and the 9-again quality on any investigation rolls when the crime aligns with your character\'s particular Vice. The successful investigation is considered fulfilling his Vice.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2614,7 +2614,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 59'
-merit.db.info = 'Your character has a psychic ability to manipulate the physical world with her mind. This means lifting, pushing, and pulling objects. Fine manipulation is beyond the scope of Telekinesis. By spending a Willpower point, she can activate Telekinesis for the scene. Her dots in this Merit determine her mind’s effective Strength for the purpose of lifting and otherwise influencing her environment.'
+merit.db.info = 'Your character has a psychic ability to manipulate the physical world with her mind. This means lifting, pushing, and pulling objects. Fine manipulation is beyond the scope of Telekinesis. By spending a Willpower point, she can activate Telekinesis for the scene. Her dots in this Merit determine her mind\'s effective Strength for the purpose of lifting and otherwise influencing her environment.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2625,7 +2625,7 @@ merit.db.range = [3, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 59-60'
-merit.db.info = 'Your character can hear surface thoughts and read minds. With the five-dot version of this Merit, he can broadcast simple messages to others’ minds. He hears these thoughts as if they were spoken, which means they can sometimes be distracting. He can only hear thoughts at the range he can normal conversation, regardless of any ambient noise (so a telepath can hear the thoughts of someone next to him at a loud concert, even though he can’t actually hear the subject talk, but cannot hear the thoughts of someone a football field away under quiet conditions).'
+merit.db.info = 'Your character can hear surface thoughts and read minds. With the five-dot version of this Merit, he can broadcast simple messages to others\' minds. He hears these thoughts as if they were spoken, which means they can sometimes be distracting. He can only hear thoughts at the range he can normal conversation, regardless of any ambient noise (so a telepath can hear the thoughts of someone next to him at a loud concert, even though he can\'t actually hear the subject talk, but cannot hear the thoughts of someone a football field away under quiet conditions).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2647,7 +2647,7 @@ merit.db.range = [3]
 merit.db.prereq = ''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 60'
-merit.db.info = 'Your character is a magnet for fortune and fate. When she’s close to someone, she unintentionally steals their good fortune. If she touches someone, this Merit takes effect unless she spends a point of Willpower to curb the effect for a scene. In the same day, any failures the subject makes are considered dramatic failures. If she’s used this Merit at any time in a given day, she gains four dice any time she spends Willpower to increase a dice pool.'
+merit.db.info = 'Your character is a magnet for fortune and fate. When she\'s close to someone, she unintentionally steals their good fortune. If she touches someone, this Merit takes effect unless she spends a point of Willpower to curb the effect for a scene. In the same day, any failures the subject makes are considered dramatic failures. If she\'s used this Merit at any time in a given day, she gains four dice any time she spends Willpower to increase a dice pool.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2658,7 +2658,7 @@ merit.db.range = [1, 2]
 merit.db.prereq = 'target.dexterity() >= 3 and target.athletics() >= 2 and target.get(\'Quick Draw\',subentry=subentry,statclass=\'Merit\') >= 1 and target.get(subentry + \': *\')'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'HL p. 52'
-merit.db.info = 'Knives, darts, throwing stars, and tomahawks are all weapons your character can send flying in her enemy’s direction. Many warrior cultures have used thrown projectiles in wartime or for hunting purposes and may teach this Style. Also, similar techniques are found among circus and sideshow acts. These maneuvers may only be performed with edged weapons Size 1 or smaller.'
+merit.db.info = 'Knives, darts, throwing stars, and tomahawks are all weapons your character can send flying in her enemy\'s direction. Many warrior cultures have used thrown projectiles in wartime or for hunting purposes and may teach this Style. Also, similar techniques are found among circus and sideshow acts. These maneuvers may only be performed with edged weapons Size 1 or smaller.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2669,7 +2669,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 119-120'
-merit.db.info = 'Your character or motley has one or more tokens (p. 222) - mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper’s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she’s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
+merit.db.info = 'Your character or motley has one or more tokens (p. 222) - mystical items suffused with the power and danger of Faerie. Perhaps she made off with her Keeper\'s most prized possession as she fled out of spite, or found that twigs from the Hedge caught in her clothes became magical matchsticks upon her escape. Perhaps she traded away her name for an enchanted mirror at a Goblin Market. Perhaps she took the riding crop as a trophy when she killed the Huntsman, and now she\'s driven to hunt her own kind. Whatever the case, choose one or more tokens with a total dot rating equal to her rating in this Merit. She may have more than five dots in this Merit, but no single token may have a rating higher than five.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2680,7 +2680,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.resolve() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 46'
-merit.db.info = 'Most people turn away at the sight of blood, other bodily fluids, or exotic biology. Your character has seen enough that nothing turns her stomach. When other characters must resist shock or physical repulsion from the disgusting and morbid, your character stands her ground. You do not need to make Composure, Stamina, or Resolve rolls to withstand the biologically strange. This doesn’t mean she’s immune to fear; she’s just used to nature in all its nasty forms.'
+merit.db.info = 'Most people turn away at the sight of blood, other bodily fluids, or exotic biology. Your character has seen enough that nothing turns her stomach. When other characters must resist shock or physical repulsion from the disgusting and morbid, your character stands her ground. You do not need to make Composure, Stamina, or Resolve rolls to withstand the biologically strange. This doesn\'t mean she\'s immune to fear; she\'s just used to nature in all its nasty forms.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2724,7 +2724,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.intelligence() >= 2 and target.wits() >= 3 and target.get(subentry.split(\'/\')[0],statclass=\'Merit\') >= 3 and target.get(subentry.split(\'/\')[1],statclass=\'Merit\') >= 3'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'Many styles teach unarmed methods as a prerequisite for armed methods, and vice versa. This maneuver allows your character to transfer a maneuver from a Brawl-based Fighting Style to a Weaponry-based Style, or vice versa. The maneuver must not depend on the physical presence of a weapon, in that it can be applied with empty hands. The Storyteller decides which maneuvers are appropriate, though this can only be used on maneuvers worth no more than *** dots - after that, they’re too specific to the original fighting method. Your character must know the maneuver in its original form, and you must purchase it again, at the same cost in dots and Experience.|/|/Entry for this merit should be in the form of <original group>/<target group>'
+merit.db.info = 'Many styles teach unarmed methods as a prerequisite for armed methods, and vice versa. This maneuver allows your character to transfer a maneuver from a Brawl-based Fighting Style to a Weaponry-based Style, or vice versa. The maneuver must not depend on the physical presence of a weapon, in that it can be applied with empty hands. The Storyteller decides which maneuvers are appropriate, though this can only be used on maneuvers worth no more than *** dots - after that, they\'re too specific to the original fighting method. Your character must know the maneuver in its original form, and you must purchase it again, at the same cost in dots and Experience.|/|/Entry for this merit should be in the form of <original group>/<target group>'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2746,7 +2746,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.brawl() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 54'
-merit.db.info = 'By wrapping arms or legs around an opponent’s torso, your character can practically crush the life out of him. While grappling, your character can use the Trunk Squeeze maneuver.'
+merit.db.info = 'By wrapping arms or legs around an opponent\'s torso, your character can practically crush the life out of him. While grappling, your character can use the Trunk Squeeze maneuver.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2757,7 +2757,7 @@ merit.db.range = [1, 2, 3, 4]
 merit.db.prereq = 'target.wits() >= 3 and target.get(\'Fighting Finesse\', statclass=\'Merit\') >= 2 and target.weaponry() >= 3'
 merit.db.noteRestrictions = []
 merit.db.reference = 'HL p. 53'
-merit.db.info = 'Your character fights with a weapon in each hand. She can amplify her attacks by using them together or balance between attack and defense by using one weapon for each. Different martial arts focus on different sets of weapons. Some employ a rapier and dagger, or a katana and wakizashi, while others use sticks or two light swords. This Style can be used to replicate any of them. Unless your character possesses the Ambidextrous Merit she takes the usual –2 penalty for using a weapon in her off-hand. Neither weapon can be above Size 2 for performing these maneuvers.'
+merit.db.info = 'Your character fights with a weapon in each hand. She can amplify her attacks by using them together or balance between attack and defense by using one weapon for each. Different martial arts focus on different sets of weapons. Some employ a rapier and dagger, or a katana and wakizashi, while others use sticks or two light swords. This Style can be used to replicate any of them. Unless your character possesses the Ambidextrous Merit she takes the usual -2 penalty for using a weapon in her off-hand. Neither weapon can be above Size 2 for performing these maneuvers.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2768,7 +2768,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.dexterity() >= 3 and target.brawl() >= 2 and target.get(\'Defensive Combat\',\'Brawl\') == 1'
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 65'
-merit.db.info = 'Your character is better at stopping people from hurting them than they are at hurting other people. Maybe they practice a martial art that redirects an opponent’s blows, or are just very good at not being where their opponent wants them to be.'
+merit.db.info = 'Your character is better at stopping people from hurting them than they are at hurting other people. Maybe they practice a martial art that redirects an opponent\'s blows, or are just very good at not being where their opponent wants them to be.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2801,7 +2801,7 @@ merit.db.range = [2]
 merit.db.prereq = ''
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CoD p. 60'
-merit.db.info = 'Your character has a "sixth sense" for a type of supernatural creature, chosen when you buy the Merit. For example, you may choose Unseen Sense: Vampires, or Unseen Sense: Fairies. The sense manifests differently for everyone. Her hair stands on end, she becomes physically ill, or perhaps she has a cold chill. Regardless, she knows that something isn’t right when she is in the immediate proximity of the appropriate supernatural being. Once per chapter, the player can accept the Spooked Condition (p. 290), in exchange for which the character can pinpoint where the feeling is coming from. If the target is using a power that specifically cloaks its supernatural nature, however, this does not work (though the Condition remains until resolved as usual).'
+merit.db.info = 'Your character has a "sixth sense" for a type of supernatural creature, chosen when you buy the Merit. For example, you may choose Unseen Sense: Vampires, or Unseen Sense: Fairies. The sense manifests differently for everyone. Her hair stands on end, she becomes physically ill, or perhaps she has a cold chill. Regardless, she knows that something isn\'t right when she is in the immediate proximity of the appropriate supernatural being. Once per chapter, the player can accept the Spooked Condition (p. 290), in exchange for which the character can pinpoint where the feeling is coming from. If the target is using a power that specifically cloaks its supernatural nature, however, this does not work (though the Condition remains until resolved as usual).'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2812,7 +2812,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Clan\',statclass=\'Sphere\').lower() == \'nosferatu\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 115'
-merit.db.info = 'All Haunts have an unsettling effect. Your character’s Beast oozes with terror. When she evokes the monstrous Beast (see p. 91), she unsettles her target deeply and makes him question himself. Any time she infects a victim with the Bestial Condition and scores an exceptional success, she also forces a breaking point if the victim has a higher Humanity (or Integrity) than hers.'
+merit.db.info = 'All Haunts have an unsettling effect. Your character\'s Beast oozes with terror. When she evokes the monstrous Beast (see p. 91), she unsettles her target deeply and makes him question himself. Any time she infects a victim with the Bestial Condition and scores an exceptional success, she also forces a breaking point if the victim has a higher Humanity (or Integrity) than hers.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2845,7 +2845,7 @@ merit.db.range = [2]
 merit.db.prereq = 'target.template().lower() != \'changeling\''
 merit.db.noteRestrictions = []
 merit.db.reference = 'CoD p. 46'
-merit.db.info = 'Your character is a light of good in the Chronicles of Darkness. She has two Virtues. The limitations of how many times she may refresh Willpower using a Virtue remain the same, but it’s up to you which Virtue she uses each time.'
+merit.db.info = 'Your character is a light of good in the Chronicles of Darkness. She has two Virtues. The limitations of how many times she may refresh Willpower using a Virtue remain the same, but it\'s up to you which Virtue she uses each time.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2867,7 +2867,7 @@ merit.db.range = [1, 2, 3]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.resolve() >= value'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 120'
-merit.db.info = 'Whether through active mental discipline or natural stubbornness, your character’s dream Bastion is particularly well fortified against intrusion. Each dot in Warded Dreams increases the Bastion’s Fortification rating by one.'
+merit.db.info = 'Whether through active mental discipline or natural stubbornness, your character\'s dream Bastion is particularly well fortified against intrusion. Each dot in Warded Dreams increases the Bastion\'s Fortification rating by one.'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2900,7 +2900,7 @@ merit.db.range = [1]
 merit.db.prereq = 'target.template().lower == \'vampire\' and target.get(\'Status\',subentry=\'Invictus\',statclass=\'Merit\').lower() >= 2'
 merit.db.noteRestrictions = []
 merit.db.reference = 'VtR p. 115'
-merit.db.info = 'The Conspiracy of Silence covers up a lot of secrets... and your character’s been quietly keeping track. A number of times equal to your Invictus Status per story, you can ask one of the following questions about another vampire whose name and covenant affiliation you know:'
+merit.db.info = 'The Conspiracy of Silence covers up a lot of secrets... and your character\'s been quietly keeping track. A number of times equal to your Invictus Status per story, you can ask one of the following questions about another vampire whose name and covenant affiliation you know:'
 merit.db.cg_only = False
 merit.db.restricted = False
 
@@ -2911,7 +2911,7 @@ merit.db.range = [1, 2, 3, 4, 5]
 merit.db.prereq = 'target.template().lower() == \'changeling\' and target.get(\'Hollow\',statclass=\'Merit\') >= 1'
 merit.db.noteRestrictions = ['*']
 merit.db.reference = 'CtL p. 120'
-merit.db.info = 'Your character maintains, within her Hollow, a variety of equipment and tools that can help with the creation of natural and supernatural items. Whether in the form of a forge with metallurgy tools, an artist’s loft, a laboratory filled with beakers and crucibles, or an orchard outfitted with the best gardening implements, your character’s Hollow is outfitted with precisely the right things she needs to have on hand to create.'
+merit.db.info = 'Your character maintains, within her Hollow, a variety of equipment and tools that can help with the creation of natural and supernatural items. Whether in the form of a forge with metallurgy tools, an artist\'s loft, a laboratory filled with beakers and crucibles, or an orchard outfitted with the best gardening implements, your character\'s Hollow is outfitted with precisely the right things she needs to have on hand to create.'
 merit.db.cg_only = False
 merit.db.restricted = False
 

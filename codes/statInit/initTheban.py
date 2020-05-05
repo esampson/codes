@@ -45,7 +45,7 @@ theban.db.longname = 'Malediction of Despair'
 theban.db.rank = 3
 theban.db.prereq = ''
 theban.db.reference = 'VtR p. 154'
-theban.db.info = 'The ritualist curses her victim, who must be within one mile of the ritual, with regard to a specific action. The next time the victim engages in that action, he suffers a –5 dice penalty. This occurs only once. The effect of the ritual ends if not used after a lunar month.'
+theban.db.info = 'The ritualist curses her victim, who must be within one mile of the ritual, with regard to a specific action. The next time the victim engages in that action, he suffers a -5 dice penalty. This occurs only once. The effect of the ritual ends if not used after a lunar month.'
 theban.db.restricted = False
 
 theban = create_script('typeclasses.scripts.thebanRiteScript',key = 'Stigmata')

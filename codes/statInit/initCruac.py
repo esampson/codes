@@ -53,7 +53,7 @@ cruac.db.longname = 'Rigor Mortis'
 cruac.db.rank = 1
 cruac.db.prereq = ''
 cruac.db.reference = 'VtR. p. 152'
-cruac.db.info = 'The victim, who must be a vampire within a mile of the ritual, suffers the loss of the reanimating power of Vitae. His next physical action is penalized by a –3 die penalty.'
+cruac.db.info = 'The victim, who must be a vampire within a mile of the ritual, suffers the loss of the reanimating power of Vitae. His next physical action is penalized by a -3 die penalty.'
 cruac.db.restricted = False
 
 cruac = create_script('typeclasses.scripts.cruacRiteScript',key = 'The_Hydras_Vitae')

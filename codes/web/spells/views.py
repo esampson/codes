@@ -33,7 +33,7 @@ class spell_class:
         self.restricted = restricted
     
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
@@ -45,6 +45,14 @@ def sheet(request, object_id):
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
             stats.append(stat)
+    if len(stats) > 1:
+        itemlist = stats.copy()
+        stats = []
+        for item in itemlist:
+            if item.db.longname.lower() == object_id.lower():
+                stats.append(item)
+        if len(stats) == 0:
+            stats = itemlist.copy()
     if len(stats) == 0:
         return render(request, 'spells/error.html', {'message': 'No matching spells: '+object_id})
     if len(stats) > 1:
@@ -74,6 +82,14 @@ def editor(request, object_id):
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
             stats.append(stat)
+    if len(stats) > 1:
+        itemlist = stats.copy()
+        stats = []
+        for item in itemlist:
+            if item.db.longname.lower() == object_id.lower():
+                stats.append(item)
+        if len(stats) == 0:
+            stats = itemlist.copy()
     if len(stats) == 0:
         return render(request, 'spells/error.html', {'message': 'No matching spell'})
     if len(stats) > 1:
@@ -103,6 +119,14 @@ def editted(request):
                 for stat in data:
                     if stat.db.longname[0:len(n)].lower() == n.lower():
                         stats.append(stat)
+                if len(stats) > 1:
+                    itemlist = stats.copy()
+                    stats = []
+                    for item in itemlist:
+                        if item.db.longname.lower() == n:
+                            stats.append(item)
+                    if len(stats) == 0:
+                        stats = itemlist.copy()
                 if len(stats) == 0:
                     return render(request, 'spells/error.html', {'message': len(data) + ' No matching spells: ' + n})
                 if len(stats) > 1:

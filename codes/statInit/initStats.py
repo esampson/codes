@@ -23,6 +23,7 @@ from codes.statInit import initRenown
 from codes.statInit import initScales
 from codes.statInit import initSeemings
 from codes.statInit import initSkills
+from codes.statInit import initSpells
 from codes.statInit import initSphereStats
 from codes.statInit import initTheban
 from codes.statInit import initTribes
