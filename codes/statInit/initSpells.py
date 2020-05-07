@@ -3,7 +3,7 @@ from evennia import create_script
 spell = create_script('typeclasses.scripts.spellScript',key = 'Accelerate_Growth')
 spell.db.longname = 'Accelerate Growth'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
-spell.db.info = 'With this spell a mage can greatly accelerate the growth of a living being. The subject\'s growth rate doubles for each level of Potency. At Potency 5, the subject grows 32 times faster than normal — a human infant would reach adulthood in a little over half a year, if the spell\'s Duration lasts long enough. When the spell expires, the subject returns to its actual age. The targets gain no life experience beyond that which they undergo during the spell\'s Duration, so a human child made into an adult by means of this spell will likely behave as a child unless other magic helps him learn quickly, and the mage or someone else sees fit to teach him. If the subject exceeds its natural lifespan, it dies of old age.'
+spell.db.info = 'With this spell a mage can greatly accelerate the growth of a living being. The subject\'s growth rate doubles for each level of Potency. At Potency 5, the subject grows 32 times faster than normal - a human infant would reach adulthood in a little over half a year, if the spell\'s Duration lasts long enough. When the spell expires, the subject returns to its actual age. The targets gain no life experience beyond that which they undergo during the spell\'s Duration, so a human child made into an adult by means of this spell will likely behave as a child unless other magic helps him learn quickly, and the mage or someone else sees fit to teach him. If the subject exceeds its natural lifespan, it dies of old age.'
 spell.db.reference = 'M:tA p. 151'
 spell.db.restricted = False
 
@@ -115,7 +115,7 @@ spell.db.restricted = False
 spell = create_script('typeclasses.scripts.spellScript',key = 'Control_Instincts')
 spell.db.longname = 'Control Instincts'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 2'
-spell.db.info = 'For all their intellectual powers, humans are animals, too, and animals are governed by instincts. An Apprentice of Life can control these instinctual responses like a puppeteer pulling strings. In so doing she can make any animal or plant behave in any fashion natural to its type. She need not do so in the presence of circumstances that would provoke such behavior normally. A raging bear can be made to flee by manipulating its fight-or-flight response, a fish to leap, a rat to feast on something, or a snake made to secrete venom from its fangs, even in the absence of prey. A human may be made tired, hungry, or pumped with adrenaline. This spell works on any mundane life-form the mage can perceive. Humans with Supernatural Merits count as “mundane” enough for this spell to affect them.'
+spell.db.info = 'For all their intellectual powers, humans are animals, too, and animals are governed by instincts. An Apprentice of Life can control these instinctual responses like a puppeteer pulling strings. In so doing she can make any animal or plant behave in any fashion natural to its type. She need not do so in the presence of circumstances that would provoke such behavior normally. A raging bear can be made to flee by manipulating its fight-or-flight response, a fish to leap, a rat to feast on something, or a snake made to secrete venom from its fangs, even in the absence of prey. A human may be made tired, hungry, or pumped with adrenaline. This spell works on any mundane life-form the mage can perceive. Humans with Supernatural Merits count as "mundane" enough for this spell to affect them.'
 spell.db.reference = 'M:tA p. 149'
 spell.db.restricted = False
 
@@ -465,7 +465,7 @@ spell.db.restricted = False
 spell = create_script('typeclasses.scripts.spellScript',key = 'Many_Faces')
 spell.db.longname = 'Many Faces'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
-spell.db.info = 'The mage may alter her subject\'s body in any way, within the confines of species and age. Rather than an illusion as with “Mutable Mask,” the transformation caused by this spell is entirely physical and functional — subjects can be made fertile in their new forms, be granted radically altered weight and fitness, and have poor vision or other senses corrected. If the subject is missing organs or limbs, however, they remain gone in the new form, and injuries carry over from one form to the next. The mage may rearrange up to the spell\'s Potency in Physical Attribute dots, for example moving a dot of Strength to Stamina, but cannot change the total number of dots, bring any to 0, or raise them above the subject\'s limit.'
+spell.db.info = 'The mage may alter her subject\'s body in any way, within the confines of species and age. Rather than an illusion as with "Mutable Mask," the transformation caused by this spell is entirely physical and functional - subjects can be made fertile in their new forms, be granted radically altered weight and fitness, and have poor vision or other senses corrected. If the subject is missing organs or limbs, however, they remain gone in the new form, and injuries carry over from one form to the next. The mage may rearrange up to the spell\'s Potency in Physical Attribute dots, for example moving a dot of Strength to Stamina, but cannot change the total number of dots, bring any to 0, or raise them above the subject\'s limit.'
 spell.db.reference = 'M:tA p. 150'
 spell.db.restricted = False
 
@@ -696,7 +696,7 @@ spell.db.restricted = False
 spell = create_script('typeclasses.scripts.spellScript',key = 'Speak_with_Beasts')
 spell.db.longname = 'Speak with Beasts'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
-spell.db.info = 'The subject gains the ability to “speak” to any specimens of an animal specified by the mage during casting. She usually speaks to it by making noises similar to its own sounds, but this is not necessary; the subject can speak in her own language and the magic “translates” her words for her. This does not grant her any capability to control a creature, only to understand and be understood by it. Animals have limited ability to understand things that transpire around them, especially as pertains to humans, but the subject gains a bonus to any Animal Ken rolls made with that animal equal to the spell\'s Potency. A bird may not understand just why the people went into the house across the street last night, for example, but it could give a general estimate of their number and unusual features like being covered in tattoos (“skin patterns”).'
+spell.db.info = 'The subject gains the ability to "speak" to any specimens of an animal specified by the mage during casting. She usually speaks to it by making noises similar to its own sounds, but this is not necessary; the subject can speak in her own language and the magic "translates" her words for her. This does not grant her any capability to control a creature, only to understand and be understood by it. Animals have limited ability to understand things that transpire around them, especially as pertains to humans, but the subject gains a bonus to any Animal Ken rolls made with that animal equal to the spell\'s Potency. A bird may not understand just why the people went into the house across the street last night, for example, but it could give a general estimate of their number and unusual features like being covered in tattoos ("skin patterns").'
 spell.db.reference = 'M:tA p. 148'
 spell.db.restricted = False
 
@@ -829,7 +829,7 @@ spell.db.restricted = False
 spell = create_script('typeclasses.scripts.spellScript',key = 'Web_of_Life')
 spell.db.longname = 'Web of Life'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
-spell.db.info = 'By tapping into the pulse of the living world, the mage becomes keenly aware of any living things nearby. She feels their presence by the weight they exert upon the Tapestry, a gravity of the life-force that connects all creatures to the same great cycle. Because the unfiltered sensing of all life might provide a sensory overload, most mages specify certain types of life to detect, such as “humans, insects, and birds” or “only dogs.”'
+spell.db.info = 'By tapping into the pulse of the living world, the mage becomes keenly aware of any living things nearby. She feels their presence by the weight they exert upon the Tapestry, a gravity of the life-force that connects all creatures to the same great cycle. Because the unfiltered sensing of all life might provide a sensory overload, most mages specify certain types of life to detect, such as "humans, insects, and birds" or "only dogs."'
 spell.db.reference = 'M:tA p. 148'
 spell.db.restricted = False
 
