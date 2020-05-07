@@ -1,5 +1,12 @@
 from evennia import create_script
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Accelerate_Growth')
+spell.db.longname = 'Accelerate Growth'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'With this spell a mage can greatly accelerate the growth of a living being. The subject\'s growth rate doubles for each level of Potency. At Potency 5, the subject grows 32 times faster than normal — a human infant would reach adulthood in a little over half a year, if the spell\'s Duration lasts long enough. When the spell expires, the subject returns to its actual age. The targets gain no life experience beyond that which they undergo during the spell\'s Duration, so a human child made into an adult by means of this spell will likely behave as a child unless other magic helps him learn quickly, and the mage or someone else sees fit to teach him. If the subject exceeds its natural lifespan, it dies of old age.'
+spell.db.reference = 'M:tA p. 151'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Adverse_Weather')
 spell.db.longname = 'Adverse Weather'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 5'
@@ -7,11 +14,39 @@ spell.db.info = 'The mage summons a major weather system as severe as a tornado,
 spell.db.reference = 'M:tA p. 146'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Analyze_Life')
+spell.db.longname = 'Analyze Life'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'By observing a creature and casting this spell, the mage can discern details such as the species, age, sex, and overall health of a plant or animal, including humans. She may identify how many dots in Physical Attributes the subject has. Any illnesses or injuries, including Personal Tilts and Conditions, suffered by the creature become obvious to her sight. This spell identifies supernatural (but still living) creatures as unknown species, even if they take a human form, unless the mage has studied their kind before. Undead beings do not register to this spell.'
+spell.db.reference = 'M:tA p. 148'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Animal_Minion')
+spell.db.longname = 'Animal Minion'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'Rather than triggering instincts and directing an animal along a course it might normally take, an Adept can take full bodily control. She does so with raw domination, a puppetmaster commanding a marionette. While she can\'t force the creature to do something outside its physical capabilities, she can make it do anything of which its body is capable. This isn\'t full mind control and she doesn\'t have access to the creature\'s thoughts. The mage can force an human subject to talk, but can\'t prompt it to divulge specific information, or even anything intelligible (unless the mage herself demands that it speak certain words). Subjects often move differently from their usual gait in ways noticeable to those familiar with them.'
+spell.db.reference = 'M:tA p. 151-152'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Atonement')
 spell.db.longname = 'Atonement'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 4'
 spell.db.info = 'A powerful Witch can aid a hero who labors under a curse, but her remedies often demand strange rituals or arduous quests. This spell can dispel a supernatural effect enforced by the dictates of destiny, including Awakened spells, by Patterning Fate to provide a means by which the subject can escape his curse. While the subject remains under the effects of Atonement, she must complete a task determined by the caster.'
 spell.db.reference = 'M:tA p. 137-138'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Body_Control')
+spell.db.longname = 'Body Control'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'With this spell a mage can control her subject\'s bodily functions to a degree that would make even the most inwardly-focused monks envious. She can do far more than slow heart rate; she can control her subject\'s metabolism, heighten reflexes, and consume less oxygen. For the spell\'s Duration, each level of Potency gives one rank in each of the following:'
+spell.db.reference = 'M:tA p. 148-149'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Bruise_Flesh')
+spell.db.longname = 'Bruise Flesh'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'A mage can use Life magic to simply bruise and batter a living creature. This is an attack spell, inflicting bashing damage equal to the spell\'s Potency.'
+spell.db.reference = 'M:tA p. 150'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Call_Lightning')
@@ -28,11 +63,25 @@ spell.db.info = 'The mage can Pattern Fate to manipulate complex probabilities w
 spell.db.reference = 'M:tA p. 138'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Cleanse_the_Body')
+spell.db.longname = 'Cleanse the Body'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'The mage can use this spell to help the subject\'s body fight the effects of any toxin in her system, or even purge them completely. Its magic allows her a bonus equal to Potency to her next roll to resist the toxin\'s effects.'
+spell.db.reference = 'M:tA p. 148'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Cold_Snap')
 spell.db.longname = 'Cold Snap'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 3'
 spell.db.info = 'The mage dissipates the heat in the spell\'s area of effect, causing frost and ice to form on the floor and exposed surfaces. For the Duration of the spell, all surfaces in the area are under the effects of the Ice Tilt (p. 321).'
 spell.db.reference = 'M:tA p. 130'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Contagion')
+spell.db.longname = 'Contagion'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'Life Masters can unleash horrific plagues on their foes. The mage can create minor sicknesses or life-threatening diseases. The Severity of the disease is equal to Potency. If the mage has something in which she can store the disease, she can create it within that equipment, or else she must target some form of carrier, depending on the disease\'s transmission methods (water, food, living hosts). It\'s contagious as soon as the mage creates it, requiring a reflexive Stamina + Resolve roll, modified by the Severity, to resist contracting it. Failure means the victim contracts the disease and suffers its normal effects.'
+spell.db.reference = 'M:tA p. 153'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Control_Electricity')
@@ -61,6 +110,13 @@ spell.db.longname = 'Control Heat'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 2'
 spell.db.info = 'The mage can now increase or decrease the temperature of an area. Each level of Potency allows a change of 1 level of Extreme Environment to produce heat or cold, counting a temperate room temperature as "zero." For example, with Potency 3, a mage could transform a Level 1 Extreme Environment based on cold into a Level 2 Environment based on heat.'
 spell.db.reference = 'M:tA p. 142'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Control_Instincts')
+spell.db.longname = 'Control Instincts'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'For all their intellectual powers, humans are animals, too, and animals are governed by instincts. An Apprentice of Life can control these instinctual responses like a puppeteer pulling strings. In so doing she can make any animal or plant behave in any fashion natural to its type. She need not do so in the presence of circumstances that would provoke such behavior normally. A raging bear can be made to flee by manipulating its fight-or-flight response, a fish to leap, a rat to feast on something, or a snake made to secrete venom from its fangs, even in the absence of prey. A human may be made tired, hungry, or pumped with adrenaline. This spell works on any mundane life-form the mage can perceive. Humans with Supernatural Merits count as “mundane” enough for this spell to affect them.'
+spell.db.reference = 'M:tA p. 149'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Control_Light')
@@ -119,6 +175,13 @@ spell.db.info = 'The mage creates a ghost within Twilight. She can fashion the g
 spell.db.reference = 'M:tA p. 133'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Create_Life')
+spell.db.longname = 'Create Life'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'A Master of Life may create a new living organism of nearly any variety: plant, fungus, animal, even complex organisms like humans and cetaceans. The created being is mindless without the conjunctional use of the Mind Arcanum to give it intelligence, acting purely upon instinct. It will be a simple creature, even for its kind, but otherwise fully functional and even capable of procreation.'
+spell.db.reference = 'M:tA p. 153'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Damage_Ghost')
 spell.db.longname = 'Damage Ghost'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 3'
@@ -138,6 +201,13 @@ spell.db.longname = 'Deepen Shadows'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 1'
 spell.db.info = 'The mage can influence the shadows in the spell\'s area of effect, deepening darkness and making the area nearly completely pitch black. The area is affected by the Poor Light Environmental Tilt for the Duration of the spell.'
 spell.db.reference = 'M:tA p. 128'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Degrading_the_Form')
+spell.db.longname = 'Degrading the Form'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'Living things grow feeble when wracked with injury, disease, or genetic defect. This spell replicates those effects, crippling the subject\'s Physical Attributes. Each level of Potency reduces Strength, Dexterity, or Stamina by one, chosen when the spell is cast, to a minimum of 1.'
+spell.db.reference = 'M:tA p. 150'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Deny_the_Reaper')
@@ -294,6 +364,20 @@ spell.db.info = 'The mage may increase or decrease gravity. If increasing it, ea
 spell.db.reference = 'M:tA p. 144'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Heightened_Senses')
+spell.db.longname = 'Heightened Senses'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'While this spell cannot grant a mage new senses, it can heighten her existing ones, including touch. This is a popular spell among hedonistic mages as a result, as well as those who want to revitalize senses dulled by city life. A mage\'s strength lies in her preparation and knowledge, after all, and keen senses impart greater information about the world.'
+spell.db.reference = 'M:tA p. 148'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Honing_the_Form')
+spell.db.longname = 'Honing the Form'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage may improve the subject\'s Physical Attributes. The spell increases Strength, Dexterity, or Stamina (chosen when the spell is cast) by its Potency. This increase affects any Advantages or other traits derived from the Attribute\'s level. The effects are subtle in appearance; the affected target doesn\'t grow or gain any obvious muscle mass, but observers can detect even subtle hints of changes to balance, strength, or stamina. The affected Attribute cannot be raised above the subject\'s maximum Attribute dots (5 for normal human beings).'
+spell.db.reference = 'M:tA p. 150'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Influence_Electricity')
 spell.db.longname = 'Influence Electricity'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 1'
@@ -343,6 +427,13 @@ spell.db.info = 'With a simple spell, the mage can "nudge" kinetic forces, enhan
 spell.db.reference = 'M:tA p. 141'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Knit')
+spell.db.longname = 'Knit'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage can heal her subject\'s body of injuries it would be capable of healing itself given time, and repair damage done by toxins or deprivation (though such damage will continue to accrue as normal unless prevented by other means). Each level of Potency heals two boxes of bashing damage.'
+spell.db.reference = 'M:tA p. 150'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Levitation')
 spell.db.longname = 'Levitation'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 4'
@@ -350,11 +441,39 @@ spell.db.info = 'The subject floats through the air using telekinetic force. Its
 spell.db.reference = 'M:tA p. 145'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Life-Force_Assault')
+spell.db.longname = 'Life-Force Assault'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage attacks the very life energies that sustain a living Pattern. This involves rending that Pattern, causing horribly painful internal wounds and unspecific tissue damage. This is an attack spell, inflicting lethal damage equal to its Potency.'
+spell.db.reference = 'M:tA p. 152'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Lucky_Number')
 spell.db.longname = 'Lucky Number'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 2'
 spell.db.info = 'The probability of correctly guessing a phone number, a password, or lock combination on the first try is minute but not impossible. This spell allows the mage to do just that simply by entering data into an appropriate device (a password field, a telephone, a safe combination, etc.). In addition to any story benefits, the mage gains the Informed Condition on next relevant roll that benefits from knowledge gained through this spell.'
 spell.db.reference = 'M:tA p. 136'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Lure_and_Repel')
+spell.db.longname = 'Lure and Repel'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage can create a magical lure or repellant for specific types of organisms. While the mage could in theory specify any type of organism, she is likely to be quickly overwhelmed by numbers. When casting this spell as a lure, a smart mage will specify only certain types of organisms (not microscopic ones, if she\'s smarter still) to draw to her. Plants and microorganisms have Resolve 0 for purposes of Withstanding the spell. Organisms drawn in are not necessarily friendly and will remain cautious or even hostile if it is within their nature to do so, but will not openly attack the subject unless cornered. People affected by the spell find the subject irresistible or repugnant, but can\'t pinpoint just what it is that provokes the reaction.'
+spell.db.reference = 'M:tA p. 149'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Many_Faces')
+spell.db.longname = 'Many Faces'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage may alter her subject\'s body in any way, within the confines of species and age. Rather than an illusion as with “Mutable Mask,” the transformation caused by this spell is entirely physical and functional — subjects can be made fertile in their new forms, be granted radically altered weight and fitness, and have poor vision or other senses corrected. If the subject is missing organs or limbs, however, they remain gone in the new form, and injuries carry over from one form to the next. The mage may rearrange up to the spell\'s Potency in Physical Attribute dots, for example moving a dot of Strength to Stamina, but cannot change the total number of dots, bring any to 0, or raise them above the subject\'s limit.'
+spell.db.reference = 'M:tA p. 150'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Mend')
+spell.db.longname = 'Mend'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'Adepts of Life can heal even the most grievous wounds, rewriting the subject\'s body to seal injuries shut. Each level of Potency heals two lethal damage.'
+spell.db.reference = 'M:tA p. 152'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Miracle')
@@ -369,6 +488,13 @@ spell.db.longname = 'Monkey\'s Paw'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 3'
 spell.db.info = 'The mage interacts with a lifeless object, bringing fortune to bear on it and making it a tool of destiny. The mage either blesses or curses the object.'
 spell.db.reference = 'M:tA p. 137'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Mutable_Mask')
+spell.db.longname = 'Mutable Mask'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage may alter her subject\'s apparent features, albeit only cosmetically and temporarily. She can change skin pigments, phenotypical features, apparent sex, or hair color and texture; add or subtract small fat deposits; or change the sound of the subject\'s voice. Distinguishing features like scars and moles can be added or removed. Even at its most extreme, the changes wrought by this spell still leave the subject somewhat resembling her original form. If someone were to compare the masked and regular appearances side by side, they might notice an almost familial resemblance (even if the two are of obviously different races), but the changes are enough to fool facial recognition devices, sketch artists, or even change the subject\'s scent enough to throw off tracking animals. Some biometric devices, such as fingerprint scanners, will still detect the difference. She cannot mimic specific people with this basic spell.'
+spell.db.reference = 'M:tA p. 149'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Nightvision')
@@ -390,6 +516,13 @@ spell.db.longname = 'Pariah'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 5'
 spell.db.info = 'One of the most terrifying curses in the arsenal of a Master of Fate, this spell turns the world against the victim.'
 spell.db.reference = 'M:tA p. 139-140'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Purge_Illness')
+spell.db.longname = 'Purge Illness'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'A mage with this spell can purge her subject\'s body of diseases. Compare Potency to the severity level of the infirmity (p. 223). If Potency is less than the illness\' rating, reduce it by the difference, and if greater, the spell eliminates the illness from the subject entirely.'
+spell.db.reference = 'M:tA p. 149-150'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Quantum_Flux')
@@ -427,6 +560,13 @@ spell.db.info = 'Casting this spell allows the mage to hear infrasound and ultra
 spell.db.reference = 'M:tA p. 141'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Regeneration')
+spell.db.longname = 'Regeneration'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'Life magic can regenerate lost organs, limbs, repair fire-scarred tissue, and restore function to dead tissues, provided the subject is still alive when the spell is cast. This spell can even cure brain damage, infertility, and birth defects. Potency determines the extent of the organs that may be regenerated. Affected body parts regenerate (growing from nothing if the limb or organ has been completely removed) at a rate of about one minute per level of Potency required.'
+spell.db.reference = 'M:tA p. 152'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Rend_Friction')
 spell.db.longname = 'Rend Friction'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 4'
@@ -446,6 +586,13 @@ spell.db.longname = 'Rotting Flesh'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 3'
 spell.db.info = 'The mage\'s touch rots away at her subject, causing his flesh and bones to wither and decay. Each level of Potency deals one point of bashing damage to the subject.'
 spell.db.reference = 'M:tA p. 132'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Salt_the_Earth')
+spell.db.longname = 'Salt the Earth'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'This destructive spell rips the very life-force from an area or an individual, rendering it incapable of sustaining life. Plants, animals, and even fungi in the area die. The use of this spell even temporarily halts decomposition in an area based upon microbial breakdown of dead cells, as it kills all microscopic organisms as well. Finally, the spell prevents anything affected from becoming fertilized, though existing pregnancies stay if the organism survives. The spell creates an Extreme Environment effect equal to Potency.'
+spell.db.reference = 'M:tA p. 153'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Serendipity')
@@ -504,6 +651,13 @@ spell.db.info = 'The caster may reshape Death-attuned ephemera from one object i
 spell.db.reference = 'M:tA p. 129'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Shapechanging')
+spell.db.longname = 'Shapechanging'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage (or her subject) can fully take on the form of another creature. While the spell can greatly transform its subject\'s Size, changing into much larger forms is difficult. The Scale factor of the spell must cover the larger of the Size traits, before and after the transformation.'
+spell.db.reference = 'M:tA p. 152-153'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Shared_Fate')
 spell.db.longname = 'Shared Fate'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 3'
@@ -537,6 +691,13 @@ spell.db.longname = 'Soul Marks'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 1'
 spell.db.info = 'The mage can determine the health of a person\'s soul. She can determine one soul mark per Potency of the spell cast. She can discern the presence of Persistent Conditions, if the subject is Awakened, if the subject is a supernatural being, if the subject has created a soul stone (see "Soul Stones" p. 98), if the subject has had her soul tampered with, if the subject is Possessed, the presence of any Gnosis 5+ Legacy Attainments, if the subject has eaten or otherwise consumed another\'s soul, or if the subject is suffering from a Paradox Condition.'
 spell.db.reference = 'M:tA p. 128'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Speak_with_Beasts')
+spell.db.longname = 'Speak with Beasts'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'The subject gains the ability to “speak” to any specimens of an animal specified by the mage during casting. She usually speaks to it by making noises similar to its own sounds, but this is not necessary; the subject can speak in her own language and the magic “translates” her words for her. This does not grant her any capability to control a creature, only to understand and be understood by it. Animals have limited ability to understand things that transpire around them, especially as pertains to humans, but the subject gains a bonus to any Animal Ken rolls made with that animal equal to the spell\'s Potency. A bird may not understand just why the people went into the house across the street last night, for example, but it could give a general estimate of their number and unusual features like being covered in tattoos (“skin patterns”).'
+spell.db.reference = 'M:tA p. 148'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Speak_with_the_Dead')
@@ -623,6 +784,13 @@ spell.db.info = 'All energy shares sympathy, born perhaps from the same cosmic s
 spell.db.reference = 'M:tA p. 146'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Transform_Life')
+spell.db.longname = 'Transform Life'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage can transform life by giving it features normally exhibited by other organisms. She can grant herself claws or gills, change a harmless herbivore into a venom-spitting killer, or impart limbs and air-breathing lungs to a shark, among other changes. She may grant one feature per level of Potency. A transformed target instinctively knows how to use its new aspects to the best of its ability. The magic is capable of affecting even microscopic organisms, if the mage can perceive them, but for obvious reasons most microbes cannot benefit from aspects like armor, limbs, or senses. The mage can grant viruses and bacteria increased Toxicity, or the ability to replicate or survive in environments that might otherwise kill them.'
+spell.db.reference = 'M:tA p. 150-151'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Transmission')
 spell.db.longname = 'Transmission'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 2'
@@ -656,6 +824,13 @@ spell.db.longname = 'Warding Gesture'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 2'
 spell.db.info = 'The mage creates a ward protecting the subject against supernatural effects that manipulate her fate - a geas, a supernatural compulsion to act against her will, or having her fate manipulated by Fate magic or similar supernatural effects. Each attempt to change the subject\'s destiny provokes a Clash of Wills with the mage. This spell has no effect on pre-existing alterations to the subject\'s destiny.'
 spell.db.reference = 'M:tA p. 136-137'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Web_of_Life')
+spell.db.longname = 'Web of Life'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'By tapping into the pulse of the living world, the mage becomes keenly aware of any living things nearby. She feels their presence by the weight they exert upon the Tapestry, a gravity of the life-force that connects all creatures to the same great cycle. Because the unfiltered sensing of all life might provide a sensory overload, most mages specify certain types of life to detect, such as “humans, insects, and birds” or “only dogs.”'
+spell.db.reference = 'M:tA p. 148'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Withering')
