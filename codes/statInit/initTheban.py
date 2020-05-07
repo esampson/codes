@@ -13,7 +13,7 @@ theban.db.longname = 'Blood Scourge'
 theban.db.rank = 1
 theban.db.prereq = ''
 theban.db.reference = 'VtR p. 153'
-theban.db.info = 'The ritualist transforms a portion of his blood into a weapon. At any point until sunrise, he may create a stinging whip of Vitae (a 2L weapon). The whip crumbles to dust at the end of the scene in which it is used, or when the ritual's effect ends with the sunrise.'
+theban.db.info = 'The ritualist transforms a portion of his blood into a weapon. At any point until sunrise, he may create a stinging whip of Vitae (a 2L weapon). The whip crumbles to dust at the end of the scene in which it is used, or when the ritual\'s effect ends with the sunrise.'
 theban.db.restricted = False
 
 theban = create_script('typeclasses.scripts.thebanRiteScript',key = 'Curse_of_Babel')

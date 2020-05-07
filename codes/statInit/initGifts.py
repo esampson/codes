@@ -87,7 +87,7 @@ gift.db.group = 'Death'
 gift.db.rank = ''
 gift.db.renown = 'Purity'
 gift.db.reference = 'W:tF p. 121-122'
-gift.db.info = 'Crack the bone, eat the marrow, and chew the splintered fragments down. There's power to be had there.'
+gift.db.info = 'Crack the bone, eat the marrow, and chew the splintered fragments down. There\'s power to be had there.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Boundary_Ward')
@@ -147,7 +147,7 @@ gift.db.group = 'Weather'
 gift.db.rank = ''
 gift.db.renown = 'Cunning'
 gift.db.reference = 'W:tF p. 135'
-gift.db.info = 'The Uratha howls up a haze that cloys the air and mufflessound - the perfect cloak for a predator's hunt.'
+gift.db.info = 'The Uratha howls up a haze that cloys the air and mufflessound - the perfect cloak for a predator\'s hunt.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Cold_Embrace')
@@ -257,7 +257,7 @@ gift.db.group = 'Gibbous Moon'
 gift.db.rank = '5'
 gift.db.renown = 'Glory'
 gift.db.reference = 'W:tF p. 119'
-gift.db.info = 'The Cahalith knows when it's time for the story to end and the hunt to come to a gratifying, brutal conclusion. It doesn't matter whether the prey agrees. He's doomed already.'
+gift.db.info = 'The Cahalith knows when it\'s time for the story to end and the hunt to come to a gratifying, brutal conclusion. It doesn\'t matter whether the prey agrees. He\'s doomed already.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'Entropys_Toll')
@@ -997,7 +997,7 @@ gift.db.group = 'Change'
 gift.db.rank = ''
 gift.db.renown = 'Purity'
 gift.db.reference = 'W:tF p. 137'
-gift.db.info = 'The Uratha may take Gauru form without having to constantly attack or risk falling to Kuruth. This Facet brings forth Father Wolf's form while suppressing Mother Luna\'s bloodthirsty madness.'
+gift.db.info = 'The Uratha may take Gauru form without having to constantly attack or risk falling to Kuruth. This Facet brings forth Father Wolf\s form while suppressing Mother Luna\'s bloodthirsty madness.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'The_Hunter_Waits')
@@ -1117,7 +1117,7 @@ gift.db.group = 'Gibbous Moon'
 gift.db.rank = '2'
 gift.db.renown = 'Glory'
 gift.db.reference = 'W:tF p. 118'
-gift.db.info = 'The voice of the Cahalith is powerful, reassuring, and inspiring. She holds audiences in thrall to her words, both her allies and hapless prey who don't understand the threat she poses.'
+gift.db.info = 'The voice of the Cahalith is powerful, reassuring, and inspiring. She holds audiences in thrall to her words, both her allies and hapless prey who don\'t understand the threat she poses.'
 gift.db.restricted = False
 
 gift = create_script('typeclasses.scripts.giftScript',key = 'War_Howl')
