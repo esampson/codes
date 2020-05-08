@@ -14,6 +14,55 @@ spell.db.info = 'The mage summons a major weather system as severe as a tornado,
 spell.db.reference = 'M:tA p. 146'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Aegis')
+spell.db.longname = 'Aegis'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'By adjusting the properties of matter, the mage may make silk shirts bullet-proof, or tear through bulky riot suits with her bare hands. The spell is cast upon a wearable object (giving living beings Armor is a function of Life). For each level of Potency, the player chooses one of the following effects:'
+spell.db.reference = 'M:tA p. 156'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Aetheric_Winds')
+spell.db.longname = 'Aetheric Winds'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage calls forth a bare fraction of the howling fury of the Aether, scouring her subject with shrieking winds. This is an attack spell, inflicting bashing damage equal to Potency.'
+spell.db.reference = 'M:tA p. 168'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Alchemists_Touch')
+spell.db.longname = 'Alchemist\'s Touch'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'Draped in the leaden shrouds of Stygia, the subject may handle even the most dangerous of substances without fear. When the spell is cast, the mage chooses a particular form of matter: The subject is largely immune to its deleterious effects. The material cannot inflict bashing damage on her at all, and she reduces the damage from lethal sources of harm by the spell\'s Potency. The spell has no effect on aggravated damage.'
+spell.db.reference = 'M:tA p. 155'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Alter_Conductivity')
+spell.db.longname = 'Alter Conductivity'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'With this spell, the mage alters a subject\'s base properties, changing the manner in which it conducts electricity. This spell can automatically shut down any electrical device whose power isn\'t great enough to inflict damage, or it can increase or decrease the amount of electricity that can flow through the object. For each level of Potency, the spell allows the object to conduct two points worth of electrical damage, or reduces electrical damage by two. The object must still be in contact with an appropriate source of electricity to deal this damage; even a Potency 6 spell won\'t let the power from a household wall outlet inflict more than four points of bashing damage (see Electricity on p. 224). Reducing electrical damage to zero also shuts electrical devices down - for example, completely snuffing a subway rail\'s conductivity shuts the trains down.'
+spell.db.reference = 'M:tA p. 156'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Alter_Integrity')
+spell.db.longname = 'Alter Integrity'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'By rotating an object\'s resonance into or out of alignment with Stygian truths, the mage can strengthen or weaken its material. Every level of Potency either increases or decreases the object\'s Durability by 1. This does not increase the object\'s Structure, but see below.'
+spell.db.reference = 'M:tA p. 156-157'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Alter_Mental_Pattern')
+spell.db.longname = 'Alter Mental Pattern'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage can alter the subject\'s basic mental flow, changing her subconscious thoughts and surface emanations to reflect any mental or emotional state the mage wishes. The spell does not actually alter the subject\'s state of mind, but instead alters how she projects herself, shielding her from supernatural powers that would read her thoughts, or attempt to pierce her normal veil of lies and misdirection. Add the spell\'s Potency to relevant Subterfuge rolls.Supernatural powers that read the surface thoughts or emotions of the subject provoke a Clash of Wills.'
+spell.db.reference = 'M:tA p. 160'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Amorality')
+spell.db.longname = 'Amorality'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage severs her subject\'s ties to his guiding impulses, either completely removing his Virtue or his Vice. While without a Virtue, the subject is more prone to indulging his Vice and gains two points of Willpower whenever he would normally gain one. While without a Vice, the character acts in a manner completely consistent with his Virtue, and is incapable of actively engaging in activities that would constitute a breaking point or Act of Hubris. Witnessing heinous or horrifying deeds still causes breaking points for Sleeper characters.'
+spell.db.reference = 'M:tA p. 164'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Analyze_Life')
 spell.db.longname = 'Analyze Life'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
@@ -28,11 +77,53 @@ spell.db.info = 'Rather than triggering instincts and directing an animal along 
 spell.db.reference = 'M:tA p. 151-152'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Annihilate_Matter')
+spell.db.longname = 'Annihilate Matter'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage can destroy inert matter, reducing it to nothingness and utterly dissolving its atomic lattice. In effect, he makes it cease to be. Whereas objects destroyed by Nigredo and Albedo (see p. 157) shatter or crumble as appropriate, matter destroyed by this spell is annihilated; nothing remains of it.'
+spell.db.reference = 'M:tA p. 158'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Apocalypse')
+spell.db.longname = 'Apocalypse'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The subject of this spell has the scales of the Lie removed from his eyes. Anyone subject to this spell - mage, Sleeper, or other supernatural being - gains Mage Sight attuned to the Path of the caster. Along with this gift comes temporary immunity to the Quiescence curse. It does not, however, prepare the target for how to interpret the visions received under Mage Sight, and the uninitiated are likely to face breaking points due to the trauma of the Sight. While Awakened subjects may control the new Sight as though it were their own, focusing it and pushing it back to the Periphery like their own, other subjects gain Active Mage Sight and cannot shut the Sight off - it lasts until the spell\'s Duration expires, but still applies dice pool penalties and Willpower costs as per Mage Sight (see p. 90). If the subject runs out of Willpower points and the spell is still active, he gains the Blind Condition as the Supernal vision burns out his eyes. (At the Storyteller\'s discretion, this might be replaced with Deafened or a similar Condition if the subject experiences Mage Sight with other senses).'
+spell.db.reference = 'M:tA p. 169-170'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'As_Above,_So_Below')
+spell.db.longname = 'As Above, So Below'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'A mage\'s tools are sacred, her every word and deed a reflection of the Realms Above. By means of this spell, the mage imbues the tools of her Art with holy meaning, allowing her to draw down power with greater facility. For every level of Potency, she chooses a single Yantra (and it must be a specific example of a Yantra, not just a category: "the Crypt of the Mariner," not just "Environment"). Any spell cast that incorporates that Yantra gains the 9-Again effect on the spellcasting roll.'
+spell.db.reference = 'M:tA p. 166-167'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Atonement')
 spell.db.longname = 'Atonement'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 4'
 spell.db.info = 'A powerful Witch can aid a hero who labors under a curse, but her remedies often demand strange rituals or arduous quests. This spell can dispel a supernatural effect enforced by the dictates of destiny, including Awakened spells, by Patterning Fate to provide a means by which the subject can escape his curse. While the subject remains under the effects of Atonement, she must complete a task determined by the caster.'
 spell.db.reference = 'M:tA p. 137-138'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Augment_Mind')
+spell.db.longname = 'Augment Mind'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage is capable of increasing the subject\'s mental or social capacity. The mage can increase one of either the subject\'s Mental or Social Attributes by one dot per level of Potency of the spell. This increase affects any Advantages or other traits derived from the Attribute\'s level. The spell cannot increase the subject\'s Attribute above her normal maximum allowed by her Gnosis. The benefits of this spell are not obvious to a casual observer, but those who know the subject may notice an increase in her intellect or charismatic nature.'
+spell.db.reference = 'M:tA p. 161'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Befuddle')
+spell.db.longname = 'Befuddle'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage lowers one of her subject\'s Mental or Social Attributes. Each level of Potency reduces one of the subject\'s Social or Mental Attributes by one dot, to a minimum of 1. Lowering Attributes also reduces any derived Advantages, such as Willpower or Initiative.'
+spell.db.reference = 'M:tA p. 161'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Blasphemy')
+spell.db.longname = 'Blasphemy'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'By defining all truths, the Supernal includes the means of its own erasure. This spell severs the world\'s connection with the Supernal, creating a "dead zone" in which the energies'
+spell.db.reference = 'M:tA p. 170'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Body_Control')
@@ -56,6 +147,20 @@ spell.db.info = 'With a gesture the mage can conjure lightning down from a storm
 spell.db.reference = 'M:tA p. 144'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Celestial_Fire')
+spell.db.longname = 'Celestial Fire'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage summons the Supernal fires of the Aether to smite her enemies. This is not base, Fallen flame, but rather the pure expression of Awakened will. This is an attack spell; its damage rating is equal to the spell\'s Potency, and it inflicts lethal damage. The spell affects Twilight entities.'
+spell.db.reference = 'M:tA p. 170'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Channel_Mana')
+spell.db.longname = 'Channel Mana'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The flows of Supernal energy are the mage\'s to manipulate. This spell allows the mage to move a quantity of Mana equal to the spell\'s Potency between one or more vessels she can touch, including other mages, herself, Hallows, Artifacts, and others. She must, however, respect her Gnosis-derived Mana per turn limit.'
+spell.db.reference = 'M:tA p. 168'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Chaos_Mastery')
 spell.db.longname = 'Chaos Mastery'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 4'
@@ -63,11 +168,32 @@ spell.db.info = 'The mage can Pattern Fate to manipulate complex probabilities w
 spell.db.reference = 'M:tA p. 138'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Cleanse_Pattern')
+spell.db.longname = 'Cleanse Pattern'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The Forms making up a subject\'s Supernal Pattern are marked by the touch of magic. With this spell, a mage removes the tell-tale signs of Awakened interference. The spell removes the dramatic failure effect of a Focused Mage Sight Revelation (p. 92) from a subject. If the spell\'s subject bears a mage\'s Signature Nimbus, the spell removes it.'
+spell.db.reference = 'M:tA p. 168'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Cleanse_the_Body')
 spell.db.longname = 'Cleanse the Body'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
 spell.db.info = 'The mage can use this spell to help the subject\'s body fight the effects of any toxin in her system, or even purge them completely. Its magic allows her a bonus equal to Potency to her next roll to resist the toxin\'s effects.'
 spell.db.reference = 'M:tA p. 148'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Clear_Thoughts')
+spell.db.longname = 'Clear Thoughts'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage smoothes troubled thoughts and deadens emotions, making the subject think clearly. The spell suppresses one Mental Condition or Tilt per level of Potency for its Duration. While the spell is often used to treat mental illness, it may also be used against positive Conditions, suppressing elation and inspiration just as easily as despair and fugue. The spell may not affect Conditions created by Paradox, and those imposed by supernatural means provoke a Clash of Wills.'
+spell.db.reference = 'M:tA p. 161-162'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Cloak_Nimbus')
+spell.db.longname = 'Cloak Nimbus'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'This spell cloaks the subject\'s Nimbus from spells and effects that would read it, such as Supernal Vision or the ability of certain psychics to read emotional states in auras. Any such effect is subject to a Clash of Wills (see p. 117). Any effect that fails to pierce the veil registers the subject as an ordinary Sleeper. Spells cast while under the influence of this spell do not cause the caster\'s Immediate Nimbus (see p. 89) to flare unless she chooses to.'
+spell.db.reference = 'M:tA p. 167'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Cold_Snap')
@@ -147,6 +273,13 @@ spell.db.info = 'The mage alters the appearance of a body to make it look differ
 spell.db.reference = 'M:tA p. 129'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Craftsmans_Eye')
+spell.db.longname = 'Craftsman\'s Eye'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'Under the craftsman\'s eye, no tool is mysterious. By studying an object for one turn, the subject gains a complete understanding of the object\'s intended function. From a tool as simple as a hammer to an intricate puzzle box, the item\'s intended purpose is plain to see. If the object has no purpose (for example, a simple rock), the spell reveals that too. Likewise, if something prevents the object from fulfilling its purpose (for example, a car missing its spark plugs can\'t drive), the spell reveals the nature of the problem.'
+spell.db.reference = 'M:tA p. 154'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Create_Anchor')
 spell.db.longname = 'Create Anchor'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 5'
@@ -180,6 +313,20 @@ spell.db.longname = 'Create Life'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 5'
 spell.db.info = 'A Master of Life may create a new living organism of nearly any variety: plant, fungus, animal, even complex organisms like humans and cetaceans. The created being is mindless without the conjunctional use of the Mind Arcanum to give it intelligence, acting purely upon instinct. It will be a simple creature, even for its kind, but otherwise fully functional and even capable of procreation.'
 spell.db.reference = 'M:tA p. 153'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Create_Truth')
+spell.db.longname = 'Create Truth'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The Awakened speaks, and the heavens reshape themselves. This spell overwrites the conditions of Fallen Reality within the area, creating a Hallow with a dot rating equal to the spell\'s Potency. This Hallow has Resonance appropriate to its location and to the caster\'s Path and Nimbus (see p. 242). The sudden emergence of such a mystically potent site causes massive ripples and aftershocks through the local network of ley lines, which almost certainly creates new Mysteries.'
+spell.db.reference = 'M:tA p. 170-171'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Crucible')
+spell.db.longname = 'Crucible'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'With this spell, an object takes on a glimmer of Supernal purity. If its primary purpose is as a tool, it grants 8-Again on a number of rolls equal to the spell\'s Potency. Valuable objects, such as gold or diamonds, become incredibly pure and beautiful. Add the spell\'s Potency to the object\'s Availability rating to determine its increased value. This spell cannot increase an object\'s Availability to more than twice its original rating.'
+spell.db.reference = 'M:tA p. 157'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Damage_Ghost')
@@ -217,6 +364,20 @@ spell.db.info = 'The mage is able to reverse the effects of entropy on her subje
 spell.db.reference = 'M:tA p. 133'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Destroy_Tass')
+spell.db.longname = 'Destroy Tass'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'At the mage\'s whim, constructs of Mana are swept away on the winds of Aether. A successful casting destroys the tass. The Mana held within it is not destroyed, but sublimates into the world and likely returns to the nearest Hallow.'
+spell.db.reference = 'M:tA p. 170'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Detect_Substance')
+spell.db.longname = 'Detect Substance'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'The mage chooses a number of substances or objects that fall under Matter\'s purview equal to the spell\'s Potency. As long as this spell is active, the subject is automatically aware of the presence and location of the chosen substance within the area of effect. The chosen substance can be as broad or as specific as the mage likes ("ferrous metal," "stainless steel," "a knife," and "my hunting knife" are all valid options).'
+spell.db.reference = 'M:tA p. 154'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Devouring_the_Slain')
 spell.db.longname = 'Devouring the Slain'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 3'
@@ -224,11 +385,39 @@ spell.db.info = 'The mage may pull the energy from his subject\'s suffering into
 spell.db.reference = 'M:tA p. 130'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Discern_Composition')
+spell.db.longname = 'Discern Composition'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'The subject becomes aware of the precise composition of an object: its weight and density, as well as the precise elements that make it up.'
+spell.db.reference = 'M:tA p. 154'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Dispel_Magic')
+spell.db.longname = 'Dispel Magic'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'All Awakened magic contains the capacity to end, to allow the Fallen World\'s laws to reassert themselves. By Compelling these flaws in an extant spell, the mage may temporarily suppress it - or even destroy it entirely. This spell is not potent enough to dispel an archmage\'s spells, and only works against Awakened magic. In addition, the mage must include all Arcana involved in the casting of the subject spell at one dot.'
+spell.db.reference = 'M:tA p. 165'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Display_of_Power')
+spell.db.longname = 'Display of Power'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'Magic itself falls under the purview of Prime, even its most private functions. By using this spell, a mage stirs the Supernal World, making it respond to mages within the spell\'s area. Rather than being wholly internal, Imagos formed by mages within the spell\'s effect become visible in the Supernal World to all forms of Active Mage Sight, displayed as magical runes and flashes of symbols hovering around the mage. Mages use this spell as a teaching aid, forming Imagos to display to their students without actually casting. The spell has another role in mage society, though; it is the basis for the Duel Arcane (see p. 294), in which two rival mages display what they could do to one another.'
+spell.db.reference = 'M:tA p. 168-169'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Divine_Intervention')
 spell.db.longname = 'Divine Intervention'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 4'
 spell.db.info = 'The mage casts a powerful curse that either encourages the subject to achieve a goal specified by the mage when he casts this spell, or that thwarts the subject\'s every attempt to pursue such a goal. The subject must, however, be aware of the goal, and the mage cannot levy impossible tasks.'
 spell.db.reference = 'M:tA p. 138'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Dream_Reaching')
+spell.db.longname = 'Dream Reaching'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage may enter and share the dreams of a sleeping subject. The mage witnesses the dream, and can influence its direction, though she is not directly a part of the dream. Casting this spell on herself ensures the mage remembers her dreams.'
+spell.db.reference = 'M:tA p. 160'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Earthquake')
@@ -252,11 +441,25 @@ spell.db.info = 'The mage may shape and mold an ectoplasmic manifestation, eithe
 spell.db.reference = 'M:tA p. 128'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Eidolon')
+spell.db.longname = 'Eidolon'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'Where adepts of Prime can create platonic objects by forcing Mana into the pattern it wears within tass, a master can create the complex Prime patterns within living beings and the environment. When fuelled with Mana, this spell creates an obviously-magical construct much like Platonic Form, except that the construct is not limited to single physical objects. Eidolons may imitate fire, fog, and even entire environments, but most masters use it to create "living" constructs. Eidolons are still made of solidified Mana, and have Durability and Structure instead of Healt , and when mimicking environmental hazards do not inflict damage as they do (Eidolon fire does not burn, for example.) They follow the Potency rules for Platonic Form (p.169) but Potency may also be allocated to grant dots of the Retainer Merit.'
+spell.db.reference = 'M:tA p. 171'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Electromagnetic_Pulse')
 spell.db.longname = 'Electromagnetic Pulse'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 4'
 spell.db.info = 'The mage degrades electromagnetic energy within the spell\'s subject, wrecking electronic devices. The spell is capable of snuffing out mundane electrical devices, although some military-grade devices are shielded, requiring Potency equal to their level of hardening. Shorting out magical devices requires a Clash of Wills. When used against a living being, the damage to their nervous system acts as a direct damage spell, inflicting Potency in lethal damage.'
 spell.db.reference = 'M:tA p. 145'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Emotional_Urging')
+spell.db.longname = 'Emotional Urging'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage can project an emotional state at her subject, instilling emotions that grease social wheels or create barriers between people. The mage chooses at casting to project a positive or negative emotion at her subject, which allows her to open or close one Door. Opening a Door usually occurs before an attempted Social maneuver, and the influence of the Door opening does not have to benefit the mage, but can benefit anyone dealing with the subject during the Duration of the spell. The mage may close Doors previously opened with the subject, making it harder for others to accomplish goals.'
+spell.db.reference = 'M:tA p. 160'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Empty_Presence')
@@ -273,6 +476,13 @@ spell.db.info = 'The mage causes her subject\'s muscles to stop working, breakin
 spell.db.reference = 'M:tA p. 132'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Enhance_Skill')
+spell.db.longname = 'Enhance Skill'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage is capable of temporarily increasing one of her subject\'s Skills. She can increase one Skill that the subject already has at least one rank in by one dot per level of Potency of the spell. The spell cannot increase the subject\'s Skill above the normal maximum.'
+spell.db.reference = 'M:tA p. 162'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Environmental_Shield')
 spell.db.longname = 'Environmental Shield'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 2'
@@ -280,11 +490,25 @@ spell.db.info = 'The mage can shield herself against harmful environmental condi
 spell.db.reference = 'M:tA p. 143'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Ephemeral_Enchantment')
+spell.db.longname = 'Ephemeral Enchantment'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The symbol-forms of the Aether are real enough to cut through all layers of reality. This spell enchants the subject to be as solid to Twilight entities as to physical matter. This spell is equally effective against all forms of Twilight; the subject may interact with ghosts, spirits, angels, and stranger things with equal facility.'
+spell.db.reference = 'M:tA p. 169'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Eradicate_Energy')
 spell.db.longname = 'Eradicate Energy'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 5'
 spell.db.info = 'Rather than create energy, the mage snuffs out energies within a subject or area (see the chart "Transform Energy," above, for the Potency required by different levels of energy.) The destruction is spectacular, explosively scattering the affected energies into particles. If used on a creature, this spell is instantly fatal but Withstood by Stamina.'
 spell.db.reference = 'M:tA p. 146'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Ex_Nihilo')
+spell.db.longname = 'Ex Nihilo'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage creates an object out of nothing. The object may be any simple tool or relatively uncomplicated machine (a revolver qualifies, but an automatic handgun is too complex). The object\'s size is determined by the Scale factor. The spell\'s Potency may be allocated as the mage wishes between Durability or equipment bonus.'
+spell.db.reference = 'M:tA p. 158-159'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Exceptional_Luck')
@@ -308,6 +532,20 @@ spell.db.info = 'Sometimes a mage wishes to hide a child of destiny from those w
 spell.db.reference = 'M:tA p. 136'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Find_the_Balance')
+spell.db.longname = 'Find the Balance'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'Those initiated into the Stygian Mysteries know that understanding a tool is only the first step toward perfecting it. By subtly manipulating the density and purity of a tool, the mage improves its balance and heft. The tool grants its user the 9-Again quality for the Duration of the spell, so long as it\'s a tool that can benefit from balance or weight distribution.'
+spell.db.reference = 'M:tA p. 155-156'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'First_Impressions')
+spell.db.longname = 'First Impressions'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage can dictate how a subject will react to a social interaction, making her more or less inclined to listen to an argument. The spell affects the next Social maneuvering attempt made against the subject, raising or lowering the first impression by levels equal to Potency.'
+spell.db.reference = 'M:tA p. 160'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Fools_Rush_In')
 spell.db.longname = 'Fools Rush In'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 2'
@@ -327,6 +565,27 @@ spell.db.longname = 'Forge Destiny'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 5'
 spell.db.info = 'If a Master of Fate does not have a hero of destiny handy, he can simply make one. He has several means of accomplishing this at his disposal, and may apply one of the following effects:'
 spell.db.reference = 'M:tA p. 139'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Forge_Purpose')
+spell.db.longname = 'Forge Purpose'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage imparts a holy mission upon her subject. For the Duration of the spell, the subject gains one of the mage\'s Obsessions as his own. If the subject is a mage who already has the maximum number of Obsessions allowed by her Gnosis, this spell triggers a Clash of Wills. If the caster is successful, she replaces the subject\'s most recently acquired Obsession with her own.'
+spell.db.reference = 'M:tA p. 171'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Gain_Skill')
+spell.db.longname = 'Gain Skill'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage is capable of temporarily granting the subject a Skill, granting a number of dots in one Skill per level of Potency of the spell. The spell cannot increase the subject\'s Skill above the normal maximum.'
+spell.db.reference = 'M:tA p. 163'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Geomancy')
+spell.db.longname = 'Geomancy'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'By imposing her will upon the earth\'s natural flow of energy, the mage may redirect ley lines within the area of effect, reshaping Nodes and altering Resonance freely. She may move ley lines, and therefore the Nodes created where ley lines cross, "pinning" a line to a point within the area of effect of the spell. She may also change the Resonance Keyword of a Node to whatever she wishes.'
+spell.db.reference = 'M:tA p. 169'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Ghost_Gate')
@@ -350,6 +609,27 @@ spell.db.info = 'The mage sends out a call to the nearest ghost within her senso
 spell.db.reference = 'M:tA p. 131'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Ghostwall')
+spell.db.longname = 'Ghostwall'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'All Fallen Matter is merely a shadow of Supernal truth, and this spell reveals the truth of that axiom. The mage renders a volume of inert matter wholly or partly insubstantial, no more "real" than an illusion. Insubstantial objects remain where they were when transfigured (that is, they don\'t fall to the center of the Earth or fly off into space). Objects made insubstantial by this spell aren\'t in Twilight, they simply don\'t register as "real."'
+spell.db.reference = 'M:tA p. 158'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Goetic_Summons')
+spell.db.longname = 'Goetic Summons'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage sends out a call to the nearest Goetia within her sensory range. Conversely she can summon Goetia she knows personally. She may send a general call and the nearest Goetia will answer, or she can specify the type of entity by its Resonance. The spell does not work on Goetia above Rank 5.'
+spell.db.reference = 'M:tA p. 162'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Golem')
+spell.db.longname = 'Golem'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'This spell animates a statue or other object, allowing it to move and act almost as if it were alive. Each level of Potency effectively grants the mage a dot of the Retainer Merit. The Golem\'s "field" includes simple physical labor, combat, and other uncomplicated tasks.'
+spell.db.reference = 'M:tA p. 158'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Grave_Misfortune')
 spell.db.longname = 'Grave Misfortune'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 3'
@@ -364,6 +644,20 @@ spell.db.info = 'The mage may increase or decrease gravity. If increasing it, ea
 spell.db.reference = 'M:tA p. 144'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Hallow_Dance')
+spell.db.longname = 'Hallow Dance'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The tides of Aether ebb and flow, awakening sacred places and sending them to sleep once more in the cycle of ages. This spell allows the mage to bend that cycle to her will. The mage may suppress an active Hallow or awaken a dormant one with this spell. Rousing a slumbering Hallow requires a Potency equal to the Hallow\'s rating, while damping a Hallow reduces its effective dot rating by one per point of Potency. If the Hallow is suppressed to zero dots or fewer, it falls dormant. See p. 241 for more information on Hallows.'
+spell.db.reference = 'M:tA p. 170'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Hallucination')
+spell.db.longname = 'Hallucination'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage creates false sensory input in her subject, tricking his senses and creating a hallucination. The mage creates a single illusion that seems completely real to her subject. She affects sound, smell, taste, and sight with the illusion, though she is unable to make the illusion tactile to the subject.'
+spell.db.reference = 'M:tA p. 163-164'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Heightened_Senses')
 spell.db.longname = 'Heightened Senses'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
@@ -371,11 +665,32 @@ spell.db.info = 'While this spell cannot grant a mage new senses, it can heighte
 spell.db.reference = 'M:tA p. 148'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Hidden_Hoard')
+spell.db.longname = 'Hidden Hoard'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'This spell renders Matter difficult to detect. It isn\'t invisibility, precisely; rather, the spell veils the subject\'s connection to the Supernal truths, making it seem insignificant and beneath notice. Mundane attempts to detect the subject fail automatically. Spells and powers that would detect the veiled object are subject to a Clash of Wills.'
+spell.db.reference = 'M:tA p. 156'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Honing_the_Form')
 spell.db.longname = 'Honing the Form'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
 spell.db.info = 'The mage may improve the subject\'s Physical Attributes. The spell increases Strength, Dexterity, or Stamina (chosen when the spell is cast) by its Potency. This increase affects any Advantages or other traits derived from the Attribute\'s level. The effects are subtle in appearance; the affected target doesn\'t grow or gain any obvious muscle mass, but observers can detect even subtle hints of changes to balance, strength, or stamina. The affected Attribute cannot be raised above the subject\'s maximum Attribute dots (5 for normal human beings).'
 spell.db.reference = 'M:tA p. 150'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Imposter')
+spell.db.longname = 'Imposter'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage confuses her subject\'s senses, making him believe she is someone else. She can invent an appearance, or mimic the exact look, sound, and smell of any individual she knows. Unless the mage has interacted extensively with the person she is impersonating, she must make a Manipulation + Subterfuge roll when she first begins interacting with her subject, and every minute she continues interacting with him. The spell cannot mimic specific Social Merits that grant dice bonuses to Social rolls.'
+spell.db.reference = 'M:tA p. 162'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Incognito_Presence')
+spell.db.longname = 'Incognito Presence'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage hides the subject\'s psychic presence, causing onlookers to ignore her. When people look at her, they want to avert their eyes, or barely notice her. People cannot remember seeing her when they are no longer looking her way. Beings using supernatural abilities to concentrate on her, including Active Mage Sight, provoke a Clash of Wills.'
+spell.db.reference = 'M:tA p. 160'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Influence_Electricity')
@@ -413,6 +728,13 @@ spell.db.info = 'This spell can render its subject completely invisible, masking
 spell.db.reference = 'M:tA p. 143'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Invisible_Runes')
+spell.db.longname = 'Invisible Runes'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The Awakened make use of signs others can\'t see. This spell draws a short message in High Speech, visible only to Mage Sight, onto its subject. Attempting to alter the marks by overwriting them provokes a Clash of Wills. Mages use these signs to mark their cabal\'s property and territory, or leave warnings for one another, as any form of Active Mage Sight reveals them.'
+spell.db.reference = 'M:tA p. 167'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Kinetic_Blow')
 spell.db.longname = 'Kinetic Blow'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 2'
@@ -434,6 +756,13 @@ spell.db.info = 'The mage can heal her subject\'s body of injuries it would be c
 spell.db.reference = 'M:tA p. 150'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Know_Nature')
+spell.db.longname = 'Know Nature'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'By observing her subject, the mage can determine his Virtue, Vice, and how many dots in Mental and Social Attributes he has.'
+spell.db.reference = 'M:tA p. 159'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Levitation')
 spell.db.longname = 'Levitation'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 4'
@@ -446,6 +775,13 @@ spell.db.longname = 'Life-Force Assault'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
 spell.db.info = 'The mage attacks the very life energies that sustain a living Pattern. This involves rending that Pattern, causing horribly painful internal wounds and unspecific tissue damage. This is an attack spell, inflicting lethal damage equal to its Potency.'
 spell.db.reference = 'M:tA p. 152'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Lodestone')
+spell.db.longname = 'Lodestone'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'The mage chooses a substance or type of object. As long as the spell remains active, those objects within the spell\'s Area are drawn to the spell\'s subject: Dropped coins bounce toward her, water flows in her direction as long as she\'s standing downstream, and so on. Unless the object is capable of moving under its own power, this spell can only nudge the object when an external force is imparted on it: a ball might roll across the floor, but a heavy book won\'t fly off a table into the subject\'s hand. (It might, however, tip and fall off a shelf if it was precariously balanced to begin with.)'
+spell.db.reference = 'M:tA p. 154-155'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Lucky_Number')
@@ -462,6 +798,13 @@ spell.db.info = 'The mage can create a magical lure or repellant for specific ty
 spell.db.reference = 'M:tA p. 149'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Machine_Invisibility')
+spell.db.longname = 'Machine Invisibility'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'By means of this spell, the mage blinds the eyes and ears of inert matter to her subject\'s presence: cameras refuse to see her, microphones refuse to hear her voice, and so on. Supernatural objects (such as remote-viewing Artifacts or perhaps a ghost-haunted camera) provoke a Clash of Wills.'
+spell.db.reference = 'M:tA p. 156'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Many_Faces')
 spell.db.longname = 'Many Faces'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 3'
@@ -469,11 +812,46 @@ spell.db.info = 'The mage may alter her subject\'s body in any way, within the c
 spell.db.reference = 'M:tA p. 150'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Memory_Hole')
+spell.db.longname = 'Memory Hole'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage compartmentalizes the subject\'s thoughts, placing memories into areas that she cannot access or remember. The mage can compartmentalize one memory per Potency, making the subject forget them completely for the Duration of the spell.'
+spell.db.reference = 'M:tA p. 160'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Mend')
 spell.db.longname = 'Mend'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
 spell.db.info = 'Adepts of Life can heal even the most grievous wounds, rewriting the subject\'s body to seal injuries shut. Each level of Potency heals two lethal damage.'
 spell.db.reference = 'M:tA p. 152'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Mental_Scan')
+spell.db.longname = 'Mental Scan'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'By quickly scanning the very surface of a subject\'s thoughts, the mage is capable of discerning his mental and emotional state. For each level of Potency, the mage may ask the Storyteller a single question to gain information about the subject\'s mental or emotional state. This information comes as flashes of insight from the subject\'s thoughts, so the Storyteller should be sure to represent her answers as such.'
+spell.db.reference = 'M:tA p. 159'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Mental_Shield')
+spell.db.longname = 'Mental Shield'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage erects a mental shield that protects the subject from mental attack. The shield provokes a Clash of Wills against any Goetia Numina, Influences, or Manifestations targeting the subject, any Mind spells, and any other supernatural creature\'s mind-affecting abilities.'
+spell.db.reference = 'M:tA p. 160-161'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Mind_Flay')
+spell.db.longname = 'Mind Flay'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage pulls apart her subject\'s conscious and subconscious mind, dealing damage as she does so. The subject suffers one point of lethal damage for each level of Potency of the spell.'
+spell.db.reference = 'M:tA p. 164'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Mind_Wipe')
+spell.db.longname = 'Mind Wipe'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage removes a large portion of the subject\'s memories. The victim suffers from the Amnesia Condition for the Duration of the spell, unable to recall one month of time per level of Potency. The mage may specify which portion of the subject\'s life is forgotten.'
+spell.db.reference = 'M:tA p. 165'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Miracle')
@@ -504,6 +882,20 @@ spell.db.info = 'Despite its name, the Nightvision spell enhances ambient light,
 spell.db.reference = 'M:tA p. 141'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Nigredo_and_Albedo')
+spell.db.longname = 'Nigredo and Albedo'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'All matter contains within itself the Supernal Truth of its own perfection - or its annihilation. This spell allows the mage to repair or destroy objects, restoring lost Structure or inflicting damage equal to the spell\'s Potency.'
+spell.db.reference = 'M:tA p. 157'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'No_Exit')
+spell.db.longname = 'No Exit'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage creates a mental thought loop for her subject, trapping him within his own mind. For the Duration of the spell, the subject is unable to do anything but play through a single continuous loop in his mind. Thoughts cannot enter or exit the subject\'s mind, and he appears nearly catatonic to outside observers. Attempts to read the subject\'s mind or memories reveal the thought loop. Supernatural attempts to force new thoughts provoke a Clash of Wills.'
+spell.db.reference = 'M:tA p. 164-165'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Oaths_Fulfilled')
 spell.db.longname = 'Oaths Fulfilled'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 1'
@@ -511,11 +903,88 @@ spell.db.info = 'In folktales, witches always seem to know when their subjects f
 spell.db.reference = 'M:tA p. 135'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'One_Mind,_Two_Thoughts')
+spell.db.longname = 'One Mind, Two Thoughts'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'The subject may hold two individual and wholly distinct trains of thought at once, as long as neither is physically demanding. She can perform two separate Mental or Social extended tasks at the same time. Neither task can be a purely Physical task, but the subject can carry on a conversation while composing a sonnet, or write a poem while researching scientific discoveries. The subject is incapable of multitasking spells, as they are more than just an exercise of consciousness.'
+spell.db.reference = 'M:tA p. 159-160'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Pariah')
 spell.db.longname = 'Pariah'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 5'
 spell.db.info = 'One of the most terrifying curses in the arsenal of a Master of Fate, this spell turns the world against the victim.'
 spell.db.reference = 'M:tA p. 139-140'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Perfect_Recall')
+spell.db.longname = 'Perfect Recall'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'The subject is able to recall things from her past with vivid detail. For each level of Potency of the spell, the subject can recall one memory with perfect accuracy. She can remember the exact size, smell, weight, and words written on a piece of paper. She can recall the exact details of a conversation, including bits that she wasn\'t consciously concentrating on, such as what kind of suit someone was wearing, or the smell of his cologne.'
+spell.db.reference = 'M:tA p. 160'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Pierce_Deception')
+spell.db.longname = 'Pierce Deception'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'Prime is the Arcanum of pure Truth, and no falsehood may stand before it. By means of this spell, the subject sees illusions, phantasms, and lies for what they are. The spell sees through mundane falsehoods the subject perceives automatically; magical illusion or deception automatically provokes a Clash of Wills.'
+spell.db.reference = 'M:tA p. 165'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Piercing_Earth')
+spell.db.longname = 'Piercing Earth'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'Much like Windstrike (see p. 157), this spell causes inanimate matter to lash out at the subject. But where Windstrike lashes out with air and water, this spell causes the Earth itself to rise up and crush the subject. This is an attack spell; its damage rating is equal to the spell\'s Potency, and it inflicts lethal damage.'
+spell.db.reference = 'M:tA p. 158'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Platonic_Form')
+spell.db.longname = 'Platonic Form'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage may pattern Mana into behaving as it does within tass, creating a magical object formed of pure Mana. The object must be a simple object or tool (swords and gemstones are allowable, guns and cars are not). It is obviously magical to onlookers, has a default Durability of 1 and consists of one point of Mana (which the mage must pay as part of the casting). Potency may be allocated to the following effects:'
+spell.db.reference = 'M:tA p. 169'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Possession')
+spell.db.longname = 'Possession'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage can send her consciousness into the subject and take possession of his body. The mage takes control of the subject, imposing the Possessed Condition (see p. 261). While possessing the subject, the mage uses the rules for possession as an ephemeral entity, with the following changes. She may use any of her Mind spells on the subject to read his mind, and she may spend a point of Mana to use her own Mental and Social Attributes instead of the host\'s Attributes. She must always use her subject\'s Physical Attributes, but may spend a point of Mana to reduce the –3 penalty on Physical actions to 0. While possessing the subject, her body is comatose as with "Psychic Projection", below.'
+spell.db.reference = 'M:tA p. 164'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Psychic_Assault')
+spell.db.longname = 'Psychic Assault'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'A living mind is a delicate thing, easily broken. This spell forces the subject\'s brain into a dangerously overactive state, mimicking the effects of a stroke. The subject takes bashing damage equal to Potency.'
+spell.db.reference = 'M:tA p. 162'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Psychic_Domination')
+spell.db.longname = 'Psychic Domination'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage employs limited telepathic projections. She can send simple commands through thoughts and emotions to her subject through a mental link, but not full sentences or complex ideas. The ideas form urges and desires within the subject that he is compelled to act upon even against his will as long as the spell remains active. The commands must be simple, one-word orders - such as to sleep, eat, sit, or defend. The intention of the command is sent to the subject along with the thoughts and emotions.'
+spell.db.reference = 'M:tA p. 161'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Psychic_Genesis')
+spell.db.longname = 'Psychic Genesis'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage creates a consciousness as a self-aware intelligence with a Twilight presence. The consciousness gains traits as a Rank 1 Goetia. The consciousness remains for the Duration of the spell as the mage\'s loyal servant, and she is able to direct it to complete tasks without the use of any additional spells.'
+spell.db.reference = 'M:tA p. 165'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Psychic_Projection')
+spell.db.longname = 'Psychic Projection'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage can project the subject\'s consciousness into a state of Twilight or into another\'s dreams. The mental projection uses the rules for Dream Forms in Chapter Six (p. 249). It has no ephemeral body, but is instead an incorporeal, intangible mental image. While in Twilight, the subject cannot interact physically with her surroundings, and must use magic to affect anything. She is immune to physical attacks, but she is still susceptible to mind-affecting supernatural abilities. While mentally projected, her body lies in a comatose state, and she has no way of knowing its health or state without returning or the use of other magic. If her projection dies, she returns to her body with the Soul Shocked Condition.'
+spell.db.reference = 'M:tA p. 164'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Psychic_Reprogramming')
+spell.db.longname = 'Psychic Reprogramming'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage rewrites the subject\'s personality, changing the very essence of who she is. The mage may change one of the following aspects of the subject for each Potency of the spell: Virtue, Vice, Short-Term Aspiration, Long-Term Aspiration, Obsession, a non-Physical Persistent Condition, or may move one dot between two Social Skills, or between two Mental Skills.'
+spell.db.reference = 'M:tA p. 164'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Purge_Illness')
@@ -546,6 +1015,13 @@ spell.db.info = 'The mage bolsters a ghost, making low-Ranked ghosts more powerf
 spell.db.reference = 'M:tA p. 131-132'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Read_the_Depths')
+spell.db.longname = 'Read the Depths'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage may telepathically enter her subject\'s subconscious. She may pull memories and ideas out of the subject\'s subconscious, instead of just reading surface thoughts (see "Telepathy").'
+spell.db.reference = 'M:tA p. 162-163'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Reading_the_Outmost_Eddies')
 spell.db.longname = 'Reading the Outmost Eddies'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 1'
@@ -565,6 +1041,13 @@ spell.db.longname = 'Regeneration'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 4'
 spell.db.info = 'Life magic can regenerate lost organs, limbs, repair fire-scarred tissue, and restore function to dead tissues, provided the subject is still alive when the spell is cast. This spell can even cure brain damage, infertility, and birth defects. Potency determines the extent of the organs that may be regenerated. Affected body parts regenerate (growing from nothing if the limb or organ has been completely removed) at a rate of about one minute per level of Potency required.'
 spell.db.reference = 'M:tA p. 152'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Remote_Control')
+spell.db.longname = 'Remote Control'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'With the commanding power of Stygia, the subject can control any mechanical object, making it fulfill its function. She might flip a light switch, cause an industrial press to slam downward, or shift a car into gear. Anything that\'s within the bounds of a single instant action, and which the subject device is capable of performing, is fair game. Should the action require a Skill roll, treat the spell\'s Potency as its successes.'
+spell.db.reference = 'M:tA p. 155'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Rend_Friction')
@@ -588,11 +1071,32 @@ spell.db.info = 'The mage\'s touch rots away at her subject, causing his flesh a
 spell.db.reference = 'M:tA p. 132'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Sacred_Geometry')
+spell.db.longname = 'Sacred Geometry'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'While her senses are open to this spell, the subject can clearly perceive ley lines and nodes. Depending on the caster\'s Path and Nimbus, she might see them as beams of golden light meeting at shining Platonic solids, electric-blue rivers pooling into lakes, or strains of music building into a mighty symphony. If there are no ley lines or nodes within sensory range, the subject feels a tugging sensation toward the nearest ley or node.'
+spell.db.reference = 'M:tA p. 166'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Salt_the_Earth')
 spell.db.longname = 'Salt the Earth'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 5'
 spell.db.info = 'This destructive spell rips the very life-force from an area or an individual, rendering it incapable of sustaining life. Plants, animals, and even fungi in the area die. The use of this spell even temporarily halts decomposition in an area based upon microbial breakdown of dead cells, as it kills all microscopic organisms as well. Finally, the spell prevents anything affected from becoming fertilized, though existing pregnancies stay if the organism survives. The spell creates an Extreme Environment effect equal to Potency.'
 spell.db.reference = 'M:tA p. 153'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Scribe_Grimoire')
+spell.db.longname = 'Scribe Grimoire'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'By means of this spell, the mage gives physical form to the mudras of a particular Rote, creating a Grimoire (see p. 101). This spell has two slightly different, albeit related, applications: The mage may either inscribe a Rote she knows, or she may copy a Rote from another Grimoire she has on hand.'
+spell.db.reference = 'M:tA p. 166'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Self-Repairing_Machine')
+spell.db.longname = 'Self-Repairing Machine'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'This spell imbues an object with a small semblance of life - specifically, the ability to repair itself. As long as the spell lasts, the object heals (Potency) Structure every day.'
+spell.db.reference = 'M:tA p. 159'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Serendipity')
@@ -658,6 +1162,13 @@ spell.db.info = 'The mage (or her subject) can fully take on the form of another
 spell.db.reference = 'M:tA p. 152-153'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Shaping')
+spell.db.longname = 'Shaping'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'Liquids, gases, and amorphous solids are the mage\'s playthings with this spell. She can shape them into any form she desires, manipulating them in defiance of gravity, for as long as the spell lasts. This spell cannot change the state of matter (e.g. from solid to liquid), but substances that have been temporarily transformed into shapeable states by magic may be affected. Particularly intricate shapes may require a reflexive Wits + Crafts roll, at the Storyteller\'s discretion.'
+spell.db.reference = 'M:tA p. 156'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Shared_Fate')
 spell.db.longname = 'Shared Fate'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 3'
@@ -670,6 +1181,27 @@ spell.db.longname = 'Shifting the Odds'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 2'
 spell.db.info = 'An Apprentice of Fate always has access to what she needs at the moment. The mage focuses on locating a particular kind of person, place, or thing, and this spell directs her steps to it unerringly as soon as possible within the next 24 hours as long as the spell remains active. Casting the spell looking for a kind of person in a crowd or an item anywhere it could appear is usually enough to immediately succeed.'
 spell.db.reference = 'M:tA p. 136'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Shrink_and_Grow')
+spell.db.longname = 'Shrink and Grow'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'By means of this spell, the mage may bring an object\'s Supernal reflection closer to the world or push it farther away. This in turn causes the Supernal to cast a larger or smaller shadow into the Fallen World, effectively making the object grow or shrink. Each level of Potency either adds or subtracts one from the subject\'s Size. Size 0 objects can be shrunk down to roughly the size of a dime.'
+spell.db.reference = 'M:tA p. 157'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Sleep_of_the_Just')
+spell.db.longname = 'Sleep of the Just'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage controls the subject\'s sleep cycle, allowing her to remain awake without ill effects or asleep without being roused for the spell\'s Duration. The mage may also control what she dreams about, or create a lucid dreaming state where the subject has control. Anything attempting to enter or influence the dream state provokes a Clash of Wills.'
+spell.db.reference = 'M:tA p. 162'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Social_Networking')
+spell.db.longname = 'Social Networking'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The mage creates social networks where none existed before. For each level of Potency, the subject gains one dot in one of the following Merits: Allies, Contacts, or Status.'
+spell.db.reference = 'M:tA p. 165'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Soul_Armor')
@@ -707,6 +1239,20 @@ spell.db.info = 'The mage is able to sense and communicate with ghosts within Tw
 spell.db.reference = 'M:tA p. 128-129'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'State_Change')
+spell.db.longname = 'State Change'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The mage can transmute any inorganic material one "step" along the path from solid to liquid to gas. This magically-induced state change does not change the material\'s temperature: liquefied steel remains as cool to the touch as if it were solid, and vaporized ice is still freezing cold. Transforming a liquid or gas into a solid gives the new object a Durability equal to the spell\'s Potency; Structure is determined as Durability + Size.'
+spell.db.reference = 'M:tA p. 157'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Stealing_Fire')
+spell.db.longname = 'Stealing Fire'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'Prometheus brought fire from Olympus to the mortal realm. By means of this spell, the mage brings a tiny fragment of Supernal fire to the sleeping masses, if only for a time. The subject of this spell, who must be a Sleeper, temporarily becomes a Sleepwalker (see p. 303) with all that entails. Any breaking points due to witnessing magic and Quiescence effects the subject would normally suffer are held in abeyance until the spell\'s Duration expires, only to come crashing down all at once when the spell ends.'
+spell.db.reference = 'M:tA p. 169'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Strings_of_Fate')
 spell.db.longname = 'Strings of Fate'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 4'
@@ -719,6 +1265,27 @@ spell.db.longname = 'Superlative Luck'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Fate\',statclass=\'Arcana\') >= 3'
 spell.db.info = 'The mage can ensure success at virtually any task he sets out to accomplish.'
 spell.db.reference = 'M:tA p. 137'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Supernal_Dispellation')
+spell.db.longname = 'Supernal Dispellation'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'Supernal truths can never truly be unmade, but with this spell the mage may cast them back across the Abyss, effectively erasing any spell she comes across. This spell is not potent enough to dispel archmages\' spells.'
+spell.db.reference = 'M:tA p. 170'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Supernal_Veil')
+spell.db.longname = 'Supernal Veil'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'Sometimes even the greatest magician must hide her light under a bushel. This spell wards its subject, which can be a spell, object, mage, supernatural creature, or any other active magical phenomenon, from detection. Passive abilities (such as Peripheral Mage Sight) automatically fail to detect the veiled phenomenon, while active attempts provoke a Clash of Wills.'
+spell.db.reference = 'M:tA p. 168'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Supernal_Vision')
+spell.db.longname = 'Supernal Vision'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'By opening her subject\'s third eye, the mage reveals her fellows as the wells of Supernal power they are. By studying a person, place, or location for one turn, the subject automatically knows whether it is connected to the Supernal (e.g. if a person is a mage, a Sleepwalker, a Proximus, or a Sleeper; if a place is a Demesne or Verge; if an object is Imbued, Enhanced, or an Artifact), and may ask a number of the following questions equal to the spell\'s Potency:'
+spell.db.reference = 'M:tA p. 166'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Suppress_Aura')
@@ -763,6 +1330,20 @@ spell.db.info = 'The mage manipulates kinetic forces to crush subjects or form a
 spell.db.reference = 'M:tA p. 145'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Telepathy')
+spell.db.longname = 'Telepathy'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage synchronizes the surface thoughts of her subjects, making the surface thoughts of one play out in the mind of the others. Apply the spell\'s Potency as a bonus or penalty to relevant Skill rolls (such as Empathy or Subterfuge) between the subjects. Subjects who carefully think of a message may use the effect to communicate telepathically along the link; this may require a Composure + Empathy roll for subjects unused to the sensation.'
+spell.db.reference = 'M:tA p. 161'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Terrorize')
+spell.db.longname = 'Terrorize'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The spell provokes an overwhelming sense of fear and dread in its subject, draining his strength and will to live. The subject suffers from the Insensate Tilt for the Duration of the spell, or until the Tilt is resolved (for instance, by being attacked).'
+spell.db.reference = 'M:tA p. 164'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Thunderbolt')
 spell.db.longname = 'Thunderbolt'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 4'
@@ -798,6 +1379,13 @@ spell.db.info = 'The mage can hijack existing signals and change the transmitted
 spell.db.reference = 'M:tA p. 144'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Transubstantiation')
+spell.db.longname = 'Transubstantiation'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 4'
+spell.db.info = 'The mage can transmute any inert matter into any other form of inert matter: lead into gold, water into wine, wood into chlorine gas, etc. The purity and quality of the transmuted matter is determined by the spell\'s Potency: treat Potency as an equipment bonus or equivalent Resource Merit dots for a single purchase, whichever is appropriate. Both the initial substance and the transubstantiated substance must be relatively pure: Wood can be transformed into gold, but not into gold chased with silver. (The Stygian Mysteries teach that "purity" is a perceptual concept - so, for example, even though "wine" and "steel" are made up of numerous compounds, they are concrete enough as concepts to be transmuted).'
+spell.db.reference = 'M:tA p. 158'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Tune_In')
 spell.db.longname = 'Tune In'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 1'
@@ -810,6 +1398,13 @@ spell.db.longname = 'Turn Momentum'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Forces\',statclass=\'Arcana\') >= 3'
 spell.db.info = 'This spell allows the mage to redirect a target\'s momentum. Usually this forms a shield against projectiles, but it can be used on larger objects, as well. When a mage could use her Defense against an object, she may use this spell instead to redirect it as an instant action. If cast with a prolonged Duration, the mage may take a Dodge action each turn and use this spell instead of receiving the normal benefits for Dodging.'
 spell.db.reference = 'M:tA p. 145'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Universal_Language')
+spell.db.longname = 'Universal Language'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Mind\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The spell\'s subject is capable of understanding and translating any language. This is true for the spoken word, written language, symbols, encoded signals, body language, hand symbols, and concepts that only exist as thought. She must be able to perceive the language to understand it (for example, using telepathy for thoughts in another\'s mind). This spell does not allow non-Awakened characters to understand High Speech.'
+spell.db.reference = 'M:tA p. 163'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Velocity_Control')
@@ -826,11 +1421,25 @@ spell.db.info = 'The mage creates a ward protecting the subject against supernat
 spell.db.reference = 'M:tA p. 136-137'
 spell.db.restricted = False
 
+spell = create_script('typeclasses.scripts.spellScript',key = 'Wards_and_Signs')
+spell.db.longname = 'Wards and Signs'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'By cloaking her subject in Aetheric symbols of victory and indomitability, the mage shields the subject from the effects of hostile magic. When the subject is the target of a spell, that spell is Withstood with the Potency of Wards and Signs.'
+spell.db.reference = 'M:tA p. 168'
+spell.db.restricted = False
+
 spell = create_script('typeclasses.scripts.spellScript',key = 'Web_of_Life')
 spell.db.longname = 'Web of Life'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Life\',statclass=\'Arcana\') >= 1'
 spell.db.info = 'By tapping into the pulse of the living world, the mage becomes keenly aware of any living things nearby. She feels their presence by the weight they exert upon the Tapestry, a gravity of the life-force that connects all creatures to the same great cycle. Because the unfiltered sensing of all life might provide a sensory overload, most mages specify certain types of life to detect, such as "humans, insects, and birds" or "only dogs."'
 spell.db.reference = 'M:tA p. 148'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Windstrike')
+spell.db.longname = 'Windstrike'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'The very air (or other fluid matter) strikes out against the mage\'s enemies. The wind buffets and strikes like a fist, or water lashes out like a whip. This is an attack spell; its damage rating is equal to the spell\'s Potency, and it inflicts bashing damage.'
+spell.db.reference = 'M:tA p. 157'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Withering')
@@ -845,6 +1454,34 @@ spell.db.longname = 'Without a Trace'
 spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Death\',statclass=\'Arcana\') >= 2'
 spell.db.info = 'People constantly shed dead skin, hair, and other small evidences of themselves as they pass through the world. The mage conceals all physical evidence from casual observation. For the Duration of the spell, the subject leaves no fingerprints, footprints, traces of blood, or any other forensic type evidence of herself behind. Using Death Mage Sight to search for such signs provokes a Clash of Wills.'
 spell.db.reference = 'M:tA p. 130'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Wonderful_Machine')
+spell.db.longname = 'Wonderful Machine'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Matter\',statclass=\'Arcana\') >= 3'
+spell.db.info = 'This spell allows a mage to swiftly superimpose pieces of various objects into one another in such a way as to produce a desired result. With this spell, a mage could, for example, integrate a nail-gun and shotgun together to produce a weapon that fires a barrage of nails with each pull of the trigger.'
+spell.db.reference = 'M:tA p. 157-158'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Word_of_Command')
+spell.db.longname = 'Word of Command'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 1'
+spell.db.info = 'Enchanted objects and long-lasting spells often have specific triggers or conditions that must be fulfilled before they will release their magic. With this spell, a mage can bypass those conditions, freeing the magic to do that which it would. The object or spell immediately activates, exactly as though it were triggered by whatever normally triggers the effect. If an activation roll is normally required, treat the spell\'s Potency as rolled successes.'
+spell.db.reference = 'M:tA p. 166'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Word_of_Unmaking')
+spell.db.longname = 'Word of Unmaking'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 5'
+spell.db.info = 'The Aetheric storms scour and destroy as much as they revitalize. With this spell, the mage calls down the destructive power of the Supernal to destroy a magical item. Supernal Artifacts cannot be destroyed by this spell.'
+spell.db.reference = 'M:tA p. 171'
+spell.db.restricted = False
+
+spell = create_script('typeclasses.scripts.spellScript',key = 'Words_of_Truth')
+spell.db.longname = 'Words of Truth'
+spell.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 2'
+spell.db.info = 'The mage speaks with tongues of fire, and the world listens. So long as the words the mage speaks are objectively true and the mage herself knows them to be true, all subjects of this spell can hear her and understand her clearly, regardless of distance, noise, or language barriers. Moreover, all subjects know, on a soul-deep level, that what the mage says is true. The spell only works on statements the mage knows to be true: She can\'t use it to confirm or reject theories. It also doesn\'t necessarily compel the targets to act on the information in any particular way, but ignoring or refuting this Supernal truth may be grounds for a breaking point. In a Social maneuvering action, this spell may remove one Door or improve the impression level by one step per point of Potency.'
+spell.db.reference = 'M:tA p. 168'
 spell.db.restricted = False
 
 spell = create_script('typeclasses.scripts.spellScript',key = 'Zoom_In')
