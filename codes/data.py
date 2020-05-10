@@ -10,7 +10,7 @@ def find(iString, statclass = ''):
     specified the list is restricted to those whose type begins with statclass.
 
     """
-    
+
     d = search_script_tag('dictionary_data')[0]
     if not hasattr(d, 'dictionary'):
         d.at_start()
@@ -37,7 +37,7 @@ def get(target, entry, subentry='', statclass=''):
 
     target: The character being checked
     entry: The stat being looked for
-    subentry: Notes for merits, for gauge stats, valid values are permanent, 
+    subentry: Notes for merits, for gauge stats, valid values are permanent,
         temporary, bashing, lethal, and aggravated.
     statclass: Category of stat
 
@@ -54,6 +54,19 @@ def get(target, entry, subentry='', statclass=''):
                 result = 1
             else:
                 result = 0
+
+    elif statclass.lower() == 'praxis':
+        if target.db.praxes and entry in target.db.praxes:
+            result = True
+        else:
+            result = False
+
+    elif statclass.lower() == 'rote':
+        if target.db.rotes and entry in target.db.rotes:
+            result = True
+        else:
+            result = False
+
     else:
         stat_list = find(entry, statclass=statclass)
         if len(stat_list) == 0:
@@ -62,9 +75,9 @@ def get(target, entry, subentry='', statclass=''):
             raise Exception('StatError: ' + 'TOO MANY FOUND FOR '+ entry)
         else:
             stat = stat_list[0]
-            result = stat.get(target,subentry=subentry)            
+            result = stat.get(target,subentry=subentry)
     return result
-    
+
 def meets_prereqs(target, entry, value=0, subentry='', statclass=''):
     """
     meets_prereqs
@@ -77,7 +90,7 @@ def meets_prereqs(target, entry, value=0, subentry='', statclass=''):
     target: The character being checked
     entry: The stat being looked for
     value: The level being checked.
-    subentry: Notes for merits, for gauge stats, valid values are permanent, 
+    subentry: Notes for merits, for gauge stats, valid values are permanent,
         temporary, bashing, lethal, and aggravated.
     search_type: Category of stat
 
@@ -92,7 +105,7 @@ def meets_prereqs(target, entry, value=0, subentry='', statclass=''):
         stat = stat_list[0]
         result = stat.meets_prereqs(target, value=value, subentry=subentry)
         return result
-    
+
 def cost(target, entry, value, subentry='', statclass=''):
     """
     cost
@@ -104,7 +117,7 @@ def cost(target, entry, value, subentry='', statclass=''):
     target: The character being checked
     entry: The stat being looked for
     value: The level being checked.
-    subentry: Notes for merits, for gauge stats, valid values are permanent, 
+    subentry: Notes for merits, for gauge stats, valid values are permanent,
         temporary, bashing, lethal, and aggravated.
     statclass: Force the category of stat
 
@@ -117,9 +130,9 @@ def cost(target, entry, value, subentry='', statclass=''):
         raise Exception('StatError: ' + 'TOO MANY FOUND FOR '+ entry)
     else:
         stat = stat_list[0]
-        result = stat.cost(target, value=value, subentry=subentry)         
+        result = stat.cost(target, value=value, subentry=subentry)
         return result
-    
+
 def set(target, entry, value, subentry='', statclass=''):
     """
     set
@@ -135,16 +148,54 @@ def set(target, entry, value, subentry='', statclass=''):
     value: The value the stat is being set to.
     subentry: Secondary information for the stat
     statclass: Force the category of the stat
-    
+
 
         """
     if len(entry.split(':')) == 2:     #routing to handle specialties
-        if value == True:
-            target.db.specialties.append(entry)
-            result = True
+        if target.db.specialties:
+            if value == True:
+                target.db.specialties.append(entry)
+                result = True
+            else:
+                target.db.specialties.remove(entry)
+                result = True
         else:
-            target.db.specialties.remove(entry)
-            result = True
+            if value == True:
+                target.db.specialties = [entry]
+                result = True
+            else:
+                result = True
+
+    elif statclass.lower() == 'praxis':
+        if target.db.praxes:
+            if value == True:
+                target.db.praxes[entry] = True
+                result = True
+            else:
+                del target.db.praxes[entry]
+                result = True
+        else:
+            if value == True:
+                target.db.praxes = {entry:True}
+                result = True
+            else:
+                result = True
+
+    elif statclass.lower() == 'rote':
+        if target.db.rotes:
+            if value == True:
+                target.db.rotes[entry] = True
+                result = True
+            else:
+                del target.db.rotes[entry]
+                result = True
+        else:
+            if value == True:
+                target.db.rotes = {entry:True}
+                result = True
+            else:
+                result = True
+
     else:
         stat_list = find(entry, statclass)
         if len(stat_list) == 0:
@@ -155,4 +206,4 @@ def set(target, entry, value, subentry='', statclass=''):
             stat = stat_list[0]
             result = stat.set(target, value=value, subentry=subentry)
     return result
-    
+
