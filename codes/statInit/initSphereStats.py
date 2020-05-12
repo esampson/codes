@@ -1,8 +1,29 @@
 from evennia import create_script
 
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Auspice')
+sphere.db.longname = 'Auspice'
+sphere.db.category = 'Werewolf'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
 sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Banes')
 sphere.db.longname = 'Banes'
 sphere.db.category = 'Vampire'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Blood')
+sphere.db.longname = 'Blood'
+sphere.db.category = 'Werewolf'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Bone')
+sphere.db.longname = 'Bone'
+sphere.db.category = 'Werewolf'
 sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False
@@ -98,6 +119,27 @@ sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False
 
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Obsessions')
+sphere.db.longname = 'Obsessions'
+sphere.db.category = 'Mage'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Order')
+sphere.db.longname = 'Order'
+sphere.db.category = 'Mage'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Path')
+sphere.db.longname = 'Path'
+sphere.db.category = 'Mage'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
 sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Regalia')
 sphere.db.longname = 'Regalia'
 sphere.db.category = 'Changeling'
@@ -115,6 +157,13 @@ sphere.db.restricted = False
 sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Thread')
 sphere.db.longname = 'Thread'
 sphere.db.category = 'Changeling'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Tribe')
+sphere.db.longname = 'Tribe'
+sphere.db.category = 'Werewolf'
 sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False

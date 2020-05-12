@@ -7,6 +7,20 @@ power.db.reference = ''
 power.db.info = ''
 power.db.restricted = True
 
+power = create_script('typeclasses.scripts.powerStatScript',key = 'Gnosis')
+power.db.longname = 'Gnosis'
+power.db.category = 'Mage'
+power.db.reference = ''
+power.db.info = ''
+power.db.restricted = False
+
+power = create_script('typeclasses.scripts.powerStatScript',key = 'Primal_Urge')
+power.db.longname = 'Primal Urge'
+power.db.category = 'Werewolf'
+power.db.reference = ''
+power.db.info = ''
+power.db.restricted = False
+
 power = create_script('typeclasses.scripts.powerStatScript',key = 'Wyrd')
 power.db.longname = 'Wyrd'
 power.db.category = 'Changeling'

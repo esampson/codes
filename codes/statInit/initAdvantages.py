@@ -16,6 +16,14 @@ advantage.db.info = ''
 advantage.db.pool = False
 advantage.db.energy = False
 
+advantage = create_script('typeclasses.scripts.advantageScript',key = 'Essence')
+advantage.db.longname = 'Essence'
+advantage.db.category = 'Werewolf'
+advantage.db.reference = ''
+advantage.db.info = ''
+advantage.db.pool = True
+advantage.db.energy = True
+
 advantage = create_script('typeclasses.scripts.advantageScript',key = 'Glamour')
 advantage.db.longname = 'Glamour'
 advantage.db.category = 'Changeling'
@@ -23,6 +31,14 @@ advantage.db.reference = ''
 advantage.db.info = ''
 advantage.db.pool = True
 advantage.db.energy = True
+
+advantage = create_script('typeclasses.scripts.advantageScript',key = 'Harmony')
+advantage.db.longname = 'Harmony'
+advantage.db.category = 'Werewolf'
+advantage.db.reference = ''
+advantage.db.info = ''
+advantage.db.pool = False
+advantage.db.energy = False
 
 advantage = create_script('typeclasses.scripts.advantageScript',key = 'Health')
 advantage.db.longname = 'Health'
@@ -56,6 +72,14 @@ advantage.db.info = ''
 advantage.db.pool = False
 advantage.db.energy = False
 
+advantage = create_script('typeclasses.scripts.advantageScript',key = 'Mana')
+advantage.db.longname = 'Mana'
+advantage.db.category = 'Mage'
+advantage.db.reference = ''
+advantage.db.info = ''
+advantage.db.pool = True
+advantage.db.energy = True
+
 advantage = create_script('typeclasses.scripts.advantageScript',key = 'Size')
 advantage.db.longname = 'Size'
 advantage.db.category = 'Standard'
@@ -86,6 +110,14 @@ advantage.db.category = 'Standard'
 advantage.db.reference = ''
 advantage.db.info = ''
 advantage.db.pool = True
+advantage.db.energy = False
+
+advantage = create_script('typeclasses.scripts.advantageScript',key = 'Wisdom')
+advantage.db.longname = 'Wisdom'
+advantage.db.category = 'Mage'
+advantage.db.reference = ''
+advantage.db.info = ''
+advantage.db.pool = False
 advantage.db.energy = False
 
 pass
