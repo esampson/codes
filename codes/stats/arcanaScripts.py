@@ -61,14 +61,17 @@ class arcanaScript(codesScript):
 
 
         """
+        name = self.db.longname
         highest = 0
         for item in list(target.db.arcana.keys()):
             if target.db.arcana[item] > highest:
                 highest = target.db.arcana[item]
         highest_max = sphere_limits[target.get('Gnosis',statclass='Power')+1][0]
-        other_max = sphere_limits[target.get('Gnosis', statclass='Power') + 1][1]
+        other_max = sphere_limits[target.get('Gnosis',
+                                             statclass='Power') + 1][1]
         if target.template().lower() == 'mage':
-            order = find(target.get('Order', statclass='Sphere'), statclass='Order')
+            order = find(target.get('Order', statclass='Sphere'),
+                         statclass='Order')[0]
             if name == order.db.inferior and value > 2 and restrict_level:
                 result = False
             elif name != order.db.inferior and value > 4 and restrict_level:

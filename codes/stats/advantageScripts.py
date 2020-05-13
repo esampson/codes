@@ -2,15 +2,16 @@ from codes.stats.codesScript import codesScript
 
 power_source = {'Glamour' : 'Wyrd',
                 'Vitae' : 'Blood Potency',
-                'Essence' : 'Primal Urge'}
+                'Essence' : 'Primal Urge',
+                'Mana' : 'Gnosis'}
 
 class advantageScript(codesScript):
-    
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('advantage_stat')
-                
+
     def update(self,longname='', category='',info='',reference='',pool=False, energy=False):
         self.db.longname = longname
         self.db.category = category
@@ -18,13 +19,13 @@ class advantageScript(codesScript):
         self.db.info = info
         self.db.pool = pool
         self.db.energy = energy
-    
+
     def get(self, target, subentry=''):
         """
         get
 
 
-        Gets the value of a given advantage from a target. 
+        Gets the value of a given advantage from a target.
 
 
         target: The character being checked
@@ -111,7 +112,7 @@ class advantageScript(codesScript):
             except:
                 result = False
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -123,7 +124,7 @@ class advantageScript(codesScript):
         """
         result = False
         return result
-    
+
     def cost(self, target, value=0, subentry=''):
         """
         cost
@@ -134,7 +135,7 @@ class advantageScript(codesScript):
 
         """
         return False
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -182,7 +183,6 @@ class advantageScript(codesScript):
         else:
             result = False
         return result
-                
-    
-    
-    
+
+
+

@@ -7,6 +7,11 @@ from operator import itemgetter
 
 import time
 
+# TODO: Handle Obsessions
+# TODO: Resistance Attribute
+# TODO: Add Nameless to Orders
+# TODO: Order Status, Occult, and High Speech for non-Nameless
+
 def mage_template(caller, raw_string, **kwargs):
     caller.db.basics = { 'Sphere' : 'Mage' }
     caller.db.power = { 'Gnosis' : 1 }
@@ -16,11 +21,11 @@ def mage_template(caller, raw_string, **kwargs):
     caller.db.praxes = {}
     text = 'Select Path:'
     option_list = []
-    auspices_list = search_script_tag('path_stat')
+    path_list = search_script_tag('path_stat')
     paths=[]
     for item in path_list:
         if item.db.restricted == False:
-            pathss.append([item.db.longname,item])
+            paths.append([item.db.longname,item])
     paths = sorted(paths,key=itemgetter(0))
     for item in paths:
         option_list.append( {'desc' : item[0],
@@ -30,9 +35,8 @@ def mage_template(caller, raw_string, **kwargs):
     return text, options
 
 def _mage_set_path(caller, raw_string, **kwargs):
-    auspice = kwargs['path']
+    path = kwargs['path']
     caller.db.sphere['Path'] = path.db.longname
-    caller.db.renown[auspice.db.renown] = 1
     return "mage_order"
 
 def mage_order(caller, raw_string, **kwargs):
@@ -76,30 +80,31 @@ def mage_arcana(caller,raw_string,**kwargs):
         spent_all = False
 
     # Do we have more than one Arcana at 3?
-    one_three_test = True
+    one_three = True
     no_three = True
     for item in list(caller.db.arcana.keys()):
         if caller.get(item,statclass='Arcana') == 3:
             if no_three:
                 no_three = False
-            else
-                one_three_test = False
+            else:
+                one_three = False
 
     # Three to five dots in ruling arcana?
-    three_to_five_test = True
+    three_to_five = True
     ruling_total = 0
     for item in ruling_arcana:
         ruling_total = ruling_total + caller.get(item,statclass='Arcana')
     if ruling_total < 3 or ruling_total > 5:
-        three_to_five_test = False
+        three_to_five = False
 
     # Both ruling arcana have at least one dot?
-    both_test = True
+    both_arcana = True
     for item in ruling_arcana:
        if caller.get(item,statclass='Arcana') < 1:
-           both_test = False
+           both_arcana = False
 
-    text = 'Arcana:|/|/Required: 6 total. Only one at 3. 3 to 5 points in Ruling Arcana. At least 1 point in each Ruling Arcana'
+    text = ('Arcana:|/|/Required: 6 total. Only one at 3. 3 to 5 points in ' +
+            'Ruling Arcana. At least 1 point in each Ruling Arcana')
     text = text + '|/|/|_|_|_|_Ruling Arcana:|/'
     for item in ruling_arcana:
         text = (text + '|_|_|_|_|_|_|_|_' + item + ': ' +
@@ -108,8 +113,8 @@ def mage_arcana(caller,raw_string,**kwargs):
     if len(remaining_arcana) > 0:
         text = text + '|_|_|_|_Other Arcana:|/'
         for item in remaining_arcana:
-            text = text + '|_|_|_|_|_|_|_|_' + item + ': ' +
-            str(caller.get(item, statclass='Arcana')) + '|/'
+            text = (text + '|_|_|_|_|_|_|_|_' + item + ': ' +
+                    str(caller.get(item, statclass='Arcana')) + '|/')
         text = text + '|/'
 
     arcana_list = search_script_tag('arcana_stat')
@@ -117,7 +122,7 @@ def mage_arcana(caller,raw_string,**kwargs):
     for item in arcana_list:
         if item.db.restricted == False and item.db.longname != inferior_arcana:
             arcana.append([item.db.longname, item])
-    arcana = sorted(orders, key=itemgetter(0))
+    arcana = sorted(arcana, key=itemgetter(0))
     option_list = []
     for item in arcana:
         option_list.append({'desc': item[0],'goto': ('get_arcana_value',
@@ -166,22 +171,65 @@ def mage_rotes(caller, raw_string, **kwargs):
         option_list.append({'key': 'A',
                             'desc': 'Add a rote',
                             'goto': 'mage_add_rote'})
+    if len(caller.db.rotes) > 1:
+        option_list.append( { 'key' : 'R',
+                              'desc' : 'Remove a rote',
+                              'goto' : 'mage_remove_rote' } )
+    if len(caller.db.rotes)  == 3:
+        option_list.append( { 'key' : 'P',
+                              'desc' : 'Proceed',
+                               'goto' : 'mage_merits' } )
+    options = tuple(option_list)
+    return text,options
 
-def werewolf_merits(caller, raw_string, **kwargs):
+def mage_remove_rote(caller, raw_string, **kwargs):
+    text = 'Select rote to remove:'
+    option_list = []
+    if caller.db.rotes:
+        rotes = list(caller.db.rotes.keys())
+    else:
+        rotes = []
+    rotes.sort()
+    for item in rotes:
+        option_list.append( { 'desc' : item,
+                              'goto' : ( _remove_rote,
+                                       { 'rote' : item } ) } )
+    options = tuple(option_list)
+    return text,options
+
+def _remove_rote(caller, raw_string, **kwargs):
+    set(caller,kwargs['rote'],value=False, statclass='Rote')
+    return 'mage_rotes'
+
+def mage_add_rote(caller, raw_string, **kwargs):
+    text = 'Enter name of spell:'
+    options = ( {'key' : '_default',
+                 'goto' : _check_rote } )
+    return text,options
+
+def _check_rote(caller, raw_string, **kwargs):
+    stat = find(strip_control_sequences(raw_string),statclass='Spell')
+    if len(stat) < 1:
+        caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
+        return 'mage_rotes'
+    elif len(stat) > 1:
+        caller.msg('|/Too many matches found')
+        return 'mage_rotes'
+    else:
+        stat = stat[0]
+        if stat.db.restricted == True:
+            caller.msg('|/That ' + stat.type() + ' is restricted')
+            return 'mage_rotes'
+        elif stat.meets_prereqs(caller) == False:
+            caller.msg('|/You aren\'t able to cast ' + stat.db.longname)
+        else:
+            set(caller, stat.db.longname, value=True, statclass='rote')
+            return 'mage_rotes'
+
+def mage_merits(caller, raw_string, **kwargs):
     max = 10
     total = 0
-    rites_list = []
-    rites_points = 0
-    for item in list(caller.db.werewolfRites.keys()):
-        rites_list.append(item)
-        rite = find(item,statclass='werewolf rite')[0]
-        rites_points = rites_points + rite.db.rank
-    if len(rites_list) > 0:
-        rites_list.sort()
-    text = 'Primal Urge: ' + str(caller.db.power['Primal Urge']) + \
-           '|/|/|_|_Rites:|/'
-    for item in rites_list:
-        text = text + '|_|_|_|_' + item + '|/'
+    text = 'Gnosis: ' + str(caller.db.power['Gnosis'])
     text = text + '|/|_|_Merits:|/'
     for item in caller.db.merits:
         out = item[0]
@@ -190,9 +238,7 @@ def werewolf_merits(caller, raw_string, **kwargs):
             out = out + ' (' + item[2] + ')'
         out = out + ': ' + str(item[1])
         text = text + '|_|_|_|_' + out + '|/'
-    total = total + (caller.get('Primal Urge',statclass='Power') - 1) * 5
-    if rites_points > 2:
-        total = total + rites_points - 2
+    total = total + (caller.get('Gnosis',statclass='Power') - 1) * 5
     text = text + '|/Points remaining: ' + str(max - total)
     option_list = []
     if total < max:
@@ -200,32 +246,21 @@ def werewolf_merits(caller, raw_string, **kwargs):
                              'goto' : ( 'add_merit',
                                         { 'total' : total,
                                          'max' : max} ) } )
-    if total < max and rites_points < 7:
-        option_list.append({'desc': 'Add a rite',
-                            'goto': ('add_rite',
-                                     {'total': total,
-                                      'rites_points': rites_points,
-                                      'max': max})})
     if max - total > 4:
-        option_list.append ( {'desc' : 'Increase Primal Urge',
+        option_list.append ( {'desc' : 'Increase Gnosis',
                               'goto' : _increase_power } )
-    if get(caller,'Primal Urge',statclass='Power') > 1:
-        option_list.append ( {'desc' : 'Decrease Primal Urge',
+    if get(caller,'Gnosis',statclass='Power') > 1:
+        option_list.append ( {'desc' : 'Decrease Gnosis',
                               'goto' : _decrease_power } )
     if len(caller.db.merits) > 0:
         option_list.append( {'desc' : 'Remove a merit',
                              'goto' : ('remove_merit',
                                        {'total' : total,
                                         'max' : max} ) } )
-    if rites_points > 0:
-        option_list.append({'desc': 'Remove a rite',
-                            'goto': ('remove_rite',
-                                     {'total': total,
-                                      'max': max})})
-    if total == max and rites_points >= 2:
-        option_list.append( {'key' : 'F',
-                             'desc' : 'Finish',
-                             'goto' : 'werewolf_finish_cg'})
+    if total == max:
+        option_list.append( {'key' : 'P',
+                             'desc' : 'Proceed',
+                             'goto' : 'mage_praxes'})
     options = tuple(option_list)
     return text, options
 
@@ -241,15 +276,15 @@ def _check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
     if len(merits) < 1:
         caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
-        return 'werewolf_merits'
+        return 'mage_merits'
     elif len(merits) > 1:
         caller.msg('|/Too many matches found')
-        return 'werewolf_merits'
+        return 'mage_merits'
     else:
         merit = merits[0]
         if merit.db.restricted == True:
             caller.msg('|/That merit is restricted')
-            return 'werewolf_merits'
+            return 'mage_merits'
         elif len(merit.db.noteRestrictions) == 0:
             return 'get_merit_value', { 'total' : kwargs['total'],
                                    'note' : '',
@@ -284,7 +319,7 @@ def _check_merit_note(caller, raw_string, **kwargs):
                                 'max' : kwargs['max']}
     else:
         caller.msg('|/Invalid note for that merit')
-        return 'werewolf_merits'
+        return 'mage_merits'
 
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
@@ -299,56 +334,23 @@ def get_merit_value(caller, raw_string, **kwargs):
 def _check_merit_value(caller, raw_string, **kwargs):
     if not strip_control_sequences(raw_string).isnumeric():
         caller.msg('|/Invalid value')
-        return 'werewolf_merits'
+        return 'mage_merits'
     else:
         value=int(strip_control_sequences(raw_string))
         if value < 1:
             caller.msg('|/Invalid value')
-            return 'werewolf_merits'
+            return 'mage_merits'
         elif value + kwargs['total'] - kwargs['merit'].get(caller,
                                     subentry=kwargs['note']) >  kwargs['max']:
             caller.msg('|/You don\'t have enough points')
-            return 'werewolf_merits'
+            return 'mage_merits'
         elif kwargs['merit'].meets_prereqs(caller,value=value,
                                            subentry=kwargs['note']):
             kwargs['merit'].set(caller,value=value,subentry=kwargs['note'])
-            return 'werewolf_merits'
+            return 'mage_merits'
         else:
             caller.msg('|/You don\'t meet the prerequisites for that merit')
-            return 'werewolf_merits'
-
-def add_rite(caller, raw_string, **kwargs):
-    text = 'Rite:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _check_rite,
-                            kwargs ) } )
-    return text,options
-
-def _check_rite(caller, raw_string, **kwargs):
-    rites = find(strip_control_sequences(raw_string), statclass='Werewolf Rite')
-    if len(rites) < 1:
-        caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
-        return 'werewolf_merits'
-    elif len(rites) > 1:
-        caller.msg('|/Too many matches found')
-        return 'werewolf_merits'
-    else:
-        rite = rites[0]
-        if rite.db.restricted == True:
-            caller.msg('|/That rite is restricted')
-            return 'werewolf_merits'
-        else:
-            value = rite.db.rank
-            if (value + kwargs['total'] > kwargs['max'] or
-                    value + kwargs['rites_points'] > 7):
-                caller.msg('|/You don\'t have enough points')
-                return 'werewolf_merits'
-            elif rite.meets_prereqs(caller, value=True):
-                rite.set(caller, value=True)
-                return 'werewolf_merits'
-            else:
-                caller.msg('|/You don\'t meet the prerequisites for that rite')
-                return 'werewolf_merits'
+            return 'mage_merits'
 
 def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
@@ -367,56 +369,106 @@ def remove_merit(caller, raw_string, **kwargs):
 
 def _delete_merit(caller, raw_string, **kwargs):
     set(caller, kwargs['entry'], subentry=kwargs['subentry'], value=0)
-    return 'werewolf_merits'
+    return 'mage_merits'
 
-def remove_rite(caller, raw_string, **kwargs):
-    text = 'Remove which rite:'
+def _increase_power(caller, raw_string, **kwargs):
+    if caller.db.power['Gnosis'] < 10:
+        caller.db.power['Gnosis'] = caller.db.power['Gnosis'] + 1
+    return 'mage_merits'
+
+def _decrease_power(caller, raw_string, **kwargs):
+    if caller.db.power['Gnosis'] > 1:
+        caller.db.power['Gnosis'] = caller.db.power['Gnosis'] - 1
+    return 'mage_merits'
+
+def mage_praxes(caller, raw_string, **kwargs):
+    text = 'Praxes:|/|/One per dot of Gnosis|/'
+    for item in list(caller.db.praxes.keys()):
+        text = text + '|_|_|_|_' + item + '|/'
+    text = text + '|/'
+
     option_list = []
-    rites_list = list(caller.db.werewolfRites.keys())
-    rites_list.sort()
-    for item in rites_list:
-        rite = item
-        option_list.append( {'desc' : rite ,
-                             'goto' : ( _delete_rite,
-                                    { 'rite' : rite } ) } )
+    if len(caller.db.praxes) < caller.get('Gnosis',statclass='Power'):
+        option_list.append({'key': 'A',
+                            'desc': 'Add a praxis',
+                            'goto': 'mage_add_praxis'})
+    if len(caller.db.praxes) > 1:
+        option_list.append( { 'key' : 'R',
+                              'desc' : 'Remove a praxis',
+                              'goto' : 'mage_remove_praxis' } )
+    if len(caller.db.praxes)  == caller.get('Gnosis',statclass='Power'):
+        option_list.append( { 'key' : 'F',
+                              'desc' : 'Finish',
+                               'goto' : 'mage_finish_cg' } )
     options = tuple(option_list)
     return text,options
 
-def _delete_rite(caller, raw_string, **kwargs):
-    set(caller, kwargs['rite'], value=False)
-    return 'werewolf_merits'
+def mage_remove_praxis(caller, raw_string, **kwargs):
+    text = 'Select praxis to remove:'
+    option_list = []
+    if caller.db.praxs:
+        praxes = list(caller.db.praxes.keys())
+    else:
+        praxes = []
+    praxes.sort()
+    for item in praxes:
+        option_list.append( { 'desc' : item,
+                              'goto' : ( _remove_praxis,
+                                       { 'praxis' : item } ) } )
+    options = tuple(option_list)
+    return text,options
 
-def _increase_power(caller, raw_string, **kwargs):
-    if caller.db.power['Primal Urge'] < 10:
-        caller.db.power['Primal Urge'] = caller.db.power['Primal Urge'] + 1
-        send_kwargs = kwargs
-    return 'werewolf_merits'
+def _remove_praxis(caller, raw_string, **kwargs):
+    set(caller,kwargs['praxis'],value=False, statclass='Praxis')
+    return 'mage_praxes'
 
-def _decrease_power(caller, raw_string, **kwargs):
-    if caller.db.power['Primal Urge'] > 1:
-        caller.db.power['Primal Urge'] = caller.db.power['Primal Urge'] - 1
-    return 'werewolf_merits'
+def mage_add_praxis(caller, raw_string, **kwargs):
+    text = 'Enter name of spell:'
+    options = ( {'key' : '_default',
+                 'goto' : _check_praxis } )
+    return text,options
+
+def _check_praxis(caller, raw_string, **kwargs):
+    stat = find(strip_control_sequences(raw_string),statclass='Spell')
+    if len(stat) < 1:
+        caller.msg('|/I can\'t find ' + strip_control_sequences(raw_string))
+        return 'mage_praxes'
+    elif len(stat) > 1:
+        caller.msg('|/Too many matches found')
+        return 'mage_praxes'
+    else:
+        stat = stat[0]
+        if stat.db.restricted == True:
+            caller.msg('|/That ' + stat.type() + ' is restricted')
+            return 'mage_praxes'
+        elif stat.meets_prereqs(caller) == False:
+            caller.msg('|/You aren\'t able to cast ' + stat.db.longname)
+        else:
+            set(caller, stat.db.longname, value=True, statclass='Praxis')
+            return 'mage_praxes'
 
 def quit(caller, raw_string, **kwargs):
 
     text = {'format' : 'suppress'}
     return text,None
 
-def werewolf_finish_cg(caller, raw_string, **kwargs):
+def mage_finish_cg(caller, raw_string, **kwargs):
     caller.cmdset.delete('unfinished_character')
     caller.cmdset.add(
         'codes.commands.character_commands.finished_character',permanent=True)
-    set(caller,'Harmony',statclass='Advantage', value=7)
+    set(caller,'Wisdom',statclass='Advantage', value=7)
     set(
-        caller,'Essence',statclass='Advantage',
-        value=caller.get('Essence',subentry='Permanent',statclass='Advantage'))
+        caller,'Mana',statclass='Advantage',
+        value=caller.get('Mana',subentry='Permanent',statclass='Advantage'))
     set(
         caller,'Willpower',statclass='Advantage',
         value=caller.get('Willpower',
                          subentry='Permanent',statclass='Advantage'))
     caller.db.finished_cg = time.asctime(time.localtime(time.time()))
-    caller.db.xp = { 'earned' : 75,
+    caller.db.xp = { 'earned' : 35,
                      'spent' : 0,
+                     'arcane_earned' : 40,
+                     'arcane_spent' : 35,
                      'log' : {} }
     text = {'format' : 'suppress'}
     return text,None
