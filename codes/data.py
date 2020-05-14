@@ -56,13 +56,23 @@ def get(target, entry, subentry='', statclass=''):
                 result = 0
 
     elif statclass.lower() == 'praxis':
-        if target.db.praxes and entry in target.db.praxes:
+        stat_list = find(entry, statclass='Spell')
+        if len(stat_list) == 0:
+            raise Exception('StatError: ' + entry + 'NOT FOUND')
+        elif len(stat_list) > 1:
+            raise Exception('StatError: ' + 'TOO MANY FOUND FOR '+ entry)
+        elif target.db.praxes and stat_list[0].db.longname in target.db.praxes:
             result = True
         else:
             result = False
 
     elif statclass.lower() == 'rote':
-        if target.db.rotes and entry in target.db.rotes:
+        stat_list = find(entry, statclass='Spell')
+        if len(stat_list) == 0:
+            raise Exception('StatError: ' + entry + 'NOT FOUND')
+        elif len(stat_list) > 1:
+            raise Exception('StatError: ' + 'TOO MANY FOUND FOR ' + entry)
+        elif target.db.rotes and stat_list[0].db.longname in target.db.rotes:
             result = True
         else:
             result = False

@@ -28,6 +28,13 @@ sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False
 
+sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Cabal')
+sphere.db.longname = 'Cabal'
+sphere.db.category = 'Mage'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
 sphere = create_script('typeclasses.scripts.sphereStatScript',key = 'Clan')
 sphere.db.longname = 'Clan'
 sphere.db.category = 'Vampire'

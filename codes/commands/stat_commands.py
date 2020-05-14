@@ -9,6 +9,7 @@ from codes.frames import top_bottom
 
 from codes import data
 from codes.sidebars import changeling_template_block
+from codes.sidebars import mage_template_block
 from codes.sidebars import mortal_template_block
 from codes.sidebars import vampire_template_block
 from codes.sidebars import werewolf_template_block
@@ -63,16 +64,16 @@ class CmdPool(Command):
     """
     Usage:
         +pool/<action> <pool>[/<amount>][=<reason>]
-        
+
     Command to spend or regain points from a pool (e.g. Willpower, Vitae, Glamour,
-    etc.) This command is |wnot|n used for altering health pools. Use +hurt or 
+    etc.) This command is |wnot|n used for altering health pools. Use +hurt or
     +heal for that.
-    
+
         <action>: Spend, Gain, or Check
         <pool>: Specific pool being affected
         <amount>: Amount of change. Required for spend or gain
         <reason>: The reason for the change. Optional
-        
+
     Examples:
         +pool/spend Vitae/2=Physical Intensity
         +pool/spend Willpower/1=+3 Bonus
@@ -144,15 +145,15 @@ class CmdProve(Command):
     """
     Usage:
         +prove <stat>[(<subentry>)][/<statclass>][=<value>]
-        
+
     Command to prove a character's abilities to other people.
-    
+
         <stat>: Stat being proven
         <subentry>: Subentry for the stat if needed
         <statclass>: Optional. Helps in case of naming conflicts
         <value>: Optional. Proves the character possesses at least that value but
             does not prove entire value
-            
+
     Examples:
         +prove Strength
         +prove Willpower=6
@@ -185,6 +186,20 @@ def prove_func(target,input):
             send_message(target,message)
         else:
             target.msg('I can\'t do that')
+    elif parsed['statclass'].lower() == 'rote':
+        if target.get(parsed['entry'],statclass='Rote'):
+            message = (target.name + ' possesses the rote ' +
+                    data.find(parsed['entry'],statclass='Spell')[0].db.longname)
+            send_message(target,message)
+        else:
+            target.msg('I can\'t do that.')
+    elif parsed['statclass'].lower() == 'praxis':
+        if target.get(parsed['entry'],statclass='Praxis'):
+            message = (target.name + ' possesses the praxis ' +
+                    data.find(parsed['entry'],statclass='Spell')[0].db.longname)
+            send_message(target,message)
+        else:
+            target.msg('I can\'t do that.')
     elif parsed['entry'] != '':
         stats = data.find(parsed['entry'],statclass=parsed['statclass'])
         if len(stats) == 0:
@@ -225,12 +240,12 @@ class CmdList(Command):
     """
     Usage:
         +list [<category>]
-        
+
     Command to get a list of stats of a given category. When no category is entered
     it will return a list of all categories.
-    
+
         <category>: Category being listed
-        
+
     Examples:
         +list
         +list Skills
@@ -286,16 +301,16 @@ class CmdHurt(Command):
     """
     Usage:
         +hurt <type>=<amount>
-        
+
     Basic command for recording damage.
-    
+
         <type>: Bashing, Lethal, or Aggravated
-        <amount>: Amount of damage taken. Damage will spill over appropriately 
+        <amount>: Amount of damage taken. Damage will spill over appropriately
             (Bashing turning into Lethal, Lethal turning into Aggravated)
-            
+
     Example:
         +hurt lethal=3
-            
+
     """
 
     key = '+hurt'
@@ -392,16 +407,16 @@ class CmdHeal(Command):
     """
     Usage:
         +heal <type>=<amount>
-        
+
     Basic command for recovering damage.
-    
+
         <type>: Bashing, Lethal, or Aggravated
         <amount>: Amount of damage healed. Unlike +hurt there is no spillover
             mechanism for recovered health.
-            
+
     Examples:
         +heal/bashing=2
-            
+
     """
 
     key = '+heal'
@@ -457,18 +472,18 @@ class CmdInfo(Command):
     """
     Usage:
         +info <stat>[/<class>]
-        
+
     Command to get information about a stat. Partial matching of names is
     supported. To help deal with name collisions the class may be specified to
     narrow the search. Class also suppports partial name matching.
-    
+
         <stat>: The stat being searched for.
         <class>: Advantage, Attribute, Contract, Merit, or Skill
-        
+
     Examples:
         +info Dexterity
         +info Str/Skill
-            
+
     """
 
     key = '+info'
@@ -515,12 +530,12 @@ class CmdSheet(default_cmds.MuxCommand):
     """
     Usage:
         +sheet
-        
+
     Command to retrieve current character sheet
-        
+
     Examples:
         +sheet
-            
+
     """
 
     key = '+sheet'
@@ -608,6 +623,8 @@ def produce_sheet(target):
     #Get the template block
     if target.template().lower() == 'changeling':
         block_t = changeling_template_block(target)
+    elif target.template().lower() == 'mage':
+        block_t = mage_template_block(target)
     elif target.template().lower() == 'mortal':
         block_t = mortal_template_block(target)
     elif target.template().lower() == 'vampire':
@@ -641,6 +658,52 @@ def produce_sheet(target):
                                               subsequent_indent=' '):
                         sub_block.append(' ' + line)
                 block.append(sub_block)
+    elif target.template().lower() == 'mage':
+        sub_block = ['Merits:']
+        temp = merits_list(target)
+        for item in temp:
+            for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+                sub_block.append(' ' + line)
+        block.append(sub_block)
+
+        # Arcana
+        if target.db.arcana:
+            sub_block = ['Arcana:']
+            temp = simple_list(target.db.arcana)
+            for item in temp:
+                for line in textwrap.wrap(item, width=24, subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+
+        # Obsessions
+        obsessions = target.get('Obsessions', 'Sphere')
+        if obsessions != -1 and obsessions != False:
+            if len(obsessions) != 0:
+                sub_block = ['Obsessions:']
+                for item in obsessions:
+                    for line in textwrap.wrap(item,width=24,
+                                              subsequent_indent=' '):
+                        sub_block.append(' ' + line)
+                block.append(sub_block)
+
+        # Rotes
+        if target.db.rotes:
+            sub_block = ['Rotes:']
+            temp = simple_list(target.db.rotes)
+            for item in temp:
+                for line in textwrap.wrap(item, width=24, subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+
+        # Praxes
+        if target.db.Praxes:
+            sub_block = ['Praxes:']
+            temp = simple_list(target.db.praxes)
+            for item in temp:
+                for line in textwrap.wrap(item, width=24, subsequent_indent=' '):
+                    sub_block.append(' ' + line)
+            block.append(sub_block)
+
     elif target.template().lower() == 'mortal':
         sub_block = ['Merits:']
         temp = merits_list(target)

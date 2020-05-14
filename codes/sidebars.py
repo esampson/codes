@@ -15,9 +15,9 @@ def changeling_template_block(target):
         regalia = target.get('Regalia',statclass='Sphere')
         entries = ['Seeming', 'Kith', 'Court', 'Needle', 'Thread']
         for entry in entries:
-            block.append(' ' + (entry + ":").ljust(9) + 
+            block.append(' ' + (entry + ":").ljust(9) +
                          target.get(entry,statclass='Sphere').ljust(18))
-        block.append(' Regalia: ' + 
+        block.append(' Regalia: ' +
                      (regalia[0] + ' & ' + regalia[1]).ljust(18))
         motley = target.get('Motley',statclass='Sphere')
         if motley and len(motley) > 0:
@@ -81,12 +81,43 @@ def changeling_template_block(target):
             block.append(blank)
     return block
 
+def mage_template_block(target):
+    block = []
+    #try:
+    temp=[]
+    entries = ['Path', 'Order']
+    for entry in entries:
+        temp.append(' ' + (entry + ":").ljust(7) +
+                    target.get(entry,statclass='Sphere'))
+    cabal = target.get('Cabal',statclass='Sphere')
+    if cabal and len(cabal) > 0:
+        temp.append(' ' + 'Cabal:'.ljust(7) + coterie)
+    for line in temp:
+        for subline in textwrap.wrap(line,27,subsequent_indent='  '):
+            block.append(subline.ljust(28))
+    if len(block) < 15:
+        for extra in range(len(block),15):
+            block.append(blank)
+    block[12]=(' Gnosis:' + str(target.get('Gnosis',
+                                           statclass='Power')).rjust(19) + ' ')
+    mana = (str(target.get('Mana',statclass='Advantage',
+                           subentry='temp')) +'/' +
+            str(target.get('Mana',statclass='Advantage',
+                           subentry='perm')))
+    block[13]=(' Mana:' + mana.rjust(21) + ' ')
+    wisdom = str(target.get('Wisdom',statclass='Advantage'))
+    block[14]=(' Wisdom:' + wisdom.rjust(19) + ' ')
+    #except:
+    #    for line in range(15):
+    #        block.append(blank)
+    return block
+
 def mortal_template_block(target):
     block = []
     try:
         entries = ['Virtue', 'Vice']
         for entry in entries:
-            block.append(' ' + (entry + ":").ljust(9) + 
+            block.append(' ' + (entry + ":").ljust(9) +
                          target.get(entry ,statclass='Sphere').ljust(18))
         for line in range(12):
             block.append('                            ')
@@ -95,7 +126,7 @@ def mortal_template_block(target):
                 target.get('Integrity',statclass='Advantage')).rjust(16) + ' ')
     except:
         for line in range(15):
-            block.append(blank)    
+            block.append(blank)
     return block
 
 def vampire_template_block(target):
@@ -104,7 +135,7 @@ def vampire_template_block(target):
         temp=[]
         entries = ['Clan', 'Covenant', 'Mask', 'Dirge']
         for entry in entries:
-            temp.append(' ' + (entry + ":").ljust(14) + 
+            temp.append(' ' + (entry + ":").ljust(14) +
                          target.get(entry,statclass='Sphere'))
         coterie = target.get('Coterie',statclass='Sphere')
         if coterie and len(coterie) > 0:
@@ -172,4 +203,3 @@ def werewolf_template_block(target):
         for line in range(15):
             block.append(blank)
     return block
-    
