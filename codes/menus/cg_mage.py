@@ -7,11 +7,6 @@ from operator import itemgetter
 
 import time
 
-# TODO: Handle Obsessions
-# TODO: Resistance Attribute
-# TODO: Add Nameless to Orders
-# TODO: Order Status, Occult, and High Speech for non-Nameless
-
 def mage_template(caller, raw_string, **kwargs):
     caller.db.basics = { 'Sphere' : 'Mage' }
     caller.db.power = { 'Gnosis' : 1 }
@@ -19,6 +14,7 @@ def mage_template(caller, raw_string, **kwargs):
     caller.db.arcana = {}
     caller.db.rotes = {}
     caller.db.praxes = {}
+
     text = 'Select Path:'
     option_list = []
     path_list = search_script_tag('path_stat')
@@ -53,13 +49,54 @@ def mage_order(caller, raw_string, **kwargs):
         option_list.append( {'desc' : item[0],
                              'goto' : ( _set_order,
                                         { 'order' : item[1] } ) } )
+    option_list.append ( {'desc' : 'Nameless',
+                          'goto' : _set_nameless } )
     options = tuple(option_list)
     return text, options
 
 def _set_order(caller, raw_string, **kwargs):
     order = kwargs['order']
     caller.db.sphere['Order'] = order.db.longname
-    return "mage_arcana"
+    set(caller,'Status',value=1,subentry=order.db.longname,statclass='Merit')
+    set(caller, 'Language', value=1, subentry='High Speech', statclass='Merit')
+    current_occult = caller.get('Occult', statclass='Skill')
+    if current_occult < 5:
+        set(caller, 'Occult', value=current_occult + 1, statclass='Skill')
+    return "mage_stat"
+
+def _set_nameless(caller, raw_string, **kwargs):
+    caller.db.sphere['Order'] = 'Nameless'
+    return "mage_stat"
+
+def mage_stat(caller, raw_string, **kwargs):
+    option_list = []
+    for attribute in ['Composure', 'Resolve', 'Stamina']:
+        option_list.append({'desc': attribute,
+                            'goto': (_raise_stat,
+                                     {'stat': attribute.lower()})})
+    options = tuple(option_list)
+    text = 'Select one attribute to boost:'
+    return text, options
+
+def _raise_stat(caller, raw_string, **kwargs):
+    start_value = caller.get(kwargs['stat'], statclass='Attribute')
+    if start_value == 5:
+        caller.msg('|/Can\'t boost a stat to over 5')
+        return ('mage_stat', kwargs)
+    else:
+        set(caller, kwargs['stat'], statclass='Attribute', value=start_value + 1)
+    return 'mage_obsession'
+
+def mage_obsession(caller, raw_string, **kwargs):
+    text = 'Choose an obsession:'
+    options = ( {'key' : '_default',
+                 'goto' : _mage_set_obsession } )
+    return text,options
+
+def _mage_set_obsession(caller, raw_string, **kwargs):
+    f = find('Obsessions',statclass='Sphere')[0]
+    f.set(caller,[str(strip_control_sequences(raw_string))])
+    return 'mage_arcana'
 
 def mage_arcana(caller,raw_string,**kwargs):
     path = find(caller.get('Path', statclass='Sphere'),
@@ -227,10 +264,14 @@ def _check_rote(caller, raw_string, **kwargs):
             return 'mage_rotes'
 
 def mage_merits(caller, raw_string, **kwargs):
-    max = 10
+    if caller.get('Order',statclass='Sphere') == 'Nameless':
+        max = 10
+    else:
+        max = 12
     total = 0
     text = 'Gnosis: ' + str(caller.db.power['Gnosis'])
     text = text + '|/|_|_Merits:|/'
+    removable_merits = []
     for item in caller.db.merits:
         out = item[0]
         total = total + item[1]
@@ -238,6 +279,15 @@ def mage_merits(caller, raw_string, **kwargs):
             out = out + ' (' + item[2] + ')'
         out = out + ': ' + str(item[1])
         text = text + '|_|_|_|_' + out + '|/'
+        removable = True
+        if caller.get('Order', statclass='Sphere') != 'Nameless':
+            if item[0] == 'Language' and item[2] == 'High Speech':
+                removable = False
+            elif (item[0] == 'Status' and
+                  item[2] == caller.get('Order',statclass='Sphere')):
+                removable = False
+        if removable:
+            removable_merits.append(item)
     total = total + (caller.get('Gnosis',statclass='Power') - 1) * 5
     text = text + '|/Points remaining: ' + str(max - total)
     option_list = []
@@ -252,11 +302,12 @@ def mage_merits(caller, raw_string, **kwargs):
     if get(caller,'Gnosis',statclass='Power') > 1:
         option_list.append ( {'desc' : 'Decrease Gnosis',
                               'goto' : _decrease_power } )
-    if len(caller.db.merits) > 0:
+    if len(removable_merits) > 0:
         option_list.append( {'desc' : 'Remove a merit',
                              'goto' : ('remove_merit',
                                        {'total' : total,
-                                        'max' : max} ) } )
+                                        'max' : max,
+                                        'removable' : removable_merits} ) } )
     if total == max:
         option_list.append( {'key' : 'P',
                              'desc' : 'Proceed',
@@ -354,8 +405,9 @@ def _check_merit_value(caller, raw_string, **kwargs):
 
 def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
+    merit_list = kwargs['removable']
     option_list = []
-    for item in caller.db.merits:
+    for item in merit_list:
         merit = item[0]
         if len(item[2]) > 0:
             merit = merit + ' (' + item[2] + ')'
@@ -374,11 +426,32 @@ def _delete_merit(caller, raw_string, **kwargs):
 def _increase_power(caller, raw_string, **kwargs):
     if caller.db.power['Gnosis'] < 10:
         caller.db.power['Gnosis'] = caller.db.power['Gnosis'] + 1
+        if caller.db.power['Gnosis'] in [3, 6, 9]:
+            return 'mage_add_obsession'
+    return 'mage_merits'
+
+def mage_add_obsession(caller, raw_string, **kwargs):
+    text = 'Add another obsession'
+    options = ( {'key' : '_default',
+                 'goto' : _mage_new_obsession } )
+    return text,options
+
+def _mage_new_obsession(caller, raw_string, **kwargs):
+    f = find('Obsessions',statclass='Sphere')[0]
+    current_obsessions = f.get(caller)
+    if current_obsessions == False:
+        current_obsessions = []
+    current_obsessions.append(strip_control_sequences(raw_string))
+    f.set(caller,current_obsessions)
     return 'mage_merits'
 
 def _decrease_power(caller, raw_string, **kwargs):
     if caller.db.power['Gnosis'] > 1:
         caller.db.power['Gnosis'] = caller.db.power['Gnosis'] - 1
+        if caller.db.power['Gnosis'] in [2, 5, 8]:
+            f = find('Obsessions',statclass='Sphere')[0]
+            current_obsessions = f.get(caller,subentry='')[:-1]
+            f.set(caller,current_obsessions)
     return 'mage_merits'
 
 def mage_praxes(caller, raw_string, **kwargs):
