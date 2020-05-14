@@ -180,6 +180,9 @@ class advantageScript(codesScript):
                 result = True
             else:
                 result = False
+        elif name == 'Wisdom':
+            target.db.advantages['Wisdom'] = value
+            result = True
         else:
             result = False
         return result
