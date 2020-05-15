@@ -541,7 +541,7 @@ def mage_finish_cg(caller, raw_string, **kwargs):
     caller.db.xp = { 'earned' : 35,
                      'spent' : 0,
                      'arcane_earned' : 40,
-                     'arcane_spent' : 35,
+                     'arcane_spent' : 0,
                      'log' : {} }
     text = {'format' : 'suppress'}
     return text,None
