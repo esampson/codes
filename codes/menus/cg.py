@@ -294,28 +294,32 @@ def assign_template(caller, raw_string, **kwargs):
 
 def mortal_template(caller, raw_string, **kwargs):
     caller.db.sphere={}
-    ExMenu(caller, 'codes.menus.cg_mortal', startnode = 'mortal_template')
+    ExMenu(caller, 'codes.menus.cg_mortal', startnode = 'mortal_template',
+           cmdset_mergetype='Union')
     text = {'format' : 'suppress'}
     return text,None
 
 def changeling_template(caller, raw_string, **kwargs):
     ExMenu(caller, 'codes.menus.cg_changeling',
-           startnode = 'changeling_template')
+           startnode = 'changeling_template', cmdset_mergetype='Union')
     text = {'format' : 'suppress'}
     return text,None
 
 def mage_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_mage', startnode = 'mage_template')
+    ExMenu(caller, 'codes.menus.cg_mage', startnode = 'mage_template',
+           cmdset_mergetype='Union')
     text = {'format' : 'suppress'}
     return text,None
 
 def vampire_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_vampire', startnode = 'vampire_template')
+    ExMenu(caller, 'codes.menus.cg_vampire', startnode = 'vampire_template',
+           cmdset_mergetype='Union')
     text = {'format' : 'suppress'}
     return text,None
 
 def werewolf_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_werewolf', startnode = 'werewolf_template')
+    ExMenu(caller, 'codes.menus.cg_werewolf', startnode = 'werewolf_template',
+           cmdset_mergetype='Union')
     text = {'format' : 'suppress'}
     return text,None
 
