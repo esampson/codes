@@ -99,13 +99,15 @@ class arcanaScript(codesScript):
 
         """
         name = self.db.longname
-        order = find(target.get('Order',statclass='Sphere'),statclass='Order')
-        if name == order.db.inferior and value > 2:
-            result = 5
-        elif name != order.db.inferior and value > 4:
-            result = 5
+        current = self.get(target)
+        path = find(target.get('Path',statclass='Sphere'),
+                     statclass='Path')[0]
+        if name == path.db.inferior_arcana and value > 2:
+            result = 5 * (value - current)
+        elif name != path.db.inferior_arcana and value > 4:
+            result = 5 * (value - current)
         else:
-            result = 4
+            result = 4 * (value - current)
         return result
 
     def set(self, target, value, subentry=''):

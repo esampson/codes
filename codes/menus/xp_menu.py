@@ -6,62 +6,66 @@ from operator import itemgetter
 
 import time
 
+
 def start(caller):
     xp = caller.db.xp
     if caller.db.finished_cg:
         if caller.template().lower() == 'mage':
             text = ('You currently have ' + str(xp['arcane_earned'] -
-                xp['arcane_spent']) + ' arcane XP and ' + str(xp['earned'] -
-                xp['spent']) + ' regular XP available')
+                                                xp['arcane_spent']) + ' arcane XP and ' + str(xp['earned'] -
+                                                                                              xp[
+                                                                                                  'spent']) + ' regular XP available')
         else:
             text = ('You currently have ' + str(xp['earned'] -
-                                xp['spent']) + ' available')
+                                                xp['spent']) + ' available')
         options = (
-            { 'desc' : 'XP Log                                        ',
-             'goto' : _xp_log },
-            { 'desc' : 'Spend XP                                        ',
-             'goto' : 'xp_spend' },
-            { 'key' : 'Q',
-             'desc' : 'Quit                                        ',
-             'goto' : 'xp_exit' } )
+            {'desc': 'XP Log                                        ',
+             'goto': _xp_log},
+            {'desc': 'Spend XP                                        ',
+             'goto': 'xp_spend'},
+            {'key': 'Q',
+             'desc': 'Quit                                        ',
+             'goto': 'xp_exit'})
 
         return text, options
     else:
         caller.msg('You have not yet completed CG')
         return None
 
+
 def _xp_log(caller, raw_string, **kwargs):
-    xp_list=list(caller.db.xp['log'].keys())
+    xp_list = list(caller.db.xp['log'].keys())
     xp_list.sort()
     reply = '-------------------------|/'
     reply = reply + '     XP Log|/-------------------------|/'
     for item in xp_list:
         data = caller.db.xp['log'][item]
-        reply = (reply + time.asctime(time.localtime(item)) + ': '+data[1] +
+        reply = (reply + time.asctime(time.localtime(item)) + ': ' + data[1] +
                  ' for ' + str(data[0]) + ' XP.|/')
     caller.msg(reply)
     return 'start'
 
+
 def xp_spend(caller, raw_string, **kwargs):
     text = 'What do you want to buy:'
     option_list = []
-    option_list.append( { 'desc' : 'Increase Attribute',
-                          'goto' : ('xp_buy_flat_stat',
-                                    {'type' : 'Attribute' } ) } )
-    option_list.append( { 'desc' : 'Increase Skill',
-                          'goto' : ('xp_buy_flat_stat',
-                                    {'type' : 'Skill' } ) } )
-    option_list.append( { 'desc' : 'Buy Specialty',
-                          'goto' : 'xp_buy_specialty' } )
-    option_list.append( { 'desc' : 'Buy or Increase Merit',
-                          'goto' : 'xp_buy_merit' } )
+    option_list.append({'desc': 'Increase Attribute',
+                        'goto': ('xp_buy_flat_stat',
+                                 {'type': 'Attribute'})})
+    option_list.append({'desc': 'Increase Skill',
+                        'goto': ('xp_buy_flat_stat',
+                                 {'type': 'Skill'})})
+    option_list.append({'desc': 'Buy Specialty',
+                        'goto': 'xp_buy_specialty'})
+    option_list.append({'desc': 'Buy or Increase Merit',
+                        'goto': 'xp_buy_merit'})
 
     if caller.template().lower() == 'changeling':
-        option_list.append ( { 'desc' : 'Increase Wyrd',
-                               'goto' : ( _xp_buy_power,
-                                          { 'power' : 'Wyrd' } ) } )
-        option_list.append ( { 'desc' : 'Buy Contract or Seeming Blessing',
-                               'goto' : 'xp_buy_contract' } )
+        option_list.append({'desc': 'Increase Wyrd',
+                            'goto': (_xp_buy_power,
+                                     {'power': 'Wyrd'})})
+        option_list.append({'desc': 'Buy Contract or Seeming Blessing',
+                            'goto': 'xp_buy_contract'})
 
     elif caller.template().lower() == 'mage':
         option_list.append({'desc': 'Increase Gnosis',
@@ -69,7 +73,7 @@ def xp_spend(caller, raw_string, **kwargs):
                                      {'power': 'Gnosis'})})
         option_list.append({'desc': 'Buy Arcanum',
                             'goto': ('xp_buy_flat_stat',
-                                     {'type': 'Arcanum'})})
+                                     {'type': 'Arcana'})})
         option_list.append({'desc': 'Buy Rote',
                             'goto': ('xp_buy_flat_stat',
                                      {'type': 'Rote'})})
@@ -78,56 +82,58 @@ def xp_spend(caller, raw_string, **kwargs):
                                      {'type': 'Rote'})})
 
     elif caller.template().lower() == 'vampire':
-        option_list.append ( { 'desc' : 'Increase Blood Potency',
-                               'goto' : ( _xp_buy_power,
-                                          { 'power' : 'Blood Potency' } ) } )
-        option_list.append ( { 'desc' : 'Buy Discipline',
-                                'goto' : ('xp_buy_flat_stat',
-                                    {'type' : 'Discipline' } ) } )
-        option_list.append ( { 'desc' : 'Buy Devotion',
-                               'goto' :  ('xp_buy_flat_stat',
-                                    {'type' : 'Devotion' } ) } )
-        if caller.get('Covenant',statclass='Sphere').lower() == 'ordo dracul':
-            option_list.append ( { 'desc' : 'Buy Coil',
-                               'goto' :  ('xp_buy_flat_stat',
-                                    {'type' : 'Coil' } ) } )
-            option_list.append ( { 'desc' : 'Buy Scale',
-                                'goto' : ('xp_buy_flat_stat',
-                                    {'type' : 'Scale' } ) } )
-        if caller.get('Covenant',statclass='Sphere').lower() == \
+        option_list.append({'desc': 'Increase Blood Potency',
+                            'goto': (_xp_buy_power,
+                                     {'power': 'Blood Potency'})})
+        option_list.append({'desc': 'Buy Discipline',
+                            'goto': ('xp_buy_flat_stat',
+                                     {'type': 'Discipline'})})
+        option_list.append({'desc': 'Buy Devotion',
+                            'goto': ('xp_buy_flat_stat',
+                                     {'type': 'Devotion'})})
+        if caller.get('Covenant', statclass='Sphere').lower() == 'ordo dracul':
+            option_list.append({'desc': 'Buy Coil',
+                                'goto': ('xp_buy_flat_stat',
+                                         {'type': 'Coil'})})
+            option_list.append({'desc': 'Buy Scale',
+                                'goto': ('xp_buy_flat_stat',
+                                         {'type': 'Scale'})})
+        if caller.get('Covenant', statclass='Sphere').lower() == \
                 'circle of the crone':
-            option_list.append ( { 'desc' : 'Buy Cruac Rite',
-                               'goto' :  ('xp_buy_flat_stat',
-                                    {'type' : 'Cruac Rite' } ) } )
-        if caller.get('Covenant',statclass='Sphere').lower() == \
+            option_list.append({'desc': 'Buy Cruac Rite',
+                                'goto': ('xp_buy_flat_stat',
+                                         {'type': 'Cruac Rite'})})
+        if caller.get('Covenant', statclass='Sphere').lower() == \
                 'lancea et sanctum':
-            option_list.append ( { 'desc' : 'Buy Theban Miracle',
-                               'goto' : ('xp_buy_flat_stat',
-                                    {'type' : 'Theban Miracle' } ) } )
+            option_list.append({'desc': 'Buy Theban Miracle',
+                                'goto': ('xp_buy_flat_stat',
+                                         {'type': 'Theban Miracle'})})
     elif caller.template().lower() == 'werewolf':
-        option_list.append ( { 'desc' : 'Increase Primal Urge',
-                               'goto' : ( _xp_buy_power,
-                                          { 'power' : 'Primal Urge' } ) } )
+        option_list.append({'desc': 'Increase Primal Urge',
+                            'goto': (_xp_buy_power,
+                                     {'power': 'Primal Urge'})})
         option_list.append({'desc': 'Buy Renown',
                             'goto': ('xp_buy_flat_stat',
                                      {'type': 'Renown'})})
-        option_list.append ( { 'desc' : 'Buy Gift',
-                                'goto' : ('xp_buy_flat_stat',
-                                    {'type' : 'Gift' } ) } )
-        option_list.append ( { 'desc' : 'Buy Rite',
-                               'goto' :  ('xp_buy_flat_stat',
-                                    {'type' : 'Werewolf Rite' } ) } )
-    option_list.append ( { 'key' : 'Q',
-                           'desc' : 'Quit',
-                           'goto' : 'xp_exit' } )
+        option_list.append({'desc': 'Buy Gift',
+                            'goto': ('xp_buy_flat_stat',
+                                     {'type': 'Gift'})})
+        option_list.append({'desc': 'Buy Rite',
+                            'goto': ('xp_buy_flat_stat',
+                                     {'type': 'Werewolf Rite'})})
+    option_list.append({'key': 'Q',
+                        'desc': 'Quit',
+                        'goto': 'xp_exit'})
     options = tuple(option_list)
-    return text,options
+    return text, options
+
 
 def xp_buy_contract(caller, raw_string, **kwargs):
     text = 'Contract:'
-    options = ( {'key' : '_default',
-                 'goto' :  _xp_check_contract } )
-    return text,options
+    options = ({'key': '_default',
+                'goto': _xp_check_contract})
+    return text, options
+
 
 def _xp_check_contract(caller, raw_string, **kwargs):
     contracts = find(strip_control_sequences(raw_string), statclass='Contract')
@@ -139,7 +145,7 @@ def _xp_check_contract(caller, raw_string, **kwargs):
         return 'xp_spend'
     elif contracts[0].db.group.lower() == 'regalia':
         contract = contracts[0]
-        return 'xp_get_contract_note', { 'stat' : contract }
+        return 'xp_get_contract_note', {'stat': contract}
     else:
         contract = contracts[0]
         current = caller.db.xp['earned'] - caller.db.xp['spent']
@@ -150,16 +156,17 @@ def _xp_check_contract(caller, raw_string, **kwargs):
         elif cost > current:
             caller.msg('You don\'t have enough XP')
             return 'xp_spend'
-        elif contract.meets_prereqs(caller,value=True,subentry=''):
-                return 'xp_increase', { 'type' : 'contract',
-                                       'stat' : contract,
-                                       'name' : name,
-                                       'value' : True,
-                                       'subentry' : '',
-                                       'cost' : cost  }
+        elif contract.meets_prereqs(caller, value=True, subentry=''):
+            return 'xp_increase', {'type': 'contract',
+                                   'stat': contract,
+                                   'name': name,
+                                   'value': True,
+                                   'subentry': '',
+                                   'cost': cost}
         else:
             caller.msg('You don\'t meet the prerequisites for that contract')
             return 'xp_spend'
+
 
 def xp_get_contract_note(caller, raw_string, **kwargs):
     text = 'Select any additional Seeming Blessings:'
@@ -175,29 +182,30 @@ def xp_get_contract_note(caller, raw_string, **kwargs):
         blessings_list = []
         append = ''
     option_list = []
-    character_seeming = caller.get('Seeming',statclass='Sphere')
+    character_seeming = caller.get('Seeming', statclass='Sphere')
     seemings_list = search_script_tag('seeming_stat')
-    seemings=[]
+    seemings = []
     for item in seemings_list:
-        seemings.append([item.db.longname,item])
-    seemings = sorted(seemings,key=itemgetter(0))
+        seemings.append([item.db.longname, item])
+    seemings = sorted(seemings, key=itemgetter(0))
     for item in seemings:
         if item[1].db.longname != character_seeming and \
                 item[1].db.longname not in blessings_list:
             option_list.append(
-                { 'desc' : item[1].db.longname,
-                  'goto' : (_xp_check_contract_value,
-                            {'stat' : kwargs['stat'],
-                             'subentry' : append + item[1].db.longname,
-                             'type' : 'contract' } ) } )
-    option_list.append( { 'key' : 'N',
-                          'desc' : 'None',
-                          'goto' : (_xp_check_contract_value,
-                                    {'stat' : kwargs['stat'],
-                                     'subentry' : '',
-                                     'type' : 'contract' } ) } )
+                {'desc': item[1].db.longname,
+                 'goto': (_xp_check_contract_value,
+                          {'stat': kwargs['stat'],
+                           'subentry': append + item[1].db.longname,
+                           'type': 'contract'})})
+    option_list.append({'key': 'N',
+                        'desc': 'None',
+                        'goto': (_xp_check_contract_value,
+                                 {'stat': kwargs['stat'],
+                                  'subentry': '',
+                                  'type': 'contract'})})
     options = tuple(option_list)
     return text, options
+
 
 def _xp_check_contract_value(caller, raw_string, **kwargs):
     current = caller.db.xp['earned'] - caller.db.xp['spent']
@@ -210,17 +218,18 @@ def _xp_check_contract_value(caller, raw_string, **kwargs):
     elif cost > current:
         caller.msg('You don\'t have enough XP')
         return 'xp_spend'
-    elif kwargs['stat'].meets_prereqs(caller,value=True,
+    elif kwargs['stat'].meets_prereqs(caller, value=True,
                                       subentry=kwargs['subentry']):
-            return 'xp_increase', { 'type' : 'contract',
-                                   'stat' : kwargs['stat'],
-                                   'name' : name,
-                                   'value' : True,
-                                   'subentry' : kwargs['subentry'],
-                                   'cost' : cost  }
+        return 'xp_increase', {'type': 'contract',
+                               'stat': kwargs['stat'],
+                               'name': name,
+                               'value': True,
+                               'subentry': kwargs['subentry'],
+                               'cost': cost}
     else:
         caller.msg('You don\'t meet the prerequisites for that contract')
         return 'xp_spend'
+
 
 def _xp_buy_power(caller, raw_string, **kwargs):
     if caller.db.xp['earned'] - caller.db.xp['spent'] < 5:
@@ -229,13 +238,13 @@ def _xp_buy_power(caller, raw_string, **kwargs):
     else:
         stats = find(kwargs['power'], statclass='Power')
         stat = stats[0]
-        value = stat.get(caller,subentry='') + 1
-        send_kwargs={ 'type' : 'power',
-                                    'stat' : stat,
-                                    'name' : kwargs['power'],
-                                    'value' : value,
-                                    'subentry' : '',
-                                    'cost' : 5 }
+        value = stat.get(caller, subentry='') + 1
+        send_kwargs = {'type': 'power',
+                       'stat': stat,
+                       'name': kwargs['power'],
+                       'value': value,
+                       'subentry': '',
+                       'cost': 5}
         if stat.db.longname == 'Wyrd' and value in [2, 4, 8]:
             send_kwargs['message'] = 'You must add a minor frailty'
             return 'xp_add_frailty', send_kwargs
@@ -247,11 +256,13 @@ def _xp_buy_power(caller, raw_string, **kwargs):
         else:
             return 'xp_increase', send_kwargs
 
+
 def xp_increase_gnosis(caller, raw_string, **kwargs):
     text = 'Choose a new praxis:'
     options = ({'key': '_default',
-               'goto': (_xp_check_free_praxis, kwargs) })
+                'goto': (_xp_check_free_praxis, kwargs)})
     return text, options
+
 
 def _xp_check_free_praxis(caller, raw_string, **kwargs):
     spells = find(strip_control_sequences(raw_string), statclass='Spell')
@@ -261,7 +272,7 @@ def _xp_check_free_praxis(caller, raw_string, **kwargs):
     elif len(spells) > 1:
         caller.msg('Too many matches found')
         return 'xp_spend'
-    elif spells[0].meets_prereqs(caller,value=True) == False:
+    elif spells[0].meets_prereqs(caller, value=True) == False:
         caller.msg('You don\'t meet the prerequisites for that praxis')
     else:
         kwargs['praxis'] = spells[0]
@@ -270,15 +281,18 @@ def _xp_check_free_praxis(caller, raw_string, **kwargs):
         else:
             return 'xp_use_arcane', kwargs
 
+
 def xp_add_obsession(caller, raw_string, **kwargs):
     text = 'Gain another obsession:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _xp_check_obsession, kwargs) } )
-    return text,options
+    options = ({'key': '_default',
+                'goto': (_xp_check_obsession, kwargs)})
+    return text, options
+
 
 def _xp_check_obsession(caller, raw_string, **kwargs):
     kwargs['obsession'] = strip_control_sequences(raw_string)
     return 'xp_use_arcane', kwargs
+
 
 def xp_use_arcane(caller, raw_string, **kwargs):
     available_arcane = (caller.db.xp['arcane_earned'] -
@@ -291,13 +305,14 @@ def xp_use_arcane(caller, raw_string, **kwargs):
     kwargs['max'] = max
     options = ({'key': '_default',
                 'goto': (_xp_check_arcane, kwargs)})
-    return text,options
+    return text, options
+
 
 def _xp_check_arcane(caller, raw_string, **kwargs):
     input = strip_control_sequences(raw_string)
     if not input.isnumeric():
         caller.msg('Not a numeric value')
-        return 'xp_use_arcane',kwargs
+        return 'xp_use_arcane', kwargs
     elif int(input) < 0:
         caller.msg('You cannot use a negative value')
         return 'xp_use_arcane', kwargs
@@ -309,21 +324,24 @@ def _xp_check_arcane(caller, raw_string, **kwargs):
         kwargs['cost'] = kwargs['cost'] - int(input)
         return 'xp_increase', kwargs
 
+
 def xp_add_frailty(caller, raw_string, **kwargs):
-    send_kwargs=kwargs
-    send_kwargs['special']='frailty'
+    send_kwargs = kwargs
+    send_kwargs['special'] = 'frailty'
     text = kwargs['message']
-    options = ( {'key' : '_default',
-                 'goto' : ( _xp_check_known_stat, kwargs) } )
-    return text,options
+    options = ({'key': '_default',
+                'goto': (_xp_check_known_stat, kwargs)})
+    return text, options
+
 
 def xp_buy_flat_stat(caller, raw_string, **kwargs):
     text = kwargs['type'] + ':'
-    options = ( {'key' : '_default',
-                 'goto' :  ( _xp_check_order,
-                             { 'type' : kwargs['type'],
-                               'subentry' : '' } ) } )
-    return text,options
+    options = ({'key': '_default',
+                'goto': (_xp_check_order,
+                         {'type': kwargs['type'],
+                          'subentry': ''})})
+    return text, options
+
 
 def _xp_check_order(caller, raw_string, **kwargs):
     stats = find(strip_control_sequences(raw_string), statclass=kwargs['type'])
@@ -341,26 +359,36 @@ def _xp_check_order(caller, raw_string, **kwargs):
             value = stat.get(caller, subentry=kwargs['subentry']) + 1
         cost = stat.cost(caller, subentry=kwargs['subentry'], value=value)
         current = caller.db.xp['earned'] - caller.db.xp['spent']
-        if cost > current:
+        if 'arcane_earned' in caller.db.xp:
+            current_arcane = (caller.db.xp['arcane_earned'] -
+                              caller.db.xp['arcane_spent'])
+        if kwargs['type'] == 'Arcana' and cost == 4:
+            if cost > (current + current_arcane):
+                caller.msg('You do not have enough XP')
+                return 'xp_spend'
+        elif cost > current:
             caller.msg('You do not have enough XP')
             return 'xp_spend'
-        else:
-            if stat.meets_prereqs(caller,
-                                  subentry=kwargs['subentry'], value=value):
-                name = stat.db.longname
-                if kwargs['subentry'] != '':
-                    name = name + ' ('+kwargs['subentry']+ ')'
-                send_kwargs = kwargs
-                send_kwargs['stat'] = stat
-                send_kwargs['name'] = name
-                send_kwargs['value'] = value
-                send_kwargs['cost'] = cost
-                return 'xp_increase', send_kwargs
+
+        if stat.meets_prereqs(caller,
+                              subentry=kwargs['subentry'], value=value):
+            name = stat.db.longname
+            if kwargs['subentry'] != '':
+                name = name + ' (' + kwargs['subentry'] + ')'
+            send_kwargs = kwargs
+            send_kwargs['stat'] = stat
+            send_kwargs['name'] = name
+            send_kwargs['value'] = value
+            send_kwargs['cost'] = cost
+            if kwargs['type'] == 'Arcana' and kwargs['cost'] == 4:
+                return 'xp_use_arcane', send_kwargs
             else:
-                message = 'You do not meet the '
-                message = message + 'prerequisites to purchase that.|/'
-                caller.msg(message)
-                return 'xp_spend'
+                return 'xp_increase', send_kwargs
+        else:
+            message = 'You do not meet the '
+            message = message + 'prerequisites to purchase that.|/'
+            caller.msg(message)
+            return 'xp_spend'
 
 def _xp_check_known_stat(caller, raw_string, **kwargs):
     stat = kwargs['stat']
@@ -375,7 +403,7 @@ def _xp_check_known_stat(caller, raw_string, **kwargs):
                               subentry=kwargs['subentry'], value=value):
             name = stat.db.longname
             if kwargs['subentry'] != '':
-                name = name + ' ('+kwargs['subentry']+ ')'
+                name = name + ' (' + kwargs['subentry'] + ')'
             send_kwargs = kwargs
             send_kwargs['stat'] = stat
             send_kwargs['name'] = name
@@ -390,12 +418,13 @@ def _xp_check_known_stat(caller, raw_string, **kwargs):
             caller.msg(message)
             return 'xp_spend'
 
+
 def xp_increase(caller, raw_string, **kwargs):
     text = 'Buy ' + kwargs['name']
     if kwargs['type'] not in ['specialty', 'contract'] and \
             str(kwargs['value']) != 'True':
         text = text + ': ' + str(kwargs['value'])
-    if kwargs['arcane'] and kwargs['arcane'] > 0:
+    if 'arcane' in kwargs and kwargs['arcane'] > 0:
         text = (text + ' for ' + str(kwargs['cost']) +
                 ' regular and ' + str(kwargs['arcane']) + ' arcane XP?')
     else:
@@ -403,10 +432,10 @@ def xp_increase(caller, raw_string, **kwargs):
     if 'special' in kwargs:
         if kwargs['message'] == 'You must add a minor frailty':
             text = (text + '|/( You will gain the minor frailty of ' +
-                    kwargs['frailty'] +')')
+                    kwargs['frailty'] + ')')
         elif kwargs['message'] == 'You must add a major frailty':
             text = (text + '|/( You will gain the major frailty of ' +
-                    kwargs['frailty'] +')')
+                    kwargs['frailty'] + ')')
     if 'obsession' in kwargs:
         text = (text + '|/( You will gain the obsession of ' +
                 kwargs['obsession'] + ')')
@@ -415,22 +444,24 @@ def xp_increase(caller, raw_string, **kwargs):
                 kwargs['praxis'].db.longname + ')')
     text = text + '|/|/Confirm:'
     options = (
-        { 'key' : 'Y',
-          'desc' : 'Yes',
-          'goto' : ( _xp_purchase, kwargs ) },
-        { 'key' : 'N',
-          'desc' : 'No',
-          'goto' : 'xp_spend' },
-        { 'key' : 'Q',
-         'desc' : 'Quit',
-         'goto' : 'xp_exit' } )
-    return text,options
+        {'key': 'Y',
+         'desc': 'Yes',
+         'goto': (_xp_purchase, kwargs)},
+        {'key': 'N',
+         'desc': 'No',
+         'goto': 'xp_spend'},
+        {'key': 'Q',
+         'desc': 'Quit',
+         'goto': 'xp_exit'})
+    return text, options
+
 
 def xp_buy_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
-    options = ( {'key' : '_default',
-                 'goto' :  _xp_check_merit } )
-    return text,options
+    options = ({'key': '_default',
+                'goto': _xp_check_merit})
+    return text, options
+
 
 def _xp_check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
@@ -450,40 +481,44 @@ def _xp_check_merit(caller, raw_string, **kwargs):
             return 'xp_spend'
         else:
             if len(merit.db.noteRestrictions) == 0:
-                return 'xp_get_merit_value', { 'subentry' : '',
-                                            'stat' : merit }
+                return 'xp_get_merit_value', {'subentry': '',
+                                              'stat': merit}
             else:
-                return 'xp_get_merit_note', { 'stat' : merit }
+                return 'xp_get_merit_note', {'stat': merit}
+
 
 def xp_get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _xp_check_merit_note,
-                            { 'stat' : kwargs['stat'] } ) } )
+    options = ({'key': '_default',
+                'goto': (_xp_check_merit_note,
+                         {'stat': kwargs['stat']})})
     return text, options
+
 
 def _xp_check_merit_note(caller, raw_string, **kwargs):
     merit = kwargs['stat']
     if merit.db.noteRestrictions[0] == '*':
-        return 'xp_get_merit_value', { 'subentry' :
-                                       strip_control_sequences(raw_string),
-                                       'stat' : merit }
+        return 'xp_get_merit_value', {'subentry':
+                                          strip_control_sequences(raw_string),
+                                      'stat': merit}
     elif strip_control_sequences(raw_string) in merit.db.noteRestrictions:
-        return 'xp_get_merit_value', { 'subentry' :
-                                       strip_control_sequences(raw_string),
-                                       'stat' : merit }
+        return 'xp_get_merit_value', {'subentry':
+                                          strip_control_sequences(raw_string),
+                                      'stat': merit}
     else:
         caller.msg('Invalid note for that merit')
         return 'xp_spend'
 
+
 def xp_get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _xp_check_merit_value,
-                            { 'stat' : kwargs['stat'],
-                             'subentry' : kwargs['subentry'] } ) } )
-    return text,options
+    options = ({'key': '_default',
+                'goto': (_xp_check_merit_value,
+                         {'stat': kwargs['stat'],
+                          'subentry': kwargs['subentry']})})
+    return text, options
+
 
 def _xp_check_merit_value(caller, raw_string, **kwargs):
     if not strip_control_sequences(raw_string).isnumeric():
@@ -491,7 +526,7 @@ def _xp_check_merit_value(caller, raw_string, **kwargs):
         return 'xp_spend'
     else:
         current = caller.db.xp['earned'] - caller.db.xp['spent']
-        value=int(strip_control_sequences(raw_string))
+        value = int(strip_control_sequences(raw_string))
         cost = kwargs['stat'].cost(caller,
                                    subentry=kwargs['subentry'], value=value)
         name = kwargs['stat'].db.longname
@@ -503,49 +538,50 @@ def _xp_check_merit_value(caller, raw_string, **kwargs):
         elif cost > current:
             caller.msg('You don\'t have enough XP')
             return 'xp_spend'
-        elif kwargs['stat'].meets_prereqs(caller,value=value,
+        elif kwargs['stat'].meets_prereqs(caller, value=value,
                                           subentry=kwargs['subentry']):
-            return 'xp_increase', { 'type' : 'Merit',
-                                   'stat' : kwargs['stat'],
-                                   'name' : name,
-                                   'value' : value,
-                                   'subentry' : kwargs['subentry'],
-                                   'cost' : cost  }
+            return 'xp_increase', {'type': 'Merit',
+                                   'stat': kwargs['stat'],
+                                   'name': name,
+                                   'value': value,
+                                   'subentry': kwargs['subentry'],
+                                   'cost': cost}
         else:
             caller.msg('You don\'t meet the prerequisites for that merit')
             return 'xp_spend'
+
 
 def _xp_purchase(caller, raw_string, **kwargs):
     message = 'Purchasing ' + kwargs['name']
     if kwargs['type'] not in ['specialty', 'contract']:
         message = message + ': ' + str(kwargs['value'])
-    message = message + ' for ' +str(kwargs['cost']) + ' XP.'
+    message = message + ' for ' + str(kwargs['cost']) + ' XP.'
     caller.msg(message)
     log = kwargs['name']
-    if not(kwargs['type'] in ['specialty','contract']):
-        log = log + ': ' +str(kwargs['value'] )
+    if not (kwargs['type'] in ['specialty', 'contract']):
+        log = log + ': ' + str(kwargs['value'])
     if 'arcane' in kwargs and kwargs['arcane'] > 0:
         cost = (str(kwargs['cost']) + ' regular and ' + str(kwargs['arcane']) +
-                                                           ' arcane')
+                ' arcane')
         caller.db.xp['arcane_spent'] = (caller.db.xp['arcane_spent'] +
                                         kwargs['arcane'])
     else:
         cost = str(kwargs['cost'])
-    caller.db.xp['log'][time.time()] = [cost,log ]
+    caller.db.xp['log'][time.time()] = [cost, log]
     caller.db.xp['spent'] = caller.db.xp['spent'] + kwargs['cost']
     if kwargs['type'] == 'specialty':
         caller.db.specialties.append(kwargs['name'])
     else:
-        kwargs['stat'].set(caller,subentry=kwargs['subentry'],
+        kwargs['stat'].set(caller, subentry=kwargs['subentry'],
                            value=kwargs['value'])
 
     if 'frailty' in kwargs:
-        f = find('Frailties',statclass='Sphere')[0]
-        current_frailties = f.get(caller,subentry='')
+        f = find('Frailties', statclass='Sphere')[0]
+        current_frailties = f.get(caller, subentry='')
         if current_frailties == False:
             current_frailties = []
         current_frailties.append(kwargs['frailty'])
-        f.set(caller,current_frailties)
+        f.set(caller, current_frailties)
 
     if kwargs['type'] == 'Renown':
         auspice = find(caller.get('Auspice'), statclass='Auspice')[0]
@@ -554,47 +590,49 @@ def _xp_purchase(caller, raw_string, **kwargs):
                                            'Shadow Hunter', 'Shadow Masquerade',
                                            'Panopticon'],
                          'full moon': ['Killer Instinct', 'Warrior\'s Hide',
-                                       'Bloody-Handed Hunter','Butchery',
+                                       'Bloody-Handed Hunter', 'Butchery',
                                        'Crimson Spasm'],
                          'gibbous moon': ['War Howl', 'Voice of Glory',
-                                          'Dream Hunter','Thousand-Throat Howl',
+                                          'Dream Hunter', 'Thousand-Throat Howl',
                                           'End of Story'],
                          'half moon': ['Scent Beneath the Surface',
-                                       'Binding Oath','Sly Hunter',
+                                       'Binding Oath', 'Sly Hunter',
                                        'Ties of Word and Promise',
                                        'Ties of Blood and Bone'],
                          'new moon': ['Eviscerate', 'Slip Away',
-                                      'Relentless Hunter','Divide and Conquer',
+                                      'Relentless Hunter', 'Divide and Conquer',
                                       'Breach']}
             index = kwargs['value'] - 1
             auspice_moon = auspice.db.auspice_gifts[0].lower()
             new_gift = moon_list[auspice_moon][index]
             gift = find(new_gift, statclass='Gift')[0]
             if gift.get(caller) == False:
-                gift.set(caller,value=True)
+                gift.set(caller, value=True)
                 caller.db.xp['log'][time.time()] = [0, gift.db.longname +
                                                     ' free with renown gain']
 
     if 'praxis' in kwargs:
-        set(caller,kwargs['praxis'].db.longname,value=True,statclass='Praxis')
+        set(caller, kwargs['praxis'].db.longname, value=True, statclass='Praxis')
         caller.db.xp['log'][time.time()] = [0, kwargs['praxis'].db.longname +
                                             ' free with gnosis gain']
 
     if 'obsession' in kwargs:
-        o = find('Obsessions',statclass='Sphere')[0]
-        current_obsessions = o.get(caller,subentry='')
+        o = find('Obsessions', statclass='Sphere')[0]
+        current_obsessions = o.get(caller, subentry='')
         if current_obsessions == False:
             current_obsessions = []
         current_obsessions.append(kwargs['obsession'])
-        o.set(caller,current_obsessions)
+        o.set(caller, current_obsessions)
 
     return 'start'
 
+
 def xp_buy_specialty(caller, raw_string, **kwargs):
     text = 'Enter the skill the specialty will be in:'
-    options = ( {'key' : '_default',
-                 'goto' : 'xp_check_skill' } )
+    options = ({'key': '_default',
+                'goto': 'xp_check_skill'})
     return text, options
+
 
 def xp_check_skill(caller, raw_string, **kwargs):
     skills = find(strip_control_sequences(raw_string), statclass='Skill')
@@ -604,16 +642,17 @@ def xp_check_skill(caller, raw_string, **kwargs):
     elif len(skills) > 1:
         caller.msg('Too many matches found')
         return 'xp_spend'
-    elif caller.get(skills[0].db.longname,statclass='Skill') == 0:
+    elif caller.get(skills[0].db.longname, statclass='Skill') == 0:
         caller.msg('You need at least 1 point in that skill')
         return 'xp_spend'
     else:
         skill = skills[0]
         text = 'Enter specialty:'
-        options = ( {'key' : '_default',
-                 'goto' : ( _xp_check_specialties,
-                            { 'stat' : skill } ) } )
-        return text,options
+        options = ({'key': '_default',
+                    'goto': (_xp_check_specialties,
+                             {'stat': skill})})
+        return text, options
+
 
 def _xp_check_specialties(caller, raw_string, **kwargs):
     name = (kwargs['stat'].db.longname + ': ' +
@@ -626,16 +665,18 @@ def _xp_check_specialties(caller, raw_string, **kwargs):
         caller.msg('You don\'t have enough XP')
         return "xp_spend"
     else:
-        return 'xp_increase', { 'type' : 'specialty',
-                                'stat' : kwargs['stat'],
-                                'name' : name,
-                                'value' : True,
-                                'subentry' : '',
-                                'cost' : 1 }
+        return 'xp_increase', {'type': 'specialty',
+                               'stat': kwargs['stat'],
+                               'name': name,
+                               'value': True,
+                               'subentry': '',
+                               'cost': 1}
+
 
 def xp_exit(caller, raw_string, **kwargs):
     caller.msg('Exitting')
     return None
+
 
 def xp_quit(caller, raw_string, **kwargs):
     return None
