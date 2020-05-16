@@ -79,7 +79,7 @@ def xp_spend(caller, raw_string, **kwargs):
                                      {'type': 'Rote'})})
         option_list.append({'desc': 'Buy Praxis',
                             'goto': ('xp_buy_flat_stat',
-                                     {'type': 'Rote'})})
+                                     {'type': 'Praxis'})})
 
     elif caller.template().lower() == 'vampire':
         option_list.append({'desc': 'Increase Blood Potency',
@@ -344,7 +344,10 @@ def xp_buy_flat_stat(caller, raw_string, **kwargs):
 
 
 def _xp_check_order(caller, raw_string, **kwargs):
-    stats = find(strip_control_sequences(raw_string), statclass=kwargs['type'])
+    if kwargs['type'] in ['Rote', 'Praxis']:
+        stats = find(strip_control_sequences(raw_string), statclass='Spell')
+    else:
+        stats = find(strip_control_sequences(raw_string), statclass=kwargs['type'])
     if len(stats) < 1:
         caller.msg('I can\'t find ' + strip_control_sequences(raw_string))
         return 'xp_spend'
@@ -353,17 +356,25 @@ def _xp_check_order(caller, raw_string, **kwargs):
         return 'xp_spend'
     else:
         stat = stats[0]
-        if kwargs['type'].lower() in ['devotion', 'gift', 'rite']:
+        if kwargs['type'].lower() in ['rote', 'praxis', 'devotion', 'gift',
+                                      'rite']:
             value = True
         else:
             value = stat.get(caller, subentry=kwargs['subentry']) + 1
-        cost = stat.cost(caller, subentry=kwargs['subentry'], value=value)
+        if kwargs['type'].lower() in ['rote', 'praxis']:
+            cost = 1
+        else:
+            cost = stat.cost(caller, subentry=kwargs['subentry'], value=value)
         current = caller.db.xp['earned'] - caller.db.xp['spent']
         if 'arcane_earned' in caller.db.xp:
             current_arcane = (caller.db.xp['arcane_earned'] -
                               caller.db.xp['arcane_spent'])
         if kwargs['type'] == 'Arcana' and cost == 4:
             if cost > (current + current_arcane):
+                caller.msg('You do not have enough XP')
+                return 'xp_spend'
+        elif kwargs['type'] == 'Praxis':
+            if cost > current_arcane:
                 caller.msg('You do not have enough XP')
                 return 'xp_spend'
         elif cost > current:
@@ -382,6 +393,10 @@ def _xp_check_order(caller, raw_string, **kwargs):
             send_kwargs['cost'] = cost
             if kwargs['type'] == 'Arcana' and kwargs['cost'] == 4:
                 return 'xp_use_arcane', send_kwargs
+            elif kwargs['type'] == 'Praxis':
+                send_kwargs['cost'] = 0
+                send_kwargs['arcane'] = 1
+                return 'xp_increase', send_kwargs
             else:
                 return 'xp_increase', send_kwargs
         else:
@@ -420,8 +435,14 @@ def _xp_check_known_stat(caller, raw_string, **kwargs):
 
 
 def xp_increase(caller, raw_string, **kwargs):
-    text = 'Buy ' + kwargs['name']
-    if kwargs['type'] not in ['specialty', 'contract'] and \
+    text = 'Buy '
+    if kwargs['type'].lower() == 'rote':
+        text = text + 'Rote: ' + kwargs['name']
+    elif kwargs['type'].lower() == 'praxis':
+        text = text + 'Praxis: ' + kwargs['name']
+    else:
+        text = text + kwargs['name']
+    if kwargs['type'] not in ['specialty', 'contract', 'praxis', 'rote'] and \
             str(kwargs['value']) != 'True':
         text = text + ': ' + str(kwargs['value'])
     if 'arcane' in kwargs and kwargs['arcane'] > 0:
@@ -552,13 +573,20 @@ def _xp_check_merit_value(caller, raw_string, **kwargs):
 
 
 def _xp_purchase(caller, raw_string, **kwargs):
-    message = 'Purchasing ' + kwargs['name']
-    if kwargs['type'] not in ['specialty', 'contract']:
+    message = '|/Purchasing ' + kwargs['name']
+    if kwargs['type'].lower() not in ['specialty', 'contract', 'rote',
+                                      'praxis']:
         message = message + ': ' + str(kwargs['value'])
     message = message + ' for ' + str(kwargs['cost']) + ' XP.'
     caller.msg(message)
-    log = kwargs['name']
-    if not (kwargs['type'] in ['specialty', 'contract']):
+    if kwargs['type'].lower() == 'rote':
+        log = 'Rote: ' + kwargs['name']
+    elif kwargs['type'].lower() == 'praxis':
+        log = 'Praxis: ' + kwargs['name']
+    else:
+        log = kwargs['name']
+    if not (kwargs['type'].lower() in ['specialty', 'contract', 'rote',
+                                       'praxis']):
         log = log + ': ' + str(kwargs['value'])
     if 'arcane' in kwargs and kwargs['arcane'] > 0:
         cost = (str(kwargs['cost']) + ' regular and ' + str(kwargs['arcane']) +
@@ -572,8 +600,8 @@ def _xp_purchase(caller, raw_string, **kwargs):
     if kwargs['type'] == 'specialty':
         caller.db.specialties.append(kwargs['name'])
     else:
-        kwargs['stat'].set(caller, subentry=kwargs['subentry'],
-                           value=kwargs['value'])
+       set(caller,  kwargs['stat'].db.longname, subentry=kwargs['subentry'],
+           statclass=kwargs['type'], value=kwargs['value'])
 
     if 'frailty' in kwargs:
         f = find('Frailties', statclass='Sphere')[0]
