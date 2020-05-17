@@ -7,17 +7,19 @@ from codes.menus.menu_types import ExMenu
 
 # TODO: Add ability to resume and reset.
 
-stats = { 'attribute' : {'physical' : ['Strength', 'Dexterity', 'Stamina'],
-              'mental' : ['Intelligence', 'Wits', 'Resolve'],
-              'social' : ['Presence', 'Manipulation', 'Composure'] },
-           'skill' : { 'mental' : ['Academics', 'Computer', 'Crafts',
-                          'Investigation', 'Medicine', 'Occult', 'Politics',
-                          'Science'],
-             'physical' : ['Athletics', 'Brawl', 'Drive', 'Firearms',
-                           'Larceny', 'Stealth', 'Survival', 'Weaponry'],
-             'social' : ['Animal Ken', 'Empathy', 'Expression', 'Intimidation',
-                         'Persuasion', 'Socialize', 'Streetwise',
-                         'Subterfuge'] } }
+stats = { 'attribute' : {
+                'mental' : ['Intelligence', 'Wits', 'Resolve'],
+                'physical' : ['Strength', 'Dexterity', 'Stamina'],
+                'social' : ['Presence', 'Manipulation', 'Composure'] },
+           'skill' : {
+                'mental' : ['Academics', 'Computer', 'Crafts',
+                            'Investigation', 'Medicine', 'Occult', 'Politics',
+                            'Science'],
+                'physical' : ['Athletics', 'Brawl', 'Drive', 'Firearms',
+                              'Larceny', 'Stealth', 'Survival', 'Weaponry'],
+                'social' : ['Animal Ken', 'Empathy', 'Expression',
+                            'Intimidation', 'Persuasion', 'Socialize',
+                            'Streetwise', 'Subterfuge'] } }
 
 def start(caller):
 
@@ -25,6 +27,8 @@ def start(caller):
         caller.msg('You have already completed CG')
         return None
     else:
+        caller.db.cg = {'start_menu': 'cg',
+                        'start_node': 'start'}
         text = 'You are starting CG. Decide your attribute priorities.'
         help = ('|/' + '_'*79 + '|/|/' +
                 'A character starts with one dot in each Attribute for ' +
@@ -74,10 +78,10 @@ def start(caller):
 
 def _set_attribute_priorities(caller, raw_string, **kwargs):
     stats = [[],[8, 7, 6], [8, 6, 7], [7, 8, 6], [6, 8, 7], [7, 6, 8],
-                                                                     [6, 7, 8]]
-    caller.ndb._menutree.att_points = stats[int(
-                                          strip_control_sequences(raw_string))]
-    return 'decide_attribute'
+             [6, 7, 8]]
+    caller.db.cg['act_points'] = stats[int(strip_control_sequences(raw_string))]
+    caller.db.cg['att_points'] = list(caller.db.cg['act_points']).copy()
+    return 'decide_stat',{'type':'attribute'}
 
 def decide_attribute(caller, raw_string, **kwargs):
     data = get_stats(caller, type='attribute')
@@ -122,9 +126,9 @@ def get_stats(caller,type=''):
         text = text + physical.rjust(13) + ':' + str(physical_value).rjust(2)
         text = text + social.rjust(13) + ':' + str(social_value).rjust(2) + '|/'
         count = count + 1
-    mental_left = caller.ndb._menutree.att_points[0] - mental_total
-    physical_left = caller.ndb._menutree.att_points[1] - physical_total
-    social_left = caller.ndb._menutree.att_points[2] - social_total
+    mental_left = caller.db.cg['act_points'][0] - mental_total
+    physical_left = caller.db.cg['act_points'][1] - physical_total
+    social_left = caller.db.cg['act_points'][2] - social_total
     text = ( text + 'Unspent:' + str(mental_left).rjust(8) +
             str(physical_left).rjust(16) +
             str(social_left).rjust(16) )
@@ -133,29 +137,94 @@ def get_stats(caller,type=''):
     return reply
 
 def decide_stat(caller, raw_string, **kwargs):
-
+    caller.db.cg['start_node'] = 'decide_stat'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
+    if kwargs['type'] == 'attribute':
+        help = ('|/' + '_' * 79 + '|/|/' +
+            'A character starts with one dot in each Attribute for ' +
+            'free. One dot represents someone who is below average in ' +
+            'that capability, while two dots represent someone ' +
+            'average. A character with three or four dots is above' +
+            'average or extremely talented, while five dots ' +
+            'represents the peak of human ability.' + '|/' + '_' * 79)
+    else:
+        help =('|/' + '_' * 79 + '|/|/' +
+            'Skills represent applications of your abilities. These are ' +
+            'things you have learned from training, books, or teachers. ' +
+            'Having no dots in a Skill means that you have no training with ' +
+            'it, and are barely capable. One dot means you have cursory ' +
+            'training or dabble in the Skill, while two dots means that you ' +
+            'can use the Skill at a professional level. Three dots ' +
+            'represents excellent training or experience, four is ' +
+            'outstanding, and five dots means you are one of the absolute ' +
+            'best in the world.' + '|/' + '_' * 79)
     options_list=[]
     data = get_stats(caller, type=kwargs['type'])
-    for item in stats[kwargs['type']][kwargs['group']]:
+    for group in stats[kwargs['type']]:
+        for item in stats[kwargs['type']][group]:
             options_list.append({ 'desc' : item,
                                  'goto' : ('enter_value' ,
                                            {'att' : item.lower(),
-                                            'group' : kwargs['group'],
+                                            'group' : group,
                                             'type' : kwargs['type'],
                                             'points_left' :
-                                            data[kwargs['group']] } ) } )
+                                            data[group] } ) } )
     if kwargs['type'] == 'attribute':
         options_list.append( { 'desc' : 'Back',
                               'key' : 'B',
-                              'goto' : 'decide_attribute' } )
+                              'goto' : _clear_attribute_priorities } )
+        options_list.append({'desc': 'Back',
+                             'key': 'back',
+                             'goto': _clear_attribute_priorities})
     else:
         options_list.append( { 'desc' : 'Back',
                               'key' : 'B',
-                              'goto' : 'decide_skill' } )
+                              'goto' : _clear_skill_priorities } )
+        options_list.append({'desc': 'Back',
+                             'key': 'back',
+                             'goto': _clear_skill_priorities})
+
+    options_list.append( {'key': 'q',
+                          'desc': 'Quit',
+                          'goto': 'quit_menu'})
+    options_list.append( {'key': 'Quit',
+                          'desc': 'Quit',
+                          'goto': 'quit_menu'})
+    if data['mental'] == 0 and data['physical'] == 0 and data['social'] == 0:
+        if kwargs['type'] == 'attribute':
+            options_list.append( {'key' : 'P',
+                                 'desc' : 'Proceed',
+                                 'goto' : 'start_skills' } )
+        else:
+            options_list.append({'key': 'P',
+                                 'desc': 'Proceed',
+                                 'goto': 'assign_specialties'})
     text = '|_' + data['text']
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P']}
+    if kwargs['type'] == 'attribute':
+        options_format['rows'] = 3
+    else:
+        options_format['rows'] = 8
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
     options =tuple(options_list)
 
-    return text,options
+    return display,options
+
+def _clear_attribute_priorities(caller, raw_string, **kwargs):
+    del caller.db.cg['att_points']
+    del caller.db.cg['act_points']
+    return 'start'
+
+def _clear_skill_priorities(caller, raw_string, **kwargs):
+    caller.db.cg['act_points'] = caller.db.cg['att_points']
+    del caller.db.cg['skill_points']
+    return 'start_skills'
 
 def enter_value(caller, raw_string, **kwargs):
     text = 'Enter new value'
@@ -212,30 +281,77 @@ def _set_stat(caller, raw_string, **kwargs):
                                'points_left' : points_left }
 
 def start_skills(caller, raw_string, **kwargs):
-
+    caller.db.cg['start_node'] = 'start_skills'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     text = "Decide how to allocate your skills."
-    options = (
-        { 'desc' : 'Mental, Physical, Social                                 ',
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Skills represent applications of your abilities. These are ' +
+            'things you have learned from training, books, or teachers. ' +
+            'Having no dots in a Skill means that you have no training with ' +
+            'it, and are barely capable. One dot means you have cursory ' +
+            'training or dabble in the Skill, while two dots means that you ' +
+            'can use the Skill at a professional level. Three dots ' +
+            'represents excellent training or experience, four is ' +
+            'outstanding, and five dots means you are one of the absolute ' +
+            'best in the world.|/|/Like Attributes, select a primary, ' +
+            'secondary, and tertiary category for your Skills. You have ' +
+            'eleven dots to assign for your primary category, seven dots for ' +
+            'you secondary, and four dots for your tertiary. As always, ' +
+            'consider your character and concept when assigning dots. Maybe ' +
+            'your blogger has two dots in Athletics because he is a ' +
+            'marathoner, or your med student has a dot in Animal Ken from ' +
+            'volunteering at a local shelter.' + '|/' + '_' * 79)
+    options_list = [
+        { 'desc' : 'Mental, Physical, Social',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Mental, Social, Physical                                 ',
+        { 'desc' : 'Mental, Social, Physical',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Physical, Mental, Social                                 ',
+        { 'desc' : 'Physical, Mental, Social',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Physical, Social, Mental                                 ',
+        { 'desc' : 'Physical, Social, Mental',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Social, Mental, Physical                                 ',
+        { 'desc' : 'Social, Mental, Physical',
          'goto' : _set_skill_priorities },
-        { 'desc' : 'Social, Physical, Mental                                 ',
-         'goto' : _set_skill_priorities } )
+        { 'desc' : 'Social, Physical, Mental',
+         'goto' : _set_skill_priorities } ]
+    options_list.append({'desc': 'Back',
+                         'key': 'B',
+                         'goto': _return_to_attributes})
+    options_list.append({'desc': 'Back',
+                         'key': 'back',
+                         'goto': _return_to_attributes})
+    options_list.append({'key': 'q',
+                     'desc': 'Quit',
+                     'goto': 'quit_menu'})
+    options_list.append({'key': 'Quit',
+                     'desc': 'Quit',
+                     'goto': 'quit_menu'})
 
-    return text, options
+    options = tuple (options_list)
+
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B'],
+                      'rows': 6}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+
+    return display, options
+
+def _return_to_attributes(caller, raw_string, **kwargs):
+    caller.db.cg['act_points'] = caller.db.cg['att_points']
+    return 'decide_stat',{'type':'attribute'}
 
 def _set_skill_priorities(caller, raw_string, **kwargs):
     stats = [[],[11, 7, 4], [11, 4, 7], [7, 11, 4], [4, 11, 7], [7, 4, 11],
              [4, 7, 11]]
-    caller.ndb._menutree.att_points = stats[int(
+    caller.db.cg['skill_points'] = stats[int(
                                           strip_control_sequences(raw_string))]
-    return 'decide_skill'
+    caller.db.cg['act_points'] = list(caller.db.cg['skill_points']).copy()
+    return 'decide_stat',{'type':'skill'}
 
 def decide_skill(caller, raw_string, **kwargs):
     data = get_stats(caller, type='skill')
@@ -255,10 +371,25 @@ def decide_skill(caller, raw_string, **kwargs):
     return text, options
 
 def assign_specialties(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'assign_specialties'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     data = caller.db.specialties
     text = ''
     for item in data:
         text = text + item + '|/'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Skills represent broad categories of training. Someone with the ' +
+            'Science Skill is equally familiar with particle physics, basic ' +
+            'chemistry, and genetics. Skill Specialties allow you to '+
+            'differentiate more, focusing on a specific area of a Skill that ' +
+            'your character is more knowledgeable or proficient in.|/|/A ' +
+            'character\'s Specialties say a lot about her. For example, a ' +
+            'character with a Socialize Specialty in Formal Events is very '+
+            'different from one with a Specialty in Dive Bars.|/|/Pick three ' +
+            'Skill Specialties for your character and enter them by typing ' +
+            'the skill name, a colon, and the specialty.|/|/(e.g. Computers: ' +
+            'Excel Spreadsheets)' + '|/' + '_' * 79)
     option_list = []
     if len(data) < 3:
         if len(data) > 0:
@@ -274,8 +405,34 @@ def assign_specialties(caller, raw_string, **kwargs):
         option_list.append( {'key' : 'P',
                              'desc' : 'Proceed',
                              'goto' : 'assign_template' } )
+    option_list.append({'desc': 'Back',
+                         'key': 'B',
+                         'goto': _return_to_skills})
+    option_list.append({'desc': 'Back',
+                         'key': 'back',
+                         'goto': _return_to_skills})
+    option_list.append({'key': 'q',
+                         'desc': 'Quit',
+                         'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                         'desc': 'Quit',
+                         'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text,options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B'],
+                      'rows': 6}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+
+    return display, options
+
+def _return_to_skills(caller, raw_string, **kwargs):
+    caller.db.cg['act_points'] = caller.db.cg['skill_points']
+    caller.db.specialties = []
+    return 'decide_stat',{'type':'skill'}
 
 def _enter_specialty(caller, raw_string, **kwargs):
     if len(strip_control_sequences(raw_string).split(':')) != 2:
@@ -306,8 +463,17 @@ def _remove_specialty(caller, raw_string, **kwargs):
     return 'assign_specialties'
 
 def assign_template(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'assign_template'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     text = 'Choose template'
-    options = (
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Character generation up to this point has been a generic ' +
+            'affair. Every character created must pass through these steps. ' +
+            'At this point it is now necessary to chose what group the ' +
+            'character belongs to so that the more specialized attributes ' +
+            'can be assigned.' + '|/' + '_' * 79)
+    option_list = [
         { 'desc' : 'Mortal',
           'goto' : 'mortal_template' },
         { 'desc' : 'Changeling',
@@ -317,8 +483,29 @@ def assign_template(caller, raw_string, **kwargs):
         { 'desc' : 'Vampire',
           'goto' : 'vampire_template' },
         { 'desc' : 'Werewolf',
-          'goto' : 'werewolf_template'} )
-    return text, options
+          'goto' : 'werewolf_template'} ]
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'assign_specialties'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'assign_specialties'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def mortal_template(caller, raw_string, **kwargs):
     caller.db.sphere={}
@@ -356,6 +543,7 @@ def quit_menu(caller, raw_string, **kwargs):
     act_menu = 'codes.commands.character_menus.account_in_menu'
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
+    del caller.db.att_points
     caller.execute_cmd('look')
     text = {'format' : 'suppress'}
     return text,None

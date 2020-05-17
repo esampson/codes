@@ -25,7 +25,22 @@ class CmdCG(Command):
         act_menu = 'codes.commands.character_menus.account_in_menu'
         self.caller.cmdset.add(obj_menu)
         self.caller.account.cmdset.add(act_menu)
-        ExMenu(self.caller, 'codes.menus.cg', startnode = 'start',
+        if self.caller.db.cg:
+            menu = 'codes.menus.' + self.caller.db.cg['start_menu']
+            node = self.caller.db.cg['start_node']
+            if 'raw_string' in self.caller.db.cg:
+                raw_string = self.caller.db.cg['raw_string']
+            else:
+                raw_string=''
+            if 'kwargs' in self.caller.db.cg:
+                kwargs = dict(self.caller.db.cg['kwargs'])
+            else:
+                kwargs = dict()
+            ExMenu(self.caller, menu, startnode=node,
+                   cmdset_mergetype='Union', cmd_on_exit=None,
+                   startnode_input=('p',kwargs) )
+        else:
+            ExMenu(self.caller, 'codes.menus.cg', startnode = 'start',
                cmdset_mergetype='Union', cmd_on_exit=None)
 
 class CmdXP(Command):
