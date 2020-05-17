@@ -17,9 +17,33 @@ _HELP_NO_OPTIONS_NO_QUIT = _("Commands: help")
 _HELP_NO_OPTION_MATCH = _("Choose an option or try 'help'.")
 
 class ExMenu(EvMenu):
-    
+
     pass
-    
+
+    def _format_node(self, nodetext, optionlist, options_format={}):
+        """
+        Format the node text + option section
+        Args:
+            nodetext (str): The node text
+            optionlist (list): List of (key, desc) pairs.
+        Returns:
+            string (str): The options section, including
+                all needed spaces.
+        Notes:
+            This will adjust the columns of the options, first to use
+            a maxiumum of 4 rows (expanding in columns), then gradually
+            growing to make use of the screen space.
+        """
+
+        # handle the node text
+        nodetext = self.nodetext_formatter(nodetext)
+
+        # handle the options
+        optionstext = self.options_formatter(optionlist, options_format)
+
+        # format the entire node
+        return self.node_formatter(nodetext, optionstext)
+
     def nodetext_formatter(self, nodetext):
         """
         Format the node text itself.
@@ -34,37 +58,40 @@ class ExMenu(EvMenu):
             if 'text' in nodetext:
                 nodetext['text'] = nodetext['text'].strip("\n").rstrip()
         return nodetext
-    
-    def options_formatter(self, optionlist):
+
+    def options_formatter(self, optionlist, options_format):
         """
         Formats the option block.
- 
+
         Args:
             optionlist (list): List of (key, description) tuples for every
                 option related to this node.
             caller (Object, Account or None, optional): The caller of the node.
- 
+
         Returns:
             options (str): The formatted option display.
- 
+
         """
         if not optionlist:
             return ""
- 
+
         # column separation distance
         colsep = 4
-        
+
         # parse out options for Quit, Back, Proceed, None, and Finish
         option_list_1 = []
         option_list_2 = []
         for item in optionlist:
-            if (item[0].lower() in ['q', 'b', 'p', 'f'] or 
-                    (item[1].lower() in ['none'] and item[0].lower() == 'n')):
+            if ('move_keys' in options_format and
+                    item[0] in options_format['move_keys']):
                 option_list_2.append(item)
+            elif ('hide_keys' in options_format and
+                  item[0] in options_format['hide_keys']):
+                pass
             else:
                 option_list_1.append(item)
         nlist = len(option_list_1)
- 
+
         # get the widest option line in the table.
         table_width_max = -1
         table = []
@@ -87,29 +114,32 @@ class ExMenu(EvMenu):
                     table.append(" |lc%s|lt|w%s|n|le%s" % (raw_key, raw_key,
                                                            desc_string))
         ncols = _MAX_TEXT_WIDTH // table_width_max  # number of ncols
- 
+
         if ncols < 0:
             # no visible option at all
             return ""
- 
+
         ncols = ncols + 1 if ncols == 0 else ncols
         # get the amount of rows needed (start with 4 rows)
-        nrows = 4
+        if 'rows' in options_format:
+            nrows = options_format['rows']
+        else:
+            nrows = 4
         while nrows * ncols < nlist:
             nrows += 1
         ncols = nlist // nrows  # number of full columns
         nlastcol = nlist % nrows  # number of elements in last column
- 
+
         # get the final column count
         ncols = ncols + 1 if nlastcol > 0 else ncols
         if ncols > 1:
             # only extend if longer than one column
             table.extend([" " for i in range(nrows - nlastcol)])
- 
+
         # build the actual table grid
         table = [table[icol * nrows : (icol * nrows) + nrows] for
                  icol in range(0, ncols)]
- 
+
         # adjust the width of each column
         for icol in range(len(table)):
             col_width = (
@@ -140,10 +170,10 @@ class ExMenu(EvMenu):
                         result.add_row(" |lc%s|lt|w%s|n|le%s" % (raw_key,
                                                                  raw_key,
                                                                  desc_string))
- 
+
         # format the table into columns
         return str(result)
-    
+
     def node_formatter(self, nodetext, optionstext):
         """
         Formats the entirety of the node.
@@ -158,7 +188,7 @@ class ExMenu(EvMenu):
 
         """
         sep = '-'
-        
+
         if type(nodetext) == dict:
             if 'text' in nodetext:
                 text = nodetext['text']
@@ -168,9 +198,14 @@ class ExMenu(EvMenu):
                 args = nodetext['format']
             else:
                 args=''
+            if 'footer' in nodetext:
+                footer = nodetext['footer']
+            else:
+                footer = ''
         else:
             text = str(nodetext)
-            args = ''
+            args = False
+            footer = False
 
         if self._session:
             screen_width = self._session.protocol_flags.get("SCREENWIDTH",
@@ -185,19 +220,19 @@ class ExMenu(EvMenu):
                                             nodetext_width_max))
         separator1 = '_' * total_width + "\n\n" if nodetext_width_max else ""
         separator2 = "\n" + '_' * total_width + "\n\n" if total_width else ""
-        if args == 'suppress':
-            result = 'Trying to really be quiet'
-        elif args == 'no_bars':
+        if args == 'no_bars':
             result = text + "|n\n" + optionstext
         else:
             result = separator1 + "|n" + text + "|n" + separator2 + "|n" + \
                      optionstext
+        if footer:
+            result = result + '|/' + footer
         return result
-    
+
     def display_nodetext(self):
         if self.nodetext != 'Trying to really be quiet':
             self.caller.msg(self.nodetext)
-            
+
     def goto(self, nodename, raw_string, **kwargs):
         """
         Run a node by name, optionally dynamically generating that name first.
@@ -278,8 +313,11 @@ class ExMenu(EvMenu):
                                 execute,
                                 exec_kwargs,
                             )
-
-        self.nodetext = self._format_node(nodetext, display_options)
+        if type(nodetext) == dict and 'options_format' in nodetext:
+            self.nodetext = self._format_node(nodetext, display_options,
+                                    options_format=nodetext['options_format'])
+        else:
+            self.nodetext = self._format_node(nodetext, display_options)
         self.node_kwargs = kwargs
         self.nodename = nodename
 
@@ -295,4 +333,3 @@ class ExMenu(EvMenu):
         self.display_nodetext()
         if not options:
             self.close_menu()
-    

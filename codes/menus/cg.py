@@ -3,8 +3,6 @@ from codes.data import set
 from evennia.utils.utils import strip_control_sequences
 from codes.menus.menu_types import ExMenu
 
-# TODO: Investigate not being able to use commands while in menu
-
 # TODO: Add ability to go backwards.
 
 # TODO: Add ability to resume and reset.
@@ -27,22 +25,52 @@ def start(caller):
         caller.msg('You have already completed CG')
         return None
     else:
-        text = "You are starting CG. Decide how to allocate your attributes."
+        text = 'You are starting CG. Decide your attribute priorities.'
+        help = ('|/' + '_'*79 + '|/|/' +
+                'A character starts with one dot in each Attribute for ' +
+                'free. One dot represents someone who is below average in '+
+                'that capability, while two dots represent someone ' +
+                'average. A character with three or four dots is above' +
+                'average or extremely talented, while five dots ' +
+                'represents the peak of human ability.|/|/Attributes are ' +
+                'divided into the Mental, Physical, and Social ' +
+                'categories. For your character, consider which of the ' +
+                'categories is most important. What sort of endeavors ' +
+                'does your character excel at? Once you have picked a ' +
+                'primary category, decide out of the remaining two which ' +
+                'is your character\'s next-best category. You\'ll assign ' +
+                'five dots to the Attributes in your primary category, ' +
+                'four dots to the Attributes in your secondary category, ' +
+                'and three dots to the Attributes in your tertiary ' +
+                'category.' + '|/' + '_'*79)
+        footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+        options_format = {'hide_keys' : ['q', 'Quit'],
+                          'rows' : 6}
+        display = {'text': text,
+                   'help': help,
+                   'options_format': options_format,
+                   'footer': footer}
         options = (
-            { 'desc' : 'Mental, Physical, Social                             ',
+            { 'desc' : 'Mental, Physical, Social',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Mental, Social, Physical                             ',
+            { 'desc' : 'Mental, Social, Physical',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Physical, Mental, Social                             ',
+            { 'desc' : 'Physical, Mental, Social',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Physical, Social, Mental                             ',
+            { 'desc' : 'Physical, Social, Mental',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Social, Mental, Physical                             ',
+            { 'desc' : 'Social, Mental, Physical',
              'goto' : _set_attribute_priorities },
-            { 'desc' : 'Social, Physical, Mental                             ',
-             'goto' : _set_attribute_priorities } )
+            { 'desc' : 'Social, Physical, Mental',
+             'goto' : _set_attribute_priorities },
+            { 'key' : 'q',
+              'desc' : 'Quit',
+              'goto' : 'quit_menu'},
+            { 'key' : 'Quit',
+              'desc' : 'Quit',
+              'goto' : 'quit_menu'})
 
-        return text, options
+        return display, options
 
 def _set_attribute_priorities(caller, raw_string, **kwargs):
     stats = [[],[8, 7, 6], [8, 6, 7], [7, 8, 6], [6, 8, 7], [7, 6, 8],
@@ -323,8 +351,12 @@ def werewolf_template(caller, raw_string, **kwargs):
     text = {'format' : 'suppress'}
     return text,None
 
-def quit(caller, raw_string, **kwargs):
-    caller.execute_command('look')
+def quit_menu(caller, raw_string, **kwargs):
+    obj_menu = 'codes.commands.character_menus.object_in_menu'
+    act_menu = 'codes.commands.character_menus.account_in_menu'
+    caller.cmdset.delete(obj_menu)
+    caller.account.cmdset.delete(act_menu)
+    caller.execute_cmd('look')
     text = {'format' : 'suppress'}
     return text,None
 
