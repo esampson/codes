@@ -537,10 +537,11 @@ def mortal_template(caller, raw_string, **kwargs):
     return text,None
 
 def changeling_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_changeling',
-           startnode = 'changeling_template')
-    text = {'format' : 'suppress'}
-    return text,None
+    caller.db.sphere = {}
+    ExMenu(caller, 'codes.menus.cg_changeling', startnode='changeling_template',
+           cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
+    text = {'format': 'suppress'}
+    return text, None
 
 def mage_template(caller, raw_string, **kwargs):
     ExMenu(caller, 'codes.menus.cg_mage', startnode = 'mage_template')

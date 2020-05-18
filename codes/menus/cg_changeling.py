@@ -13,12 +13,16 @@ anchors = { 'needle' : ['Bon Vivant', 'Chess Master', 'Commander',
                             'Teacher', 'Traditionalist', 'Visionary'],
                 'thread' : ['Acceptance', 'Anger', 'Family', 'Friendship',
                             'Hate', 'Honor', 'Joy', 'Love', 'Memory',
-                            'Revenge'] } 
+                            'Revenge'] }
 
 courts = ['Spring', 'Summer', 'Autumn', 'Winter', 'None']
 regalia = ['Crown', 'Jewels', 'Mirror', 'Shield', 'Steed', 'Sword']
 
 def changeling_template(caller, raw_string, **kwargs):
+    caller.db.cg['start_menu'] = 'cg_changeling'
+    caller.db.cg['start_node'] = 'changeling_template'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     caller.db.basics = { 'Sphere' : 'Changeling' }
     caller.db.sphere = { 'Frailties' : [] }
     caller.db.power = { 'Wyrd' : 1 }
@@ -33,11 +37,54 @@ def changeling_template(caller, raw_string, **kwargs):
         option_list.append( {'desc' : item[0],
                              'goto' : ( 'changeling_stat',
                                         { 'seeming' : item[1] } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'return_to_main_cg'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'return_to_main_cg'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Seeming is more archetype than personality. While the Contracts ' +
+            'and kiths associated with the various seemings may influence ' +
+            'behavior, any seeming could draw anyone. Playing to type is fun ' +
+            'and helps guide character choices, but challenging established ' +
+            'norms can be fulfilling, too.|/|/Your choice of seeming ' +
+            'determines a Contract Regalia with which your character has an ' +
+            'affinity. As well, every seeming has three favored Attributes ' +
+            'from either Power, Finesse, or Resistance traits. Take an ' +
+            'additional dot in one of these. This can only take an Attribute ' +
+            'to five dots.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def return_to_main_cg(caller, raw_string, **kwargs):
+    caller.db.basics = {}
+    caller.db.sphere = {}
+    ExMenu(caller, 'codes.menus.cg', startnode='assign_template',
+           cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
+    text = {'format': 'suppress'}
+    return text, None
 
 def changeling_stat(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'changeling_stat'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     seeming = kwargs['seeming']
+    text = 'Select one attribute to boost:'
     option_list=[]
     caller.db.sphere['Seeming'] = seeming.db.longname
     caller.db.sphere['Regalia'] = [seeming.db.regalia]
@@ -45,9 +92,33 @@ def changeling_stat(caller, raw_string, **kwargs):
         option_list.append( { 'desc' : attribute.capitalize(),
                               'goto' : (_raise_stat,
                                         {'stat' : attribute.lower() } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'changeling_template'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'changeling_template'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    text = 'Select one attribute to boost:'
-    return text,options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Every seeming has three favored Attributes ' +
+            'from either Power, Finesse, or Resistance traits. Take an ' +
+            'additional dot in one of these. This can only take an Attribute ' +
+            'to five dots.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _raise_stat(caller, raw_string, **kwargs):
     start_value = caller.get(kwargs['stat'],statclass='Attribute')
@@ -56,10 +127,14 @@ def _raise_stat(caller, raw_string, **kwargs):
         return "changeling_stats"
     else:
         set(caller, kwargs['stat'], statclass='Attribute', value=start_value+1)
+        caller.db.cg['stat_boost'] = {'stat': kwargs['stat'],
+                                      'start': start_value}
         return "changeling_kith"
-    
-def changeling_kith(caller, raw_string, **kwargs):
 
+def changeling_kith(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'changeling_kith'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     text = 'Select Kith:'
     kiths_list = search_script_tag('kith_stat')
     kiths = []
@@ -71,10 +146,59 @@ def changeling_kith(caller, raw_string, **kwargs):
         option_list.append( {'desc' : item[0],
                              'goto' : ( 'changeling_court',
                                         { 'kith' : item[1] } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_stat})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_stat})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'A kith is a refinement of seeming, a transformation that alters ' +
+            'the way a changeling\'s seeming expresses itself. If your ' +
+            'character served a specific purpose in Arcadia or dedicated ' +
+            'herself to a singular method of coping, that task molded her. ' +
+            'Kith is the resulting transformation; a character of any ' +
+            'seeming can belong to any kith.|/|/For example, if her Keeper ' +
+            'made her into a torch to light the way, she might have the ' +
+            'Bright One kith. If she then escaped by dousing her light and ' +
+            'moving as smoke, she could end up a Darkling who lures people ' +
+            'off the beaten path with a will-o\'-the-wisp glow. However, if ' +
+            'she escaped by fanning her flame until she was a roaring ' +
+            'bonfire that reduced her Keeper\'s palace to ashes, she could ' +
+            'end up an Elemental instead. Likewise, a changeling who became ' +
+            'a Beast by roaming Arcadia\'s wild woods might fall naturally ' +
+            'into the Hunterheart kith by the sheer necessity of dedication ' +
+            'to survival, or might instead become a Playmate if she ' +
+            'convinced a powerful traveler to let her be his loyal hound in ' +
+            'exchange for protection from worse predators.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 4}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_stat(caller, raw_string, **kwargs):
+    set(caller, caller.db.cg['stat_boost']['stat'], statclass='Attribute',
+        value=caller.db.cg['stat_boost']['start'])
+    return "changeling_stat",{'seeming': find(caller.get('Seeming',
+                                                         statclass='Sphere'),
+                                              statclass='Seeming')[0]}
 
 def changeling_court(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'changeling_court'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     kith = kwargs['kith']
     caller.db.sphere['Kith'] = kith.db.longname
     text = 'Select Court:'
@@ -83,19 +207,52 @@ def changeling_court(caller, raw_string, **kwargs):
         option_list.append( {'desc' : item,
                              'goto' : ( _changeling_set_court,
                                         { 'court' : item } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'changeling_kith'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'changeling_kith'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
-    
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Courts are the changelings\' way of coping with the Fae. Courts ' +
+            'represent strong emotions and the stages of grief that come ' +
+            'after abuse, but also represent a practical way for changelings ' +
+            'to defend themselves. Your character ultimately chooses her own ' +
+            'court based on a variety of personal decisions, and it may ' +
+            'change during play. You may choose to start play without a ' +
+            'court.|/|/If you decide to start play as a courtier, your ' +
+            'character receives a free dot in the appropriate Mantle Merit ' +
+            'for her court.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 4}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
 def _changeling_set_court(caller, raw_string, **kwargs):
     caller.db.sphere['Court'] = kwargs['court']
-    set(caller,'Mantle',statclass='Merit',subentry=kwargs['court'],value=1)
+    if kwargs['court'] != 'None':
+        set(caller,'Mantle',statclass='Merit',subentry=kwargs['court'],value=1)
     return 'changeling_anchors'
 
 def changeling_anchors(caller, raw_string, **kwargs):
-    
+    caller.db.cg['start_node'] = 'changeling_anchors'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     needle = get(caller,'Needle',statclass='Sphere')
     thread = get(caller,'Thread',statclass='Sphere')
-    text = 'Needle: ' 
+    text = 'Needle: '
     if needle:
         text = text + needle + '|/'
     else:
@@ -115,8 +272,47 @@ def changeling_anchors(caller, raw_string, **kwargs):
         option_list.append ( { 'key' : 'P',
                               'desc' : 'Proceed',
                               'goto' : 'changeling_regalia' } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_court})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_court})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Changelings approach problems and deal with challenges and ' +
+            'people as defined by their Needle. Needle is the changeling\'s ' +
+            'true self that she uses as a shield against becoming someone ' +
+            'she is not. People see her Needle, they interact with her based ' +
+            'on it, and it informs her actions.|/|/Thread is the motivation ' +
+            'that keeps a changeling strong. This is the tie that binds her ' +
+            'to reality. Thread combines her innermost fears, desires, and ' +
+            'needs that drive her forward and keep her grounded. When ' +
+            'everything goes wrong, and she\'s only just hanging on, Thread ' +
+            'is what reminds a changeling how she overcame the vulnerability ' +
+            'Arcadia forced upon her.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 4}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_court(caller, raw_string, **kwargs):
+    set(caller, 'Mantle', statclass='Merit', value=0,
+        subentry=caller.get('Court',statclass='Sphere'))
+    return "changeling_court",{'kith': find(caller.get('Kith',
+                                                         statclass='Sphere'),
+                                              statclass='Kith')[0]}
 
 def choose_anchor(caller, raw_string, **kwargs):
     option_list = []
@@ -132,8 +328,11 @@ def choose_anchor(caller, raw_string, **kwargs):
 def _set_anchor(caller, raw_string, **kwargs):
     caller.db.sphere[kwargs['type'].capitalize()] = kwargs['value']
     return 'changeling_anchors'
-    
+
 def changeling_regalia(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'changeling_regalia'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     text = 'Select second Regalia:'
     option_list = []
     for item in regalia:
@@ -141,14 +340,44 @@ def changeling_regalia(caller, raw_string, **kwargs):
             option_list.append( {'desc' : item,
                                  'goto' : ( _changeling_set_regalia,
                                           { 'regalia' : item } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'changeling_anchors'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'changeling_anchors'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Contracts have a variety of effects grouped into common themes ' +
+            'called Regalia, such as Crown for leadership, or Mirror for ' +
+            'perception. Most Contracts are freely accessible to all ' +
+            'changelings, but each seeming has a particular affinity for one ' +
+            'Regalia, and you choose a second favored Regalia for your ' +
+            'character as well.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 4}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _changeling_set_regalia(caller, raw_string, **kwargs):
     caller.db.sphere['Regalia'].append(kwargs['regalia'])
     return "changeling_merits"
-    
+
 def changeling_merits(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'changeling_merits'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     if caller.db.sphere['Court'] != 'None':
         max = 11
     else:
@@ -189,16 +418,70 @@ def changeling_merits(caller, raw_string, **kwargs):
         option_list.append( {'key' : 'P',
                              'desc' : 'Proceed',
                              'goto' : 'changeling_contracts'})
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_regalia})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_regalia})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Merits are important facets of your character that do not fall ' +
+            'under other traits. A Merit can represent a knack, special ' +
+            'training, people your character knows, or even things that he ' +
+            'owns. They add unique capabilities to your character beyond ' +
+            'Attributes and Skills.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 4}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_regalia(caller, raw_string, **kwargs):
+    caller.db.sphere['Regalia'] = [caller.db.sphere['Regalia'][0]]
+    caller.db.sphere['Frailties'] = []
+    caller.db.merits=[]
+    if caller.db.sphere['Court'] != 'None':
+        set(caller, 'Mantle', statclass='Merit',
+            subentry=caller.db.sphere['Court'], value=1)
+    caller.db.power={'Wyrd': 1}
+    return 'changeling_regalia'
 
 def add_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
-    options = ( {'key' : '_default',
+    option_list = [ {'key' : '_default',
                  'goto' : ( _check_merit,
                             { 'total' : kwargs['total'],
-                             'max' : kwargs['max'] } ) } )
-    return text,options
+                             'max' : kwargs['max'] } ) } ]
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 49 + '|/|/' +
+            'Enter the name of the merit you want to purchase.' +
+            '|/' + '_' * 49)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
@@ -219,16 +502,39 @@ def _check_merit(caller, raw_string, **kwargs):
             return 'get_merit_note', { 'total' : kwargs['total'],
                                   'merit' : merit,
                                   'max' : kwargs['max']}
-        
+
 def get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _check_merit_note, 
+    option_list = [ {'key' : '_default',
+                 'goto' : ( _check_merit_note,
                             { 'total' : kwargs['total'],
                              'merit' : kwargs['merit'],
-                             'max' : kwargs['max'] } ) } )
-    return text, options
+                             'max' : kwargs['max'] } ) } ]
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' + 'Some merits can be purchased ' +
+            'multiple times to represent different things. One good example ' +
+            'of this is the Status merit. Characters can have Status with ' +
+            'multiple groups so each time Status is purchased a note ' +
+            'will need to be provided to specify what group it applies to.' +
+            '|/|/Some merits allow open ended notes while others will ' +
+            'restrict possible notes to a given list.' +
+            '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _check_merit_note(caller, raw_string, **kwargs):
     merit = kwargs['merit']
@@ -245,23 +551,40 @@ def _check_merit_note(caller, raw_string, **kwargs):
     else:
         caller.msg('|/Invalid note for that merit')
         return 'changeling_merits'
-    
+
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _check_merit_value, 
+    option_list = [ {'key' : '_default',
+                 'goto' : ( _check_merit_value,
                             { 'total' : kwargs['total'],
                              'note' : kwargs['note'],
                              'merit' : kwargs['merit'],
-                             'max' : kwargs['max'] } ) } )
-    return text,options
+                             'max' : kwargs['max'] } ) } ]
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 29 + '|/|/Enter a value between 1 and 5' + '|/' +
+            '_' * 29)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _check_merit_value(caller, raw_string, **kwargs):
     if not strip_control_sequences(raw_string).isnumeric():
         caller.msg('|/Invalid value')
         return 'changeling_merits'
     else:
-        value=int(strip_control_sequences(raw_string)) 
+        value=int(strip_control_sequences(raw_string))
         if value < 1:
             caller.msg('|/Invalid value')
             return 'changeling_merits'
@@ -293,13 +616,13 @@ def remove_merit(caller, raw_string, **kwargs):
     return text,options
 
 def _delete_merit(caller, raw_string, **kwargs):
-    if ( kwargs['entry'] == 'Mantle' and 
+    if ( kwargs['entry'] == 'Mantle' and
          kwargs['subentry'] == caller.db.sphere['Court'] ):
         caller.msg('|/You can\'t remove your court mantle')
     else:
         set(caller, kwargs['entry'], subentry=kwargs['subentry'], value=0)
     return 'changeling_merits'
-    
+
 def _increase_power(caller, raw_string, **kwargs):
     if caller.db.power['Wyrd'] < 10:
         caller.db.power['Wyrd'] = caller.db.power['Wyrd'] + 1
@@ -318,7 +641,7 @@ def changeling_add_frailty(caller, raw_string, **kwargs):
     text = kwargs['message']
     options = ( {'key' : '_default',
                  'goto' : ( _changeling_new_frailty, kwargs) } )
-    return text,options 
+    return text,options
 
 def _changeling_new_frailty(caller, raw_string, **kwargs):
     f = find('Frailties',statclass='Sphere')[0]
@@ -338,8 +661,11 @@ def _decrease_power(caller, raw_string, **kwargs):
             current_frailties = f.get(caller,subentry='')[:-1]
             f.set(caller,current_frailties)
     return 'changeling_merits'
-    
+
 def changeling_contracts(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'changeling_regalia'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     common_list = ['|/Common Contracts:']
     royal_list = ['|/Royal Contracts:']
     goblin_list = ['|/Goblin Contracts:']
@@ -350,12 +676,12 @@ def changeling_contracts(caller, raw_string, **kwargs):
     for item in contracts:
         result = find(item,statclass='Contract')
         entry = '|_|_|_|_' + result[0].db.longname
-        if (result[0].db.category in caller.db.sphere['Regalia'] and 
+        if (result[0].db.category in caller.db.sphere['Regalia'] and
             result[0].db.subgroup == 'Common'):
             entry = entry + ' (f)'
             favored_common = favored_common + 1
-        elif ( (result[0].db.category in caller.db.sphere['Regalia'] or 
-                result[0].db.category == caller.db.sphere['Court']) and 
+        elif ( (result[0].db.category in caller.db.sphere['Regalia'] or
+                result[0].db.category == caller.db.sphere['Court']) and
                 result[0].db.subgroup) == 'Royal':
             entry = entry + ' (f)'
             favored_royal = favored_royal + 1
@@ -378,18 +704,55 @@ def changeling_contracts(caller, raw_string, **kwargs):
     if len(common_list) + len(royal_list) + len(goblin_list) < 9:
         option_list.append( { 'key' : 'A',
                               'desc' : 'Add a contract',
-                              'goto' : 'changeling_add_contract' } ) 
+                              'goto' : 'changeling_add_contract' } )
     if len(common_list) + len(royal_list) + len(goblin_list) > 3:
         option_list.append( { 'key' : 'R',
                               'desc' : 'Remove a contract',
-                              'goto' : 'changeling_remove_contract' } ) 
-    if (len(common_list) + len(goblin_list) == 6 and len(royal_list) == 3 and 
+                              'goto' : 'changeling_remove_contract' } )
+    if (len(common_list) + len(goblin_list) == 6 and len(royal_list) == 3 and
                                   favored_common >= 2 and favored_royal == 2):
         option_list.append( { 'key' : 'F',
                               'desc' : 'Finish character generation',
                                'goto' : 'changeling_finish_cg' } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_merits})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_merits})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text,options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Contracts represent agreements made in the past between the ' +
+            'True Fae and the natural world. A changeling can take advantage ' +
+            'of Contracts he is familiar with, or has learned about. These ' +
+            'bargains allow the changeling to defy the natural laws which ' +
+            'normally bind a person, from being able to eat any substance ' +
+            'regardless of hardness to disappearing in an ephemeral cloud of ' +
+            'smoke.|/|/Your character begins with four Contracts chosen from ' +
+            'among Common Regalia, Common Court, and Goblin Contracts; she ' +
+            'must meet the proper requirements to take Court Contracts. Two ' +
+            'of those starting Contracts must come from the character\'s ' +
+            'favored Regalia. She also gains two Royal Contracts from her ' +
+            'court or favored Regalia.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 4}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_merits(caller, raw_string, **kwargs):
+    caller.db.contracts = {}
+    return 'changeling_merits'
 
 def changeling_remove_contract(caller, raw_string, **kwargs):
     text = 'Select contract to remove:'
@@ -429,13 +792,22 @@ def _check_contract(caller, raw_string, **kwargs):
         else:
             caller.msg('|/You don\'t meet the prerequisites for that contract')
             return 'changeling_contracts'
-        
-def quit(caller, raw_string, **kwargs):
-    
-    text = {'format' : 'suppress'}
-    return text,None
+
+def quit_menu(caller, raw_string, **kwargs):
+    obj_menu = 'codes.commands.character_menus.object_in_menu'
+    act_menu = 'codes.commands.character_menus.account_in_menu'
+    caller.cmdset.delete(obj_menu)
+    caller.account.cmdset.delete(act_menu)
+    caller.execute_cmd('look')
+    text = {'format': 'suppress'}
+    return text, None
 
 def changeling_finish_cg(caller, raw_string, **kwargs):
+    obj_menu = 'codes.commands.character_menus.object_in_menu'
+    act_menu = 'codes.commands.character_menus.account_in_menu'
+    caller.cmdset.delete(obj_menu)
+    caller.account.cmdset.delete(act_menu)
+    del caller.db.cg
     caller.cmdset.add('codes.commands.character_commands.finished_character',
                       permanent=True)
     caller.cmdset.delete('unfinished_character')
@@ -450,5 +822,6 @@ def changeling_finish_cg(caller, raw_string, **kwargs):
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,
                      'log' : {} }
+    caller.execute_cmd('look')
     text = {'format' : 'suppress'}
     return text,None

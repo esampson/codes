@@ -75,12 +75,9 @@ def mortal_template(caller, raw_string, **kwargs):
     return display, options
 
 def return_to_main_cg(caller, raw_string, **kwargs):
-    caller.db.basics = {'Sphere': 'Mortals'}
+    caller.db.basics = {}
     caller.db.power = {}
-    if 'Virtue' in caller.db.sphere:
-        del caller.db.sphere['Virtue']
-    if 'Vice' in caller.db.sphere:
-        del caller.db.sphere['Vice']
+    caller.db.sphere = {}
     ExMenu(caller, 'codes.menus.cg', startnode='assign_template',
            cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
     text = {'format': 'suppress'}

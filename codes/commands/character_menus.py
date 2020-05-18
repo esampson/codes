@@ -84,6 +84,16 @@ class CmdQuit(Command):
     def func(self):                         #pragma: no cover
         pass                                #pragma: no cover
 
+class CmdInventory(Command):
+    """
+    Dummy command so that menu help gets priority
+    """
+
+    key = 'inventory'
+
+    def func(self):                         #pragma: no cover
+        pass                                #pragma: no cover
+
 class object_in_menu(CmdSet):
 
     key = 'For use in menus'
@@ -92,6 +102,7 @@ class object_in_menu(CmdSet):
 
     def at_cmdset_creation(self):
         self.add(CmdHelp())
+        self.add(CmdInventory())
 
 class account_in_menu(CmdSet):
 
