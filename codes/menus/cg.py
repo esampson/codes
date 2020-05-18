@@ -228,12 +228,33 @@ def _clear_skill_priorities(caller, raw_string, **kwargs):
 
 def enter_value(caller, raw_string, **kwargs):
     text = 'Enter new value'
-    options = ( { 'key' : '_default',
+    option_list = [ { 'key' : '_default',
          'goto' : ( _set_stat, {'group' : kwargs['group'],
                                 'att' : kwargs['att'],
                                 'type' : kwargs ['type'],
-                                'points_left' : kwargs['points_left'] } ) } )
-    return text, options
+                                'points_left' : kwargs['points_left'] } ) } ]
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = '|/' + '_' * 29 + '|/|/'
+    if kwargs['type'] == 'attribute':
+        help = help + 'Enter a value between 1 and 5'
+    else:
+        help = help + 'Enter a value between 0 and 5'
+    help = help + '|/' + '_' * 29
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _set_stat(caller, raw_string, **kwargs):
 
@@ -463,6 +484,7 @@ def _remove_specialty(caller, raw_string, **kwargs):
     return 'assign_specialties'
 
 def assign_template(caller, raw_string, **kwargs):
+    caller.db.cg['start_menu'] = 'cg'
     caller.db.cg['start_node'] = 'assign_template'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
     caller.db.cg['kwargs'] = kwargs
@@ -510,31 +532,28 @@ def assign_template(caller, raw_string, **kwargs):
 def mortal_template(caller, raw_string, **kwargs):
     caller.db.sphere={}
     ExMenu(caller, 'codes.menus.cg_mortal', startnode = 'mortal_template',
-           cmdset_mergetype='Union')
+           cmdset_mergetype='Union',  cmd_on_exit=None, auto_quit=False)
     text = {'format' : 'suppress'}
     return text,None
 
 def changeling_template(caller, raw_string, **kwargs):
     ExMenu(caller, 'codes.menus.cg_changeling',
-           startnode = 'changeling_template', cmdset_mergetype='Union')
+           startnode = 'changeling_template')
     text = {'format' : 'suppress'}
     return text,None
 
 def mage_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_mage', startnode = 'mage_template',
-           cmdset_mergetype='Union')
+    ExMenu(caller, 'codes.menus.cg_mage', startnode = 'mage_template')
     text = {'format' : 'suppress'}
     return text,None
 
 def vampire_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_vampire', startnode = 'vampire_template',
-           cmdset_mergetype='Union')
+    ExMenu(caller, 'codes.menus.cg_vampire', startnode = 'vampire_template')
     text = {'format' : 'suppress'}
     return text,None
 
 def werewolf_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_werewolf', startnode = 'werewolf_template',
-           cmdset_mergetype='Union')
+    ExMenu(caller, 'codes.menus.cg_werewolf', startnode = 'werewolf_template')
     text = {'format' : 'suppress'}
     return text,None
 
@@ -543,7 +562,6 @@ def quit_menu(caller, raw_string, **kwargs):
     act_menu = 'codes.commands.character_menus.account_in_menu'
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
-    del caller.db.att_points
     caller.execute_cmd('look')
     text = {'format' : 'suppress'}
     return text,None

@@ -2,11 +2,13 @@ from codes.data import get
 from codes.data import set
 from codes.data import find
 
+from codes.menus.menu_types import ExMenu
+
 from evennia.utils.utils import strip_control_sequences
 
 import time
 
-anchors = { 'virtue' : ['Charity', 'Competitive', 'Faith', 'Fortitude', 
+anchors = { 'virtue' : ['Charity', 'Competitive', 'Faith', 'Fortitude',
                             'Generous', 'Hope', 'Justice', 'Loyal', 'Prudence',
                             'Temperance'],
                 'vice' : ['Ambitious', 'Arrogant', 'Competitive', 'Envy',
@@ -14,11 +16,15 @@ anchors = { 'virtue' : ['Charity', 'Competitive', 'Faith', 'Fortitude',
                           'Wrath'] }
 
 def mortal_template(caller, raw_string, **kwargs):
+    caller.db.cg['start_menu'] = 'cg_mortal'
+    caller.db.cg['start_node'] = 'mortal_template'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     caller.db.basics = { 'Sphere' : 'Mortals' }
     caller.db.power = {}
     virtue = get(caller,'Virtue',statclass='Sphere')
     vice = get(caller,'Vice',statclass='Sphere')
-    text = 'Virtue: ' 
+    text = 'Virtue: '
     if virtue:
         text = text + virtue + '|/'
     else:
@@ -38,8 +44,47 @@ def mortal_template(caller, raw_string, **kwargs):
         option_list.append ( { 'key' : 'P',
                               'desc' : 'Proceed',
                               'goto' : 'mortal_merits' } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'return_to_main_cg'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'return_to_main_cg'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'All Chronicles of Darkness characters have defining personality ' +
+            'traits. These traits not only tell a character who she is, but ' +
+            'also allow her to regain Willpower (for more information on ' +
+            'spending and regaining Willpower, see Chapter 2). These traits '+
+            'are called Anchors. For a mortal character, these Anchors are ' +
+            'her Virtue and her Vice.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def return_to_main_cg(caller, raw_string, **kwargs):
+    caller.db.basics = {'Sphere': 'Mortals'}
+    caller.db.power = {}
+    if 'Virtue' in caller.db.sphere:
+        del caller.db.sphere['Virtue']
+    if 'Vice' in caller.db.sphere:
+        del caller.db.sphere['Vice']
+    ExMenu(caller, 'codes.menus.cg', startnode='assign_template',
+           cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
+    text = {'format': 'suppress'}
+    return text, None
 
 def choose_anchor(caller, raw_string, **kwargs):
     option_list = []
@@ -55,8 +100,11 @@ def choose_anchor(caller, raw_string, **kwargs):
 def _set_anchor(caller, raw_string, **kwargs):
     caller.db.sphere[kwargs['type'].capitalize()] = kwargs['value']
     return 'mortal_template'
-    
+
 def mortal_merits(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'mortal_merits'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     total = 0
     text = 'Merits:|/|/'
     for item in caller.db.merits:
@@ -84,16 +132,64 @@ def mortal_merits(caller, raw_string, **kwargs):
         option_list.append( {'key' : 'F',
                              'desc' : 'Finish character generation',
                              'goto' : 'mortal_finish_cg'})
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_anchors})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_anchors})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Merits are important facets of your character that do not fall ' +
+            'under other traits. A Merit can represent a knack, special ' +
+            'training, people your character knows, or even things that he ' +
+            'owns. They add unique capabilities to your character beyond ' +
+            'Attributes and Skills.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_anchors(caller, raw_string, **kwargs):
+    caller.db.merits = []
+    return 'mortal_template'
 
 def add_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _check_merit,
-                            { 'total' : kwargs['total'],
-                             'max' : kwargs['max'] } ) } )
-    return text,options
+    option_list = [ {'key' : '_default',
+                     'goto' : ( _check_merit,
+                                { 'total' : kwargs['total'],
+                                  'max' : kwargs['max'] } ) } ]
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 49 + '|/|/' +
+            'Enter the name of the merit you want to purchase.' +
+            '|/' + '_' * 49)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
@@ -114,16 +210,39 @@ def _check_merit(caller, raw_string, **kwargs):
             return 'get_merit_note', {'total' : kwargs['total'],
                                   'merit' : merit,
                                   'max' : kwargs['max']}
-        
+
 def get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _check_merit_note, 
+    option_list = [ {'key' : '_default',
+                 'goto' : ( _check_merit_note,
                             { 'total' : kwargs['total'],
                              'merit' : kwargs['merit'],
-                             'max' : kwargs['max'] } ) } )
-    return text, options
+                             'max' : kwargs['max'] } ) } ]
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' + 'Some merits can be purchased ' +
+            'multiple times to represent different things. One good example ' +
+            'of this is the Status merit. Characters can have Status with ' +
+            'multiple groups so each time Status is purchased a note ' +
+            'will need to be provided to specify what group it applies to.' +
+            '|/|/Some merits allow open ended notes while others will ' +
+            'restrict possible notes to a given list.' +
+            '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _check_merit_note(caller, raw_string, **kwargs):
     merit = kwargs['merit']
@@ -140,23 +259,40 @@ def _check_merit_note(caller, raw_string, **kwargs):
     else:
         caller.msg('|/Invalid note for that merit')
         return 'mortal_merits'
-    
+
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
-    options = ( {'key' : '_default',
-                 'goto' : ( _check_merit_value, 
+    option_list = [ {'key' : '_default',
+                 'goto' : ( _check_merit_value,
                             { 'total' : kwargs['total'],
                              'note' : kwargs['note'],
                              'merit' : kwargs['merit'],
-                             'max' : kwargs['max'] } ) } )
-    return text,options
+                             'max' : kwargs['max'] } ) } ]
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    options = tuple(option_list)
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 29 + '|/|/Enter a value between 1 and 5' + '|/' +
+            '_' * 29)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'F'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _check_merit_value(caller, raw_string, **kwargs):
     if not strip_control_sequences(raw_string).isnumeric():
         caller.msg('|/Invalid value')
         return 'mortal_merits'
     else:
-        value=int(strip_control_sequences(raw_string)) 
+        value=int(strip_control_sequences(raw_string))
         if value < 1:
             caller.msg('|/Invalid value')
             return 'mortal_merits'
@@ -190,15 +326,24 @@ def remove_merit(caller, raw_string, **kwargs):
 def _delete_merit(caller, raw_string, **kwargs):
     set(caller, kwargs['entry'], subentry=kwargs['subentry'], value=0)
     return 'mortal_merits'
-    
-def quit(caller, raw_string, **kwargs):
-    
-    text = {'format' : 'suppress'}
-    return text,None
+
+def quit_menu(caller, raw_string, **kwargs):
+    obj_menu = 'codes.commands.character_menus.object_in_menu'
+    act_menu = 'codes.commands.character_menus.account_in_menu'
+    caller.cmdset.delete(obj_menu)
+    caller.account.cmdset.delete(act_menu)
+    caller.execute_cmd('look')
+    text = {'format': 'suppress'}
+    return text, None
 
 def mortal_finish_cg(caller, raw_string, **kwargs):
+    obj_menu = 'codes.commands.character_menus.object_in_menu'
+    act_menu = 'codes.commands.character_menus.account_in_menu'
+    caller.cmdset.delete(obj_menu)
+    caller.account.cmdset.delete(act_menu)
+    del caller.db.cg
     caller.cmdset.add(
-        'codes.commands.commands.character_commands.finished_character',
+        'codes.commands.character_commands.finished_character',
                       permanent=True)
     caller.cmdset.delete('unfinished_character')
     set(caller,'Integrity',statclass='Advantage', value=7)
@@ -209,6 +354,7 @@ def mortal_finish_cg(caller, raw_string, **kwargs):
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,
                      'log' : {} }
+    caller.execute_cmd('look')
     text = {'format': 'suppress'}
     return text, None
 

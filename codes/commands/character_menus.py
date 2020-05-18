@@ -37,11 +37,11 @@ class CmdCG(Command):
             else:
                 kwargs = dict()
             ExMenu(self.caller, menu, startnode=node,
-                   cmdset_mergetype='Union', cmd_on_exit=None,
+                   cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False,
                    startnode_input=('p',kwargs) )
         else:
             ExMenu(self.caller, 'codes.menus.cg', startnode = 'start',
-               cmdset_mergetype='Union', cmd_on_exit=None)
+               cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
 
 class CmdXP(Command):
     """
