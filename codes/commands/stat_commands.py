@@ -6,6 +6,7 @@ from evennia.utils.search import search_script_tag
 
 from codes.frames import scroll
 from codes.frames import top_bottom
+from codes.utilities.titlecase.titlecase import titlecase
 
 from codes import data
 from codes.sidebars import changeling_template_block
@@ -830,7 +831,7 @@ def produce_sheet(target):
     temp = specialties_list(target)
     sub_block = ['Specialties:']
     for item in temp:
-        for line in textwrap.wrap(item,width=24,subsequent_indent=' '):
+        for line in textwrap.wrap(titlecase(item),width=24,subsequent_indent=' '):
             sub_block.append(' ' + line)
     block.append(sub_block)
 
@@ -877,7 +878,7 @@ def merits_list(target):
             if merit[2] == '':
                 results.append(merit[0]+': '+str(merit[1]))
             else:
-                results.append(merit[0]+' ('+merit[2]+'): '+ str(merit[1]))
+                results.append(merit[0]+' ('+titlecase(merit[2])+'): '+ str(merit[1]))
         return results
 
 def specialties_list(target):
