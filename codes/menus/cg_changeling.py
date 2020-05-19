@@ -5,6 +5,8 @@ from evennia.utils.utils import strip_control_sequences
 from evennia.utils.search import search_script_tag
 from operator import itemgetter
 
+from codes.menus.menu_types import ExMenu
+
 import time
 
 anchors = { 'needle' : ['Bon Vivant', 'Chess Master', 'Commander',
@@ -363,7 +365,7 @@ def changeling_regalia(caller, raw_string, **kwargs):
             'character as well.' + '|/' + '_' * 79)
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
-                      'rows': 4}
+                      'rows': 5}
     display = {'text': text,
                'help': help,
                'options_format': options_format,
