@@ -5,6 +5,8 @@ from evennia.utils.utils import strip_control_sequences
 from evennia.utils.search import search_script_tag
 from operator import itemgetter
 
+from codes.menus.menu_types import ExMenu
+
 import time
 
 anchors = { 'blood' : ['Alpha','Challenger','Destroyer','Fox','The Monster',
@@ -19,6 +21,10 @@ moon_list = { 'crescent moon' : ['Shadow Gaze','Spirit Whispers'],
                'new moon' : ['Eviscerate', 'Slip Away']}
 
 def werewolf_template(caller, raw_string, **kwargs):
+    caller.db.cg['start_menu'] = 'cg_werewolf'
+    caller.db.cg['start_node'] = 'werewolf_template'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     caller.db.basics = { 'Sphere' : 'Werewolf' }
     caller.db.renown = {'Cunning': 0, 'Glory': 0, 'Honor': 0, 'Purity': 0,
                         'Wisdom': 0}
@@ -37,26 +43,97 @@ def werewolf_template(caller, raw_string, **kwargs):
         option_list.append( {'desc' : item[0],
                              'goto' : ( _werewolf_set_auspice,
                                         { 'auspice' : item[1] } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'return_to_main_cg'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'return_to_main_cg'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Auspice, the moon under which a werewolf changes, is her first ' +
+            'defining trait as one of the Forsaken. Auspice helps guide her ' +
+            'in her expected role among the Uratha. A character\'s auspice ' +
+            'offers certain advantages in fulfilling that role, and Uratha ' +
+            'often look down upon those who deviate too far from their ' +
+            'expected roles.|/|/From a character creation standpoint, ' +
+            'auspice offers you a free dot of one of three Skills, and one ' +
+            'of your starting Renown dots. You can choose any of the three ' +
+            'auspice Skills, but this free dot cannot take the Skill beyond ' +
+            'five dots.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def return_to_main_cg(caller, raw_string, **kwargs):
+    caller.db.basics = {}
+    caller.db.sphere = {}
+    del caller.db.renown
+    del caller.db.power
+    del caller.db.gifts
+    del caller.db.werewolfRites
+    ExMenu(caller, 'codes.menus.cg', startnode='assign_template',
+           cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
+    text = {'format': 'suppress'}
+    return text, None
 
 def _werewolf_set_auspice(caller, raw_string, **kwargs):
     auspice = kwargs['auspice']
     caller.db.sphere['Auspice'] = auspice.db.longname
     caller.db.renown[auspice.db.renown] = 1
     return "werewolf_stat", { 'auspice' : auspice }
-    
+
 def werewolf_stat(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'werewolf_stat'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     auspice = kwargs['auspice']
+    text = 'Select one skill to boost:'
     option_list=[]
     for attribute in auspice.db.auspice_skills:
         option_list.append( { 'desc' : attribute.capitalize(),
                               'goto' : (_raise_stat,
                                         {'stat' : attribute.lower(),
                                          'auspice' : kwargs['auspice'] } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': 'werewolf_template'})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': 'werewolf_template'})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    text = 'Select one skill to boost:'
-    return text,options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'From a character creation standpoint, auspice offers you a free ' +
+            'dot of one of three Skills. You can choose any of the three ' +
+            'auspice Skills, but this free dot cannot take the Skill beyond ' +
+            'five dots.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
 def _raise_stat(caller, raw_string, **kwargs):
     start_value = caller.get(kwargs['stat'],statclass='Skill')
@@ -65,10 +142,14 @@ def _raise_stat(caller, raw_string, **kwargs):
         return "werewolf_stat", kwargs
     else:
         set(caller, kwargs['stat'], statclass='Skill', value=start_value+1)
+        caller.db.cg['stat_boost'] = {'stat': kwargs['stat'],
+                                      'start': start_value}
         return "werewolf_tribe"
-    
-def werewolf_tribe(caller, raw_string, **kwargs):
 
+def werewolf_tribe(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'werewolf_tribe'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     text = 'Select Tribe:'
     tribes_list = search_script_tag('tribe_stat')
     tribes = []
@@ -81,8 +162,42 @@ def werewolf_tribe(caller, raw_string, **kwargs):
         option_list.append( {'desc' : item[0],
                              'goto' : ( _set_tribe,
                                         { 'tribe' : item[1] } ) } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_stat})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_stat})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Characters belong to one of five tribes - or your character may ' +
+            'be a Ghost Wolf, without a tribe. Remember, unlike auspice, ' +
+            'your character chooses her tribe. Generally, characters align ' +
+            'relatively closely to their tribe expectations.|/|/Each tribe ' +
+            'has an associated Renown.' + '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_stat(caller, raw_string, **kwargs):
+    set(caller, caller.db.cg['stat_boost']['stat'], statclass='Skill',
+        value=caller.db.cg['stat_boost']['start'])
+    caller.db.renown = {}
+    return 'werewolf_stat',{'auspice': find(caller.get('Auspice',
+                                                         statclass='Sphere'),
+                                              statclass='Auspice')[0]}
 
 def _set_tribe(caller, raw_string, **kwargs):
     tribe = kwargs['tribe']
@@ -91,9 +206,14 @@ def _set_tribe(caller, raw_string, **kwargs):
         renown = tribe.db.renown
         renown_score = caller.get(renown,statclass='Renown') + 1
         caller.db.renown[renown] = renown_score
+        caller.db.cg['tribe_renown'] = {'renown': renown,
+                                      'start': renown_score - 1}
     return "werewolf_renown"
 
 def werewolf_renown(caller, raw_string, **kwargs):
+    caller.db.cg['start_node'] = 'werewolf_renown'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     text = ('Select one renown to boost:' +
             '|/|_|_|_|_Cunning: ' +
             str(caller.get('Cunning', statclass='Renown')) +
@@ -115,9 +235,38 @@ def werewolf_renown(caller, raw_string, **kwargs):
         option_list.append({'desc': item[0],
                             'goto': (_raise_renown,
                                      {'renown': item[1]})})
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_tribe})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_tribe})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Choose another dot in a Renown of your choice, but note that ' +
+            'you cannot take a third dot in a single Renown at this point. ' +
+            'Ghost Wolves receive this dot of Renown, for a total of two.' +
+            '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
 
+def _return_to_tribe(caller, raw_string, **kwargs):
+    set(caller, caller.db.cg['tribe_renown']['renown'], statclass='Renown',
+        value=caller.db.cg['tribe_renown']['start'])
+    return 'werewolf_tribe'
 
 def _raise_renown(caller, raw_string, **kwargs):
     start_value = caller.get(kwargs['renown'].db.longname, statclass='Renown')
@@ -125,11 +274,16 @@ def _raise_renown(caller, raw_string, **kwargs):
         caller.msg('|/Can\'t boost a starting renown to over 2')
         return "werewolf_stat", kwargs
     else:
-        set(caller, kwargs['renown'].db.longname, statclass='Renown', value=start_value + 1)
+        set(caller, kwargs['renown'].db.longname, statclass='Renown',
+            value=start_value + 1)
+        caller.db.cg['boost_renown'] = {'renown': kwargs['renown'].db.longname,
+                                        'start': start_value}
         return "werewolf_anchors"
 
 def werewolf_anchors(caller, raw_string, **kwargs):
-
+    caller.db.cg['start_node'] = 'werewolf_anchors'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
     blood = get(caller,'Blood',statclass='Sphere')
     bone = get(caller,'Bone',statclass='Sphere')
     text = 'Blood: '
@@ -152,8 +306,41 @@ def werewolf_anchors(caller, raw_string, **kwargs):
         option_list.append ( { 'key' : 'P',
                               'desc' : 'Proceed',
                               'goto' : _starting_gifts } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_renown})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_renown})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Your character possesses traits called Blood and Bone. They ' +
+            'reflect a core dichotomy of the Uratha condition. A Blood ' +
+            'archetype reflects your character\'s behavior and identity on ' +
+            'the hunt, when claws are out, and lives are on the line. A Bone ' +
+            'archetype reflects your character\'s sense of self-identity. ' +
+            'It\'s who she is behind the instincts, fur, and fury.' + '|/' +
+            '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_renown(caller, raw_string, **kwargs):
+    set(caller, caller.db.cg['boost_renown']['renown'], statclass='Renown',
+        value=caller.db.cg['boost_renown']['start'])
+    return 'werewolf_renown'
 
 def choose_anchor(caller, raw_string, **kwargs):
     option_list = []
@@ -180,6 +367,10 @@ def _starting_gifts(caller, raw_string, **kwargs):
     return 'werewolf_gifts'
 
 def werewolf_gifts(caller,raw_string,**kwargs):
+    caller.db.cg['start_node'] = 'werewolf_anchors'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
+    caller.db.merits = [['Language', 1, 'First Tongue'], ['Totem', 1, '']]
     auspice = find(caller.get('Auspice', statclass='Sphere'),
                    statclass='Auspice')[0]
     if caller.get(auspice.db.renown,statclass='Renown') == 2:
@@ -230,8 +421,43 @@ def werewolf_gifts(caller,raw_string,**kwargs):
         option_list.append( { 'key' : 'P',
                               'desc' : 'Proceed',
                               'goto' : 'werewolf_merits' } )
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_anchors})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_anchors})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text,options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Spirits afford the Forsaken abilities called Gifts. They\'re ' +
+            'not taught; they\'re given. At this stage in character creation,' +
+            'choose Gifts. Your character receives the first dot of a Moon ' +
+            'Gift according to her auspice. She also receives a Facet of two ' +
+            'Shadow Gifts from her tribe or auspice. If she has two dots in ' +
+            'her auspice\'s Renown, she gains the second-dot Facet of that ' +
+            'Moon Gift. Otherwise, she gains a facet of a Wolf Gift. Your ' +
+            'character can\'t take a Facet of a Gift in which she has no ' +
+            'dots of Renown.' + '|/' +
+            '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_anchors(caller, raw_string, **kwargs):
+    caller.db.gifts = {}
+    return 'werewolf_anchors'
 
 def werewolf_add_gift(caller, raw_string, **kwargs):
     text = 'Gift:'
@@ -280,7 +506,10 @@ def _remove_gift(caller, raw_string, **kwargs):
     return 'werewolf_gifts'
 
 def werewolf_merits(caller, raw_string, **kwargs):
-    max = 10
+    caller.db.cg['start_node'] = 'werewolf_merits'
+    caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
+    caller.db.cg['kwargs'] = kwargs
+    max = 12
     total = 0
     rites_list = []
     rites_points = 0
@@ -324,7 +553,7 @@ def werewolf_merits(caller, raw_string, **kwargs):
     if get(caller,'Primal Urge',statclass='Power') > 1:
         option_list.append ( {'desc' : 'Decrease Primal Urge',
                               'goto' : _decrease_power } )
-    if len(caller.db.merits) > 0:
+    if len(caller.db.merits) > 2:
         option_list.append( {'desc' : 'Remove a merit',
                              'goto' : ('remove_merit',
                                        {'total' : total,
@@ -338,8 +567,47 @@ def werewolf_merits(caller, raw_string, **kwargs):
         option_list.append( {'key' : 'F',
                              'desc' : 'Finish',
                              'goto' : 'werewolf_finish_cg'})
+    option_list.append({'desc': 'Back',
+                        'key': 'B',
+                        'goto': _return_to_gifts})
+    option_list.append({'desc': 'Back',
+                        'key': 'back',
+                        'goto': _return_to_gifts})
+    option_list.append({'key': 'q',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
+    option_list.append({'key': 'Quit',
+                        'desc': 'Quit',
+                        'goto': 'quit_menu'})
     options = tuple(option_list)
-    return text, options
+    footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
+    help = ('|/' + '_' * 79 + '|/|/' +
+            'Your character receives ten dots of Merits. You can choose from ' +
+            'any of the Forsaken Merits or the general Merits. Use these ' +
+            'Merits to flesh out your character\'s relationship to the world ' +
+            'around her. They reflect her friends, allies, holdings, and ' +
+            'experiences. They let you add a custom touch on top of all the ' +
+            'abstract numbers.|/|/You can also use starting Merit dots to ' +
+            'raise Primal Urge. If you choose to do so, each Primal Urge dot ' +
+            'costs five Merit dots. Starting at Primal Urge 2 costs five ' +
+            'dots, starting at Primal Urge 3 costs ten dots.|/|/You can ' +
+            'trade up to five of your starting Merit dots for extra dots of ' +
+            'rites. One dot of rites costs one Merit dot. If you want a ' +
+            'three-dot rite, you can get it by spending three Merit dots.' +
+            '|/' + '_' * 79)
+    options_format = {'hide_keys': ['q', 'Quit', 'back'],
+                      'move_keys': ['B', 'P'],
+                      'rows': 10}
+    display = {'text': text,
+               'help': help,
+               'options_format': options_format,
+               'footer': footer}
+    return display, options
+
+def _return_to_gifts(caller, raw_string, **kwargs):
+    caller.db.merits=[]
+    caller.db.rites={}
+    return 'werewolf_gifts'
 
 def add_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
@@ -371,12 +639,12 @@ def _check_merit(caller, raw_string, **kwargs):
             return 'get_merit_note', { 'total' : kwargs['total'],
                                   'merit' : merit,
                                   'max' : kwargs['max']}
-        
+
 def get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
     options = ( {'key' : '_default',
-                 'goto' : ( _check_merit_note, 
+                 'goto' : ( _check_merit_note,
                             { 'total' : kwargs['total'],
                              'merit' : kwargs['merit'],
                              'max' : kwargs['max'] } ) } )
@@ -397,11 +665,11 @@ def _check_merit_note(caller, raw_string, **kwargs):
     else:
         caller.msg('|/Invalid note for that merit')
         return 'werewolf_merits'
-    
+
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
     options = ( {'key' : '_default',
-                 'goto' : ( _check_merit_value, 
+                 'goto' : ( _check_merit_value,
                             { 'total' : kwargs['total'],
                              'note' : kwargs['note'],
                              'merit' : kwargs['merit'],
@@ -413,7 +681,7 @@ def _check_merit_value(caller, raw_string, **kwargs):
         caller.msg('|/Invalid value')
         return 'werewolf_merits'
     else:
-        value=int(strip_control_sequences(raw_string)) 
+        value=int(strip_control_sequences(raw_string))
         if value < 1:
             caller.msg('|/Invalid value')
             return 'werewolf_merits'
@@ -466,14 +734,16 @@ def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
     option_list = []
     for item in caller.db.merits:
-        merit = item[0]
-        if len(item[2]) > 0:
-            merit = merit + ' (' + item[2] + ')'
-        merit = merit + ': ' + str(item[1])
-        option_list.append( {'desc' : merit ,
-                             'goto' : ( _delete_merit,
-                                    { 'entry' : item[0],
-                                      'subentry' : item[2] } ) } )
+        if not (item[0] == 'Totem' or
+                (item[0] == 'Language' and item[2] == 'First Tongue')):
+            merit = item[0]
+            if len(item[2]) > 0:
+                merit = merit + ' (' + item[2] + ')'
+            merit = merit + ': ' + str(item[1])
+            option_list.append( {'desc' : merit ,
+                                 'goto' : ( _delete_merit,
+                                        { 'entry' : item[0],
+                                          'subentry' : item[2] } ) } )
     options = tuple(option_list)
     return text,options
 
@@ -497,7 +767,7 @@ def remove_rite(caller, raw_string, **kwargs):
 def _delete_rite(caller, raw_string, **kwargs):
     set(caller, kwargs['rite'], value=False)
     return 'werewolf_merits'
-    
+
 def _increase_power(caller, raw_string, **kwargs):
     if caller.db.power['Primal Urge'] < 10:
         caller.db.power['Primal Urge'] = caller.db.power['Primal Urge'] + 1
@@ -508,13 +778,22 @@ def _decrease_power(caller, raw_string, **kwargs):
     if caller.db.power['Primal Urge'] > 1:
         caller.db.power['Primal Urge'] = caller.db.power['Primal Urge'] - 1
     return 'werewolf_merits'
-        
-def quit(caller, raw_string, **kwargs):
-    
-    text = {'format' : 'suppress'}
-    return text,None
+
+def quit_menu(caller, raw_string, **kwargs):
+    obj_menu = 'codes.commands.character_menus.object_in_menu'
+    act_menu = 'codes.commands.character_menus.account_in_menu'
+    caller.cmdset.delete(obj_menu)
+    caller.account.cmdset.delete(act_menu)
+    caller.execute_cmd('look')
+    text = {'format': 'suppress'}
+    return text, None
 
 def werewolf_finish_cg(caller, raw_string, **kwargs):
+    obj_menu = 'codes.commands.character_menus.object_in_menu'
+    act_menu = 'codes.commands.character_menus.account_in_menu'
+    caller.cmdset.delete(obj_menu)
+    caller.account.cmdset.delete(act_menu)
+    del caller.db.cg
     caller.cmdset.delete('unfinished_character')
     caller.cmdset.add(
         'codes.commands.character_commands.finished_character',permanent=True)
@@ -530,5 +809,6 @@ def werewolf_finish_cg(caller, raw_string, **kwargs):
     caller.db.xp = { 'earned' : 75,
                      'spent' : 0,
                      'log' : {} }
+    caller.execute_cmd('look')
     text = {'format' : 'suppress'}
     return text,None
