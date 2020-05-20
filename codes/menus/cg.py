@@ -551,7 +551,9 @@ def mage_template(caller, raw_string, **kwargs):
     return text,None
 
 def vampire_template(caller, raw_string, **kwargs):
-    ExMenu(caller, 'codes.menus.cg_vampire', startnode = 'vampire_template')
+    caller.db.sphere = {}
+    ExMenu(caller, 'codes.menus.cg_vampire', startnode='vampire_template',
+           cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
     text = {'format' : 'suppress'}
     return text,None
 
