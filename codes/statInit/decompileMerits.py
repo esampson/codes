@@ -15,7 +15,7 @@ file.write('\nfrom codes import data\n')
 file.write('\n')
 for merit in merits:
     name = merit[1].db.longname.replace('\'','').replace(' ','_')
-    file.write('stats = data.find(name,statclass=\'Merit\')\n')
+    file.write('stats = data.find(\'' + name + '\',statclass=\'Merit\')\n')
     file.write('if len(stats) == 0:\n')
     file.write('    merit = create_script(\'typeclasses.scripts.meritScript\',key = \'' + name + '\')\n')
     file.write('    merit.db.longname = \''+merit[1].db.longname.replace('\'','\\\'')+'\'\n')

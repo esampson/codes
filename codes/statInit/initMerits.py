@@ -2,7 +2,7 @@ from evennia import create_script
 
 from codes import data
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Acute_Senses',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Acute_Senses')
     merit.db.longname = 'Acute Senses'
@@ -15,7 +15,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Adamant_Hand',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Adamant_Hand')
     merit.db.longname = 'Adamant Hand'
@@ -28,7 +28,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Aggressive_Driving',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Aggressive_Driving')
     merit.db.longname = 'Aggressive Driving'
@@ -41,7 +41,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Air_of_Menace',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Air_of_Menace')
     merit.db.longname = 'Air of Menace'
@@ -54,7 +54,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Allies',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Allies')
     merit.db.longname = 'Allies'
@@ -67,7 +67,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Altar',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Altar')
     merit.db.longname = 'Altar'
@@ -80,7 +80,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Alternate_Identity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Alternate_Identity')
     merit.db.longname = 'Alternate Identity'
@@ -93,7 +93,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Ambidextrous',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Ambidextrous')
     merit.db.longname = 'Ambidextrous'
@@ -106,7 +106,7 @@ if len(stats) == 0:
     merit.db.cg_only = True
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Anchored',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Anchored')
     merit.db.longname = 'Anchored'
@@ -119,7 +119,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Anointed',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Anointed')
     merit.db.longname = 'Anointed'
@@ -132,7 +132,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Anonymity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Anonymity')
     merit.db.longname = 'Anonymity'
@@ -145,7 +145,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Arcadian_Metabolism',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Arcadian_Metabolism')
     merit.db.longname = 'Arcadian Metabolism'
@@ -158,7 +158,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Area_of_Expertise',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Area_of_Expertise')
     merit.db.longname = 'Area of Expertise'
@@ -171,7 +171,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Armed_Defense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Armed_Defense')
     merit.db.longname = 'Armed Defense'
@@ -184,7 +184,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Armed_Restraint',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Armed_Restraint')
     merit.db.longname = 'Armed Restraint'
@@ -197,7 +197,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Artifact',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Artifact')
     merit.db.longname = 'Artifact'
@@ -210,7 +210,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Astral_Adept',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Astral_Adept')
     merit.db.longname = 'Astral Adept'
@@ -223,7 +223,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Atrocious',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Atrocious')
     merit.db.longname = 'Atrocious'
@@ -236,7 +236,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Attache',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Attache')
     merit.db.longname = 'Attache'
@@ -249,7 +249,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Aura_Reading',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Aura_Reading')
     merit.db.longname = 'Aura Reading'
@@ -262,7 +262,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Automatic_Writing',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Automatic_Writing')
     merit.db.longname = 'Automatic Writing'
@@ -275,7 +275,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Automotive_Genius',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Automotive_Genius')
     merit.db.longname = 'Automotive Genius'
@@ -288,7 +288,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Avoidance',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Avoidance')
     merit.db.longname = 'Avoidance'
@@ -301,7 +301,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Barfly',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Barfly')
     merit.db.longname = 'Barfly'
@@ -314,7 +314,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Berserker',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Berserker')
     merit.db.longname = 'Berserker'
@@ -327,7 +327,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Between_the_Ticks',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Between_the_Ticks')
     merit.db.longname = 'Between the Ticks'
@@ -340,7 +340,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Biokinesis',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Biokinesis')
     merit.db.longname = 'Biokinesis'
@@ -353,7 +353,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Blood_Affinity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Blood_Affinity')
     merit.db.longname = 'Blood Affinity'
@@ -366,7 +366,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Blood_and_Bone_Affinity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Blood_and_Bone_Affinity')
     merit.db.longname = 'Blood and Bone Affinity'
@@ -379,7 +379,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Bloodhound',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Bloodhound')
     merit.db.longname = 'Bloodhound'
@@ -392,7 +392,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Body_as_Weapon',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Body_as_Weapon')
     merit.db.longname = 'Body as Weapon'
@@ -405,7 +405,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Bone_Affinity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Bone_Affinity')
     merit.db.longname = 'Bone Affinity'
@@ -418,7 +418,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Boot_Party',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Boot_Party')
     merit.db.longname = 'Boot Party'
@@ -431,7 +431,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Bowmanship',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Bowmanship')
     merit.db.longname = 'Bowmanship'
@@ -444,7 +444,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Boxing',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Boxing')
     merit.db.longname = 'Boxing'
@@ -457,7 +457,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Brownies_Boon',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Brownies_Boon')
     merit.db.longname = 'Brownie\'s Boon'
@@ -470,7 +470,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cabal_Theme',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cabal_Theme')
     merit.db.longname = 'Cabal Theme'
@@ -483,7 +483,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cacophony_Savvy',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cacophony_Savvy')
     merit.db.longname = 'Cacophony Savvy'
@@ -496,7 +496,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Call_Out',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Call_Out')
     merit.db.longname = 'Call Out'
@@ -509,7 +509,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Carthian_Pull',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Carthian_Pull')
     merit.db.longname = 'Carthian Pull'
@@ -522,7 +522,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Chain_Weapons',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Chain_Weapons')
     merit.db.longname = 'Chain Weapons'
@@ -535,7 +535,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cheap_Shot',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cheap_Shot')
     merit.db.longname = 'Cheap Shot'
@@ -548,7 +548,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Choke_Hold',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Choke_Hold')
     merit.db.longname = 'Choke Hold'
@@ -561,7 +561,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Clairvoyance',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Clairvoyance')
     merit.db.longname = 'Clairvoyance'
@@ -574,7 +574,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Claws_of_the_Unholy',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Claws_of_the_Unholy')
     merit.db.longname = 'Claws of the Unholy'
@@ -587,7 +587,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Clinch_Strike',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Clinch_Strike')
     merit.db.longname = 'Clinch Strike'
@@ -600,7 +600,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cloak_of_Leaves',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cloak_of_Leaves')
     merit.db.longname = 'Cloak of Leaves'
@@ -613,7 +613,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Close_Family',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Close_Family')
     merit.db.longname = 'Close Family'
@@ -626,7 +626,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Close_Quarters_Combat',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Close_Quarters_Combat')
     merit.db.longname = 'Close Quarters Combat'
@@ -639,7 +639,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Closed_Book',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Closed_Book')
     merit.db.longname = 'Closed Book'
@@ -652,7 +652,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Code_of_Honor',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Code_of_Honor')
     merit.db.longname = 'Code of Honor'
@@ -665,7 +665,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cohesive_Unit',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cohesive_Unit')
     merit.db.longname = 'Cohesive Unit'
@@ -678,7 +678,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cold_Hearted',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cold_Hearted')
     merit.db.longname = 'Cold Hearted'
@@ -691,7 +691,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Combat_Archery',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Combat_Archery')
     merit.db.longname = 'Combat Archery'
@@ -704,7 +704,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Common_Sense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Common_Sense')
     merit.db.longname = 'Common Sense'
@@ -717,7 +717,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Contacts',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Contacts')
     merit.db.longname = 'Contacts'
@@ -730,7 +730,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Controlled_Burn',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Controlled_Burn')
     merit.db.longname = 'Controlled Burn'
@@ -743,7 +743,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Court_Goodwill',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Court_Goodwill')
     merit.db.longname = 'Court Goodwill'
@@ -756,7 +756,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Covert_Operative',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Covert_Operative')
     merit.db.longname = 'Covert Operative'
@@ -769,7 +769,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Crack_Driver',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Crack_Driver')
     merit.db.longname = 'Crack Driver'
@@ -782,7 +782,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Creative_Tactician',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Creative_Tactician')
     merit.db.longname = 'Creative Tactician'
@@ -795,7 +795,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cursed',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cursed')
     merit.db.longname = 'Cursed'
@@ -808,7 +808,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Cutthroat',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Cutthroat')
     merit.db.longname = 'Cutthroat'
@@ -821,7 +821,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Danger_Sense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Danger_Sense')
     merit.db.longname = 'Danger Sense'
@@ -834,7 +834,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Dedicated_Locus',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Dedicated_Locus')
     merit.db.longname = 'Dedicated Locus'
@@ -847,7 +847,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Defender',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Defender')
     merit.db.longname = 'Defender'
@@ -860,7 +860,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Defensive_Combat',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Defensive_Combat')
     merit.db.longname = 'Defensive Combat'
@@ -873,7 +873,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Defensive_Dreamscaping',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Defensive_Dreamscaping')
     merit.db.longname = 'Defensive Dreamscaping'
@@ -886,7 +886,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Demolisher',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Demolisher')
     merit.db.longname = 'Demolisher'
@@ -899,7 +899,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Destiny',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Destiny')
     merit.db.longname = 'Destiny'
@@ -912,7 +912,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Direction_Sense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Direction_Sense')
     merit.db.longname = 'Direction Sense'
@@ -925,7 +925,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Distinguished_Palate',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Distinguished_Palate')
     merit.db.longname = 'Distinguished Palate'
@@ -938,7 +938,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Diviner',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Diviner')
     merit.db.longname = 'Diviner'
@@ -951,7 +951,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Double_Jointed',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Double_Jointed')
     merit.db.longname = 'Double Jointed'
@@ -964,7 +964,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Dream',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Dream')
     merit.db.longname = 'Dream'
@@ -977,7 +977,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Dream_Visions',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Dream_Visions')
     merit.db.longname = 'Dream Visions'
@@ -990,7 +990,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Dream_Warrior',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Dream_Warrior')
     merit.db.longname = 'Dream Warrior'
@@ -1003,7 +1003,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Dreamweaver',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Dreamweaver')
     merit.db.longname = 'Dreamweaver'
@@ -1016,7 +1016,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Drone_Control',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Drone_Control')
     merit.db.longname = 'Drone Control'
@@ -1029,7 +1029,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Dull_Beacon',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Dull_Beacon')
     merit.db.longname = 'Dull Beacon'
@@ -1042,7 +1042,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Dynasty_Membership',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Dynasty_Membership')
     merit.db.longname = 'Dynasty Membership'
@@ -1055,7 +1055,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Efficient_Killer',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Efficient_Killer')
     merit.db.longname = 'Efficient Killer'
@@ -1068,7 +1068,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Egregore',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Egregore')
     merit.db.longname = 'Egregore'
@@ -1081,7 +1081,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Eidetic_Memory',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Eidetic_Memory')
     merit.db.longname = 'Eidetic Memory'
@@ -1094,7 +1094,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Elemental_Warrior',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Elemental_Warrior')
     merit.db.longname = 'Elemental Warrior'
@@ -1107,7 +1107,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Embodiment_of_the_Firstborn',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Embodiment_of_the_Firstborn')
     merit.db.longname = 'Embodiment of the Firstborn'
@@ -1120,7 +1120,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Empath',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Empath')
     merit.db.longname = 'Empath'
@@ -1133,7 +1133,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Enchanting_Performance',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Enchanting_Performance')
     merit.db.longname = 'Enchanting Performance'
@@ -1146,7 +1146,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Encyclopedic_Knowledge',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Encyclopedic_Knowledge')
     merit.db.longname = 'Encyclopedic Knowledge'
@@ -1159,7 +1159,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Enhanced_Item',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Enhanced_Item')
     merit.db.longname = 'Enhanced Item'
@@ -1172,7 +1172,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Enticing',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Enticing')
     merit.db.longname = 'Enticing'
@@ -1185,7 +1185,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Eye_for_the_Strange',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Eye_for_the_Strange')
     merit.db.longname = 'Eye for the Strange'
@@ -1198,7 +1198,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fae_Mount',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fae_Mount')
     merit.db.longname = 'Fae Mount'
@@ -1211,7 +1211,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Faerie_Favor',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Faerie_Favor')
     merit.db.longname = 'Faerie Favor'
@@ -1224,7 +1224,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fair_Harvest',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fair_Harvest')
     merit.db.longname = 'Fair Harvest'
@@ -1237,7 +1237,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Falconry',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Falconry')
     merit.db.longname = 'Falconry'
@@ -1250,7 +1250,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fame',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fame')
     merit.db.longname = 'Fame'
@@ -1263,7 +1263,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Familiar',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Familiar')
     merit.db.longname = 'Familiar'
@@ -1276,7 +1276,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fast_Reflexes',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fast_Reflexes')
     merit.db.longname = 'Fast Reflexes'
@@ -1289,7 +1289,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fast_Spells',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fast_Spells')
     merit.db.longname = 'Fast Spells'
@@ -1302,7 +1302,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fast-Talking',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fast-Talking')
     merit.db.longname = 'Fast-Talking'
@@ -1315,7 +1315,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Favored_Form',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Favored_Form')
     merit.db.longname = 'Favored Form'
@@ -1328,7 +1328,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Feeding_Grounds',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Feeding_Grounds')
     merit.db.longname = 'Feeding Grounds'
@@ -1341,7 +1341,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fighting_Finesse',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fighting_Finesse')
     merit.db.longname = 'Fighting Finesse'
@@ -1354,7 +1354,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Firebrand',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Firebrand')
     merit.db.longname = 'Firebrand'
@@ -1367,7 +1367,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Firefight',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Firefight')
     merit.db.longname = 'Firefight'
@@ -1380,7 +1380,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fixer',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fixer')
     merit.db.longname = 'Fixer'
@@ -1393,7 +1393,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Flanking',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Flanking')
     merit.db.longname = 'Flanking'
@@ -1406,7 +1406,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fleet_of_Foot',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fleet_of_Foot')
     merit.db.longname = 'Fleet of Foot'
@@ -1419,7 +1419,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Fortified_Form',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Fortified_Form')
     merit.db.longname = 'Fortified Form'
@@ -1432,7 +1432,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Friends_in_High_Places',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Friends_in_High_Places')
     merit.db.longname = 'Friends in High Places'
@@ -1445,7 +1445,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Gentrified_Bearing',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Gentrified_Bearing')
     merit.db.longname = 'Gentrified Bearing'
@@ -1458,7 +1458,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Giant',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Giant')
     merit.db.longname = 'Giant'
@@ -1471,7 +1471,7 @@ if len(stats) == 0:
     merit.db.cg_only = True
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Glamour_Fasting',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Glamour_Fasting')
     merit.db.longname = 'Glamour Fasting'
@@ -1484,7 +1484,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Goblin_Bounty',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Goblin_Bounty')
     merit.db.longname = 'Goblin Bounty'
@@ -1497,7 +1497,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Good_Time_Management',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Good_Time_Management')
     merit.db.longname = 'Good Time Management'
@@ -1510,7 +1510,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Grappling',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Grappling')
     merit.db.longname = 'Grappling'
@@ -1523,7 +1523,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Greyhound',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Greyhound')
     merit.db.longname = 'Greyhound'
@@ -1536,7 +1536,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Grimoire',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Grimoire')
     merit.db.longname = 'Grimoire'
@@ -1549,7 +1549,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Ground_Fighter',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Ground_Fighter')
     merit.db.longname = 'Ground Fighter'
@@ -1562,7 +1562,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Ground_and_Pound',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Ground_and_Pound')
     merit.db.longname = 'Ground and Pound'
@@ -1575,7 +1575,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Grounded',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Grounded')
     merit.db.longname = 'Grounded'
@@ -1588,7 +1588,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hallow',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hallow')
     merit.db.longname = 'Hallow'
@@ -1601,7 +1601,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hardy',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hardy')
     merit.db.longname = 'Hardy'
@@ -1614,7 +1614,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Haven',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Haven')
     merit.db.longname = 'Haven'
@@ -1627,7 +1627,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Headbutt',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Headbutt')
     merit.db.longname = 'Headbutt'
@@ -1640,7 +1640,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hearing_Whispers',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hearing_Whispers')
     merit.db.longname = 'Hearing Whispers'
@@ -1653,7 +1653,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Heavy_Weapons',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Heavy_Weapons')
     merit.db.longname = 'Heavy Weapons'
@@ -1666,7 +1666,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hedge_Brawler',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hedge_Brawler')
     merit.db.longname = 'Hedge Brawler'
@@ -1679,7 +1679,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hedge_Duelist',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hedge_Duelist')
     merit.db.longname = 'Hedge Duelist'
@@ -1692,7 +1692,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hedge_Sense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hedge_Sense')
     merit.db.longname = 'Hedge Sense'
@@ -1705,7 +1705,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Herd',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Herd')
     merit.db.longname = 'Herd'
@@ -1718,7 +1718,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('High_Speech',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'High_Speech')
     merit.db.longname = 'High Speech'
@@ -1731,7 +1731,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hob_Kin',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hob_Kin')
     merit.db.longname = 'Hob Kin'
@@ -1744,7 +1744,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hobbyist_Clique',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hobbyist_Clique')
     merit.db.longname = 'Hobbyist Clique'
@@ -1757,7 +1757,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Holistic_Awareness',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Holistic_Awareness')
     merit.db.longname = 'Holistic Awareness'
@@ -1770,7 +1770,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Hollow',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Hollow')
     merit.db.longname = 'Hollow'
@@ -1783,7 +1783,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Honey_Trap',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Honey_Trap')
     merit.db.longname = 'Honey Trap'
@@ -1796,7 +1796,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('I_Know_a_Guy',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'I_Know_a_Guy')
     merit.db.longname = 'I Know a Guy'
@@ -1809,7 +1809,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Imbued_Item',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Imbued_Item')
     merit.db.longname = 'Imbued Item'
@@ -1822,7 +1822,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Impartial_Mediator',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Impartial_Mediator')
     merit.db.longname = 'Impartial Mediator'
@@ -1835,7 +1835,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Improvised_Weaponry',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Improvised_Weaponry')
     merit.db.longname = 'Improvised Weaponry'
@@ -1848,7 +1848,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Indomitable',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Indomitable')
     merit.db.longname = 'Indomitable'
@@ -1861,7 +1861,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Infamous_Mentor',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Infamous_Mentor')
     merit.db.longname = 'Infamous Mentor'
@@ -1874,7 +1874,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Inspiring',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Inspiring')
     merit.db.longname = 'Inspiring'
@@ -1887,7 +1887,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Instinctive_Defense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Instinctive_Defense')
     merit.db.longname = 'Instinctive Defense'
@@ -1900,7 +1900,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Interdisciplinary_Specialty',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Interdisciplinary_Specialty')
     merit.db.longname = 'Interdisciplinary Specialty'
@@ -1913,7 +1913,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Invested',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Invested')
     merit.db.longname = 'Invested'
@@ -1926,7 +1926,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Investigative_Aide',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Investigative_Aide')
     merit.db.longname = 'Investigative Aide'
@@ -1939,7 +1939,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Investigative_Prodigy',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Investigative_Prodigy')
     merit.db.longname = 'Investigative Prodigy'
@@ -1952,7 +1952,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Iron_Chin',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Chin')
     merit.db.longname = 'Iron Chin'
@@ -1965,7 +1965,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Iron_Skin',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Skin')
     merit.db.longname = 'Iron Skin'
@@ -1978,7 +1978,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Iron_Stamina',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Stamina')
     merit.db.longname = 'Iron Stamina'
@@ -1991,7 +1991,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Iron_Will',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Will')
     merit.db.longname = 'Iron Will'
@@ -2004,7 +2004,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('K-9',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'K-9')
     merit.db.longname = 'K-9'
@@ -2017,7 +2017,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Kindred_Dueling',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Kindred_Dueling')
     merit.db.longname = 'Kindred Dueling'
@@ -2030,7 +2030,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Kino_Mutai',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Kino_Mutai')
     merit.db.longname = 'Kino Mutai'
@@ -2043,7 +2043,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Kiss_of_the_Succubus',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Kiss_of_the_Succubus')
     merit.db.longname = 'Kiss of the Succubus'
@@ -2056,7 +2056,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Language',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Language')
     merit.db.longname = 'Language'
@@ -2069,7 +2069,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Laying_on_Hands',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Laying_on_Hands')
     merit.db.longname = 'Laying on Hands'
@@ -2082,7 +2082,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Lethal_Mien',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Lethal_Mien')
     merit.db.longname = 'Lethal Mien'
@@ -2095,7 +2095,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Lex_Terrae',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Lex_Terrae')
     merit.db.longname = 'Lex Terrae'
@@ -2108,7 +2108,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Library',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Library')
     merit.db.longname = 'Library'
@@ -2121,7 +2121,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Light_Weapons',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Light_Weapons')
     merit.db.longname = 'Light Weapons'
@@ -2134,7 +2134,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Lineage',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Lineage')
     merit.db.longname = 'Lineage'
@@ -2147,7 +2147,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Living_Weapon',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Living_Weapon')
     merit.db.longname = 'Living Weapon'
@@ -2160,7 +2160,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Lorekeeper',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Lorekeeper')
     merit.db.longname = 'Lorekeeper'
@@ -2173,7 +2173,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Mandate_from_the_Masses',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Mandate_from_the_Masses')
     merit.db.longname = 'Mandate from the Masses'
@@ -2186,7 +2186,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Mantle',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Mantle')
     merit.db.longname = 'Mantle'
@@ -2199,7 +2199,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Manymask',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Manymask')
     merit.db.longname = 'Manymask'
@@ -2212,7 +2212,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Market_Sense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Market_Sense')
     merit.db.longname = 'Market Sense'
@@ -2225,7 +2225,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Marksmanship',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Marksmanship')
     merit.db.longname = 'Marksmanship'
@@ -2238,7 +2238,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Martial_Arts',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Martial_Arts')
     merit.db.longname = 'Martial Arts'
@@ -2251,7 +2251,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Meditative_Mind',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Meditative_Mind')
     merit.db.longname = 'Meditative Mind'
@@ -2264,7 +2264,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Medium',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Medium')
     merit.db.longname = 'Medium'
@@ -2277,7 +2277,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Mentor',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Mentor')
     merit.db.longname = 'Mentor'
@@ -2290,7 +2290,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Mind_of_a_Madman',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Mind_of_a_Madman')
     merit.db.longname = 'Mind of a Madman'
@@ -2303,7 +2303,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Moon-Kissed',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Moon-Kissed')
     merit.db.longname = 'Moon-Kissed'
@@ -2316,7 +2316,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Mounted_Combat',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Mounted_Combat')
     merit.db.longname = 'Mounted Combat'
@@ -2329,7 +2329,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Multilingual',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Multilingual')
     merit.db.longname = 'Multilingual'
@@ -2342,7 +2342,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Mystery_Cult_Initiation',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Mystery_Cult_Initiation')
     merit.db.longname = 'Mystery Cult Initiation'
@@ -2355,7 +2355,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Night_Doctor_Surgery',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Night_Doctor_Surgery')
     merit.db.longname = 'Night Doctor Surgery'
@@ -2368,7 +2368,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Noblesse_Oblige',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Noblesse_Oblige')
     merit.db.longname = 'Noblesse Oblige'
@@ -2381,7 +2381,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Notary',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Notary')
     merit.db.longname = 'Notary'
@@ -2394,7 +2394,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Nowhere_to_Run',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Nowhere_to_Run')
     merit.db.longname = 'Nowhere to Run'
@@ -2407,7 +2407,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Numbing_Touch',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Numbing_Touch')
     merit.db.longname = 'Numbing Touch'
@@ -2420,7 +2420,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Oath_of_Action',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Action')
     merit.db.longname = 'Oath of Action'
@@ -2433,7 +2433,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = True
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Oath_of_Fealty',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Fealty')
     merit.db.longname = 'Oath of Fealty'
@@ -2446,7 +2446,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = True
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Oath_of_Penance',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Penance')
     merit.db.longname = 'Oath of Penance'
@@ -2459,7 +2459,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = True
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Oath_of_Serfdom',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Serfdom')
     merit.db.longname = 'Oath of Serfdom'
@@ -2472,7 +2472,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = True
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Object_Fetishism',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Object_Fetishism')
     merit.db.longname = 'Object Fetishism'
@@ -2485,7 +2485,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Omen_Sensititivity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Omen_Sensititivity')
     merit.db.longname = 'Omen Sensititivity'
@@ -2498,7 +2498,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Pack_Alpha',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Pack_Alpha')
     merit.db.longname = 'Pack Alpha'
@@ -2511,7 +2511,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Pack_Dynamics',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Pack_Dynamics')
     merit.db.longname = 'Pack Dynamics'
@@ -2524,7 +2524,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Pandemonical',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Pandemonical')
     merit.db.longname = 'Pandemonical'
@@ -2537,7 +2537,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Parallel_Lives',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Parallel_Lives')
     merit.db.longname = 'Parallel Lives'
@@ -2550,7 +2550,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Parkour',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Parkour')
     merit.db.longname = 'Parkour'
@@ -2563,7 +2563,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Patient',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Patient')
     merit.db.longname = 'Patient'
@@ -2576,7 +2576,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Peacemaker',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Peacemaker')
     merit.db.longname = 'Peacemaker'
@@ -2589,7 +2589,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Phalanx_Fighter',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Phalanx_Fighter')
     merit.db.longname = 'Phalanx Fighter'
@@ -2602,7 +2602,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Plausible_Deniability',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Plausible_Deniability')
     merit.db.longname = 'Plausible Deniability'
@@ -2615,7 +2615,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Police_Tactics',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Police_Tactics')
     merit.db.longname = 'Police Tactics'
@@ -2628,7 +2628,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Powered_Projectile',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Powered_Projectile')
     merit.db.longname = 'Powered Projectile'
@@ -2641,7 +2641,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Professional_Training',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Professional_Training')
     merit.db.longname = 'Professional Training'
@@ -2654,7 +2654,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Psychokinesis',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Psychokinesis')
     merit.db.longname = 'Psychokinesis'
@@ -2667,7 +2667,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Psychometry',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Psychometry')
     merit.db.longname = 'Psychometry'
@@ -2680,7 +2680,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Pusher',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Pusher')
     merit.db.longname = 'Pusher'
@@ -2693,7 +2693,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Quick_Draw',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Quick_Draw')
     merit.db.longname = 'Quick Draw'
@@ -2706,7 +2706,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Relentless',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Relentless')
     merit.db.longname = 'Relentless'
@@ -2719,7 +2719,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Relentless_Assault',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Relentless_Assault')
     merit.db.longname = 'Relentless Assault'
@@ -2732,7 +2732,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Residential_Area',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Residential_Area')
     merit.db.longname = 'Residential Area'
@@ -2745,7 +2745,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Resonance_Shaper',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Resonance_Shaper')
     merit.db.longname = 'Resonance Shaper'
@@ -2758,7 +2758,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Resources',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Resources')
     merit.db.longname = 'Resources'
@@ -2771,7 +2771,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Retain_Weapon',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Retain_Weapon')
     merit.db.longname = 'Retain Weapon'
@@ -2784,7 +2784,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Retainer',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Retainer')
     merit.db.longname = 'Retainer'
@@ -2797,7 +2797,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Riding_the_Wave',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Riding_the_Wave')
     merit.db.longname = 'Riding the Wave'
@@ -2810,7 +2810,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Right_of_Return',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Right_of_Return')
     merit.db.longname = 'Right of Return'
@@ -2823,7 +2823,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Rigid_Mask',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Rigid_Mask')
     merit.db.longname = 'Rigid Mask'
@@ -2836,7 +2836,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Roadkill',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Roadkill')
     merit.db.longname = 'Roadkill'
@@ -2849,7 +2849,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Safe_Place',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Safe_Place')
     merit.db.longname = 'Safe Place'
@@ -2862,7 +2862,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Scarred',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Scarred')
     merit.db.longname = 'Scarred'
@@ -2875,7 +2875,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Secret_Society_Junkie',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Secret_Society_Junkie')
     merit.db.longname = 'Secret Society Junkie'
@@ -2888,7 +2888,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Seizing_the_Edge',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Seizing_the_Edge')
     merit.db.longname = 'Seizing the Edge'
@@ -2901,7 +2901,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Self-Control',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Self-Control')
     merit.db.longname = 'Self-Control'
@@ -2914,7 +2914,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Shiv',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Shiv')
     merit.db.longname = 'Shiv'
@@ -2927,7 +2927,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Sleight_of_Hand',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Sleight_of_Hand')
     merit.db.longname = 'Sleight of Hand'
@@ -2940,7 +2940,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Small_Unit_Tactics',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Small_Unit_Tactics')
     merit.db.longname = 'Small Unit Tactics'
@@ -2953,7 +2953,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Small-Framed',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Small-Framed')
     merit.db.longname = 'Small-Framed'
@@ -2966,7 +2966,7 @@ if len(stats) == 0:
     merit.db.cg_only = True
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Song_in_your_Heart',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Song_in_your_Heart')
     merit.db.longname = 'Song in your Heart'
@@ -2979,7 +2979,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Sounds_of_the_City',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Sounds_of_the_City')
     merit.db.longname = 'Sounds of the City'
@@ -2992,7 +2992,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Speaker_for_the_Silent',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Speaker_for_the_Silent')
     merit.db.longname = 'Speaker for the Silent'
@@ -3005,7 +3005,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Spear_and_Bayonet',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Spear_and_Bayonet')
     merit.db.longname = 'Spear and Bayonet'
@@ -3018,7 +3018,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Spin_Doctor',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Spin_Doctor')
     merit.db.longname = 'Spin Doctor'
@@ -3031,7 +3031,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Spiritual_Blockage',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Spiritual_Blockage')
     merit.db.longname = 'Spiritual Blockage'
@@ -3044,7 +3044,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Stable_Trod',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Stable_Trod')
     merit.db.longname = 'Stable Trod'
@@ -3057,7 +3057,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Staff',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Staff')
     merit.db.longname = 'Staff'
@@ -3070,7 +3070,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Staff_Fighting',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Staff_Fighting')
     merit.db.longname = 'Staff Fighting'
@@ -3083,7 +3083,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Status',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Status')
     merit.db.longname = 'Status'
@@ -3096,7 +3096,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Street_Fighting',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Street_Fighting')
     merit.db.longname = 'Street Fighting'
@@ -3109,7 +3109,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Strength_Performance',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Strength_Performance')
     merit.db.longname = 'Strength Performance'
@@ -3122,7 +3122,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Strength_of_Resolution',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Strength_of_Resolution')
     merit.db.longname = 'Strength of Resolution'
@@ -3135,7 +3135,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Striking_Looks',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Striking_Looks')
     merit.db.longname = 'Striking Looks'
@@ -3148,7 +3148,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Strings_of_the_Heart',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Strings_of_the_Heart')
     merit.db.longname = 'Strings of the Heart'
@@ -3161,7 +3161,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Stunt_Driver',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Stunt_Driver')
     merit.db.longname = 'Stunt Driver'
@@ -3174,7 +3174,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Support_Network',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Support_Network')
     merit.db.longname = 'Support Network'
@@ -3187,7 +3187,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Survivalist',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Survivalist')
     merit.db.longname = 'Survivalist'
@@ -3200,7 +3200,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Swarm_Form',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Swarm_Form')
     merit.db.longname = 'Swarm Form'
@@ -3213,7 +3213,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Sworn',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Sworn')
     merit.db.longname = 'Sworn'
@@ -3226,7 +3226,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Sympathetic',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Sympathetic')
     merit.db.longname = 'Sympathetic'
@@ -3239,7 +3239,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Systema',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Systema')
     merit.db.longname = 'Systema'
@@ -3252,7 +3252,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Tactical_Shifting',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Tactical_Shifting')
     merit.db.longname = 'Tactical Shifting'
@@ -3265,7 +3265,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Takes_One_to_Know_One',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Takes_One_to_Know_One')
     merit.db.longname = 'Takes One to Know One'
@@ -3278,7 +3278,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Taste',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Taste')
     merit.db.longname = 'Taste'
@@ -3291,7 +3291,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Telekinesis',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Telekinesis')
     merit.db.longname = 'Telekinesis'
@@ -3304,7 +3304,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Telepathy',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Telepathy')
     merit.db.longname = 'Telepathy'
@@ -3317,7 +3317,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('The_Mother-Daughter_Bond',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'The_Mother-Daughter_Bond')
     merit.db.longname = 'The Mother-Daughter Bond'
@@ -3330,7 +3330,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Thief_of_Fate',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Thief_of_Fate')
     merit.db.longname = 'Thief of Fate'
@@ -3343,7 +3343,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Thrown_Weapons',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Thrown_Weapons')
     merit.db.longname = 'Thrown Weapons'
@@ -3356,7 +3356,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Token',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Token')
     merit.db.longname = 'Token'
@@ -3369,7 +3369,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Tolerance_for_Biology',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Tolerance_for_Biology')
     merit.db.longname = 'Tolerance for Biology'
@@ -3382,7 +3382,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Totem',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Totem')
     merit.db.longname = 'Totem'
@@ -3395,7 +3395,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Touchstone',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Touchstone')
     merit.db.longname = 'Touchstone'
@@ -3408,7 +3408,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Trained_Observer',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Trained_Observer')
     merit.db.longname = 'Trained Observer'
@@ -3421,7 +3421,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Transfer_Manuever',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Transfer_Manuever')
     merit.db.longname = 'Transfer Manuever'
@@ -3434,7 +3434,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('True_Friend',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'True_Friend')
     merit.db.longname = 'True Friend'
@@ -3447,7 +3447,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Trunk_Squeeze',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Trunk_Squeeze')
     merit.db.longname = 'Trunk Squeeze'
@@ -3460,7 +3460,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Two_Weapon_Fighting',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Two_Weapon_Fighting')
     merit.db.longname = 'Two Weapon Fighting'
@@ -3473,7 +3473,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Unarmed_Defense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Unarmed_Defense')
     merit.db.longname = 'Unarmed Defense'
@@ -3486,7 +3486,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Undead_Menses',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Undead_Menses')
     merit.db.longname = 'Undead Menses'
@@ -3499,7 +3499,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Unnatural_Affinity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Unnatural_Affinity')
     merit.db.longname = 'Unnatural Affinity'
@@ -3512,7 +3512,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Unseen_Sense',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Unseen_Sense')
     merit.db.longname = 'Unseen Sense'
@@ -3525,7 +3525,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Unsettling_Gaze',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Unsettling_Gaze')
     merit.db.longname = 'Unsettling Gaze'
@@ -3538,7 +3538,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Untouchable',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Untouchable')
     merit.db.longname = 'Untouchable'
@@ -3551,7 +3551,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Vice-Ridden',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Vice-Ridden')
     merit.db.longname = 'Vice-Ridden'
@@ -3564,7 +3564,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Virtuous',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Virtuous')
     merit.db.longname = 'Virtuous'
@@ -3577,7 +3577,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Warcry',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Warcry')
     merit.db.longname = 'Warcry'
@@ -3590,7 +3590,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Warded_Dreams',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Warded_Dreams')
     merit.db.longname = 'Warded Dreams'
@@ -3603,7 +3603,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Weakest_Link',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Weakest_Link')
     merit.db.longname = 'Weakest Link'
@@ -3616,7 +3616,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Weapon_and_Shield',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Weapon_and_Shield')
     merit.db.longname = 'Weapon and Shield'
@@ -3629,7 +3629,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Where_the_Bodies_Are_Buried',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Where_the_Bodies_Are_Buried')
     merit.db.longname = 'Where the Bodies Are Buried'
@@ -3642,7 +3642,7 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
-stats = data.find(name,statclass='Merit')
+stats = data.find('Workshop',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Workshop')
     merit.db.longname = 'Workshop'
