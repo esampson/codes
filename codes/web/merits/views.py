@@ -1,20 +1,15 @@
 # Views for our character app
 
-from django.http import HttpResponseNotFound
-from django.http import Http404
 from django.shortcuts import render
-from django.conf import settings
 
 from evennia.utils.search import search_script_tag
-from evennia.utils.utils import inherits_from
 from evennia import create_script
 
 from codes.web.merits.forms import editForm
+from codes import data
+
 from django.http import HttpResponseRedirect
-from datetime import datetime
-from evennia.objects.models import ObjectDB
-from django.conf import settings
-from evennia.utils import create
+
 from urllib.parse import unquote
 from urllib.parse import quote
 
@@ -36,14 +31,14 @@ def string_to_list(string):
 class merit_class:
     longname = ''
     category = ''
-    range = [] 
+    range = []
     noteRestrictions = []
     prereq = ''
     reference = ''
     info = ''
     cg_only = False
     restricted = False
-    
+
     def update(self,longname,category,range,noteRestrictions,prereq,reference,info,cg_only,restricted):
         self.longname = longname
         self.category = category
@@ -54,20 +49,11 @@ class merit_class:
         self.info = info
         self.cg_only = cg_only
         self.restricted = restricted
-    
-def sheet(request, object_id):
-    
-    object_id = unquote(object_id)
 
-    try:
-        data = search_script_tag('merit_stat')
-    except IndexError:
-        raise Http404("I couldn't find a character with that ID.")
-    
-    stats = []
-    for stat in data:
-        if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
-            stats.append(stat)
+def sheet(request, object_id):
+
+    object_id = unquote(object_id)
+    stats = data.find(object_id,statclass='Merit')
     if len(stats) == 0:
         return render(request, 'merits/error.html', {'message': 'No matching merits: '+object_id})
     if len(stats) > 1:
@@ -75,7 +61,7 @@ def sheet(request, object_id):
     merit = merit_class()
     longname = stats[0].db.longname
     category = stats[0].db.category
-    range = stats[0].db.range 
+    range = stats[0].db.range
     noteRestrictions = stats[0].db.noteRestrictions
     prereq = stats[0].db.prereq
     reference = stats[0].db.reference
@@ -91,18 +77,9 @@ def sheet(request, object_id):
     return render(request, 'merits/sheet.html', {'merit': merit, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
-    object_id = unquote(object_id)
 
-    try:
-        data = search_script_tag('merit_stat')
-    except IndexError:
-        raise Http404("I couldn't find a character with that ID.")
-    
-    stats = []
-    for stat in data:
-        if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
-            stats.append(stat)
+    object_id = unquote(object_id)
+    stats = data.find(object_id,statclass='Merit')
     if len(stats) == 0:
         return render(request, 'merits/error.html', {'message': 'No matching merits'})
     if len(stats) > 1:
@@ -112,8 +89,8 @@ def editor(request, object_id):
         noteRestrictions='[]'
     else:
         noteRestrictions = merit.db.noteRestrictions
-    starting_data = {'longname':merit.db.longname, 
-                     'category':merit.db.category, 
+    starting_data = {'longname':merit.db.longname,
+                     'category':merit.db.category,
                      'range':merit.db.range,
                      'noteRestrictions':noteRestrictions,
                      'prereq':merit.db.prereq,
@@ -131,15 +108,8 @@ def editted(request):
         if request.method == 'POST':
             form = editForm(request.POST)
             if form.is_valid():
-                try:
-                    data = search_script_tag('merit_stat')
-                except IndexError:
-                    raise Http404("I couldn't find a character with that ID.")
-                stats = []
                 n = form.cleaned_data['link']
-                for stat in data:
-                    if stat.db.longname[0:len(n)].lower() == n.lower():
-                        stats.append(stat)
+                stats = data.find(n,statclass='Merit')
                 if len(stats) == 0:
                     return render(request, 'merits/error.html', {'message': len(data) + ' No matching merits: ' + n})
                 if len(stats) > 1:
@@ -168,11 +138,11 @@ def editted(request):
             return render(request, 'merits/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'merits/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
-                     'category':'', 
+
+    starting_data = {'longname':'',
+                     'category':'',
                      'range':'',
                      'noteRestrictions':'',
                      'prereq':'',
@@ -198,10 +168,12 @@ def created(request):
                 if form.cleaned_data['noteRestrictions'] != '[]':
                     for item in form.cleaned_data['noteRestrictions'][1:-1].split(','):
                         noteRestrictions.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.meritScript', 
+                s = create_script('typeclasses.scripts.meritScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.category=form.cleaned_data['category']
+                d = search_script_tag('dictionary_data')[0]
+                d.insert(s)
                 s.db.range=range
                 s.db.noteRestrictions= noteRestrictions
                 s.db.prereq=form.cleaned_data['prereq']
@@ -217,7 +189,7 @@ def created(request):
             return render(request, 'merits/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'merits/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('merit_stat')
     groups = []

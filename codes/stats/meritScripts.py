@@ -2,12 +2,12 @@ from codes.stats.codesScript import codesScript
 from codes.data import find
 
 class meritScript(codesScript):
-    
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('merit_stat')
-                
+
     def update(self,longname='', category='',range=[], noteRestrictions='',
                prereq='', restricted=False, cg_only=False, reference='',
                info=''):
@@ -20,13 +20,13 @@ class meritScript(codesScript):
         self.db.cg_only = cg_only
         self.db.reference = reference
         self.db.info = info
-    
+
     def get(self, target, subentry):
         """
         get
 
 
-        Gets the value of a given merit from a target. Only returns a single value so 
+        Gets the value of a given merit from a target. Only returns a single value so
         subentry may be neccessary in order to properly identify the merit if there
         are multiple merits on a character that begin with the same name.
 
@@ -41,7 +41,7 @@ class meritScript(codesScript):
             t = False
             if subentry == '' and self.db.longname == merit[0]:
                 r.append(merit)
-            elif (self.db.longname == merit[0] and 
+            elif (self.db.longname == merit[0] and
                   subentry.lower() == merit[2][0:len(subentry)].lower()):
                 r.append(merit)
         if len(r) == 0:
@@ -50,7 +50,7 @@ class meritScript(codesScript):
             return 'TOO_MANY_FOUND'
         else:
             return r[0][1]
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -68,16 +68,23 @@ class meritScript(codesScript):
         """
         if int(value) in self.db.range:
             if len(self.db.prereq) == 0:
-                if (self.db.category.lower() == 'changeling' and 
+                if (self.db.category.lower() == 'changeling' and
                     target.template().lower() != 'changeling'):
                     result = False
-                elif (self.db.category.lower() == 'vampire' and 
+                elif (self.db.category.lower() == 'mage' and
+                    target.template().lower() != 'mage'):
+                    result = False
+                elif (self.db.category.lower() == 'vampire' and
                     target.template().lower() != 'vampire'):
                     result = False
-                elif (self.db.category.lower() == 'supernatural' and 
-                    target.template().lower() in ['changeling', 'vampire']):
-                    result = False 
-                else:   
+                elif (self.db.category.lower() == 'werewolf' and
+                    target.template().lower() != 'werewolf'):
+                    result = False
+                elif (self.db.category.lower() == 'supernatural' and
+                    target.template().lower() in ['changeling', 'mage',
+                                                  'vampire', 'werewolf']):
+                    result = False
+                else:
                     result = True
             else:
                 if eval(self.db.prereq):
@@ -87,7 +94,7 @@ class meritScript(codesScript):
         else:
             result = False
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -104,7 +111,7 @@ class meritScript(codesScript):
         """
         result = value - self.get(target, subentry)
         return result
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -139,7 +146,6 @@ class meritScript(codesScript):
         else:
             result = False
         return result
-                
-    
-    
-    
+
+
+
