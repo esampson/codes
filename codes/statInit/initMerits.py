@@ -2095,6 +2095,19 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
+stats = data.find('Lex_Magica',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Lex_Magica')
+    merit.db.longname = 'Lex Magica'
+    merit.db.category = 'Mage'
+    merit.db.range = [2]
+    merit.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Status\',statclass=\'Merit\',subentry=\'Silver Ladder\') >= 1'
+    merit.db.noteRestrictions = []
+    merit.db.reference = 'M:tA p. 102'
+    merit.db.info = 'The laws of the Pentacle are symbolic concepts designed by people who make symbols real. A thearch acting in an official, titled capacity (such as Herald, Sentinel, Factotum, Deacon, Hierarch, or Magister) gains certain advantages with this Merit.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
 stats = data.find('Lex_Terrae',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Lex_Terrae')
@@ -2173,6 +2186,19 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
+stats = data.find('Mana_Sensitivity',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Mana_Sensitivity')
+    merit.db.longname = 'Mana Sensitivity'
+    merit.db.category = 'Mage'
+    merit.db.range = [1]
+    merit.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Prime\',statclass=\'Arcana\') >= 1 and target.wits() >= 3'
+    merit.db.noteRestrictions = []
+    merit.db.reference = 'M:tA p. 102'
+    merit.db.info = 'Your character\'s awakened eye has sensed Mana enough that her mundane senses have begun picking up the cues of its presence.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
 stats = data.find('Mandate_from_the_Masses',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Mandate_from_the_Masses')
@@ -2248,6 +2274,19 @@ if len(stats) == 0:
     merit.db.noteRestrictions = ['*']
     merit.db.reference = 'CoD p. 63-64 and HL p. 50'
     merit.db.info = 'Your character is trained in one or more formal martial arts styles. This may have come from a personal mentor, a dojo, or a self-defense class. It may have been for exercise, protection, show, or tradition. These maneuvers may only be used unarmed, or with weapons capable of using the Brawl Skill, such as a punch dagger, or a weapon using the Shiv Merit.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
+stats = data.find('Masque',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Masque')
+    merit.db.longname = 'Masque'
+    merit.db.category = 'Mage'
+    merit.db.range = [1, 2, 3, 4, 5]
+    merit.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Status\',statclass=\'Merit\',subentry=\'Guardians of the Veil\') >= 1'
+    merit.db.noteRestrictions = []
+    merit.db.reference = 'M:tA p. 102-103'
+    merit.db.info = 'The Guardians must adopt Masques, personas, in order to detach from the grim necessities of their work and stay in cover. Their ancient practices allow these Masques to become different people almost entirely; they have different abilities and even ethical codes to suit the role. At each level of Masque, the persona gains different abilities that are only available to the character upon donning the Masque. Adopting a Masque requires spending a point of Willpower, which cannot be replenished so long as the character maintains the identity. Shedding a Masque requires a full minute to get "out of character."'
     merit.db.cg_only = False
     merit.db.restricted = False
 
@@ -2339,6 +2378,19 @@ if len(stats) == 0:
     merit.db.noteRestrictions = ['*']
     merit.db.reference = 'CoD p. 46'
     merit.db.info = 'Your character has a strong affinity for language acquisition. Each time you purchase this Merit, choose two languages. Your character can speak conversationally in those languages. With an Intelligence + Academics roll, he may also read enough of the language to understand context.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
+stats = data.find('Mystery_Cult_Influence',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Mystery_Cult_Influence')
+    merit.db.longname = 'Mystery Cult Influence'
+    merit.db.category = 'Mage'
+    merit.db.range = [3, 4, 5]
+    merit.db.prereq = ''
+    merit.db.noteRestrictions = ['*']
+    merit.db.reference = 'M:tA p. 103'
+    merit.db.info = 'Your character has influence over a Mystery Cult without actually being a subordinate member. Perhaps your character is a "power behind the throne" or even worshiped as a deity. Your character benefits from the same level of Mystery Cult Initiation, without having to be tied to the cult. This means fewer responsibilities to the cult, plausible deniability if they\'re revealed, and the ability to step away at any time.'
     merit.db.cg_only = False
     merit.db.restricted = False
 
@@ -2485,6 +2537,19 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
+stats = data.find('Occultation',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Occultation')
+    merit.db.longname = 'Occultation'
+    merit.db.category = 'Mage'
+    merit.db.range = [1, 2, 3]
+    merit.db.prereq = ''
+    merit.db.noteRestrictions = []
+    merit.db.reference = 'M:tA p. 103'
+    merit.db.info = 'Your character is unnoticeable and inoffensive on a mystical level. Any time a character tries to read your character\'s aura, or otherwise use magic to discern bits of truth within her, subtract your Merit dots from their pool.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
 stats = data.find('Omen_Sensititivity',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Omen_Sensititivity')
@@ -2628,6 +2693,32 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
+stats = data.find('Potent_Nimbus',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Potent_Nimbus')
+    merit.db.longname = 'Potent Nimbus'
+    merit.db.category = 'Mage'
+    merit.db.range = [1, 2]
+    merit.db.prereq = ''
+    merit.db.noteRestrictions = []
+    merit.db.reference = 'M:tA p. 103'
+    merit.db.info = 'Your character\'s Nimbus has distinct and powerful effects on witnesses. At one dot, add two to your character\'s effective Gnosis when determining her Nimbus Tilt (see p. 90). At two dots, add four to her effective Gnosis for that purpose. Additionally, add your dots in this Merit to any rolls to flare your character\'s Nimbus.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
+stats = data.find('Potent_Resonance',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Potent_Resonance')
+    merit.db.longname = 'Potent Resonance'
+    merit.db.category = 'Mage'
+    merit.db.range = [2]
+    merit.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Gnosis\',statclass=\'Power\') >= 3'
+    merit.db.noteRestrictions = []
+    merit.db.reference = 'M:tA p. 103'
+    merit.db.info = 'Your character\'s Signature Nimbus is particularly overbearing. Whenever a character scrutinizes her Signature Nimbus with Mage Sight, he\'s subject to the effects of her Immediate Nimbus and its corresponding Tilt.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
 stats = data.find('Powered_Projectile',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Powered_Projectile')
@@ -2638,6 +2729,19 @@ if len(stats) == 0:
     merit.db.noteRestrictions = []
     merit.db.reference = 'HL p. 51'
     merit.db.info = 'Your character is comfortable using premodern ranged weapons like crossbows, slingshots, and blowguns. Though long ago replaced by firearms, these weapons remain popular for hunting and are widely available in some countries.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
+stats = data.find('Prelacy',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Prelacy')
+    merit.db.longname = 'Prelacy'
+    merit.db.category = 'Mage'
+    merit.db.range = [1, 2, 3, 4, 5]
+    merit.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Status\',statclass=\'Merit\',subentry=\'Seers of the Throne\') >= 3'
+    merit.db.noteRestrictions = []
+    merit.db.reference = 'M:tA p. 103'
+    merit.db.info = 'A successful Seer who has served her patron Exarch well can cast spells in his name. She hears the Tyrants\' voices in her sleep. She understands their demands directly. A black iron portal forms deep within her Oneiros, and her daimon, the Goetia representing her drive to further herself, becomes twisted by the Exarch\'s agenda.'
     merit.db.cg_only = False
     merit.db.restricted = False
 
@@ -2862,6 +2966,19 @@ if len(stats) == 0:
     merit.db.cg_only = False
     merit.db.restricted = False
 
+stats = data.find('Sanctum',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Sanctum')
+    merit.db.longname = 'Sanctum'
+    merit.db.category = 'Mage'
+    merit.db.range = [1, 2, 3, 4, 5]
+    merit.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Safe Place\',statclass=\'Merit\') >= 1'
+    merit.db.noteRestrictions = ['*']
+    merit.db.reference = 'M:tA p. 104'
+    merit.db.info = 'Your character has a Sanctum, in which she can safely practice her art away from prying eyes. This might be a dark cave, an apartment, a pocket dimension, or any other secure location she can claim. This Merit must be tied to a Safe Place Merit, and similarly can be shared within a cabal.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
 stats = data.find('Scarred',statclass='Merit')
 if len(stats) == 0:
     merit = create_script('typeclasses.scripts.meritScript',key = 'Scarred')
@@ -2911,6 +3028,19 @@ if len(stats) == 0:
     merit.db.noteRestrictions = []
     merit.db.reference = 'W:tF p. 107'
     merit.db.info = 'Your character can stave off her spirit nature. When compelled to shift in a stressful situation due to low Harmony (see p. 96), you may spend a point of Willpower to allow her to remain in her current form for the scene. Doing so is a breaking point toward Flesh.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
+stats = data.find('Shadow_Name',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Shadow_Name')
+    merit.db.longname = 'Shadow Name'
+    merit.db.category = 'Mage'
+    merit.db.range = [1, 2, 3]
+    merit.db.prereq = ''
+    merit.db.noteRestrictions = ['*']
+    merit.db.reference = 'M:tA p. 104'
+    merit.db.info = 'Your character has a particularly developed magical persona, and is almost a different person when acting as a mage than in her mundane life. When purchasing this Merit, determine the Shadow Name and its symbolism. The character may use those symbols as a persona tool in spellcasting, worth this Merit\'s dots. Additionally, apply dots in this Merit as a Withstand rating to spells that attempt to identify her or cast on her using the Sympathetic Range Attainment when in her mundane persona, to spells using the Temporal Sympathy Attainment targeting a time when she was in her mundane persona, and as a dice penalty to mundane skill rolls relating to identifying her as the same person as her magical self.'
     merit.db.cg_only = False
     merit.db.restricted = False
 
@@ -3288,6 +3418,19 @@ if len(stats) == 0:
     merit.db.noteRestrictions = ['*']
     merit.db.reference = 'CoD p. 55-56'
     merit.db.info = 'Your character has refined tastes, and can identify minor details in fashion, food, architecture, and other forms of artistry and craftsmanship. Not only does this give her an eye for detail, it makes her a center of attention in critical circles. She can also appraise items within her area of expertise. With a Wits + Skill roll, depending on the creation in question (Expression for poetry, Crafts for architecture, for example), your character can pick out obscure details about the item that other, less discerning minds would not. For each success, ask one of the following questions, or take a +1 bonus to any Social rolls pertaining to groups interested in the art assessed for the remainder of the scene.'
+    merit.db.cg_only = False
+    merit.db.restricted = False
+
+stats = data.find('Techne',statclass='Merit')
+if len(stats) == 0:
+    merit = create_script('typeclasses.scripts.meritScript',key = 'Techne')
+    merit.db.longname = 'Techne'
+    merit.db.category = 'Mage'
+    merit.db.range = [2]
+    merit.db.prereq = 'target.template().lower() == \'mage\' and target.get(\'Status\',statclass=\'Merit\',subentry=\'Free Council\') >= 1'
+    merit.db.noteRestrictions = ['*']
+    merit.db.reference = 'M:tA p. 104'
+    merit.db.info = 'Your character uses Libertine practices in order to use cultural magical styles, sciences, and art forms as magical tools. Pick a focus for your character - for example, computer networking. Your character treats the focus as an Order tool for the Free Council as long as she includes it during spellcasting, and may further treat the presence of Sleepers engaging in the focus as a separate Order tool, as long as the spell is not obvious. If all mages casting a spell under the teamwork rules have this Merit representing the same focus, the leader’s spellcasting roll gains 8-Again. This Merit may be bought multiple times to represent different fields of study.'
     merit.db.cg_only = False
     merit.db.restricted = False
 
