@@ -96,7 +96,7 @@ class Script(DefaultScript):
 
 from codes.stats.advantageScripts import AdvantageScript
 from codes.stats.arcanaScripts import ArcanaScript
-from codes.stats.attributeScripts import attributeScript
+from codes.stats.attributeScripts import AttributeScript
 from codes.stats.auspiceScripts import auspiceScript
 from codes.stats.basicStatScripts import basicStatScript
 from codes.stats.clanScripts import clanScript

@@ -6,7 +6,6 @@ power_source = {'Glamour': 'Wyrd',
                 'Mana': 'Gnosis'}
 
 
-# noinspection PyUnusedLocal,PyUnusedLocal
 class AdvantageScript(codesScript):
 
     def __init__(self):
@@ -124,6 +123,7 @@ class AdvantageScript(codesScript):
                 result = False
         return result
 
+    # noinspection PyUnusedLocal
     @staticmethod
     def meets_prereqs(target, value=0, subentry=''):
         """
@@ -137,6 +137,7 @@ class AdvantageScript(codesScript):
         result = False
         return result
 
+    # noinspection PyUnusedLocal
     @staticmethod
     def cost(target, value=0, subentry=''):
         """

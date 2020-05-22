@@ -1,24 +1,28 @@
 from codes.stats.codesScript import codesScript
 
-class attributeScript(codesScript):
-    
+
+class AttributeScript(codesScript):
+
+    def __init__(self):
+        self.persistent = True  # will survive reload
+
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.tags.add('stat_data')
-            self.tags.add('attribute_stat')
-                
-    def update(self,longname='', category='', row='', restricted=False,cost=''):
+        self.tags.add('stat_data')
+        self.tags.add('attribute_stat')
+
+    def update(self, longname='', category='', row='', restricted=False):
         self.db.longname = longname
         self.db.category = category
         self.db.row = row
         self.db.restricted = restricted
-    
+
+    # noinspection PyUnusedLocal
     def get(self, target, subentry=''):
         """
         get
 
 
-        Gets the value of a given attribute from a target. 
+        Gets the value of a given attribute from a target.
 
 
         target: The character being checked
@@ -32,14 +36,15 @@ class attributeScript(codesScript):
         else:
             result = 0
         return result
-        
+
+    # noinspection PyUnusedLocal
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase an attribute. Should
-        only return True or False.
+        Determines if a character meets the prerequisites to purchase an
+        attribute. Should only return True or False.
 
 
         target: The character being checked
@@ -52,18 +57,18 @@ class attributeScript(codesScript):
         key = list(power.keys())
         power_value = power[key[0]]
         if power_value < 6:
-            max = 5
+            att_max = 5
         else:
-            max = power_value
+            att_max = power_value
         if target.get('Embodiment of the Firstborn',
-                      subentry=self.db.longname,statclass='Merit') ==5:
-            max = max + 1
-        if value > max:
+                      subentry=self.db.longname, statclass='Merit') == 5:
+            att_max = att_max + 1
+        if value > att_max:
             result = False
         else:
             result = True
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -80,14 +85,15 @@ class attributeScript(codesScript):
         """
         result = (value - self.get(target, subentry)) * 4
         return result
-    
+
+    # noinspection PyUnusedLocal
     def set(self, target, value, subentry=''):
         """
         set
 
 
-        Sets the value of an attribute on a character sheet. Adds the attribute if the
-        character does not currently possess it.
+        Sets the value of an attribute on a character sheet. Adds the
+        attribute if the character does not currently possess it.
 
 
         target: The character the attribute is being set for
@@ -96,11 +102,6 @@ class attributeScript(codesScript):
 
 
         """
-        attributes = target.db.attributes
         name = self.db.longname
         target.db.attributes[name] = value
         return True
-                
-    
-    
-    
