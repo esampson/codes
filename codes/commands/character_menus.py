@@ -9,8 +9,8 @@ class CmdCG(Command):
     Usage:
         +cg
 
-    Begins character generation for those who have not completed it. Does not
-    support any arguments.
+    Begins character generation for those who have not completed it.
+    Does not support any arguments.
 
     Examples:
         +cg
@@ -48,8 +48,8 @@ class CmdXP(Command):
     Usage:
         +xp
 
-    Shows current XP and leads to a menu for spending XP. Does not support any
-    arguments.
+    Shows current XP and leads to a menu for spending XP. Does not
+    support any arguments.
 
 
     Examples:

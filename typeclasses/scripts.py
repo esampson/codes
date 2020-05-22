@@ -88,14 +88,14 @@ class Script(DefaultScript):
       at_server_shutdown() - called at a full server shutdown.
 
     """
-    
+
     NOT_FOUND = -1
     TOO_MANY_FOUND = -2
 
     pass
 
-from codes.stats.advantageScripts import advantageScript
-from codes.stats.arcanaScripts import arcanaScript
+from codes.stats.advantageScripts import AdvantageScript
+from codes.stats.arcanaScripts import ArcanaScript
 from codes.stats.attributeScripts import attributeScript
 from codes.stats.auspiceScripts import auspiceScript
 from codes.stats.basicStatScripts import basicStatScript
@@ -122,5 +122,5 @@ from codes.stats.thebanRitesScripts import thebanRiteScript
 from codes.stats.tribesScripts import tribeScript
 from codes.stats.werewolfRitesScripts import werewolfRiteScript
 from codes.stats.dictionary import dictionaryScript
-            
-                             
+
+

@@ -10,38 +10,38 @@ class CmdRoll(Command):
     """
     Usage:
         +roll[/<arguments>] <roll>
-        
-    Command to roll dice. The roll will recognize numbers, do partial name matches
-    with optional class specification, and will recognize specializations
-    (specializations require precise matching).
-    
-        <arguments>: Multiple arguments can be separated by slashes. Partial name 
-            matching is not supported on arguments.
+
+    Command to roll dice. The roll will recognize numbers, do partial
+    name matches with optional class specification, and will recognize
+    specializations (specializations require precise matching).
+
+        <arguments>: Multiple arguments can be separated by slashes.
+            Partial name matching is not supported on arguments.
             Valid arguments:
                 /8-again: Rolls with the 8-again rule.
                 /9-again: Rolls with the 9-again rule.
                 /No-10-Again: Rolls without the 10-again rule.
                 /rote: Rolls using the rote action rules.
-                
+
         <roll>: Combination of stats and modifiers
-        
+
     Examples:
         +roll Dexterity + Larceny
         +roll/9-Again  Str/Attribute + Weaponry
         +roll/rote/9-Again Strength + Crafts + Crafts: Gunsmithing + 3
-            
+
     """
-    
+
     key = '+roll'
     arg_regex = '^[\s/][0-9a-zA-Z/\-\s+:]+$'
     help_category = 'IC Commands'
-    
-    
+
+
     def func(self):                      #pragma: no cover
         roll_func(self.caller,self.args) #pragma: no cover
-        
+
 def roll_func(roller,input):
-    
+
     data = input.split(' ', 1)
     args = []
     reroll_target = 10
@@ -62,15 +62,15 @@ def roll_func(roller,input):
     for item in temp:
         insert = [ len(item.strip()), count, item.strip() ]
         num_parts.append(insert)
-        count = count + 1 
+        count = count + 1
     signs = roll_cmd
-    
+
     #strip out non-math signs.
     #we have to strip the longest words first so that skills
     #don't remove part of specialties.
     for item in sorted(num_parts, key=itemgetter(0), reverse=True):
        signs = signs.replace(item[2],'@')
-       
+
     temp = signs.split('@')
     sign_parts = []
     for item in temp:
@@ -80,8 +80,8 @@ def roll_func(roller,input):
     for item in temp:
         num_parts.append(item[2])
     numbers = []
-    error = False     #Lets us know if there is a problem interpreting something
-    pure_numbers = True               #Lets us know if only numbers were entered
+    error = False    #Lets us know if there is a problem interpreting something
+    pure_numbers = True              #Lets us know if only numbers were entered
     for item in num_parts:
         if item.isnumeric():
             numbers.append(int(item))
@@ -90,7 +90,7 @@ def roll_func(roller,input):
             value = roller.get(item.split('/')[0],
                                statclass= item.split('/')[1])
             if value < 0:
-                error = True   
+                error = True
             numbers.append(value)
         else:
             pure_numbers = False
@@ -146,22 +146,23 @@ def roll_func(roller,input):
             padding=10,
             replacements=[['8,','|w8|n,'],['8.','|w8|n '],['8;','|w8|n;'],
                           ['9,','|w9|n,'],['9.','|w9|n '],['9;','|w9|n;'],
-                          ['10,','|w10|n,'],['10.','|w10|n '],['10;','|w10|n;'],
-                          ['1.','1 '],['2.','2 '],['3.','3 '],['4.','4 '],
-                          ['5.','5 '],['6.','6 '],['7.','7 '] ] )
+                          ['10,','|w10|n,'],['10.','|w10|n '],
+                          ['10;','|w10|n;'], ['1.','1 '],['2.','2 '],
+                          ['3.','3 '],['4.','4 '], ['5.','5 '],['6.','6 '],
+                          ['7.','7 '] ] )
         roller.location.msg_contents(table)
     else:
         roller.msg('I couldn\'t figure out what you wanted to roll.')
-        
+
 def roll(dice):
-        
+
     rolls = []
     for roll in range(dice):
         rolls.append(random.randint(1,10))
     return rolls
-    
+
 def roll_sequence(dice, target):
-    
+
     sequence = []
     current_roll = roll(dice)
     current_roll.sort()
@@ -175,7 +176,7 @@ def roll_sequence(dice, target):
     return sequence
 
 def roll_again(roll, target):
-    
+
     rerolls = 0
     for die in roll:
         if die >= target:

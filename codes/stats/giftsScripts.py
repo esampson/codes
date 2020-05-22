@@ -2,11 +2,11 @@ from codes.stats.codesScript import codesScript
 from codes.data import find
 
 class giftScript(codesScript):
-    
+
     def at_script_creation(self, longname='', category='', group='', rank='',
                            renown='', info='', reference='', restricted=False):
         """
-        create_script('typeclasses.scripts.advantageScript'[,longname=<longname>]
+        create_script('typeclasses.scripts.AdvantageScript'[,longname=<longname>]
             [,category=<category>][,group=<group>][,rank=<rank>][,renown=<renown>]
             [,info=<info>][,reference=<reference>][,restricted=<True/False>]
 
@@ -30,7 +30,7 @@ class giftScript(codesScript):
         self.db.restricted = restricted
         self.tags.add('stat_data')
         self.tags.add('gift_stat')
-    
+
     def update(self, longname='', category='', group='', rank='', renown='',
                            info='', reference='', restricted=False):
         """
@@ -55,7 +55,7 @@ class giftScript(codesScript):
         self.db.info = info
         self.db.reference = reference
         self.db.restricted = restricted
-        
+
     def get(self, target, subentry=''):
         """
         get
@@ -72,7 +72,7 @@ class giftScript(codesScript):
         else:
             result = False
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -85,8 +85,8 @@ class giftScript(codesScript):
         target: The character being checked
         value: Dummy for overloading
         subentry: Dummy for overloading
-        
-        
+
+
         """
         if target.template().lower() == 'werewolf':
 
@@ -139,7 +139,7 @@ class giftScript(codesScript):
         else:
             result = False
         return result
-    
+
     def cost(self, target, value=True, subentry=''):
         """
         cost
@@ -211,7 +211,7 @@ class giftScript(codesScript):
                 result = 5
 
         return result
-                
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -252,5 +252,4 @@ class giftScript(codesScript):
             result = True
 
         return result
-                
-                
+
