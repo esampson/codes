@@ -102,8 +102,8 @@ from codes.stats.basicStatScripts import BasicStatScript
 from codes.stats.clanScripts import ClanScript
 from codes.stats.coilScripts import CoilScript
 from codes.stats.contractScripts import ContractScript
-from codes.stats.covenantScripts import covenantScript
-from codes.stats.cruacRitesScripts import cruacRiteScript
+from codes.stats.covenantScripts import CovenantScript
+from codes.stats.cruacRitesScripts import CruacRiteScript
 from codes.stats.devotionScripts import devotionScript
 from codes.stats.disciplineScripts import disciplineScript
 from codes.stats.giftsScripts import giftScript

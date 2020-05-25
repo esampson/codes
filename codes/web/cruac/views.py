@@ -40,7 +40,7 @@ class cruac_class:
     reference = ''
     info = ''
     restricted = False
-    
+
     def update(self,longname,rank,prereq,reference,info,restricted):
         self.longname = longname
         self.rank = rank
@@ -48,16 +48,16 @@ class cruac_class:
         self.reference = reference
         self.info = info
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('cruac_rite_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -82,14 +82,14 @@ def sheet(request, object_id):
     return render(request, 'cruac/sheet.html', {'cruac': cruac, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('cruac_rite_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -99,7 +99,7 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'cruac/error.html', {'message': 'Too many matching cruac'})
     cruac = stats[0]
-    starting_data = {'longname':cruac.db.longname, 
+    starting_data = {'longname':cruac.db.longname,
                      'rank':cruac.db.rank,
                      'prereq':cruac.db.prereq,
                      'reference':cruac.db.reference,
@@ -142,11 +142,11 @@ def editted(request):
             return render(request, 'cruac/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'cruac/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
-                     'rank':0, 
+
+    starting_data = {'longname':'',
+                     'rank':0,
                      'prereq':'',
                      'reference':'',
                      'info':'',
@@ -162,7 +162,7 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
-                s = create_script('typeclasses.scripts.cruacRiteScript', 
+                s = create_script('typeclasses.scripts.CruacRiteScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.rank=int(form.cleaned_data['rank'])
@@ -178,7 +178,7 @@ def created(request):
             return render(request, 'cruac/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'cruac/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('cruac_rite_stat')
     cruac = []

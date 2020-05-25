@@ -1,24 +1,28 @@
 from codes.stats.codesScript import CodesScript
 
-class covenantScript(CodesScript):
 
+class CovenantScript(CodesScript):
+
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.db.longname = ''
-            self.db.reference = ''
-            self.db.info = ''
-            self.db.restricted = False
-            self.tags.add('stat_data')
-            self.tags.add('covenant_stat')
+        self.persistent = True  # will survive reload
+        self.db.longname = ''
+        self.db.reference = ''
+        self.db.info = ''
+        self.db.restricted = False
+        self.tags.add('stat_data')
+        self.tags.add('covenant_stat')
 
-    def update(self,longname='', restricted=False, reference='',
+    def update(self, longname='', restricted=False, reference='',
                info=''):
         self.db.longname = longname
         self.db.restricted = restricted
         self.db.reference = reference
         self.db.info = info
 
-    def get(self, target, subentry=''):
+    # noinspection PyUnusedLocal
+    @staticmethod
+    def get(target, subentry=''):
         """
         get
 
@@ -33,7 +37,9 @@ class covenantScript(CodesScript):
 
         return False
 
-    def meets_prereqs(self, target, value=0, subentry=''):
+    # noinspection PyUnusedLocal
+    @staticmethod
+    def meets_prereqs(target, value=0, subentry=''):
         """
         meets_prereqs
 
@@ -44,7 +50,9 @@ class covenantScript(CodesScript):
         """
         return True
 
-    def cost(self, target, value=True, subentry=''):
+    # noinspection PyUnusedLocal
+    @staticmethod
+    def cost(target, value=True, subentry=''):
         """
         cost
 
@@ -55,7 +63,9 @@ class covenantScript(CodesScript):
         """
         return 0
 
-    def set(self, target, value, subentry=''):
+    # noinspection PyUnusedLocal
+    @staticmethod
+    def set(target, value, subentry=''):
         """
         set
 
@@ -65,7 +75,7 @@ class covenantScript(CodesScript):
         False.
 
 
-        target: The character the statis being set for
+        target: The character the stat is being set for
         value: The value the stat is being set to
         subentry: Does nothing. Placeholder for overloading
 

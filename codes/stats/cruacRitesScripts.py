@@ -1,13 +1,15 @@
 from codes.stats.codesScript import CodesScript
 
-class cruacRiteScript(CodesScript):
 
+class CruacRiteScript(CodesScript):
+
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.tags.add('stat_data')
-            self.tags.add('cruac_rite_stat')
+        self.persistent = True  # will survive reload
+        self.tags.add('stat_data')
+        self.tags.add('cruac_rite_stat')
 
-    def update(self,longname='', rank=1,
+    def update(self, longname='', rank=1,
                prereq='', restricted=False, reference='',
                info=''):
         self.db.longname = longname
@@ -17,6 +19,7 @@ class cruacRiteScript(CodesScript):
         self.db.reference = reference
         self.db.info = info
 
+    # noinspection PyUnusedLocal
     def get(self, target, subentry=''):
         """
         get
@@ -39,6 +42,7 @@ class cruacRiteScript(CodesScript):
             result = False
         return result
 
+    # noinspection PyUnusedLocal
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -60,14 +64,16 @@ class cruacRiteScript(CodesScript):
             else:
                 result = False
         else:
-            if (target.get('Cruac',statclass='Discipline') >= self.db.rank and
-                target.get('Status', subentry='Circle of the Crone', statclass='Merit') >= 1):
+            if (target.get('Cruac', statclass='Discipline') >= self.db.rank and
+                    target.get('Status', subentry='Circle of the Crone', statclass='Merit') >= 1):
                 result = True
             else:
                 result = False
         return result
 
-    def cost(self, target, value, subentry=''):
+    # noinspection PyUnusedLocal
+    @staticmethod
+    def cost(target, value, subentry=''):
         """
         cost
 
@@ -84,6 +90,7 @@ class cruacRiteScript(CodesScript):
         result = 2
         return result
 
+    # noinspection DuplicatedCode,PyUnusedLocal
     def set(self, target, value, subentry=''):
         """
         set
@@ -102,17 +109,14 @@ class cruacRiteScript(CodesScript):
         if not target.db.cruacRites:
             target.db.cruacRites = {}
         name = self.db.longname
-        if  name not in target.db.cruacRites and value == True:
+        if name not in target.db.cruacRites and value is True:
             target.db.cruacRites[name] = True
             result = True
-        elif name in target.db.cruacRites and value == False:
+        elif name in target.db.cruacRites and value is False:
             del target.db.cruacRites[name]
             result = True
-        elif name not in target.db.cruacRites and value == False:
+        elif name not in target.db.cruacRites and value is False:
             result = True
         else:
             result = True
         return result
-
-
-
