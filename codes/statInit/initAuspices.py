@@ -1,6 +1,6 @@
 from evennia import create_script
 
-auspice = create_script('typeclasses.scripts.auspiceScript',key = 'Cahalith')
+auspice = create_script('typeclasses.scripts.AuspiceScript',key = 'Cahalith')
 auspice.db.longname = 'Cahalith'
 auspice.db.auspice_skills = ['Crafts', 'Expression', 'Persuasion']
 auspice.db.renown = 'Glory'
@@ -9,7 +9,7 @@ auspice.db.info = 'The Cahalith is the storyteller, the lore-keeper, and the pro
 auspice.db.reference = 'W:tF p. 16-19'
 auspice.db.restricted = False
 
-auspice = create_script('typeclasses.scripts.auspiceScript',key = 'Elodoth')
+auspice = create_script('typeclasses.scripts.AuspiceScript',key = 'Elodoth')
 auspice.db.longname = 'Elodoth'
 auspice.db.auspice_skills = ['Empathy', 'Investigation', 'Politics']
 auspice.db.renown = 'Honor'
@@ -18,7 +18,7 @@ auspice.db.info = 'The half moon keeps as much hidden as it illuminates. Half-mo
 auspice.db.reference = 'W:tF p. 20-23'
 auspice.db.restricted = False
 
-auspice = create_script('typeclasses.scripts.auspiceScript',key = 'Irraka')
+auspice = create_script('typeclasses.scripts.AuspiceScript',key = 'Irraka')
 auspice.db.longname = 'Irraka'
 auspice.db.auspice_skills = ['Larceny', 'Stealth', 'Subterfuge']
 auspice.db.renown = 'Cunning'
@@ -27,7 +27,7 @@ auspice.db.info = 'The new moon is the moon of secrets, ambushes, and hunting un
 auspice.db.reference = 'W:tF p. 24-26'
 auspice.db.restricted = False
 
-auspice = create_script('typeclasses.scripts.auspiceScript',key = 'Ithaeur')
+auspice = create_script('typeclasses.scripts.AuspiceScript',key = 'Ithaeur')
 auspice.db.longname = 'Ithaeur'
 auspice.db.auspice_skills = ['Animal Ken', 'Medicine', 'Occult']
 auspice.db.renown = 'Wisdom'
@@ -36,7 +36,7 @@ auspice.db.info = 'Of all the auspices, the Ithaeur undergoes the most drastic c
 auspice.db.reference = 'W:tF p. 27-29'
 auspice.db.restricted = False
 
-auspice = create_script('typeclasses.scripts.auspiceScript',key = 'Rahu')
+auspice = create_script('typeclasses.scripts.AuspiceScript',key = 'Rahu')
 auspice.db.longname = 'Rahu'
 auspice.db.auspice_skills = ['Brawl', 'Intimidation', 'Survival']
 auspice.db.renown = 'Purity'

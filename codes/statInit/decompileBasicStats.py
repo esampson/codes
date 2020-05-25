@@ -8,13 +8,13 @@ my_list = []
 for item in basics:
     my_list.append([item.db.longname, item])
 basics = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initBasicStats.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for basic in basics:
     name = basic[1].db.longname.replace('\'','').replace(' ','_')
-    file.write('basic = create_script(\'typeclasses.scripts.basicStatScript\',key = \'' + name + '\')\n')
+    file.write('basic = create_script(\'typeclasses.scripts.BasicStatScript\',key = \'' + name + '\')\n')
     file.write('basic.db.longname = \''+basic[1].db.longname.replace('\'','\\\'')+'\'\n')
     if basic[1].db.category:
         file.write('basic.db.category = \''+basic[1].db.category+'\'\n')

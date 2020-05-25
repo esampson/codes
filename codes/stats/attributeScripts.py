@@ -3,10 +3,8 @@ from codes.stats.codesScript import codesScript
 
 class AttributeScript(codesScript):
 
-    def __init__(self):
-        self.persistent = True  # will survive reload
-
     def at_script_creation(self):
+        self.persistent = True  # will survive reload
         self.tags.add('stat_data')
         self.tags.add('attribute_stat')
 

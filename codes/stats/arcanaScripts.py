@@ -9,10 +9,8 @@ sphere_limits = [[3, 2], [3, 3], [4, 3], [4, 4], [5, 4], [5, 5], [5, 5],
 
 class ArcanaScript(codesScript):
 
-    def __init__(self):
-        self.persistent = True  # will survive reload
-
     def at_script_creation(self):
+        self.persistent = True  # will survive reload
         self.db.longname = ''
         self.db.info = ''
         self.db.reference = ''

@@ -8,14 +8,14 @@ my_list = []
 for item in auspices:
     my_list.append([item.db.longname, item])
 auspices = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initAuspices.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for auspice in auspices:
     name = auspice[1].db.longname.replace('\'','').replace(' ','_')
     file.write(
-        'auspice = create_script(\'typeclasses.scripts.auspiceScript\','
+        'auspice = create_script(\'typeclasses.scripts.AuspiceScript\','
         'key = \'' + name + '\')\n')
     file.write(
         'auspice.db.longname = \'' +

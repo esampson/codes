@@ -8,13 +8,13 @@ my_list = []
 for item in arcana:
     my_list.append([item.db.longname, item])
 arcana = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initArcana.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for arcanum in arcana:
     name = arcanum[1].db.longname.replace('\'','').replace(' ','_')
-    file.write('arcanum = create_script(\'typeclasses.scripts.arcanaScript\',key = \'' + name + '\')\n')
+    file.write('arcanum = create_script(\'typeclasses.scripts.ArcanaScript\',key = \'' + name + '\')\n')
     file.write('arcanum.db.longname = \''+arcanum[1].db.longname.replace('\'','\\\'') +'\'\n')
     file.write('arcanum.db.info = \''+arcanum[1].db.info.replace('\r\n','|/').replace('\'','\\\'') +'\'\n')
     file.write('arcanum.db.reference = \''+arcanum[1].db.reference+'\'\n')

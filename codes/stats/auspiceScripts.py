@@ -3,10 +3,8 @@ from codes.stats.codesScript import codesScript
 
 class AuspiceScript(codesScript):
 
-    def __init__(self):
-        self.persistent = True  # will survive reload
-
     def at_script_creation(self):
+        self.persistent = True  # will survive reload
         self.db.longname = ''
         self.db.auspice_skills = []
         self.db.renown = ''

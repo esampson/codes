@@ -1,6 +1,6 @@
 from evennia import create_script
 
-clan = create_script('typeclasses.scripts.clanScript',key = 'Daeva')
+clan = create_script('typeclasses.scripts.ClanScript',key = 'Daeva')
 clan.db.longname = 'Daeva'
 clan.db.favored_attributes = ['Dexterity', 'Manipulation']
 clan.db.favored_disciplines = ['Celerity', 'Majesty', 'Vigor']
@@ -9,7 +9,7 @@ clan.db.info = 'Nickname: Serpents|/|/Clan Bane (The Wanton Curse): You taste th
 clan.db.bloodline = False
 clan.db.restricted = False
 
-clan = create_script('typeclasses.scripts.clanScript',key = 'Gangrel')
+clan = create_script('typeclasses.scripts.ClanScript',key = 'Gangrel')
 clan.db.longname = 'Gangrel'
 clan.db.favored_attributes = ['Composure', 'Stamina']
 clan.db.favored_disciplines = ['Animalism', 'Protean', 'Resilience']
@@ -18,7 +18,7 @@ clan.db.info = 'Nickname: Savages|/|/Clan Bane (The Feral Curse): The Beast leth
 clan.db.bloodline = False
 clan.db.restricted = False
 
-clan = create_script('typeclasses.scripts.clanScript',key = 'Mekhet')
+clan = create_script('typeclasses.scripts.ClanScript',key = 'Mekhet')
 clan.db.longname = 'Mekhet'
 clan.db.favored_attributes = ['Intelligence', 'Wits']
 clan.db.favored_disciplines = ['Auspex', 'Celerity', 'Obfuscate']
@@ -27,7 +27,7 @@ clan.db.info = 'Nickname: Shadows|/|/Clan Bane (The Tenebrous Curse): Whispering
 clan.db.bloodline = False
 clan.db.restricted = False
 
-clan = create_script('typeclasses.scripts.clanScript',key = 'Nosferatu')
+clan = create_script('typeclasses.scripts.ClanScript',key = 'Nosferatu')
 clan.db.longname = 'Nosferatu'
 clan.db.favored_attributes = ['Composure', 'Strength']
 clan.db.favored_disciplines = ['Nightmare', 'Obfuscate', 'Vigor']
@@ -36,7 +36,7 @@ clan.db.info = 'Nickname: Haunts|/|/Clan Bane (The Lonely Curse): You are an ava
 clan.db.bloodline = False
 clan.db.restricted = False
 
-clan = create_script('typeclasses.scripts.clanScript',key = 'Ventrue')
+clan = create_script('typeclasses.scripts.ClanScript',key = 'Ventrue')
 clan.db.longname = 'Ventrue'
 clan.db.favored_attributes = ['Presence', 'Resolve']
 clan.db.favored_disciplines = ['Animalism', 'Dominate', 'Resilience']
