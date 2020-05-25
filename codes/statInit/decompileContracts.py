@@ -3,18 +3,18 @@ from evennia import ScriptDB
 
 from operator import itemgetter
 
-contracts = ScriptDB.objects.typeclass_search('codes.stats.contractScripts.contractScript')
+contracts = ScriptDB.objects.typeclass_search('codes.stats.contractScripts.ContractScript')
 my_list = []
 for item in contracts:
     my_list.append([item.db.longname, item])
 contracts = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initContracts.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for contract in contracts:
     name = contract[1].db.longname.replace('\'','').replace(' ','_')
-    file.write('contract = create_script(\'typeclasses.scripts.contractScript\',key = \'' + name + '\')\n')
+    file.write('contract = create_script(\'typeclasses.scripts.ContractScript\',key = \'' + name + '\')\n')
     file.write('contract.db.longname = \''+contract[1].db.longname.replace('\'','\\\'') +'\'\n')
     file.write('contract.db.category = \''+contract[1].db.category+'\'\n')
     file.write('contract.db.group = \''+contract[1].db.group+'\'\n')

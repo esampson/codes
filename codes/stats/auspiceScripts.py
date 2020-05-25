@@ -1,8 +1,9 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
 
-class AuspiceScript(codesScript):
+class AuspiceScript(CodesScript):
 
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
         self.persistent = True  # will survive reload
         self.db.longname = ''
@@ -15,6 +16,7 @@ class AuspiceScript(codesScript):
         self.tags.add('stat_data')
         self.tags.add('auspice_stat')
 
+    # noinspection DuplicatedCode
     def update(self, longname='', auspice_skills=None, renown='',
                auspice_gifts=None, info='', reference='', restricted=False):
         if auspice_gifts is None:

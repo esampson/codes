@@ -1,9 +1,9 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 from evennia.utils.search import search_script_tag
 from codes.data import find
 
-class disciplineScript(codesScript):
-    
+class disciplineScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.db.longname = ''
@@ -13,7 +13,7 @@ class disciplineScript(codesScript):
             self.db.restricted = False
             self.tags.add('stat_data')
             self.tags.add('discipline_stat')
-    
+
     def update(self,longname='', prereq='',
                restricted=False,reference='',info=''):
                 self.db.longname = longname
@@ -21,7 +21,7 @@ class disciplineScript(codesScript):
                 self.db.restricted = restricted
                 self.db.reference = reference
                 self.db.info = info
-        
+
     def get(self, target, subentry=''):
         """
         get
@@ -42,21 +42,21 @@ class disciplineScript(codesScript):
         else:
             result = 0
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a discipline. 
+        Determines if a character meets the prerequisites to purchase a discipline.
         Should only return True or False.
 
 
         target: The character being checked
         value: The level being checked.
         subentry: Seeming benefits
-        
-        
+
+
         """
         if len(self.db.prereq) == 0:
             if target.template().lower() == 'vampire':
@@ -69,7 +69,7 @@ class disciplineScript(codesScript):
             else:
                 result = False
         return result
-    
+
     def cost(self, target, value=True, subentry=''):
         """
         cost
@@ -103,11 +103,11 @@ class disciplineScript(codesScript):
             if self.db.longname in clan.db.favored_disciplines:
                 result = amount * 3
             else:
-                result = amount * 4  
+                result = amount * 4
         else:
-            raise Exception('Character has no clan')      
+            raise Exception('Character has no clan')
         return result
-                
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -144,5 +144,4 @@ class disciplineScript(codesScript):
             else:
                 result = False
         return result
-                
-                
+

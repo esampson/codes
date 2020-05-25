@@ -1,25 +1,25 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
-class powerStatScript(codesScript):
-    
+class powerStatScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('power_stat')
-                
+
     def update(self,longname='', category='', info='', reference='', restricted=False,):
         self.db.longname = longname
         self.db.category = category
         self.db.reference = reference
         self.db.info = info
         self.db.restricted = restricted
-    
+
     def get(self, target, subentry=''):
         """
         get
 
 
-        Gets the value of a given powerStat from a target. 
+        Gets the value of a given powerStat from a target.
 
 
         target: The character being checked
@@ -33,7 +33,7 @@ class powerStatScript(codesScript):
         else:
             result = 0
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -51,7 +51,7 @@ class powerStatScript(codesScript):
         """
         result = True
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -68,7 +68,7 @@ class powerStatScript(codesScript):
         """
         result = (value - self.get(target, subentry)) * 5
         return result
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -88,7 +88,6 @@ class powerStatScript(codesScript):
         name = self.db.longname
         target.db.power[name] = value
         return True
-                
-    
-    
-    
+
+
+

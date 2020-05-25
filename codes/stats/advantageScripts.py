@@ -1,4 +1,4 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
 power_source = {'Glamour': 'Wyrd',
                 'Vitae': 'Blood Potency',
@@ -6,8 +6,9 @@ power_source = {'Glamour': 'Wyrd',
                 'Mana': 'Gnosis'}
 
 
-class AdvantageScript(codesScript):
+class AdvantageScript(CodesScript):
 
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
         self.persistent = True  # will survive reload
         self.tags.add('stat_data')

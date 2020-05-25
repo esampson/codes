@@ -1,9 +1,9 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
 import re
 
-class sphereStatScript(codesScript):
-    
+class sphereStatScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.db.longname = ''
@@ -13,7 +13,7 @@ class sphereStatScript(codesScript):
             self.db.restricted = False
             self.tags.add('stat_data')
             self.tags.add('sphere_stat')
-    
+
     def update(self,longname='', category='',restricted=False,reference='',
                info=''):
         self.db.longname = longname
@@ -21,13 +21,13 @@ class sphereStatScript(codesScript):
         self.db.restricted = restricted
         self.db.reference = reference
         self.db.info = info
-        
+
     def get(self, target, subentry=''):
         """
         get
 
 
-        Gets the value of a given sphere attribute from a target. 
+        Gets the value of a given sphere attribute from a target.
 
 
         target: The character being checked
@@ -39,18 +39,18 @@ class sphereStatScript(codesScript):
         else:
             result = False
         return result
-    
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
         This is a dummy function since there are no prereqs for these stats
-        
-        
+
+
         """
         return True
-    
+
     def cost(self, target, value=True, subentry=''):
         """
         cost
@@ -61,7 +61,7 @@ class sphereStatScript(codesScript):
 
         """
         return 0
-                
+
     def set(self, target, value, subentry=''):
         """
         set

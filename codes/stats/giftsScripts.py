@@ -1,7 +1,7 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 from codes.data import find
 
-class giftScript(codesScript):
+class giftScript(CodesScript):
 
     def at_script_creation(self, longname='', category='', group='', rank='',
                            renown='', info='', reference='', restricted=False):

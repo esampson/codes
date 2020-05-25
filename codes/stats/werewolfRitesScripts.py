@@ -1,12 +1,12 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
-class werewolfRiteScript(codesScript):
-    
+class werewolfRiteScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('werewolf_rite_stat')
-                
+
     def update(self, longname='', type='', rank=1, prereq='', info='', reference='',
                restricted=False):
         self.db.longname = longname
@@ -16,7 +16,7 @@ class werewolfRiteScript(codesScript):
         self.db.info = info
         self.db.reference = reference
         self.db.restricted = restricted
-    
+
     def get(self, target, subentry=''):
         """
         get
@@ -38,7 +38,7 @@ class werewolfRiteScript(codesScript):
         else:
             result = False
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -64,7 +64,7 @@ class werewolfRiteScript(codesScript):
         else:
             result = False
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -81,7 +81,7 @@ class werewolfRiteScript(codesScript):
         """
         result = self.db.rank
         return result
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -111,7 +111,6 @@ class werewolfRiteScript(codesScript):
         else:
             result = True
         return result
-                
-    
-    
-    
+
+
+

@@ -1,7 +1,7 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 from codes.data import find
 
-class meritScript(codesScript):
+class meritScript(CodesScript):
 
     def at_script_creation(self):
             self.persistent = True  # will survive reload

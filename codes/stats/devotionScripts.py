@@ -1,13 +1,13 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
-class devotionScript(codesScript):
-    
+class devotionScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('devotion_stat')
-                
-    def update(self,longname='', cost=0, 
+
+    def update(self,longname='', cost=0,
                prereq='', restricted=False, reference='',
                info=''):
         self.db.longname = longname
@@ -16,7 +16,7 @@ class devotionScript(codesScript):
         self.db.restricted = restricted
         self.db.reference = reference
         self.db.info = info
-    
+
     def get(self, target, subentry=''):
         """
         get
@@ -38,7 +38,7 @@ class devotionScript(codesScript):
         else:
             result = False
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -59,7 +59,7 @@ class devotionScript(codesScript):
         else:
             result = False
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -76,7 +76,7 @@ class devotionScript(codesScript):
         """
         result = self.db.cost
         return result
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -106,7 +106,6 @@ class devotionScript(codesScript):
         else:
             result = True
         return result
-                
-    
-    
-    
+
+
+

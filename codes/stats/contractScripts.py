@@ -1,22 +1,24 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 from codes.data import find
 
-class contractScript(codesScript):
-    
+
+class ContractScript(CodesScript):
+
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.db.longname = ''
-            self.group = ''
-            self.db.category = ''
-            self.subgroup =''
-            self.db.reference = ''
-            self.db.info = ''
-            self.db.restricted = False
-            self.tags.add('stat_data')
-            self.tags.add('contract_stat')
-    
-    def update(self,longname='', group='', category='', subgroup='',
-               restricted=False,reference='',info=''):
+        self.persistent = True  # will survive reload
+        self.db.longname = ''
+        self.group = ''
+        self.db.category = ''
+        self.subgroup = ''
+        self.db.reference = ''
+        self.db.info = ''
+        self.db.restricted = False
+        self.tags.add('stat_data')
+        self.tags.add('contract_stat')
+
+    def update(self, longname='', group='', category='', subgroup='',
+               restricted=False, reference='', info=''):
         self.db.longname = longname
         self.db.group = group
         self.db.category = category
@@ -24,7 +26,7 @@ class contractScript(codesScript):
         self.db.restricted = restricted
         self.db.reference = reference
         self.db.info = info
-        
+
     def get(self, target, subentry=''):
         """
         get
@@ -39,44 +41,50 @@ class contractScript(codesScript):
         """
         if self.db.longname in target.db.contracts and subentry == '':
             result = True
-        elif (self.db.longname in target.db.contracts and 
-              subentry.lower() in target.db.contracts[self.db.longname].lower()):
+        elif (self.db.longname in target.db.contracts and
+              subentry.lower() in
+              target.db.contracts[self.db.longname].lower()):
             result = True
         else:
             result = False
         return result
-        
+
+    # noinspection PyUnusedLocal
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a contract. 
-        Should only return True or False.
+        Determines if a character meets the prerequisites to purchase a
+        contract. Should only return True or False.
 
 
         target: The character being checked
         value: The level being checked.
         subentry: Seeming benefits
-        
-        
+
+
         """
         if target.template().lower() == 'changeling':
             if self.db.group.lower() == 'court':
-                mantle = target.get('Mantle',subentry=self.db.category,statclass='Merit')
+                stat = []
+                mantle = target.get('Mantle', subentry=self.db.category,
+                                    statclass='Merit')
                 goodwill = target.get('Court Goodwill',
-                                      subentry=self.db.category,statclass='Merit')
-                courts = {"spring":0, "summer":0, "autumn":0, "winter":0}
+                                      subentry=self.db.category,
+                                      statclass='Merit')
+                courts = {"spring": 0, "summer": 0, "autumn": 0, "winter": 0}
                 contracts = list(target.db.contracts.keys())
                 for contract in contracts:
-                    stat = find(contract,statclass='contract')
+                    stat = find(contract, statclass='contract')
                 if len(contracts) > 0:
                     if stat[0].db.group.lower() == 'court':
-                        courts[stat[0].db.category.lower()] = courts[stat[0].db.category.lower()] + 1
+                        court = stat[0].db.category.lower()
+                        courts[court] = courts[court] + 1
                 current_count = courts[self.db.category.lower()]
                 if self.db.subgroup.lower() == 'common':
                     if current_count == 0:
-                        result = True 
+                        result = True
                     elif mantle >= 1 or goodwill >= 3:
                         result = True
                     else:
@@ -93,7 +101,8 @@ class contractScript(codesScript):
         else:
             result = False
         return result
-    
+
+    # noinspection DuplicatedCode,PyUnusedLocal
     def cost(self, target, value=True, subentry=''):
         """
         cost
@@ -109,10 +118,9 @@ class contractScript(codesScript):
 
         """
         name = self.db.longname
-        bonus = 0
         if self.db.group.lower() == 'regalia':
             if target.get(name, statclass='contract'):
-                current_temp = (target.db.contracts[name].split(',') + 
+                current_temp = (target.db.contracts[name].split(',') +
                                 [target.get('Seeming', statclass='Sphere')])
                 if subentry == '':
                     result = 0
@@ -130,10 +138,10 @@ class contractScript(codesScript):
                     result = 3
                 else:
                     result = 4
-                if self.db.category in target.get('Regalia', 
+                if self.db.category in target.get('Regalia',
                                                   statclass='Sphere'):
-                    result = result -1
-                current_temp = ([target.get('Seeming', statclass='Sphere')] + 
+                    result = result - 1
+                current_temp = ([target.get('Seeming', statclass='Sphere')] +
                                 [''])
                 new_temp = subentry.split(',')
                 current = set()
@@ -158,15 +166,15 @@ class contractScript(codesScript):
             else:
                 result = 2
         return result
-                
+
     def set(self, target, value, subentry=''):
         """
         set
 
 
-        Sets the value of a contract on a character sheet. Adds the contract if the
-        character does not currently possess it. Removes the contract if the value is
-        False.
+        Sets the value of a contract on a character sheet. Adds the
+        contract if the character does not currently possess it. Removes
+        the contract if the value is False.
 
 
         target: The character the contract is being set for
@@ -176,7 +184,8 @@ class contractScript(codesScript):
 
         """
         name = self.db.longname
-        if  name not in target.db.contracts and value != False:
+        # noinspection DuplicatedCode
+        if name not in target.db.contracts and value is not False:
             current_temp = ([target.get('Seeming', statclass='Sphere')] +
                             [''])
             new_temp = subentry.split(',')
@@ -189,13 +198,13 @@ class contractScript(codesScript):
             new_entry = ''
             for entry in list(new.difference(current)):
                 new_entry = new_entry + entry + ', '
-            new_entry = new_entry[0:len(new_entry)-2]
+            new_entry = new_entry[0:len(new_entry) - 2]
             target.db.contracts[name] = new_entry
             result = True
-        elif name in target.db.contracts and value == False:
+        elif name in target.db.contracts and value is False:
             del target.db.contracts[name]
             result = True
-        elif name in target.db.contracts and value == True:
+        elif name in target.db.contracts and value is True:
             current_temp = ([target.get('Seeming', statclass='Sphere')] +
                             [''])
             new_temp = subentry.split(',')
@@ -208,11 +217,9 @@ class contractScript(codesScript):
             new_entry = ''
             for entry in list(new.difference(current)):
                 new_entry = new_entry + entry + ', '
-            new_entry = new_entry[0:len(new_entry)-2]
+            new_entry = new_entry[0:len(new_entry) - 2]
             target.db.contracts[name] = new_entry
             result = True
         else:
             result = False
         return result
-                
-                

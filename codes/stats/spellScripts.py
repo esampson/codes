@@ -1,9 +1,9 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 from evennia.utils.search import search_script_tag
 from codes.data import find
 
-class spellScript(codesScript):
-    
+class spellScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.db.longname = ''
@@ -13,7 +13,7 @@ class spellScript(codesScript):
             self.db.restricted = False
             self.tags.add('stat_data')
             self.tags.add('spell_stat')
-    
+
     def update(self,longname='', prereq='',
                restricted=False,reference='',info=''):
                 self.db.longname = longname
@@ -21,7 +21,7 @@ class spellScript(codesScript):
                 self.db.restricted = restricted
                 self.db.reference = reference
                 self.db.info = info
-        
+
     def get(self, target, subentry=''):
         """
         get
@@ -41,7 +41,7 @@ class spellScript(codesScript):
         else:
             result = False
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -55,15 +55,15 @@ class spellScript(codesScript):
         target: The character being checked
         value: The level being checked.
         subentry: Seeming benefits
-        
-        
+
+
         """
         if eval(self.db.prereq):
             result = True
         else:
             result = False
         return result
-    
+
     def cost(self, target, value=True, subentry=''):
         """
         cost
@@ -81,7 +81,7 @@ class spellScript(codesScript):
         """
         result = 0
         return result
-                
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -99,5 +99,4 @@ class spellScript(codesScript):
         """
         result = False
         return result
-                
-                
+

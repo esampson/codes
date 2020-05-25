@@ -1,13 +1,13 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
-class cruacRiteScript(codesScript):
-    
+class cruacRiteScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('cruac_rite_stat')
-                
-    def update(self,longname='', rank=1, 
+
+    def update(self,longname='', rank=1,
                prereq='', restricted=False, reference='',
                info=''):
         self.db.longname = longname
@@ -16,7 +16,7 @@ class cruacRiteScript(codesScript):
         self.db.restricted = restricted
         self.db.reference = reference
         self.db.info = info
-    
+
     def get(self, target, subentry=''):
         """
         get
@@ -38,7 +38,7 @@ class cruacRiteScript(codesScript):
         else:
             result = False
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -66,7 +66,7 @@ class cruacRiteScript(codesScript):
             else:
                 result = False
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -83,7 +83,7 @@ class cruacRiteScript(codesScript):
         """
         result = 2
         return result
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -113,7 +113,6 @@ class cruacRiteScript(codesScript):
         else:
             result = True
         return result
-                
-    
-    
-    
+
+
+

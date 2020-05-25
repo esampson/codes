@@ -1,23 +1,23 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
-class skillScript(codesScript):
-    
+class skillScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('skill_stat')
-                
+
     def update(self,longname='', category='',restricted=False):
         self.db.longname = longname
         self.db.category = category
         self.db.restricted = restricted
-    
+
     def get(self, target, subentry=''):
         """
         get
 
 
-        Gets the value of a given skill from a target. 
+        Gets the value of a given skill from a target.
 
 
         target: The character being checked
@@ -31,7 +31,7 @@ class skillScript(codesScript):
         else:
             result = 0
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -59,7 +59,7 @@ class skillScript(codesScript):
         else:
             result = True
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -76,7 +76,7 @@ class skillScript(codesScript):
         """
         result = (value - self.get(target, subentry)) * 2
         return result
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -96,7 +96,6 @@ class skillScript(codesScript):
         name = self.db.longname
         target.db.skills[name] = value
         return True
-                
-    
-    
-    
+
+
+

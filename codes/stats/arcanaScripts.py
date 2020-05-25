@@ -1,4 +1,4 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 from codes.data import find
 
 restrict_level = False
@@ -7,8 +7,9 @@ sphere_limits = [[3, 2], [3, 3], [4, 3], [4, 4], [5, 4], [5, 5], [5, 5],
                  [5, 5], [5, 5], [5, 5]]
 
 
-class ArcanaScript(codesScript):
+class ArcanaScript(CodesScript):
 
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
         self.persistent = True  # will survive reload
         self.db.longname = ''

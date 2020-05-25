@@ -1,13 +1,13 @@
-from codes.stats.codesScript import codesScript
+from codes.stats.codesScript import CodesScript
 
-class scaleScript(codesScript):
-    
+class scaleScript(CodesScript):
+
     def at_script_creation(self):
             self.persistent = True  # will survive reload
             self.tags.add('stat_data')
             self.tags.add('scale_stat')
-                
-    def update(self,longname='', mystery='', rank=1, 
+
+    def update(self,longname='', mystery='', rank=1,
                prereq='', restricted=False, reference='',
                info=''):
         self.db.longname = longname
@@ -17,7 +17,7 @@ class scaleScript(codesScript):
         self.db.restricted = restricted
         self.db.reference = reference
         self.db.info = info
-    
+
     def get(self, target, subentry=''):
         """
         get
@@ -39,7 +39,7 @@ class scaleScript(codesScript):
         else:
             result = False
         return result
-        
+
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
@@ -66,7 +66,7 @@ class scaleScript(codesScript):
             else:
                 result = False
         return result
-    
+
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -81,13 +81,13 @@ class scaleScript(codesScript):
 
 
         """
-        if (target.get(self.db.mystery,statclass='Coil') >= 
+        if (target.get(self.db.mystery,statclass='Coil') >=
             self.db.rank):
             result = 1
         else:
             result = 2
         return result
-    
+
     def set(self, target, value, subentry=''):
         """
         set
@@ -117,7 +117,6 @@ class scaleScript(codesScript):
         else:
             result = True
         return result
-                
-    
-    
-    
+
+
+
