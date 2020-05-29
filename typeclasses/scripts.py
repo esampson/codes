@@ -107,10 +107,10 @@ from codes.stats.cruacRitesScripts import CruacRiteScript
 from codes.stats.devotionScripts import DevotionScript
 from codes.stats.disciplineScripts import DisciplineScript
 from codes.stats.giftsScripts import GiftScript
-from codes.stats.kithScripts import kithScript
-from codes.stats.meritScripts import meritScript
-from codes.stats.orderScripts import orderScript
-from codes.stats.pathScripts import pathScript
+from codes.stats.kithScripts import KithScript
+from codes.stats.meritScripts import MeritScript
+from codes.stats.orderScripts import OrderScript
+from codes.stats.pathScripts import PathScript
 from codes.stats.powerStatScripts import powerStatScript
 from codes.stats.renownScripts import renownScript
 from codes.stats.scalesScripts import scaleScript

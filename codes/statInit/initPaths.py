@@ -1,6 +1,6 @@
 from evennia import create_script
 
-path = create_script('typeclasses.scripts.pathScript',key = 'Acanthus')
+path = create_script('typeclasses.scripts.PathScript',key = 'Acanthus')
 path.db.longname = 'Acanthus'
 path.db.ruling_arcana = ['Fate', 'Time']
 path.db.inferior_arcana = 'Forces'
@@ -8,7 +8,7 @@ path.db.info = 'Acanthus wield Time and Fate to tell the stories of other lives.
 path.db.reference = 'M:tA p. 20-22'
 path.db.restricted = False
 
-path = create_script('typeclasses.scripts.pathScript',key = 'Mastigos')
+path = create_script('typeclasses.scripts.PathScript',key = 'Mastigos')
 path.db.longname = 'Mastigos'
 path.db.ruling_arcana = ['Mind', 'Space']
 path.db.inferior_arcana = 'Matter'
@@ -16,7 +16,7 @@ path.db.info = 'Mastigos master a world ruled by desire, thought, and perception
 path.db.reference = 'M:tA p. 23-25'
 path.db.restricted = False
 
-path = create_script('typeclasses.scripts.pathScript',key = 'Moros')
+path = create_script('typeclasses.scripts.PathScript',key = 'Moros')
 path.db.longname = 'Moros'
 path.db.ruling_arcana = ['Death', 'Matter']
 path.db.inferior_arcana = 'Spirit'
@@ -24,7 +24,7 @@ path.db.info = 'She\'s an Alchemist: a scientist of change who sees atoms hum, r
 path.db.reference = 'M:tA p. 26-28'
 path.db.restricted = False
 
-path = create_script('typeclasses.scripts.pathScript',key = 'Obrimos')
+path = create_script('typeclasses.scripts.PathScript',key = 'Obrimos')
 path.db.longname = 'Obrimos'
 path.db.ruling_arcana = ['Forces', 'Prime']
 path.db.inferior_arcana = 'Death'
@@ -32,7 +32,7 @@ path.db.info = 'Supernal or Fallen, the cosmos follows elaborate laws, complex a
 path.db.reference = 'M:tA p. 29-31'
 path.db.restricted = False
 
-path = create_script('typeclasses.scripts.pathScript',key = 'Thyrsus')
+path = create_script('typeclasses.scripts.PathScript',key = 'Thyrsus')
 path.db.longname = 'Thyrsus'
 path.db.ruling_arcana = ['Life', 'Spirit']
 path.db.inferior_arcana = 'Mind'

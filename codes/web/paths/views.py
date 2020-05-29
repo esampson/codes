@@ -21,7 +21,7 @@ class path_class:
     info = ''
     reference = ''
     restricted = False
-    
+
     def update(self,longname,ruling_arcana,inferior_arcana,info,reference,restricted):
         self.longname = longname
         self.ruling_arcana = ruling_arcana
@@ -29,16 +29,16 @@ class path_class:
         self.info = info
         self.reference = reference
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('path_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -61,14 +61,14 @@ def sheet(request, object_id):
     return render(request, 'paths/sheet.html', {'path': path, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('path_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -126,9 +126,9 @@ def editted(request):
             return render(request, 'paths/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'paths/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
+
     starting_data = {'longname':'',
                      'ruling_arcana':[],
                      'inferior_arcana':'',
@@ -150,7 +150,7 @@ def created(request):
                 if form.cleaned_data['ruling_arcana'] != '[]':
                     for item in form.cleaned_data['ruling_arcana'][1:-1].split(','):
                         ruling_arcana.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.pathScript',
+                s = create_script('typeclasses.scripts.PathScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.ruling_arcana = ruling_arcana
@@ -166,7 +166,7 @@ def created(request):
             return render(request, 'paths/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'paths/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('path_stat')
     paths = []

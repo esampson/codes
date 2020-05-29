@@ -20,23 +20,23 @@ class order_class:
     info = ''
     reference = ''
     restricted = False
-    
+
     def update(self,longname,rote_skills,info,reference,restricted):
         self.longname = longname
         self.rote_skills = rote_skills
         self.info = info
         self.reference = reference
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('order_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -58,14 +58,14 @@ def sheet(request, object_id):
     return render(request, 'orders/sheet.html', {'order': order, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('order_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -121,9 +121,9 @@ def editted(request):
             return render(request, 'orders/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'orders/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
+
     starting_data = {'longname':'',
                      'rote_skills':[],
                      'info': '',
@@ -144,7 +144,7 @@ def created(request):
                 if form.cleaned_data['rote_skills'] != '[]':
                     for item in form.cleaned_data['rote_skills'][1:-1].split(','):
                         rote_skills.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.orderScript',
+                s = create_script('typeclasses.scripts.OrderScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.rote_skills = rote_skills
@@ -159,7 +159,7 @@ def created(request):
             return render(request, 'orders/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'orders/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('order_stat')
     orders = []

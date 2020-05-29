@@ -3,19 +3,19 @@ from evennia import ScriptDB
 from operator import itemgetter
 
 orders = ScriptDB.objects.typeclass_search(
-    'codes.stats.orderScripts.orderScript')
+    'codes.stats.orderScripts.OrderScript')
 my_list = []
 for item in orders:
     my_list.append([item.db.longname, item])
 orders = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initOrders.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for order in orders:
     name = order[1].db.longname.replace('\'','').replace(' ','_')
     file.write(
-        'order = create_script(\'typeclasses.scripts.orderScript\','
+        'order = create_script(\'typeclasses.scripts.OrderScript\','
         'key = \'' + name + '\')\n')
     file.write(
         'order.db.longname = \'' +

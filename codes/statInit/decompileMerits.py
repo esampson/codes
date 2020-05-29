@@ -3,7 +3,7 @@ from evennia import ScriptDB
 
 from operator import itemgetter
 
-merits = ScriptDB.objects.typeclass_search('codes.stats.meritScripts.meritScript')
+merits = ScriptDB.objects.typeclass_search('codes.stats.meritScripts.MeritScript')
 my_list = []
 for item in merits:
     my_list.append([item.db.longname, item])
@@ -17,7 +17,7 @@ for merit in merits:
     name = merit[1].db.longname.replace('\'','').replace(' ','_')
     file.write('stats = data.find(\'' + name + '\',statclass=\'Merit\')\n')
     file.write('if len(stats) == 0:\n')
-    file.write('    merit = create_script(\'typeclasses.scripts.meritScript\',key = \'' + name + '\')\n')
+    file.write('    merit = create_script(\'typeclasses.scripts.MeritScript\',key = \'' + name + '\')\n')
     file.write('    merit.db.longname = \''+merit[1].db.longname.replace('\'','\\\'')+'\'\n')
     file.write('    merit.db.category = \''+merit[1].db.category+'\'\n')
     file.write('    merit.db.range = '+str(merit[1].db.range)+'\n')

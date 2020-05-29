@@ -168,7 +168,7 @@ def created(request):
                 if form.cleaned_data['noteRestrictions'] != '[]':
                     for item in form.cleaned_data['noteRestrictions'][1:-1].split(','):
                         noteRestrictions.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.meritScript',
+                s = create_script('typeclasses.scripts.MeritScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.category=form.cleaned_data['category']
