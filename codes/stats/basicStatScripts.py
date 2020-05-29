@@ -48,8 +48,8 @@ class BasicStatScript(CodesScript):
             meets_prereqs
 
 
-            This is a dummy function since there are no prereqs for these
-            stats
+            This is a dummy function since there are no prereqs for
+            these stats
 
 
             """
@@ -75,9 +75,9 @@ class BasicStatScript(CodesScript):
             set
 
 
-            Sets the value of a stat on a character sheet. Adds the stat if
-            the character does not currently possess it. Removes the stat if
-            the value is False.
+            Sets the value of a stat on a character sheet. Adds the stat
+            if the character does not currently possess it. Removes the
+            stat if the value is False.
 
 
             target: The character the stat is being set for

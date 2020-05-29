@@ -3,18 +3,18 @@ from evennia import ScriptDB
 
 from operator import itemgetter
 
-gifts = ScriptDB.objects.typeclass_search('codes.stats.giftsScripts.giftScript')
+gifts = ScriptDB.objects.typeclass_search('codes.stats.giftsScripts.GiftScript')
 my_list = []
 for item in gifts:
     my_list.append([item.db.longname, item])
 gifts = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initGifts.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for gift in gifts:
     name = gift[1].db.longname.replace('\'','').replace(' ','_')
-    file.write('gift = create_script(\'typeclasses.scripts.giftScript\',key = \'' + name + '\')\n')
+    file.write('gift = create_script(\'typeclasses.scripts.GiftScript\',key = \'' + name + '\')\n')
     file.write('gift.db.longname = \''+gift[1].db.longname.replace('\'','\\\'') +'\'\n')
     file.write('gift.db.category = \''+gift[1].db.category+'\'\n')
     file.write('gift.db.group = \''+gift[1].db.group+'\'\n')

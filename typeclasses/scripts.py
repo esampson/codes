@@ -104,9 +104,9 @@ from codes.stats.coilScripts import CoilScript
 from codes.stats.contractScripts import ContractScript
 from codes.stats.covenantScripts import CovenantScript
 from codes.stats.cruacRitesScripts import CruacRiteScript
-from codes.stats.devotionScripts import devotionScript
-from codes.stats.disciplineScripts import disciplineScript
-from codes.stats.giftsScripts import giftScript
+from codes.stats.devotionScripts import DevotionScript
+from codes.stats.disciplineScripts import DisciplineScript
+from codes.stats.giftsScripts import GiftScript
 from codes.stats.kithScripts import kithScript
 from codes.stats.meritScripts import meritScript
 from codes.stats.orderScripts import orderScript

@@ -25,8 +25,8 @@ class CruacRiteScript(CodesScript):
         get
 
 
-        Determines if a character has a given rite. Should only return True or
-        False
+        Determines if a character has a given rite. Should only return
+        True or False
 
 
         target: The character being checked
@@ -48,8 +48,8 @@ class CruacRiteScript(CodesScript):
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a rite. Should
-        only return True or False.
+        Determines if a character meets the prerequisites to purchase a
+        rite. Should only return True or False.
 
 
         target: The character being checked
@@ -65,7 +65,8 @@ class CruacRiteScript(CodesScript):
                 result = False
         else:
             if (target.get('Cruac', statclass='Discipline') >= self.db.rank and
-                    target.get('Status', subentry='Circle of the Crone', statclass='Merit') >= 1):
+                    target.get('Status', subentry='Circle of the Crone',
+                               statclass='Merit') >= 1):
                 result = True
             else:
                 result = False
@@ -96,8 +97,8 @@ class CruacRiteScript(CodesScript):
         set
 
 
-        Sets the value of a rite on a character sheet if value is True. Removes
-        the rite if the value is False.
+        Sets the value of a rite on a character sheet if value is True.
+        Removes the rite if the value is False.
 
 
         target: The character the rite is being set for

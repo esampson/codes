@@ -1,27 +1,29 @@
 from codes.stats.codesScript import CodesScript
 from evennia.utils.search import search_script_tag
-from codes.data import find
 
-class disciplineScript(CodesScript):
 
+class DisciplineScript(CodesScript):
+
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.db.longname = ''
-            self.db.prereq = ''
-            self.db.reference = ''
-            self.db.info = ''
-            self.db.restricted = False
-            self.tags.add('stat_data')
-            self.tags.add('discipline_stat')
+        self.persistent = True  # will survive reload
+        self.db.longname = ''
+        self.db.prereq = ''
+        self.db.reference = ''
+        self.db.info = ''
+        self.db.restricted = False
+        self.tags.add('stat_data')
+        self.tags.add('discipline_stat')
 
-    def update(self,longname='', prereq='',
-               restricted=False,reference='',info=''):
-                self.db.longname = longname
-                self.db.prereq = prereq
-                self.db.restricted = restricted
-                self.db.reference = reference
-                self.db.info = info
+    def update(self, longname='', prereq='',
+               restricted=False, reference='', info=''):
+        self.db.longname = longname
+        self.db.prereq = prereq
+        self.db.restricted = restricted
+        self.db.reference = reference
+        self.db.info = info
 
+    # noinspection PyUnusedLocal
     def get(self, target, subentry=''):
         """
         get
@@ -43,13 +45,14 @@ class disciplineScript(CodesScript):
             result = 0
         return result
 
+    # noinspection PyUnusedLocal
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a discipline.
-        Should only return True or False.
+        Determines if a character meets the prerequisites to purchase a
+        discipline. Should only return True or False.
 
 
         target: The character being checked
@@ -70,6 +73,7 @@ class disciplineScript(CodesScript):
                 result = False
         return result
 
+    # noinspection PyUnusedLocal
     def cost(self, target, value=True, subentry=''):
         """
         cost
@@ -99,7 +103,7 @@ class disciplineScript(CodesScript):
             if 'Clan' in target.db.sphere:
                 if item.db.longname == target.db.sphere['Clan']:
                     clan = item
-        if clan:
+        if clan is not False:
             if self.db.longname in clan.db.favored_disciplines:
                 result = amount * 3
             else:
@@ -108,14 +112,15 @@ class disciplineScript(CodesScript):
             raise Exception('Character has no clan')
         return result
 
+    # noinspection DuplicatedCode,PyUnusedLocal
     def set(self, target, value, subentry=''):
         """
         set
 
 
-        Sets the value of a discipline on a character sheet. Adds the discipline if the
-        character does not currently possess it. Removes the discipline if the value is
-        False.
+        Sets the value of a discipline on a character sheet. Adds the
+        discipline if the character does not currently possess it.
+        Removes the discipline if the value is False.
 
 
         target: The character the discipline is being set for
@@ -126,7 +131,7 @@ class disciplineScript(CodesScript):
         """
         name = self.db.longname
         if target.db.disciplines:
-            if  name not in target.db.disciplines and value != 0:
+            if name not in target.db.disciplines and value != 0:
                 target.db.disciplines[name] = value
                 result = True
             elif name in target.db.disciplines and value == 0:
@@ -139,7 +144,7 @@ class disciplineScript(CodesScript):
                 result = False
         else:
             if value != 0:
-                target.db.disciplines = {name : value}
+                target.db.disciplines = {name: value}
                 result = True
             else:
                 result = False

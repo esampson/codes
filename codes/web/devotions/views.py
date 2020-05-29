@@ -41,7 +41,7 @@ class devotion_class:
     reference = ''
     info = ''
     restricted = False
-    
+
     def update(self,longname,cost,prereq,reference,info,restricted):
         self.longname = longname
         self.cost = cost
@@ -49,22 +49,22 @@ class devotion_class:
         self.reference = reference
         self.info = info
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id).lower()
 
     try:
         dictionary = search_script_tag('dictionary_data')[0]
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     data = []
     for item in dictionary.dictionary[object_id]:
         if item[1] == 'devotion':
             script = search_script('#'+str(item[2]))[0]
             data.append(script)
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -89,20 +89,20 @@ def sheet(request, object_id):
     return render(request, 'devotions/sheet.html', {'devotion': devotion, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id).lower()
 
     try:
         dictionary = search_script_tag('dictionary_data')[0]
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     data = []
     for item in dictionary.dictionary[object_id]:
         if item[1] == 'devotion':
             script = search_script('#'+str(item[2]))[0]
             data.append(script)
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -112,7 +112,7 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'devotions/error.html', {'message': 'Too many matching devotions'})
     devotion = stats[0]
-    starting_data = {'longname':devotion.db.longname, 
+    starting_data = {'longname':devotion.db.longname,
                      'cost':devotion.db.cost,
                      'prereq':devotion.db.prereq,
                      'reference':devotion.db.reference,
@@ -134,7 +134,7 @@ def editted(request):
                     dictionary = search_script_tag('dictionary_data')[0]
                 except IndexError:
                     raise Http404("I couldn't find a character with that ID.")
-    
+
                 stats = []
                 for item in dictionary.dictionary[n]:
                     if item[1] == 'devotion':
@@ -158,11 +158,11 @@ def editted(request):
             return render(request, 'devotions/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'devotions/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
-                     'cost':0, 
+
+    starting_data = {'longname':'',
+                     'cost':0,
                      'prereq':'',
                      'reference':'',
                      'info':'',
@@ -178,7 +178,7 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
-                s = create_script('typeclasses.scripts.devotionScript', 
+                s = create_script('typeclasses.scripts.DevotionScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.cost=int(form.cleaned_data['cost'])
@@ -194,7 +194,7 @@ def created(request):
             return render(request, 'devotions/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'devotions/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('devotion_stat')
     devotions = []

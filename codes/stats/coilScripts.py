@@ -50,8 +50,8 @@ class CoilScript(CodesScript):
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a coil.
-        Should only return True or False.
+        Determines if a character meets the prerequisites to purchase a
+        coil. Should only return True or False.
 
 
         target: The character being checked
@@ -142,9 +142,9 @@ class CoilScript(CodesScript):
         set
 
 
-        Sets the value of a coil on a character sheet. Adds the coil if the
-        character does not currently possess it. Removes the coil if the value is
-        False.
+        Sets the value of a coil on a character sheet. Adds the coil if
+        the character does not currently possess it. Removes the coil if
+        the value is False.
 
 
         target: The character the coil is being set for

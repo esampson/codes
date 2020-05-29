@@ -166,7 +166,7 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'', '').replace(' ', '_')
-                s = create_script('typeclasses.scripts.giftScript',
+                s = create_script('typeclasses.scripts.GiftScript',
                                   key=name)
                 s.db.longname = form.cleaned_data['longname']
                 s.db.category = form.cleaned_data['category']

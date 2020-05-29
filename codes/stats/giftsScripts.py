@@ -1,14 +1,17 @@
 from codes.stats.codesScript import CodesScript
 from codes.data import find
 
-class giftScript(CodesScript):
 
+class GiftScript(CodesScript):
+
+    # noinspection DuplicatedCode,PyAttributeOutsideInit
     def at_script_creation(self, longname='', category='', group='', rank='',
                            renown='', info='', reference='', restricted=False):
         """
-        create_script('typeclasses.scripts.AdvantageScript'[,longname=<longname>]
-            [,category=<category>][,group=<group>][,rank=<rank>][,renown=<renown>]
-            [,info=<info>][,reference=<reference>][,restricted=<True/False>]
+        create_script('typeclasses.scripts.AdvantageScript'
+            [,longname=<longname>][,category=<category>][,group=<group>]
+            [,rank=<rank>][,renown=<renown>][,info=<info>]
+            [,reference=<reference>][,restricted=<True/False>]
 
             longname: Name of gift
             category: Moon, Shadow, Wolf
@@ -31,12 +34,14 @@ class giftScript(CodesScript):
         self.tags.add('stat_data')
         self.tags.add('gift_stat')
 
+    # noinspection DuplicatedCode
     def update(self, longname='', category='', group='', rank='', renown='',
-                           info='', reference='', restricted=False):
+               info='', reference='', restricted=False):
         """
-        update([longname=<longname>,][category=<category>,][group=<group>,]
-            [rank=<rank>,][renown=<renown>,][info=<info>,]
-            [reference=<reference>,][restricted=<True/False>]
+        update([longname=<longname>,][category=<category>,]
+            [group=<group>,][rank=<rank>,][renown=<renown>,]
+            [info=<info>,][reference=<reference>,]
+            [restricted=<True/False>]
 
             longname: Name of gift
             category: Moon, Shadow, Wolf
@@ -56,6 +61,7 @@ class giftScript(CodesScript):
         self.db.reference = reference
         self.db.restricted = restricted
 
+    # noinspection PyUnusedLocal
     def get(self, target, subentry=''):
         """
         get
@@ -73,13 +79,14 @@ class giftScript(CodesScript):
             result = False
         return result
 
+    # noinspection PyUnusedLocal
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a gift.
-        Should only return True or False.
+        Determines if a character meets the prerequisites to purchase a
+        gift. Should only return True or False.
 
 
         target: The character being checked
@@ -91,15 +98,17 @@ class giftScript(CodesScript):
         if target.template().lower() == 'werewolf':
 
             gift_renown = self.db.renown
-            renown = target.get(gift_renown,statclass='Renown')
+            renown = target.get(gift_renown, statclass='Renown')
 
             # Moon gifts have different requirements
             if self.db.category.lower() == 'moon':
-                moon_list = {'crescent moon': ['Shadow Gaze', 'Spirit Whispers',
+                moon_list = {'crescent moon': ['Shadow Gaze',
+                                               'Spirit Whispers',
                                                'Shadow Hunter',
                                                'Shadow Masquerade',
                                                'Panopticon'],
-                             'full moon': ['Killer Instinct', 'Warrior\'s Hide',
+                             'full moon': ['Killer Instinct',
+                                           'Warrior\'s Hide',
                                            'Bloody-Handed Hunter', 'Butchery',
                                            'Crimson Spasm'],
                              'gibbous moon': ['War Howl', 'Voice of Glory',
@@ -118,12 +127,12 @@ class giftScript(CodesScript):
                 # type
                 all_previous = True
                 if int(self.db.rank) > 1:
-                    for item in range(int(self.db.rank)-1):
+                    for item in range(int(self.db.rank) - 1):
                         if (target.get(
-                                moon_list[self.db.group.lower()][item]) ==
+                                moon_list[self.db.group.lower()][item]) is
                                 False):
                             all_previous = False
-                if all_previous == True and renown >= int(self.db.rank):
+                if all_previous is True and renown >= int(self.db.rank):
                     result = True
                 else:
                     result = False
@@ -140,6 +149,7 @@ class giftScript(CodesScript):
             result = False
         return result
 
+    # noinspection DuplicatedCode,PyUnusedLocal
     def cost(self, target, value=True, subentry=''):
         """
         cost
@@ -171,14 +181,14 @@ class giftScript(CodesScript):
             group = self.db.group
             possess_facet = False
             for item in list(target.db.gifts.keys()):
-                if find(item,statclass="Gift")[0].db.group == group:
+                if find(item, statclass="Gift")[0].db.group == group:
                     possess_facet = True
 
             # Not unlocked
-            if possess_facet == False:
+            if possess_facet is False:
 
                 # Is it favored
-                tribe = find(target.get('Tribe',statclass='Sphere'))[0]
+                tribe = find(target.get('Tribe', statclass='Sphere'))[0]
                 auspice = find(target.get('Auspice', statclass='Sphere'))[0]
 
                 # Favored
@@ -212,14 +222,15 @@ class giftScript(CodesScript):
 
         return result
 
+    # noinspection PyUnusedLocal
     def set(self, target, value, subentry=''):
         """
         set
 
 
-        Sets the value of a gift on a character sheet. Adds the gift if the
-        character does not currently possess it. Removes the gift if the value is
-        False.
+        Sets the value of a gift on a character sheet. Adds the gift if
+        the character does not currently possess it. Removes the gift if
+        the value is False.
 
 
         target: The character the gift is being set for
@@ -231,25 +242,24 @@ class giftScript(CodesScript):
         name = self.db.longname
 
         # target.db.gifts doesn't exist
-        if not target.db.gifts and value == True:
-            target.db.gifts = {name : True}
+        if not target.db.gifts and value is True:
+            target.db.gifts = {name: True}
             result = True
-        elif not target.db.gifts and value == False:
+        elif not target.db.gifts and value is False:
             result = True
 
         # Not in target.db.gifts
-        elif name not in target.db.gifts and value == True:
+        elif name not in target.db.gifts and value is True:
             target.db.gifts[name] = True
             result = True
-        elif name not in target.db.gifts and value == False:
+        elif name not in target.db.gifts and value is False:
             result = True
 
         # In target.db.gifts
-        elif name in target.db.gifts and value == True:
+        elif name in target.db.gifts and value is True:
             result = True
         else:
             del target.db.gifts[name]
             result = True
 
         return result
-
