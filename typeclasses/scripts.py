@@ -111,11 +111,11 @@ from codes.stats.kithScripts import KithScript
 from codes.stats.meritScripts import MeritScript
 from codes.stats.orderScripts import OrderScript
 from codes.stats.pathScripts import PathScript
-from codes.stats.powerStatScripts import powerStatScript
-from codes.stats.renownScripts import renownScript
-from codes.stats.scalesScripts import scaleScript
-from codes.stats.seemingScripts import seemingScript
-from codes.stats.skillScripts import skillScript
+from codes.stats.powerStatScripts import PowerStatScript
+from codes.stats.renownScripts import RenownScript
+from codes.stats.scalesScripts import ScaleScript
+from codes.stats.seemingScripts import SeemingScript
+from codes.stats.skillScripts import SkillScript
 from codes.stats.spellScripts import spellScript
 from codes.stats.sphereStatScripts import sphereStatScript
 from codes.stats.thebanRitesScripts import thebanRiteScript

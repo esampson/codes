@@ -25,7 +25,7 @@ class seeming_class:
     reference = ''
     info = ''
     restricted = False
-    
+
     def update(self,longname,favored_attributes,regalia,reference,info,restricted):
         self.longname = longname
         self.favored_attributes = favored_attributes
@@ -33,16 +33,16 @@ class seeming_class:
         self.reference = reference
         self.info = info
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('seeming_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -65,14 +65,14 @@ def sheet(request, object_id):
     return render(request, 'seemings/sheet.html', {'seeming': seeming, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('seeming_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -82,7 +82,7 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'seemings/error.html', {'message': 'Too many matching seemings'})
     stat = stats[0]
-    starting_data = {'longname':stat.db.longname, 
+    starting_data = {'longname':stat.db.longname,
                      'favored_attributes':stat.db.favored_attributes,
                      'regalia': stat.db.regalia,
                      'reference':stat.db.reference,
@@ -129,11 +129,11 @@ def editted(request):
             return render(request, 'seemings/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'seemings/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
-                     'favored_attributes':[], 
+
+    starting_data = {'longname':'',
+                     'favored_attributes':[],
                      'reference':'',
                      'regalia' : '',
                      'info':'',
@@ -153,7 +153,7 @@ def created(request):
                 if form.cleaned_data['favored_attributes'] != '[]':
                     for item in form.cleaned_data['favored_attributes'][1:-1].split(','):
                         favored_attributes.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.seemingScript', 
+                s = create_script('typeclasses.scripts.SeemingScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.favored_attributes=favored_attributes
@@ -169,7 +169,7 @@ def created(request):
             return render(request, 'seemings/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'seemings/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('seeming_stat')
     groups = []

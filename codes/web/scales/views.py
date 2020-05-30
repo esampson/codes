@@ -41,7 +41,7 @@ class scale_class:
     reference = ''
     info = ''
     restricted = False
-    
+
     def update(self,longname,mystery,rank,prereq,reference,info,restricted):
         self.longname = longname
         self.mystery = mystery
@@ -50,16 +50,16 @@ class scale_class:
         self.reference = reference
         self.info = info
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('scale_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -85,14 +85,14 @@ def sheet(request, object_id):
     return render(request, 'scales/sheet.html', {'scale': scale, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('scale_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -102,7 +102,7 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'scales/error.html', {'message': 'Too many matching scale'})
     scale = stats[0]
-    starting_data = {'longname':scale.db.longname, 
+    starting_data = {'longname':scale.db.longname,
                      'mystery':scale.db.mystery,
                      'rank':scale.db.rank,
                      'prereq':scale.db.prereq,
@@ -147,12 +147,12 @@ def editted(request):
             return render(request, 'scales/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'scales/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
+
     starting_data = {'longname':'',
-                     'mystery':'', 
-                     'rank':0, 
+                     'mystery':'',
+                     'rank':0,
                      'prereq':'',
                      'reference':'',
                      'info':'',
@@ -168,7 +168,7 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
-                s = create_script('typeclasses.scripts.scaleScript', 
+                s = create_script('typeclasses.scripts.ScaleScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.mystery=form.cleaned_data['mystery']
@@ -185,7 +185,7 @@ def created(request):
             return render(request, 'scales/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'scales/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('scale_stat')
     scale = []

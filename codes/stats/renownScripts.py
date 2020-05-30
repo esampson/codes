@@ -1,18 +1,21 @@
 from codes.stats.codesScript import CodesScript
 
-class renownScript(CodesScript):
 
+class RenownScript(CodesScript):
+
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.tags.add('stat_data')
-            self.tags.add('renown_stat')
+        self.persistent = True  # will survive reload
+        self.tags.add('stat_data')
+        self.tags.add('renown_stat')
 
-    def update(self,longname='', info="", reference="", restricted=False):
+    def update(self, longname='', info="", reference="", restricted=False):
         self.db.longname = longname
         self.db.info = info
         self.db.reference = reference
         self.db.restricted = restricted
 
+    # noinspection PyUnusedLocal
     def get(self, target, subentry=''):
         """
         get
@@ -33,7 +36,9 @@ class renownScript(CodesScript):
             result = 0
         return result
 
-    def meets_prereqs(self, target, value=0, subentry=''):
+    # noinspection PyUnusedLocal
+    @staticmethod
+    def meets_prereqs(target, value=0, subentry=''):
         """
         meets_prereqs
 
@@ -74,6 +79,7 @@ class renownScript(CodesScript):
         result = (value - self.get(target, subentry)) * 3
         return result
 
+    # noinspection PyUnusedLocal
     def set(self, target, value, subentry=''):
         """
         set

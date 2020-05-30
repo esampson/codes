@@ -1,15 +1,16 @@
 from codes.stats.codesScript import CodesScript
 
-class scaleScript(CodesScript):
 
+class ScaleScript(CodesScript):
+
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.tags.add('stat_data')
-            self.tags.add('scale_stat')
+        self.persistent = True  # will survive reload
+        self.tags.add('stat_data')
+        self.tags.add('scale_stat')
 
-    def update(self,longname='', mystery='', rank=1,
-               prereq='', restricted=False, reference='',
-               info=''):
+    def update(self, longname='', mystery='', rank=1, prereq='',
+               restricted=False, reference='', info=''):
         self.db.longname = longname
         self.db.mystery = mystery
         self.db.rank = rank
@@ -18,13 +19,14 @@ class scaleScript(CodesScript):
         self.db.reference = reference
         self.db.info = info
 
+    # noinspection PyUnusedLocal
     def get(self, target, subentry=''):
         """
         get
 
 
-        Determines if a character has a given scale. Should only return True or
-        False
+        Determines if a character has a given scale. Should only return
+        True or False
 
 
         target: The character being checked
@@ -40,13 +42,14 @@ class scaleScript(CodesScript):
             result = False
         return result
 
+    # noinspection PyUnusedLocal
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a scale. Should
-        only return True or False.
+        Determines if a character meets the prerequisites to purchase a
+        scale. Should only return True or False.
 
 
         target: The character being checked
@@ -61,12 +64,13 @@ class scaleScript(CodesScript):
             else:
                 result = False
         else:
-            if target.get(self.db.mystery,statclass='Coil') > 0:
+            if target.get(self.db.mystery, statclass='Coil') > 0:
                 result = True
             else:
                 result = False
         return result
 
+    # noinspection PyUnusedLocal
     def cost(self, target, value, subentry=''):
         """
         cost
@@ -81,20 +85,21 @@ class scaleScript(CodesScript):
 
 
         """
-        if (target.get(self.db.mystery,statclass='Coil') >=
-            self.db.rank):
+        if (target.get(self.db.mystery, statclass='Coil') >=
+                self.db.rank):
             result = 1
         else:
             result = 2
         return result
 
+    # noinspection DuplicatedCode,PyUnusedLocal
     def set(self, target, value, subentry=''):
         """
         set
 
 
-        Sets the value of a scale on a character sheet if value is True. Removes
-        the scale if the value is False.
+        Sets the value of a scale on a character sheet if value is True.
+        Removes the scale if the value is False.
 
 
         target: The character the scale is being set for
@@ -106,17 +111,14 @@ class scaleScript(CodesScript):
         if not target.db.scales:
             target.db.scales = {}
         name = self.db.longname
-        if  name not in target.db.scales and value == True:
+        if name not in target.db.scales and value is True:
             target.db.scales[name] = True
             result = True
-        elif name in target.db.scales and value == False:
+        elif name in target.db.scales and value is False:
             del target.db.scales[name]
             result = True
-        elif name not in target.db.scales and value == False:
+        elif name not in target.db.scales and value is False:
             result = True
         else:
             result = True
         return result
-
-
-
