@@ -26,7 +26,7 @@ class clan_class:
     info = ''
     bloodline = False
     restricted = False
-    
+
     def update(self,longname,favored_attributes,favored_disciplines,reference,info,bloodline,restricted):
         self.longname = longname
         self.favored_attributes = favored_attributes
@@ -35,17 +35,17 @@ class clan_class:
         self.info = info
         self.bloodline = bloodline
         self.restricted = restricted
-        
-    
+
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('clan_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -69,14 +69,14 @@ def sheet(request, object_id):
     return render(request, 'clans/sheet.html', {'clan': clan, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('clan_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -86,7 +86,7 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'clans/error.html', {'message': 'Too many matching clans'})
     stat = stats[0]
-    starting_data = {'longname':stat.db.longname, 
+    starting_data = {'longname':stat.db.longname,
                      'favored_attributes':stat.db.favored_attributes,
                      'favored_disciplines': stat.db.favored_disciplines,
                      'reference':stat.db.reference,
@@ -139,11 +139,11 @@ def editted(request):
             return render(request, 'clans/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'clans/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
-                     'favored_attributes':[], 
+
+    starting_data = {'longname':'',
+                     'favored_attributes':[],
                      'reference':'',
                      'favored_disciplines' : [],
                      'info':'',
@@ -168,7 +168,7 @@ def created(request):
                 if form.cleaned_data['favored_disciplines'] != '[]':
                     for item in form.cleaned_data['favored_disciplines'][1:-1].split(','):
                         favored_disciplines.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.clanScript', 
+                s = create_script('typeclasses.scripts.ClanScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.favored_attributes=favored_attributes
@@ -185,7 +185,7 @@ def created(request):
             return render(request, 'clans/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'clans/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('clan_stat')
     groups = []

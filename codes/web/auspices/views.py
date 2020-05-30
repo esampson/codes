@@ -26,7 +26,7 @@ class auspice_class:
     info = ''
     reference = ''
     restricted = False
-    
+
     def update(self,longname,auspice_skills,renown,auspice_gifts,info,reference,restricted):
         self.longname = longname
         self.auspice_skills = auspice_skills
@@ -35,16 +35,16 @@ class auspice_class:
         self.info = info
         self.reference = reference
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('auspice_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -68,14 +68,14 @@ def sheet(request, object_id):
     return render(request, 'auspices/sheet.html', {'auspice': auspice, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('auspice_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -85,7 +85,7 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'auspices/error.html', {'message': 'Too many matching auspices'})
     stat = stats[0]
-    starting_data = {'longname':stat.db.longname, 
+    starting_data = {'longname':stat.db.longname,
                      'auspice_skills':stat.db.auspice_skills,
                      'renown': stat.db.renown,
                      'auspice_gifts' : stat.db.auspice_gifts,
@@ -139,10 +139,10 @@ def editted(request):
             return render(request, 'auspices/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'auspices/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
+
+    starting_data = {'longname':'',
                      'auspice_skills':[],
                      'renown':'',
                      'auspice_gifts':[],
@@ -168,7 +168,7 @@ def created(request):
                 if form.cleaned_data['auspice_gifts'] != '[]':
                     for item in form.cleaned_data['auspice_gifts'][1:-1].split(','):
                         auspice_gifts.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.auspiceScript',
+                s = create_script('typeclasses.scripts.AuspiceScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.auspice_skills=auspice_skills
@@ -185,7 +185,7 @@ def created(request):
             return render(request, 'auspices/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'auspices/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('auspice_stat')
     auspices = []

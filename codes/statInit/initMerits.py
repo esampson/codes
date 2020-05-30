@@ -1213,7 +1213,7 @@ if len(stats) == 0:
 
 stats = data.find('Faerie_Favor',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Faerie_Favor')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Faerie_Favor')
     merit.db.longname = 'Faerie Favor'
     merit.db.category = 'Changeling'
     merit.db.range = [3]
@@ -1226,7 +1226,7 @@ if len(stats) == 0:
 
 stats = data.find('Fair_Harvest',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fair_Harvest')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fair_Harvest')
     merit.db.longname = 'Fair Harvest'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2]
@@ -1239,7 +1239,7 @@ if len(stats) == 0:
 
 stats = data.find('Falconry',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Falconry')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Falconry')
     merit.db.longname = 'Falconry'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -1252,7 +1252,7 @@ if len(stats) == 0:
 
 stats = data.find('Fame',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fame')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fame')
     merit.db.longname = 'Fame'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3]
@@ -1265,7 +1265,7 @@ if len(stats) == 0:
 
 stats = data.find('Familiar',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Familiar')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Familiar')
     merit.db.longname = 'Familiar'
     merit.db.category = 'Mage'
     merit.db.range = [2, 4]
@@ -1278,7 +1278,7 @@ if len(stats) == 0:
 
 stats = data.find('Fast_Reflexes',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fast_Reflexes')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fast_Reflexes')
     merit.db.longname = 'Fast Reflexes'
     merit.db.category = 'Mental'
     merit.db.range = [1, 2, 3]
@@ -1291,7 +1291,7 @@ if len(stats) == 0:
 
 stats = data.find('Fast_Spells',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fast_Spells')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fast_Spells')
     merit.db.longname = 'Fast Spells'
     merit.db.category = 'Mage'
     merit.db.range = [2]
@@ -1304,7 +1304,7 @@ if len(stats) == 0:
 
 stats = data.find('Fast-Talking',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fast-Talking')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fast-Talking')
     merit.db.longname = 'Fast-Talking'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1317,7 +1317,7 @@ if len(stats) == 0:
 
 stats = data.find('Favored_Form',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Favored_Form')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Favored_Form')
     merit.db.longname = 'Favored Form'
     merit.db.category = 'Werewolf'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1330,7 +1330,7 @@ if len(stats) == 0:
 
 stats = data.find('Feeding_Grounds',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Feeding_Grounds')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Feeding_Grounds')
     merit.db.longname = 'Feeding Grounds'
     merit.db.category = 'Vampire'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1343,7 +1343,7 @@ if len(stats) == 0:
 
 stats = data.find('Fighting_Finesse',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fighting_Finesse')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fighting_Finesse')
     merit.db.longname = 'Fighting Finesse'
     merit.db.category = 'Fighting'
     merit.db.range = [2]
@@ -1356,7 +1356,7 @@ if len(stats) == 0:
 
 stats = data.find('Firebrand',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Firebrand')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Firebrand')
     merit.db.longname = 'Firebrand'
     merit.db.category = 'Changeling'
     merit.db.range = [2]
@@ -1369,7 +1369,7 @@ if len(stats) == 0:
 
 stats = data.find('Firefight',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Firefight')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Firefight')
     merit.db.longname = 'Firefight'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3]
@@ -1382,7 +1382,7 @@ if len(stats) == 0:
 
 stats = data.find('Fixer',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fixer')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fixer')
     merit.db.longname = 'Fixer'
     merit.db.category = 'Social'
     merit.db.range = [2]
@@ -1395,7 +1395,7 @@ if len(stats) == 0:
 
 stats = data.find('Flanking',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Flanking')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Flanking')
     merit.db.longname = 'Flanking'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -1408,7 +1408,7 @@ if len(stats) == 0:
 
 stats = data.find('Fleet_of_Foot',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fleet_of_Foot')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fleet_of_Foot')
     merit.db.longname = 'Fleet of Foot'
     merit.db.category = 'Physical'
     merit.db.range = [1, 2, 3]
@@ -1421,7 +1421,7 @@ if len(stats) == 0:
 
 stats = data.find('Fortified_Form',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Fortified_Form')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Fortified_Form')
     merit.db.longname = 'Fortified Form'
     merit.db.category = 'Werewolf'
     merit.db.range = [3, 4, 5]
@@ -1434,7 +1434,7 @@ if len(stats) == 0:
 
 stats = data.find('Friends_in_High_Places',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Friends_in_High_Places')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Friends_in_High_Places')
     merit.db.longname = 'Friends in High Places'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -1447,7 +1447,7 @@ if len(stats) == 0:
 
 stats = data.find('Gentrified_Bearing',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Gentrified_Bearing')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Gentrified_Bearing')
     merit.db.longname = 'Gentrified Bearing'
     merit.db.category = 'Changeling'
     merit.db.range = [2]
@@ -1460,7 +1460,7 @@ if len(stats) == 0:
 
 stats = data.find('Giant',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Giant')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Giant')
     merit.db.longname = 'Giant'
     merit.db.category = 'Physical'
     merit.db.range = [3]
@@ -1473,7 +1473,7 @@ if len(stats) == 0:
 
 stats = data.find('Glamour_Fasting',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Glamour_Fasting')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Glamour_Fasting')
     merit.db.longname = 'Glamour Fasting'
     merit.db.category = 'Changeling'
     merit.db.range = [1]
@@ -1486,7 +1486,7 @@ if len(stats) == 0:
 
 stats = data.find('Goblin_Bounty',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Goblin_Bounty')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Goblin_Bounty')
     merit.db.longname = 'Goblin Bounty'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1499,7 +1499,7 @@ if len(stats) == 0:
 
 stats = data.find('Good_Time_Management',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Good_Time_Management')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Good_Time_Management')
     merit.db.longname = 'Good Time Management'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -1512,7 +1512,7 @@ if len(stats) == 0:
 
 stats = data.find('Grappling',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Grappling')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Grappling')
     merit.db.longname = 'Grappling'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1525,7 +1525,7 @@ if len(stats) == 0:
 
 stats = data.find('Greyhound',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Greyhound')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Greyhound')
     merit.db.longname = 'Greyhound'
     merit.db.category = 'Physical'
     merit.db.range = [1]
@@ -1538,7 +1538,7 @@ if len(stats) == 0:
 
 stats = data.find('Grimoire',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Grimoire')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Grimoire')
     merit.db.longname = 'Grimoire'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1551,7 +1551,7 @@ if len(stats) == 0:
 
 stats = data.find('Ground_Fighter',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Ground_Fighter')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Ground_Fighter')
     merit.db.longname = 'Ground Fighter'
     merit.db.category = 'Fighting'
     merit.db.range = [3]
@@ -1564,7 +1564,7 @@ if len(stats) == 0:
 
 stats = data.find('Ground_and_Pound',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Ground_and_Pound')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Ground_and_Pound')
     merit.db.longname = 'Ground and Pound'
     merit.db.category = 'Fighting'
     merit.db.range = [2]
@@ -1577,7 +1577,7 @@ if len(stats) == 0:
 
 stats = data.find('Grounded',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Grounded')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Grounded')
     merit.db.longname = 'Grounded'
     merit.db.category = 'Changeling'
     merit.db.range = [3]
@@ -1590,7 +1590,7 @@ if len(stats) == 0:
 
 stats = data.find('Hallow',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hallow')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hallow')
     merit.db.longname = 'Hallow'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1603,7 +1603,7 @@ if len(stats) == 0:
 
 stats = data.find('Hardy',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hardy')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hardy')
     merit.db.longname = 'Hardy'
     merit.db.category = 'Physical'
     merit.db.range = [1, 2, 3]
@@ -1616,7 +1616,7 @@ if len(stats) == 0:
 
 stats = data.find('Haven',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Haven')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Haven')
     merit.db.longname = 'Haven'
     merit.db.category = 'Vampire'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1629,7 +1629,7 @@ if len(stats) == 0:
 
 stats = data.find('Headbutt',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Headbutt')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Headbutt')
     merit.db.longname = 'Headbutt'
     merit.db.category = 'Fighting'
     merit.db.range = [1]
@@ -1642,7 +1642,7 @@ if len(stats) == 0:
 
 stats = data.find('Hearing_Whispers',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hearing_Whispers')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hearing_Whispers')
     merit.db.longname = 'Hearing Whispers'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -1655,7 +1655,7 @@ if len(stats) == 0:
 
 stats = data.find('Heavy_Weapons',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Heavy_Weapons')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Heavy_Weapons')
     merit.db.longname = 'Heavy Weapons'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1668,7 +1668,7 @@ if len(stats) == 0:
 
 stats = data.find('Hedge_Brawler',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hedge_Brawler')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hedge_Brawler')
     merit.db.longname = 'Hedge Brawler'
     merit.db.category = 'Changeling'
     merit.db.range = [2]
@@ -1681,7 +1681,7 @@ if len(stats) == 0:
 
 stats = data.find('Hedge_Duelist',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hedge_Duelist')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hedge_Duelist')
     merit.db.longname = 'Hedge Duelist'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3]
@@ -1694,7 +1694,7 @@ if len(stats) == 0:
 
 stats = data.find('Hedge_Sense',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hedge_Sense')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hedge_Sense')
     merit.db.longname = 'Hedge Sense'
     merit.db.category = 'Changeling'
     merit.db.range = [1]
@@ -1707,7 +1707,7 @@ if len(stats) == 0:
 
 stats = data.find('Herd',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Herd')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Herd')
     merit.db.longname = 'Herd'
     merit.db.category = 'Vampire'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1720,7 +1720,7 @@ if len(stats) == 0:
 
 stats = data.find('High_Speech',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'High_Speech')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'High_Speech')
     merit.db.longname = 'High Speech'
     merit.db.category = 'Mage'
     merit.db.range = [1]
@@ -1733,7 +1733,7 @@ if len(stats) == 0:
 
 stats = data.find('Hob_Kin',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hob_Kin')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hob_Kin')
     merit.db.longname = 'Hob Kin'
     merit.db.category = 'Changeling'
     merit.db.range = [1]
@@ -1746,7 +1746,7 @@ if len(stats) == 0:
 
 stats = data.find('Hobbyist_Clique',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hobbyist_Clique')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hobbyist_Clique')
     merit.db.longname = 'Hobbyist Clique'
     merit.db.category = 'Social'
     merit.db.range = [2]
@@ -1759,7 +1759,7 @@ if len(stats) == 0:
 
 stats = data.find('Holistic_Awareness',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Holistic_Awareness')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Holistic_Awareness')
     merit.db.longname = 'Holistic Awareness'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -1772,7 +1772,7 @@ if len(stats) == 0:
 
 stats = data.find('Hollow',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Hollow')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Hollow')
     merit.db.longname = 'Hollow'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1785,7 +1785,7 @@ if len(stats) == 0:
 
 stats = data.find('Honey_Trap',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Honey_Trap')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Honey_Trap')
     merit.db.longname = 'Honey Trap'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -1798,7 +1798,7 @@ if len(stats) == 0:
 
 stats = data.find('I_Know_a_Guy',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'I_Know_a_Guy')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'I_Know_a_Guy')
     merit.db.longname = 'I Know a Guy'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -1811,7 +1811,7 @@ if len(stats) == 0:
 
 stats = data.find('Imbued_Item',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Imbued_Item')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Imbued_Item')
     merit.db.longname = 'Imbued Item'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1824,7 +1824,7 @@ if len(stats) == 0:
 
 stats = data.find('Impartial_Mediator',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Impartial_Mediator')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Impartial_Mediator')
     merit.db.longname = 'Impartial Mediator'
     merit.db.category = 'Werewolf'
     merit.db.range = [3]
@@ -1837,7 +1837,7 @@ if len(stats) == 0:
 
 stats = data.find('Improvised_Weaponry',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Improvised_Weaponry')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Improvised_Weaponry')
     merit.db.longname = 'Improvised Weaponry'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3]
@@ -1850,7 +1850,7 @@ if len(stats) == 0:
 
 stats = data.find('Indomitable',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Indomitable')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Indomitable')
     merit.db.longname = 'Indomitable'
     merit.db.category = 'Mental'
     merit.db.range = [2]
@@ -1863,7 +1863,7 @@ if len(stats) == 0:
 
 stats = data.find('Infamous_Mentor',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Infamous_Mentor')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Infamous_Mentor')
     merit.db.longname = 'Infamous Mentor'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1876,7 +1876,7 @@ if len(stats) == 0:
 
 stats = data.find('Inspiring',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Inspiring')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Inspiring')
     merit.db.longname = 'Inspiring'
     merit.db.category = 'Social'
     merit.db.range = [3]
@@ -1889,7 +1889,7 @@ if len(stats) == 0:
 
 stats = data.find('Instinctive_Defense',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Instinctive_Defense')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Instinctive_Defense')
     merit.db.longname = 'Instinctive Defense'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -1902,7 +1902,7 @@ if len(stats) == 0:
 
 stats = data.find('Interdisciplinary_Specialty',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Interdisciplinary_Specialty')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Interdisciplinary_Specialty')
     merit.db.longname = 'Interdisciplinary Specialty'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -1915,7 +1915,7 @@ if len(stats) == 0:
 
 stats = data.find('Invested',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Invested')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Invested')
     merit.db.longname = 'Invested'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -1928,7 +1928,7 @@ if len(stats) == 0:
 
 stats = data.find('Investigative_Aide',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Investigative_Aide')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Investigative_Aide')
     merit.db.longname = 'Investigative Aide'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -1941,7 +1941,7 @@ if len(stats) == 0:
 
 stats = data.find('Investigative_Prodigy',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Investigative_Prodigy')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Investigative_Prodigy')
     merit.db.longname = 'Investigative Prodigy'
     merit.db.category = 'Mental'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -1954,7 +1954,7 @@ if len(stats) == 0:
 
 stats = data.find('Iron_Chin',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Chin')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Iron_Chin')
     merit.db.longname = 'Iron Chin'
     merit.db.category = 'Fighting'
     merit.db.range = [2, 4]
@@ -1967,7 +1967,7 @@ if len(stats) == 0:
 
 stats = data.find('Iron_Skin',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Skin')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Iron_Skin')
     merit.db.longname = 'Iron Skin'
     merit.db.category = 'Fighting'
     merit.db.range = [2, 4]
@@ -1980,7 +1980,7 @@ if len(stats) == 0:
 
 stats = data.find('Iron_Stamina',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Stamina')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Iron_Stamina')
     merit.db.longname = 'Iron Stamina'
     merit.db.category = 'Physical'
     merit.db.range = [1, 2, 3]
@@ -1993,7 +1993,7 @@ if len(stats) == 0:
 
 stats = data.find('Iron_Will',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Iron_Will')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Iron_Will')
     merit.db.longname = 'Iron Will'
     merit.db.category = 'Social'
     merit.db.range = [2]
@@ -2006,7 +2006,7 @@ if len(stats) == 0:
 
 stats = data.find('K-9',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'K-9')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'K-9')
     merit.db.longname = 'K-9'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -2019,7 +2019,7 @@ if len(stats) == 0:
 
 stats = data.find('Kindred_Dueling',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Kindred_Dueling')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Kindred_Dueling')
     merit.db.longname = 'Kindred Dueling'
     merit.db.category = 'Vampire'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2032,7 +2032,7 @@ if len(stats) == 0:
 
 stats = data.find('Kino_Mutai',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Kino_Mutai')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Kino_Mutai')
     merit.db.longname = 'Kino Mutai'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -2045,7 +2045,7 @@ if len(stats) == 0:
 
 stats = data.find('Kiss_of_the_Succubus',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Kiss_of_the_Succubus')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Kiss_of_the_Succubus')
     merit.db.longname = 'Kiss of the Succubus'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -2058,7 +2058,7 @@ if len(stats) == 0:
 
 stats = data.find('Language',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Language')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Language')
     merit.db.longname = 'Language'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -2071,7 +2071,7 @@ if len(stats) == 0:
 
 stats = data.find('Laying_on_Hands',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Laying_on_Hands')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Laying_on_Hands')
     merit.db.longname = 'Laying on Hands'
     merit.db.category = 'Supernatural'
     merit.db.range = [3]
@@ -2084,7 +2084,7 @@ if len(stats) == 0:
 
 stats = data.find('Lethal_Mien',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Lethal_Mien')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Lethal_Mien')
     merit.db.longname = 'Lethal Mien'
     merit.db.category = 'Changeling'
     merit.db.range = [2]
@@ -2097,7 +2097,7 @@ if len(stats) == 0:
 
 stats = data.find('Lex_Magica',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Lex_Magica')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Lex_Magica')
     merit.db.longname = 'Lex Magica'
     merit.db.category = 'Mage'
     merit.db.range = [2]
@@ -2110,7 +2110,7 @@ if len(stats) == 0:
 
 stats = data.find('Lex_Terrae',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Lex_Terrae')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Lex_Terrae')
     merit.db.longname = 'Lex Terrae'
     merit.db.category = 'Vampire'
     merit.db.range = [2]
@@ -2123,7 +2123,7 @@ if len(stats) == 0:
 
 stats = data.find('Library',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Library')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Library')
     merit.db.longname = 'Library'
     merit.db.category = 'Mental'
     merit.db.range = [1, 2, 3]
@@ -2136,7 +2136,7 @@ if len(stats) == 0:
 
 stats = data.find('Light_Weapons',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Light_Weapons')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Light_Weapons')
     merit.db.longname = 'Light Weapons'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2149,7 +2149,7 @@ if len(stats) == 0:
 
 stats = data.find('Lineage',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Lineage')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Lineage')
     merit.db.longname = 'Lineage'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -2162,7 +2162,7 @@ if len(stats) == 0:
 
 stats = data.find('Living_Weapon',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Living_Weapon')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Living_Weapon')
     merit.db.longname = 'Living Weapon'
     merit.db.category = 'Werewolf'
     merit.db.range = [3, 4, 5]
@@ -2175,7 +2175,7 @@ if len(stats) == 0:
 
 stats = data.find('Lorekeeper',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Lorekeeper')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Lorekeeper')
     merit.db.longname = 'Lorekeeper'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -2188,7 +2188,7 @@ if len(stats) == 0:
 
 stats = data.find('Mana_Sensitivity',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mana_Sensitivity')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mana_Sensitivity')
     merit.db.longname = 'Mana Sensitivity'
     merit.db.category = 'Mage'
     merit.db.range = [1]
@@ -2201,7 +2201,7 @@ if len(stats) == 0:
 
 stats = data.find('Mandate_from_the_Masses',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mandate_from_the_Masses')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mandate_from_the_Masses')
     merit.db.longname = 'Mandate from the Masses'
     merit.db.category = 'Vampire'
     merit.db.range = [5]
@@ -2214,7 +2214,7 @@ if len(stats) == 0:
 
 stats = data.find('Mantle',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mantle')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mantle')
     merit.db.longname = 'Mantle'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2227,7 +2227,7 @@ if len(stats) == 0:
 
 stats = data.find('Manymask',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Manymask')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Manymask')
     merit.db.longname = 'Manymask'
     merit.db.category = 'Changeling'
     merit.db.range = [3]
@@ -2240,7 +2240,7 @@ if len(stats) == 0:
 
 stats = data.find('Market_Sense',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Market_Sense')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Market_Sense')
     merit.db.longname = 'Market Sense'
     merit.db.category = 'Changeling'
     merit.db.range = [1]
@@ -2253,7 +2253,7 @@ if len(stats) == 0:
 
 stats = data.find('Marksmanship',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Marksmanship')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Marksmanship')
     merit.db.longname = 'Marksmanship'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -2266,7 +2266,7 @@ if len(stats) == 0:
 
 stats = data.find('Martial_Arts',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Martial_Arts')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Martial_Arts')
     merit.db.longname = 'Martial Arts'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2279,7 +2279,7 @@ if len(stats) == 0:
 
 stats = data.find('Masque',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Masque')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Masque')
     merit.db.longname = 'Masque'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2292,7 +2292,7 @@ if len(stats) == 0:
 
 stats = data.find('Meditative_Mind',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Meditative_Mind')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Meditative_Mind')
     merit.db.longname = 'Meditative Mind'
     merit.db.category = 'Mental'
     merit.db.range = [1, 2, 4]
@@ -2305,7 +2305,7 @@ if len(stats) == 0:
 
 stats = data.find('Medium',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Medium')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Medium')
     merit.db.longname = 'Medium'
     merit.db.category = 'Supernatural'
     merit.db.range = [3]
@@ -2318,7 +2318,7 @@ if len(stats) == 0:
 
 stats = data.find('Mentor',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mentor')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mentor')
     merit.db.longname = 'Mentor'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2331,7 +2331,7 @@ if len(stats) == 0:
 
 stats = data.find('Mind_of_a_Madman',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mind_of_a_Madman')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mind_of_a_Madman')
     merit.db.longname = 'Mind of a Madman'
     merit.db.category = 'Supernatural'
     merit.db.range = [2]
@@ -2344,7 +2344,7 @@ if len(stats) == 0:
 
 stats = data.find('Moon-Kissed',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Moon-Kissed')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Moon-Kissed')
     merit.db.longname = 'Moon-Kissed'
     merit.db.category = 'Werewolf'
     merit.db.range = [1]
@@ -2357,7 +2357,7 @@ if len(stats) == 0:
 
 stats = data.find('Mounted_Combat',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mounted_Combat')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mounted_Combat')
     merit.db.longname = 'Mounted Combat'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -2370,7 +2370,7 @@ if len(stats) == 0:
 
 stats = data.find('Multilingual',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Multilingual')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Multilingual')
     merit.db.longname = 'Multilingual'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -2383,7 +2383,7 @@ if len(stats) == 0:
 
 stats = data.find('Mystery_Cult_Influence',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mystery_Cult_Influence')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mystery_Cult_Influence')
     merit.db.longname = 'Mystery Cult Influence'
     merit.db.category = 'Mage'
     merit.db.range = [3, 4, 5]
@@ -2396,7 +2396,7 @@ if len(stats) == 0:
 
 stats = data.find('Mystery_Cult_Initiation',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Mystery_Cult_Initiation')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Mystery_Cult_Initiation')
     merit.db.longname = 'Mystery Cult Initiation'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2409,7 +2409,7 @@ if len(stats) == 0:
 
 stats = data.find('Night_Doctor_Surgery',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Night_Doctor_Surgery')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Night_Doctor_Surgery')
     merit.db.longname = 'Night Doctor Surgery'
     merit.db.category = 'Vampire'
     merit.db.range = [3]
@@ -2422,7 +2422,7 @@ if len(stats) == 0:
 
 stats = data.find('Noblesse_Oblige',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Noblesse_Oblige')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Noblesse_Oblige')
     merit.db.longname = 'Noblesse Oblige'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3]
@@ -2435,7 +2435,7 @@ if len(stats) == 0:
 
 stats = data.find('Notary',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Notary')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Notary')
     merit.db.longname = 'Notary'
     merit.db.category = 'Vampire'
     merit.db.range = [2]
@@ -2448,7 +2448,7 @@ if len(stats) == 0:
 
 stats = data.find('Nowhere_to_Run',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Nowhere_to_Run')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Nowhere_to_Run')
     merit.db.longname = 'Nowhere to Run'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -2461,7 +2461,7 @@ if len(stats) == 0:
 
 stats = data.find('Numbing_Touch',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Numbing_Touch')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Numbing_Touch')
     merit.db.longname = 'Numbing Touch'
     merit.db.category = 'Supernatural'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2474,7 +2474,7 @@ if len(stats) == 0:
 
 stats = data.find('Oath_of_Action',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Action')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Oath_of_Action')
     merit.db.longname = 'Oath of Action'
     merit.db.category = 'Vampire'
     merit.db.range = [4]
@@ -2487,7 +2487,7 @@ if len(stats) == 0:
 
 stats = data.find('Oath_of_Fealty',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Fealty')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Oath_of_Fealty')
     merit.db.longname = 'Oath of Fealty'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -2500,7 +2500,7 @@ if len(stats) == 0:
 
 stats = data.find('Oath_of_Penance',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Penance')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Oath_of_Penance')
     merit.db.longname = 'Oath of Penance'
     merit.db.category = 'Vampire'
     merit.db.range = [3]
@@ -2513,7 +2513,7 @@ if len(stats) == 0:
 
 stats = data.find('Oath_of_Serfdom',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Oath_of_Serfdom')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Oath_of_Serfdom')
     merit.db.longname = 'Oath of Serfdom'
     merit.db.category = 'Vampire'
     merit.db.range = [2]
@@ -2526,7 +2526,7 @@ if len(stats) == 0:
 
 stats = data.find('Object_Fetishism',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Object_Fetishism')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Object_Fetishism')
     merit.db.longname = 'Object Fetishism'
     merit.db.category = 'General'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2539,7 +2539,7 @@ if len(stats) == 0:
 
 stats = data.find('Occultation',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Occultation')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Occultation')
     merit.db.longname = 'Occultation'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3]
@@ -2552,7 +2552,7 @@ if len(stats) == 0:
 
 stats = data.find('Omen_Sensititivity',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Omen_Sensititivity')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Omen_Sensititivity')
     merit.db.longname = 'Omen Sensititivity'
     merit.db.category = 'Supernatural'
     merit.db.range = [3]
@@ -2565,7 +2565,7 @@ if len(stats) == 0:
 
 stats = data.find('Pack_Alpha',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Pack_Alpha')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Pack_Alpha')
     merit.db.longname = 'Pack Alpha'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -2578,7 +2578,7 @@ if len(stats) == 0:
 
 stats = data.find('Pack_Dynamics',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Pack_Dynamics')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Pack_Dynamics')
     merit.db.longname = 'Pack Dynamics'
     merit.db.category = 'Werewolf'
     merit.db.range = [3, 4, 5]
@@ -2591,7 +2591,7 @@ if len(stats) == 0:
 
 stats = data.find('Pandemonical',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Pandemonical')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Pandemonical')
     merit.db.longname = 'Pandemonical'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3]
@@ -2604,7 +2604,7 @@ if len(stats) == 0:
 
 stats = data.find('Parallel_Lives',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Parallel_Lives')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Parallel_Lives')
     merit.db.longname = 'Parallel Lives'
     merit.db.category = 'Changeling'
     merit.db.range = [3]
@@ -2617,7 +2617,7 @@ if len(stats) == 0:
 
 stats = data.find('Parkour',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Parkour')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Parkour')
     merit.db.longname = 'Parkour'
     merit.db.category = 'Physical'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2630,7 +2630,7 @@ if len(stats) == 0:
 
 stats = data.find('Patient',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Patient')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Patient')
     merit.db.longname = 'Patient'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -2643,7 +2643,7 @@ if len(stats) == 0:
 
 stats = data.find('Peacemaker',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Peacemaker')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Peacemaker')
     merit.db.longname = 'Peacemaker'
     merit.db.category = 'General'
     merit.db.range = [2, 3]
@@ -2656,7 +2656,7 @@ if len(stats) == 0:
 
 stats = data.find('Phalanx_Fighter',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Phalanx_Fighter')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Phalanx_Fighter')
     merit.db.longname = 'Phalanx Fighter'
     merit.db.category = 'Fighting'
     merit.db.range = [2]
@@ -2669,7 +2669,7 @@ if len(stats) == 0:
 
 stats = data.find('Plausible_Deniability',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Plausible_Deniability')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Plausible_Deniability')
     merit.db.longname = 'Plausible Deniability'
     merit.db.category = 'Vampire'
     merit.db.range = [4]
@@ -2682,7 +2682,7 @@ if len(stats) == 0:
 
 stats = data.find('Police_Tactics',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Police_Tactics')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Police_Tactics')
     merit.db.longname = 'Police Tactics'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3]
@@ -2695,7 +2695,7 @@ if len(stats) == 0:
 
 stats = data.find('Potent_Nimbus',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Potent_Nimbus')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Potent_Nimbus')
     merit.db.longname = 'Potent Nimbus'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2]
@@ -2708,7 +2708,7 @@ if len(stats) == 0:
 
 stats = data.find('Potent_Resonance',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Potent_Resonance')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Potent_Resonance')
     merit.db.longname = 'Potent Resonance'
     merit.db.category = 'Mage'
     merit.db.range = [2]
@@ -2721,7 +2721,7 @@ if len(stats) == 0:
 
 stats = data.find('Powered_Projectile',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Powered_Projectile')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Powered_Projectile')
     merit.db.longname = 'Powered Projectile'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -2734,7 +2734,7 @@ if len(stats) == 0:
 
 stats = data.find('Prelacy',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Prelacy')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Prelacy')
     merit.db.longname = 'Prelacy'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2747,7 +2747,7 @@ if len(stats) == 0:
 
 stats = data.find('Professional_Training',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Professional_Training')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Professional_Training')
     merit.db.longname = 'Professional Training'
     merit.db.category = 'Mental'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2760,7 +2760,7 @@ if len(stats) == 0:
 
 stats = data.find('Psychokinesis',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Psychokinesis')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Psychokinesis')
     merit.db.longname = 'Psychokinesis'
     merit.db.category = 'Supernatural'
     merit.db.range = [3, 5]
@@ -2773,7 +2773,7 @@ if len(stats) == 0:
 
 stats = data.find('Psychometry',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Psychometry')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Psychometry')
     merit.db.longname = 'Psychometry'
     merit.db.category = 'Supernatural'
     merit.db.range = [3]
@@ -2786,7 +2786,7 @@ if len(stats) == 0:
 
 stats = data.find('Pusher',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Pusher')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Pusher')
     merit.db.longname = 'Pusher'
     merit.db.category = 'Social'
     merit.db.range = [1]
@@ -2799,7 +2799,7 @@ if len(stats) == 0:
 
 stats = data.find('Quick_Draw',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Quick_Draw')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Quick_Draw')
     merit.db.longname = 'Quick Draw'
     merit.db.category = 'Physical'
     merit.db.range = [1]
@@ -2812,7 +2812,7 @@ if len(stats) == 0:
 
 stats = data.find('Relentless',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Relentless')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Relentless')
     merit.db.longname = 'Relentless'
     merit.db.category = 'Physical'
     merit.db.range = [1]
@@ -2825,7 +2825,7 @@ if len(stats) == 0:
 
 stats = data.find('Relentless_Assault',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Relentless_Assault')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Relentless_Assault')
     merit.db.longname = 'Relentless Assault'
     merit.db.category = 'Werewolf'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2838,7 +2838,7 @@ if len(stats) == 0:
 
 stats = data.find('Residential_Area',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Residential_Area')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Residential_Area')
     merit.db.longname = 'Residential Area'
     merit.db.category = 'Werewolf'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2851,7 +2851,7 @@ if len(stats) == 0:
 
 stats = data.find('Resonance_Shaper',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Resonance_Shaper')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Resonance_Shaper')
     merit.db.longname = 'Resonance Shaper'
     merit.db.category = 'Werewolf'
     merit.db.range = [3]
@@ -2864,7 +2864,7 @@ if len(stats) == 0:
 
 stats = data.find('Resources',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Resources')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Resources')
     merit.db.longname = 'Resources'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2877,7 +2877,7 @@ if len(stats) == 0:
 
 stats = data.find('Retain_Weapon',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Retain_Weapon')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Retain_Weapon')
     merit.db.longname = 'Retain Weapon'
     merit.db.category = 'Fighting'
     merit.db.range = [2]
@@ -2890,7 +2890,7 @@ if len(stats) == 0:
 
 stats = data.find('Retainer',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Retainer')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Retainer')
     merit.db.longname = 'Retainer'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2903,7 +2903,7 @@ if len(stats) == 0:
 
 stats = data.find('Riding_the_Wave',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Riding_the_Wave')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Riding_the_Wave')
     merit.db.longname = 'Riding the Wave'
     merit.db.category = 'Vampire'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2916,7 +2916,7 @@ if len(stats) == 0:
 
 stats = data.find('Right_of_Return',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Right_of_Return')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Right_of_Return')
     merit.db.longname = 'Right of Return'
     merit.db.category = 'Vampire'
     merit.db.range = [2]
@@ -2929,7 +2929,7 @@ if len(stats) == 0:
 
 stats = data.find('Rigid_Mask',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Rigid_Mask')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Rigid_Mask')
     merit.db.longname = 'Rigid Mask'
     merit.db.category = 'Changeling'
     merit.db.range = [3]
@@ -2942,7 +2942,7 @@ if len(stats) == 0:
 
 stats = data.find('Roadkill',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Roadkill')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Roadkill')
     merit.db.longname = 'Roadkill'
     merit.db.category = 'Fighting'
     merit.db.range = [3]
@@ -2955,7 +2955,7 @@ if len(stats) == 0:
 
 stats = data.find('Safe_Place',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Safe_Place')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Safe_Place')
     merit.db.longname = 'Safe Place'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2968,7 +2968,7 @@ if len(stats) == 0:
 
 stats = data.find('Sanctum',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Sanctum')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Sanctum')
     merit.db.longname = 'Sanctum'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -2981,7 +2981,7 @@ if len(stats) == 0:
 
 stats = data.find('Scarred',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Scarred')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Scarred')
     merit.db.longname = 'Scarred'
     merit.db.category = 'General'
     merit.db.range = [1]
@@ -2994,7 +2994,7 @@ if len(stats) == 0:
 
 stats = data.find('Secret_Society_Junkie',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Secret_Society_Junkie')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Secret_Society_Junkie')
     merit.db.longname = 'Secret Society Junkie'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -3007,7 +3007,7 @@ if len(stats) == 0:
 
 stats = data.find('Seizing_the_Edge',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Seizing_the_Edge')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Seizing_the_Edge')
     merit.db.longname = 'Seizing the Edge'
     merit.db.category = 'Physical'
     merit.db.range = [2]
@@ -3020,7 +3020,7 @@ if len(stats) == 0:
 
 stats = data.find('Self-Control',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Self-Control')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Self-Control')
     merit.db.longname = 'Self-Control'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -3033,7 +3033,7 @@ if len(stats) == 0:
 
 stats = data.find('Shadow_Name',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Shadow_Name')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Shadow_Name')
     merit.db.longname = 'Shadow Name'
     merit.db.category = 'Mage'
     merit.db.range = [1, 2, 3]
@@ -3046,7 +3046,7 @@ if len(stats) == 0:
 
 stats = data.find('Shiv',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Shiv')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Shiv')
     merit.db.longname = 'Shiv'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2]
@@ -3059,7 +3059,7 @@ if len(stats) == 0:
 
 stats = data.find('Sleight_of_Hand',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Sleight_of_Hand')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Sleight_of_Hand')
     merit.db.longname = 'Sleight of Hand'
     merit.db.category = 'Physical'
     merit.db.range = [2]
@@ -3072,7 +3072,7 @@ if len(stats) == 0:
 
 stats = data.find('Small_Unit_Tactics',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Small_Unit_Tactics')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Small_Unit_Tactics')
     merit.db.longname = 'Small Unit Tactics'
     merit.db.category = 'Social'
     merit.db.range = [2]
@@ -3085,7 +3085,7 @@ if len(stats) == 0:
 
 stats = data.find('Small-Framed',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Small-Framed')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Small-Framed')
     merit.db.longname = 'Small-Framed'
     merit.db.category = 'Physical'
     merit.db.range = [2]
@@ -3098,7 +3098,7 @@ if len(stats) == 0:
 
 stats = data.find('Song_in_your_Heart',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Song_in_your_Heart')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Song_in_your_Heart')
     merit.db.longname = 'Song in your Heart'
     merit.db.category = 'Werewolf'
     merit.db.range = [3]
@@ -3111,7 +3111,7 @@ if len(stats) == 0:
 
 stats = data.find('Sounds_of_the_City',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Sounds_of_the_City')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Sounds_of_the_City')
     merit.db.longname = 'Sounds of the City'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -3124,7 +3124,7 @@ if len(stats) == 0:
 
 stats = data.find('Speaker_for_the_Silent',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Speaker_for_the_Silent')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Speaker_for_the_Silent')
     merit.db.longname = 'Speaker for the Silent'
     merit.db.category = 'Vampire'
     merit.db.range = [3]
@@ -3137,7 +3137,7 @@ if len(stats) == 0:
 
 stats = data.find('Spear_and_Bayonet',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Spear_and_Bayonet')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Spear_and_Bayonet')
     merit.db.longname = 'Spear and Bayonet'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3]
@@ -3150,7 +3150,7 @@ if len(stats) == 0:
 
 stats = data.find('Spin_Doctor',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Spin_Doctor')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Spin_Doctor')
     merit.db.longname = 'Spin Doctor'
     merit.db.category = 'Social'
     merit.db.range = [1]
@@ -3163,7 +3163,7 @@ if len(stats) == 0:
 
 stats = data.find('Spiritual_Blockage',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Spiritual_Blockage')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Spiritual_Blockage')
     merit.db.longname = 'Spiritual Blockage'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -3176,7 +3176,7 @@ if len(stats) == 0:
 
 stats = data.find('Stable_Trod',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Stable_Trod')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Stable_Trod')
     merit.db.longname = 'Stable Trod'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3189,7 +3189,7 @@ if len(stats) == 0:
 
 stats = data.find('Staff',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Staff')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Staff')
     merit.db.longname = 'Staff'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3202,7 +3202,7 @@ if len(stats) == 0:
 
 stats = data.find('Staff_Fighting',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Staff_Fighting')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Staff_Fighting')
     merit.db.longname = 'Staff Fighting'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -3215,7 +3215,7 @@ if len(stats) == 0:
 
 stats = data.find('Status',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Status')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Status')
     merit.db.longname = 'Status'
     merit.db.category = 'Social'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3228,7 +3228,7 @@ if len(stats) == 0:
 
 stats = data.find('Street_Fighting',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Street_Fighting')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Street_Fighting')
     merit.db.longname = 'Street Fighting'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3241,7 +3241,7 @@ if len(stats) == 0:
 
 stats = data.find('Strength_Performance',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Strength_Performance')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Strength_Performance')
     merit.db.longname = 'Strength Performance'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -3254,7 +3254,7 @@ if len(stats) == 0:
 
 stats = data.find('Strength_of_Resolution',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Strength_of_Resolution')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Strength_of_Resolution')
     merit.db.longname = 'Strength of Resolution'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -3267,7 +3267,7 @@ if len(stats) == 0:
 
 stats = data.find('Striking_Looks',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Striking_Looks')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Striking_Looks')
     merit.db.longname = 'Striking Looks'
     merit.db.category = 'Social'
     merit.db.range = [1, 2]
@@ -3280,7 +3280,7 @@ if len(stats) == 0:
 
 stats = data.find('Strings_of_the_Heart',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Strings_of_the_Heart')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Strings_of_the_Heart')
     merit.db.longname = 'Strings of the Heart'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -3293,7 +3293,7 @@ if len(stats) == 0:
 
 stats = data.find('Stunt_Driver',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Stunt_Driver')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Stunt_Driver')
     merit.db.longname = 'Stunt Driver'
     merit.db.category = 'Physical'
     merit.db.range = [1, 2, 3, 4]
@@ -3306,7 +3306,7 @@ if len(stats) == 0:
 
 stats = data.find('Support_Network',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Support_Network')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Support_Network')
     merit.db.longname = 'Support Network'
     merit.db.category = 'General'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3319,7 +3319,7 @@ if len(stats) == 0:
 
 stats = data.find('Survivalist',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Survivalist')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Survivalist')
     merit.db.longname = 'Survivalist'
     merit.db.category = 'General'
     merit.db.range = [1]
@@ -3332,7 +3332,7 @@ if len(stats) == 0:
 
 stats = data.find('Swarm_Form',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Swarm_Form')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Swarm_Form')
     merit.db.longname = 'Swarm Form'
     merit.db.category = 'Vampire'
     merit.db.range = [2]
@@ -3345,7 +3345,7 @@ if len(stats) == 0:
 
 stats = data.find('Sworn',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Sworn')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Sworn')
     merit.db.longname = 'Sworn'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -3358,7 +3358,7 @@ if len(stats) == 0:
 
 stats = data.find('Sympathetic',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Sympathetic')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Sympathetic')
     merit.db.longname = 'Sympathetic'
     merit.db.category = 'Social'
     merit.db.range = [2]
@@ -3371,7 +3371,7 @@ if len(stats) == 0:
 
 stats = data.find('Systema',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Systema')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Systema')
     merit.db.longname = 'Systema'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3]
@@ -3384,7 +3384,7 @@ if len(stats) == 0:
 
 stats = data.find('Tactical_Shifting',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Tactical_Shifting')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Tactical_Shifting')
     merit.db.longname = 'Tactical Shifting'
     merit.db.category = 'Werewolf'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3397,7 +3397,7 @@ if len(stats) == 0:
 
 stats = data.find('Takes_One_to_Know_One',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Takes_One_to_Know_One')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Takes_One_to_Know_One')
     merit.db.longname = 'Takes One to Know One'
     merit.db.category = 'Social'
     merit.db.range = [1]
@@ -3410,7 +3410,7 @@ if len(stats) == 0:
 
 stats = data.find('Taste',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Taste')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Taste')
     merit.db.longname = 'Taste'
     merit.db.category = 'Social'
     merit.db.range = [1]
@@ -3423,7 +3423,7 @@ if len(stats) == 0:
 
 stats = data.find('Techne',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Techne')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Techne')
     merit.db.longname = 'Techne'
     merit.db.category = 'Mage'
     merit.db.range = [2]
@@ -3436,7 +3436,7 @@ if len(stats) == 0:
 
 stats = data.find('Telekinesis',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Telekinesis')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Telekinesis')
     merit.db.longname = 'Telekinesis'
     merit.db.category = 'Supernatural'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3449,7 +3449,7 @@ if len(stats) == 0:
 
 stats = data.find('Telepathy',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Telepathy')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Telepathy')
     merit.db.longname = 'Telepathy'
     merit.db.category = 'Supernatural'
     merit.db.range = [3, 5]
@@ -3462,7 +3462,7 @@ if len(stats) == 0:
 
 stats = data.find('The_Mother-Daughter_Bond',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'The_Mother-Daughter_Bond')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'The_Mother-Daughter_Bond')
     merit.db.longname = 'The Mother-Daughter Bond'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -3475,7 +3475,7 @@ if len(stats) == 0:
 
 stats = data.find('Thief_of_Fate',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Thief_of_Fate')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Thief_of_Fate')
     merit.db.longname = 'Thief of Fate'
     merit.db.category = 'Supernatural'
     merit.db.range = [3]
@@ -3488,7 +3488,7 @@ if len(stats) == 0:
 
 stats = data.find('Thrown_Weapons',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Thrown_Weapons')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Thrown_Weapons')
     merit.db.longname = 'Thrown Weapons'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2]
@@ -3501,7 +3501,7 @@ if len(stats) == 0:
 
 stats = data.find('Token',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Token')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Token')
     merit.db.longname = 'Token'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3514,7 +3514,7 @@ if len(stats) == 0:
 
 stats = data.find('Tolerance_for_Biology',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Tolerance_for_Biology')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Tolerance_for_Biology')
     merit.db.longname = 'Tolerance for Biology'
     merit.db.category = 'Mental'
     merit.db.range = [1]
@@ -3527,7 +3527,7 @@ if len(stats) == 0:
 
 stats = data.find('Totem',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Totem')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Totem')
     merit.db.longname = 'Totem'
     merit.db.category = 'Werewolf'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3540,7 +3540,7 @@ if len(stats) == 0:
 
 stats = data.find('Touchstone',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Touchstone')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Touchstone')
     merit.db.longname = 'Touchstone'
     merit.db.category = 'Changeling and Vampire'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3553,7 +3553,7 @@ if len(stats) == 0:
 
 stats = data.find('Trained_Observer',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Trained_Observer')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Trained_Observer')
     merit.db.longname = 'Trained Observer'
     merit.db.category = 'Mental'
     merit.db.range = [1, 3]
@@ -3566,7 +3566,7 @@ if len(stats) == 0:
 
 stats = data.find('Transfer_Manuever',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Transfer_Manuever')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Transfer_Manuever')
     merit.db.longname = 'Transfer Manuever'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3]
@@ -3579,7 +3579,7 @@ if len(stats) == 0:
 
 stats = data.find('True_Friend',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'True_Friend')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'True_Friend')
     merit.db.longname = 'True Friend'
     merit.db.category = 'Social'
     merit.db.range = [3]
@@ -3592,7 +3592,7 @@ if len(stats) == 0:
 
 stats = data.find('Trunk_Squeeze',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Trunk_Squeeze')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Trunk_Squeeze')
     merit.db.longname = 'Trunk Squeeze'
     merit.db.category = 'Fighting'
     merit.db.range = [2]
@@ -3605,7 +3605,7 @@ if len(stats) == 0:
 
 stats = data.find('Two_Weapon_Fighting',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Two_Weapon_Fighting')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Two_Weapon_Fighting')
     merit.db.longname = 'Two Weapon Fighting'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -3618,7 +3618,7 @@ if len(stats) == 0:
 
 stats = data.find('Unarmed_Defense',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Unarmed_Defense')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Unarmed_Defense')
     merit.db.longname = 'Unarmed Defense'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3631,7 +3631,7 @@ if len(stats) == 0:
 
 stats = data.find('Undead_Menses',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Undead_Menses')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Undead_Menses')
     merit.db.longname = 'Undead Menses'
     merit.db.category = 'Vampire'
     merit.db.range = [2]
@@ -3644,7 +3644,7 @@ if len(stats) == 0:
 
 stats = data.find('Unnatural_Affinity',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Unnatural_Affinity')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Unnatural_Affinity')
     merit.db.longname = 'Unnatural Affinity'
     merit.db.category = 'Vampire'
     merit.db.range = [1, 2, 3, 4, 5]
@@ -3657,7 +3657,7 @@ if len(stats) == 0:
 
 stats = data.find('Unseen_Sense',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Unseen_Sense')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Unseen_Sense')
     merit.db.longname = 'Unseen Sense'
     merit.db.category = 'Supernatural'
     merit.db.range = [2]
@@ -3670,7 +3670,7 @@ if len(stats) == 0:
 
 stats = data.find('Unsettling_Gaze',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Unsettling_Gaze')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Unsettling_Gaze')
     merit.db.longname = 'Unsettling Gaze'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -3683,7 +3683,7 @@ if len(stats) == 0:
 
 stats = data.find('Untouchable',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Untouchable')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Untouchable')
     merit.db.longname = 'Untouchable'
     merit.db.category = 'Social'
     merit.db.range = [1]
@@ -3696,7 +3696,7 @@ if len(stats) == 0:
 
 stats = data.find('Vice-Ridden',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Vice-Ridden')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Vice-Ridden')
     merit.db.longname = 'Vice-Ridden'
     merit.db.category = 'Mental'
     merit.db.range = [2]
@@ -3709,7 +3709,7 @@ if len(stats) == 0:
 
 stats = data.find('Virtuous',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Virtuous')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Virtuous')
     merit.db.longname = 'Virtuous'
     merit.db.category = 'Mental'
     merit.db.range = [2]
@@ -3722,7 +3722,7 @@ if len(stats) == 0:
 
 stats = data.find('Warcry',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Warcry')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Warcry')
     merit.db.longname = 'Warcry'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]

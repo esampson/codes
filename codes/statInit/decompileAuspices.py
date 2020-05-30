@@ -3,7 +3,7 @@ from evennia import ScriptDB
 from operator import itemgetter
 
 auspices = ScriptDB.objects.typeclass_search(
-    'codes.stats.auspiceScripts.auspiceScript')
+    'codes.stats.auspiceScripts.AuspiceScript')
 my_list = []
 for item in auspices:
     my_list.append([item.db.longname, item])

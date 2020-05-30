@@ -26,7 +26,7 @@ class contract_class:
     reference = ''
     info = ''
     restricted = False
-    
+
     def update(self,longname,group,category,subgroup,reference,info,restricted):
         self.longname = longname
         self.group = group
@@ -35,16 +35,16 @@ class contract_class:
         self.reference = reference
         self.info = info
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('contract_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -68,14 +68,14 @@ def sheet(request, object_id):
     return render(request, 'contracts/sheet.html', {'contract': contract, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('contract_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -86,7 +86,7 @@ def editor(request, object_id):
         return render(request, 'contracts/error.html', {'message': 'Too many matching contracts'})
     contract = stats[0]
     starting_data = {'longname':contract.db.longname,
-                     'group':contract.db.group, 
+                     'group':contract.db.group,
                      'category':contract.db.category,
                      'subgroup':contract.db.subgroup,
                      'reference':contract.db.reference,
@@ -130,13 +130,13 @@ def editted(request):
             return render(request, 'contracts/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'contracts/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
+
+    starting_data = {'longname':'',
                      'group':'',
                      'category':'',
-                     'subgroup':'', 
+                     'subgroup':'',
                      'reference':'',
                      'info':'',
                      'restricted':False,
@@ -151,7 +151,7 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
-                s = create_script('typeclasses.scripts.contractScript', 
+                s = create_script('typeclasses.scripts.ContractScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.group=form.cleaned_data['group']
@@ -168,7 +168,7 @@ def created(request):
             return render(request, 'contracts/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'contracts/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('contract_stat')
     groups = []

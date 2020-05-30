@@ -3,7 +3,7 @@ from evennia import ScriptDB
 
 from operator import itemgetter
 
-clans = ScriptDB.objects.typeclass_search('codes.stats.clanScripts.clanScript')
+clans = ScriptDB.objects.typeclass_search('codes.stats.clanScripts.ClanScript')
 my_list = []
 for item in clans:
     my_list.append([item.db.longname, item])

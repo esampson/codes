@@ -2,7 +2,7 @@ from typeclasses.scripts import Script
 
 from evennia.utils.search import search_script_tag
 
-class dictionaryScript(Script):
+class DictionaryScript(Script):
 
     def at_script_creation(self):
             self.persistent = True  # will survive reload

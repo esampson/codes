@@ -855,7 +855,7 @@ contract.db.reference = 'CtL p. 148-149'
 contract.db.info = 'The changeling\'s touch wreaks havoc, splintering stone and wrecking metal.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Trapdoor_Spiders_Trick')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Trapdoor_Spiders_Trick')
 contract.db.longname = 'Trapdoor Spider\'s Trick'
 contract.db.category = 'Shield'
 contract.db.group = 'Regalia'
@@ -864,7 +864,7 @@ contract.db.reference = 'CtL p. 142'
 contract.db.info = 'The changeling speaks aloud of a night when she slept in dangerous territory, hoping her pursuers would not discover her. Or, if she was the hunter, she recalls how the clever prey found a place to rest, right under her nose. She hides a door behind shards of dreams and illusions.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Trivial_Reworking')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Trivial_Reworking')
 contract.db.longname = 'Trivial Reworking'
 contract.db.category = 'Jewels'
 contract.db.group = 'Regalia'
@@ -873,7 +873,7 @@ contract.db.reference = 'CtL p. 133-134'
 contract.db.info = 'Trickery is the birthright of every Lost, allowing her to shape an object\'s appearance to her desire.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Tumult')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Tumult')
 contract.db.longname = 'Tumult'
 contract.db.category = 'Crown'
 contract.db.group = 'Regalia'
@@ -882,7 +882,7 @@ contract.db.reference = 'CtL p. 129-130'
 contract.db.info = 'The changeling controls shards of dreams and nightmares to attack his foe\'s mind. He inscribes his target\'s true name on a leaf, and folds it into an origami bird. He must be able to see his target.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Twilights_Harbinger')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Twilights_Harbinger')
 contract.db.longname = 'Twilight\'s Harbinger'
 contract.db.category = 'Autumn'
 contract.db.group = 'Court'
@@ -891,7 +891,7 @@ contract.db.reference = 'CtL p. 157'
 contract.db.info = 'Autumn is the long twilight of the year, a premonitory glimpse of the end to come. With this Contract, the changeling senses the liminality of things and knows a swan song when she hears one.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Uncanny')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Uncanny')
 contract.db.longname = 'Uncanny'
 contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
@@ -900,7 +900,7 @@ contract.db.reference = 'CtL p. 164'
 contract.db.info = 'The changeling borrows a little goblin luck to succeed at her next task.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Unravel_the_Tapestry')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Unravel_the_Tapestry')
 contract.db.longname = 'Unravel the Tapestry'
 contract.db.category = 'Mirror'
 contract.db.group = 'Regalia'
@@ -909,7 +909,7 @@ contract.db.reference = 'CtL p. 139-140'
 contract.db.info = 'The changeling unravels time and fate, altering the immediate past to fit his own whims.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Vigilance_of_Ares')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Vigilance_of_Ares')
 contract.db.longname = 'Vigilance of Ares'
 contract.db.category = 'Summer'
 contract.db.group = 'Court'
@@ -918,7 +918,7 @@ contract.db.reference = 'CtL p. 155'
 contract.db.info = 'Summer is the season of anger and warfare, and its chosen are always prepared.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Vow_of_No_Compromise')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Vow_of_No_Compromise')
 contract.db.longname = 'Vow of No Compromise'
 contract.db.category = 'Shield'
 contract.db.group = 'Regalia'
@@ -927,7 +927,7 @@ contract.db.reference = 'CtL p. 143'
 contract.db.info = 'Having once sworn never to compromise herself for the Fae\'s twisted aims, the changeling now swears again never to compromise in her duty to her fellows.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Waking_the_Inner_Fae')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Waking_the_Inner_Fae')
 contract.db.longname = 'Waking the Inner Fae'
 contract.db.category = 'Spring'
 contract.db.group = 'Court'
@@ -936,7 +936,7 @@ contract.db.reference = 'CtL p. 153'
 contract.db.info = 'The changeling pushes his target to pursue her greatest desires with the boundless energy of Spring. He creates a crown of flowers from nothing, weaving passion and luck into each petal.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Walls_Have_Ears')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Walls_Have_Ears')
 contract.db.longname = 'Walls Have Ears'
 contract.db.category = 'Mirror'
 contract.db.group = 'Regalia'
@@ -945,7 +945,7 @@ contract.db.reference = 'CtL p. 138'
 contract.db.info = 'The changeling engages an object in conversation to learn its secrets, previous owners, and weaknesses.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Wayward_Guide')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Wayward_Guide')
 contract.db.longname = 'Wayward Guide'
 contract.db.category = 'Goblin'
 contract.db.group = 'Goblin'
@@ -954,7 +954,7 @@ contract.db.reference = 'CtL p. 164'
 contract.db.info = 'The changeling leads his targets astray.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Whispers_of_Morning')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Whispers_of_Morning')
 contract.db.longname = 'Whispers of Morning'
 contract.db.category = 'Shield'
 contract.db.group = 'Regalia'
@@ -963,7 +963,7 @@ contract.db.reference = 'CtL p. 143-144'
 contract.db.info = 'The changeling cloaks herself in the shards of dreams, which flee from memory come morning.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Winters_Curse')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Winters_Curse')
 contract.db.longname = 'Winter\'s Curse'
 contract.db.category = 'Winter'
 contract.db.group = 'Court'
@@ -972,7 +972,7 @@ contract.db.reference = 'CtL p. 161-162'
 contract.db.info = 'The Winter Courtier knows the best way to keep her enemies at bay is to make them stop caring, freezing their hearts until they have no fellow feeling, even for their closest friends. She must touch an opponent to use this Contract (p. 184). Huntsmen who bear Fae Titles in place of hearts are immune.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Witches_Intuition')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Witches_Intuition')
 contract.db.longname = 'Witches Intuition'
 contract.db.category = 'Autumn'
 contract.db.group = 'Court'
@@ -981,7 +981,7 @@ contract.db.reference = 'CtL p. 157'
 contract.db.info = 'The changeling senses his target\'s fears, and can turn her to unreasoned fright. He must tell the target one of his own secret fears when he invokes the Contract.'
 contract.db.restricted = False
 
-contract = create_script('typeclasses.scripts.contractScript',key = 'Wyrd-Faced_Stranger')
+contract = create_script('typeclasses.scripts.ContractScript',key = 'Wyrd-Faced_Stranger')
 contract.db.longname = 'Wyrd-Faced Stranger'
 contract.db.category = 'Spring'
 contract.db.group = 'Court'

@@ -3,7 +3,7 @@ from evennia import ScriptDB
 
 from operator import itemgetter
 
-basics = ScriptDB.objects.typeclass_search('codes.stats.basicStatScripts.basicStatScript')
+basics = ScriptDB.objects.typeclass_search('codes.stats.basicStatScripts.BasicStatScript')
 my_list = []
 for item in basics:
     my_list.append([item.db.longname, item])

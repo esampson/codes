@@ -3,7 +3,7 @@ from evennia import ScriptDB
 
 from operator import itemgetter
 
-arcana = ScriptDB.objects.typeclass_search('codes.stats.arcanaScripts.arcanaScript')
+arcana = ScriptDB.objects.typeclass_search('codes.stats.arcanaScripts.ArcanaScript')
 my_list = []
 for item in arcana:
     my_list.append([item.db.longname, item])

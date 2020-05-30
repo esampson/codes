@@ -23,7 +23,7 @@ All scripts have the following methods:
 
 Accessing a particular stat is done by first making a call to the `find()` method in codes.data with the format of `find(<entry>[,<statclass>])`. Because this function may be indirectely called by players in various situations such as rolling dice, proving a stat, or requesting info `<entry>` works via partial matching. The is why `find('str')` will return the scrripts for Strength, Streetwise, Street Fighting, and Striking Looks. To help narrow the list and to deal with naming conflicts `<statclass>` may be used to narrow the search. `find('str','skill')` would only return the script object for Streetwise.
 
-`find()` works by querying a small script of `typeclasses.scripts.dictionaryScript` that contains a look up table of all partial name matches. This look up table is rebuilt every time the server is reloaded.
+`find()` works by querying a small script of `typeclasses.scripts.DictionaryScript` that contains a look up table of all partial name matches. This look up table is rebuilt every time the server is reloaded.
 
 There are 6 different typeclasses of stat scripts used by all or nearly all characters:
 

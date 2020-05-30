@@ -3,18 +3,18 @@ from evennia import ScriptDB
 
 from operator import itemgetter
 
-spells = ScriptDB.objects.typeclass_search('codes.stats.spellScripts.spellScript')
+spells = ScriptDB.objects.typeclass_search('codes.stats.spellScripts.SpellScript')
 my_list = []
 for item in spells:
     my_list.append([item.db.longname, item])
 spells = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initSpells.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for spell in spells:
     name = spell[1].db.longname.replace('\'','').replace(' ','_')
-    file.write('spell = create_script(\'typeclasses.scripts.spellScript\',key = \'' + name + '\')\n')
+    file.write('spell = create_script(\'typeclasses.scripts.SpellScript\',key = \'' + name + '\')\n')
     file.write('spell.db.longname = \''+spell[1].db.longname.replace('\'','\\\'') +'\'\n')
     file.write('spell.db.prereq = \''+spell[1].db.prereq.replace('\'','\\\'')+'\'\n')
     file.write('spell.db.info = \''+spell[1].db.info.replace('\r\n','|/').replace('\'','\\\'') +'\'\n')
