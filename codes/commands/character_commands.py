@@ -13,18 +13,18 @@ from codes.commands.dice import CmdRoll
 
 from evennia import CmdSet
 
+
 class all_characters(CmdSet):
-    
     key = 'all_characters'
-    
+
     def at_cmdset_creation(self):
         self.add(CmdInfo())
         self.add(CmdList())
 
+
 class finished_character(CmdSet):
-    
     key = 'finished_character'
-    
+
     def at_cmdset_creation(self):
         self.add(CmdSheet())
         self.add(CmdXP())
@@ -33,11 +33,10 @@ class finished_character(CmdSet):
         self.add(CmdHeal())
         self.add(CmdProve())
         self.add(CmdPool())
-        
+
+
 class unfinished_character(CmdSet):
-    
     key = 'unfinished_character'
-    
+
     def at_cmdset_creation(self):
         self.add(CmdCG())
-        

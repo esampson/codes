@@ -1,7 +1,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Gift Name', max_length=80)
     category = forms.ChoiceField(choices=(
         ('Moon','Moon'),('Shadow','Shadow'),('Wolf','Wolf')),

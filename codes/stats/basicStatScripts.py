@@ -69,7 +69,7 @@ class BasicStatScript(CodesScript):
             """
         return 0
 
-    # noinspection PyUnusedLocal
+    # noinspection PyUnusedLocal,DuplicatedCode
     def set(self, target, value, subentry=''):
         """
             set

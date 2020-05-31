@@ -20,6 +20,8 @@ moon_list = { 'crescent moon' : ['Shadow Gaze','Spirit Whispers'],
                'half moon' : ['Scent Beneath the Surface', 'Binding Oath'],
                'new moon' : ['Eviscerate', 'Slip Away']}
 
+
+# noinspection DuplicatedCode
 def werewolf_template(caller, raw_string, **kwargs):
     caller.db.cg['start_menu'] = 'cg_werewolf'
     caller.db.cg['start_node'] = 'werewolf_template'
@@ -77,6 +79,8 @@ def werewolf_template(caller, raw_string, **kwargs):
                'footer': footer}
     return display, options
 
+
+# noinspection DuplicatedCode
 def return_to_main_cg(caller, raw_string, **kwargs):
     caller.db.basics = {}
     caller.db.sphere = {}
@@ -146,6 +150,8 @@ def _raise_stat(caller, raw_string, **kwargs):
                                       'start': start_value}
         return "werewolf_tribe"
 
+
+# noinspection DuplicatedCode
 def werewolf_tribe(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'werewolf_tribe'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -210,6 +216,8 @@ def _set_tribe(caller, raw_string, **kwargs):
                                       'start': renown_score - 1}
     return "werewolf_renown"
 
+
+# noinspection DuplicatedCode
 def werewolf_renown(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'werewolf_renown'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -280,6 +288,8 @@ def _raise_renown(caller, raw_string, **kwargs):
                                         'start': start_value}
         return "werewolf_anchors"
 
+
+# noinspection DuplicatedCode
 def werewolf_anchors(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'werewolf_anchors'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -342,6 +352,8 @@ def _return_to_renown(caller, raw_string, **kwargs):
         value=caller.db.cg['boost_renown']['start'])
     return 'werewolf_renown'
 
+
+# noinspection DuplicatedCode
 def choose_anchor(caller, raw_string, **kwargs):
     option_list = []
     for item in anchors[kwargs['type']]:
@@ -366,6 +378,8 @@ def _starting_gifts(caller, raw_string, **kwargs):
         set(caller, moon_list[moon][1], statclass='Gift', value=True)
     return 'werewolf_gifts'
 
+
+# noinspection DuplicatedCode
 def werewolf_gifts(caller,raw_string,**kwargs):
     caller.db.cg['start_node'] = 'werewolf_anchors'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -505,6 +519,8 @@ def _remove_gift(caller, raw_string, **kwargs):
     set(caller,kwargs['gift'],statclass='Gift',value=False)
     return 'werewolf_gifts'
 
+
+# noinspection DuplicatedCode,DuplicatedCode
 def werewolf_merits(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'werewolf_merits'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -730,6 +746,8 @@ def _check_rite(caller, raw_string, **kwargs):
                 caller.msg('|/You don\'t meet the prerequisites for that rite')
                 return 'werewolf_merits'
 
+
+# noinspection DuplicatedCode
 def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
     option_list = []
@@ -788,6 +806,8 @@ def quit_menu(caller, raw_string, **kwargs):
     text = {'format': 'suppress'}
     return text, None
 
+
+# noinspection DuplicatedCode
 def werewolf_finish_cg(caller, raw_string, **kwargs):
     obj_menu = 'codes.commands.character_menus.object_in_menu'
     act_menu = 'codes.commands.character_menus.account_in_menu'

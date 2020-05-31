@@ -20,6 +20,8 @@ anchors = { 'needle' : ['Bon Vivant', 'Chess Master', 'Commander',
 courts = ['Spring', 'Summer', 'Autumn', 'Winter', 'None']
 regalia = ['Crown', 'Jewels', 'Mirror', 'Shield', 'Steed', 'Sword']
 
+
+# noinspection DuplicatedCode
 def changeling_template(caller, raw_string, **kwargs):
     caller.db.cg['start_menu'] = 'cg_changeling'
     caller.db.cg['start_node'] = 'changeling_template'
@@ -133,6 +135,8 @@ def _raise_stat(caller, raw_string, **kwargs):
                                       'start': start_value}
         return "changeling_kith"
 
+
+# noinspection DuplicatedCode
 def changeling_kith(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'changeling_kith'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -248,6 +252,8 @@ def _changeling_set_court(caller, raw_string, **kwargs):
         set(caller,'Mantle',statclass='Merit',subentry=kwargs['court'],value=1)
     return 'changeling_anchors'
 
+
+# noinspection DuplicatedCode
 def changeling_anchors(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'changeling_anchors'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -316,6 +322,8 @@ def _return_to_court(caller, raw_string, **kwargs):
                                                          statclass='Sphere'),
                                               statclass='Kith')[0]}
 
+
+# noinspection DuplicatedCode
 def choose_anchor(caller, raw_string, **kwargs):
     option_list = []
     for item in anchors[kwargs['type']]:
@@ -376,6 +384,8 @@ def _changeling_set_regalia(caller, raw_string, **kwargs):
     caller.db.sphere['Regalia'].append(kwargs['regalia'])
     return "changeling_merits"
 
+
+# noinspection DuplicatedCode,DuplicatedCode,DuplicatedCode
 def changeling_merits(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'changeling_merits'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -459,6 +469,8 @@ def _return_to_regalia(caller, raw_string, **kwargs):
     caller.db.power={'Wyrd': 1}
     return 'changeling_regalia'
 
+
+# noinspection DuplicatedCode
 def add_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
     option_list = [ {'key' : '_default',
@@ -485,6 +497,8 @@ def add_merit(caller, raw_string, **kwargs):
                'footer': footer}
     return display, options
 
+
+# noinspection DuplicatedCode
 def _check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
     if len(merits) < 1:
@@ -505,6 +519,8 @@ def _check_merit(caller, raw_string, **kwargs):
                                   'merit' : merit,
                                   'max' : kwargs['max']}
 
+
+# noinspection DuplicatedCode
 def get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
@@ -554,6 +570,8 @@ def _check_merit_note(caller, raw_string, **kwargs):
         caller.msg('|/Invalid note for that merit')
         return 'changeling_merits'
 
+
+# noinspection DuplicatedCode
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
     option_list = [ {'key' : '_default',
@@ -602,6 +620,8 @@ def _check_merit_value(caller, raw_string, **kwargs):
             caller.msg('|/You don\'t meet the prerequisites for that merit')
             return 'changeling_merits'
 
+
+# noinspection DuplicatedCode
 def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
     option_list = []
@@ -664,6 +684,8 @@ def _decrease_power(caller, raw_string, **kwargs):
             f.set(caller,current_frailties)
     return 'changeling_merits'
 
+
+# noinspection DuplicatedCode
 def changeling_contracts(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'changeling_regalia'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -804,6 +826,8 @@ def quit_menu(caller, raw_string, **kwargs):
     text = {'format': 'suppress'}
     return text, None
 
+
+# noinspection DuplicatedCode
 def changeling_finish_cg(caller, raw_string, **kwargs):
     obj_menu = 'codes.commands.character_menus.object_in_menu'
     act_menu = 'codes.commands.character_menus.account_in_menu'

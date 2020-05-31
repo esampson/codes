@@ -5,7 +5,7 @@ from django.shortcuts import render
 from evennia.utils.search import search_script_tag
 from evennia import create_script
 
-from codes.web.rites.forms import editForm
+from codes.web.rites.forms import EditForm
 
 from urllib.parse import unquote
 from urllib.parse import quote
@@ -102,14 +102,14 @@ def editor(request, object_id):
                      'reference':rite.db.reference,
                      'restricted':rite.db.restricted,
                      'link':object_id}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'rites/editor.html', {'form': form, 'rite_id':object_id })
 
 def editted(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 try:
                     data = search_script_tag('werewolf_rite_stat')
@@ -150,14 +150,14 @@ def create(request):
                      'reference':'',
                      'restricted':False,
                      'link':''}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'rites/create.html', {'form': form})
 
 def created(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 s = create_script('typeclasses.scripts.WerewolfRiteScript',

@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Contract Name', max_length=80)
     prereq = forms.CharField(label='Prerequisites',
                              widget=forms.Textarea(attrs={'rows': 4, 'cols': 80}),required = False)

@@ -5,7 +5,7 @@ from django.shortcuts import render
 from evennia.utils.search import search_script_tag
 from evennia import create_script
 
-from codes.web.lodges.forms import editForm
+from codes.web.lodges.forms import EditForm
 
 from django.http import HttpResponseRedirect
 
@@ -17,22 +17,22 @@ class lodge_class:
     info = ''
     reference = ''
     restricted = False
-    
+
     def update(self,longname,info,reference,restricted):
         self.longname = longname
         self.info = info
         self.reference = reference
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('lodge_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -53,14 +53,14 @@ def sheet(request, object_id):
     return render(request, 'lodges/sheet.html', {'lodge': lodge, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('lodge_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -75,14 +75,14 @@ def editor(request, object_id):
                      'reference':stat.db.reference,
                      'restricted':stat.db.restricted,
                      'link':object_id}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'lodges/editor.html', {'form': form, 'lodge_id':object_id })
 
 def editted(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 try:
                     data = search_script_tag('lodge_stat')
@@ -110,22 +110,22 @@ def editted(request):
             return render(request, 'lodges/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'lodges/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
+
     starting_data = {'longname':'',
                      'info': '',
                      'reference':'',
                      'restricted':False,
                      'link':''}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'lodges/create.html', {'form': form})
 
 def created(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 s = create_script('typeclasses.scripts.lodgeScript',
@@ -142,7 +142,7 @@ def created(request):
             return render(request, 'lodges/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'lodges/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('lodge_stat')
     lodges = []

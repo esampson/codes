@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Tribe Name', max_length=80)
     renown = forms.CharField(label='Renown', required = False)
     tribe_gifts = forms.CharField(label='Tribe Gifts')

@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Name', max_length=80)
     reference = forms.CharField(label='Reference', required = False)
     info = forms.CharField(label='Info',

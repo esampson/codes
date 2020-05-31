@@ -1,8 +1,7 @@
-# file mygame/web/chargen/forms.py
-
 from django import forms
 
-class editForm(forms.Form):
+
+class EditForm(forms.Form):
     longname = forms.CharField(label='Contract Name', max_length=80)
     group = forms.ChoiceField(choices=(('Regalia','Regalia'),('Court','Court'),('Goblin','Goblin')),label='Contract Category',required = False)
     category = forms.CharField(label='Contract Category',required = False)

@@ -25,6 +25,8 @@ def find(iString, statclass = ''):
                 matches.append(search_script('#'+str(stat[2]))[0])
     return matches
 
+
+# noinspection DuplicatedCode,DuplicatedCode
 def get(target, entry, subentry='', statclass=''):
     """
     get
@@ -143,6 +145,8 @@ def cost(target, entry, value, subentry='', statclass=''):
         result = stat.cost(target, value=value, subentry=subentry)
         return result
 
+
+# noinspection DuplicatedCode,DuplicatedCode
 def set(target, entry, value, subentry='', statclass=''):
     """
     set

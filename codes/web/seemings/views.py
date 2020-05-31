@@ -9,7 +9,7 @@ from evennia.utils.search import search_script_tag
 from evennia.utils.utils import inherits_from
 from evennia import create_script
 
-from codes.web.seemings.forms import editForm
+from codes.web.seemings.forms import EditForm
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from evennia.objects.models import ObjectDB
@@ -89,14 +89,14 @@ def editor(request, object_id):
                      'info':stat.db.info,
                      'restricted':stat.db.restricted,
                      'link':object_id}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'seemings/editor.html', {'form': form, 'seeming_id':object_id })
 
 def editted(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 try:
                     data = search_script_tag('seeming_stat')
@@ -139,14 +139,14 @@ def create(request):
                      'info':'',
                      'restricted':False,
                      'link':''}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'seemings/create.html', {'form': form})
 
 def created(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 favored_attributes = []

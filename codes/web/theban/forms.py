@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Theban rite name', max_length=80)
     rank = forms.CharField(label='Theban rite rank')
     prereq = forms.CharField(label='Prerequisites',

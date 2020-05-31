@@ -4,11 +4,11 @@
     <h1>{{ lodge.longname }}</h1>
 
     <p>&nbsp;</p>
-    <p style="float: left;padding-bottom:0px;margin-bottom:0px"><b>Info:&nbsp;</b></p>
+    <p style="float: left;padding-bottom:0;margin-bottom:0"><b>Info:&nbsp;</b></p>
     <p>{{ lodge.info|linebreaks }}</p>
     <p style="float:end;"><b>Reference: </b>{{ lodge.reference }}</p>
     <p><b>Restricted: </b>{{ lodge.restricted }}</p>
-    
+
     {% if user.is_staff %}
         <form action="/lodges/edit/{{ id }}/" method="post">
             {% csrf_token %}

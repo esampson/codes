@@ -1,7 +1,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Werewolf rite name', max_length=80)
     type = forms.ChoiceField(choices=(('Wolf','Wolf'), ('Pack','Pack')),
                               label='Rite Category', required=False)

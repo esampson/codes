@@ -7,7 +7,7 @@ from django.shortcuts import render
 from evennia.utils.search import search_script_tag
 from evennia import create_script
 
-from codes.web.tribes.forms import editForm
+from codes.web.tribes.forms import EditForm
 
 from django.http import HttpResponseRedirect
 
@@ -85,14 +85,14 @@ def editor(request, object_id):
                      'reference':stat.db.reference,
                      'restricted':stat.db.restricted,
                      'link':object_id}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'tribes/editor.html', {'form': form, 'tribe_id':object_id })
 
 def editted(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 try:
                     data = search_script_tag('tribe_stat')
@@ -136,14 +136,14 @@ def create(request):
                      'reference':'',
                      'restricted':False,
                      'link':''}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'tribes/create.html', {'form': form})
 
 def created(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 tribe_gifts = []

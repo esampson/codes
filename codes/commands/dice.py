@@ -6,6 +6,7 @@ import random
 
 from codes.frames import top_bottom
 
+
 class CmdRoll(Command):
     """
     Usage:
@@ -33,15 +34,15 @@ class CmdRoll(Command):
     """
 
     key = '+roll'
+    # noinspection PyPep8
     arg_regex = '^[\s/][0-9a-zA-Z/\-\s+:]+$'
     help_category = 'IC Commands'
 
+    def func(self):  # pragma: no cover
+        roll_func(self.caller, self.args)  # pragma: no cover
 
-    def func(self):                      #pragma: no cover
-        roll_func(self.caller,self.args) #pragma: no cover
 
-def roll_func(roller,input):
-
+def roll_func(roller, input):
     data = input.split(' ', 1)
     args = []
     reroll_target = 10
@@ -56,20 +57,20 @@ def roll_func(roller,input):
         elif item.lower() == 'rote':
             rote = True
     roll_cmd = data[1]
-    temp = roll_cmd.replace('+','@').replace('-','@').split('@')
+    temp = roll_cmd.replace('+', '@').replace('-', '@').split('@')
     num_parts = []
     count = 0
     for item in temp:
-        insert = [ len(item.strip()), count, item.strip() ]
+        insert = [len(item.strip()), count, item.strip()]
         num_parts.append(insert)
         count = count + 1
     signs = roll_cmd
 
-    #strip out non-math signs.
-    #we have to strip the longest words first so that skills
-    #don't remove part of specialties.
+    # strip out non-math signs.
+    # we have to strip the longest words first so that skills
+    # don't remove part of specialties.
     for item in sorted(num_parts, key=itemgetter(0), reverse=True):
-       signs = signs.replace(item[2],'@')
+        signs = signs.replace(item[2], '@')
 
     temp = signs.split('@')
     sign_parts = []
@@ -80,15 +81,15 @@ def roll_func(roller,input):
     for item in temp:
         num_parts.append(item[2])
     numbers = []
-    error = False    #Lets us know if there is a problem interpreting something
-    pure_numbers = True              #Lets us know if only numbers were entered
+    error = False  # Lets us know if there is a problem interpreting something
+    pure_numbers = True  # Lets us know if only numbers were entered
     for item in num_parts:
         if item.isnumeric():
             numbers.append(int(item))
         elif '/' in item:
             pure_numbers = False
             value = roller.get(item.split('/')[0],
-                               statclass= item.split('/')[1])
+                               statclass=item.split('/')[1])
             if value < 0:
                 error = True
             numbers.append(value)
@@ -122,8 +123,8 @@ def roll_func(roller,input):
                 for subitem in item:
                     if subitem > 7:
                         total_successes = total_successes + 1
-            message = roller.name + ' rolls ' + roll_string + \
-                      ' as a rote action'
+            message = (roller.name + ' rolls ' + roll_string
+                       + ' as a rote action')
         else:
             message = roller.name + ' rolls ' + roll_string
         for item in base_roll:
@@ -144,44 +145,45 @@ def roll_func(roller,input):
             message,
             width=60,
             padding=10,
-            replacements=[['8,','|w8|n,'],['8.','|w8|n '],['8;','|w8|n;'],
-                          ['9,','|w9|n,'],['9.','|w9|n '],['9;','|w9|n;'],
-                          ['10,','|w10|n,'],['10.','|w10|n '],
-                          ['10;','|w10|n;'], ['1.','1 '],['2.','2 '],
-                          ['3.','3 '],['4.','4 '], ['5.','5 '],['6.','6 '],
-                          ['7.','7 '] ] )
+            replacements=[['8,', '|w8|n,'], ['8.', '|w8|n '], ['8;', '|w8|n;'],
+                          ['9,', '|w9|n,'], ['9.', '|w9|n '], ['9;', '|w9|n;'],
+                          ['10,', '|w10|n,'], ['10.', '|w10|n '],
+                          ['10;', '|w10|n;'], ['1.', '1 '], ['2.', '2 '],
+                          ['3.', '3 '], ['4.', '4 '], ['5.', '5 '], ['6.', '6 '],
+                          ['7.', '7 ']])
         roller.location.msg_contents(table)
     else:
         roller.msg('I couldn\'t figure out what you wanted to roll.')
 
-def roll(dice):
 
+def roll(dice):
     rolls = []
     for roll in range(dice):
-        rolls.append(random.randint(1,10))
+        rolls.append(random.randint(1, 10))
     return rolls
 
-def roll_sequence(dice, target):
 
+def roll_sequence(dice, target):
     sequence = []
     current_roll = roll(dice)
     current_roll.sort()
     sequence.append(current_roll)
-    reroll_dice = roll_again(current_roll,target)
+    reroll_dice = roll_again(current_roll, target)
     while reroll_dice > 0:
         current_roll = roll(reroll_dice)
         current_roll.sort()
         sequence.append(current_roll)
-        reroll_dice = roll_again(current_roll,target)
+        reroll_dice = roll_again(current_roll, target)
     return sequence
 
-def roll_again(roll, target):
 
+def roll_again(roll, target):
     rerolls = 0
     for die in roll:
         if die >= target:
             rerolls = rerolls + 1
     return rerolls
+
 
 def roll_breakdown(roll):
     breakdown = ''
@@ -191,6 +193,5 @@ def roll_breakdown(roll):
             component = component + str(subitem) + ', '
         component = component[:-2] + '; '
         breakdown = breakdown + component
-    breakdown = breakdown[:-2]+'.'
+    breakdown = breakdown[:-2] + '.'
     return breakdown
-

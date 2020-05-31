@@ -301,6 +301,8 @@ def _set_stat(caller, raw_string, **kwargs):
                                'type' : type,
                                'points_left' : points_left }
 
+
+# noinspection DuplicatedCode
 def start_skills(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'start_skills'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -391,6 +393,8 @@ def decide_skill(caller, raw_string, **kwargs):
     options = tuple(option_list)
     return text, options
 
+
+# noinspection DuplicatedCode
 def assign_specialties(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'assign_specialties'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)

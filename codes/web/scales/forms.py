@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Scale name', max_length=80)
     mystery = forms.CharField(label='Scale name', max_length=80)
     rank = forms.CharField(label='Scale rank')

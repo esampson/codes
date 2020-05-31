@@ -31,17 +31,18 @@ class CmdCG(Command):
             if 'raw_string' in self.caller.db.cg:
                 raw_string = self.caller.db.cg['raw_string']
             else:
-                raw_string=''
+                raw_string = ''
             if 'kwargs' in self.caller.db.cg:
                 kwargs = dict(self.caller.db.cg['kwargs'])
             else:
                 kwargs = dict()
             ExMenu(self.caller, menu, startnode=node,
                    cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False,
-                   startnode_input=('p',kwargs) )
+                   startnode_input=('p', kwargs))
         else:
-            ExMenu(self.caller, 'codes.menus.cg', startnode = 'start',
-               cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
+            ExMenu(self.caller, 'codes.menus.cg', startnode='start',
+                   cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
+
 
 class CmdXP(Command):
     """
@@ -61,8 +62,9 @@ class CmdXP(Command):
     help_category = 'OOC Commands'
 
     def func(self):
-        ExMenu(self.caller, 'codes.menus.xp_menu', startnode = 'start',
+        ExMenu(self.caller, 'codes.menus.xp_menu', startnode='start',
                cmdset_mergetype='Union')
+
 
 class CmdHelp(Command):
     """
@@ -71,8 +73,9 @@ class CmdHelp(Command):
 
     key = 'help'
 
-    def func(self):                         #pragma: no cover
-        pass                                #pragma: no cover
+    def func(self):  # pragma: no cover
+        pass  # pragma: no cover
+
 
 class CmdQuit(Command):
     """
@@ -81,8 +84,9 @@ class CmdQuit(Command):
 
     key = 'quit'
 
-    def func(self):                         #pragma: no cover
-        pass                                #pragma: no cover
+    def func(self):  # pragma: no cover
+        pass  # pragma: no cover
+
 
 class CmdInventory(Command):
     """
@@ -91,11 +95,11 @@ class CmdInventory(Command):
 
     key = 'inventory'
 
-    def func(self):                         #pragma: no cover
-        pass                                #pragma: no cover
+    def func(self):  # pragma: no cover
+        pass  # pragma: no cover
+
 
 class object_in_menu(CmdSet):
-
     key = 'For use in menus'
     priority = 4
     mergetype = "Remove"
@@ -104,8 +108,8 @@ class object_in_menu(CmdSet):
         self.add(CmdHelp())
         self.add(CmdInventory())
 
-class account_in_menu(CmdSet):
 
+class account_in_menu(CmdSet):
     key = 'quit suppress'
     priority = 5
     mergetype = "Remove"

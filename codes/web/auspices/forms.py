@@ -1,5 +1,3 @@
-# file mygame/web/chargen/forms.py
-
 from django import forms
 
 class editForm(forms.Form):

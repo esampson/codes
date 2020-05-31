@@ -9,7 +9,7 @@ from evennia.utils.search import search_script_tag
 from evennia.utils.utils import inherits_from
 from evennia import create_script
 
-from codes.web.covenants.forms import editForm
+from codes.web.covenants.forms import EditForm
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from evennia.objects.models import ObjectDB

@@ -1,8 +1,7 @@
-# file mygame/web/chargen/forms.py
-
 from django import forms
 
-class editForm(forms.Form):
+
+class EditForm(forms.Form):
     longname = forms.CharField(label='Clan Name', max_length=80)
     favored_attributes = forms.CharField(label='Clan Favored Attributes',required = False)
     favored_disciplines = forms.CharField(label='Clan Favored Disciplines',required = False)

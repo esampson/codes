@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Merit Name', max_length=80)
     category = forms.CharField(label='Merit Category',required = False)
     range = forms.CharField(label='Range',required = False)

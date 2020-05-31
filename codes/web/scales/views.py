@@ -9,7 +9,7 @@ from evennia.utils.search import search_script_tag
 from evennia.utils.utils import inherits_from
 from evennia import create_script
 
-from codes.web.scales.forms import editForm
+from codes.web.scales.forms import EditForm
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from evennia.objects.models import ObjectDB
@@ -110,14 +110,14 @@ def editor(request, object_id):
                      'info':scale.db.info,
                      'restricted':scale.db.restricted,
                      'link':object_id}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'scales/editor.html', {'form': form, 'scale_id':object_id })
 
 def editted(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 try:
                     data = search_script_tag('scale_stat')
@@ -158,14 +158,14 @@ def create(request):
                      'info':'',
                      'restricted':False,
                      'link':''}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'scales/create.html', {'form': form})
 
 def created(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 s = create_script('typeclasses.scripts.ScaleScript',

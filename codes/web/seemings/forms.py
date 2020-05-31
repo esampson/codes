@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Seeming Name', max_length=80)
     favored_attributes = forms.CharField(label='Seeming Favored Attributes',required = False)
     regalia = forms.CharField(label='Seeming Regalia',required = False)

@@ -3,12 +3,14 @@ from codes.data import set
 
 from evennia import Command
 from evennia import CmdSet
-from evennia.utils.search import object_search
+from evennia.utils.search import search_object
 
 import re
-        
+
+
 def parser(message):
-    regex_string ='^\/?(\S+)\s([^(^=^\/]+)(\((([^)])+)\))?\/?(([^=])+)?\=(.+)$'
+    # noinspection PyPep8
+    regex_string = '^\/?(\S+)\s([^(^=^\/]+)(\((([^)])+)\))?\/?(([^=])+)?\=(.+)$'
     regex = re.compile(regex_string)
     reply = regex.findall(message)
     args = reply[0][0].strip()
@@ -34,41 +36,41 @@ def parser(message):
             value = False
     else:
         value = 0
-    result = { 'args' : args, 'entry': entry, 'subentry' : subentry,
-               'statclass' : statclass, 'value' : value}
+    result = {'args': args, 'entry': entry, 'subentry': subentry,
+              'statclass': statclass, 'value': value}
     return result
 
-class staff_commands(CmdSet):
-    
+
+class StaffCommands(CmdSet):
     key = 'staff_commands'
-    
+
     def at_cmdset_creation(self):
         self.add(CmdSheetStaff())
         self.add(CmdSetStaff())
+
 
 class CmdSheetStaff(Command):
     """
     Usage:
         +sheet <character>
-        
+
     Command to retrieve current character sheet for <character>
-        
+
     Examples:
         +sheet Chester
-            
+
     """
-    
+
     key = '+sheet'
-    arg_regex='^\s.+$'
+    arg_regex = '^\s.+$'
     help_category = 'Staff'
-    
-    
+
     def func(self):
         request = self.args.strip()
         try:
-            character = object_search(
-                request, typeclass='typeclasses.characters.Character' )
-        except:
+            character = search_object(
+                request, typeclass='typeclasses.characters.Character')
+        except LookupError:
             self.caller.msg('Something went wrong with the search')
         else:
             if len(character) == 0:
@@ -78,12 +80,13 @@ class CmdSheetStaff(Command):
             else:
                 result = produce_sheet(character[0])
                 self.caller.msg(result)
-                
+
+
 class CmdSetStaff(Command):
     """
     Usage:
         +set/<character> <entry>[(<subentry>)][/<category>]=<value>
-        
+
     Command used by staff to set stats on a target.
 
         <character>: The character in question
@@ -91,7 +94,7 @@ class CmdSetStaff(Command):
         <subentry>: Notes for Merits, Seeming Benefits for Contracts. Optional
         <category>: Category of stat to help with name collisions. Optional
         <value>: Value stat is being set to.
-    
+
     Examples:
         +set/Chester Resources=5
         +set/Chester Status(Clan)/Merit=2
@@ -100,18 +103,17 @@ class CmdSetStaff(Command):
         +set/Chester Regalia=['Steed', 'Sword']
         +set/Chester Health(Bashing)=2
     """
-    
+
     key = '+set'
-    arg_regex='^/.+$'
+    arg_regex = '^/.+$'
     help_category = 'Staff'
-    
-    
+
     def func(self):
         parsed = parser(self.args)
         try:
-            character = object_search(
+            character = search_object(
                 parsed['args'], typeclass='typeclasses.characters.Character')
-        except:
+        except LookupError:
             self.caller.msg('Something went wrong with the search')
         else:
             if len(character) == 0:
@@ -121,19 +123,17 @@ class CmdSetStaff(Command):
                                 parsed['args'])
             else:
                 try:
-                    set(character[0],parsed['entry'],
+                    set(character[0], parsed['entry'],
                         subentry=parsed['subentry'],
                         statclass=parsed['statclass'],
                         value=parsed['value'])
-                except:
+                except LookupError:
                     self.caller.msg('Something went wrong setting the value:\n'
                                     + str(parsed))
                 else:
                     message = parsed['entry']
                     if parsed['subentry'] != '':
                         message = message + '(' + parsed['subentry'] + ')'
-                    message = message + ' set to ' + str(parsed['value']) + \
-                              ' for ' + parsed['args']
+                    message = (message + ' set to ' + str(parsed['value'])
+                               + ' for ' + parsed['args'])
                     self.caller.msg(message)
-        
-        

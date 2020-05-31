@@ -5,7 +5,7 @@ from django.shortcuts import render
 from evennia.utils.search import search_script_tag
 from evennia import create_script
 
-from codes.web.merits.forms import editForm
+from codes.web.merits.forms import EditForm
 from codes import data
 
 from django.http import HttpResponseRedirect
@@ -99,14 +99,14 @@ def editor(request, object_id):
                      'cg_only':merit.db.cg_only,
                      'restricted':merit.db.restricted,
                      'link':object_id}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'merits/editor.html', {'form': form, 'merit_id':object_id })
 
 def editted(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 n = form.cleaned_data['link']
                 stats = data.find(n,statclass='Merit')
@@ -151,14 +151,14 @@ def create(request):
                      'cg_only':False,
                      'restricted':False,
                      'link':''}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'merits/create.html', {'form': form})
 
 def created(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 range = []

@@ -24,6 +24,8 @@ anchors = { 'mask' : ['Authoritarian', 'Child', 'Competitor', 'Conformist',
                       'Scholar', 'Social Chameleon', 'Spy', 'Survivor',
                       'Visionary'] }
 
+
+# noinspection DuplicatedCode
 def vampire_template(caller, raw_string, **kwargs):
     caller.db.cg['start_menu'] = 'cg_vampire'
     caller.db.cg['start_node'] = 'vampire_template'
@@ -144,6 +146,8 @@ def _raise_stat(caller, raw_string, **kwargs):
                                       'start': start_value}
         return "vampire_covenant"
 
+
+# noinspection DuplicatedCode
 def vampire_covenant(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'vampire_covenant'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -270,6 +274,8 @@ def vampire_anchors(caller, raw_string, **kwargs):
                'footer': footer}
     return display, options
 
+
+# noinspection DuplicatedCode
 def choose_anchor(caller, raw_string, **kwargs):
     option_list = []
     for item in anchors[kwargs['type']]:
@@ -285,6 +291,8 @@ def _set_anchor(caller, raw_string, **kwargs):
     caller.db.sphere[kwargs['type'].capitalize()] = kwargs['value']
     return 'vampire_anchors'
 
+
+# noinspection DuplicatedCode,DuplicatedCode,DuplicatedCode
 def vampire_merits(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'vampire_merits'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -360,6 +368,8 @@ def _return_to_anchors(caller, raw_string, **kwargs):
     caller.db.merits = []
     return 'vampire_anchors'
 
+
+# noinspection DuplicatedCode
 def add_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
     option_list = [ {'key' : '_default',
@@ -409,6 +419,8 @@ def _check_merit(caller, raw_string, **kwargs):
                                   'merit' : merit,
                                   'max' : kwargs['max']}
 
+
+# noinspection DuplicatedCode
 def get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
@@ -458,6 +470,8 @@ def _check_merit_note(caller, raw_string, **kwargs):
         caller.msg('|/Invalid note for that merit')
         return 'vampire_merits'
 
+
+# noinspection DuplicatedCode
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
     option_list = [{'key': '_default',
@@ -506,6 +520,8 @@ def _check_merit_value(caller, raw_string, **kwargs):
             caller.msg('|/You don\'t meet the prerequisites for that merit')
             return 'vampire_merits'
 
+
+# noinspection DuplicatedCode
 def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
     option_list = []
@@ -536,6 +552,8 @@ def _decrease_power(caller, raw_string, **kwargs):
         caller.db.power['Blood Potency'] = caller.db.power['Blood Potency'] - 1
     return 'vampire_merits'
 
+
+# noinspection DuplicatedCode
 def vampire_disciplines(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'vampire_disciplines'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -719,6 +737,8 @@ def quit_menu(caller, raw_string, **kwargs):
     text = {'format': 'suppress'}
     return text, None
 
+
+# noinspection DuplicatedCode
 def vampire_finish_cg(caller, raw_string, **kwargs):
     obj_menu = 'codes.commands.character_menus.object_in_menu'
     act_menu = 'codes.commands.character_menus.account_in_menu'

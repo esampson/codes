@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Path Name', max_length=80)
     ruling_arcana = forms.CharField(label='Ruling Arcana')
     inferior_arcana = forms.CharField(label='Inferior Arcana')

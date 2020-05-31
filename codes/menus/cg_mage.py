@@ -9,6 +9,8 @@ from codes.menus.menu_types import ExMenu
 
 import time
 
+
+# noinspection DuplicatedCode
 def mage_template(caller, raw_string, **kwargs):
     caller.db.cg['start_menu'] = 'cg_mage'
     caller.db.cg['start_node'] = 'mage_template'
@@ -65,6 +67,8 @@ def mage_template(caller, raw_string, **kwargs):
                'footer': footer}
     return display, options
 
+
+# noinspection DuplicatedCode
 def return_to_main_cg(caller, raw_string, **kwargs):
     caller.db.basics = {}
     caller.db.sphere = {}
@@ -151,6 +155,8 @@ def _set_nameless(caller, raw_string, **kwargs):
     caller.db.cg['starting_occult'] = current_occult
     return "mage_stat"
 
+
+# noinspection DuplicatedCode
 def mage_stat(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'mage_stat'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -208,6 +214,8 @@ def _raise_stat(caller, raw_string, **kwargs):
                                       'start': start_value}
     return 'mage_obsession'
 
+
+# noinspection DuplicatedCode
 def mage_obsession(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'mage_stat'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -257,6 +265,8 @@ def _mage_set_obsession(caller, raw_string, **kwargs):
     f.set(caller,[str(strip_control_sequences(raw_string))])
     return 'mage_arcana'
 
+
+# noinspection DuplicatedCode
 def mage_arcana(caller,raw_string,**kwargs):
     caller.db.cg['start_node'] = 'mage_arcana'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -405,6 +415,8 @@ def _check_stat_value(caller, raw_string, **kwargs):
                        kwargs['stat'].type())
             return 'mage_arcana'
 
+
+# noinspection DuplicatedCode
 def mage_rotes(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'mage_rotes'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -482,6 +494,8 @@ def _remove_rote(caller, raw_string, **kwargs):
     set(caller,kwargs['rote'],value=False, statclass='Rote')
     return 'mage_rotes'
 
+
+# noinspection DuplicatedCode
 def mage_add_rote(caller, raw_string, **kwargs):
     text = 'Enter name of spell:'
     option_list = [ {'key' : '_default',
@@ -528,6 +542,8 @@ def _check_rote(caller, raw_string, **kwargs):
             set(caller, stat.db.longname, value=True, statclass='rote')
             return 'mage_rotes'
 
+
+# noinspection DuplicatedCode,DuplicatedCode
 def mage_merits(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'mage_merits'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -620,6 +636,8 @@ def _return_to_rotes(caller, raw_string, **kwargs):
     caller.db.power={'Gnosis': 1}
     return 'mage_rotes'
 
+
+# noinspection DuplicatedCode
 def add_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
     option_list = [{'key': '_default',
@@ -669,6 +687,8 @@ def _check_merit(caller, raw_string, **kwargs):
                                   'merit' : merit,
                                   'max' : kwargs['max']}
 
+
+# noinspection DuplicatedCode
 def get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
@@ -718,6 +738,8 @@ def _check_merit_note(caller, raw_string, **kwargs):
         caller.msg('|/Invalid note for that merit')
         return 'mage_merits'
 
+
+# noinspection DuplicatedCode
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
     option_list = [{'key': '_default',
@@ -766,6 +788,8 @@ def _check_merit_value(caller, raw_string, **kwargs):
             caller.msg('|/You don\'t meet the prerequisites for that merit')
             return 'mage_merits'
 
+
+# noinspection DuplicatedCode
 def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
     merit_list = kwargs['removable']
@@ -817,6 +841,8 @@ def _decrease_power(caller, raw_string, **kwargs):
             f.set(caller,current_obsessions)
     return 'mage_merits'
 
+
+# noinspection DuplicatedCode
 def mage_praxes(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'mage_praxes'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -891,6 +917,8 @@ def _remove_praxis(caller, raw_string, **kwargs):
     set(caller,kwargs['praxis'],value=False, statclass='Praxis')
     return 'mage_praxes'
 
+
+# noinspection DuplicatedCode
 def mage_add_praxis(caller, raw_string, **kwargs):
     text = 'Enter name of spell:'
     option_list = [ {'key' : '_default',

@@ -15,6 +15,8 @@ anchors = { 'virtue' : ['Charity', 'Competitive', 'Faith', 'Fortitude',
                           'Gluttony', 'Greed', 'Lust', 'Pride', 'Sloth',
                           'Wrath'] }
 
+
+# noinspection DuplicatedCode
 def mortal_template(caller, raw_string, **kwargs):
     caller.db.cg['start_menu'] = 'cg_mortal'
     caller.db.cg['start_node'] = 'mortal_template'
@@ -83,6 +85,8 @@ def return_to_main_cg(caller, raw_string, **kwargs):
     text = {'format': 'suppress'}
     return text, None
 
+
+# noinspection DuplicatedCode
 def choose_anchor(caller, raw_string, **kwargs):
     option_list = []
     for item in anchors[kwargs['type']]:
@@ -98,6 +102,8 @@ def _set_anchor(caller, raw_string, **kwargs):
     caller.db.sphere[kwargs['type'].capitalize()] = kwargs['value']
     return 'mortal_template'
 
+
+# noinspection DuplicatedCode,DuplicatedCode
 def mortal_merits(caller, raw_string, **kwargs):
     caller.db.cg['start_node'] = 'mortal_merits'
     caller.db.cg['raw_string'] = strip_control_sequences(raw_string)
@@ -162,6 +168,8 @@ def _return_to_anchors(caller, raw_string, **kwargs):
     caller.db.merits = []
     return 'mortal_template'
 
+
+# noinspection DuplicatedCode
 def add_merit(caller, raw_string, **kwargs):
     text = 'Merit:'
     option_list = [ {'key' : '_default',
@@ -188,6 +196,8 @@ def add_merit(caller, raw_string, **kwargs):
                'footer': footer}
     return display, options
 
+
+# noinspection DuplicatedCode
 def _check_merit(caller, raw_string, **kwargs):
     merits = find(strip_control_sequences(raw_string), statclass='Merit')
     if len(merits) < 1:
@@ -208,6 +218,8 @@ def _check_merit(caller, raw_string, **kwargs):
                                   'merit' : merit,
                                   'max' : kwargs['max']}
 
+
+# noinspection DuplicatedCode
 def get_merit_note(caller, raw_string, **kwargs):
     text = 'This merit requires some form of note such as who the contacts '
     text = text + 'are or what the area of expertise is in:'
@@ -257,6 +269,8 @@ def _check_merit_note(caller, raw_string, **kwargs):
         caller.msg('|/Invalid note for that merit')
         return 'mortal_merits'
 
+
+# noinspection DuplicatedCode
 def get_merit_value(caller, raw_string, **kwargs):
     text = 'Enter value:'
     option_list = [ {'key' : '_default',
@@ -305,6 +319,8 @@ def _check_merit_value(caller, raw_string, **kwargs):
             caller.msg('|/You don\'t meet the prerequisites for that merit')
             return 'mortal_merits'
 
+
+# noinspection DuplicatedCode
 def remove_merit(caller, raw_string, **kwargs):
     text = 'Remove which merit:'
     option_list = []
@@ -333,6 +349,8 @@ def quit_menu(caller, raw_string, **kwargs):
     text = {'format': 'suppress'}
     return text, None
 
+
+# noinspection DuplicatedCode
 def mortal_finish_cg(caller, raw_string, **kwargs):
     obj_menu = 'codes.commands.character_menus.object_in_menu'
     act_menu = 'codes.commands.character_menus.account_in_menu'

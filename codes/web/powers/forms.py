@@ -2,7 +2,7 @@
 
 from django import forms
 
-class editForm(forms.Form):
+class EditForm(forms.Form):
     longname = forms.CharField(label='Sphere Name', max_length=80)
     category = forms.CharField(label='Sphere Category',required = False)
     reference = forms.CharField(label='Reference', required = False)

@@ -1,8 +1,7 @@
-# file mygame/web/chargen/forms.py
-
 from django import forms
 
-class editForm(forms.Form):
+
+class EditForm(forms.Form):
     longname = forms.CharField(label='Arcanum Name', max_length=80)
     info = forms.CharField(label='Info',
                            widget=forms.Textarea(attrs={'rows': 4, 'cols': 80}), required=False)

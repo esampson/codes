@@ -9,7 +9,7 @@ from evennia.utils.search import search_script_tag
 from evennia.utils.utils import inherits_from
 from evennia import create_script
 
-from codes.web.clans.forms import editForm
+from codes.web.clans.forms import EditForm
 from django.http import HttpResponseRedirect
 from datetime import datetime
 from evennia.objects.models import ObjectDB
@@ -94,14 +94,14 @@ def editor(request, object_id):
                      'bloodline':stat.db.bloodline,
                      'restricted':stat.db.restricted,
                      'link':object_id}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'clans/editor.html', {'form': form, 'clan_id':object_id })
 
 def editted(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 try:
                     data = search_script_tag('clan_stat')
@@ -150,14 +150,14 @@ def create(request):
                      'bloodline':False,
                      'restricted':False,
                      'link':''}
-    form = editForm(initial = starting_data)
+    form = EditForm(initial = starting_data)
     return render(request, 'clans/create.html', {'form': form})
 
 def created(request):
     user = request.user
     if user.is_staff:
         if request.method == 'POST':
-            form = editForm(request.POST)
+            form = EditForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
                 favored_attributes = []
