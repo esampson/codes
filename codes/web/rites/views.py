@@ -33,7 +33,7 @@ class rite_class:
     info = ''
     reference = ''
     restricted = False
-    
+
     def update(self,longname,rite_type,rank,prereq,info,reference,restricted):
         self.longname = longname
         self.rite_type = rite_type
@@ -42,16 +42,16 @@ class rite_class:
         self.info = info
         self.reference = reference
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('werewolf_rite_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -77,14 +77,14 @@ def sheet(request, object_id):
     return render(request, 'rites/sheet.html', {'rite': rite, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('werewolf_rite_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -139,9 +139,9 @@ def editted(request):
             return render(request, 'rites/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'rites/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
+
     starting_data = {'longname':'',
                      'type':'',
                      'rank':0,
@@ -160,7 +160,7 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
-                s = create_script('typeclasses.scripts.werewolfRiteScript',
+                s = create_script('typeclasses.scripts.WerewolfRiteScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.type=form.cleaned_data['type']
@@ -177,7 +177,7 @@ def created(request):
             return render(request, 'rites/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'rites/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('werewolf_rite_stat')
     rites = []

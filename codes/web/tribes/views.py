@@ -21,7 +21,7 @@ class tribe_class:
     info = ''
     reference = ''
     restricted = False
-    
+
     def update(self,longname,renown,tribe_gifts,info,reference,restricted):
         self.longname = longname
         self.renown = renown
@@ -29,16 +29,16 @@ class tribe_class:
         self.info = info
         self.reference = reference
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('tribe_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -61,14 +61,14 @@ def sheet(request, object_id):
     return render(request, 'tribes/sheet.html', {'tribe': tribe, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('tribe_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -126,9 +126,9 @@ def editted(request):
             return render(request, 'tribes/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'tribes/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
+
     starting_data = {'longname':'',
                      'renown':'',
                      'tribe_gifts':[],
@@ -150,7 +150,7 @@ def created(request):
                 if form.cleaned_data['tribe_gifts'] != '[]':
                     for item in form.cleaned_data['tribe_gifts'][1:-1].split(','):
                         tribe_gifts.append(item.strip()[1:-1])
-                s = create_script('typeclasses.scripts.tribeScript',
+                s = create_script('typeclasses.scripts.TribeScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.renown = form.cleaned_data['renown']
@@ -166,7 +166,7 @@ def created(request):
             return render(request, 'tribes/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'tribes/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('tribe_stat')
     tribes = []

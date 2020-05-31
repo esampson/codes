@@ -40,7 +40,7 @@ class theban_class:
     reference = ''
     info = ''
     restricted = False
-    
+
     def update(self,longname,rank,prereq,reference,info,restricted):
         self.longname = longname
         self.rank = rank
@@ -48,16 +48,16 @@ class theban_class:
         self.reference = reference
         self.info = info
         self.restricted = restricted
-    
+
 def sheet(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('theban_rite_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -82,14 +82,14 @@ def sheet(request, object_id):
     return render(request, 'theban/sheet.html', {'theban': theban, 'request':request, 'id':quote(object_id)})
 
 def editor(request, object_id):
-    
+
     object_id = unquote(object_id)
 
     try:
         data = search_script_tag('theban_rite_stat')
     except IndexError:
         raise Http404("I couldn't find a character with that ID.")
-    
+
     stats = []
     for stat in data:
         if stat.db.longname[0:len(object_id)].lower() == object_id.lower():
@@ -99,7 +99,7 @@ def editor(request, object_id):
     if len(stats) > 1:
         return render(request, 'theban/error.html', {'message': 'Too many matching theban'})
     theban = stats[0]
-    starting_data = {'longname':theban.db.longname, 
+    starting_data = {'longname':theban.db.longname,
                      'rank':theban.db.rank,
                      'prereq':theban.db.prereq,
                      'reference':theban.db.reference,
@@ -142,11 +142,11 @@ def editted(request):
             return render(request, 'theban/error.html', {'message': 'Not POST'})
     else:
         return render(request, 'theban/error.html', {'message': 'Not staff'})
-    
+
 def create(request):
-    
-    starting_data = {'longname':'', 
-                     'rank':0, 
+
+    starting_data = {'longname':'',
+                     'rank':0,
                      'prereq':'',
                      'reference':'',
                      'info':'',
@@ -162,7 +162,7 @@ def created(request):
             form = editForm(request.POST)
             if form.is_valid():
                 name = form.cleaned_data['longname'].replace('\'','').replace(' ','_')
-                s = create_script('typeclasses.scripts.thebanRiteScript', 
+                s = create_script('typeclasses.scripts.ThebanRiteScript',
                                    key=name)
                 s.db.longname=form.cleaned_data['longname']
                 s.db.rank=int(form.cleaned_data['rank'])
@@ -178,7 +178,7 @@ def created(request):
             return render(request, 'theban/error.html', {'message': 'Not POST'})
     else:
          return render(request, 'theban/error.html', {'message': 'Not staff'})
-    
+
 def list(request):
     data = search_script_tag('theban_rite_stat')
     theban = []

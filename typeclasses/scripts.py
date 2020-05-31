@@ -118,9 +118,9 @@ from codes.stats.seemingScripts import SeemingScript
 from codes.stats.skillScripts import SkillScript
 from codes.stats.spellScripts import SpellScript
 from codes.stats.sphereStatScripts import SphereStatScript
-from codes.stats.thebanRitesScripts import thebanRiteScript
-from codes.stats.tribesScripts import tribeScript
-from codes.stats.werewolfRitesScripts import werewolfRiteScript
+from codes.stats.thebanRitesScripts import ThebanRiteScript
+from codes.stats.tribesScripts import TribeScript
+from codes.stats.werewolfRitesScripts import WerewolfRiteScript
 from codes.stats.dictionary import DictionaryScript
 
 

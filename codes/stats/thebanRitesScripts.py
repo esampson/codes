@@ -1,14 +1,16 @@
 from codes.stats.codesScript import CodesScript
 
-class thebanRiteScript(CodesScript):
 
+class ThebanRiteScript(CodesScript):
+
+    # noinspection PyAttributeOutsideInit
     def at_script_creation(self):
-            self.persistent = True  # will survive reload
-            self.tags.add('stat_data')
-            self.tags.add('theban_rite_stat')
+        self.persistent = True  # will survive reload
+        self.tags.add('stat_data')
+        self.tags.add('theban_rite_stat')
 
-    def update(self,longname='', rank=1,
-               prereq='', restricted=False, reference='',
+    def update(self, longname='', rank=1, prereq='', restricted=False,
+               reference='',
                info=''):
         self.db.longname = longname
         self.db.rank = rank
@@ -17,13 +19,14 @@ class thebanRiteScript(CodesScript):
         self.db.reference = reference
         self.db.info = info
 
+    # noinspection PyUnusedLocal
     def get(self, target, subentry=''):
         """
         get
 
 
-        Determines if a character has a given rite. Should only return True or
-        False
+        Determines if a character has a given rite. Should only return
+        True or False
 
 
         target: The character being checked
@@ -39,13 +42,14 @@ class thebanRiteScript(CodesScript):
             result = False
         return result
 
+    # noinspection PyUnusedLocal
     def meets_prereqs(self, target, value=0, subentry=''):
         """
         meets_prereqs
 
 
-        Determines if a character meets the prerequisites to purchase a rite. Should
-        only return True or False.
+        Determines if a character meets the prerequisites to purchase a
+        rite. Should only return True or False.
 
 
         target: The character being checked
@@ -60,14 +64,18 @@ class thebanRiteScript(CodesScript):
             else:
                 result = False
         else:
-            if (target.get('Theban Sorcery',statclass='Discipline') >= self.db.rank and
-                target.get('Status', subentry='Lancea et Sanctum', statclass='Merit') >= 1):
+            if (target.get('Theban Sorcery',
+                           statclass='Discipline') >= self.db.rank
+                    and target.get('Status', subentry='Lancea et Sanctum',
+                                   statclass='Merit') >= 1):
                 result = True
             else:
                 result = False
         return result
 
-    def cost(self, target, value, subentry=''):
+    # noinspection PyUnusedLocal
+    @staticmethod
+    def cost(target, value, subentry=''):
         """
         cost
 
@@ -84,13 +92,14 @@ class thebanRiteScript(CodesScript):
         result = 2
         return result
 
+    # noinspection DuplicatedCode,PyUnusedLocal
     def set(self, target, value, subentry=''):
         """
         set
 
 
-        Sets the value of a rite on a character sheet if value is True. Removes
-        the rite if the value is False.
+        Sets the value of a rite on a character sheet if value is True.
+        Removes the rite if the value is False.
 
 
         target: The character the rite is being set for
@@ -102,17 +111,14 @@ class thebanRiteScript(CodesScript):
         if not target.db.thebanRites:
             target.db.thebanRites = {}
         name = self.db.longname
-        if  name not in target.db.thebanRites and value == True:
+        if name not in target.db.thebanRites and value is True:
             target.db.thebanRites[name] = True
             result = True
-        elif name in target.db.thebanRites and value == False:
+        elif name in target.db.thebanRites and value is False:
             del target.db.thebanRites[name]
             result = True
-        elif name not in target.db.thebanRites and value == False:
+        elif name not in target.db.thebanRites and value is False:
             result = True
         else:
             result = True
         return result
-
-
-

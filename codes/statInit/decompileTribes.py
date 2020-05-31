@@ -3,19 +3,19 @@ from evennia import ScriptDB
 from operator import itemgetter
 
 tribes = ScriptDB.objects.typeclass_search(
-    'codes.stats.tribesScripts.tribeScript')
+    'codes.stats.tribesScripts.TribeScript')
 my_list = []
 for item in tribes:
     my_list.append([item.db.longname, item])
 tribes = sorted(my_list, key=itemgetter(0))
-        
+
 file = open('initTribes.py','w')
 file.write('from evennia import create_script\n')
 file.write('\n')
 for tribe in tribes:
     name = tribe[1].db.longname.replace('\'','').replace(' ','_')
     file.write(
-        'tribe = create_script(\'typeclasses.scripts.tribeScript\','
+        'tribe = create_script(\'typeclasses.scripts.TribeScript\','
         'key = \'' + name + '\')\n')
     file.write(
         'tribe.db.longname = \'' +

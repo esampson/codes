@@ -1,6 +1,6 @@
 from evennia import create_script
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Banish')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Banish')
 rite.db.longname = 'Banish'
 rite.db.type = 'Pack'
 rite.db.rank = 1
@@ -9,7 +9,7 @@ rite.db.info = 'This rite invokes the pack\'s authority as guardian between the 
 rite.db.reference = 'W:tF p. 142-143'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Bottle_Spirit')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Bottle_Spirit')
 rite.db.longname = 'Bottle Spirit'
 rite.db.type = 'Wolf'
 rite.db.rank = 2
@@ -18,7 +18,7 @@ rite.db.info = 'Death Wolf taught her followers many occult secrets; this rite i
 rite.db.reference = 'W:tF p. 140'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Chain_Rage')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Chain_Rage')
 rite.db.longname = 'Chain Rage'
 rite.db.type = 'Wolf'
 rite.db.rank = 1
@@ -27,7 +27,7 @@ rite.db.info = 'This pact with spirits of rage forestalls fury, but only for a t
 rite.db.reference = 'W:tF p. 139-140'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Expel')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Expel')
 rite.db.longname = 'Expel'
 rite.db.type = 'Pack'
 rite.db.rank = 4
@@ -36,7 +36,7 @@ rite.db.info = 'This rite lays spiritual claim to a person or object with the pa
 rite.db.reference = 'W:tF p. 146'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Fetish')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Fetish')
 rite.db.longname = 'Fetish'
 rite.db.type = 'Wolf'
 rite.db.rank = 4
@@ -45,7 +45,7 @@ rite.db.info = 'This rite binds a spirit into a sacred receptacle - a fetish. It
 rite.db.reference = 'W:tF p. 141'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Forge_Alliance')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Forge_Alliance')
 rite.db.longname = 'Forge Alliance'
 rite.db.type = 'Wolf'
 rite.db.rank = 5
@@ -54,7 +54,7 @@ rite.db.info = 'Calling on the Firstborn, this rite replicates an ancient pact a
 rite.db.reference = 'W:tF p. 142'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Great_Hunt')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Great_Hunt')
 rite.db.longname = 'Great Hunt'
 rite.db.type = 'Pack'
 rite.db.rank = 5
@@ -63,7 +63,7 @@ rite.db.info = 'Amongst the most potent of Pack Rites, the Great Hunt calls upon
 rite.db.reference = 'W:tF p. 146'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Harness_the_Cycle')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Harness_the_Cycle')
 rite.db.longname = 'Harness the Cycle'
 rite.db.type = 'Pack'
 rite.db.rank = 1
@@ -72,7 +72,7 @@ rite.db.info = 'The cycle of the changing seasons bears immense power. This rite
 rite.db.reference = 'W:tF p. 143'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Hidden_Path')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Hidden_Path')
 rite.db.longname = 'Hidden Path'
 rite.db.type = 'Pack'
 rite.db.rank = 4
@@ -81,7 +81,7 @@ rite.db.info = 'Calling upon the spirits of wolves and places to fulfill their s
 rite.db.reference = 'W:tF p. 145-146'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Hunting_Ground')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Hunting_Ground')
 rite.db.longname = 'Hunting Ground'
 rite.db.type = 'Pack'
 rite.db.rank = 2
@@ -90,7 +90,7 @@ rite.db.info = 'This rite invokes the old rights of Father Wolf to sanctify a cl
 rite.db.reference = 'W:tF p. 143-144'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Kindle_Fury')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Kindle_Fury')
 rite.db.longname = 'Kindle Fury'
 rite.db.type = 'Wolf'
 rite.db.rank = 3
@@ -99,7 +99,7 @@ rite.db.info = 'This rite draws on the ancient pact between Fenris-Urand the Blo
 rite.db.reference = 'W:tF p. 140'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Messenger')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Messenger')
 rite.db.longname = 'Messenger'
 rite.db.type = 'Wolf'
 rite.db.rank = 1
@@ -108,7 +108,7 @@ rite.db.info = 'A gift from Luna to the Moon\'s children, this rite is a staple 
 rite.db.reference = 'W:tF p. 140'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Moons_Mad_Love')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Moons_Mad_Love')
 rite.db.longname = 'Moon\'s Mad Love'
 rite.db.type = 'Pack'
 rite.db.rank = 2
@@ -117,7 +117,7 @@ rite.db.info = 'This rite is powerful and dangerous, drawing upon a pact with Lu
 rite.db.reference = 'W:tF p. 144'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Raiment_of_the_Storm')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Raiment_of_the_Storm')
 rite.db.longname = 'Raiment of the Storm'
 rite.db.type = 'Pack'
 rite.db.rank = 3
@@ -126,7 +126,7 @@ rite.db.info = 'Spirits of storm and rain respond to the call of this rite, empo
 rite.db.reference = 'W:tF p. 145'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Sacred_Hunt')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Sacred_Hunt')
 rite.db.longname = 'Sacred Hunt'
 rite.db.type = 'Wolf'
 rite.db.rank = 2
@@ -135,7 +135,7 @@ rite.db.info = 'The Sacred Hunt, the Siskur-Dah, is the most holy of all rites. 
 rite.db.reference = 'W:tF p. 140'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Shadowbind')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Shadowbind')
 rite.db.longname = 'Shadowbind'
 rite.db.type = 'Wolf'
 rite.db.rank = 3
@@ -144,7 +144,7 @@ rite.db.info = 'With this rite, the ritemaster seeks to bind a spirit in a weave
 rite.db.reference = 'W:tF p. 141'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Shadowcall')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Shadowcall')
 rite.db.longname = 'Shadowcall'
 rite.db.type = 'Pack'
 rite.db.rank = 3
@@ -153,7 +153,7 @@ rite.db.info = 'This rite summons up a spirit through ancient laws that force it
 rite.db.reference = 'W:tF p. 145'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Supplication')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Supplication')
 rite.db.longname = 'Supplication'
 rite.db.type = 'Pack'
 rite.db.rank = 3
@@ -162,7 +162,7 @@ rite.db.info = 'This rite is an invocation of balance, an exchange of respect in
 rite.db.reference = 'W:tF p. 145'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Totemic_Empowerment')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Totemic_Empowerment')
 rite.db.longname = 'Totemic Empowerment'
 rite.db.type = 'Pack'
 rite.db.rank = 1
@@ -171,7 +171,7 @@ rite.db.info = 'Drawing deep on the pack-bond\'s power, this rite turns a pack m
 rite.db.reference = 'W:tF p. 143'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Twilight_Purge')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Twilight_Purge')
 rite.db.longname = 'Twilight Purge'
 rite.db.type = 'Wolf'
 rite.db.rank = 4
@@ -180,7 +180,7 @@ rite.db.info = 'Drawing on Shadow-laws of passage and dominance, this rite scour
 rite.db.reference = 'W:tF p. 141-142'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Urfarahs_Bane')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Urfarahs_Bane')
 rite.db.longname = 'Urfarah\'s Bane'
 rite.db.type = 'Wolf'
 rite.db.rank = 5
@@ -189,7 +189,7 @@ rite.db.info = 'Father Wolf\'s death at the hands of his offspring was an event 
 rite.db.reference = 'W:tF p. 142'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Veil')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Veil')
 rite.db.longname = 'Veil'
 rite.db.type = 'Wolf'
 rite.db.rank = 5
@@ -198,7 +198,7 @@ rite.db.info = 'This rite was born from the emergence of new spiritual laws as s
 rite.db.reference = 'W:tF p. 142'
 rite.db.restricted = False
 
-rite = create_script('typeclasses.scripts.werewolfRiteScript',key = 'Wellspring')
+rite = create_script('typeclasses.scripts.WerewolfRiteScript',key = 'Wellspring')
 rite.db.longname = 'Wellspring'
 rite.db.type = 'Pack'
 rite.db.rank = 2

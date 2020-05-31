@@ -1,6 +1,6 @@
 from evennia import create_script
 
-tribe = create_script('typeclasses.scripts.tribeScript',key = 'Blood_Talons')
+tribe = create_script('typeclasses.scripts.TribeScript',key = 'Blood_Talons')
 tribe.db.longname = 'Blood Talons'
 tribe.db.renown = 'Glory'
 tribe.db.tribe_gifts = ['Inspiration', 'Rage', 'Strength']
@@ -8,7 +8,7 @@ tribe.db.info = 'The Blood Talons are violence incarnate. Every hunt is just a w
 tribe.db.reference = 'W:tF p. 34-36'
 tribe.db.restricted = False
 
-tribe = create_script('typeclasses.scripts.tribeScript',key = 'Bone_Shadows')
+tribe = create_script('typeclasses.scripts.TribeScript',key = 'Bone_Shadows')
 tribe.db.longname = 'Bone Shadows'
 tribe.db.renown = 'Wisdom'
 tribe.db.tribe_gifts = ['Death', 'Elemental', 'Insight']
@@ -16,7 +16,7 @@ tribe.db.info = 'The Bone Shadows are keepers of secret wisdom, explorers plumbi
 tribe.db.reference = 'W:tF p. 37-39'
 tribe.db.restricted = False
 
-tribe = create_script('typeclasses.scripts.tribeScript',key = 'Ghost_Wolves')
+tribe = create_script('typeclasses.scripts.TribeScript',key = 'Ghost_Wolves')
 tribe.db.longname = 'Ghost Wolves'
 tribe.db.renown = ''
 tribe.db.tribe_gifts = []
@@ -24,7 +24,7 @@ tribe.db.info = 'Ghost Wolves aren\'t a tribe. They\'re the werewolves who have 
 tribe.db.reference = 'W:tF p. 49-50'
 tribe.db.restricted = False
 
-tribe = create_script('typeclasses.scripts.tribeScript',key = 'Hunters_in_Darkness')
+tribe = create_script('typeclasses.scripts.TribeScript',key = 'Hunters_in_Darkness')
 tribe.db.longname = 'Hunters in Darkness'
 tribe.db.renown = 'Purity'
 tribe.db.tribe_gifts = ['Nature', 'Stealth', 'Warding']
@@ -32,7 +32,7 @@ tribe.db.info = 'The Hunters in Darkness are the quintessential werewolves, at l
 tribe.db.reference = 'W:tF p. 40-42'
 tribe.db.restricted = False
 
-tribe = create_script('typeclasses.scripts.tribeScript',key = 'Iron_Masters')
+tribe = create_script('typeclasses.scripts.TribeScript',key = 'Iron_Masters')
 tribe.db.longname = 'Iron Masters'
 tribe.db.renown = 'Cunning'
 tribe.db.tribe_gifts = ['Knowledge', 'Shaping', 'Technology']
@@ -40,7 +40,7 @@ tribe.db.info = 'The Iron Masters are adapters, survivors, and innovators. Const
 tribe.db.reference = 'W:tF p. 43-45'
 tribe.db.restricted = False
 
-tribe = create_script('typeclasses.scripts.tribeScript',key = 'Storm_Lords')
+tribe = create_script('typeclasses.scripts.TribeScript',key = 'Storm_Lords')
 tribe.db.longname = 'Storm Lords'
 tribe.db.renown = 'Honor'
 tribe.db.tribe_gifts = ['Evasion', 'Dominance', 'Weather']
