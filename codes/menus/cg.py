@@ -569,8 +569,8 @@ def werewolf_template(caller, raw_string, **kwargs):
     return text,None
 
 def quit_menu(caller, raw_string, **kwargs):
-    obj_menu = 'codes.commands.character_menus.object_in_menu'
-    act_menu = 'codes.commands.character_menus.account_in_menu'
+    obj_menu = 'codes.commands.character_menus.CharacterInMenu'
+    act_menu = 'codes.commands.character_menus.AccountInMenu'
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
     caller.execute_cmd('look')

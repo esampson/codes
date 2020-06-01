@@ -57,12 +57,12 @@ def short_list(stats):
 
 
 def send_message(target, message):
-    input = '<OOC>: ' + message
-    width = len(input) + 10
+    new_message = '<OOC>: ' + message
+    width = len(new_message) + 10
     if width > 60:
         width = 60
     padding = int((80 - width) / 2)
-    text = top_bottom(input, width=width, padding=padding,
+    text = top_bottom(new_message, width=width, padding=padding,
                       replacements=[['<OOC>:', '|b<|gOOC|b>|w:|n']])
     target.location.msg_contents(text)
 
@@ -97,9 +97,9 @@ class CmdPool(Command):
         pool_func(self.caller, self.args)  # pragma: no cover
 
 
-def pool_func(target, input):
-    if input:
-        parsed = parser(input)
+def pool_func(target, inputdata):
+    if inputdata:
+        parsed = parser(inputdata)
     else:
         parsed = {'args': '',
                   'entry': '',

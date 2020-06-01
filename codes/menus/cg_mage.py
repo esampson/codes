@@ -966,8 +966,8 @@ def _check_praxis(caller, raw_string, **kwargs):
             return 'mage_praxes'
 
 def quit_menu(caller, raw_string, **kwargs):
-    obj_menu = 'codes.commands.character_menus.object_in_menu'
-    act_menu = 'codes.commands.character_menus.account_in_menu'
+    obj_menu = 'codes.commands.character_menus.CharacterInMenu'
+    act_menu = 'codes.commands.character_menus.AccountInMenu'
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
     caller.execute_cmd('look')
@@ -975,14 +975,14 @@ def quit_menu(caller, raw_string, **kwargs):
     return text, None
 
 def mage_finish_cg(caller, raw_string, **kwargs):
-    obj_menu = 'codes.commands.character_menus.object_in_menu'
-    act_menu = 'codes.commands.character_menus.account_in_menu'
+    obj_menu = 'codes.commands.character_menus.CharacterInMenu'
+    act_menu = 'codes.commands.character_menus.AccountInMenu'
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
     del caller.db.cg
-    caller.cmdset.delete('unfinished_character')
+    caller.cmdset.delete('UnfinishedCharacter')
     caller.cmdset.add(
-        'codes.commands.character_commands.finished_character',permanent=True)
+        'codes.commands.character_commands.FinishedCharacter',permanent=True)
     set(caller,'Wisdom',statclass='Advantage', value=7)
     set(
         caller,'Mana',statclass='Advantage',

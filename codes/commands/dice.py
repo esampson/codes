@@ -34,6 +34,7 @@ class CmdRoll(Command):
     """
 
     key = '+roll'
+
     # noinspection PyPep8
     arg_regex = '^[\s/][0-9a-zA-Z/\-\s+:]+$'
     help_category = 'IC Commands'
@@ -42,8 +43,8 @@ class CmdRoll(Command):
         roll_func(self.caller, self.args)  # pragma: no cover
 
 
-def roll_func(roller, input):
-    data = input.split(' ', 1)
+def roll_func(roller, roll):
+    data = roll.split(' ', 1)
     args = []
     reroll_target = 10
     rote = False

@@ -21,8 +21,8 @@ class CmdCG(Command):
     help_category = 'OOC Commands'
 
     def func(self):
-        obj_menu = 'codes.commands.character_menus.object_in_menu'
-        act_menu = 'codes.commands.character_menus.account_in_menu'
+        obj_menu = 'codes.commands.character_menus.CharacterInMenu'
+        act_menu = 'codes.commands.character_menus.AccountInMenu'
         self.caller.cmdset.add(obj_menu)
         self.caller.account.cmdset.add(act_menu)
         if self.caller.db.cg:
@@ -99,7 +99,7 @@ class CmdInventory(Command):
         pass  # pragma: no cover
 
 
-class object_in_menu(CmdSet):
+class CharacterInMenu(CmdSet):
     key = 'For use in menus'
     priority = 4
     mergetype = "Remove"
@@ -109,7 +109,7 @@ class object_in_menu(CmdSet):
         self.add(CmdInventory())
 
 
-class account_in_menu(CmdSet):
+class AccountInMenu(CmdSet):
     key = 'quit suppress'
     priority = 5
     mergetype = "Remove"

@@ -818,8 +818,8 @@ def _check_contract(caller, raw_string, **kwargs):
             return 'changeling_contracts'
 
 def quit_menu(caller, raw_string, **kwargs):
-    obj_menu = 'codes.commands.character_menus.object_in_menu'
-    act_menu = 'codes.commands.character_menus.account_in_menu'
+    obj_menu = 'codes.commands.character_menus.CharacterInMenu'
+    act_menu = 'codes.commands.character_menus.AccountInMenu'
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
     caller.execute_cmd('look')
@@ -829,14 +829,14 @@ def quit_menu(caller, raw_string, **kwargs):
 
 # noinspection DuplicatedCode
 def changeling_finish_cg(caller, raw_string, **kwargs):
-    obj_menu = 'codes.commands.character_menus.object_in_menu'
-    act_menu = 'codes.commands.character_menus.account_in_menu'
+    obj_menu = 'codes.commands.character_menus.CharacterInMenu'
+    act_menu = 'codes.commands.character_menus.AccountInMenu'
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
     del caller.db.cg
-    caller.cmdset.add('codes.commands.character_commands.finished_character',
+    caller.cmdset.add('codes.commands.character_commands.FinishedCharacter',
                       permanent=True)
-    caller.cmdset.delete('unfinished_character')
+    caller.cmdset.delete('UnfinishedCharacter')
     set(caller,'Clarity',statclass='Advantage',
         value=caller.get('Clarity',subentry='Permanent',statclass='Advantage'))
     set(caller,'Glamour',statclass='Advantage',
