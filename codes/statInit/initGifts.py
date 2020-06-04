@@ -960,7 +960,7 @@ gift.db.reference = 'W:tF p. 119-120'
 gift.db.info = 'The Elodoth hunts with a net wrought not of rope but of connections, favors, and allies. It is so terribly easy for the prey to become snared.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Snarl_of_the_Predator')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Snarl_of_the_Predator')
 gift.db.longname = 'Snarl of the Predator'
 gift.db.category = 'Shadow'
 gift.db.group = 'Dominance'
@@ -970,7 +970,7 @@ gift.db.reference = 'W:tF p. 123'
 gift.db.info = 'When the wolf snarls, the herd hurries to obey.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Spirit_Whispers')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Spirit_Whispers')
 gift.db.longname = 'Spirit Whispers'
 gift.db.category = 'Moon'
 gift.db.group = 'Crescent Moon'
@@ -980,7 +980,7 @@ gift.db.reference = 'W:tF p. 115-116'
 gift.db.info = 'The Ithaeur can whisper a command that stirs sleeping spirits to mutter their secrets.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Still_Small_Voice')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Still_Small_Voice')
 gift.db.longname = 'Still Small Voice'
 gift.db.category = 'Shadow'
 gift.db.group = 'Inspiration'
@@ -990,7 +990,7 @@ gift.db.reference = 'W:tF p. 127'
 gift.db.info = 'Words spoken with this Facet pierce through the raging flames of Kuruth with calm assurance.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'The_Fathers_Form')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'The_Fathers_Form')
 gift.db.longname = 'The Father\'s Form'
 gift.db.category = 'Wolf'
 gift.db.group = 'Change'
@@ -1000,7 +1000,7 @@ gift.db.reference = 'W:tF p. 137'
 gift.db.info = 'The Uratha may take Gauru form without having to constantly attack or risk falling to Kuruth. This Facet brings forth Father Wolf\s form while suppressing Mother Luna\'s bloodthirsty madness.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'The_Hunter_Waits')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'The_Hunter_Waits')
 gift.db.longname = 'The Hunter Waits'
 gift.db.category = 'Shadow'
 gift.db.group = 'Stealth'
@@ -1010,7 +1010,7 @@ gift.db.reference = 'W:tF p. 132'
 gift.db.info = 'The wily predator knows when to wait and when to strike. The perfect ambush requires patience.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'This_Story_is_True')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'This_Story_is_True')
 gift.db.longname = 'This Story is True'
 gift.db.category = 'Shadow'
 gift.db.group = 'Knowledge'
@@ -1020,7 +1020,7 @@ gift.db.reference = 'W:tF p. 128'
 gift.db.info = 'Tales of the past can teach important lessons in the present. It doesn\'t matter if the story is factually true, as long as the symbolic meaning is true enough.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Thousand-Throat_Howl')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Thousand-Throat_Howl')
 gift.db.longname = 'Thousand-Throat Howl'
 gift.db.category = 'Moon'
 gift.db.group = 'Gibbous Moon'
@@ -1030,7 +1030,7 @@ gift.db.reference = 'W:tF p. 118-119'
 gift.db.info = 'The Cahalith throws back her head and howls. A thousand voices cry out with her, throwing prey into confusion and disarray.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Ties_of_Blood_and_Bone')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Ties_of_Blood_and_Bone')
 gift.db.longname = 'Ties of Blood and Bone'
 gift.db.category = 'Moon'
 gift.db.group = 'Half Moon'
@@ -1040,7 +1040,7 @@ gift.db.reference = 'W:tF p. 120'
 gift.db.info = 'The strongest ties of all are those that bind the pack together. This Facet lets the Elodoth draw on those connections at a deep and visceral level, exchanging places in a shiver of fleshy metamorphosis.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Ties_of_Word_and_Promise')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Ties_of_Word_and_Promise')
 gift.db.longname = 'Ties of Word and Promise'
 gift.db.category = 'Moon'
 gift.db.group = 'Half Moon'
@@ -1050,7 +1050,7 @@ gift.db.reference = 'W:tF p. 120'
 gift.db.info = 'The Elodoth needs only a little time to draw on the strands of his web. It takes but a few moments of convincing promises and assurances.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Tireless_Hunter')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Tireless_Hunter')
 gift.db.longname = 'Tireless Hunter'
 gift.db.category = 'Wolf'
 gift.db.group = 'Hunting'
@@ -1060,7 +1060,7 @@ gift.db.reference = 'W:tF p. 137'
 gift.db.info = 'No matter how long the hunt or where it takes her, the hunter endures.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Tongue_of_Flame')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Tongue_of_Flame')
 gift.db.longname = 'Tongue of Flame'
 gift.db.category = 'Shadow'
 gift.db.group = 'Elementals'
@@ -1070,7 +1070,7 @@ gift.db.reference = 'W:tF p. 123'
 gift.db.info = 'The Uratha who possesses this Facet is mistress of flame and smoke. She is a fire-walker to whom the blaze pays obeisance.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Totems_Wrath')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Totems_Wrath')
 gift.db.longname = 'Totem\'s Wrath'
 gift.db.category = 'Wolf'
 gift.db.group = 'Pack'
@@ -1080,7 +1080,7 @@ gift.db.reference = 'W:tF p. 138'
 gift.db.info = 'The werewolf injects Death Rage into the totem and forces it to physical form, where a Gauru-like shell hastily forms around it. The totem isn\'t itself at that moment - it is a murderous foe in the throes of Kuruth that can only distinguish "pack" from "not pack." Most totems believe that using this Facet violates their bargains with their packs, even those that enjoy violence and conflict. Use of this Facet can have a dramatic effect on the relationship between totem and pack.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Unchained')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Unchained')
 gift.db.longname = 'Unchained'
 gift.db.category = 'Shadow'
 gift.db.group = 'Strength'
@@ -1090,7 +1090,7 @@ gift.db.reference = 'W:tF p. 132'
 gift.db.info = 'The People are not domesticated dogs to be chained or leashed. Nothing can contain their rage and might.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Unity')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Unity')
 gift.db.longname = 'Unity'
 gift.db.category = 'Shadow'
 gift.db.group = 'Inspiration'
@@ -1100,7 +1100,7 @@ gift.db.reference = 'W:tF p. 127'
 gift.db.info = 'The pack is tighter than a family and more devoted than a cult. With this Facet, those bonds are almost unbreakable.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Unmake')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Unmake')
 gift.db.longname = 'Unmake'
 gift.db.category = 'Shadow'
 gift.db.group = 'Technology'
@@ -1110,7 +1110,7 @@ gift.db.reference = 'W:tF p. 133-134'
 gift.db.info = 'With a snarled command, the Uratha condemns a device to self-destruction.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Voice_of_Glory')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Voice_of_Glory')
 gift.db.longname = 'Voice of Glory'
 gift.db.category = 'Moon'
 gift.db.group = 'Gibbous Moon'
@@ -1120,7 +1120,7 @@ gift.db.reference = 'W:tF p. 118'
 gift.db.info = 'The voice of the Cahalith is powerful, reassuring, and inspiring. She holds audiences in thrall to her words, both her allies and hapless prey who don\'t understand the threat she poses.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'War_Howl')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'War_Howl')
 gift.db.longname = 'War Howl'
 gift.db.category = 'Moon'
 gift.db.group = 'Gibbous Moon'
@@ -1130,7 +1130,7 @@ gift.db.reference = 'W:tF p. 118'
 gift.db.info = 'The Cahalith howls her defiance and spurs her pack to greater heights of violence and fury.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Ward_the_Wolfs_Den')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Ward_the_Wolfs_Den')
 gift.db.longname = 'Ward the Wolf\'s Den'
 gift.db.category = 'Shadow'
 gift.db.group = 'Warding'
@@ -1140,7 +1140,7 @@ gift.db.reference = 'W:tF p. 134-135'
 gift.db.info = 'The wolf must have a sanctuary, a den to which he can return and slumber in safety.'
 gift.db.restricted = False
 
-gift = create_script('typeclasses.scripts.giftScript',key = 'Warriors_Hide')
+gift = create_script('typeclasses.scripts.GiftScript',key = 'Warriors_Hide')
 gift.db.longname = 'Warrior\'s Hide'
 gift.db.category = 'Moon'
 gift.db.group = 'Full Moon'

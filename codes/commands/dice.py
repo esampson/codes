@@ -43,9 +43,8 @@ class CmdRoll(Command):
         roll_func(self.caller, self.args)  # pragma: no cover
 
 
-def roll_func(roller, roll):
-    data = roll.split(' ', 1)
-    args = []
+def roll_func(roller, roll_input):
+    data = roll_input.split(' ', 1)
     reroll_target = 10
     rote = False
     for item in data[0].split('/'):
@@ -159,7 +158,7 @@ def roll_func(roller, roll):
 
 def roll(dice):
     rolls = []
-    for roll in range(dice):
+    for die in range(dice):
         rolls.append(random.randint(1, 10))
     return rolls
 
@@ -178,17 +177,17 @@ def roll_sequence(dice, target):
     return sequence
 
 
-def roll_again(roll, target):
+def roll_again(die_roll, target):
     rerolls = 0
-    for die in roll:
+    for die in die_roll:
         if die >= target:
             rerolls = rerolls + 1
     return rerolls
 
 
-def roll_breakdown(roll):
+def roll_breakdown(die_roll):
     breakdown = ''
-    for item in roll:
+    for item in die_roll:
         component = ''
         for subitem in item:
             component = component + str(subitem) + ', '

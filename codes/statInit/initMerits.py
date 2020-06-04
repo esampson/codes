@@ -3735,7 +3735,7 @@ if len(stats) == 0:
 
 stats = data.find('Warded_Dreams',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Warded_Dreams')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Warded_Dreams')
     merit.db.longname = 'Warded Dreams'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3]
@@ -3748,7 +3748,7 @@ if len(stats) == 0:
 
 stats = data.find('Weakest_Link',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Weakest_Link')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Weakest_Link')
     merit.db.longname = 'Weakest Link'
     merit.db.category = 'Werewolf'
     merit.db.range = [2]
@@ -3761,7 +3761,7 @@ if len(stats) == 0:
 
 stats = data.find('Weapon_and_Shield',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Weapon_and_Shield')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Weapon_and_Shield')
     merit.db.longname = 'Weapon and Shield'
     merit.db.category = 'Fighting'
     merit.db.range = [1, 2, 3, 4]
@@ -3774,7 +3774,7 @@ if len(stats) == 0:
 
 stats = data.find('Where_the_Bodies_Are_Buried',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Where_the_Bodies_Are_Buried')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Where_the_Bodies_Are_Buried')
     merit.db.longname = 'Where the Bodies Are Buried'
     merit.db.category = 'Vampire'
     merit.db.range = [1]
@@ -3787,7 +3787,7 @@ if len(stats) == 0:
 
 stats = data.find('Workshop',statclass='Merit')
 if len(stats) == 0:
-    merit = create_script('typeclasses.scripts.meritScript',key = 'Workshop')
+    merit = create_script('typeclasses.scripts.MeritScript',key = 'Workshop')
     merit.db.longname = 'Workshop'
     merit.db.category = 'Changeling'
     merit.db.range = [1, 2, 3, 4, 5]

@@ -5,7 +5,7 @@ from django.shortcuts import render
 from evennia.utils.search import search_script_tag
 from evennia import create_script
 
-from codes.web.gifts.forms import editForm
+from codes.web.gifts.forms import EditForm
 
 from urllib.parse import unquote
 from urllib.parse import quote

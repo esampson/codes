@@ -116,7 +116,7 @@ def pool_func(target, inputdata):
     reason = parsed['value']
     if len(pool) == 1:
         current = pool[0].get(target, subentry='temporary')
-        max = pool[0].get(target, subentry='permanent')
+        pool_max = pool[0].get(target, subentry='permanent')
     if (action in ['spend', 'expend', 'lose', 'gain', 'regain', 'recover']
             and len(pool) == 1 and amount.isnumeric()):
         if action in ['spend', 'expend', 'lose'] and int(amount) > current:
@@ -132,8 +132,8 @@ def pool_func(target, inputdata):
                     result = result + ' for ' + reason
                 pool[0].set(target, current - int(amount))
             elif action in ['gain', 'regain', 'recover']:
-                if current + int(amount) > max:
-                    amount = max - current
+                if current + int(amount) > pool_max:
+                    amount = pool_max - current
                 result = (target.name + ' gains ' + str(amount) +
                           ' point')
                 if int(amount) != 1:
@@ -145,7 +145,7 @@ def pool_func(target, inputdata):
             send_message(target, result)
     elif action in ['check'] and len(pool) == 1:
         result = (pool[0].db.longname + ' Pool: ' + str(current) + '/' +
-                  str(max))
+                  str(pool_max))
         target.msg(result)
     else:
         target.msg('I can\'t tell what you want to do')
@@ -181,9 +181,9 @@ class CmdProve(Command):
         prove_func(self.caller, self.args)  # pragma: no cover
 
 
-def prove_func(target, input):
-    if input:
-        parsed = parser(input)
+def prove_func(target, prove_input):
+    if prove_input:
+        parsed = parser(prove_input)
     else:
         parsed = {'args': '',
                   'entry': '',
@@ -272,9 +272,9 @@ class CmdList(Command):
 
 
 # noinspection DuplicatedCode
-def list_func(target, input):
-    if input:
-        parsed = parser(input)
+def list_func(target, list_input):
+    if list_input:
+        parsed = parser(list_input)
     else:
         parsed = {'args': '',
                   'entry': '',
@@ -339,16 +339,16 @@ class CmdHurt(Command):
 
 
 # noinspection DuplicatedCode
-def hurt_func(target, input):
-    if input:
-        parsed = parser(input)
+def hurt_func(target, hurt_input):
+    if hurt_input:
+        parsed = parser(hurt_input)
     else:
         parsed = {'args': '',
                   'entry': '',
                   'subentry': '',
                   'statclass': '',
                   'value': 0}
-    type = parsed['entry'].lower()
+    hurt_type = parsed['entry'].lower()
     amount = parsed['value']
     health = target.db.advantages['Health']
     starting_health = list(health).copy()
@@ -356,11 +356,11 @@ def hurt_func(target, input):
     max_health = target.get('Health', statclass='Advantage',
                             subentry='Permanent')
 
-    if type in ['bashing', 'bash', 'b']:
+    if hurt_type in ['bashing', 'bash', 'b']:
         damage[0] = amount
-    elif type in ['lethal', 'l']:
+    elif hurt_type in ['lethal', 'l']:
         damage[1] = amount
-    elif type in ['aggravated', 'agg', 'a']:
+    elif hurt_type in ['aggravated', 'agg', 'a']:
         damage[2] = amount
     else:
         target.msg('Incorrect damage type')
@@ -447,34 +447,32 @@ class CmdHeal(Command):
 
 
 # noinspection DuplicatedCode
-def heal_func(target, input):
-    if input:
-        parsed = parser(input)
+def heal_func(target, heal_input):
+    if heal_input:
+        parsed = parser(heal_input)
     else:
         parsed = {'args': '',
                   'entry': '',
                   'subentry': '',
                   'statclass': '',
                   'value': 0}
-    type = parsed['entry'].lower()
+    heal_type = parsed['entry'].lower()
     amount = parsed['value']
     health = target.db.advantages['Health']
-    max_health = target.get('Health', statclass='Advantage',
-                            subentry='Permanent')
 
-    if type in ['bashing', 'bash', 'b']:
+    if heal_type in ['bashing', 'bash', 'b']:
         if amount > health[0]:
             health[0] = 0
         else:
             health[0] = health[0] - amount
         damage_type = 'bashing'
-    elif type in ['lethal', 'l']:
+    elif heal_type in ['lethal', 'l']:
         if amount > health[1]:
             health[1] = 0
         else:
             health[1] = health[1] - amount
         damage_type = 'lethal'
-    elif type in ['aggravated', 'agg', 'a']:
+    elif heal_type in ['aggravated', 'agg', 'a']:
         if amount > health[2]:
             health[2] = 0
         else:
@@ -514,8 +512,8 @@ class CmdInfo(Command):
         info_func(self.caller, self.args)  # pragma: no cover
 
 
-def info_func(target, input):
-    parsed = parser(input)
+def info_func(target, info_input):
+    parsed = parser(info_input)
     temp_stats = data.find(parsed['entry'], statclass=parsed['statclass'])
     stats = []
     for entry in temp_stats:
@@ -876,8 +874,8 @@ def produce_sheet(target):
 
 def merits_list(target):
     try:
-        sorted_list = sorted(target.db.merits, key=lambda merit: merit[0])
-    except LookupError:
+        sorted_list = sorted(target.db.merits, key=lambda item: item[0])
+    except TypeError:
         return []
     else:
         results = list()
@@ -898,7 +896,7 @@ def contracts_list(target):
     contracts = target.db.contracts
     try:
         contract_list = sorted(list(contracts.keys()))
-    except LookupError:
+    except AttributeError:
         return []
     else:
         results = []

@@ -39,11 +39,11 @@ class merit_class:
     cg_only = False
     restricted = False
 
-    def update(self,longname,category,range,noteRestrictions,prereq,reference,info,cg_only,restricted):
+    def update(self,longname,category,meritrange,noterestrictions,prereq,reference,info,cg_only,restricted):
         self.longname = longname
         self.category = category
-        self.range = range
-        self.noteRestrictions = noteRestrictions
+        self.range = meritrange
+        self.noteRestrictions = noterestrictions
         self.prereq = prereq
         self.reference = reference
         self.info = info
@@ -61,8 +61,8 @@ def sheet(request, object_id):
     merit = merit_class()
     longname = stats[0].db.longname
     category = stats[0].db.category
-    range = stats[0].db.range
-    noteRestrictions = stats[0].db.noteRestrictions
+    meritrange = stats[0].db.range
+    noterestrictions = stats[0].db.noteRestrictions
     prereq = stats[0].db.prereq
     reference = stats[0].db.reference
     if stats[0].db.info:
@@ -71,7 +71,7 @@ def sheet(request, object_id):
         info = chr(160)
     cg_only = stats[0].db.cg_only
     restricted = stats[0].db.restricted
-    merit.update(longname,category,range,noteRestrictions,prereq,reference,info,cg_only,restricted)
+    merit.update(longname,category,meritrange,noterestrictions,prereq,reference,info,cg_only,restricted)
     if request.method == 'POST':
          return render(request, 'merits/error.html', {'message': 'POST'})
     return render(request, 'merits/sheet.html', {'merit': merit, 'request':request, 'id':quote(object_id)})
