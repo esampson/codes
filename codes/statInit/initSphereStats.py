@@ -140,6 +140,13 @@ sphere.db.reference = ''
 sphere.db.info = ''
 sphere.db.restricted = False
 
+sphere = create_script('typeclasses.scripts.SphereStatScript',key = 'Pack')
+sphere.db.longname = 'Pack'
+sphere.db.category = 'Werewolf'
+sphere.db.reference = ''
+sphere.db.info = ''
+sphere.db.restricted = False
+
 sphere = create_script('typeclasses.scripts.SphereStatScript',key = 'Path')
 sphere.db.longname = 'Path'
 sphere.db.category = 'Mage'
