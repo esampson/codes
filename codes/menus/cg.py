@@ -83,26 +83,6 @@ def _set_attribute_priorities(caller, raw_string, **kwargs):
     caller.db.cg['att_points'] = list(caller.db.cg['act_points']).copy()
     return 'decide_stat',{'type':'attribute'}
 
-def decide_attribute(caller, raw_string, **kwargs):
-    data = get_stats(caller, type='attribute')
-    text = data['text'] + "|/|/Chose what to work on:"
-    option_list = [
-        { 'desc' : 'Mental',
-         'goto' : ('decide_stat', {'group' : 'mental',
-                                   'type' : 'attribute'} ) },
-        { 'desc' : 'Physical',
-         'goto' : ('decide_stat', {'group' : 'physical',
-                                   'type' : 'attribute'} ) },
-        { 'desc' : 'Social',
-         'goto' : ('decide_stat', {'group' : 'social',
-                                   'type' : 'attribute' } ) } ]
-    if data['mental'] == 0 and data['physical'] == 0 and data['social'] == 0:
-        option_list.append( {'key' : 'P',
-                             'desc' : 'Proceed',
-                             'goto' : 'start_skills' } )
-    options = tuple(option_list)
-    return text, options
-
 def get_stats(caller,type=''):
     count = 0
     mental_total = 0

@@ -1,6 +1,7 @@
 from evennia import create_script
-create_script(
+d = create_script(
     'typeclasses.scripts.DictionaryScript',key='Dictionary',persistent=True)
+
 from codes.statInit import initAdvantages
 from codes.statInit import initArcana
 from codes.statInit import initAttributes
@@ -28,3 +29,6 @@ from codes.statInit import initSphereStats
 from codes.statInit import initTheban
 from codes.statInit import initTribes
 from codes.statInit import initWerewolfRites
+
+
+d.at_start()
