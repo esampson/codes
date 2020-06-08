@@ -1,7 +1,7 @@
 from evennia import Command
 from evennia import CmdSet
 
-from codes.menus.menu_types import ExMenu
+from world.evmenu import EvMenu
 
 
 class CmdCG(Command):
@@ -36,11 +36,11 @@ class CmdCG(Command):
                 kwargs = dict(self.caller.db.cg['kwargs'])
             else:
                 kwargs = dict()
-            ExMenu(self.caller, menu, startnode=node,
+            EvMenu(self.caller, menu, startnode=node,
                    cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False,
                    startnode_input=('p', kwargs))
         else:
-            ExMenu(self.caller, 'codes.menus.cg', startnode='start',
+            EvMenu(self.caller, 'codes.menus.cg', startnode='start',
                    cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
 
 
@@ -62,7 +62,7 @@ class CmdXP(Command):
     help_category = 'OOC Commands'
 
     def func(self):
-        ExMenu(self.caller, 'codes.menus.xp_menu', startnode='start',
+        EvMenu(self.caller, 'codes.menus.xp_menu', startnode='start',
                cmdset_mergetype='Union')
 
 
