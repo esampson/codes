@@ -1,7 +1,7 @@
 from codes.data import get
 from codes.data import set
 from evennia.utils.utils import strip_control_sequences
-from codes.menus.menu_types import ExMenu
+from world.evmenu import EvMenu
 
 stats = {'attribute':
              {'mental':
@@ -432,9 +432,6 @@ def assign_specialties(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    options_format = {'hide_keys': ['q', 'Quit', 'back'],
-                      'move_keys': ['B'],
-                      'rows': 6}
     display = {'text':
                    {'contents': text},
                'help':
@@ -479,7 +476,9 @@ def remove_specialty(caller):
                                      {'item': item})})
     options = tuple(option_list)
     text = 'Remove which specialty?'
-    return text, options
+    display = {'text': {'contents': text},
+               'options': {'contents': options}}
+    return display
 
 
 def _remove_specialty(caller, **kwargs):
@@ -540,43 +539,43 @@ def assign_template(caller, raw_string, **kwargs):
 
 def mortal_template(caller):
     caller.db.sphere = {}
-    ExMenu(caller, 'codes.menus.cg_mortal', startnode='mortal_template',
+    EvMenu(caller, 'codes.menus.cg_mortal', startnode='mortal_template',
            cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 
 def changeling_template(caller):
     caller.db.sphere = {}
-    ExMenu(caller, 'codes.menus.cg_changeling',
+    EvMenu(caller, 'codes.menus.cg_changeling',
            startnode='changeling_template', cmdset_mergetype='Union',
            cmd_on_exit=None, auto_quit=False)
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 
 def mage_template(caller):
     caller.db.sphere = {}
-    ExMenu(caller, 'codes.menus.cg_mage', startnode='mage_template',
+    EvMenu(caller, 'codes.menus.cg_mage', startnode='mage_template',
            cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 
 def vampire_template(caller):
     caller.db.sphere = {}
-    ExMenu(caller, 'codes.menus.cg_vampire', startnode='vampire_template',
+    EvMenu(caller, 'codes.menus.cg_vampire', startnode='vampire_template',
            cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 
 def werewolf_template(caller):
     caller.db.sphere = {}
-    ExMenu(caller, 'codes.menus.cg_werewolf', startnode='werewolf_template',
+    EvMenu(caller, 'codes.menus.cg_werewolf', startnode='werewolf_template',
            cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 
 def quit_menu(caller):
@@ -585,5 +584,5 @@ def quit_menu(caller):
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
     caller.execute_cmd('look')
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display

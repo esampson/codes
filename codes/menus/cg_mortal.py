@@ -2,7 +2,7 @@ from codes.data import get
 from codes.data import set
 from codes.data import find
 
-from codes.menus.menu_types import ExMenu
+from world.evmenu import EvMenu
 
 from evennia.utils.utils import strip_control_sequences
 
@@ -60,30 +60,30 @@ def mortal_template(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'All Chronicles of Darkness characters have defining personality ' +
-            'traits. These traits not only tell a character who she is, but ' +
-            'also allow her to regain Willpower (for more information on ' +
-            'spending and regaining Willpower, see Chapter 2). These traits '+
-            'are called Anchors. For a mortal character, these Anchors are ' +
-            'her Virtue and her Vice.' + '|/' + '_' * 79)
-    options_format = {'hide_keys': ['q', 'Quit', 'back'],
-                      'move_keys': ['B', 'P'],
-                      'rows': 10}
-    display = {'text': text,
-               'help': help,
-               'options_format': options_format,
-               'footer': footer}
-    return display, options
+    helptext = ('All Chronicles of Darkness characters have defining '
+                'personality traits. These traits not only tell a character '
+                'who she is, but also allow her to regain Willpower (for more '
+                'information on spending and regaining Willpower, see Chapter '
+                '2). These traits are called Anchors. For a mortal character, '
+                'these Anchors are her Virtue and her Vice.')
+    display = {'text': {'contents': text},
+               'help': {'formatter': 'bars',
+                        'contents': helptext},
+               'options': {'contents': options,
+                           'hidekeys': ['q', 'Quit', 'back'],
+                           'movekeys': ['B', 'P'],
+                           'rows': 10},
+               'footer': {'contents': footer}}
+    return display
 
 def return_to_main_cg(caller, raw_string, **kwargs):
     caller.db.basics = {}
     caller.db.power = {}
     caller.db.sphere = {}
-    ExMenu(caller, 'codes.menus.cg', startnode='assign_template',
+    EvMenu(caller, 'codes.menus.cg', startnode='assign_template',
            cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 
 # noinspection DuplicatedCode
@@ -96,7 +96,9 @@ def choose_anchor(caller, raw_string, **kwargs):
                                      'value' : item } ) } )
     text = 'Set ' + kwargs['type'].capitalize() + ':'
     options = tuple(option_list)
-    return text, options
+    display = {'text': {'contents': text},
+               'options': {'contents': options}}
+    return display
 
 def _set_anchor(caller, raw_string, **kwargs):
     caller.db.sphere[kwargs['type'].capitalize()] = kwargs['value']
@@ -149,20 +151,20 @@ def mortal_merits(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Merits are important facets of your character that do not fall ' +
-            'under other traits. A Merit can represent a knack, special ' +
-            'training, people your character knows, or even things that he ' +
-            'owns. They add unique capabilities to your character beyond ' +
-            'Attributes and Skills.' + '|/' + '_' * 79)
-    options_format = {'hide_keys': ['q', 'Quit', 'back'],
-                      'move_keys': ['B', 'F'],
-                      'rows': 10}
-    display = {'text': text,
-               'help': help,
-               'options_format': options_format,
-               'footer': footer}
-    return display, options
+    helptext = ('Merits are important facets of your character that do not '
+                'fall under other traits. A Merit can represent a knack, '
+                'special training, people your character knows, or even '
+                'things that he owns. They add unique capabilities to your '
+                'character beyond Attributes and Skills.')
+    display = {'text': {'contents': text},
+               'help': {'formatter': 'bars',
+                        'contents': helptext},
+               'options': {'contents': options,
+                           'hidekeys': ['q', 'Quit', 'back'],
+                           'movekeys': ['B', 'P'],
+                           'rows': 10},
+               'footer': {'contents': footer}}
+    return display
 
 def _return_to_anchors(caller, raw_string, **kwargs):
     caller.db.merits = []
@@ -184,17 +186,19 @@ def add_merit(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 49 + '|/|/' +
-            'Enter the name of the merit you want to purchase.' +
-            '|/' + '_' * 49)
+    helptext = 'Enter the name of the merit you want to purchase.'
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'F'],
                       'rows': 10}
-    display = {'text': text,
-               'help': help,
-               'options_format': options_format,
-               'footer': footer}
-    return display, options
+    display = {'text': {'contents': text},
+               'help': {'formatter': 'bars',
+                        'contents': helptext},
+               'options': {'contents': options,
+                           'hidekeys': ['q', 'Quit', 'back'],
+                           'movekeys': ['B', 'P'],
+                           'rows': 10},
+               'footer': {'contents': footer}}
+    return display
 
 
 # noinspection DuplicatedCode
@@ -236,22 +240,23 @@ def get_merit_note(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' + 'Some merits can be purchased ' +
-            'multiple times to represent different things. One good example ' +
-            'of this is the Status merit. Characters can have Status with ' +
-            'multiple groups so each time Status is purchased a note ' +
-            'will need to be provided to specify what group it applies to.' +
-            '|/|/Some merits allow open ended notes while others will ' +
-            'restrict possible notes to a given list.' +
-            '|/' + '_' * 79)
-    options_format = {'hide_keys': ['q', 'Quit', 'back'],
-                      'move_keys': ['B', 'F'],
-                      'rows': 10}
-    display = {'text': text,
-               'help': help,
-               'options_format': options_format,
-               'footer': footer}
-    return display, options
+    helptext = ('Some merits can be purchased multiple times to represent '
+                'different things. One good example of this is the Status '
+                'merit. Characters can have Status with multiple groups so '
+                'each time Status is purchased a note will need to be '
+                'provided to specify what group it applies to.|/'
+                '|/'
+                'Some merits allow open ended notes while others will '
+                'restrict possible notes to a given list.')
+    display = {'text': {'contents': text},
+               'help': {'formatter': 'bars',
+                        'contents': helptext},
+               'options': {'contents': options,
+                           'hidekeys': ['q', 'Quit', 'back'],
+                           'movekeys': ['B', 'P'],
+                           'rows': 10},
+               'footer': {'contents': footer}}
+    return display
 
 def _check_merit_note(caller, raw_string, **kwargs):
     merit = kwargs['merit']
@@ -287,16 +292,16 @@ def get_merit_value(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 29 + '|/|/Enter a value between 1 and 5' + '|/' +
-            '_' * 29)
-    options_format = {'hide_keys': ['q', 'Quit', 'back'],
-                      'move_keys': ['B', 'F'],
-                      'rows': 10}
-    display = {'text': text,
-               'help': help,
-               'options_format': options_format,
-               'footer': footer}
-    return display, options
+    helptext = 'Enter a value between 1 and 5'
+    display = {'text': {'contents': text},
+               'help': {'formatter': 'bars',
+                        'contents': helptext},
+               'options': {'contents': options,
+                           'hidekeys': ['q', 'Quit', 'back'],
+                           'movekeys': ['B', 'P'],
+                           'rows': 10},
+               'footer': {'contents': footer}}
+    return display
 
 def _check_merit_value(caller, raw_string, **kwargs):
     if not strip_control_sequences(raw_string).isnumeric():
@@ -346,8 +351,8 @@ def quit_menu(caller, raw_string, **kwargs):
     caller.cmdset.delete(obj_menu)
     caller.account.cmdset.delete(act_menu)
     caller.execute_cmd('look')
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 
 # noinspection DuplicatedCode
@@ -370,6 +375,6 @@ def mortal_finish_cg(caller, raw_string, **kwargs):
                      'spent' : 0,
                      'log' : {} }
     caller.execute_cmd('look')
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'format': 'suppress'}}
+    return display
 
