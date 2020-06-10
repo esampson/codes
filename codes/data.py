@@ -213,7 +213,7 @@ def set(target, entry, value, subentry='', statclass=''):
     else:
         stat_list = find(entry, statclass)
         if len(stat_list) == 0:
-            raise Exception('StatError: ' + entry + 'NOT FOUND')
+            raise Exception('StatError: ' + entry + ' NOT FOUND')
         elif len(stat_list) > 1:
             raise Exception('StatError: ' + 'TOO MANY FOUND FOR '+ entry)
         else:
