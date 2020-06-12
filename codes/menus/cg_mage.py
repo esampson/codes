@@ -5,7 +5,7 @@ from evennia.utils.utils import strip_control_sequences
 from evennia.utils.search import search_script_tag
 from operator import itemgetter
 
-from codes.menus.menu_types import ExMenu
+from world.evmenu import EvMenu
 
 import time
 
@@ -49,20 +49,20 @@ def mage_template(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Theoretical models of the cosmos give infinite numbers of ' +
-            'Supernal Realms, hidden deep beyond the Supernal World revealed' +
-            'through Mage Sight. Other, rival, theories state that there is ' +
-            'only one Supernal Realm, and that all seeming division is ' +
-            'imposed on magic by mortal minds. Despite the debates, for all ' +
-            'intents and purposes mages count five different facets or Paths ' +
-            'of the Supernal World: five ways to see through the Lie, five ' +
-            'ways to achieve magic, five kinds of mages.' + '|/' + '_' * 79)
+    helptext = ('Theoretical models of the cosmos give infinite numbers of  '
+                'Supernal Realms, hidden deep beyond the Supernal World '
+                'revealed through Mage Sight. Other, rival, theories state '
+                'that there is only one Supernal Realm, and that all seeming '
+                'division is imposed on magic by mortal minds. Despite the '
+                'debates, for all intents and purposes mages count five '
+                'different facets or Paths of the Supernal World: five ways '
+                'to see through the Lie, five ways to achieve magic, five '
+                'kinds of mages.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -76,10 +76,10 @@ def return_to_main_cg(caller, raw_string, **kwargs):
     del caller.db.arcana
     del caller.db.rotes
     del caller.db.praxes
-    ExMenu(caller, 'codes.menus.cg', startnode='assign_template',
+    EvMenu(caller, 'codes.menus.cg', startnode='assign_template',
            cmdset_mergetype='Union', cmd_on_exit=None, auto_quit=False)
-    text = {'format': 'suppress'}
-    return text, None
+    display = {'node': {'formatter': 'suppress'}}
+    return display
 
 def _mage_set_path(caller, raw_string, **kwargs):
     path = kwargs['path']
@@ -118,22 +118,21 @@ def mage_order(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Although smaller, isolated groups of mages cling on in some ' +
-            'parts of the world, catering to regional interests or ' +
-            'unwholesome practices other mages frown upon, the global ' +
-            'society of magic is largely divided among six great Orders. ' +
-            'Each Order is made up of thousands of smaller organizations ' +
-            'with attached mystery cults, secret societies, and associations ' +
-            'that give them an occult "footprint" in the Fallen World. ' +
-            'Although most Sleeper occultists wouldn\'t know them by name, ' +
-            'those "in the know" are aware that the Orders exist even if ' +
-            'only by rumor and inference.' + '|/' + '_' * 79)
+    helptext = ('Although smaller, isolated groups of mages cling on in some '
+                'parts of the world, catering to regional interests or '
+                'unwholesome practices other mages frown upon, the global '
+                'society of magic is largely divided among six great Orders. '
+                'Each Order is made up of thousands of smaller organizations '
+                'with attached mystery cults, secret societies, and '
+                'associations that give them an occult "footprint" in the '
+                'Fallen World. Although most Sleeper occultists wouldn\'t '
+                'know them by name, those "in the know" are aware that the '
+                'Orders exist even if only by rumor and inference.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -181,16 +180,15 @@ def mage_stat(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'The Awakening is tough on the mind, body, and soul. Every ' +
-            'Awakened character begins play with one additional dot of ' +
-            'Composure, Resolve, or Stamina, which may not raise the ' +
-            'Attribute chosen above five dots.' + '|/' + '_' * 79)
+    helptext = ('The Awakening is tough on the mind, body, and soul. Every '
+                'Awakened character begins play with one additional dot of '
+                'Composure, Resolve, or Stamina, which may not raise the '
+                'Attribute chosen above five dots.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -237,18 +235,17 @@ def mage_obsession(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Obsessions are just like long-term Aspirations, except they ' +
-            'relate specifically to a mage\'s compulsion to explore the ' +
-            'mystical in her life. They could be goals to learn or research ' +
-            'specific things. They could be player goals for the character ' +
-            'to encounter certain strangeness in the world. They could be ' +
-            'goals to use magic in new or extreme ways.' + '|/' + '_' * 79)
+    helptext = ('Obsessions are just like long-term Aspirations, except they '
+                'relate specifically to a mage\'s compulsion to explore the '
+                'mystical in her life. They could be goals to learn or '
+                'research specific things. They could be player goals for the '
+                'character to encounter certain strangeness in the world. '
+                'They could be goals to use magic in new or extreme ways.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -356,16 +353,15 @@ def mage_arcana(caller,raw_string,**kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'The ten elemental principles through which mages understand the ' +
-            'Tapestry. A mage\'s Arcanum lore is the mechanism by which she ' +
-            'draws down the laws of a Supernal Realm. Her Gnosis provides ' +
-            'her connection to that Realm.' + '|/' + '_' * 79)
+    helptext = ('The ten elemental principles through which mages understand '
+                'the Tapestry. A mage\'s Arcanum lore is the mechanism by '
+                'which she draws down the laws of a Supernal Realm. Her '
+                'Gnosis provides her connection to that Realm.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 3}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -387,13 +383,12 @@ def get_arcana_value(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 29 + '|/|/Enter a value between 1 and 3' + '|/' +
-            '_' * 29)
+    helptext = 'Enter a value between 1 and 3'
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'F'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -453,20 +448,19 @@ def mage_rotes(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Experienced mages perfect their grasp of spell Imagos over ' +
-            'time, learning the complexity of the spell and developing ' +
-            'skills to recall and cast it with ease. Masters call these ' +
-            'specialized Imagos Rotes, codifying and recording their methods ' +
-            'to later teach less experienced mages. Orders teach Rotes to ' +
-            'their members using a set of mnemonic techniques - mudras - to ' +
-            'compress, memorize, recall, and cast the spell as quickly and ' +
-            'efficiently as improvised spells.' + '|/' + '_' * 79)
+    helptext = ('Experienced mages perfect their grasp of spell Imagos over '
+                'time, learning the complexity of the spell and developing '
+                'skills to recall and cast it with ease. Masters call these '
+                'specialized Imagos Rotes, codifying and recording their '
+                'methods to later teach less experienced mages. Orders teach '
+                'Rotes to their members using a set of mnemonic techniques - '
+                'mudras - to compress, memorize, recall, and cast the spell '
+                'as quickly and efficiently as improvised spells.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 4}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -508,17 +502,16 @@ def mage_add_rote(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Because rotes apply to specific spells you will need to state ' +
-            'the name of an approved spell which the rote is for. Approved ' +
-            'spells can be found at either http://13.52.78.93/spells/list/ ' +
-            'or by typing |w+list spell|n. (Warning: The list is very long.)' +
-            '|/' + '_' * 79)
+    helptext = ('Because rotes apply to specific spells you will need to '
+                'state the name of an approved spell which the rote is for. '
+                'Approved spells can be found at either '
+                'http://13.52.78.93/spells/list/ or by typing |w+list '
+                'spell|n. (Warning: The list is very long.)')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 4}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -610,17 +603,16 @@ def mage_merits(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Merits are important facets of your character that do not fall ' +
-            'under other traits. A Merit can represent a knack, special ' +
-            'training, people your character knows, or even things that he ' +
-            'owns. They add unique capabilities to your character beyond ' +
-            'Attributes and Skills.' + '|/' + '_' * 79)
+    helptext = ('Merits are important facets of your character that do not '
+                'fall under other traits. A Merit can represent a knack, '
+                'special training, people your character knows, or even '
+                'things that he owns. They add unique capabilities to your '
+                'character beyond Attributes and Skills.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 4}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -652,14 +644,12 @@ def add_merit(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 49 + '|/|/' +
-            'Enter the name of the merit you want to purchase.' +
-            '|/' + '_' * 49)
+    helptext = 'Enter the name of the merit you want to purchase.'
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'F'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -690,8 +680,8 @@ def _check_merit(caller, raw_string, **kwargs):
 
 # noinspection DuplicatedCode
 def get_merit_note(caller, raw_string, **kwargs):
-    text = 'This merit requires some form of note such as who the contacts '
-    text = text + 'are or what the area of expertise is in:'
+    text = ('This merit requires some form of note such as who the contacts '
+            'are or what the area of expertise is in:')
     option_list = [{'key': '_default',
                     'goto': (_check_merit_note,
                              {'total': kwargs['total'],
@@ -705,19 +695,19 @@ def get_merit_note(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' + 'Some merits can be purchased ' +
-            'multiple times to represent different things. One good example ' +
-            'of this is the Status merit. Characters can have Status with ' +
-            'multiple groups so each time Status is purchased a note ' +
-            'will need to be provided to specify what group it applies to.' +
-            '|/|/Some merits allow open ended notes while others will ' +
-            'restrict possible notes to a given list.' +
-            '|/' + '_' * 79)
+    helptext = ('Some merits can be purchased multiple times to represent '
+                'different things. One good example of this is the Status '
+                'merit. Characters can have Status with multiple groups so '
+                'each time Status is purchased a note will need to be '
+                'provided to specify what group it applies to.|/'
+                '|/'
+                'Some merits allow open ended notes while others will '
+                'restrict possible notes to a given list.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'F'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -756,13 +746,12 @@ def get_merit_value(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 29 + '|/|/Enter a value between 1 and 5' + '|/' +
-            '_' * 29)
+    helptext = 'Enter a value between 1 and 5'
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'F'],
                       'rows': 10}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -879,17 +868,16 @@ def mage_praxes(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Through dedicated practice or repetitive use of certain spells, ' +
-            'a mage may develop a Praxis. Praxes are spell Imagos the mage ' +
-            'has gained special insight into, learning the symbols of the ' +
-            'spell by heart. She is more adept at casting these spells, and ' +
-            'they shape her growing Gnosis.' + '|/' + '_' * 79)
+    helptext = ('Through dedicated practice or repetitive use of certain '
+                'spells, a mage may develop a Praxis. Praxes are spell Imagos '
+                'the mage has gained special insight into, learning the '
+                'symbols of the spell by heart. She is more adept at casting '
+                'these spells, and they shape her growing Gnosis.')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 4}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
@@ -931,17 +919,16 @@ def mage_add_praxis(caller, raw_string, **kwargs):
                         'goto': 'quit_menu'})
     options = tuple(option_list)
     footer = '|/(Additional options include |w\'help\'|n and |w\'quit\'|n)'
-    help = ('|/' + '_' * 79 + '|/|/' +
-            'Because praxes apply to specific spells you will need to state ' +
-            'the name of an approved spell which the praxis is for. Approved ' +
-            'spells can be found at either http://13.52.78.93/spells/list/ ' +
-            'or by typing |w+list spell|n. (Warning: The list is very long.)' +
-            '|/' + '_' * 79)
+    helptext = ('Because praxes apply to specific spells you will need to '
+                'state the name of an approved spell which the praxis is for. '
+                'Approved spells can be found at either '
+                'http://13.52.78.93/spells/list/ or by typing |w+list '
+                'spell|n. (Warning: The list is very long.)')
     options_format = {'hide_keys': ['q', 'Quit', 'back'],
                       'move_keys': ['B', 'P'],
                       'rows': 4}
     display = {'text': text,
-               'help': help,
+               'help': helptext,
                'options_format': options_format,
                'footer': footer}
     return display, options
