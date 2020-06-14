@@ -58,14 +58,14 @@ def mage_template(caller, raw_string, **kwargs):
                 'different facets or Paths of the Supernal World: five ways '
                 'to see through the Lie, five ways to achieve magic, five '
                 'kinds of mages.')
-    options_format = {'hide_keys': ['q', 'Quit', 'back'],
-                      'move_keys': ['B', 'P'],
-                      'rows': 10}
-    display = {'text': text,
-               'help': helptext,
-               'options_format': options_format,
-               'footer': footer}
-    return display, options
+    display = {'text': {'contents': text},
+               'help': {'contents': helptext},
+               'options': {'contents': options,
+                           'hidekeys': ['q', 'Quit', 'back'],
+                           'movekeys': ['B', 'P'],
+                           'rows': 10},
+               'footer': {'contents': footer}}
+    return display
 
 
 # noinspection DuplicatedCode
